@@ -1,6 +1,7 @@
 :root {
     --web-background-color: #f5f5f5;
-    --component-background-color: #e9f1ec;
+    --light-component-background-color: #e9f1ec;
+    --dark-component-background-color: #4d6a55;
     --big-text-color: #4d6a55;
     --label-color: #f5f5f5;
     --text-color: #000b0e;
