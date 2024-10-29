@@ -1,0 +1,65 @@
+body, html {
+    background-color: var(--web-background-color);
+}
+
+a {
+    color: var(--sub-cta-button);
+    font-weight: 500;
+}
+
+.container {
+    width: 500px;
+    background-color: var(--component-background-color);
+    margin-top: 50px;
+}
+
+.style-big-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--big-text-color);
+}
+
+.style-title {
+    color: var(--big-text-color);
+    font-weight: 500;
+}
+
+.style-button {
+    border: none;
+    background-color: var(--sub-cta-button);
+    color: var(--label-color);
+    font-size: 1.125rem;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.style-caption {
+    font-size: 0.875rem;
+    color: var(--text-color);
+}
+
+.style-label {
+    font-size: 1rem;
+    color: var(--big-text-color);
+}
+
+.icon-social {
+    text-align: center;
+    align-content: center;
+    height: 40px;
+    border: solid 2px black;
+}
+
+.style-input {
+    height: 50px;
+    padding-left: 10px;
+}
+
+.icon-container {
+    height: 50px;
+    background-color: white;
+    align-content: center;
+    border: solid 1px rgb(118, 118, 118);
+    border-right: none;
+}
