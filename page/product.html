@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/test.css">
+    <link rel="stylesheet" href="../style/product.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+<header>
+    <div class="px-3 py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-1 text-white d-flex text-center">
+                    <i class="bi bi-bootstrap text-white" id="header-logo"></i>
+                </div>
+
+                <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
+                    <span id="input-icon" class="fas ps-2" style="position: absolute; color: #56595C">&#xf002 </span>
+                    <input type="search" name="" id="" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                </div>
+                <ul class="col-4 m-0 d-flex justify-content-end align-items-center">
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-list my-1"></i>
+                        <p class="header-feature__label">Danh mục</p>
+                    </li>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-heart my-1"></i>
+                        <p class="header-feature__label">Yêu thích</p>
+                    </li>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-cart-shopping my-1"></i>
+                        <p class="header-feature__label">Giỏ hàng</p>
+                    </li>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-user my-1"></i>
+                        <p class="header-feature__label">Tài khoản</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Trang chủ</li>
+            <li class="breadcrumb-item" aria-current="page">Sản phẩm</li>
+            <li class="breadcrumb-item" aria-current="page">Tranh thêu Anime</li>
+            <li class="breadcrumb-item active" aria-current="page">Tranh thêu Thám tử lừng danh Conan</li>
+        </ol>
+    </nav>
+
+    <div id="product-container" class="p-5">
+        <div class="row">
+            <img class="col-5" src="../asset/product_image.png" alt="">
+            <div class="col-1"></div>
+            <div class="col">
+                <div class="row">
+                    <h3 class="product-title">Tranh thêu Thám tử lừng danh Conan</h3>
+                </div>
+                <div class="row">
+                    <p>Kích thước: 120 x 80 cm</p>
+                </div>
+                <div class="row">
+                    <div class="col-6">Mã sản phẩm: <span class="fw-semibold">TT-0001</span></div>
+                    <div class="col-6">Danh mục: <span class="fw-semibold">Tranh thêu Anime</span></div>
+                    <div class="col-6">Nguyên liệu: <span class="fw-semibold">Vải, Kim, Chỉ</span></div>
+                    <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh Thêu Wibu</span></div>
+                </div>
+                <div class="row">
+                    <h2 >20.000.000 VNĐ</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+#product-container {
+    background-color: var(--light-component-background-color);
+}
+
+.product-title {
+    color: var(--big-text-color);
+}
