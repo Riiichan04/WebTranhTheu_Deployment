@@ -2,6 +2,32 @@
     background-color: var(--light-component-background-color);
 }
 
-.product-title {
+#product-info__rating li {
+}
+
+#product-info__rating i {
+    font-size: 28px;
+}
+
+.product-info__title {
     color: var(--big-text-color);
+}
+
+.product-info__star-container {
+    position: relative;
+    height: 28px;
+}
+
+.product-info__star-outline, .product-info__star {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.product-info__star-mask {
+    width: 0;
+    height: 28px;
+    position: absolute;
+    right: 0;
+    background-color: var(--light-component-background-color);
 }
