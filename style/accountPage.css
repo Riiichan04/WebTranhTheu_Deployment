@@ -1,0 +1,75 @@
+html,body,p,a{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background-color: var(--web-background-color);
+}
+/*Header*/
+header {
+    background-color: var(--dark-component-background-color) !important;
+}
+
+header input {
+    background-color: var(--label-color) !important;
+    padding-left: 1.75rem !important;
+    padding-right: 1.75rem !important;
+}
+
+header i {
+    font-size: 24px;
+    color: var(--label-color) !important;
+}
+
+header p {
+    margin: 0;
+    color: var(--label-color) !important;
+}
+
+header ul>li, header i {
+    cursor: pointer;
+}
+
+header ul>li:hover * {
+    color: var(--text-hover-color) !important;
+}
+
+#header-logo {
+    font-size: 40px;
+}
+/*Content*/
+.container-fluid{
+    height: 1024px;
+    padding: 0 30px;
+}
+.breadcrumb{
+    padding: 12px 20px;
+}
+.user_props_list{
+    width: 30%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--light-component-background-color);
+    border-radius: 5px;
+    height: 500px;
+}
+.user_props_list .user_img_frame{
+    text-align: center;
+    height: 200px;
+    border-bottom: solid 1px #dddddd;
+    background-color: whitesmoke;
+    border-radius: 5px 5px 0 0;
+}
+.user_props_list .list_props button{
+    border-bottom: solid 1px #dddddd;
+    padding: 10px;
+    background-color: var(--light-component-background-color);
+    border-radius: 0;
+}
+.user_props_list .user_setting_help{
+    padding: 10px 0;
+}
+.user_props_list .user_setting_help button{
+    background-color: var(--light-component-background-color);
+    border-bottom: solid 1px #dddddd;
+}
