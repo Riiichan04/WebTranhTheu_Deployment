@@ -2,6 +2,10 @@
     background-color: var(--light-component-background-color);
 }
 
+#product-image {
+    width: 100%;
+}
+
 #product-info__rating li {
 }
 
@@ -30,4 +34,13 @@
     position: absolute;
     right: 0;
     background-color: var(--light-component-background-color);
+}
+
+.sub-cta-button {
+    color: var(--sub-cta-button);
+}
+
+.main-cta-button {
+    background-color: var(--main-cta-button);
+    color: var(--label-color);
 }
