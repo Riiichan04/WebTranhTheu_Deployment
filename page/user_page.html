@@ -6,6 +6,9 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--Bootstrap Icon-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--Style CSS-->
     <link rel="stylesheet" href="../style/accountPage.css">
     <link rel="stylesheet" href="../style/index.css">
     <!-- FontAwesome -->
@@ -72,7 +75,7 @@
                 <button type="button" class="list-group-item list-group-item-action">Thông tin thanh toán</button>
                 <button type="button" class="list-group-item list-group-item-action">Tích điểm người dùng</button>
                 <button type="button" class="list-group-item list-group-item-action">Danh sách yêu thích</button>
-                <button type="button" class="list-group-item list-group-item-action">Lịch sử mua hàng</button>
+                <button type="button" class="list-group-item list-group-item-action">Đơn hàng của tôi</button>
                 <button type="button" class="list-group-item list-group-item-action">Lịch sử đánh giá</button>
             </div>
             <hr>
@@ -100,18 +103,46 @@
             <div class="h2 p-3">Thông tin tài khoản</div>
             <hr>
             <div class="input-info container">
-                <div class="name-inputs">
+                <div class="user-inputs">
                     <div class="row">
-                        <div class="col p-2">Tên:</div>
-                        <div class="col p-2">Họ:</div>
+                        <div class="col p-3">Tên:</div>
+                        <div class="col p-3">Họ:</div>
                     </div>
                     <div class="row">
                         <div class="col"><input type="text" placeholder="Tên"></div>
                         <div class="col"><input type="text" placeholder="Họ"></div>
                     </div>
                     <div class="row">
-                        <div class="col-12 p-2">Địa chỉ email:</div>
-                        <div class="col-12"><input type="email" placeholder="Email"></div>
+                        <div class="col-12 p-3">Địa chỉ email:</div>
+                        <div class="col-8"><input type="email" placeholder="Email" style="width: 100%"></div>
+                    </div>
+                </div>
+                <!-- Thay đổi mật khẩu -->
+                <div class="change-pass container">
+                    <div class="row">
+                        <div class="col px-1 py-4">
+                            <button><span>Đổi mật khẩu</span></button>
+                            <!-- show ra đổi MK như nào-->
+                            <div class="container" style="display:none">
+                                <div class="row">
+                                    <div class="col">Mật khẩu cũ:</div>
+                                    <div class="col"><input type="password" placeholder="Nhập..."></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Mật khẩu mới:</div>
+                                    <div class="col"><input type="password" placeholder="Nhập..."></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nút lưu-->
+                <div class=" save-info container">
+                    <div class="row">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <button type="reset" style="width:100%"><span>Lưu</span></button>
+                        </div>
                     </div>
                 </div>
             </div>
