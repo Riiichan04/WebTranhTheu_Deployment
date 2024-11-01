@@ -4,17 +4,19 @@ body, html {
 
 a {
     color: var(--sub-cta-button);
-    font-weight: 500;
+    text-shadow:
+    0 0 1px var(--dark-component-background-color), /* Bóng sáng nhẹ, sát cạnh chữ */
+    0 0 4px var(--light-component-background-color); /* Bóng sáng thứ hai, xa hơn một chút */
 }
 
 .container {
-    width: 500px;
-    background-color: var(--component-background-color);
+    width: 450px;
+    background-color: var(--light-component-background-color);
     margin-top: 50px;
 }
 
 .style-big-title {
-    font-size: 3rem;
+    font-size: 2.25rem;
     font-weight: bold;
     color: var(--big-text-color);
 }
@@ -36,6 +38,7 @@ a {
 
 .style-caption {
     font-size: 0.875rem;
+    font-weight: lighter;
     color: var(--text-color);
 }
 
@@ -45,10 +48,9 @@ a {
 }
 
 .icon-social {
+    height: 40px;
     text-align: center;
     align-content: center;
-    height: 40px;
-    border: solid 2px black;
 }
 
 .style-input {
@@ -62,4 +64,9 @@ a {
     align-content: center;
     border: solid 1px rgb(118, 118, 118);
     border-right: none;
+}
+
+.fa-brands{
+    font-size: 1.4rem;
+    color: var(--sub-cta-button);
 }
