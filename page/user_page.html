@@ -49,52 +49,96 @@
         </div>
     </div>
 </header>
-<!--Breadcrumbs-->
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#" style="text-decoration: none">Trang chủ </a></li>
-        <li class="breadcrumb-item active" aria-current="page">Tài khoản</li>
-    </ol>
-</nav>
 <!--User's Content-->
-<div class="content container-fluid">
-    <div class="user_props_list">
-    <div class="user_img_frame">
-        <img src="../img/user_img.png" style="width: 100px;height: 100px;margin-top: 30px">
-        <p class="p-4">Nguyễn Bích Loan </p>
-    </div>
-<!--        <div class="container list_props">-->
-<!--            <div class="row row-cols-1">-->
-<!--                <div class="col">Thông tin người dùng</div>-->
-<!--                <div class="col">Sổ địa chỉ</div>-->
-<!--                <div class="col">Thông tin thanh toán</div>-->
-<!--                <div class="col">Tích điểm người dùng</div>-->
-<!--                <div class="col">Danh sách yêu thích</div>-->
-<!--                <div class="col">Lịch sử mua hàng</div>-->
-<!--                <div class="col">Lịch sử đánh giá</div>-->
-<!--            </div>-->
-<!--        </div>-->
-        <div class="list-group list_props">
-            <button type="button" class="list-group-item list-group-item-action" aria-current="true">
-                Thông tin người dùng
-            </button>
-            <button type="button" class="list-group-item list-group-item-action">Sổ địa chỉ</button>
-            <button type="button" class="list-group-item list-group-item-action">Thông tin thanh toán</button>
-            <button type="button" class="list-group-item list-group-item-action">Tích điểm người dùng</button>
-            <button type="button" class="list-group-item list-group-item-action">Danh sách yêu thích</button>
-            <button type="button" class="list-group-item list-group-item-action">Lịch sử mua hàng</button>
-            <button type="button" class="list-group-item list-group-item-action">Lịch sử đánh giá</button>
+<div class="content container">
+    <!--Breadcrumbs-->
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" style="text-decoration: none">Trang chủ </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tài khoản</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="user_props_list col-4">
+            <div class="user_img_frame">
+                <img src="../img/user_img.png" style="width: 100px;height: 100px;margin-top: 30px">
+                <p class="p-4">Nguyễn Bích Loan </p>
+            </div>
+            <div class="list-group list_props">
+                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                    Thông tin người dùng
+                </button>
+                <button type="button" class="list-group-item list-group-item-action">Sổ địa chỉ</button>
+                <button type="button" class="list-group-item list-group-item-action">Thông tin thanh toán</button>
+                <button type="button" class="list-group-item list-group-item-action">Tích điểm người dùng</button>
+                <button type="button" class="list-group-item list-group-item-action">Danh sách yêu thích</button>
+                <button type="button" class="list-group-item list-group-item-action">Lịch sử mua hàng</button>
+                <button type="button" class="list-group-item list-group-item-action">Lịch sử đánh giá</button>
+            </div>
+            <hr>
+            <div class="list-group user_setting_help">
+                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                    Cài đặt
+                </button>
+                <button type="button" class="list-group-item list-group-item-action">Hỗ trợ</button>
+            </div>
+            <hr>
+            <div class="list-group user_logout">
+                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                    Đăng xuất
+                </button>
+            </div>
         </div>
-        <div class="list-group user_setting_help">
-            <button type="button" class="list-group-item list-group-item-action" aria-current="true">
-                Cài đặt
-            </button>
-            <button type="button" class="list-group-item list-group-item-action">Hỗ trợ</button>
+        <div class="col-1"></div>
+        <!--User's property Page-->
+        <!--Empty prop-->
+        <div class="user_page_each_prop col-7" style="text-align: center;display: none">
+            <div class="h1" style="opacity: 0.5;padding:300px 0">Vui lòng chọn một mục</div>
         </div>
-        <div class="list-group user_logout">
-            <button type="button" class="list-group-item list-group-item-action" aria-current="true">
-                Đăng xuất
-            </button>
+        <!--User Info Page-->
+        <div class="user_info col-7">
+            <div class="h2 p-3">Thông tin tài khoản</div>
+            <hr>
+            <div class="input-info container">
+                <div class="name-inputs">
+                    <div class="row">
+                        <div class="col p-2">Tên:</div>
+                        <div class="col p-2">Họ:</div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><input type="text" placeholder="Tên"></div>
+                        <div class="col"><input type="text" placeholder="Họ"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-2">Địa chỉ email:</div>
+                        <div class="col-12"><input type="email" placeholder="Email"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--User Addresses-->
+        <div class="user_address col-7" style="display:none">
+            <div class="h2 p-4">Sổ địa chỉ</div>
+        </div>
+        <!--User's Payment Info-->
+        <div class=" user_payment_info col-7" style="display:none">
+            <div class="h2 p-4">Thông tin thanh toán</div>
+        </div>
+        <!--User's Point Info-->
+        <div class=" user_point_info col-7" style="display:none">
+            <div class="h2 p-4">Tích điểm</div>
+        </div>
+        <!--User's WishList-->
+        <div class=" user_wishlist col-7" style="display:none">
+            <div class="h2 p-4">Danh sách yêu thích</div>
+        </div>
+        <!--List orders history-->
+        <div class=" user_ordered_list col-7" style="display:none">
+            <div class="h2 p-4">lịch sử mua hàng</div>
+        </div>
+        <!--User's Feedback History-->
+        <div class=" user_feedback_his col-7" style="display:none">
+            <div class="h2 p-4">Lịch sử đánh giá</div>
         </div>
     </div>
 </div>

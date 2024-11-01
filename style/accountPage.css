@@ -1,9 +1,24 @@
-html,body,p,a{
+html, body, p, a {
     margin: 0;
     padding: 0;
+
 }
-html{
+
+html,body{
     background-color: var(--web-background-color);
+    font-family: SansSerif,"Roboto Thin",SansSerif,sans-serif;
+}
+hr{
+    margin: 0;
+}
+.h1,.h2{
+    color:var(--big-text-color);
+    font-weight: bold;
+}
+input{
+    border-radius: 3px;
+    /*padding-left: 0;*/
+    border: solid 1px #dddddd;
 }
 /*Header*/
 header {
@@ -26,50 +41,66 @@ header p {
     color: var(--label-color) !important;
 }
 
-header ul>li, header i {
+header ul > li, header i {
     cursor: pointer;
 }
 
-header ul>li:hover * {
+header ul > li:hover * {
     color: var(--text-hover-color) !important;
 }
 
 #header-logo {
     font-size: 40px;
 }
+
 /*Content*/
-.container-fluid{
+.content {
     height: 1024px;
     padding: 0 30px;
+    /*background-color: var(--web-background-color);*/
 }
-.breadcrumb{
-    padding: 12px 20px;
+/*Navigation Bar*/
+.breadcrumb {
+    padding: 20px 0;
 }
-.user_props_list{
+/*User properties list*/
+.user_props_list {
     width: 30%;
     padding: 0;
     margin: 0;
     background-color: var(--light-component-background-color);
     border-radius: 5px;
-    height: 500px;
+    height: 700px;
 }
-.user_props_list .user_img_frame{
+/*User frame image*/
+.user_props_list .user_img_frame {
     text-align: center;
     height: 200px;
     border-bottom: solid 1px #dddddd;
-    background-color: whitesmoke;
+    background-color: pink;
     border-radius: 5px 5px 0 0;
 }
-.user_props_list .list_props button{
-    border-bottom: solid 1px #dddddd;
+/*list_props*/
+.user_props_list .list_props button {
+    border: none;
     padding: 10px;
     background-color: var(--light-component-background-color);
     border-radius: 0;
 }
-.user_props_list .user_setting_help{
+/*Setting and Help*/
+.user_props_list .user_setting_help {
     padding: 10px 0;
 }
-.user_props_list .user_setting_help button{
+/*Log out*/
+.user_props_list .user_setting_help button, .user_props_list .user_logout button {
     background-color: var(--light-component-background-color);
-    border-bottom: solid 1px #dddddd;
+    border: none;
+}
+/*User Info Page*/
+.container .user_page_each_prop,.container .user_info,.container .user_address,.container .user_payment_info,
+.container .user_point_info, .container .user_wishlist,.container .user_ordered_list,
+.container .user_feedback_his{
+    border-radius: 5px;
+    /*text-align: center;*/
+    background-color: var(--light-component-background-color);
 }
