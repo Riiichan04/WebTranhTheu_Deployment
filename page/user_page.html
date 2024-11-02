@@ -99,7 +99,7 @@
             <div class="h1" style="opacity: 0.5;padding:300px 0">Vui lòng chọn một mục</div>
         </div>
         <!--User Info Page-->
-        <div class="user_info col-7">
+        <div class="user_info col-7" style="display: none">
             <div class="h2 p-3">Thông tin tài khoản</div>
             <hr>
             <div class="input-info container">
@@ -121,15 +121,15 @@
                 <div class="change-pass container">
                     <div class="row">
                         <div class="col px-1 py-4">
-                            <button><span>Đổi mật khẩu</span></button>
+                            <button id="change_password"><span>Đổi mật khẩu</span></button>
                             <!-- show ra đổi MK như nào-->
-                            <div class="container" style="display:none">
+                            <div class="sub_change_pass container">
                                 <div class="row">
-                                    <div class="col">Mật khẩu cũ:</div>
+                                    <div class="col p-2">Mật khẩu cũ:</div>
                                     <div class="col"><input type="password" placeholder="Nhập..."></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col">Mật khẩu mới:</div>
+                                    <div class="col p-2">Mật khẩu mới:</div>
                                     <div class="col"><input type="password" placeholder="Nhập..."></div>
                                 </div>
                             </div>
@@ -141,24 +141,67 @@
                     <div class="row">
                         <div class="col-8"></div>
                         <div class="col-4">
-                            <button type="reset" style="width:100%"><span>Lưu</span></button>
+                            <button type="reset" style="width:80%"><span>Lưu</span></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!--User Addresses-->
-        <div class="user_address col-7" style="display:none">
-            <div class="h2 p-4">Sổ địa chỉ</div>
+        <div class="user_address col-7">
+            <div class="h2 p-3">Sổ địa chỉ</div>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="container">
+                            <div class="row p-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Địa chỉ mặc định</h5>
+                                        <p class="card-text">Khu phố 6, phường Linh Trung, TP Thủ Đức, TPHCM.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Địa chỉ mở rộng</h5>
+                                        <p class="card-text">Khu phố 6, phường Linh Trung, TP Thủ Đức, TPHCM.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="container">
+                            <div class="row p-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Địa chỉ mặc định</h5>
+                                        <p class="card-text">Khu phố 6, phường Linh Trung, TP Thủ Đức, TPHCM.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div class="row">
+               <div class="col-9"></div>
+               <div class="col-3">
+                   <button type="button">Thêm địa chỉ</button>
+               </div>
+           </div>
         </div>
         <!--User's Payment Info-->
         <div class=" user_payment_info col-7" style="display:none">
             <div class="h2 p-4">Thông tin thanh toán</div>
         </div>
         <!--User's Point Info-->
-        <div class=" user_point_info col-7" style="display:none">
-            <div class="h2 p-4">Tích điểm</div>
-        </div>
+<!--        <div class=" user_point_info col-7" style="display:none">-->
+<!--            <div class="h2 p-4">Tích điểm</div>-->
+<!--        </div>-->
         <!--User's WishList-->
         <div class=" user_wishlist col-7" style="display:none">
             <div class="h2 p-4">Danh sách yêu thích</div>
