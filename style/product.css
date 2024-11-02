@@ -2,7 +2,11 @@ i, p {
     color: var(--text-color);
 }
 
-#product-container {
+textarea {
+    resize: none;
+}
+
+.background-container {
     background-color: var(--light-component-background-color);
 }
 
@@ -30,7 +34,7 @@ i, p {
     padding-left: 0.5rem;
 }
 
-.product-info__title {
+.main-color {
     color: var(--big-text-color);
 }
 
@@ -53,15 +57,29 @@ i, p {
     background-color: var(--light-component-background-color);
 }
 
-.sub-cta-button {
-    color: var(--sub-cta-button);
-}
-
 .main-cta-button {
     background-color: var(--main-cta-button);
     color: var(--label-color);
 }
 
+.sub-cta-button {
+    color: var(--sub-cta-button);
+}
+
+.sub-cta-button-background {
+    background-color: var(--sub-cta-button);
+    color: var(--label-color);
+}
+
+.sub-cta-button-background:hover {
+    background-color: var(--sub-cta-button-hover);
+    color: var(--label-color);
+}
+
 .sub-info-title {
     font-size: 14px;
+}
+
+.product-description {
+    text-indent: 3%;
 }
