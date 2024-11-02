@@ -1,3 +1,7 @@
+i, p {
+    color: var(--text-color);
+}
+
 #product-container {
     background-color: var(--light-component-background-color);
 }
@@ -11,6 +15,19 @@
 
 #product-info__rating i {
     font-size: 28px;
+}
+
+#product-sub-info {
+    background-color: var(--sub-component-background-color);
+}
+
+#product-sub-info i {
+    font-size: 20px;
+}
+
+#product-sub-info span {
+    font-size: 14px !important;
+    padding-left: 0.5rem;
 }
 
 .product-info__title {
@@ -43,4 +60,8 @@
 .main-cta-button {
     background-color: var(--main-cta-button);
     color: var(--label-color);
+}
+
+.sub-info-title {
+    font-size: 14px;
 }
