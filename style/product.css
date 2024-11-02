@@ -83,3 +83,7 @@ textarea {
 .product-description {
     text-indent: 3%;
 }
+
+.card {
+    background-color: var(--label-color);
+}
