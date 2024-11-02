@@ -71,7 +71,7 @@ header ul > li:hover * {
     margin: 0;
     background-color: var(--light-component-background-color);
     border-radius: 5px;
-    height: 700px;
+    height: 650px;
 }
 /*User frame image*/
 .user_props_list .user_img_frame {
@@ -99,9 +99,41 @@ header ul > li:hover * {
 }
 /*User Info Page*/
 .container .user_page_each_prop,.container .user_info,.container .user_address,.container .user_payment_info,
-.container .user_point_info, .container .user_wishlist,.container .user_ordered_list,
+.container .user_wishlist,.container .user_ordered_list,
 .container .user_feedback_his{
     border-radius: 5px;
     /*text-align: center;*/
     background-color: var(--light-component-background-color);
+}
+.container .user_info{
+    height: 500px;
+}
+.container .user_info .change-pass #change_password{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+    border:none;
+    border-radius: 3px;
+    font-size: 15px;
+    height: 30px;
+}
+.container .user_info .save-info button{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+    border:none;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 3px;
+}
+/* User's addresses Page */
+.container .user_address .card-title{
+    color: var(--big-text-color);
+    font-weight: bold;
+}
+.container .user_address button{
+    background-color: var(--sub-cta-button);
+    color:var(--web-background-color);
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    height: 40px;
 }
