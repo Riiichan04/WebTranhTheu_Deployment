@@ -60,7 +60,7 @@
     </ol>
 </nav>
 
-<section class="container my-4_5">
+<section class="container my-4_5" id="product-detail">
     <div class="background-container rounded">
         <div class="row">
             <div class="col-3 p-4_5 ">
@@ -170,17 +170,39 @@
                             <span> Chưa chọn</span>
                         </div>
                         <div class="col-5 text-end position-relative ">
-                            <span style="color: var(--big-text-color)">THAY ĐỔI</span>
+                            <span id="show-popup"  style="color: var(--big-text-color)">THAY ĐỔI</span>
                         </div>
-                        <div class="position-absolute" id="shipping-location-container">
-                            <ol class="breadcrumb pt-2">
-                                <li class="breadcrumb-item">Trang chủ</li>
-                                <li class="breadcrumb-item" aria-current="page">Sản phẩm</li>
-                                <li class="breadcrumb-item" aria-current="page">Tranh thêu Anime</li>
-                                <li class="breadcrumb-item active" aria-current="page">Tranh thêu Thám tử lừng danh
-                                    Conan
-                                </li>
-                            </ol>
+                        <div class="position-absolute container-fluid py-2 px-4" id="shipping-location-container">
+                            <div class="row d-flex justify-content-end">
+                                <button type="button" id="shipping-location__close-popup" class="btn-close" aria-label="Close"></button>
+                            </div>
+                            <div class="overflow-x-auto mt-3" id="shipping-location__breadcrumb">
+                                <span class="my-2" >Chọn tỉnh/thành phố</span>
+                                <span class="my-2" > > </span>
+                                <span class="my-2" >Chọn quận/huyện</span>
+                                <span class="my-2" > > </span>
+                                <span class="my-2" >Chọn phường/xã</span>
+                            </div>
+                            <div class="row my-3">
+                                <input class="form-control mb-2" type="text" placeholder="Tìm địa chỉ">
+                                <ul id="list-address"  class="overflow-y-auto list-group list-group-flush" style="height: 15rem" >
+                                    <li class="list-group-item">Thành phố Hồ Chí Minh</li>
+                                    <li class="list-group-item">Hà Nội</li>
+                                    <li class="list-group-item">Huế</li>
+                                    <li class="list-group-item">Cần Thơ</li>
+                                    <li class="list-group-item">Hải Phòng</li>
+                                    <li class="list-group-item">Tiền Giang</li>
+                                    <li class="list-group-item">Bến Tre</li>
+                                    <li class="list-group-item">Khánh Hòa</li>
+                                    <li class="list-group-item">Ninh Thuận</li>
+                                    <li class="list-group-item">Phan Rang - Tháp Chàm</li>
+                                    <li class="list-group-item">Cà Mau</li>
+                                    <li class="list-group-item">Đồng Tháp</li>
+                                    <li class="list-group-item">Quảng Ninh</li>
+                                    <li class="list-group-item">Phú Thọ</li>
+                                    <li class="list-group-item">Hòa Bình</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="row my-2">
@@ -324,7 +346,7 @@
                     <p>03/11/2024</p>
                     <div class="row">
                         <div class="col-2"></div>
-                        <div class="col mt-2 d-flex justify-content-center comment-rating">
+                        <div class="col d-flex justify-content-center comment-rating">
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
                                 <div class="product-info__star-mask"></div>
@@ -368,7 +390,7 @@
                     <p>01/11/2024</p>
                     <div class="row">
                         <div class="col-2"></div>
-                        <div class="col mt-2 d-flex justify-content-center comment-rating">
+                        <div class="col d-flex justify-content-center comment-rating">
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
                                 <div class="product-info__star-mask"></div>
@@ -413,7 +435,7 @@
                     <p>23/10/2024</p>
                     <div class="row">
                         <div class="col-2"></div>
-                        <div class="col mt-2 d-flex justify-content-center comment-rating">
+                        <div class="col d-flex justify-content-center comment-rating">
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
                                 <div class="product-info__star-mask"></div>

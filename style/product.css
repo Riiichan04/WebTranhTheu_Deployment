@@ -10,6 +10,11 @@ textarea {
     background-color: var(--light-component-background-color);
 }
 
+#product-detail .btn-close {
+    width: 0.25rem !important;
+    height: 0.25rem !important;
+}
+
 #product-image {
     width: 100%;
 }
@@ -34,13 +39,23 @@ textarea {
     padding-left: 0.5rem;
 }
 
+#show-popup {
+    cursor: pointer;
+}
+
 #shipping-location-container {
     background-color: var(--web-background-color);
 
 }
 
-#shipping-location-container > .breadcrumb {
-    overflow-x: auto;
+#shipping-location__breadcrumb {
+    width: 100%;
+    text-wrap: nowrap;
+    align-items: center;
+}
+
+#list-address li {
+    background-color: rgba(0,0,0,0);
 }
 
 .main-color {
