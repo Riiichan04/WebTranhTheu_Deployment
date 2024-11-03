@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="col-10" id="content">
-            <p>trang sản phẩm</p>
+            <iframe src='content-admin-page/manage-product.html' class='w-100 vh-100'></iframe>
         </div>
     </div>
 </div>
@@ -64,10 +64,10 @@
         let content = document.getElementById("content")
         switch (page) {
             case "product":
-                content.innerHTML = "<p>trang sản phẩm</p>";
+                content.innerHTML = "<iframe src='content-admin-page/manage-product.html' class='w-100 vh-100'></iframe>";
                 break;
             case "user":
-                content.innerHTML = "<p>trang người dùng</p>";
+                content.innerHTML = "<iframe src='content-admin-page/manage-user.html' class='w-100 vh-100'></iframe>";
                 break;
             case "promotion":
                 content.innerHTML = "<p>trang khuyến mãi</p>";
