@@ -1,3 +1,6 @@
+const MAX_VALUE = 5
+const MIN_VALUE = 1
+
 function displayRating(rating, starWidth) {
     const starPosition = Math.trunc(rating)
     const starPositionWidthRating = rating - Math.floor(rating)
@@ -20,5 +23,28 @@ $("#shipping-location__close-popup").click(function () {
 $("#show-popup").click(function () {
     return $("#shipping-location-container").css("display", "block");
 })
+
+$("#product-detail__add-amount").click(function () {
+    const amountElement = $("#product-detail__amount")
+    let value = parseInt(amountElement.prop("innerText"))
+    value++
+    if (value === MAX_VALUE) {
+        $(this).attr("disabled", true);
+    }
+    $("#product-detail__remove-amount").attr("disabled", false);
+    amountElement.text(value + "")
+})
+
+$("#product-detail__remove-amount").click(function () {
+    const amountElement = $("#product-detail__amount")
+    let value = parseInt(amountElement.prop("innerText"))
+    value--
+    if (value === MIN_VALUE) {
+        $(this).attr("disabled", true);
+    }
+    $("#product-detail__add-amount").attr("disabled", false);
+    amountElement.text(value + "")
+})
+
 
 displayRating(3.6, 31.5)

@@ -45,7 +45,7 @@ textarea {
 
 #shipping-location-container {
     background-color: var(--web-background-color);
-
+    display: none;
 }
 
 #shipping-location__breadcrumb {
