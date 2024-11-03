@@ -24,8 +24,7 @@
                 </div>
                 <div class="hr-under-info my-3"></div>
             </div>
-            <div>
-                <nav>
+            <nav>
                     <a href="#" class="select-nav active px-4" id="product">
                         <i class="fa-brands fa-product-hunt me-2"></i>
                         Quản lý sản phẩm
@@ -44,7 +43,7 @@
                     </a>
                     <div class="hr-under-info my-3"></div>
                     <a href="#" class="select-nav px-4" id="setting">
-                        <i class="fa-solid fa-gear"></i>
+                        <i class="fa-solid fa-gear me-2"></i>
                         Cài đặt tài khoản
                     </a>
                     <a href="#" class="select-nav px-4" id="log-out">
@@ -52,7 +51,6 @@
                         Đăng xuất
                     </a>
                 </nav>
-            </div>
         </div>
         <div class="col-10" id="content">
             <iframe src='content-admin-page/manage-product.html' class='w-100 vh-100'></iframe>
@@ -70,10 +68,10 @@
                 content.innerHTML = "<iframe src='content-admin-page/manage-user.html' class='w-100 vh-100'></iframe>";
                 break;
             case "promotion":
-                content.innerHTML = "<p>trang khuyến mãi</p>";
+                content.innerHTML = "<iframe src='content-admin-page/manage-promotion.html' class='w-100 vh-100'></iframe>";
                 break;
             case "statistical":
-                content.innerHTML = "<p>trang thống kê</p>";
+                content.innerHTML = "<iframe src='content-admin-page/statistical.html' class='w-100 vh-100'></iframe>";
                 break;
             case "setting":
                 content.innerHTML = "<p>trang cài đặt người dùng</p>";
@@ -85,7 +83,6 @@
     }
 
     $(".select-nav").click(function () {
-        console.log(this.id);
         loadPage(this.id);
         $('.select-nav.active').removeClass('active');
         this.classList.add('active');
