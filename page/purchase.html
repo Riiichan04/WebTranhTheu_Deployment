@@ -52,7 +52,7 @@
     </div>
 </header>
 <nav class="container">
-    <p id="back-btn" class="my-1" onclick="history.back()" >< Quay lại trang trước</p>
+    <span id="back-btn" class="my-1" onclick="history.back()" >< Quay lại trang trước</span>
 </nav>
 
 <section class="container mt-2 mb-3" id="user-detail">
@@ -97,7 +97,7 @@
         <div class="col-1"></div>
         <div class="col-5">
             <div class="row mb-2 ">
-                <p><span class="main-color my-4 h4">Giỏ hàng</span> (2 sản phẩm)</p>
+                <p><span class="main-color my-4 h4">Giỏ hàng</span> <span id="remain-item">(2 sản phẩm)</span></p>
             </div>
             <div id="cart-display" >
                 <div class="row my-2">
@@ -150,7 +150,7 @@
                         <span>Phí vận chuyển: </span>
                     </div>
                     <div class="col-6 text-end">
-                        <h5 class="fw-semibold ">130.000 VNĐ</h5>
+                        <h5 class="fw-semibold " id="ship-price">130.000 VNĐ</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -187,5 +187,6 @@
 
     </div>
 </section>
+<script src="../script/purchase.js"></script>
 </body>
 </html>
