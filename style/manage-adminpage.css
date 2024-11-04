@@ -1,6 +1,5 @@
 body, html {
     background-color: var(--web-background-color);
-    overflow: hidden; /*để tránh thanh cuộn không cần thiết*/
 }
 
 .btn-update, .btn-delete,  .btn-add {
@@ -8,7 +7,7 @@ body, html {
     border: none;
     color: white;
     height: 40px;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
 .btn-delete {
@@ -53,4 +52,5 @@ table.dataTable th.dt-type-numeric {
 .style-title {
     color: var(--big-text-color);
     font-weight: bold;
+    padding-left: 10px;
 }
