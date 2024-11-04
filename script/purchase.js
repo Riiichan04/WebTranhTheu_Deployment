@@ -1,3 +1,7 @@
+$("#close-popup").click(function () {
+    $("#popup").css("display", "none");
+})
+
 const replacePriceRegex = /[.(VNĐ)\s]/g
 
 $(".delete-product").click(function () {
