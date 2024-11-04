@@ -51,7 +51,11 @@
         </div>
     </div>
 </header>
-<section class="container my-3" id="user-detail">
+<nav class="container">
+    <p id="back-btn" class="my-1" onclick="history.back()" >< Quay lại trang trước</p>
+</nav>
+
+<section class="container mt-2 mb-3" id="user-detail">
     <div class="background-container rounded p-4_5 row">
         <div class="col-6">
             <div>
@@ -90,29 +94,44 @@
             </div>
 
         </div>
-        <div class="col-6">
+        <div class="col-1"></div>
+        <div class="col-5">
             <div class="row mb-2 ">
                 <p><span class="main-color my-4 h4">Giỏ hàng</span> (2 sản phẩm)</p>
             </div>
             <div id="cart-display" >
                 <div class="row my-2">
-                    <div class="col-3">
+                    <div class="col-4">
                         <img src="../asset/product_image.png" class="card-img-top" alt="...">
                     </div>
-                    <div class="col-7">
+                    <div class="col-8">
                         <h5>Tranh thêu thám tử lừng danh Conan</h5>
-                        <p>Số lượng: 1</p>
-                        <h6 class="text-end">20.000.000 VNĐ</h6>
+                        <p class="mb-1">Số lượng: 1</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <i style="color: #777777" class="fa-solid fa-trash-can delete-product"></i>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="product-price text-end">20.000.000 VNĐ</h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row my-2">
-                    <div class="col-3">
+                    <div class="col-4">
                         <img src="../asset/product_image.png" class="card-img-top" alt="...">
                     </div>
-                    <div class="col-7">
+                    <div class="col-8">
                         <h5>Tranh thêu phong cảnh trong rừng</h5>
-                        <p>Số lượng: 1</p>
-                        <h6 class="text-end">10.000.000 VNĐ</h6>
+                        <p class="mb-1">Số lượng: 1</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <i style="color: #777777" class="fa-solid fa-trash-can delete-product"></i>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="product-price text-end">10.000.000 VNĐ</h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -123,7 +142,7 @@
                         <span>Thành tiền: </span>
                     </div>
                     <div class="col-6 text-end">
-                        <h5 class="fw-semibold ">30.000.000 VNĐ</h5>
+                        <h5 id="product-sum-price" class="fw-semibold ">30.000.000 VNĐ</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -142,12 +161,12 @@
                         <h5 class="fw-semibold">0 VNĐ</h5>
                     </div>
                 </div>
-                <div class="row my-3">
+                <div class="row my-2">
                     <div class="col-6">
                         <h5>Tổng giá tiền: </h5>
                     </div>
                     <div class="col-6  text-end">
-                        <h3 style="color: var(--main-cta-button)">30.130.000 VNĐ</h3>
+                        <h3 id="total-price" style="color: var(--main-cta-button)">30.130.000 VNĐ</h3>
                     </div>
                 </div>
             </div>

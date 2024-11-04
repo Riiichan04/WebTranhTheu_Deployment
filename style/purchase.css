@@ -6,8 +6,18 @@ textarea {
     resize: none;
 }
 
+#back-btn {
+    cursor: pointer;
+    user-select: none;
+}
+
+#back-btn:hover {
+    /*Sẽ thêm màu vào index.css*/
+    color: #777;
+}
+
 #cart-display {
-    height: 50vh !important;
+    height: 48vh !important;
     overflow-x: hidden;
     overflow-y: auto;
 }
