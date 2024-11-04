@@ -51,6 +51,122 @@
         </div>
     </div>
 </header>
+<section class="container my-3" id="user-detail">
+    <div class="background-container rounded p-4_5 row">
+        <div class="col-6">
+            <div>
+                <h4 class="main-color mb-4">Thông tin thanh toán</h4>
+                <div class="row">
+                    <p class="col-6">Họ và tên: <span class="fw-semibold">Admin</span></p>
+                    <p class="col-6"></p>
+                </div>
+                <div class="row">
+                    <p class="col-6">Địa chỉ nhận hàng: <span class="fw-semibold">Chưa chọn</span></p>
+                    <p class="col-6"></p>
+                </div>
+            </div>
+            <hr/>
+            <div>
+                <h5 class="main-color mb-4">Phương thức thanh toán</h5>
+                <div class="row">
+                    <div class="my-1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Thanh toán bằng tiền mặt
+                        </label>
+                    </div>
+                    <div class="my-1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Thanh toán bằng ngân hàng
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div>
+                <h5 class="main-color mb-4">Chương trình khuyến mãi</h5>
+                <p>Hiện tại không có chương trình khuyến mãi</p>
+            </div>
 
+        </div>
+        <div class="col-6">
+            <div class="row mb-2 ">
+                <p><span class="main-color my-4 h4">Giỏ hàng</span> (2 sản phẩm)</p>
+            </div>
+            <div id="cart-display" >
+                <div class="row my-2">
+                    <div class="col-3">
+                        <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7">
+                        <h5>Tranh thêu thám tử lừng danh Conan</h5>
+                        <p>Số lượng: 1</p>
+                        <h6 class="text-end">20.000.000 VNĐ</h6>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-3">
+                        <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7">
+                        <h5>Tranh thêu phong cảnh trong rừng</h5>
+                        <p>Số lượng: 1</p>
+                        <h6 class="text-end">10.000.000 VNĐ</h6>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div id="count-price">
+                <div class="row">
+                    <div class="col-6">
+                        <span>Thành tiền: </span>
+                    </div>
+                    <div class="col-6 text-end">
+                        <h5 class="fw-semibold ">30.000.000 VNĐ</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Phí vận chuyển: </span>
+                    </div>
+                    <div class="col-6 text-end">
+                        <h5 class="fw-semibold ">130.000 VNĐ</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Giảm giá: </span>
+                    </div>
+                    <div class="col-6  text-end">
+                        <h5 class="fw-semibold">0 VNĐ</h5>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-6">
+                        <h5>Tổng giá tiền: </h5>
+                    </div>
+                    <div class="col-6  text-end">
+                        <h3 style="color: var(--main-cta-button)">30.130.000 VNĐ</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row px-5">
+                <div class="col-6 d-flex align-items-center">
+                    <button class="rounded sub-cta-button px-3 py-2" style="background-color: var(--light-component-background-color)">
+                        Hủy
+                    </button>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <button class="rounded border-0 main-cta-button p-3">
+                        <p class="h5" >Thanh toán</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
 </body>
 </html>
