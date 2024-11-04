@@ -98,9 +98,9 @@ header ul > li:hover * {
     border: none;
 }
 /*User Info Page*/
-.container .user_page_each_prop,.container .user_info,.container .user_address,.container .user_payment_info,
+.container .user_page_each_prop,.container .user_info,.container .user_address,.container .user_viewed_info,
 .container .user_wishlist,.container .user_ordered_list,
-.container .user_feedback_his{
+.container .user_feedback_histories{
     border-radius: 5px;
     /*text-align: center;*/
     background-color: var(--light-component-background-color);
@@ -137,3 +137,4 @@ header ul > li:hover * {
     font-size: 15px;
     height: 40px;
 }
+/*User's viewed history */
