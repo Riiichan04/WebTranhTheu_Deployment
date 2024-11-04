@@ -1,3 +1,8 @@
+body, html {
+    background-color: var(--web-background-color);
+    overflow: hidden; /*để tránh thanh cuộn không cần thiết*/
+}
+
 .btn-update, .btn-delete,  .btn-add {
     display: inline-block;
     border: none;
