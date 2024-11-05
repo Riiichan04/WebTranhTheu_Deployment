@@ -1,7 +1,3 @@
-body, html {
-    background-color: var(--web-background-color);
-}
-
 a {
     color: var(--sub-cta-button);
     text-shadow: 0 0 1px var(--dark-component-background-color), /* Bóng sáng nhẹ, sát cạnh chữ */ 0 0 4px var(--light-component-background-color); /* Bóng sáng thứ hai, xa hơn một chút */
@@ -10,7 +6,6 @@ a {
 .container {
     width: 450px;
     background-color: var(--light-component-background-color);
-    margin-top: 50px;
 }
 
 .style-big-title {
