@@ -1,8 +1,14 @@
+const replacePriceRegex = /[.(VNĐ)\s]/g
+
 $("#close-popup").click(function () {
     $("#popup").css("display", "none");
 })
 
-const replacePriceRegex = /[.(VNĐ)\s]/g
+$("#payment-button").click(function () {
+    if ($("input[type='radio'][name='paymentMethod']:checked").val() === 'bank') {
+        $("#popup ").css("display", "block");
+    }
+})
 
 $(".delete-product").click(function () {
     $(this).parent().parent().parent().parent().remove();
@@ -33,3 +39,4 @@ function modifyPriceValue(price) {
         return result + " VNĐ"
     }
 }
+
