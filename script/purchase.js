@@ -11,7 +11,7 @@ $("#payment-button").click(function () {
 })
 
 $(".delete-product").click(function () {
-    $(this).parent().parent().parent().parent().remove();
+    $(this).parent().parent().remove();
     let newPrice = 0;
     const remainProduct = $(".product-price")
     remainProduct.each(function () {
