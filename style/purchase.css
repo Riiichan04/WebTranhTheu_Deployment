@@ -13,7 +13,7 @@ textarea {
 
 #back-btn:hover {
     /*Sẽ thêm màu vào index.css*/
-    color: #777;
+    color: var(--text-hover-color);
 }
 
 #cart-display {
