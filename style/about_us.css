@@ -3,6 +3,20 @@ html,body,p,a{
     padding: 0;
     font-family: sans-serif,"Roboto Thin",sans-serif;
 }
-.cart_details{
+h2{
+    color:var(--big-text-color);
+    font-weight: bold;
+}
+.about-us-content{
     background-color:var(--light-component-background-color);
+}
+.poll-form{
+    background-color:var(--light-component-background-color);
+}
+.about-us .poll-form .submit-btn{
+    background-color: var(--sub-cta-button);
+    color:var(--web-background-color);
+    border:none;
+    font-size: 16px;
+    height: 30px;
 }
