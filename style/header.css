@@ -22,7 +22,7 @@ header ul>li, header i {
 }
 
 header ul>li:hover * {
-    color: var(--text-hover-color) !important;
+    color: var(--label-hover-color) !important;
 }
 
 #header-logo {

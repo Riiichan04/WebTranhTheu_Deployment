@@ -47,4 +47,4 @@ $("#product-detail__remove-amount").click(function () {
 })
 
 
-displayRating(3.6, 31.5)
+displayRating(3.6, $(".product-info__star-container").width())
