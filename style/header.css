@@ -5,7 +5,6 @@ header {
 header input {
     background-color: var(--label-color) !important;
     padding-left: 1.75rem !important;
-    padding-right: 1.75rem !important;
 }
 
 header i {
@@ -23,7 +22,7 @@ header ul>li, header i {
 }
 
 header ul>li:hover * {
-    color: var(--text-hover-color) !important;
+    color: var(--label-hover-color) !important;
 }
 
 #header-logo {
