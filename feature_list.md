@@ -96,3 +96,134 @@
 - Trang đăng nhập (Thư)
 - Trang admin (Thư)
 - About us (Loan)
+## DB
+- accounts:
+  - aid*
+  - avatar_id
+  - user_name
+  - full_name
+  - email
+  - password
+  - phone
+  - gender
+  - description
+  - status (trạng thái đăng nhập)
+  - createdAt
+  - updatedAt
+  - role
+- user_images:
+    - avid*
+    - aid
+- addresses:
+    - adid*
+    - aid
+    - ???
+    - province 
+    - location
+- favour_products:
+    - aid*
+    - pid*
+    - createdAt
+- carts:
+  - cid* 
+  - pid*
+  - acid
+  - amount
+  - ???
+- review_histories:
+  - rid*
+  - aid
+  - createdAt 
+  - updatedAt 
+  - details ?? (chuẩn hóa)
+  - ???
+- review_history_details:
+  - rid*
+  - pid*
+  - rating
+  - comment
+  - countStar
+- categories:
+  - carid*
+  - name
+- products:
+  - pid*
+  - name 
+  - description
+  - images (Chuẩn hóa) 
+  - stock 
+  - price 
+  - size
+  - carid 
+  - materials 
+  - proid 
+  - createdAt 
+  - updatedAt
+- products_images:
+  - imgid*
+  - pid*
+  - image_url 
+  - alt 
+- providers:
+  - proid*
+  - name 
+  - adid
+- viewed_histories:
+  - vid*
+  - aid*
+  - createdAt
+  - updatedAt 
+- view_history_details:
+  - vid*
+  - pid*
+  - createdAt
+- policies:
+  - polid*
+  - name 
+  - description.
+  - createdAt 
+  - updatedAt
+- discounts:
+  - discount_id*
+  - name 
+  - description
+  - status 
+  - createdAt 
+  - expiredAt 
+- product_discount_details:
+  - discount_id*
+  - pid*
+  - amount
+  - ???
+- orders:
+  - oid*
+  - aid*
+  - carid 
+  - createdAt 
+  - deliveredAt
+- order_discount_details:
+  - oid*
+  - discount_id*
+  - amount
+  - ???
+- payments:
+  - payid*
+  - aid
+  - status
+  - createdAt
+- payment_account_details:
+  - payid*
+  - oid*
+  - method 
+  - ????
+- **a: account.
+- **av: avatar.
+- **ad: address.
+- **c: cart.
+- **car: category.
+- **pro: provider.
+- **r: review.
+- **v: view.
+- **pol: policy.
+- **o: order.
+- **pay: payment.
