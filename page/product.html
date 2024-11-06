@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/product.css">
+    <link rel="stylesheet" href="../style/header.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+<header>
+    <div class="px-3 py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-1 text-white d-flex text-center">
+                    <i class="bi bi-bootstrap text-white" id="header-logo"></i>
+                </div>
+
+                <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
+                    <span id="input-icon" class="fas ps-2" style="position: absolute; color: #56595C">&#xf002 </span>
+                    <input type="search" name="" id="" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                </div>
+                <ul class="col-4 m-0 d-flex justify-content-end align-items-center">
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-list my-1"></i>
+                        <p class="header-feature__label">Danh mục</p>
+                    </li>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-heart my-1"></i>
+                        <p class="header-feature__label">Yêu thích</p>
+                    </li>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-cart-shopping my-1"></i>
+                        <p class="header-feature__label">Giỏ hàng</p>
+                    </li>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-user my-1"></i>
+                        <p class="header-feature__label">Tài khoản</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
+    <ol class="breadcrumb pt-2">
+        <li class="breadcrumb-item">Trang chủ</li>
+        <li class="breadcrumb-item" aria-current="page">Sản phẩm</li>
+        <li class="breadcrumb-item" aria-current="page">Tranh thêu Anime</li>
+        <li class="breadcrumb-item active" aria-current="page">Tranh thêu Thám tử lừng danh Conan</li>
+    </ol>
+</nav>
+
+<section class="container my-4_5" id="product-detail">
+    <div class="background-container rounded">
+        <div class="row">
+            <div class="col-3 p-4_5 ">
+                <img id="product-image" src="../asset/product_image.png" alt="">
+            </div>
+            <div class="col ps-4_5 p-4_5 ">
+                <div class="row">
+                    <h3 class="main-color">Tranh thêu Thám tử lừng danh Conan</h3>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-6">
+                        <span>Kích thước: 120 x 80 cm</span>
+                    </div>
+                    <div class="col-6">
+                        <span>Còn lại: 200</span>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-6">Mã sản phẩm: <span class="fw-semibold">TT-0001</span></div>
+                    <div class="col-6">Danh mục: <span class="fw-semibold">Tranh thêu Anime</span></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-6">Nguyên liệu: <span class="fw-semibold">Vải, Kim, Chỉ</span></div>
+                    <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh Thêu Wibu</span></div>
+                </div>
+                <div class="row col-4 my-2 mt-3 d-flex justify-content-center" id="product-info__rating">
+                    <div class="col-2 product-info__star-container   px-0">
+                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                        <div class="product-info__star-mask"></div>
+                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                    </div>
+                    <div class="col-2 product-info__star-container   px-0">
+                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                        <div class="product-info__star-mask"></div>
+                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                    </div>
+                    <div class="col-2 product-info__star-container   px-0">
+                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                        <div class="product-info__star-mask"></div>
+                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                    </div>
+                    <div class="col-2 product-info__star-container   px-0">
+                        <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                        <div class="product-info__star-mask"></div>
+                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                    </div>
+                    <div class="col-2 product-info__star-container   px-0">
+                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                        <div class="product-info__star-mask"></div>
+                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                    </div>
+                </div>
+                <div class="row col-4 mt-1">
+                    <p class="text-center">15000 đánh giá</p>
+                </div>
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="col-4">
+                            <div>Số lượng:</div>
+                        </div>
+                        <div class="col-8 row">
+                            <div class="row">
+                                <div class="col-4 text-center">
+                                    <button class="rounded" id="product-detail__remove-amount" disabled>
+                                        <i class="fa-solid fa-minus" style="color: #000b0e;"></i>
+                                    </button>
+                                </div>
+                                <div class="col-4 text-center" id="product-detail__amount" >
+                                    1
+                                </div>
+                                <div class="col-4 text-center">
+                                    <button class="rounded" id="product-detail__add-amount">
+                                        <i class="fa-solid fa-plus" style="color: #000b0e;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <h2 style="color: var(--main-cta-button)">20.000.000 VNĐ</h2>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <button class="sub-cta-button  py-2 px-3 rounded"
+                                style="background-color: var(--light-component-background-color)">
+                            <i class="fa-solid fa-cart-shopping" style="color: var(--sub-cta-button);"></i>
+                            Thêm vào giỏ
+                        </button>
+                    </div>
+                    <div class="col-6 d-flex justify-content-center">
+                        <button class="main-cta-button h4 py-3 px-4_5 rounded border-0">Mua ngay</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 p-4_5 rounded-end border-start border-1" id="product-sub-info">
+                <div class="mb-4_5">
+                    <div class="row">
+                        <p class="fw-semibold">Tùy chọn giao hàng: </p>
+                    </div>
+                    <div class="row my-2 position-relative">
+                        <div class="col-1">
+                            <!--                            <i class="fa-solid fa-location-dot"></i>-->
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <div class="col-6">
+                            <span> Chưa chọn</span>
+                        </div>
+                        <div class="col-5 text-end position-relative ">
+                            <span id="show-popup"  style="color: var(--big-text-color)">THAY ĐỔI</span>
+                        </div>
+                        <div class="position-absolute container-fluid py-2 px-4" id="shipping-location-container">
+                            <div class="row d-flex justify-content-end">
+                                <button type="button" id="shipping-location__close-popup" class="btn-close" aria-label="Close"></button>
+                            </div>
+                            <div class="overflow-x-auto mt-3" id="shipping-location__breadcrumb">
+                                <span class="my-2" >Chọn tỉnh/thành phố</span>
+                                <span class="my-2" > > </span>
+                                <span class="my-2" >Chọn quận/huyện</span>
+                                <span class="my-2" > > </span>
+                                <span class="my-2" >Chọn phường/xã</span>
+                            </div>
+                            <div class="row my-3">
+                                <input class="form-control mb-2" type="text" placeholder="Tìm địa chỉ">
+                                <ul id="list-address"  class="overflow-y-auto list-group list-group-flush" style="height: 15rem" >
+                                    <li class="list-group-item">Thành phố Hồ Chí Minh</li>
+                                    <li class="list-group-item">Hà Nội</li>
+                                    <li class="list-group-item">Huế</li>
+                                    <li class="list-group-item">Cần Thơ</li>
+                                    <li class="list-group-item">Hải Phòng</li>
+                                    <li class="list-group-item">Tiền Giang</li>
+                                    <li class="list-group-item">Bến Tre</li>
+                                    <li class="list-group-item">Khánh Hòa</li>
+                                    <li class="list-group-item">Ninh Thuận</li>
+                                    <li class="list-group-item">Phan Rang - Tháp Chàm</li>
+                                    <li class="list-group-item">Cà Mau</li>
+                                    <li class="list-group-item">Đồng Tháp</li>
+                                    <li class="list-group-item">Quảng Ninh</li>
+                                    <li class="list-group-item">Phú Thọ</li>
+                                    <li class="list-group-item">Hòa Bình</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <!--                            <i class="fa-solid fa-truck"></i>-->
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <div class="col-6">
+                            <span>Giao hàng tận nơi</span>
+                        </div>
+                        <div class="col-5 text-end">
+                            <span class="fw-bolder">100.000 VNĐ</span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <!--                            <i class="fa-solid fa-money-bill"></i>-->
+                            <i class="bi bi-cash"></i>
+                        </div>
+                        <div class="col">
+                            <span>Thanh toán bằng tiền mặt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4_5">
+                    <div class="row">
+                        <p class="fw-semibold">Chương trình khuyến mãi: </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <!--                            <i class="fa-solid fa-tag"></i>-->
+                            <i class="bi bi-tag"></i>
+                        </div>
+                        <div class="col">
+                            <span>Chưa có chương trình khuyến mãi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4_5">
+                    <div class="row">
+                        <p class="fw-semibold">Chính sách: </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <!--                            <i class="bi bi-shield"></i>-->
+                            <i class="bi bi-shield-slash"></i>
+                        </div>
+                        <div class="col">
+                            <span>Không áp dụng chính sách bảo hành</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<section class="container my-4_5" id="product-description">
+    <div class="background-container rounded p-4_5">
+        <h4 class="main-color">Mô tả sản phẩm</h4>
+        <p class="product-description m-3">
+            Kudo Shinichi, 17 tuổi, là một thám tử học sinh trung học phổ thông rất nổi tiếng,
+            thường xuyên giúp cảnh sát phá các vụ án khó khăn. Trong một lần khi đang theo dõi một vụ tống tiền,
+            đã bị thành viên của Tổ chức Áo đen bí ẩn phát hiện. Chúng đánh gục Kudo Shinichi,
+            làm cậu bất tỉnh và ép cậu uống loại thuốc APTX - 4869 mà Tổ chức vừa điều chế nhằm bịt đầu mối "thân phận".
+            Tuy vậy, thứ thuốc đó không giết chết mà lại gây ra tác dụng phụ khiến Shinichi bị teo nhỏ
+            thành một đứa trẻ khoảng 6-7 tuổi. Sau đó, Shinichi tự xưng là Edogawa Conan và được Mori Ran -
+            cô bạn thân thời thơ ấu thanh mai trúc mã khi còn là Kudo Shinichi - nhận nuôi
+            và mang về văn phòng thám tử của cha cô là Mori Kogoro. Xuyên suốt series,
+            Conan đã âm thầm hỗ trợ Mori Kogoro phá các vụ án. Đồng thời Conan cũng phải nhập học lớp 1 Tiểu học,
+            nhờ đó mà kết thân với nhiều người và lập ra Đội thám tử nhí.
+            Về sau một học sinh tiểu học bất đắc dĩ khác tên là Haibara Ai đã vào học lớp của Conan
+            và tiết lộ rằng cô chính là thành viên của Tổ chức với bí danh là Sherry, tên thật là Shiho Miyano
+            và cô chính là người đã tạo ra loại thuốc APTX - 4869 mà Shinichi (Conan) đã bị ép uống,
+            vì muốn thoát khỏi Tổ chức Áo đen nên đã uống viên thuốc đó để tự sát.
+            Kết quả là, thay vì chết thì cơ thể Haibara cũng bị teo nhỏ như Conan nhờ tác dụng phụ của thuốc.</p>
+    </div>
+</section>
+
+<section class="container my-4_5" id="product-review">
+    <div class="background-container rounded p-4_5">
+        <div id="product-review-comment">
+            <h4 class="main-color">Đánh giá</h4>
+            <div class="row mt-4">
+                <div class="col-2 row">
+                    <div class="text-center">
+                        <span class="h3 main-color">3.6</span><span class="h5">/5.0</span>
+                    </div>
+                    <div id="product-review__star" class="mt-2 d-flex justify-content-center">
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask" style="width: 100%"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask" style="width: 100%"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask" style="width: 100%"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask" style="width: 100%"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask" style="width: 100%"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span>10000 đánh giá</span>
+                    </div>
+                    <div class="text-center">
+                        <span style="font-size: 12px">(Click vào số sao để đánh giá)</span>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <textarea class="form-control" id="product-review--comment" rows="4"
+                              placeholder="Đánh giá của bạn về sản phẩm"></textarea>
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                    <button class="btn sub-cta-button-background px-4 py-2">Gửi</button>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div>
+            <h4 class="main-color">Bình luận</h4>
+            <p class="text-start">(3 bình luận)</p>
+            <div class="row product-review__comment-component mt-4_5">
+                <div class="col-3 text-center">
+                    <h5>FanT1_20năm</h5>
+                    <p>03/11/2024</p>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col d-flex justify-content-center comment-rating">
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask" style="width: 100%"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <p class="" style="white-space: pre-line">- “Quá Khứ là như thế , Hiện Tại là như thế, Tương Lai
+                        cũng là như thế”
+                        - Bảy Năm trước “ Vệ Thần Gailo của Faker “ bảo vệ “Vương Triều” ấy
+                        - Thì “ Bảy Năm sau “ vẫn là Galio đó vẫn Bảo vệ “Vương Triều” ấy
+                    </p>
+                </div>
+            </div>
+            <div class="row product-review__comment-component mt-4_5">
+                <div class="col-3 text-center">
+                    <h5>Đội tuyển tôi yêu</h5>
+                    <p>01/11/2024</p>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col d-flex justify-content-center comment-rating">
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask" style="width: 100%"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask" style="width: 100%"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <p class="" style="white-space: pre-line">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                        laborum.</p>
+                </div>
+            </div>
+            <div class="row product-review__comment-component mt-4_5">
+                <div class="col-3 text-center">
+                    <h5>FanConan20Năm</h5>
+                    <p>23/10/2024</p>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col d-flex justify-content-center comment-rating">
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <p class="" style="white-space: pre-line">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                        laborum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container my-4_5" id="other-product">
+    <div class="background-container rounded p-4_5">
+        <h4 class="main-color">Sản phẩm khác</h4>
+        <div class="row g-4 mt-2">
+            <div class="col">
+                <div class="card p-2" style="cursor: pointer">
+                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-start">Tranh thêu thám tử lừng danh Conan</h6>
+                        <p class="card-text text-end fw-semibold h5" style="color: var(--main-cta-button)">20.000.000
+                            VNĐ</p>
+                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card p-2" style="cursor: pointer">
+                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-start">Tranh thêu thám tử lừng danh Conan</h6>
+                        <p class="card-text text-end fw-semibold h5" style="color: var(--main-cta-button)">20.000.000
+                            VNĐ</p>
+                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card p-2" style="cursor: pointer">
+                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-start">Tranh thêu thám tử lừng danh Conan</h6>
+                        <p class="card-text text-end fw-semibold h5" style="color: var(--main-cta-button)">20.000.000
+                            VNĐ</p>
+                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card p-2" style="cursor: pointer">
+                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-start">Tranh thêu thám tử lừng danh Conan</h6>
+                        <p class="card-text text-end fw-semibold h5" style="color: var(--main-cta-button)">20.000.000
+                            VNĐ</p>
+                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="../script/product.js"></script>
+</body>
+</html>
