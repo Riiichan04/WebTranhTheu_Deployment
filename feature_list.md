@@ -99,7 +99,7 @@
 ## DB
 - accounts:
   - aid*
-  - avatar_id
+  - avatar_url
   - user_name
   - full_name
   - email
@@ -111,25 +111,23 @@
   - createdAt
   - updatedAt
   - role
-- user_images:
-    - avid*
-    - aid
 - addresses:
     - adid*
     - aid
     - ???
-    - province 
     - location
 - favour_products:
     - aid*
     - pid*
     - createdAt
 - carts:
-  - cid* 
-  - pid*
+  - cid*
   - acid
-  - amount
   - ???
+- cart_products_details:
+  - cid*
+  - pid*
+  - amount
 - review_histories:
   - rid*
   - aid
@@ -193,7 +191,7 @@
 - product_discount_details:
   - discount_id*
   - pid*
-  - amount
+  - value
   - ???
 - orders:
   - oid*
@@ -204,7 +202,7 @@
 - order_discount_details:
   - oid*
   - discount_id*
-  - amount
+  - value
   - ???
 - payments:
   - payid*
@@ -216,6 +214,13 @@
   - oid*
   - method 
   - ????
+- inventories:
+  - iid*
+  - location
+- inventory_products_details:
+  - iid*
+  - pid*
+  - amount
 - **a: account.
 - **av: avatar.
 - **ad: address.
@@ -227,3 +232,4 @@
 - **pol: policy.
 - **o: order.
 - **pay: payment.
+- **i: inventory.
