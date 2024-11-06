@@ -1,0 +1,22 @@
+html,body,p,a{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif,"Roboto Thin",sans-serif;
+}
+h2{
+    color:var(--big-text-color);
+    font-weight: bold;
+}
+.about-us-content{
+    background-color:var(--light-component-background-color);
+}
+.poll-form{
+    background-color:var(--light-component-background-color);
+}
+.about-us .poll-form .submit-btn{
+    background-color: var(--sub-cta-button);
+    color:var(--web-background-color);
+    border:none;
+    font-size: 16px;
+    height: 30px;
+}
