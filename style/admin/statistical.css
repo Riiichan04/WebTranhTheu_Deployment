@@ -1,0 +1,44 @@
+.style-title {
+    color: var(--big-text-color);
+    font-weight: bold;
+}
+
+.style-input-star {
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+    padding-left: 20px;
+}
+
+.style-box-statistical {
+    background-color: var(--light-component-background-color);
+    color: var(--text-color);
+}
+
+.btn-statistical {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-cta-button);
+    color: white;
+    padding: 10px 30px 10px 30px;
+}
+
+.style-input {
+    padding-left: 20px;
+    width: 300px;
+    height: 40px;
+}
+
+.style-label-statistical {
+    font-size: 1.25rem;
+    color: var(--big-text-color);
+    font-weight: 500;
+}
+
+.value-statistical {
+    margin-left: 10px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--big-text-color);
+    text-shadow: 0 0 5px var(--light-component-background-color), /* Hiệu ứng phát sáng trắng */ 0 0 10px var(--dark-component-background-color) /* Hiệu ứng phát sáng màu xanh */
+}
