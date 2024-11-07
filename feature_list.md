@@ -113,17 +113,20 @@
   - role
 - addresses:
     - adid*
-    - aid
-    - ???
     - location
+- account_addresses:
+  - adid*
+  - aid*
+  - createdAt 
+  - updatedAt
 - favour_products:
     - aid*
     - pid*
     - createdAt
 - carts:
   - cid*
-  - acid
-  - ???
+  - aid
+  - updatedAt
 - cart_products_details:
   - cid*
   - pid*
@@ -132,9 +135,7 @@
   - rid*
   - aid
   - createdAt 
-  - updatedAt 
-  - details ?? (chuẩn hóa)
-  - ???
+  - updatedAt
 - review_history_details:
   - rid*
   - pid*
@@ -148,14 +149,16 @@
   - pid*
   - name 
   - description
-  - images (Chuẩn hóa) 
-  - stock 
+  - images (Chuẩn hóa)
   - price 
   - size
-  - carid 
   - materials 
   - proid 
   - createdAt 
+  - updatedAt
+- category_products_details:
+  - carid*
+  - pid*
   - updatedAt
 - products_images:
   - imgid*
@@ -192,28 +195,30 @@
   - discount_id*
   - pid*
   - value
-  - ???
+  - amountLimit
 - orders:
   - oid*
   - aid*
-  - carid 
   - createdAt 
   - deliveredAt
+- order_products_details:
+  - oid*
+  - pid*
+  - amount
 - order_discount_details:
   - oid*
   - discount_id*
   - value
-  - ???
+  - amountLimit 
 - payments:
   - payid*
   - aid
   - status
   - createdAt
-- payment_account_details:
+- payment_orders_details:
   - payid*
   - oid*
-  - method 
-  - ????
+  - method
 - inventories:
   - iid*
   - location
