@@ -64,7 +64,7 @@
     <div class="row">
         <div class="user_props_list col-4">
             <div class="user_img_frame">
-                <img src="../assests/user_img.png" style="width: 100px;height: 100px;margin-top: 30px">
+                <img src="../asset/user_img.png" style="width: 100px;height: 100px;margin-top: 30px">
                 <p class="p-4">Nguyễn Bích Loan </p>
             </div>
             <div class="list-group list_props">
@@ -73,7 +73,7 @@
                 </button>
                 <button type="button" class="list-group-item list-group-item-action">Sổ địa chỉ</button>
                 <button type="button" class="list-group-item list-group-item-action">Thông tin thanh toán</button>
-                <button type="button" class="list-group-item list-group-item-action">Tích điểm người dùng</button>
+                <button type="button" class="list-group-item list-group-item-action">Lịch sử đã xem</button>
                 <button type="button" class="list-group-item list-group-item-action">Danh sách yêu thích</button>
                 <button type="button" class="list-group-item list-group-item-action">Đơn hàng của tôi</button>
                 <button type="button" class="list-group-item list-group-item-action">Lịch sử đánh giá</button>
@@ -187,23 +187,66 @@
                     </div>
                 </div>
             </div>
-           <div class="row">
-               <div class="col-7"></div>
-               <div class="col-5">
-                   <button type="button" style="width: 90%">Thêm địa chỉ</button>
-               </div>
-           </div>
+            <div class="row">
+                <div class="col-7"></div>
+                <div class="col-5">
+                    <button type="button" style="width: 90%">Thêm địa chỉ</button>
+                </div>
+            </div>
         </div>
-        <!--User's Payment Info-->
-<!--        <div class=" user_payment_info col-7" style="display:none">-->
-<!--            <div class="h2 p-4">Thông tin thanh toán</div>-->
-<!--        </div>-->
         <!--User's viewed products Info-->
-        <div class=" user_viewed_info col-7">
+        <div class=" user_viewed_info col-7" style="display: none">
             <div class="h2 p-3">Lịch sử sản phẩm đã xem</div>
             <hr>
-
-
+            <div class="container p-3">
+                <button type="button">Thêm tất cả vào giỏ hàng</button>
+                <!--Từng sản phẩm-->
+                <div class="row p-4 container">
+                    <div class="row px-4">tên sốp</div>
+                    <div class="row p-2">
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image"
+                                                style="width: 148px;height: 97px"></div>
+                        <div class="col-4 container">
+                            <div class="row">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row">15.000.000đ</div>
+                        </div>
+                        <div class="col-2">
+                            <button>Mua</button>
+                        </div>
+                        <div class="col-2">Del</div>
+                    </div>
+                </div>
+                <div class="row p-4 container">
+                    <div class="row px-4">tên sốp</div>
+                    <div class="row p-2">
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image"
+                                                style="width: 148px;height: 97px"></div>
+                        <div class="col-4 container">
+                            <div class="row">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row">15.000.000đ</div>
+                        </div>
+                        <div class="col-2">
+                            <button>Mua</button>
+                        </div>
+                        <div class="col-2">Del</div>
+                    </div>
+                    <div class="row p-2">
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image"
+                                                style="width: 148px;height: 97px"></div>
+                        <div class="col-4 container">
+                            <div class="row">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row">15.000.000đ</div>
+                        </div>
+                        <div class="col-2">
+                            <button>Mua</button>
+                        </div>
+                        <div class="col-2">Del</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--User's WishList-->
         <div class=" user_wishlist col-7" style="display:none">
