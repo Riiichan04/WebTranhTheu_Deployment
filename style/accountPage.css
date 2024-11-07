@@ -1,0 +1,177 @@
+html, body, p, a {
+    margin: 0;
+    padding: 0;
+
+}
+
+html,body{
+    background-color: var(--web-background-color);
+    font-family: SansSerif,"Roboto Thin",SansSerif,sans-serif;
+}
+hr{
+    margin: 0;
+}
+.h1,.h2,.h3{
+    color:var(--big-text-color);
+    font-weight: bold;
+}
+.title{
+    font-weight: bold;
+}
+.addAll{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+    height: 40px;
+    border-radius: 5px;
+}
+.add-to_cart{
+    background-color: var(--main-cta-button);
+    color: var(--web-background-color);
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center; ;
+}
+.delete_btn{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+}
+button{
+    border: none;
+}
+input{
+    border-radius: 3px;
+    /*padding-left: 0;*/
+    border: solid 1px #dddddd;
+    font-size: 16px ;
+}
+/*Header*/
+header {
+    background-color: var(--dark-component-background-color) !important;
+}
+
+header input {
+    background-color: var(--label-color) !important;
+    padding-left: 1.75rem !important;
+    padding-right: 1.75rem !important;
+}
+
+header i {
+    font-size: 24px;
+    color: var(--label-color) !important;
+}
+
+header p {
+    margin: 0;
+    color: var(--label-color) !important;
+}
+
+header ul > li, header i {
+    cursor: pointer;
+}
+
+header ul > li:hover * {
+    color: var(--text-hover-color) !important;
+}
+
+#header-logo {
+    font-size: 40px;
+}
+
+/*Content*/
+.content {
+    height: 1024px;
+    padding: 0 30px;
+    /*background-color: var(--web-background-color);*/
+}
+/*Navigation Bar*/
+.breadcrumb {
+    padding: 20px 0;
+}
+/*User properties list*/
+.user_props_list {
+    width: 30%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--light-component-background-color);
+    border-radius: 5px;
+    height: 650px;
+}
+/*User frame image*/
+.user_props_list .user_img_frame {
+    text-align: center;
+    height: 200px;
+    border-bottom: solid 1px #dddddd;
+    background-color: pink;
+    border-radius: 5px 5px 0 0;
+}
+/*list_props*/
+.user_props_list .list_props button {
+    border: none;
+    padding: 10px;
+    background-color: var(--light-component-background-color);
+    border-radius: 0;
+}
+/*Setting and Help*/
+.user_props_list .user_setting_help {
+    padding: 10px 0;
+}
+/*Log out*/
+.user_props_list .user_setting_help button, .user_props_list .user_logout button {
+    background-color: var(--light-component-background-color);
+    border: none;
+}
+/*User Info Page*/
+.container .user_page_each_prop,.container .user_info,.container .user_address,
+.container .user_info_pay,.container .user_viewed_info,
+.container .user_wishlist,.container .user_ordered_list,
+.container .user_feedback_histories{
+    border-radius: 5px;
+    /*text-align: center;*/
+    background-color: var(--light-component-background-color);
+}
+.container .user_info{
+    height: 500px;
+}
+.container .user_info .change-pass #change_password{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+    border:none;
+    border-radius: 3px;
+    font-size: 15px;
+    height: 30px;
+}
+.container .user_info .save-info button{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+    border:none;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 3px;
+}
+/* User's addresses Page */
+.container .user_address .card-title, .user_info_pay .card-title{
+    color: var(--big-text-color);
+    font-weight: bold;
+}
+.container .user_address button, .container .user_info_pay button{
+    background-color: var(--sub-cta-button);
+    color:var(--web-background-color);
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    height: 40px;
+}
+/*User's Payment Info*/
+
+/*User's viewed history */
+.product_title{
+    font-weight: bold;
+}
+.user_viewed_info .col-2,.user_wishlist .col-2{
+    padding-top:30px;
+}

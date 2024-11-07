@@ -5,7 +5,6 @@ header {
 header input {
     background-color: var(--label-color) !important;
     padding-left: 1.75rem !important;
-    padding-right: 1.75rem !important;
 }
 
 header i {
