@@ -11,9 +11,37 @@ html,body{
 hr{
     margin: 0;
 }
-.h1,.h2{
+.h1,.h2,.h3{
     color:var(--big-text-color);
     font-weight: bold;
+}
+.title{
+    font-weight: bold;
+}
+.addAll{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+    height: 40px;
+    border-radius: 5px;
+}
+.add-to_cart{
+    background-color: var(--main-cta-button);
+    color: var(--web-background-color);
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center; ;
+}
+.delete_btn{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+}
+button{
+    border: none;
 }
 input{
     border-radius: 3px;
@@ -98,7 +126,8 @@ header ul > li:hover * {
     border: none;
 }
 /*User Info Page*/
-.container .user_page_each_prop,.container .user_info,.container .user_address,.container .user_viewed_info,
+.container .user_page_each_prop,.container .user_info,.container .user_address,
+.container .user_info_pay,.container .user_viewed_info,
 .container .user_wishlist,.container .user_ordered_list,
 .container .user_feedback_histories{
     border-radius: 5px;
@@ -125,11 +154,11 @@ header ul > li:hover * {
     border-radius: 3px;
 }
 /* User's addresses Page */
-.container .user_address .card-title{
+.container .user_address .card-title, .user_info_pay .card-title{
     color: var(--big-text-color);
     font-weight: bold;
 }
-.container .user_address button{
+.container .user_address button, .container .user_info_pay button{
     background-color: var(--sub-cta-button);
     color:var(--web-background-color);
     border: none;
@@ -137,4 +166,12 @@ header ul > li:hover * {
     font-size: 15px;
     height: 40px;
 }
+/*User's Payment Info*/
+
 /*User's viewed history */
+.product_title{
+    font-weight: bold;
+}
+.user_viewed_info .col-2,.user_wishlist .col-2{
+    padding-top:30px;
+}
