@@ -40,6 +40,9 @@ hr{
     border-radius: 5px;
     text-align: center;
 }
+.resized-image{
+    width: 148px;height: 97px;
+}
 button{
     border: none;
 }
