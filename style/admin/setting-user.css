@@ -46,3 +46,28 @@
     margin-bottom: 10px;
     width: 150px;
 }
+
+.btn-edit:hover {
+    opacity: 0.7;
+}
+
+.style-button {
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}
+#btn-close {
+    color: var(--text-color);
+    background-color: var(--light-component-background-color);
+}
+#btn-close:hover {
+    color: var(--text-hover-color);
+    opacity: 0.8;
+}
+#btn-update {
+    color: white;
+    background-color: var(--sub-cta-button);
+}
+#btn-update:hover {
+    background-color: var(--sub-cta-button-hover);
+}

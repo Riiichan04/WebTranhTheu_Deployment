@@ -70,7 +70,7 @@
                                             aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Bạn chắc chắn muốn thực hiện đăng xuất ?
+                                    Bạn chắc chắn muốn đăng xuất ?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
@@ -115,22 +115,6 @@
         loadPage(this.id);
         $('.select-nav.active').removeClass('active');
         this.classList.add('active');
-    });
-
-    $("#log-out").click(function () {
-        $("#log-out").css({
-            "color": "white",
-            "font-weight": "500",
-            "background-color": "var(--dark-component-background-color)"
-        });
-    });
-    
-    $("#choose-close").click(function () {
-        $("#log-out").css({
-            "color": "var(--text-color)",
-            "font-weight": "normal",
-            "background-color": "var(--light-component-background-color)"
-        }); 
     });
 </script>
 </body>
