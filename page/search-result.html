@@ -14,34 +14,7 @@
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/header.css">
     <link rel="stylesheet" href="../style/search-result.css">
-    <style>
-        .menu-container {
-            background-color: var(--light-component-background-color);
-            padding-top: 20px;
-            padding-bottom: 20px;
-            border-radius: 10px;
-        }
-
-        .sort-container {
-            height: 60px;
-            background-color: var(--dark-component-background-color);
-        }
-
-        .sort-date-product__select, .sort-price-product__select {
-            width: 150px;
-            height: 35px;
-            border: none;
-            background-color: var(--label-color);
-        }
-
-        .sort-price-product__select {
-            width: 200px;
-        }
-
-        .card-container {
-            background-color: var(--label-color);
-        }
-    </style>
+    
 </head>
 <body>
 <header>
@@ -80,8 +53,11 @@
 </header>
 
 <div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col"><a href="#" class="return-home-link"> >> Trở Về Trang Chủ </a></div>
+    </div>
     <div class="row">
-        <div class="col-2 menu-container">
+        <div class="col-2">
             <h5><i class="fa-solid fa-filter me-2" style="color: var(--sub-cta-button)"></i>BỘ LỌC TÌM KIẾM</h5>
             <fieldset class="pt-3">
                 <legend class="style-label">Theo Danh Mục</legend>
@@ -159,9 +135,9 @@
             </div>
         </div>
         <div class="col-10">
-            <div><i class="fa-solid fa-lightbulb me-2" style="color: var(--sub-cta-button); font-size: 20px"></i>
+            <div class="text-end"><i class="fa-solid fa-lightbulb me-2" style="color: var(--sub-cta-button); font-size: 20px"></i>
                 Kết quả tìm kiếm cho từ khóa <span style="font-weight: bold">"Từ khóa"</span></div>
-            <div class="sort-container d-flex align-items-center">
+            <div class="sort-container mt-4 d-flex align-items-center">
                 <p class="m-0 me-2">Sắp xếp theo</p>
                 <select class="me-2 form-select sort-date-product__select">
                     <option value="1" selected>Mới nhất</option>
@@ -172,25 +148,438 @@
                     <option value="2">Giá: Từ cao đến thấp</option>
                 </select>
             </div>
-            <div class="card-container">
-                <div class="card card-container" style="width: 18rem;">
-                    <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
-                         class="card-img-top" alt="Product Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Tranh thêu sông nước</h5>
+            <div class="content-card mt-4">
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
 
-                        <!-- Star Ratings -->
-                        <div class="mb-2">
-                            <span class="text-warning">&#9733;</span>
-                            <span class="text-warning">&#9733;</span>
-                            <span class="text-warning">&#9733;</span>
-                            <span class="text-warning">&#9733;</span>
-                            <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
                         </div>
-
-                        <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
-                            VND</p>
                     </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ps-0">
+                        <div class="card card-container w-100">
+                            <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                                 class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                                <!-- Star Ratings -->
+                                <div class="mb-2">
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-warning">&#9733;</span>
+                                    <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                                </div>
+
+                                <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                                    VND</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

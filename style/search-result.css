@@ -39,3 +39,30 @@
 .checkbox-container {
     flex: 0.1;
 }
+
+.sort-container {
+    height: 60px;
+    background-color: var(--light-component-background-color);
+    padding-left: 20px;
+}
+
+.sort-date-product__select, .sort-price-product__select {
+    width: 150px;
+    height: 35px;
+    border: none;
+    background-color: var(--label-color);
+}
+
+.sort-price-product__select {
+    width: 200px;
+}
+
+.card-container {
+    background-color: var(--label-color);
+}
+
+.return-home-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+}
