@@ -14,7 +14,34 @@
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/header.css">
     <link rel="stylesheet" href="../style/search-result.css">
+    <style>
+        .menu-container {
+            background-color: var(--light-component-background-color);
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-radius: 10px;
+        }
 
+        .sort-container {
+            height: 60px;
+            background-color: var(--dark-component-background-color);
+        }
+
+        .sort-date-product__select, .sort-price-product__select {
+            width: 150px;
+            height: 35px;
+            border: none;
+            background-color: var(--label-color);
+        }
+
+        .sort-price-product__select {
+            width: 200px;
+        }
+
+        .card-container {
+            background-color: var(--label-color);
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -52,9 +79,9 @@
     </div>
 </header>
 
-<div class="container vh-100 mt-5">
-    <div class="row h-100">
-        <div class="col-2 ps-0">
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-2 menu-container">
             <h5><i class="fa-solid fa-filter me-2" style="color: var(--sub-cta-button)"></i>BỘ LỌC TÌM KIẾM</h5>
             <fieldset class="pt-3">
                 <legend class="style-label">Theo Danh Mục</legend>
@@ -97,32 +124,76 @@
                 <legend class="style-label">Theo Đánh Giá</legend>
                 <div class="d-flex">
                     <div class="checkbox-container pt-2"><input type="checkbox"></div>
-                    <div class="style-label"><span class="style-star">&#9733; &#9733; &#9733; &#9733; &#9733;</span></div>
+                    <div class="style-label"><span class="style-star">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                    </div>
                 </div>
                 <div class="d-flex">
                     <div class="checkbox-container pt-2"><input type="checkbox"></div>
-                    <div class="style-label"><span class="style-star me-2">&#9733; &#9733; &#9733; &#9733; &#x2729;</span>trở lên</div>
+                    <div class="style-label"><span
+                            class="style-star me-2">&#9733; &#9733; &#9733; &#9733; &#x2729;</span>trở lên
+                    </div>
                 </div>
                 <div class="d-flex">
                     <div class="checkbox-container pt-2"><input type="checkbox"></div>
-                    <div class="style-label"><span class="style-star me-2">&#9733; &#9733; &#9733; &#x2729; &#x2729;</span>trở lên</div>
+                    <div class="style-label"><span
+                            class="style-star me-2">&#9733; &#9733; &#9733; &#x2729; &#x2729;</span>trở lên
+                    </div>
                 </div>
                 <div class="d-flex">
                     <div class="checkbox-container pt-2"><input type="checkbox"></div>
-                    <div class="style-label"><span class="style-star me-2">&#9733; &#9733; &#x2729; &#x2729; &#x2729;</span>trở lên</div>
+                    <div class="style-label"><span
+                            class="style-star me-2">&#9733; &#9733; &#x2729; &#x2729; &#x2729;</span>trở lên
+                    </div>
                 </div>
                 <div class="d-flex">
                     <div class="checkbox-container pt-2"><input type="checkbox"></div>
-                    <div class="style-label"><span class="style-star me-2">&#9733; &#x2729; &#x2729; &#x2729; &#x2729;</span>trở lên</div>
+                    <div class="style-label"><span
+                            class="style-star me-2">&#9733; &#x2729; &#x2729; &#x2729; &#x2729;</span>trở lên
+                    </div>
                 </div>
-                
+
             </fieldset>
             <hr>
             <div>
                 <button class="filter-delete-btn">XÓA TẤT CẢ</button>
             </div>
         </div>
-        <div class="col-10"></div>
+        <div class="col-10">
+            <div><i class="fa-solid fa-lightbulb me-2" style="color: var(--sub-cta-button); font-size: 20px"></i>
+                Kết quả tìm kiếm cho từ khóa <span style="font-weight: bold">"Từ khóa"</span></div>
+            <div class="sort-container d-flex align-items-center">
+                <p class="m-0 me-2">Sắp xếp theo</p>
+                <select class="me-2 form-select sort-date-product__select">
+                    <option value="1" selected>Mới nhất</option>
+                    <option value="2">Cũ nhất</option>
+                </select>
+                <select class="form-select sort-price-product__select">
+                    <option value="1" selected>Giá: Từ thấp đến cao</option>
+                    <option value="2">Giá: Từ cao đến thấp</option>
+                </select>
+            </div>
+            <div class="card-container">
+                <div class="card card-container" style="width: 18rem;">
+                    <img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"
+                         class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Tranh thêu sông nước</h5>
+
+                        <!-- Star Ratings -->
+                        <div class="mb-2">
+                            <span class="text-warning">&#9733;</span>
+                            <span class="text-warning">&#9733;</span>
+                            <span class="text-warning">&#9733;</span>
+                            <span class="text-warning">&#9733;</span>
+                            <span class="text-muted">&#9733;</span> <!-- Đánh giá sao -->
+                        </div>
+
+                        <p class="card-text font-weight-bold text-danger" style="font-weight: 500">Giá: 8,000,000
+                            VND</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
