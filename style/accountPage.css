@@ -136,7 +136,8 @@ header ul > li:hover * {
 .container .user_page_each_prop,.container .user_info,.container .user_address,
 .container .user_viewed_info,
 .container .user_wishlist,.container .user_ordered_list,
-.container .user_feedback_histories{
+.container .user_feedback_histories,
+.container .user_setting{
     border-radius: 5px;
     /*text-align: center;*/
     background-color: var(--light-component-background-color);
@@ -212,4 +213,20 @@ header ul > li:hover * {
 }
 /*User's canceled Orders*/
 
+/*user's setting*/
+.container .user_setting .change_img,.user_setting .fullname .change_name{
+    background-color: var(--web-background-color);
+    color: var(--sub-cta-button);
+    border-radius: 5px;
+    border:solid 1px var(--sub-cta-button);
+}
+.user_setting .change_avatar{
+    background-color: var(--web-background-color);
+}
+.user_setting .change_avatar .row{
+
+}
+.user_setting .fullname .change_name{
+
+}
 
