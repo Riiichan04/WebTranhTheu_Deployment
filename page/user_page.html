@@ -1326,7 +1326,7 @@
             </div>
         </div>
         <!--User's Feedback History-->
-        <div class=" user_feedback_histories col-7">
+        <div class=" user_feedback_histories col-7" style="display: none">
             <div class="h3 p-4">Lịch sử đánh giá</div>
             <hr>
             <div class="container">
@@ -1501,7 +1501,56 @@
                 </div>
             </div>
         </div>
-
+        <!-- User's Setting-->
+        <div class=" user_setting col-7">
+            <div class="h3 pt-3 ps-3">Cài đặt</div>
+            <hr>
+            <div class="container py-3">
+                <div class="row avatar">
+                    <div class="col-3 py-5 ps-3">Ảnh đại diện:</div>
+                    <div class="col-3"><img src="../asset/user_img.png" style="width: 100px;height: 100px;"></div>
+                    <div class="col-3 pt-5">
+                        <button type="button" class="change_img">Thay đổi</button>
+                        <div class="change_avatar mt-1 ms-3 container border">
+                            <div class="row ps-2 border-bottom">Lấy từ thiết bị</div>
+                            <div class="row ps-2">Link url</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row fullname">
+                    <div class="col-2 py-5 ps-3">Tên:</div>
+                    <div class="col-4 pt-5"><input type="text" value="Nguyễn Bích Loan"></div>
+                    <div class="col-3 pt-5"><button type="reset" class="change_name"> Thay đổi</button></div>
+                </div>
+                <div class="row feedback_form">
+                        <form class="poll-form">
+                            <div class="row ps-3">Thăm dò ý kiến:</div>
+                            <div class="container border">
+                                <div class="row p-2">
+                                    <div class="col-8">Bạn thấy tranh thêu có đẹp không?</div>
+                                    <div class="col-2"><input type="radio" name="question1" value="Có"> Có</div>
+                                    <div class="col-2"><input type="radio" name="question1" value="Không"> Không</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-8">Tranh thêu có giúp ngôi nhà bạn trở nên đẹp hơn không?</div>
+                                    <div class="col-2"><input type="radio" name="question2" value="Có"> Có</div>
+                                    <div class="col-2"><input type="radio" name="question2" value="Không"> Không</div>
+                                </div>
+                                <div class="row p-4">
+                                    <div class="col-10"></div>
+                                    <div class="col-2">
+                                        <button type="submit" class="submit-btn" style="width: 100%">Gửi đánh giá</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col-3 pt-3"><button>Xóa tài khoản</button></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
