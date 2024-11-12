@@ -1,3 +1,7 @@
+p {
+    color: var(--text-color) !important;
+}
+
 .main-color {
     color: var(--big-text-color);
 }
@@ -8,4 +12,8 @@
 .card {
     background-color: var(--light-component-background-color);
     border: 0;
+}
+
+.card-title {
+    font-weight: normal;
 }
