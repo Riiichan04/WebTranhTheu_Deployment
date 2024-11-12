@@ -16,10 +16,19 @@ function displayProducts(page) {
     const  pageProducts = products.slice(start, end);
 
     // tao cac san pham trong cau truc html
-
+    let countProductPerRow = 0;
+    let rowProduct = document.createElement("div");
+    rowProduct.className = "row pe-0";
     pageProducts.forEach(product => {
+        if(countProductPerRow === 5) {
+            productList.appendChild(rowProduct);
+            countProductPerRow = 0;
+            rowProduct = document.createElement("div");
+            rowProduct.className = "row pe-0";
+        }
         const productItem = document.createElement('div');
-        productItem.className = 'col-3 product-item mb-3';
+        if(countProductPerRow === 4) {productItem.className = 'col product-item mb-3 pe-0';}
+        else productItem.className = 'col product-item mb-3 pe-1';
         productItem.innerHTML = `<div class="card card-container w-100">
                         <img src="${product.url}"
                              class="card-img-top" alt="Product Image">
@@ -35,12 +44,13 @@ function displayProducts(page) {
                                 <span class="text-muted">${product.star[4]}</span> <!-- Đánh giá sao -->
                             </div>
 
-                            <p class="card-text font-weight-bold text-danger" style="font-weight: 500">
+                            <p class="card-text font-weight-bold text-danger">
                             Giá: ${product.price}
                             </p>
                         </div>
                     </div>`;
-        productList.appendChild(productItem);
+        rowProduct.appendChild(productItem);
+        countProductPerRow++;
     });
 }
 
@@ -57,13 +67,13 @@ function setupPagination(currentPage, totalPages) {
     // Trang đầu tiên và dấu ...
     if(currentPage > 3) {
         paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(1)">1</a></li>`;
-        paginationHTML += `<li><span>...</span></li>`;
+        paginationHTML += `<li class="btn-pagination" style="background-color: var(--label-color)"><span>...</span></li>`;
     }
     
     // Cac trang gan trang hien tai
     for(let i = Math.max(1, currentPage -2); i <= Math.min(currentPage +2, totalPages); i++){
         if(i === currentPage) {
-            paginationHTML += `<li class="btn-pagination"><span class="active">${i}</span></li>`;
+            paginationHTML += `<li class="btn-current-pagination"><span class="active">${i}</span></li>`;
         } else {
             paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(${i})">${i}</a></li>`;
         }
@@ -71,13 +81,13 @@ function setupPagination(currentPage, totalPages) {
     
     // Dau ... va trang cuoi cung
     if(currentPage < totalPages -2) {
-        paginationHTML += `<li><span>...</span></li>`;
+        paginationHTML += `<li class="btn-pagination" style="background-color: var(--label-color)"><span>...</span></li>`;
         paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(${totalPages})">${totalPages}</a></li>`;
     }
     
     //Nut next
     if(currentPage < totalPages) {
-        paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(${currentPage + 1})">Next</a></li>`;
+        paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(${currentPage + 1})">Sau</a></li>`;
     }
     else {
         paginationHTML += `<li class="disabled btn-pagination"><span>Next</span></li>`;

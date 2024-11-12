@@ -138,7 +138,7 @@
                 <button class="filter-delete-btn">XÓA TẤT CẢ</button>
             </div>
         </div>
-        <div class="col-10">
+        <div class="col-10 content-search-container">
             <div class="sort-container d-flex align-items-center">
                 <p class="m-0 me-2">Sắp xếp theo</p>
                 <select class="me-2 form-select sort-date-product__select">
@@ -150,11 +150,14 @@
                     <option value="2">Giá: Từ cao đến thấp</option>
                 </select>
             </div>
-            <div class="content-card mt-4 row" id="productList"></div>
-            <div class="pagination" id="pagination"></div>
+            <div class="content-card mt-3 row" id="productList"></div>
         </div>
     </div>
-   
+    <div class="row my-4">
+        <div class="col-3"></div>
+        <div class="col"><div class="pagination text-end" id="pagination"></div></div>
+    </div>
+    
 </div>
 
 <script src="../script/search-result-pagination.js"></script>

@@ -42,7 +42,6 @@
 
 .sort-container {
     height: 60px;
-    background-color: var(--light-component-background-color);
     padding-left: 20px;
 }
 
@@ -67,9 +66,43 @@
     font-size: 18px;
 }
 
-.btn-pagination {
+.btn-pagination, .btn-current-pagination {
     padding: 20px;
-    color: white;
-    background-color: var(--text-color);
+    color: var(--text-color);
     border: none;
+    background-color: var(--light-component-background-color);
+    margin-right: 10px;
+}
+
+.btn-current-pagination {
+    background-color: var(--label-color);
+    border: solid 1px var(--text-color);
+}
+
+.btn-pagination a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.content-search-container {
+    border-radius: 10px;
+    background-color: var(--light-component-background-color);
+}
+
+.card-body {
+    background-color: var(--light-component-background-color);
+}
+
+.card-container {
+    border: none;
+}
+
+.card-title {
+    font-size: 18px;
+}
+
+.card-text {
+    color: var(--main-cta-button);
+    font-weight: 500;
+    font-size: 18px;
 }
