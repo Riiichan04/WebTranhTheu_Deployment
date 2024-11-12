@@ -137,7 +137,8 @@ header ul > li:hover * {
 .container .user_viewed_info,
 .container .user_wishlist,.container .user_ordered_list,
 .container .user_feedback_histories,
-.container .user_setting{
+.container .user_setting,
+.container .user_support{
     border-radius: 5px;
     /*text-align: center;*/
     background-color: var(--light-component-background-color);
@@ -225,4 +226,18 @@ header ul > li:hover * {
 .user_setting .feedback_form .container{
     background-color: var(--web-background-color);
 }
+.user_setting .feedback_form .container .submit-btn{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+    border: none;
+    border-radius: 3px;
+}
+.user_setting .delete_account{
+    background-color: var(--main-cta-button);
+    color: var(--web-background-color);
+    height: 40px;
+    border-radius: 5px;
+}
+/* User's Support*/
+
 
