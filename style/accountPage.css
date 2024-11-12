@@ -121,7 +121,10 @@ header ul > li:hover * {
     border: none;
     padding: 10px;
     background-color: var(--light-component-background-color);
-    border-radius: 0;
+}
+.container .user_props_list .active{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
 }
 /*Setting and Help*/
 .user_props_list .user_setting_help {
@@ -133,20 +136,20 @@ header ul > li:hover * {
     border: none;
 }
 /*User Info Page*/
-.container .user_page_each_prop,.container .user_info,.container .user_address,
-.container .user_viewed_info,
-.container .user_wishlist,.container .user_ordered_list,
-.container .user_feedback_histories,
-.container .user_setting,
-.container .user_support{
+.container #user_page_each_prop,.container #user_info,.container #user_address,
+.container #user_viewed_info,
+.container #user_wishlist,.container #user_ordered_list,
+.container #user_feedback_histories,
+.container #user_setting,
+.container #user_support{
     border-radius: 5px;
     /*text-align: center;*/
     background-color: var(--light-component-background-color);
 }
-.container .user_info{
+.container #user_info{
     height: 500px;
 }
-.container .user_info .change-pass #change_password{
+.container #user_info .change-pass #change_password{
     background-color: var(--sub-cta-button);
     color: var(--web-background-color);
     border:none;
@@ -154,7 +157,7 @@ header ul > li:hover * {
     font-size: 15px;
     height: 30px;
 }
-.container .user_info .save-info button{
+.container #user_info .save-info button{
     background-color: var(--sub-cta-button);
     color: var(--web-background-color);
     border:none;
@@ -163,11 +166,11 @@ header ul > li:hover * {
     border-radius: 3px;
 }
 /* User's addresses Page */
-.container .user_address .card-title, .user_info_pay .card-title{
+.container #user_address .card-title{
     color: var(--big-text-color);
     font-weight: bold;
 }
-.container .user_address button, .container .user_info_pay button{
+.container #user_address button{
     background-color: var(--sub-cta-button);
     color:var(--web-background-color);
     border: none;
@@ -180,59 +183,59 @@ header ul > li:hover * {
 .product_title{
     font-weight: bold;
 }
-.user_viewed_info .col-2,.user_wishlist .col-2{
+#user_viewed_info .col-2,#user_wishlist .col-2{
     padding-top:30px;
 }
 /*User's order list*/
-.user_ordered_list .card button{
+#user_ordered_list .card button{
     width: 90%;
     padding: 5px;
     border-radius: 5px;
 }
-.user_ordered_list .card .cancel_btn{
+#user_ordered_list .card .cancel_btn{
     background-color: var(--main-cta-button);
     color:var(--web-background-color);
 }
-.user_ordered_list .shipped{
+#user_ordered_list .shipped{
     color:var(--sub-cta-button);
 }
 /*User's order shipping*/
-.user_ordered_list .shippinglist .card .received{
+#user_ordered_list .shippinglist .card .received{
     background-color: var(--main-cta-button);
     color: var(--web-background-color);
     opacity: 0.5;
 }
 /*User's shipped list*/
-.user_ordered_list .shippedlist .card .received,.user_ordered_list .canceledlist .card .rebuy_btn{
+#user_ordered_list .shippedlist .card .received,#user_ordered_list .canceledlist .card .rebuy_btn{
     background-color: var(--main-cta-button);
     color: var(--web-background-color);
 }
 /*User's turnedback orders*/
-.user_ordered_list .turnedback .card .turnback_details{
+#user_ordered_list .turnedback .card .turnback_details{
     background-color: var(--sub-cta-button);
     color: var(--web-background-color);
 }
 /*User's canceled Orders*/
 /*User's setting*/
-.user_setting .change_img, .user_setting .change_name{
+#user_setting .change_img, #user_setting .change_name{
     background-color: var(--web-background-color);
     color:var(--sub-cta-button);
     border: solid 1px var(--sub-cta-button);
     border-radius: 5px;
 }
-.user_setting .change_avatar{
+#user_setting .change_avatar{
     background-color: var(--web-background-color);
 }
-.user_setting .feedback_form .container{
+#user_setting .feedback_form .container{
     background-color: var(--web-background-color);
 }
-.user_setting .feedback_form .container .submit-btn{
+#user_setting .feedback_form .container .submit-btn{
     background-color: var(--sub-cta-button);
     color: var(--web-background-color);
     border: none;
     border-radius: 3px;
 }
-.user_setting .delete_account{
+#user_setting .delete_account{
     background-color: var(--main-cta-button);
     color: var(--web-background-color);
     height: 40px;

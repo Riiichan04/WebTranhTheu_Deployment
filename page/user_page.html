@@ -65,28 +65,49 @@
         <div class="user_props_list col-4">
             <div class="user_img_frame">
                 <img src="../asset/user_img.png" style="width: 100px;height: 100px;margin-top: 30px">
-                <p class="p-4">Nguyễn Bích Loan </p>
+                <p class="p-4">Loan Cute :3 </p>
             </div>
             <div class="list-group list_props">
-                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                <button type="button" data-target="user_info" class="list-group-item list-group-item-action">
+                    <i class="bi bi-person"></i>
                     Thông tin người dùng
                 </button>
-                <button type="button" class="list-group-item list-group-item-action">Sổ địa chỉ</button>
-                <button type="button" class="list-group-item list-group-item-action">Lịch sử đã xem</button>
-                <button type="button" class="list-group-item list-group-item-action">Danh sách yêu thích</button>
-                <button type="button" class="list-group-item list-group-item-action">Đơn hàng của tôi</button>
-                <button type="button" class="list-group-item list-group-item-action">Lịch sử đánh giá</button>
+                <button type="button" data-target="user_address" class="list-group-item list-group-item-action user_address_info">
+                    <i class="bi bi-geo-alt"></i>
+                    Sổ địa chỉ
+                </button>
+                <button type="button" data-target="user_viewed_info" class="list-group-item list-group-item-action">
+                    <i class="bi bi-eye"></i>
+                    Lịch sử đã xem
+                </button>
+                <button type="button" data-target="user_wishlist" class="list-group-item list-group-item-action">
+                    <i class="bi bi-heart"></i>
+                    Danh sách yêu thích
+                </button>
+                <button type="button" data-target="user_ordered_list" class="list-group-item list-group-item-action">
+                    <i class="bi bi-box-seam"></i>
+                    Đơn hàng của tôi
+                </button>
+                <button type="button" data-target="user_feedback_histories" class="list-group-item list-group-item-action">
+                    <i class="bi bi-pencil"></i>
+                    Lịch sử đánh giá
+                </button>
             </div>
             <hr>
             <div class="list-group user_setting_help">
-                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                <button type="button" data-target="user_setting" class="list-group-item list-group-item-action">
+                    <i class="bi bi-gear"></i>
                     Cài đặt
                 </button>
-                <button type="button" class="list-group-item list-group-item-action">Hỗ trợ</button>
+                <button type="button" data-target="user_support" class="list-group-item list-group-item-action">
+                    <i class="bi bi-question-circle"></i>
+                    Hỗ trợ
+                </button>
             </div>
             <hr>
             <div class="list-group user_logout">
-                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                <button type="button"  class="list-group-item list-group-item-action">
+                    <i class="bi bi-box-arrow-left"></i>
                     Đăng xuất
                 </button>
             </div>
@@ -94,11 +115,11 @@
         <div class="col-1"></div>
         <!--User's property Page-->
         <!--Empty prop-->
-        <div class="user_page_each_prop col-7" style="text-align: center;display: none">
-            <div class="h1" style="opacity: 0.5;padding:300px 0">Vui lòng chọn một mục</div>
+        <div class="user_page_each_prop content-details col-7">
+            <div class="h1" style="opacity: 0.5;padding:200px 100px">Vui lòng chọn một mục</div>
         </div>
         <!--User Info Page-->
-        <div class="user_info col-7" style="display: none">
+        <div  id="user_info" class="content-details col-7" style="display: none">
             <div class="h3 p-3">Thông tin tài khoản</div>
             <hr>
             <div class="input-info container">
@@ -122,7 +143,7 @@
                         <div class="col px-1 py-4">
                             <button id="change_password"><span>Đổi mật khẩu</span></button>
                             <!-- show ra đổi MK như nào-->
-                            <div class="sub_change_pass container">
+                            <div class="sub_change_pass container" style="display: none">
                                 <div class="row">
                                     <div class="col p-2">Mật khẩu cũ:</div>
                                     <div class="col"><input type="password" placeholder="Nhập..."></div>
@@ -147,7 +168,7 @@
             </div>
         </div>
         <!--User Addresses-->
-        <div class="user_address col-7" style="display: none">
+        <div id="user_address" class="content-details col-7" style="display: none">
             <div class="h3 p-3">Sổ địa chỉ</div>
             <hr>
             <div class="container">
@@ -194,7 +215,7 @@
             </div>
         </div>
         <!--User's viewed products Info-->
-        <div class=" user_viewed_info col-7" style="display: none">
+        <div id="user_viewed_info" class="content-details col-7" style="display: none">
             <div class="h3 p-3">Lịch sử sản phẩm đã xem</div>
             <hr>
             <div class="container p-3">
@@ -254,7 +275,7 @@
             </div>
         </div>
         <!--User's WishList-->
-        <div class=" user_wishlist col-7" style="display: none">
+        <div id="user_wishlist" class=" content-details col-7" style="display: none">
             <div class="h3 p-3">Danh sách yêu thích</div>
             <hr>
             <div class="container p-3">
@@ -314,7 +335,7 @@
             </div>
         </div>
         <!--List orders history-->
-        <div class=" user_ordered_list col-7" style="display: none">
+        <div id="user_ordered_list" class=" content-details col-7" style="display: none">
             <div class="h3 p-4">Đơn hàng của tôi</div>
             <hr>
             <div class="container px-3">
@@ -1326,7 +1347,7 @@
             </div>
         </div>
         <!--User's Feedback History-->
-        <div class=" user_feedback_histories col-7" style="display: none">
+        <div id="user_feedback_histories" class=" content-details col-7" style="display: none">
             <div class="h3 p-4">Lịch sử đánh giá</div>
             <hr>
             <div class="container">
@@ -1502,7 +1523,7 @@
             </div>
         </div>
         <!-- User's Setting-->
-        <div class=" user_setting col-7" style="display: none"  >
+        <div id="user_setting" class=" content-details col-7" style="display: none"  >
             <div class="h3 pt-3 ps-3">Cài đặt</div>
             <hr>
             <div class="container py-3">
@@ -1552,14 +1573,34 @@
             </div>
         </div>
         <!--User's help-->
-        <div class=" user_support col-7">
+        <div id="user_support" class="  content-details col-7" style="display: none">
             <div class="h3 pt-3 ps-3">Hỗ trợ</div>
-            <div class="container">
-
-            </div>
             <hr>
+            <div class="container p-4">
+                <div class="row border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                </div>
+                <div class="row pt-2 border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                </div>
+                <div class="row pt-2 border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                </div>
+                <div class="row pt-2 border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                </div>
+                <div class="row pt-2 border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<script src="../script/account.js"></script>
 </body>
 </html>
