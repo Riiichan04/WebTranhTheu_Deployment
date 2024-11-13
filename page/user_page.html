@@ -65,7 +65,7 @@
         <div class="user_props_list col-4">
             <div class="user_img_frame">
                 <img src="../asset/user_img.png" style="width: 100px;height: 100px;margin-top: 30px">
-                <p class="p-4">Loan Cute :3 </p>
+                <p id="fullname" class="p-4">Loan Cute :3 </p>
             </div>
             <div class="list-group list_props">
                 <button type="button" data-target="user_info" class="list-group-item list-group-item-action">
@@ -129,8 +129,8 @@
                         <div class="col p-3">Họ:</div>
                     </div>
                     <div class="row">
-                        <div class="col"><input type="text" placeholder="Tên"></div>
-                        <div class="col"><input type="text" placeholder="Họ"></div>
+                        <div class="col"><input id="fname" type="text" placeholder="Tên"></div>
+                        <div class="col"><input id="lname" type="text" placeholder="Họ"></div>
                     </div>
                     <div class="row">
                         <div class="col-12 p-3">Địa chỉ email:</div>
@@ -161,7 +161,7 @@
                     <div class="row">
                         <div class="col-8"></div>
                         <div class="col-4">
-                            <button type="reset" style="width:80%"><span>Lưu</span></button>
+                            <button id="save_info" type="reset" style="width:80%"><span>Lưu</span></button>
                         </div>
                     </div>
                 </div>
@@ -221,9 +221,9 @@
             <div class="container p-3">
                 <button type="button" class="addAll">Thêm tất cả vào giỏ hàng</button>
                 <!--Từng sản phẩm-->
-                <div class="row p-4 container">
-                    <div class="row title px-4">tên sốp</div>
-                    <div class="row p-2">
+                <div class="row p-4 mt-4 border shop">
+                    <div class="row title border-bottom px-4">tên sốp</div>
+                    <div class="row product-item p-2">
                         <!--Hình tỉ lệ 4:1-->
                         <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image">
                         </div>
@@ -239,9 +239,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row p-4 container">
-                    <div class="row title px-4">tên sốp</div>
-                    <div class="row p-2">
+                <div class="row p-4 mt-4 border shop">
+                    <div class="row title border-bottom px-4">tên sốp</div>
+                    <div class="row product-item p-2">
                         <!--Hình tỉ lệ 4:1-->
                         <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image">
                         </div>
@@ -256,7 +256,7 @@
                             <button class="delete_btn"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
-                    <div class="row p-2">
+                    <div class="row product-item p-2">
                         <!--Hình tỉ lệ 4:1-->
                         <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image">
                         </div>
