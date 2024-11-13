@@ -2,7 +2,7 @@ body, html {
     background-color: var(--web-background-color);
 }
 
-.btn-update, .btn-delete,  .btn-add {
+.btn-update, .btn-delete,  .btn-add, .btn-read {
     display: inline-block;
     border: none;
     color: white;
@@ -19,6 +19,11 @@ body, html {
 .btn-update {
     background-color: var(--sub-cta-button);
     width: 100px;
+}
+
+.btn-read {
+    background-color: var(--sub-cta-button);
+    width: 150px;
 }
 
 .btn-add {

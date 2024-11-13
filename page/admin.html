@@ -30,27 +30,39 @@
                 <div class="hr-under-info my-3"></div>
             </div>
             <nav>
-                <a href="#" class="select-nav active px-4" id="product">
+                <div><a href="#" class="select-nav px-4 active" id="home">
+                    <i class="fa-solid fa-house me-2"></i>
+                    Trang chủ
+                </a></div>
+                <div><a href="#" class="select-nav px-4" id="product">
                     <i class="fa-brands fa-product-hunt me-2"></i>
                     Quản lý sản phẩm
-                </a>
-                <a href="#" class="select-nav px-4" id="user">
+                </a></div>
+                <div><a href="#" class="select-nav px-4" id="user">
                     <i class="fa-solid fa-people-roof me-2"></i>
                     Quản lý người dùng
-                </a>
-                <a href="#" class="select-nav px-4" id="promotion">
+                </a></div>
+                <div><a href="#" class="select-nav px-4" id="promotion">
                     <i class="fa-solid fa-tags me-2"></i>
                     Quản lý khuyến mãi
-                </a>
-                <a href="#" class="select-nav px-4" id="statistical">
-                    <i class="fa-solid fa-chart-simple me-2"></i>
-                    Thống kê
-                </a>
+                </a></div>
+                <div><a href="#" class="select-nav px-4" id="category">
+                    <i class="fa-solid fa-list me-2"></i>
+                    Quản lý danh mục
+                </a></div>
+                <div><a href="#" class="select-nav px-4" id="order">
+                    <i class="fa-solid fa-money-bill-trend-up me-2"></i>
+                    Quản lý đơn hàng
+                </a></div>
+                <div><a href="#" class="select-nav px-4" id="policy">
+                    <i class="fa-solid fa-building-shield me-2"></i>
+                    Quản lý chính sách
+                </a></div>
                 <div class="hr-under-info my-3"></div>
-                <a href="#" class="select-nav px-4" id="setting">
+                <div><a href="#" class="select-nav px-4" id="setting">
                     <i class="fa-solid fa-gear me-2"></i>
                     Cài đặt tài khoản
-                </a>
+                </a></div>
                 <div>
                     <button type="button" class="px-4 w-100 text-start" id="log-out" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
@@ -93,6 +105,9 @@
     function loadPage(page) {
         let content = document.getElementById("content")
         switch (page) {
+            case "home":
+                content.innerHTML = "<iframe src='content-admin-page/statistical.html' class='w-100 vh-100'></iframe>";
+                break;
             case "product":
                 content.innerHTML = "<iframe src='content-admin-page/manage-product.html' class='w-100 vh-100'></iframe>";
                 break;
@@ -102,7 +117,13 @@
             case "promotion":
                 content.innerHTML = "<iframe src='content-admin-page/manage-promotion.html' class='w-100 vh-100'></iframe>";
                 break;
-            case "statistical":
+            case "category":
+                content.innerHTML = "<iframe src='content-admin-page/statistical.html' class='w-100 vh-100'></iframe>";
+                break;
+            case "order":
+                content.innerHTML = "<iframe src='' class='w-100 vh-100'></iframe>";
+                break;
+            case "policy":
                 content.innerHTML = "<iframe src='content-admin-page/statistical.html' class='w-100 vh-100'></iframe>";
                 break;
             case "setting":
