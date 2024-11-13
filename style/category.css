@@ -1,12 +1,12 @@
-p {
-    color: var(--text-color) !important;
-}
-
 .main-color {
     color: var(--big-text-color);
 }
 .background-container {
     background-color: var(--light-component-background-color);
+}
+
+.sub-cta-button {
+    color: var(--sub-cta-button);
 }
 
 .card {
@@ -16,4 +16,27 @@ p {
 
 .card-title {
     font-weight: normal;
+    margin-bottom: 0;
+}
+
+.product-info__star-container {
+    position: relative;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-info__star-outline, .product-info__star {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.product-info__star-mask {
+    width: 0;
+    height: 28px;
+    position: absolute;
+    right: 0;
+    background-color: var(--light-component-background-color);
 }
