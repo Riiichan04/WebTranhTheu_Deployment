@@ -54,3 +54,37 @@ h1, h2, h3, h4, h5, p, i, span {
     background-color: var(--sub-cta-button-hover);
     color: var(--label-color);
 }
+
+
+
+.product-info__star-container {
+    position: relative;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-info__star-outline, .product-info__star {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.product-info__star-mask {
+    width: 0;
+    height: 28px;
+    position: absolute;
+    right: 0;
+    background-color: var(--light-component-background-color);
+}
+
+.category-list p {
+    margin: 0;
+}
+
+.category-active {
+    font-weight: bolder;
+    color: var(--label-color);
+    background-color: var(--sub-cta-button);
+}
