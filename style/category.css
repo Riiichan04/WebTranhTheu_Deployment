@@ -7,6 +7,11 @@
 
 .sub-cta-button {
     color: var(--sub-cta-button);
+    border: solid 2px var(--sub-cta-button) !important;
+}
+
+.page-link {
+    color: var(--sub-cta-button);
 }
 
 .card {
@@ -39,4 +44,14 @@
     position: absolute;
     right: 0;
     background-color: var(--light-component-background-color);
+}
+
+.category-list p {
+    margin: 0;
+}
+
+.category-active {
+    font-weight: bolder;
+    color: var(--label-color);
+    background-color: var(--sub-cta-button);
 }
