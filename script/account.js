@@ -22,14 +22,11 @@ $(document).ready(function(){
 
     //Thay đổi lịch sử xem sản phẩm
     $('.add-to_cart').click(function() {
-        // Find and remove the product item
-        $(this).closest('.product-item').remove();
-
-        // Check if there are any remaining products in the same shop
-        var shop = $(this).closest('.shop');
-        if (shop.find('.product-item').length === 0) {
-            // Remove the shop if no products remain
-            shop.remove();
+        $(this).parents(".shop");
+        if($(this).parents(".shop").find(".product-item").length <= 1) {
+            $(this).parents(".shop").remove();
+        }else{
+            $(this).closest('.product-item').remove();
         }
     })
     //Thêm hết vào giỏ hàng.
@@ -41,14 +38,13 @@ $(document).ready(function(){
     })
     // xoa san pham
     $('.delete_btn').click(function() {
-        // Find and remove the product item
-        $(this).closest('.product-item').remove();
-
-        // Check if there are any remaining products in the same shop
-        var shop = $(this).closest('.shop');
-        if (shop.find('.product-item').length === 0) {
-            // Remove the shop if no products remain
-            shop.remove();
+        $(this).parents(".shop");
+        if($(this).parents(".shop").find(".product-item").length <= 1) {
+            $(this).parents(".shop").remove();
+        }else{
+            $(this).closest('.product-item').remove();
         }
+
+
     })
 })
