@@ -1,21 +1,21 @@
-function changeFormOnUser(btn) {
+function changeFormOnCategory(btn) {
     const formWrapper = document.getElementById('formWrapper');
     switch (btn) {
-        case 'addUserBtn':
-            formWrapper.innerHTML = `<iframe src="user-form/add-user-form.html" class="w-100 h-100" id="addIframe"></iframe>`;
+        case 'addCategoryBtn':
+            formWrapper.innerHTML = `<iframe src="category-form/add-category-form.html" class="w-100 h-100" id="addIframe"></iframe>`;
             break;
         case 'readAndEditUserBtn':
-            formWrapper.innerHTML = `<iframe src="user-form/read-edit-user-form.html" class="w-100 h-100" id="readAndEditIframe"></iframe>`;
+            formWrapper.innerHTML = `<iframe src="category-form/read-edit-category-form.html" class="w-100 h-100" id="readAndEditIframe"></iframe>`;
             break;
         case 'deleteBtn':
-            formWrapper.innerHTML = `<iframe src="user-form/delete-popup.html" class="w-100 h-100" id="deleteIframe"></iframe>`;
+            formWrapper.innerHTML = `<iframe src="category-form/delete-popup.html" class="w-100 h-100" id="deleteIframe"></iframe>`;
             break;
     }
 }
 
 $(document).ready(function () {
-    $('#addUserBtn').click(function () {
-        changeFormOnUser(this.id);
+    $('#addCategoryBtn').click(function () {
+        changeFormOnCategory(this.id);
         $('#formWrapper').removeClass('hidden');
 
         $('#addIframe').on('load', function () {
@@ -35,7 +35,7 @@ $(document).ready(function () {
     });
 
     $('.btn-read-edit').click(function () {
-        changeFormOnUser('readAndEditUserBtn');
+        changeFormOnCategory('readAndEditUserBtn');
         $('#formWrapper').removeClass('hidden');
 
         $('#readAndEditIframe').on('load', function () {
@@ -56,7 +56,7 @@ $(document).ready(function () {
     });
 
     $('.btn-delete').click(function () {
-        changeFormOnUser('deleteBtn');
+        changeFormOnCategory('deleteBtn');
         $('#formWrapper').removeClass('hidden');
 
         $('#deleteIframe').on('load', function () {
@@ -75,5 +75,5 @@ $(document).ready(function () {
         });
 
     });
-    
+
 });
