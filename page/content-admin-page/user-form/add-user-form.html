@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+      
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #formContainer {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 2;
+            border-radius: 8px;
+        }
+
+        #formContainer h2 {
+            margin-top: 0;
+        }
+
+        #userForm label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        #userForm input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #userForm .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Gray overlay -->
+<div id="overlay" class="hidden"></div>
+<!-- Form container -->
+<div id="formContainer">
+    <form id="userForm">
+        <h2>Thêm Thông Tin Người Dùng</h2>
+        <label for="username">Tên Người Dùng:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Mật Khẩu:</label>
+        <input type="password" id="password" name="password" required>
+
+        <div class="buttons">
+            <button type="submit">Lưu</button>
+            <button type="button" id="cancelBtn">Hủy</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

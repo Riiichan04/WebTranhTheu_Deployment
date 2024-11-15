@@ -1,0 +1,8 @@
+.hidden {
+    display: none;
+}
+
+#formWrapper {
+    position: fixed;
+    top: 0;
+}
