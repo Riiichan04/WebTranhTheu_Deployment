@@ -13,7 +13,7 @@ function changeFormOnUser(btn) {
     }
 }
 
-$(document).ready(function () {
+$('#myTable').DataTable().on('draw', function () {
     $('#addUserBtn').click(function () {
         changeFormOnUser(this.id);
         $('#formWrapper').removeClass('hidden');
@@ -75,5 +75,4 @@ $(document).ready(function () {
         });
 
     });
-    
 });

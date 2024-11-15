@@ -13,7 +13,7 @@ function changeFormOnPolicy(btn) {
     }
 }
 
-$(document).ready(function () {
+$('#myTable').DataTable().on('draw', function () {
     $('#addPolicyBtn').click(function () {
         changeFormOnPolicy(this.id);
         $('#formWrapper').removeClass('hidden');

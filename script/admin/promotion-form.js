@@ -13,7 +13,7 @@ function changeFormOnPromotion(btn) {
     }
 }
 
-$(document).ready(function () {
+$('#myTable').DataTable().on('draw', function () {
     $('#addPromotionBtn').click(function () {
         changeFormOnPromotion(this.id);
         $('#formWrapper').removeClass('hidden');

@@ -13,7 +13,7 @@ function changeFormOnOrder(btn) {
     }
 }
 
-$(document).ready(function () {
+$('#myTable').DataTable().on('draw', function () {
     $('#addOrderBtn').click(function () {
         changeFormOnOrder(this.id);
         $('#formWrapper').removeClass('hidden');

@@ -13,7 +13,7 @@ function changeFormOnCategory(btn) {
     }
 }
 
-$(document).ready(function () {
+$('#myTable').DataTable().on('draw', function () {
     $('#addCategoryBtn').click(function () {
         changeFormOnCategory(this.id);
         $('#formWrapper').removeClass('hidden');

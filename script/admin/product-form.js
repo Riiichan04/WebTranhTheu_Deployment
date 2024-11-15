@@ -13,7 +13,7 @@ function changeFormOnProduct(btn) {
     }
 }
 
-$(document).ready(function () {
+$('#myTable').DataTable().on('draw', function () {
     $('#addProductBtn').click(function () {
         changeFormOnProduct(this.id);
         $('#formWrapper').removeClass('hidden');
@@ -75,5 +75,5 @@ $(document).ready(function () {
         });
 
     });
-
 });
+

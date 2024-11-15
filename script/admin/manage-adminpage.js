@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#myTable').DataTable( {
+        destroy: true,
         scrollY: "550px"
     }); // Khởi tạo DataTable
     $('.dt-search label').text("Tìm kiếm: ");
