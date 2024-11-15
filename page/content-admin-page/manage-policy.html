@@ -13,7 +13,7 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../style/index.css">
     <link rel="stylesheet" href="../../style/admin/general-content-admin.css">
-    <link rel="stylesheet" href="../../style/admin/manage-product.css">
+    <link rel="stylesheet" href="../../style/admin/display-form-admin.css">
     <!-- datatable -->
     <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
@@ -25,7 +25,7 @@
     <div class="row mt-3 mb-2">
         <div class="col"><h1 class="style-title">Quản lý chính sách</h1></div>
         <div class="col text-end mt-3 me-4">
-            <button class="btn-add"><i class="fa-solid fa-plus me-2"></i>Thêm chính sách</button>
+            <button class="btn-add" id="addPolicyBtn"><i class="fa-solid fa-plus me-2"></i>Thêm chính sách</button>
         </div>
     </div>
     <div class="row">
@@ -75,5 +75,9 @@
         </table>
     </div>
 </div>
+
+<div id="formWrapper" class="hidden w-100 h-100"></div>
+
+<script src="../../script/admin/policy-form.js"></script>
 </body>
 </html>
