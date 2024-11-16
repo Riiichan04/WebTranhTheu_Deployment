@@ -126,6 +126,10 @@ header ul > li:hover * {
     background-color: var(--sub-cta-button);
     color: var(--web-background-color);
 }
+.order-categories .on{
+    color: var(--sub-cta-button);
+    font-weight: bold;
+}
 /*Setting and Help*/
 .user_props_list .user_setting_help {
     padding: 10px 0;
@@ -200,18 +204,18 @@ header ul > li:hover * {
     color:var(--sub-cta-button);
 }
 /*User's order shipping*/
-#user_ordered_list .shippinglist .card .received{
+#user_ordered_list #shippinglist .card .received{
     background-color: var(--main-cta-button);
     color: var(--web-background-color);
     opacity: 0.5;
 }
 /*User's shipped list*/
-#user_ordered_list .shippedlist .card .received,#user_ordered_list .canceledlist .card .rebuy_btn{
+#user_ordered_list #shippedlist .card .received,#user_ordered_list #canceledlist .card .rebuy_btn{
     background-color: var(--main-cta-button);
     color: var(--web-background-color);
 }
 /*User's turnedback orders*/
-#user_ordered_list .turnedback .card .turnback_details{
+#user_ordered_list #turnedback .card .turnback_details{
     background-color: var(--sub-cta-button);
     color: var(--web-background-color);
 }
@@ -225,6 +229,10 @@ header ul > li:hover * {
 }
 #user_setting .change_avatar{
     background-color: var(--web-background-color);
+}
+#user_setting .fullname .edit_name{
+    background-color: var(--web-background-color);
+    color:var(--sub-cta-button);
 }
 #user_setting .feedback_form .container{
     background-color: var(--web-background-color);

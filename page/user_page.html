@@ -65,7 +65,7 @@
         <div class="user_props_list col-4">
             <div class="user_img_frame">
                 <img src="../asset/user_img.png" style="width: 100px;height: 100px;margin-top: 30px">
-                <p id="fullname" class="p-4">Loan Cute :3 </p>
+                <p id="nickname" class="p-4">Loan Cute :3 </p>
             </div>
             <div class="list-group list_props">
                 <button type="button" data-target="user_info" class="list-group-item list-group-item-action">
@@ -340,17 +340,15 @@
             <hr>
             <div class="container px-3">
                 <div class="row order-categories">
-                    <div class="col p-2">Chờ xác nhận</div>
-                    <div class="col p-2">Chờ lấy hàng</div>
-                    <div class="col p-2">Chờ giao hàng</div>
-                    <div class="col p-2">Trả hàng</div>
-                    <div class="col p-2">Đã giao</div>
-                    <div class="col p-2">Đã hủy</div>
+                    <div class="col order-item p-2" data-target="waitlist">Chờ xác nhận</div>
+                    <div class="col order-item p-2" data-target="pickedlist">Chờ lấy hàng</div>
+                    <div class="col order-item p-2" data-target="shippinglist">Chờ giao hàng</div>
+                    <div class="col order-item p-2" data-target="turnedback">Trả hàng</div>
+                    <div class="col order-item p-2" data-target="shippedlist">Đã giao</div>
+                    <div class="col order-item p-2" data-target="canceledlist">Đã hủy</div>
                 </div>
-
-                <div class="row order-detail">
                     <!-- Waitlist Orders-->
-                    <div class="waitlist container">
+                    <div  id="waitlist" class="order-details">
                         <!-- Card-->
                         <div class="card container">
                             <!--NSX-->
@@ -521,7 +519,7 @@
                         </div>
                     </div>
                     <!--Pickup Orders (PAID)-->
-                    <div class="pickedlist container" style="display: none">
+                    <div id="pickedlist" class="order-details" style="display: none">
                         <!-- Card-->
                         <div class="card container">
                             <!--NSX-->
@@ -692,7 +690,7 @@
                         </div>
                     </div>
                     <!--Shipping Order-->
-                    <div class="shippinglist container" style="display: none">
+                    <div id="shippinglist" class="order-details" style="display: none">
                         <!-- Card-->
                         <div class="card container">
                             <!--NSX-->
@@ -854,7 +852,7 @@
                         </div>
                     </div>
                     <!--Shipped Orders-->
-                    <div class="shippedlist container" style="display: none">
+                    <div id="shippedlist" class=" order-details" style="display: none">
                         <!-- Card-->
                         <div class="card container">
                             <!--NSX-->
@@ -1019,7 +1017,7 @@
                         </div>
                     </div>
                     <!--Turned back Orders-->
-                    <div class="turnedback container" style="display: none">
+                    <div id="turnedback" class=" order-details" style="display: none">
                         <!-- Card-->
                         <div class="card container">
                             <!--NSX-->
@@ -1181,7 +1179,7 @@
                         </div>
                     </div>
                     <!--Canceled Orders-->
-                    <div class="canceledlist container" style="display: none">
+                    <div id="canceledlist" class="order-details" style="display: none">
                         <!-- Card-->
                         <div class="card container">
                             <!--NSX-->
@@ -1342,7 +1340,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <!--End-->
             </div>
         </div>
@@ -1532,7 +1529,7 @@
                     <div class="col-3"><img src="../asset/user_img.png" style="width: 100px;height: 100px;"></div>
                     <div class="col-3 pt-5">
                         <button type="button" class="change_img">Thay đổi</button>
-                        <div class="change_avatar mt-1 ms-3 container border">
+                        <div class="change_avatar mt-1 ms-3 container border" style="display: none">
                             <div class="row ps-2 border-bottom">Lấy từ thiết bị</div>
                             <div class="row ps-2">Link url</div>
                         </div>
@@ -1540,8 +1537,15 @@
                 </div>
                 <div class="row fullname">
                     <div class="col-2 py-5 ps-3">Tên:</div>
-                    <div class="col-4 pt-5"><input type="text" value="Nguyễn Bích Loan"></div>
-                    <div class="col-3 pt-5"><button type="reset" class="change_name"> Thay đổi</button></div>
+                    <div class="col-4 pt-5"><input id="fullname" type="text" value="Nguyễn Bích Loan"></div>
+                    <div class="col-5 pt-5">
+                        <button type="reset" class="change_name"> Thay đổi</button>
+                            <div class="row change-detail ps-4 pt-3" style="display: none">
+                                <p class="col-4">Tên mới:</p>
+                                <input class="fullname_edit col-5" placeholder="Enter new name...">
+                                <button class="col-2 edit_name">Change</button>
+                            </div>
+                    </div>
                 </div>
                 <div class="row feedback_form">
                     <form class="poll-form">
@@ -1579,23 +1583,38 @@
             <div class="container p-4">
                 <div class="row border-bottom">
                     <div class="col-1"><i class="bi bi-question-circle"></i></div>
-                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
                 </div>
                 <div class="row pt-2 border-bottom">
                     <div class="col-1"><i class="bi bi-question-circle"></i></div>
-                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
                 </div>
                 <div class="row pt-2 border-bottom">
                     <div class="col-1"><i class="bi bi-question-circle"></i></div>
-                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
                 </div>
                 <div class="row pt-2 border-bottom">
                     <div class="col-1"><i class="bi bi-question-circle"></i></div>
-                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
                 </div>
                 <div class="row pt-2 border-bottom">
-                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
-                    <div class="col">Tại sao tôi không để áp dụng khuyến mãi?</div>
+                    <div class="col-1"><i class="bi bi-question-circle" ></i></div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
                 </div>
             </div>
         </div>
