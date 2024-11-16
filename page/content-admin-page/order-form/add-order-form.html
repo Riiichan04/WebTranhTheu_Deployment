@@ -21,17 +21,17 @@
 <!-- Gray overlay -->
 <div id="overlay" class="hidden"></div>
 <!-- Form container -->
-<div id="formContainer" class=" d-flex justify-content-center align-items-center vh-100">
+<div id="formContainer" class="d-flex justify-content-center align-items-center vh-100">
     <!--enter code -->
     <form class="form-container">
         <div class="row pt-3">
             <div class="col"><h2 class="style-big-title">Thêm đơn hàng</h2></div>
         </div>
         <div class="row pt-2">
-            <div class="col"><span class="style-title">Mã khách hàng<span class="text-danger"> * </span></span></div>
+            <div class="col"><span class="style-title">Tên đăng nhập người dùng<span class="text-danger"> * </span></span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập mã khách hàng">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên đăng nhập người dùng">
             </div>
         </div>
 
@@ -66,44 +66,32 @@
         </div>
 
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Ngày tạo danh mục<span class="text-danger"> * </span></span>
+            <div class="col"><span class="style-title">Ngày tạo đơn hàng<span class="text-danger"> * </span></span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input"></div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày giao hàng<span class="text-danger"> * </span></span>
             </div>
         </div>
         <div class="row pt-2">
             <div class="col p-0"><input type="date" class="w-100 style-input"></div>
         </div>
 
+
         <div class="row pt-4 pb-4">
             <div class="col">
                 <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
             </div>
             <div class="col">
-                <button class="style-button">Thêm danh mục</button>
+                <button class="style-button">Thêm đơn hàng</button>
             </div>
         </div>
     </form>
 </div>
 
-<script>
-    function addProduct() {
-        const productRow = document.querySelector('.product-row');
-        const newRow = productRow.cloneNode(true);
-        newRow.querySelectorAll('input, select').forEach(input => input.value = '');
-        document.getElementById('products').appendChild(newRow);
-
-        if($('#formContainer').height() < $('.form-container').height()) {
-            $('#formContainer').removeClass('vh-100');
-        }
-    }
-
-    function removeProduct(button) {
-        const row = button.parentElement.parentElement;
-        if (document.querySelectorAll('.product-row').length > 1) {
-            row.remove();
-        } else {
-            alert("Phải có ít nhất một sản phẩm!");
-        }
-    }
-</script>
+<script src="../../../script/admin/order-form/add-product-order-form.js"></script>
 </body>
 </html>

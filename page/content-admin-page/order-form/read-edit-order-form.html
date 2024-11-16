@@ -13,13 +13,84 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
     <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
+    <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
+    <link rel="stylesheet" href="../../../style/admin/style-form/style-add-order-form.css">
+    
 </head>
 <body>
 <!-- Gray overlay -->
 <div id="overlay" class="hidden"></div>
 <!-- Form container -->
-<div id="formContainer">
+<div id="formContainer" class="d-flex justify-content-center align-items-center vh-100">
     <!-- enter code -->
+    <form class="form-container">
+        <div class="row pt-3">
+            <div class="col"><h2 class="style-big-title">Xem đơn hàng</h2></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Tên đăng nhập người dùng</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên đăng nhập người dùng" value="tho123" disabled>
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Sản phẩm mua</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <!-- Sản phẩm -->
+                <div id="products">
+                    <div class="form-group product-row row mb-2">
+                        <div class="col-6 pe-0">
+                            <select class="w-100 style-select" required disabled>
+                                <option value="" disabled>Chọn sản phẩm</option>
+                                <option value="product1" selected>Sản phẩm 1</option>
+                                <option value="product2">Sản phẩm 2</option>
+                                <option value="product3">Sản phẩm 3</option>
+                            </select>
+                        </div>
+                        <div class="col-4 pe-0">
+                            <input type="number" class="w-100 style-input" min="1" placeholder="Nhập số lượng" value="1" required disabled>
+                        </div>
+                        <div class="col-2 d-none">
+                            <button type="button" class="remove-product-btn" onclick="removeProduct(this)">Xóa</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center d-none">
+                    <button type="button" class="add-product-btn px-2" onclick="addProduct()">Thêm Sản Phẩm</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày tạo đơn hàng</span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-01" disabled></div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày giao hàng</span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-02" disabled></div>
+        </div>
+        
+        <div class="row pt-4 pb-4">
+            <div class="col">
+                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col">
+                <button class="style-button">Chỉnh sửa</button>
+            </div>
+        </div>
+    </form>
 </div>
+
+<script src="../../../script/admin/order-form/add-product-order-form.js"></script>
 </body>
 </html>
