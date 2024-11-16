@@ -6,7 +6,8 @@
 }
 
 .sub-cta-button {
-    color: var(--sub-cta-button);
+    background-color: var(--sub-cta-button);
+    color: var(--label-color);
     border: solid 2px var(--sub-cta-button) !important;
 }
 
@@ -56,3 +57,7 @@
     background-color: var(--sub-cta-button);
 }
 
+.form-check-input:checked {
+    background-color: var(--sub-cta-button);
+    border-color: var(--sub-cta-button);
+}
