@@ -38,11 +38,22 @@
     padding-left: 10px;
     font-size: 14px;
 }
-.style-input:disabled {
+
+.style-area {
+    height: 100px;
+    padding-left: 10px;
+    resize: none;
+}
+
+.style-input:disabled, .style-area:disabled, .style-select:disabled {
     background-color: white !important;
-    color: var(--text-color) !important;
-    opacity: 1 !important;
-    border: solid 1px var(--text-color) !important;
+    border: solid 1px rgb(118, 118, 118) !important;
+}
+
+.style-select {
+    height: 130px;
+    width: 100%;
+    padding-left: 20px;
 }
 
 .icon-container {
@@ -58,22 +69,9 @@
 }
 
 .form-container {
-    margin-top: 50px;
     padding-left: 40px;
     padding-right: 40px;
     background-color: var(--light-component-background-color);
-}
-
-.style-area {
-    height: 100px;
-    padding-left: 10px;
-    resize: none;
-}
-.style-area:disabled {
-    background-color: white !important;
-    color: var(--text-color) !important;
-    opacity: 1 !important;
-    border: solid 1px var(--text-color) !important;
 }
 
 .style-cancel-btn {
