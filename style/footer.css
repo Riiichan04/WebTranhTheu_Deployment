@@ -1,0 +1,6 @@
+footer{
+    background-color: var(--dark-component-background-color);
+}
+#footer-logo{
+    font-size: 40px;
+}
