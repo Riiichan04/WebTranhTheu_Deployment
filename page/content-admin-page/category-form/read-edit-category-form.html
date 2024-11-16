@@ -13,6 +13,7 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
     <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
+    <link rel="stylesheet" href="../../../style/admin/style-user-form/general-user-form.css">
 </head>
 <body>
 <!-- Gray overlay -->
@@ -20,7 +21,60 @@
 <!-- Form container -->
 <div id="formContainer">
     <!-- enter code -->
-    
+    <form class="form-container" style="margin-top: 140px">
+        <div class="row pt-3">
+            <div class="col"><h2 class="style-big-title">Xem danh mục</h2></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Tên danh mục</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên danh mục" value="Tranh thêu phong cảnh" disabled>
+            </div>
+        </div>
+
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Sản phẩm thuộc danh mục</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select-many" name="products" multiple disabled>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                    <option>Tranh thêu phong cảnh</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày tạo danh mục</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-30" disabled></div>
+        </div>
+
+        <div class="row pt-4 pb-4">
+            <div class="col">
+                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col">
+                <button class="style-button">Chỉnh sửa</button>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
