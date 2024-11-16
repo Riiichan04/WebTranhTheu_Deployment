@@ -1,0 +1,83 @@
+.style-big-title {
+    font-weight: bold;
+    color: var(--big-text-color);
+}
+
+.style-title {
+    color: var(--big-text-color);
+    font-weight: 500;
+}
+
+.style-button, .style-cancel-btn {
+    border: none;
+    background-color: var(--sub-cta-button);
+    color: var(--label-color);
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.style-caption {
+    font-weight: lighter;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.style-label {
+    color: var(--big-text-color);
+}
+
+.icon-social {
+    height: 40px;
+    text-align: center;
+    align-content: center;
+}
+
+.style-input {
+    height: 50px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+.style-input:disabled {
+    background-color: white !important;
+    color: var(--text-color) !important;
+    opacity: 1 !important;
+    border: solid 1px var(--text-color) !important;
+}
+
+.icon-container {
+    height: 50px;
+    background-color: white;
+    align-content: center;
+    border: solid 1px rgb(118, 118, 118);
+    border-right: none;
+}
+
+.fa-brands {
+    color: var(--sub-cta-button);
+}
+
+.form-container {
+    margin-top: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: var(--light-component-background-color);
+}
+
+.style-area {
+    height: 100px;
+    padding-left: 10px;
+    resize: none;
+}
+.style-area:disabled {
+    background-color: white !important;
+    color: var(--text-color) !important;
+    opacity: 1 !important;
+    border: solid 1px var(--text-color) !important;
+}
+
+.style-cancel-btn {
+    background-color: var(--sub-component-background-color);
+    color: var(--text-color);
+}
+
