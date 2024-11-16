@@ -38,7 +38,7 @@
     resize: none;
 }
 
-.style-input:disabled, .style-area:disabled, .style-select-many:disabled {
+.style-input:disabled, .style-area:disabled, .style-select-many:disabled, .style-select:disabled {
     background-color: white !important;
     border: solid 1px rgb(118, 118, 118) !important;
 }

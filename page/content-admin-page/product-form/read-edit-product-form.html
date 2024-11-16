@@ -10,16 +10,213 @@
     <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- DataTable -->
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
     <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
+    <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
+    <link rel="stylesheet" href="../../../style/admin/style-form/style-read-edit-product-form.css">
+
 </head>
 <body>
 <!-- Gray overlay -->
 <div id="overlay" class="hidden"></div>
 <!-- Form container -->
-<div id="formContainer">
+<div id="formContainer" style="width: 700px; left: calc(50% - 350px);">
     <!-- enter code -->
+    <form class="form-container">
+        <div class="row pt-3">
+            <div class="col"><h2 class="style-big-title">Xem sản phẩm</h2></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Tên sản phẩm</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" value="Tranh thêu sông nước" disabled>
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Hình ảnh</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0 text-center">
+                <div class="img-container w-100">
+                    <img src="https://tranhvietcaocap.com/timthumb.php?src=upload/images/tranh-theu-tang-co-giao-%E2%80%93-mon-qua-tri-an-chan-thanh-nhan-ngay-nha-giao-viet-nam-20-11.jpg&w=390&h=0&zc=1&a=tc">
+                    <i class="fa-solid fa-trash icon-del d-none"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row pt-3 d-none">
+            <div class="col"><span class="style-title">Tải ảnh sản phẩm lên</span></div>
+        </div>
+        <div class="row pt-2 d-none">
+            <div class="col p-0"><input type="file" class="w-100 style-input" multiple>
+            </div>
+        </div>
+        
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Mô tả</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><textarea class="w-100 style-area" disabled>Mô tả sản phẩm này</textarea>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Giá bán (VND)</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="number" class="w-100 style-input" placeholder="Nhập giá bán sản phẩm" value="8000000" disabled>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Kích thước (cm)</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0 pe-1"><input type="number" class="w-100 style-input" placeholder="Chiều rộng (cm)" value="40" disabled>
+            </div>
+            <div class="col p-0 ps-1"><input type="number" class="w-100 style-input" placeholder="Chiều cao (cm)" value="60" disabled>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Số lượng</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="number" class="w-100 style-input" placeholder="Nhập số lượng sản phẩm" value="100" disabled>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Chất liệu</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập chất liệu sản phẩm" value="vải, chỉ, gỗ" disabled>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Nhà phân phối</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" disabled>
+                    <option selected>Nhà phân phối 1</option>
+                    <option>Nhà phân phối 2</option>
+                    <option>Nhà phân phối 3</option>
+                    <option>Nhà phân phối 4</option>
+                    <option>Nhà phân phối 5</option>
+                    <option>Nhà phân phối 6</option>
+                    <option>Nhà phân phối 7</option>
+                    <option>Nhà phân phối 8</option>
+                    <option>Nhà phân phối 9</option>
+                </select>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Chính sách</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" disabled>
+                    <option selected>Chính sách 1</option>
+                    <option>Chính sách 2</option>
+                    <option>Chính sách 3</option>
+                    <option>Chính sách 4</option>
+                    <option>Chính sách 5</option>
+                    <option>Chính sách 6</option>
+                    <option>Chính sách 7</option>
+                    <option>Chính sách 8</option>
+                </select>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Danh mục</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select-many" multiple disabled>
+                    <option>Danh mục 4</option>
+                    <option>Danh mục 5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Đánh giá của người dùng</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <table id="myTable" class="display custom-table w-100">
+                    <thead>
+                        <tr>
+                            <th class="text-center">STT</th>
+                            <th class="text-center">Tên người dùng</th>
+                            <th class="text-center">Đánh giá (<span style="color: var(--dark-component-background-color)">★</span>)</th>
+                            <th class="text-center">Bình luận</th>
+                            <th class="text-center">Ngày tạo</th>
+                            <th class="text-center">Ngày cập nhật</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Nguyễn Văn Hòa</td>
+                            <td>4.5</td>
+                            <td>Tranh thêu đẹp, chất liệu ổn</td>
+                            <td>1/2/2024</td>
+                            <td>1/2/2024</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Nguyễn Văn Hòa</td>
+                            <td>4.5</td>
+                            <td>Tranh thêu đẹp, chất liệu ổn</td>
+                            <td>1/2/2024</td>
+                            <td>1/2/2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày thêm sản phẩm</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-30" disabled></div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày cập nhật sản phẩm</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" disabled></div>
+        </div>
+
+        <div class="row pt-4 pb-4">
+            <div class="col">
+                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col">
+                <button class="style-button">Chỉnh sửa</button>
+            </div>
+        </div>
+    </form>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable( {
+            destroy: true,
+            scrollY: "200px"
+        }); // Khởi tạo DataTable
+        $('.dt-search label').text("Tìm kiếm: ");
+        $('.dt-search label').css("margin-right", "10px");
+        $('.dt-length label').text("Số lượng hiển thị mỗi trang");
+        $('.dt-length label').css("margin-left", "10px");
+        $('.dt-info').css("display", "none");
+        $('.dt-search input').css("width", "300px");
+        $('table.dataTable th.dt-type-numeric').css("text-align", "center");
+    });
+</script>
 </body>
 </html>
