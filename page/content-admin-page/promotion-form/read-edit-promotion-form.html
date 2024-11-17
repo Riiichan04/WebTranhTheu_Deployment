@@ -10,16 +10,20 @@
     <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- DataTable -->
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
     <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
     <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
+    
 </head>
 <body>
 <!-- Gray overlay -->
 <div id="overlay" class="hidden"></div>
 <!-- Form container -->
-<div id="formContainer" class="vh-100 align-content-center">
+<div id="formContainer" class="vh-100 align-content-center" style="width: 600px; left: calc(50% - 300px)">
     <!-- enter code -->
     <form class="form-container">
         <div class="row pt-3">
@@ -47,7 +51,42 @@
             </div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"></div>
+            <div class="col p-0">
+                <table id="myTable" class="display custom-table w-100">
+                    <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Mã sản phẩm</th>
+                        <th class="text-center">Tên sản phẩm</th>
+                        <th class="text-center">Phần trăm giảm (%)</th>
+                        <th class="text-center">Số lượng giới hạn</th>
+                        <th class="text-center d-none">Tiện ích</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>SP01</td>
+                        <td>Tranh thêu sông nước</td>
+                        <td><input type="number" value="10" style="width: 50px" disabled></td>
+                        <td><input type="number" value="3" style="width: 50px" disabled></td>
+                        <td class="d-none">
+                            <button type="button" class="btn-del">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>SP01</td>
+                        <td>Tranh thêu sông nước</td>
+                        <td><input type="number" value="10" style="width: 50px" disabled></td>
+                        <td><input type="number" value="3" style="width: 50px" disabled></td>
+                        <td class="d-none">
+                            <button type="button" class="btn-del">Xóa</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         
         <!-- ngày tạo -->
@@ -76,5 +115,7 @@
         </div>
     </form>
 </div>
+
+<script src="../../../script/admin/promotion-form/read-edit-promotion-form.js"></script>
 </body>
 </html>
