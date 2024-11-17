@@ -79,7 +79,37 @@
         <div class="row pt-2">
             <div class="col p-0"><input type="date" class="w-100 style-input"></div>
         </div>
-
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Trạng thái đơn hàng<span class="text-danger"> * </span></span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" id="statusOrder" onclick="reasonCancelOrder()">
+                    <option>Đang giao</option>
+                    <option>Đã hoàn thành</option>
+                    <option>Đã hủy</option>
+                </select>
+            </div>
+        </div>
+        <div class="row pt-3 d-none label-reason-cancel-order">
+            <div class="col"><span class="style-title">Lí do hủy<span class="text-danger"> * </span></span>
+            </div>
+        </div>
+        <div class="row pt-2 d-none select-reason-cancel-order">
+            <div class="col p-0">
+                <select class="style-select">
+                    <option>Lí do 1</option>
+                    <option>Lí do 2</option>
+                    <option>Lí do 3</option>
+                    <option>Lí do 4</option>
+                    <option>Lí do 5</option>
+                    <option>Lí do 6</option>
+                    <option>Lí do 7</option>
+                    <option>Lí do 8</option>
+                </select>
+            </div>
+        </div>
 
         <div class="row pt-4 pb-4">
             <div class="col">

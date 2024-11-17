@@ -17,3 +17,14 @@ function removeProduct(button) {
         alert("Phải có ít nhất một sản phẩm!");
     }
 }
+
+function reasonCancelOrder() {
+    const selectedText = $("#statusOrder option:selected").text();
+    if(selectedText === 'Đã hủy') {
+        $('.label-reason-cancel-order').removeClass('d-none');
+        $('.select-reason-cancel-order').removeClass('d-none');
+    } else {
+        $('.label-reason-cancel-order').addClass('d-none');
+        $('.select-reason-cancel-order').addClass('d-none');
+    }
+}

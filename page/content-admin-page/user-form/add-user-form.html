@@ -13,6 +13,7 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
     <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
+    <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
     <style>
         button {
             padding: 10px 20px;
@@ -40,26 +41,101 @@
         }
 
     </style>
+    <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
 </head>
 <body>
 <!-- Gray overlay -->
 <div id="overlay" class="hidden"></div>
 <!-- Form container -->
 <div id="formContainer">
-    <form id="userForm">
-        <h2>Thêm Thông Tin Người Dùng</h2>
-        <label for="username">Tên Người Dùng:</label>
-        <input type="text" id="username" name="username" required>
+    <form class="form-container">
+        <div class="row pt-3">
+            <div class="col"><h2 class="style-big-title">Thêm người dùng</h2></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Tên đăng nhập<span class="text-danger"> * </span></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên đăng nhập">
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Mật khẩu<span class="text-danger"> * </span></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="password" class="w-100 style-input" placeholder="Nhập mật khẩu">
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Họ và tên<span class="text-danger"> * </span></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập email">
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Tải ảnh đại diện</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="file" class="w-100 style-input">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"><span class="style-title">Email</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="email" class="w-100 style-input" placeholder="Nhập email">
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Số điện thoại</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="tel" class="w-100 style-input" placeholder="Nhập số điện thoại">
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Giới tính<span class="text-danger"> * </span></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col text-end">
+                <label>Nam</label>
+                <input type="radio" name="gender" value="man">
+            </div>
+            <div class="col">
+                <label>Nữ</label>
+                <input type="radio" name="gender" value="woman">
+            </div>
+        </div>
+        
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Mô tả</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><textarea class="w-100 style-area" placeholder="Nhập mô tả người dùng"></textarea>
+            </div>
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày tạo tài khoản<span class="text-danger"> * </span></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input"></div>
+        </div>
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày cập nhật tài khoản</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input"></div>
+        </div>
 
-        <label for="password">Mật Khẩu:</label>
-        <input type="password" id="password" name="password" required>
-
-        <div class="buttons">
-            <button type="submit">Lưu</button>
-            <button type="button" id="cancelBtn">Hủy</button>
+        <div class="row pt-4 pb-4">
+            <div class="col">
+                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col">
+                <button class="style-button">Thêm người dùng</button>
+            </div>
         </div>
     </form>
 </div>
