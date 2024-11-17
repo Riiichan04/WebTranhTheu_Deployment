@@ -24,12 +24,13 @@
 <!-- Gray overlay -->
 <div id="overlay" class="hidden"></div>
 <!-- Form container -->
-<div id="formContainer" style="width: 600px; left: calc(50% - 300px);">
+<div id="formContainer" style="width: 650px; left: calc(50% - 325px);">
     <!-- enter code -->
     <form class="form-container">
         <div class="row pt-3">
             <div class="col"><h2 class="style-big-title">Xem sản phẩm</h2></div>
         </div>
+        <!-- tên sản phẩm -->
         <div class="row pt-2">
             <div class="col"><span class="style-title">Tên sản phẩm</span></div>
         </div>
@@ -37,7 +38,7 @@
             <div class="col p-0"><input type="text" class="w-100 style-input" value="Tranh thêu sông nước" disabled>
             </div>
         </div>
-
+        <!-- hình ảnh -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Hình ảnh</span></div>
         </div>
@@ -57,7 +58,7 @@
             <div class="col p-0"><input type="file" class="w-100 style-input" multiple>
             </div>
         </div>
-        
+        <!-- mô tả -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Mô tả</span></div>
         </div>
@@ -65,13 +66,18 @@
             <div class="col p-0"><textarea class="w-100 style-area" disabled>Mô tả sản phẩm này</textarea>
             </div>
         </div>
+        <!-- giá bán và số lượng -->
         <div class="row pt-2">
             <div class="col"><span class="style-title">Giá bán (VND)</span></div>
+            <div class="col"><span class="style-title">Số lượng</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="number" class="w-100 style-input" placeholder="Nhập giá bán sản phẩm" value="8000000" disabled>
+            <div class="col p-0 pe-1"><input type="number" class="w-100 style-input" placeholder="Nhập giá bán sản phẩm" value="8000000" disabled>
+            </div>
+            <div class="col p-0 ps-1"><input type="number" class="w-100 style-input" placeholder="Nhập số lượng sản phẩm" value="100" disabled>
             </div>
         </div>
+        <!-- kích thước -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Kích thước (cm)</span></div>
         </div>
@@ -85,13 +91,7 @@
                 <input type="number" class="w-100 style-input" placeholder="Chiều cao (cm)" value="60" disabled>
             </div>
         </div>
-        <div class="row pt-3">
-            <div class="col"><span class="style-title">Số lượng</span></div>
-        </div>
-        <div class="row pt-2">
-            <div class="col p-0"><input type="number" class="w-100 style-input" placeholder="Nhập số lượng sản phẩm" value="100" disabled>
-            </div>
-        </div>
+        <!-- chất liệu -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Chất liệu</span></div>
         </div>
@@ -99,6 +99,7 @@
             <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập chất liệu sản phẩm" value="vải, chỉ, gỗ" disabled>
             </div>
         </div>
+        <!-- nhà phân phối -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Nhà phân phối</span></div>
         </div>
@@ -117,6 +118,7 @@
                 </select>
             </div>
         </div>
+        <!-- chính sách -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Chính sách</span></div>
         </div>
@@ -134,6 +136,7 @@
                 </select>
             </div>
         </div>
+        <!-- danh mục -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Danh mục</span></div>
         </div>
@@ -145,7 +148,7 @@
                 </select>
             </div>
         </div>
-
+        <!-- table đánh giá sản phẩm -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Đánh giá của người dùng</span></div>
         </div>
@@ -160,30 +163,37 @@
                             <th class="text-center">Bình luận</th>
                             <th class="text-center">Ngày tạo</th>
                             <th class="text-center">Ngày cập nhật</th>
+                            <th class="text-center d-none">Tiện ích</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
                             <td>Nguyễn Văn Hòa</td>
-                            <td>4.5</td>
-                            <td>Tranh thêu đẹp, chất liệu ổn</td>
+                            <td><input type="number" value="4.5" style="width: 50px" disabled></td>
+                            <td><textarea class="style-textarea-cmt" disabled>Tranh thêu đẹp, chất liệu tốt</textarea></td>
                             <td>1/2/2024</td>
                             <td>1/2/2024</td>
+                            <td class="d-none">
+                                <button type="button" class="btn-del">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Nguyễn Văn Hòa</td>
-                            <td>4.5</td>
-                            <td>Tranh thêu đẹp, chất liệu ổn</td>
+                            <td><input type="number" value="4.5" style="width: 50px" disabled></td>
+                            <td><textarea class="style-textarea-cmt" disabled>Tranh thêu đẹp, chất liệu tốt</textarea></td>
                             <td>1/2/2024</td>
                             <td>1/2/2024</td>
+                            <td class="d-none">
+                                <button type="button" class="btn-del">Xóa</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        
+        <!-- ngày tạo, cập nhật -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày thêm sản phẩm</span></div>
         </div>
@@ -207,20 +217,7 @@
         </div>
     </form>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable( {
-            destroy: true,
-            scrollY: "200px"
-        }); // Khởi tạo DataTable
-        $('.dt-search label').text("Tìm kiếm: ");
-        $('.dt-search label').css("margin-right", "10px");
-        $('.dt-length label').text("Số lượng hiển thị mỗi trang");
-        $('.dt-length label').css("margin-left", "10px");
-        $('.dt-info').css("display", "none");
-        $('.dt-search input').css("width", "300px");
-        $('table.dataTable th.dt-type-numeric').css("text-align", "center");
-    });
-</script>
+
+<script src="../../../script/admin/product-form/read-edit-product-form.js"></script>
 </body>
 </html>
