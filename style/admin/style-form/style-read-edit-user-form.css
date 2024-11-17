@@ -1,0 +1,46 @@
+.img-container {
+    height: 200px;
+}
+
+.img-container img {
+    position: relative;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-edit-avt, .icon-del {
+    position: absolute;
+    right: 30px;
+    font-size: 20px;
+    color: var(--dark-component-background-color);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.icon-edit-avt:hover, .icon-del:hover {
+    color: var(--light-component-background-color);
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.8;
+}
+
+.style-add-address-btn {
+    height: 40px;
+    width: 200px;
+    background-color: var(--sub-cta-button);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-del {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--sub-cta-button);
+    height: 30px;
+    color: white;
+}
+
+#myTable tbody tr td{
+    font-size: 14px;
+}
