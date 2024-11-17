@@ -3,10 +3,6 @@ function addProduct() {
     const newRow = productRow.cloneNode(true);
     newRow.querySelectorAll('input, select').forEach(input => input.value = '');
     document.getElementById('products').appendChild(newRow);
-
-    if($('#formContainer').height() < $('.form-container').height()) {
-        $('#formContainer').removeClass('vh-100');
-    }
 }
 
 function removeProduct(button) {

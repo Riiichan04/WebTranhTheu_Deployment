@@ -13,13 +13,68 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
     <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
+    <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
 </head>
 <body>
 <!-- Gray overlay -->
 <div id="overlay" class="hidden"></div>
 <!-- Form container -->
-<div id="formContainer">
+<div id="formContainer" class="vh-100 align-content-center">
     <!-- enter code -->
+    <form class="form-container">
+        <div class="row pt-3">
+            <div class="col"><h2 class="style-big-title">Xem giảm giá</h2></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Tên giảm giá</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên giảm giá" value="Giảm lễ 30/4" disabled>
+            </div>
+        </div>
+        <!-- mô tả -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Mô tả giảm giá</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><textarea class="w-100 style-area" placeholder="Nhập mô tả giảm giá" disabled>Mô tả giảm giá này</textarea>
+            </div>
+        </div>
+        
+        <!-- giảm giá -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Giảm giá</span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"></div>
+        </div>
+        
+        <!-- ngày tạo -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày tạo giảm giá</span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="datetime-local" class="w-100 style-input" value="2024-04-30T00:00" disabled></div>
+        </div>
+        <!-- kết thúc -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày kết thúc giảm giá</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="datetime-local" class="w-100 style-input" value="2024-04-30T23:59" disabled></div>
+        </div>
+
+        <div class="row pt-4 pb-4">
+            <div class="col">
+                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col">
+                <button class="style-button">Chỉnh sửa</button>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
