@@ -13,6 +13,7 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
     <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
+    <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
 
 </head>
 <body>
@@ -21,6 +22,50 @@
 <!-- Form container -->
 <div id="formContainer">
     <!--enter code -->
+    <form class="form-container" style="margin-top: 65px">
+        <div class="row pt-3">
+            <div class="col"><h2 class="style-big-title">Thêm giảm giá</h2></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Tên giảm giá<span class="text-danger"> * </span></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên giảm giá">
+            </div>
+        </div>
+        <!-- mô tả -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Mô tả giảm giá<span class="text-danger"> * </span></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><textarea class="w-100 style-area" placeholder="Nhập mô tả giảm giá"></textarea>
+            </div>
+        </div>
+        <!-- ngày tạo -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày tạo giảm giá<span class="text-danger"> * </span></span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input"></div>
+        </div>
+        <!-- kết thúc -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày kết thúc giảm giá</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input"></div>
+        </div>
+        
+        <div class="row pt-4 pb-4">
+            <div class="col">
+                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col">
+                <button class="style-button">Thêm chính sách</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 </body>
