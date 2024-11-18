@@ -13,13 +13,27 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
     <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
+    <link rel="stylesheet" href="../../../style/admin/style-form/style-delete-form.css">
+    
 </head>
 <body>
 <!-- Gray overlay -->
 <div id="overlay" class="hidden"></div>
 <!-- Form container -->
-<div id="formContainer">
-  <!-- enter code -->
+<div id="formContainer" class="align-content-center vh-100">
+    <!-- Modal xác nhận -->
+    <div id="confirmModal">
+        <div class="modal-content py-4">
+            <h5 class="style-title"><i class="fa-solid fa-circle-question me-2"></i>Xóa sản phẩm</h5>
+            <hr>
+            <h6 class="style-text">Bạn chắc chắn muốn xóa <span class="style-name-element">Mã sản phẩm</span>?</h6>
+            <hr>
+            <div class="text-end">
+                <button class="btn-no d-inline" id="cancelBtn">Không</button>
+                <button class="btn-yes d-inline" id="confirmYes">Có</button>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
