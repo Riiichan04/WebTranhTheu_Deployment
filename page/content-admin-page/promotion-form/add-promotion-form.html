@@ -44,11 +44,12 @@
         <div class="row pt-3">
             <div class="col"><h2 class="style-big-title">Thêm giảm giá</h2></div>
         </div>
+        <!-- tiêu đề giảm giá -->
         <div class="row pt-2">
-            <div class="col"><span class="style-title">Tên giảm giá<span class="text-danger"> * </span></span></div>
+            <div class="col"><span class="style-title">Tiêu đề giảm giá<span class="text-danger"> * </span></span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên giảm giá">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tiêu đề giảm giá" required>
             </div>
         </div>
         <!-- mô tả -->
@@ -56,7 +57,7 @@
             <div class="col"><span class="style-title">Mô tả giảm giá<span class="text-danger"> * </span></span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><textarea class="w-100 style-area" placeholder="Nhập mô tả giảm giá"></textarea>
+            <div class="col p-0"><textarea class="w-100 style-area" placeholder="Nhập mô tả giảm giá" required></textarea>
             </div>
         </div>
         
@@ -67,11 +68,11 @@
         <div class="row pt-2">
             <div class="col text-end">
                 <label>Áp dụng trên toàn bộ sản phẩm</label>
-                <input type="radio" name="chooseDiscount" value="1" onclick="showDiscount('chooseGlobal');">
+                <input type="radio" name="chooseDiscount" value="1" onclick="showDiscount('chooseGlobal');" required>
             </div>
             <div class="col">
                 <label>Áp dụng trên từng sản phẩm</label>
-                <input type="radio" name="chooseDiscount" value="2" onclick="showDiscount('chooseIndividual');">
+                <input type="radio" name="chooseDiscount" value="2" onclick="showDiscount('chooseIndividual');" required>
             </div>
         </div>
         <!-- giảm giá tất cả sp -->
@@ -81,7 +82,7 @@
         <div class="row pt-2 d-none chooseGlobal">
             <div class="col pe-1">
                 <label class="style-label">Phần trăm giảm giá (%)<span class="text-danger"> * </span></label>
-                <input type="number" class="w-100 style-input" placeholder="Nhập phần trăm giảm giá (%)">
+                <input type="number" class="w-100 style-input" placeholder="Nhập phần trăm giảm giá (%)" required>
             </div>
             <div class="col p-0">
                 <label class="style-label">Giới hạn số lượng sản phẩm giảm giá</label>
@@ -99,7 +100,7 @@
                     <div class="form-group discount-row row mb-2">
                         <div class="col pe-0">
                             <label class="style-label">Mã sản phẩm<span class="text-danger"> * </span></label>
-                            <input type="text" class="style-input" placeholder="Nhập mã sản phẩm">
+                            <input type="text" class="style-input" placeholder="Nhập mã sản phẩm" required>
                         </div>
                         <div class="col pe-0">
                             <label class="style-label">Phần trăm giảm (%)<span class="text-danger"> * </span></label>
@@ -126,7 +127,7 @@
             </div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input"></div>
+            <div class="col p-0"><input type="date" class="w-100 style-input" required></div>
         </div>
         <!-- kết thúc -->
         <div class="row pt-3">

@@ -27,14 +27,15 @@
         <div class="row pt-3">
             <div class="col"><h2 class="style-big-title">Xem đơn hàng</h2></div>
         </div>
+        <!-- tên đăng nhập của người dùng -->
         <div class="row pt-2">
             <div class="col"><span class="style-title">Tên đăng nhập người dùng</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên đăng nhập người dùng" value="tho123" disabled>
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên đăng nhập người dùng" value="tho123" required disabled>
             </div>
         </div>
-
+        <!-- sản phẩm mua -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Sản phẩm mua</span></div>
         </div>
@@ -64,14 +65,15 @@
                 </div>
             </div>
         </div>
-
+        <!-- ngày tạo -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày tạo đơn hàng</span>
             </div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-01" disabled></div>
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-01" required disabled></div>
         </div>
+        <!-- ngày giao hàng -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày giao hàng</span>
             </div>
@@ -79,26 +81,28 @@
         <div class="row pt-2">
             <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-02" disabled></div>
         </div>
+        <!-- trạng thái đơn hàng -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Trạng thái đơn hàng</span>
             </div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select" id="statusOrder" onclick="reasonCancelOrder()" disabled>
+                <select class="style-select" id="statusOrder" onclick="reasonCancelOrder()" required disabled>
                     <option>Đang giao</option>
                     <option>Đã hoàn thành</option>
                     <option selected>Đã hủy</option>
                 </select>
             </div>
         </div>
+        <!-- lí do hủy (nếu trạng thái là hủy) -->
         <div class="row pt-3 label-reason-cancel-order">
             <div class="col"><span class="style-title">Lí do hủy</span>
             </div>
         </div>
         <div class="row pt-2 select-reason-cancel-order">
             <div class="col p-0">
-                <select class="style-select" disabled>
+                <select class="style-select" required disabled>
                     <option>Lí do 1</option>
                     <option selected>Lí do 2</option>
                     <option>Lí do 3</option>
