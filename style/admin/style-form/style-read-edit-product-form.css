@@ -42,3 +42,16 @@
     height: 40px;
     width: 60px;
 }
+
+.reviewByStar[type="number"] {
+    pointer-events: none; /* Ngăn người dùng nhập liệu trực tiếp */
+    cursor: default; /* Thay đổi con trỏ */
+}
+
+/* Hiển thị nút spin trên trình duyệt sử dụng WebKit (Chrome, Edge, Safari) */
+.reviewByStar[type="number"]::-webkit-inner-spin-button,
+.reviewByStar[type="number"]::-webkit-outer-spin-button {
+    appearance: auto; /* Bật spin button (cho các trình duyệt hỗ trợ) */
+    pointer-events: auto; /* Cho phép tương tác */
+    opacity: 1; /* Đảm bảo luôn hiển thị */
+}
