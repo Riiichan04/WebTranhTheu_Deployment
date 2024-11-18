@@ -12,6 +12,13 @@ body {
 /*    top: 5%;*/
 /*}*/
 
+#landing-section {
+    box-shadow: 10px 10px 36px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 36px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 36px 0px rgba(0,0,0,0.75);
+    margin-bottom: 5rem !important;
+}
+
 #homepage-carousel, .carousel-inner {
     height: 25rem;
 }
