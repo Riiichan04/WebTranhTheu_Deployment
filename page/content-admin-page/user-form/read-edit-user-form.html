@@ -28,7 +28,7 @@
     <!-- enter code -->
     <form class="form-container">
         <div class="row pt-3">
-            <div class="col"><h2 class="style-big-title">Xem người dùng</h2></div>
+            <div class="col"><h2 class="style-big-title" id="title">Xem người dùng</h2></div>
         </div>
         <!-- tên đăng nhập -->
         <div class="row pt-2">
@@ -44,7 +44,7 @@
             <div class="col"><span class="style-title">Mật khẩu</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="password" class="w-100 style-input" placeholder="Nhập mật khẩu"
+            <div class="col p-0"><input type="password" id="password" class="w-100 style-input" placeholder="Nhập mật khẩu"
                                         value="1234" required disabled>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <div class="col"><span class="style-title">Họ và tên</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập họ và tên"
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="name" placeholder="Nhập họ và tên"
                                         value="Nguyễn Văn Thọ" required disabled>
             </div>
         </div>
@@ -65,7 +65,7 @@
             <div class="col p-0">
                 <div class="img-container">
                     <img src="../../../img/avt-admin.png" id="avatarImage">
-                    <i class="fa-solid fa-pen-to-square icon-edit-avt d-none" id="editAvatar"></i>
+                    <i class="fa-solid fa-pen-to-square icon-edit-avt d-none edit-hidden" id="editAvatar"></i>
                     <input type="file" value="../../../img/avt-admin.png" accept="image/*" class="d-none"
                            id="fileInput">
                 </div>
@@ -76,7 +76,7 @@
             <div class="col"><span class="style-title">Email</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="email" class="w-100 style-input" placeholder="Nhập email"
+            <div class="col p-0"><input type="email" class="w-100 style-input" id="email" placeholder="Nhập email"
                                         value="tho123@gmail.com" disabled>
             </div>
         </div>
@@ -85,7 +85,7 @@
             <div class="col"><span class="style-title">Số điện thoại</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="tel" class="w-100 style-input" placeholder="Nhập số điện thoại"
+            <div class="col p-0"><input type="tel" class="w-100 style-input" id="phone" placeholder="Nhập số điện thoại"
                                         value="0123456789" disabled>
             </div>
         </div>
@@ -96,11 +96,11 @@
         <div class="row pt-2">
             <div class="col text-end">
                 <label>Nam</label>
-                <input type="radio" name="gender" value="man" checked required disabled>
+                <input type="radio" class="gender" name="gender" value="man" checked required disabled>
             </div>
             <div class="col">
                 <label>Nữ</label>
-                <input type="radio" name="gender" value="woman" required disabled>
+                <input type="radio" class="gender" name="gender" value="woman" required disabled>
             </div>
         </div>
         <!-- mô tả -->
@@ -108,7 +108,7 @@
             <div class="col"><span class="style-title">Mô tả</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><textarea class="w-100 style-area" placeholder="Nhập mô tả người dùng" disabled>Mô tả người dùng này</textarea>
+            <div class="col p-0"><textarea class="w-100 style-area" id="description" placeholder="Nhập mô tả người dùng" disabled>Mô tả người dùng này</textarea>
             </div>
         </div>
         
@@ -129,7 +129,7 @@
                                     <option selected>Việt Nam</option>
                                 </select></div>
                                 <div class="col">
-                                    <select class="style-select" disabled>
+                                    <select class="style-select location" disabled>
                                         <option disabled>Chọn thành phố</option>
                                         <option selected>Tp. Hồ Chí Minh</option>
                                         <option>Tp 2</option>
@@ -143,7 +143,7 @@
                             </div>
                             <div class="row pt-2">
                                 <div class="col">
-                                    <select class="style-select" disabled>
+                                    <select class="style-select location" disabled>
                                         <option disabled>Chọn quận/huyện</option>
                                         <option selected>Tp. Thủ Đức</option>
                                         <option>Quận Bình Thạnh</option>
@@ -153,7 +153,7 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <select class="style-select" disabled>
+                                    <select class="style-select location" disabled>
                                         <option disabled>Chọn xã/phường</option>
                                         <option selected>Phường Linh Trung</option>
                                         <option>Phường 2</option>
@@ -170,12 +170,12 @@
                                        value="Khu phố 6" disabled>
                             </div>
                         </div>
-                        <div class="col-1 d-none">
+                        <div class="col-1 d-none edit-hidden">
                             <i class="fa-solid fa-trash icon-del" onclick="removeAddress(this)"></i>
                         </div>
                     </div>
                 </div>
-                <div class="text-center pt-2 d-none">
+                <div class="text-center pt-2 d-none edit-hidden">
                     <button type="button" class="style-add-address-btn" id="addAddressBtn" onclick="addAddress()">Thêm
                         địa chỉ
                     </button>
@@ -185,11 +185,11 @@
         
         <!-- ds sản phẩm yêu thích -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Danh sách sản phẩm yêu thích</span></div>
+            <div class="col"><span class="style-title" id="titleFavourProduct">Danh sách sản phẩm yêu thích</span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select-many" multiple disabled>
+                <select class="style-select-many" id="favourProduct" multiple disabled>
                     <option>SP01 - Sản phẩm 1 - 1/1/2024</option>
                     <option>SP02 - Sản phẩm 2 - 1/1/2024</option>
                     <option>SP03 - Sản phẩm 3 - 1/1/2024</option>
@@ -223,9 +223,9 @@
                         <td>SP01</td>
                         <td>Tranh thêu sông nước</td>
                         <td>7500000</td>
-                        <td><input type="number" value="1" style="width: 50px" disabled></td>
+                        <td><input type="number" class="quantity-product" min="1" value="1" style="width: 50px" disabled></td>
                         <td>1/2/2024</td>
-                        <td class="d-none">
+                        <td class="d-none edit-hidden">
                             <button type="button" class="btn-del">Xóa</button>
                         </td>
                     </tr>
@@ -234,9 +234,9 @@
                         <td>SP02</td>
                         <td>Tranh thêu sông nước</td>
                         <td>7500000</td>
-                        <td><input type="number" value="1" style="width: 50px" disabled></td>
+                        <td><input type="number" class="quantity-product" min="1" value="1" style="width: 50px" disabled></td>
                         <td>1/2/2024</td>
-                        <td class="d-none">
+                        <td class="d-none edit-hidden">
                             <button type="button" class="btn-del">Xóa</button>
                         </td>
                     </tr>
@@ -261,11 +261,11 @@
         </div>
 
         <div class="row pt-4 pb-4">
-            <div class="col">
+            <div class="col" id="containerCancelBtn">
                 <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
             </div>
-            <div class="col">
-                <button class="style-button">Chỉnh sửa</button>
+            <div class="col" id="containerEditBtn">
+                <button class="style-button" type="button" id="editBtn">Chỉnh sửa</button>
             </div>
         </div>
     </form>

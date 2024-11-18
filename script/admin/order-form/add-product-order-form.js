@@ -15,8 +15,9 @@ function removeProduct(button) {
     }
 }
 
-function reasonCancelOrder() {
+$('#statusOrder').click(function () {
     const selectedText = $("#statusOrder option:selected").text();
+    console.log("here")
     if(selectedText === 'Đã hủy') {
         $('.label-reason-cancel-order').removeClass('d-none');
         $('.select-reason-cancel-order').removeClass('d-none');
@@ -24,7 +25,7 @@ function reasonCancelOrder() {
         $('.label-reason-cancel-order').addClass('d-none');
         $('.select-reason-cancel-order').addClass('d-none');
     }
-}
+});
 
 $('#editBtn').click(function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });

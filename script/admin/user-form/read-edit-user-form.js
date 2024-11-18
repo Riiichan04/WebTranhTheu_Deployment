@@ -102,3 +102,35 @@ $(document).ready(function () {
     $('.dt-search input').css("width", "300px");
     $('table.dataTable th.dt-type-numeric').css("text-align", "center");
 });
+
+$('#editBtn').click(function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    $('#title').text('Chỉnh sửa thông tin người dùng')
+    $('#containerEditBtn').html(`<button class="style-update-btn" id="editBtn" type="submit">Cập nhật</button>`);
+    $('#containerCancelBtn').html(`<button type="button" id="cancelEditBtn" class="style-cancel-btn">Hủy</button>`)
+    $('#cancelEditBtn').click(function () {
+        location.reload();
+    });
+
+    $('#password').prop('disabled', false);
+
+    $('#name').prop('disabled', false);
+
+    $('#email').prop('disabled', false);
+
+    $('#phone').prop('disabled', false);
+
+    $('.gender').prop('disabled', false);
+
+    $('#description').prop('disabled', false);
+    
+    $('.location').prop('disabled', false);
+    
+    $('#titleFavourProduct').text('Xóa sản phẩm yêu thích (Chọn nhiều)');
+    
+    $('#favourProduct').prop('disabled', false);
+
+    $('.quantity-product').prop('disabled', false);
+    
+    $('.edit-hidden').removeClass('d-none');
+});
