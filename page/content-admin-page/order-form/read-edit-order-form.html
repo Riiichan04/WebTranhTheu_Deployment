@@ -25,7 +25,7 @@
     <!-- enter code -->
     <form class="form-container">
         <div class="row pt-3">
-            <div class="col"><h2 class="style-big-title">Xem đơn hàng</h2></div>
+            <div class="col"><h2 class="style-big-title" id="title">Xem đơn hàng</h2></div>
         </div>
         <!-- tên đăng nhập của người dùng -->
         <div class="row pt-2">
@@ -53,14 +53,14 @@
                             </select>
                         </div>
                         <div class="col">
-                            <input type="number" class="w-100 style-input" min="1" placeholder="Nhập số lượng" value="1" required disabled>
+                            <input type="number" class="w-100 style-input amount-product-input" min="1" placeholder="Nhập số lượng" value="1" required disabled>
                         </div>
-                        <div class="col-2 d-none">
+                        <div class="col-2 d-none edit-hidden">
                             <button type="button" class="remove-product-btn" onclick="removeProduct(this)">Xóa</button>
                         </div>
                     </div>
                 </div>
-                <div class="text-center d-none">
+                <div class="text-center d-none edit-hidden">
                     <button type="button" class="add-product-btn px-2" onclick="addProduct()">Thêm Sản Phẩm</button>
                 </div>
             </div>
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-02" disabled></div>
+            <div class="col p-0"><input type="date" id="dateDelivery" class="w-100 style-input" value="2024-10-02" disabled></div>
         </div>
         <!-- trạng thái đơn hàng -->
         <div class="row pt-3">
@@ -102,7 +102,7 @@
         </div>
         <div class="row pt-2 select-reason-cancel-order">
             <div class="col p-0">
-                <select class="style-select" required disabled>
+                <select class="style-select" id="reasonCancelOrder" required disabled>
                     <option>Lí do 1</option>
                     <option selected>Lí do 2</option>
                     <option>Lí do 3</option>
@@ -116,11 +116,11 @@
         </div>
         
         <div class="row pt-4 pb-4">
-            <div class="col">
-                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+            <div class="col" id="containerCancelBtn">
+                <button type="button" id="cancelBtn" class="style-cancel-btn">Hủy</button>
             </div>
-            <div class="col">
-                <button class="style-button">Chỉnh sửa</button>
+            <div class="col" id="containerEditBtn">
+                <button type="button" class="style-button" id="editBtn">Chỉnh sửa</button>
             </div>
         </div>
     </form>

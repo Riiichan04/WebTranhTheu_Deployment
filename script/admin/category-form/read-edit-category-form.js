@@ -7,9 +7,7 @@ $('#editBtn').click(function () {
         location.reload();
     });
 
-    const nameCategory = $('#nameCategory');
-    nameCategory.prop('disabled', false);
-    nameCategory.css('color', 'black');
+    $('#nameCategory').prop('disabled', false);
 
     $('.edit-hidden').removeClass('d-none');
 });

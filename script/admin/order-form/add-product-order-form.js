@@ -1,7 +1,8 @@
 function addProduct() {
     const productRow = document.querySelector('.product-row');
     const newRow = productRow.cloneNode(true);
-    newRow.querySelectorAll('input, select').forEach(input => input.value = '');
+    newRow.querySelectorAll('input').forEach(input => input.value = '');
+    newRow.querySelectorAll('select').forEach(select => select.disabled = false);
     document.getElementById('products').appendChild(newRow);
 }
 
@@ -24,3 +25,23 @@ function reasonCancelOrder() {
         $('.select-reason-cancel-order').addClass('d-none');
     }
 }
+
+$('#editBtn').click(function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    $('#title').text('Chỉnh sửa đơn hàng')
+    $('#containerEditBtn').html(`<button class="style-update-btn" id="editBtn" type="submit">Cập nhật</button>`);
+    $('#containerCancelBtn').html(`<button type="button" id="cancelEditBtn" class="style-cancel-btn">Hủy</button>`)
+    $('#cancelEditBtn').click(function () {
+        location.reload();
+    });
+    
+    $('.amount-product-input').prop('disabled', false);
+    
+    $('#dateDelivery').prop('disabled', false);
+    
+    $('#statusOrder').prop('disabled', false);
+    
+    $('#reasonCancelOrder').prop('disabled', false);
+    
+    $('.edit-hidden').removeClass('d-none');
+});
