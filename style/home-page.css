@@ -2,6 +2,16 @@ h1, h2, h3, h4, h5, p, i, span {
     color: var(--text-color);
 }
 
+body {
+    overflow-x: hidden;
+}
+
+/*#second-landing-img {*/
+/*    left: 10%;*/
+/*    height: 100%;*/
+/*    top: 5%;*/
+/*}*/
+
 #homepage-carousel, .carousel-inner {
     height: 25rem;
 }
@@ -40,20 +50,18 @@ h1, h2, h3, h4, h5, p, i, span {
 }
 
 .sub-cta-button {
-    color: var(--sub-cta-button);
-}
-
-.sub-cta-button-background {
     background-color: var(--sub-cta-button);
     color: var(--label-color);
 }
 
-.sub-cta-button-background:hover {
+.sub-cta-button:hover {
     background-color: var(--sub-cta-button-hover);
     color: var(--label-color);
 }
 
-
+.sub-cta-button:disabled {
+    background-color: var(--disabled-cta-button-color);
+}
 
 .product-info__star-container {
     position: relative;

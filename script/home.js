@@ -56,5 +56,7 @@ $("#full-product-button").click(function () {
         }
         limitProduct -= 4*5
     }
-
+    if (limitProduct <= 0) {
+        $(this).attr('disabled', true)
+    }
 })
