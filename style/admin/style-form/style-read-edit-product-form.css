@@ -34,15 +34,6 @@
     resize: none;
 }
 
-.btn-del {
-    border-radius: 5px;
-    border: none;
-    background-color: var(--sub-cta-button);
-    color: white;
-    height: 40px;
-    width: 60px;
-}
-
 .reviewByStar[type="number"] {
     pointer-events: none; /* Ngăn người dùng nhập liệu trực tiếp */
     cursor: default; /* Thay đổi con trỏ */

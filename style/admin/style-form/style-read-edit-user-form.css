@@ -33,14 +33,6 @@
     border-radius: 5px;
 }
 
-.btn-del {
-    border: none;
-    border-radius: 5px;
-    background-color: var(--sub-cta-button);
-    height: 30px;
-    color: white;
-}
-
 #myTable tbody tr td{
     font-size: 14px;
 }

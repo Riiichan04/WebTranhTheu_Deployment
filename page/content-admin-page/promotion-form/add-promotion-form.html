@@ -14,25 +14,8 @@
     <link rel="stylesheet" href="../../../style/index.css">
     <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
     <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
-    <style>
-        .remove-product-btn {
-            height: 40px;
-            border: none;
-            border-radius: 5px;
-            background-color: var(--sub-cta-button);
-            color: white;
-            width: 100%;
-        }
+    <link rel="stylesheet" href="../../../style/admin/style-form/style-add-promotion-form.css">
 
-        .add-product-btn {
-            margin-top: 10px;
-            height: 40px;
-            border: none;
-            border-radius: 5px;
-            background-color: var(--sub-cta-button);
-            color: white;
-        }
-    </style>
 </head>
 <body>
 <!-- Gray overlay -->
@@ -120,14 +103,13 @@
                 </div>
             </div>
         </div>
-        
-        <!-- ngày tạo -->
+
+        <!-- Ngày bắt đầu -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Ngày tạo giảm giá<span class="text-danger"> * </span></span>
-            </div>
+            <div class="col"><span class="style-title">Ngày bắt đầu giảm giá</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input" required></div>
+            <div class="col p-0"><input type="datetime-local" class="w-100 style-input" id="startDateDiscount"></div>
         </div>
         <!-- kết thúc -->
         <div class="row pt-3">
@@ -135,6 +117,14 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0"><input type="date" class="w-100 style-input"></div>
+        </div>
+        <!-- ngày tạo -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày tạo giảm giá<span class="text-danger"> * </span></span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" required></div>
         </div>
         
         <div class="row pt-4 pb-4">
@@ -148,35 +138,6 @@
     </form>
 </div>
 
-<script>
-    function addProduct() {
-        const discountRow = document.querySelector('.discount-row');
-        const newRow = discountRow.cloneNode(true);
-        newRow.querySelectorAll('input').forEach(input => input.value = '');
-        document.getElementById('discounts').appendChild(newRow);
-    }
-
-    function removeProduct(button) {
-        const row = button.parentElement.parentElement;
-        if (document.querySelectorAll('.discount-row').length > 1) {
-            row.remove();
-        } else {
-            alert("Phải có ít nhất một sản phẩm!");
-        }
-    }
-    
-    function showDiscount(choose) {
-        switch (choose) {
-            case 'chooseGlobal':
-                $('.chooseGlobal').removeClass('d-none');
-                $('.chooseIndividual').addClass('d-none');
-                break;
-            case 'chooseIndividual':
-                $('.chooseIndividual').removeClass('d-none');
-                $('.chooseGlobal').addClass('d-none');
-                break;
-        }
-    }
-</script>
+<script src="../../../script/admin/promotion-form/add-promotion-form.js"></script>
 </body>
 </html>

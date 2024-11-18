@@ -27,14 +27,14 @@
     <!-- enter code -->
     <form class="form-container">
         <div class="row pt-3">
-            <div class="col"><h2 class="style-big-title">Xem giảm giá</h2></div>
+            <div class="col"><h2 class="style-big-title" id="title">Xem giảm giá</h2></div>
         </div>
         <!-- tiêu đề giảm giá -->
         <div class="row pt-2">
             <div class="col"><span class="style-title">Tiêu đề giảm giá</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tiêu đề giảm giá" value="Giảm lễ 30/4" disabled>
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="nameDiscount" placeholder="Nhập tiêu đề giảm giá" value="Giảm lễ 30/4" disabled>
             </div>
         </div>
         <!-- mô tả -->
@@ -42,7 +42,7 @@
             <div class="col"><span class="style-title">Mô tả giảm giá</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><textarea class="w-100 style-area" placeholder="Nhập mô tả giảm giá" required disabled>Mô tả giảm giá này</textarea>
+            <div class="col p-0"><textarea class="w-100 style-area" id="description" placeholder="Nhập mô tả giảm giá" required disabled>Mô tả giảm giá này</textarea>
             </div>
         </div>
         
@@ -61,7 +61,7 @@
                         <th class="text-center">Tên sản phẩm</th>
                         <th class="text-center">Phần trăm giảm (%)</th>
                         <th class="text-center">Số lượng giới hạn</th>
-                        <th class="text-center d-none">Tiện ích</th>
+                        <th class="text-center d-none edit-hidden">Xóa</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -69,27 +69,53 @@
                         <td>1</td>
                         <td>SP01</td>
                         <td>Tranh thêu sông nước</td>
-                        <td><input type="number" value="10" style="width: 50px" disabled></td>
-                        <td><input type="number" value="3" style="width: 50px" disabled></td>
-                        <td class="d-none">
-                            <button type="button" class="btn-del">Xóa</button>
+                        <td><input type="number" class="percent-discount" value="10" style="width: 50px" disabled></td>
+                        <td><input type="number" class="amount-limit" value="3" style="width: 50px" disabled></td>
+                        <td class="d-none edit-hidden">
+                            <input type="checkbox" style="width: 15px; height: 15px">
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>SP01</td>
                         <td>Tranh thêu sông nước</td>
-                        <td><input type="number" value="10" style="width: 50px" disabled></td>
-                        <td><input type="number" value="3" style="width: 50px" disabled></td>
-                        <td class="d-none">
-                            <button type="button" class="btn-del">Xóa</button>
+                        <td><input type="number" class="percent-discount" value="10" style="width: 50px" disabled></td>
+                        <td><input type="number" class="amount-limit" value="3" style="width: 50px" disabled></td>
+                        <td class="d-none edit-hidden">
+                            <input type="checkbox" style="width: 15px; height: 15px">
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        
+
+        <!-- Ngày bắt đầu -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày bắt đầu giảm giá</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="datetime-local" class="w-100 style-input" id="startDateDiscount" value="2024-04-30T23:59" disabled></div>
+        </div>
+        <!-- kết thúc -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày kết thúc giảm giá</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="datetime-local" class="w-100 style-input" id="endDateDiscount" value="2024-04-30T23:59" disabled></div>
+        </div>
+        <!-- Trạng thái -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Trạng thái</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" required disabled>
+                    <option>Chưa kết thúc</option>
+                    <option selected>Đã kết thúc</option>
+                </select>
+            </div>
+        </div>
         <!-- ngày tạo -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày tạo giảm giá</span>
@@ -98,20 +124,13 @@
         <div class="row pt-2">
             <div class="col p-0"><input type="datetime-local" class="w-100 style-input" value="2024-04-30T00:00" required disabled></div>
         </div>
-        <!-- kết thúc -->
-        <div class="row pt-3">
-            <div class="col"><span class="style-title">Ngày kết thúc giảm giá</span></div>
-        </div>
-        <div class="row pt-2">
-            <div class="col p-0"><input type="datetime-local" class="w-100 style-input" value="2024-04-30T23:59" disabled></div>
-        </div>
 
         <div class="row pt-4 pb-4">
-            <div class="col">
+            <div class="col" id="containerCancelBtn">
                 <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
             </div>
-            <div class="col">
-                <button class="style-button">Chỉnh sửa</button>
+            <div class="col" id="containerEditBtn">
+                <button class="style-button" type="button" id="editBtn">Chỉnh sửa</button>
             </div>
         </div>
     </form>
