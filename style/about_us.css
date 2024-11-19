@@ -1,14 +1,15 @@
-html,body,p,a{
-    margin: 0;
-    padding: 0;
+section p {
+    text-indent: 1%;
 }
-h2{
-    color:var(--big-text-color);
-    font-weight: bold;
+
+.main-color {
+    color: var(--big-text-color);
 }
+
 .about-us-content{
     background-color:var(--light-component-background-color);
 }
+
 .poll-form{
     background-color:var(--light-component-background-color);
 }
@@ -18,4 +19,9 @@ h2{
     border:none;
     font-size: 16px;
     height: 30px;
+}
+
+.form-check-input:checked {
+    background-color: var(--sub-cta-button);
+    border-color: var(--sub-cta-button);
 }
