@@ -63,11 +63,11 @@
             <div class="col"><span class="style-title">Giảm giá</span></div>
         </div>
         <div class="row pt-2 d-none chooseGlobal">
-            <div class="col pe-1">
+            <div class="col p-0 pe-1">
                 <label class="style-label">Phần trăm giảm giá (%)<span class="text-danger"> * </span></label>
                 <input type="number" class="w-100 style-input" placeholder="Nhập phần trăm giảm giá (%)" required>
             </div>
-            <div class="col p-0">
+            <div class="col p-0 ps-1">
                 <label class="style-label">Giới hạn số lượng sản phẩm giảm giá</label>
                 <input type="number" class="w-100 style-input" placeholder="Nhập số lượng giới hạn">
             </div>
@@ -104,19 +104,14 @@
             </div>
         </div>
 
-        <!-- Ngày bắt đầu -->
+        <!-- Ngày bắt đầu, kết thúc giảm giá -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày bắt đầu giảm giá</span></div>
-        </div>
-        <div class="row pt-2">
-            <div class="col p-0"><input type="datetime-local" class="w-100 style-input" id="startDateDiscount"></div>
-        </div>
-        <!-- kết thúc -->
-        <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày kết thúc giảm giá</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input"></div>
+            <div class="col p-0 pe-1"><input type="datetime-local" class="w-100 style-input" id="startDateDiscount"></div>
+            <div class="col p-0 ps-1"><input type="date" class="w-100 style-input"></div>
         </div>
         <!-- ngày tạo -->
         <div class="row pt-3">
