@@ -20,3 +20,16 @@
 .discount_pay{
     height: 700px;
 }
+.apply_discount{
+    background-color: var(--web-background-color);
+    color: var(--sub-cta-button);
+    border:none;
+    font-weight: bold;
+}
+.payable{
+    background-color: var(--main-cta-button);
+    color: var(--web-background-color);
+    font-weight: bold;
+    border:none;
+
+}
