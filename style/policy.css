@@ -5,3 +5,7 @@
 .background-container {
     background-color: var(--light-component-background-color);
 }
+
+section p {
+    text-indent: 1%;
+}
