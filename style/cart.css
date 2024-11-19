@@ -1,0 +1,22 @@
+.image-resize{
+    width: 148px;
+    height: 97px;
+}
+.h1,.h2,.h3,.h4,.h5{
+    color: var(--sub-cta-button);
+    font-weight: bold;
+}
+.cart,.discount_area,.pay_area{
+    background-color: var(--light-component-background-color);
+    border-radius: 5px;
+}
+.cart-title{
+    color: var(--sub-cta-button);
+    font-weight: bold;
+}
+.product-detail__amount{
+    background-color: var(--web-background-color);
+}
+.discount_pay{
+    height: 700px;
+}
