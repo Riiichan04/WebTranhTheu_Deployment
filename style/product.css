@@ -116,6 +116,10 @@ textarea {
     border: 0;
 }
 
+.card-title {
+    font-weight: normal;
+    margin-bottom: 0;
+}
 .comment-rating {
 
 }
