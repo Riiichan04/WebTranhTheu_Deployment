@@ -4,7 +4,7 @@
 }
 .h1,.h2,.h3,.h4,.h5{
     color: var(--sub-cta-button);
-    font-weight: bold;
+    font-weight: 500;
 }
 .cart,.discount_area,.pay_area{
     background-color: var(--light-component-background-color);
@@ -20,16 +20,23 @@
 .discount_pay{
     height: 700px;
 }
+.discount-item{
+    border-bottom: solid 1px var(--label-hover-color);
+}
 .apply_discount{
     background-color: var(--web-background-color);
     color: var(--sub-cta-button);
-    border:none;
+    border:solid 1px var(--sub-cta-button);
+    border-radius: 5px;
     font-weight: bold;
 }
 .payable{
     background-color: var(--main-cta-button);
     color: var(--web-background-color);
-    font-weight: bold;
+    font-weight: 500;
     border:none;
-
+    height: 50px;
+}
+.form-check-input{
+    border: solid 1px var(--text-color);
 }
