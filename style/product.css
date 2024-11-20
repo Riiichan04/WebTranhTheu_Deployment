@@ -1,0 +1,137 @@
+i, p  {
+    color: var(--text-color);
+}
+
+footer i, footer p {
+    color: var(--label-color);
+}
+
+textarea {
+    resize: none;
+}
+
+#product-detail__remove-amount i, #product-detail__add-amount i {
+    color: var(--text-color);
+}
+
+#product-detail__remove-amount:disabled>i, #product-detail__add-amount:disabled>i {
+    color: var(--text-hover-color);
+}
+
+#product-detail .btn-close {
+    width: 0.25rem !important;
+    height: 0.25rem !important;
+}
+
+#product-image {
+    width: 100%;
+}
+
+#product-info__rating li {
+}
+
+#product-info__rating i {
+    font-size: 28px;
+}
+
+#product-sub-info {
+    background-color: var(--sub-component-background-color);
+}
+
+#product-sub-info i {
+    font-size: 20px;
+}
+
+#product-sub-info span {
+    font-size: 14px !important;
+    padding-left: 0.5rem;
+}
+
+#show-popup {
+    cursor: pointer;
+}
+
+#shipping-location-container {
+    background-color: var(--web-background-color);
+    display: none;
+}
+
+#shipping-location__breadcrumb {
+    width: 100%;
+    text-wrap: nowrap;
+    align-items: center;
+}
+
+#list-address li {
+    background-color: rgba(0,0,0,0);
+}
+
+.background-container {
+    background-color: var(--light-component-background-color);
+}
+
+.main-color {
+    color: var(--big-text-color);
+}
+
+.product-info__star-container {
+    position: relative;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-info__star-outline, .product-info__star {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.product-info__star-mask {
+    width: 0;
+    height: 28px;
+    position: absolute;
+    right: 0;
+    background-color: var(--light-component-background-color);
+}
+
+.main-cta-button {
+    background-color: var(--main-cta-button);
+    color: var(--label-color);
+}
+
+.sub-cta-button {
+    color: var(--sub-cta-button);
+}
+
+.sub-cta-button-background {
+    background-color: var(--sub-cta-button);
+    color: var(--label-color);
+}
+
+.sub-cta-button-background:hover {
+    background-color: var(--sub-cta-button-hover);
+    color: var(--label-color);
+}
+
+.sub-info-title {
+    font-size: 14px;
+}
+
+.product-description {
+    text-indent: 3%;
+}
+
+.card {
+    background-color: var(--light-component-background-color);
+    border: 0;
+}
+
+.card-title {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+.comment-rating {
+
+}
