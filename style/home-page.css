@@ -1,9 +1,14 @@
-h1, h2, h3, h4, h5, p, i, span {
+p, i, span {
     color: var(--text-color);
 }
 
 body {
     overflow-x: hidden;
+}
+
+/*Sẽ được đẩy qua style.css*/
+footer p, footer i {
+    color: var(--label-color) !important;
 }
 
 /*#second-landing-img {*/
