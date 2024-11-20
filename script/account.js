@@ -87,10 +87,18 @@ $(document).ready(function () {
             $(".change-detail").hide();
         })
     })
-    // Support user (not run)
+    // Support user
     $(".question").click(function(){
-        console.log($(this).closest(".answer"))
-        $(this).closest(".answer").css("display","block");
+        console.log($(this).children(".answer").length)
+        $(this).children(".answer").css("display","block");
     })
-
+    //Log out
+    $(".logout_btn").click(function (){
+        $("#logout_alert").css("display","block");
+    })
+    $("#noBtn").click(function (){
+        $("#logout_alert").css("display","none");
+        $(".list-group-item").removeClass("active");
+        $(".empty-prop").show();
+    })
 })

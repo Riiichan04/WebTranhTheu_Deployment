@@ -106,16 +106,16 @@
             </div>
             <hr>
             <div class="list-group user_logout">
-                <button type="button"  class="list-group-item list-group-item-action">
-                    <i class="bi bi-box-arrow-left"></i>
-                    Đăng xuất
-                </button>
+                    <button type="button" class="list-group-item list-group-item-action logout_btn">
+                        <i class="bi bi-box-arrow-left"></i>
+                        Đăng xuất
+                    </button>
             </div>
         </div>
         <div class="col-1"></div>
         <!--User's property Page-->
         <!--Empty prop-->
-        <div class="user_page_each_prop content-details col-7">
+        <div class="user_page_each_prop empty-prop content-details col-7">
             <div class="h1" style="opacity: 0.5;padding:200px 100px">Vui lòng chọn một mục</div>
         </div>
         <!--User Info Page-->
@@ -1581,43 +1581,61 @@
             <div class="h3 pt-3 ps-3">Hỗ trợ</div>
             <hr>
             <div class="container p-4">
-                <div class="row border-bottom">
-                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
-                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
-                    <div class="col ps-5 pt-3 answer" style="display: none">
+                <div class="row pt-2 question border-bottom">
+                    <div class="row ">
+                        <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                        <div class="col-11 ">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    </div>
+                    <div class="row ps-5 pt-3 answer" style="display: none">
                         Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
                     </div>
                 </div>
-                <div class="row pt-2 border-bottom">
-                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
-                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
-                    <div class="col ps-5 pt-3 answer" style="display: none">
+                <div class="row pt-2 question border-bottom">
+                    <div class="row ">
+                        <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                        <div class="col-11 ">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    </div>
+                    <div class="row ps-5 pt-3 answer" style="display: none">
                         Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
                     </div>
                 </div>
-                <div class="row pt-2 border-bottom">
-                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
-                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
-                    <div class="col ps-5 pt-3 answer" style="display: none">
+                <div class="row pt-2 question border-bottom">
+                    <div class="row ">
+                        <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                        <div class="col-11 ">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    </div>
+                    <div class="row ps-5 pt-3 answer" style="display: none">
                         Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
                     </div>
                 </div>
-                <div class="row pt-2 border-bottom">
-                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
-                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
-                    <div class="col ps-5 pt-3 answer" style="display: none">
+                <div class="row pt-2 question border-bottom">
+                    <div class="row ">
+                        <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                        <div class="col-11 ">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    </div>
+                    <div class="row ps-5 pt-3 answer" style="display: none">
                         Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
                     </div>
                 </div>
-                <div class="row pt-2 border-bottom">
-                    <div class="col-1"><i class="bi bi-question-circle" ></i></div>
-                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
-                    <div class="col ps-5 pt-3 answer" style="display: none">
+                <div class="row pt-2 question border-bottom">
+                    <div class="row ">
+                        <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                        <div class="col-11 ">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    </div>
+                    <div class="row ps-5 pt-3 answer" style="display: none">
                         Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div id="logout_alert" class="m-10 container">
+    <div class="row ps-2"><p>Bạn chắc chắn muốn đăng xuất?</p></div>
+    <div class="row pt-5 ps-4 text-center">
+        <button id="yesBtn" class="col-5 text-center">Có</button>
+        <div class="col-2"></div>
+        <button id="noBtn" class="col-5 text-center">Không</button>
     </div>
 </div>
 <script src="../script/account.js"></script>

@@ -250,5 +250,29 @@ header ul > li:hover * {
     border-radius: 5px;
 }
 /* User's Support*/
+/*User's Logout alert*/
+#logout_alert{
+    display: none;
+    width:300px;
+    height:170px;
+    background-color: var(--light-component-background-color);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+#logout_alert #yesBtn{
+    background-color: var(--sub-cta-button);
+    width: 100px;
+    color: var(--web-background-color);
+    border-radius: 5px;
+}
+#logout_alert #noBtn{
+    border: solid 1px var(--sub-cta-button);
+    border-radius: 5px;
+}
 
 
