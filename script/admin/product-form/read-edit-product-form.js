@@ -14,7 +14,8 @@ $(document).ready(function () {
 
 $('#editBtn').click(function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    $('#title').text('Chỉnh sửa sản phẩm')
+    $('#title').text('Chỉnh sửa sản phẩm');
+    $('#title-img').text('Hình ảnh (Tick chọn để xóa)');
     $('#containerEditBtn').html(`<button class="style-update-btn" id="editBtn" type="submit">Cập nhật</button>`);
     $('#containerCancelBtn').html(`<button type="button" id="cancelEditBtn" class="style-cancel-btn">Hủy</button>`)
     $('#cancelEditBtn').click(function () {

@@ -9,13 +9,11 @@
     height: 100%;
 }
 
-.icon-del {
+.checkbox-del {
     position: absolute;
     right: 30px;
-    font-size: 20px;
-    color: var(--dark-component-background-color);
-    padding: 10px;
-    cursor: pointer;
+    height: 15px;
+    width: 15px;
 }
 
 .icon-del:hover {
