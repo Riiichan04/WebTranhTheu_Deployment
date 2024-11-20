@@ -44,6 +44,10 @@ textarea {
     transform: translate(-50%, -50%);
 }
 
+#cancel-button {
+
+}
+
 /*.main-color {*/
 /*    color: var(--big-text-color);*/
 /*}*/

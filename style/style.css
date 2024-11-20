@@ -28,6 +28,16 @@
     background-color: var(--main-cta-button-hover);
 }
 
+.sub-cta-button {
+    color: var(--sub-cta-button);
+    border: solid 2px var(--sub-cta-button) !important;
+}
+
+.sub-cta-button:hover {
+    color: var(--sub-cta-button-hover);
+    border: solid 2px var(--sub-cta-button-hover) !important;
+}
+
 .sub-cta-button-background {
     background-color: var(--sub-cta-button);
     color: var(--label-color);
