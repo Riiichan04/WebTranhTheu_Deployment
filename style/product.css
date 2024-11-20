@@ -1,13 +1,21 @@
-i, p {
+i, p  {
     color: var(--text-color);
+}
+
+footer i, footer p {
+    color: var(--label-color);
 }
 
 textarea {
     resize: none;
 }
 
-.background-container {
-    background-color: var(--light-component-background-color);
+#product-detail__remove-amount i, #product-detail__add-amount i {
+    color: var(--text-color);
+}
+
+#product-detail__remove-amount:disabled>i, #product-detail__add-amount:disabled>i {
+    color: var(--text-hover-color);
 }
 
 #product-detail .btn-close {
@@ -56,6 +64,10 @@ textarea {
 
 #list-address li {
     background-color: rgba(0,0,0,0);
+}
+
+.background-container {
+    background-color: var(--light-component-background-color);
 }
 
 .main-color {
