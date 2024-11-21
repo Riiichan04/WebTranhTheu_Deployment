@@ -53,8 +53,8 @@
         </div>
     </div>
 </header>
-<nav class="container">
-    <span id="back-btn" class="my-1" onclick="history.back()">< Quay lại trang trước</span>
+<nav class="container mt-2">
+    <span id="back-btn" onclick="history.back()">< Quay lại trang trước</span>
 </nav>
 
 <section class="container my-4_5" id="user-detail">
@@ -68,7 +68,8 @@
                 </div>
                 <div class="row">
                     <p class="col-6">Địa chỉ nhận hàng: <span class="fw-semibold">Chưa chọn</span></p>
-                    <p class="col-6"></p>
+                    <p class="col-4"></p>
+                    <p class="col-2 text-end"><a class="text-decoration-none main-color fw-semibold" href="user-page.html">THAY ĐỔI</a></p>
                 </div>
             </div>
             <hr/>
@@ -181,7 +182,8 @@
             <div class="row px-5">
                 <div class="col-6 d-flex align-items-center">
                     <button id="cancel-button" class="rounded sub-cta-button px-3 py-2"
-                            style="background-color: var(--light-component-background-color)">
+                            style="background-color: var(--light-component-background-color)"
+                            onclick="history.back()">
                         Hủy
                     </button>
                 </div>

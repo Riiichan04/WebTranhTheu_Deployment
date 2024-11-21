@@ -21,7 +21,7 @@ textarea {
 }
 
 #cart-display {
-    height: 48vh !important;
+    height: 45vh !important;
     overflow-x: hidden;
     overflow-y: auto;
 }
