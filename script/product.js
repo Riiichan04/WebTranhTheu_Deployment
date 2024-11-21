@@ -1,5 +1,6 @@
 const MAX_VALUE = 5
 const MIN_VALUE = 1
+let currentRating = 0
 
 function displayRating(rating, starWidth) {
     const starPosition = Math.trunc(rating)
@@ -56,6 +57,80 @@ $("#add-to-cart-btn").click(function () {
     cartValue += parseInt($("#product-detail__amount").prop("innerText"))
     cartBadge.text(cartValue)
     cartBadge.css("display", "flex");
+})
+
+$("#product-review__star .product-info__star-container").click(function () {
+    const maskElement = $("#product-review__star .product-info__star-mask")
+    const currentElement = $(this).index()
+    if (maskElement.eq(currentElement).css("width") === "0px" && (maskElement.eq(currentElement + 1).css("width") === $(this).css("width") || currentElement === maskElement.length - 1)) {
+        maskElement.css("width", "100%");
+        currentRating = 0
+    } else {
+        currentRating = currentElement
+        for (let i = 0; i <= currentElement; i++) {
+            maskElement.eq(i).css("width", "0");
+        }
+        for (let i = currentElement + 1; i < maskElement.length; i++) {
+            maskElement.eq(i).css("width", "100%");
+        }
+    }
+})
+
+$("#send-comment").click(function () {
+    const commentText = $("#product-review--comment").val()
+    if (currentRating === 0 || commentText === "") return
+    const commentElement = document.createElement("div")
+    commentElement.className = "row product-review__comment-component mt-4_5"
+    commentElement.innerHTML =
+        `
+            <div class="col-3 text-center">
+                <h5>Admin</h5>
+                <p>22/11/2024</p>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col d-flex justify-content-center comment-rating">
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask" style="width: 100%"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+            <div class="col-8">
+                <p class="" style="white-space: pre-line">
+                    ${commentText}
+                </p>
+            </div>
+        `
+    const listMask = commentElement.querySelectorAll(".product-info__star-mask")
+    for (let i = 0; i < currentRating; i++) {
+        listMask[i].style.width = "0";
+    }
+
+    $("#comment-container").prepend(commentElement)
+    $(this).attr("disabled", true)
 })
 
 displayRating(3.6, $(".product-info__star-container").width())

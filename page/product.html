@@ -304,7 +304,7 @@
                               placeholder="Đánh giá của bạn về sản phẩm"></textarea>
                 </div>
                 <div class="col-1 d-flex align-items-center">
-                    <button class="btn sub-cta-button-background px-4 py-2">Gửi</button>
+                    <button id="send-comment" class="btn sub-cta-button-background px-4 py-2">Gửi</button>
                 </div>
             </div>
         </div>
@@ -312,130 +312,132 @@
         <div>
             <h4 class="main-color">Bình luận</h4>
             <p class="text-start">(3 bình luận)</p>
-            <div class="row product-review__comment-component mt-4_5">
-                <div class="col-3 text-center">
-                    <h5>FanT1_20năm</h5>
-                    <p>03/11/2024</p>
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col d-flex justify-content-center comment-rating">
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+            <div id="comment-container">
+                <div class="row product-review__comment-component mt-4_5">
+                    <div class="col-3 text-center">
+                        <h5>FanT1_20năm</h5>
+                        <p>03/11/2024</p>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col d-flex justify-content-center comment-rating">
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask" style="width: 100%"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
                             </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask" style="width: 100%"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
+                            <div class="col-2"></div>
                         </div>
-                        <div class="col-2"></div>
+                    </div>
+                    <div class="col-8">
+                        <p class="" style="white-space: pre-line">
+                            - Đánh giá chung: Tranh khá là đẹp
+                            - Vị trí treo tranh: Nên treo ở phòng khách hoặc phòng ngủ
+                            - Giá cả: Với độ đẹp này thì giá cả vừa phải
+                            - Chất liệu: Với mức giá này thì chất liệu tranh rất tốt
+                        </p>
                     </div>
                 </div>
-                <div class="col-8">
-                    <p class="" style="white-space: pre-line">
-                        - Đánh giá chung: Tranh khá là đẹp
-                        - Vị trí treo tranh: Nên treo ở phòng khách hoặc phòng ngủ
-                        - Giá cả: Với độ đẹp này thì giá cả vừa phải
-                        - Chất liệu: Với mức giá này thì chất liệu tranh rất tốt
-                    </p>
-                </div>
-            </div>
-            <div class="row product-review__comment-component mt-4_5">
-                <div class="col-3 text-center">
-                    <h5>TraL04</h5>
-                    <p>01/11/2024</p>
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col d-flex justify-content-center comment-rating">
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                <div class="row product-review__comment-component mt-4_5">
+                    <div class="col-3 text-center">
+                        <h5>TraL04</h5>
+                        <p>01/11/2024</p>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col d-flex justify-content-center comment-rating">
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask" style="width: 100%"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask" style="width: 100%"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
                             </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask" style="width: 100%"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask" style="width: 100%"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
+                            <div class="col-2"></div>
                         </div>
-                        <div class="col-2"></div>
+                    </div>
+                    <div class="col-8">
+                        <p class="" style="white-space: pre-line">Nét mềm mại, không chỉ thừa, phù hợp trang trí nhà, rất
+                            đáng tiền mua</p>
                     </div>
                 </div>
-                <div class="col-8">
-                    <p class="" style="white-space: pre-line">Nét mềm mại, không chỉ thừa, phù hợp trang trí nhà, rất
-                        đáng tiền mua</p>
-                </div>
-            </div>
-            <div class="row product-review__comment-component mt-4_5">
-                <div class="col-3 text-center">
-                    <h5>Anh Nguyễn</h5>
-                    <p>23/10/2024</p>
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col d-flex justify-content-center comment-rating">
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                <div class="row product-review__comment-component mt-4_5">
+                    <div class="col-3 text-center">
+                        <h5>Anh Nguyễn</h5>
+                        <p>23/10/2024</p>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col d-flex justify-content-center comment-rating">
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                </div>
                             </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
+                            <div class="col-2"></div>
                         </div>
-                        <div class="col-2"></div>
                     </div>
-                </div>
-                <div class="col-8">
-                    <p class="" style="white-space: pre-line">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="col-8">
+                        <p class="" style="white-space: pre-line">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
                 </div>
             </div>
         </div>

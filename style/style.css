@@ -60,6 +60,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .product-info__star-outline, .product-info__star {
