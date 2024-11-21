@@ -46,5 +46,16 @@ $("#product-detail__remove-amount").click(function () {
     amountElement.text(value + "")
 })
 
+$("#purchase-btn").click(function () {
+    window.open("purchase.html").focus();
+})
+
+$("#add-to-cart-btn").click(function () {
+    const cartBadge = $("#cart-badge")
+    let cartValue = parseInt(cartBadge.prop("innerText"))
+    cartValue += parseInt($("#product-detail__amount").prop("innerText"))
+    cartBadge.text(cartValue)
+    cartBadge.css("display", "flex");
+})
 
 displayRating(3.6, $(".product-info__star-container").width())
