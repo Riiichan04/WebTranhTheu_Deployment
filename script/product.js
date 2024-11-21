@@ -5,13 +5,13 @@ let currentRating = 0
 function displayRating(rating, starWidth) {
     const starPosition = Math.trunc(rating)
     const starPositionWidthRating = rating - Math.floor(rating)
-    const starMaskWidth = starWidth * (1 - starPositionWidthRating)
-    const starPadding = ($("#product-info__rating .product-info__star-container").width() - starWidth) / 2
+    const starMaskWidth = starWidth * (1 - starPositionWidthRating) * 0.8 //Do phần star chiếm 80% element
+    const starPadding = starWidth / 10
     $("#product-info__rating .product-info__star-mask").each(function (index) {
-        if (index === starPosition - 1) {
+        if (index === starPosition) {
             $(this).css("width", starMaskWidth + starPadding + "px")
         }
-        if (index > starPosition - 1) {
+        if (index > starPosition) {
             $(this).css("width", "100%")
         }
     });
@@ -66,7 +66,7 @@ $("#product-review__star .product-info__star-container").click(function () {
         maskElement.css("width", "100%");
         currentRating = 0
     } else {
-        currentRating = currentElement
+        currentRating = currentElement + 1
         for (let i = 0; i <= currentElement; i++) {
             maskElement.eq(i).css("width", "0");
         }
@@ -78,7 +78,14 @@ $("#product-review__star .product-info__star-container").click(function () {
 
 $("#send-comment").click(function () {
     const commentText = $("#product-review--comment").val()
+    const countComment = $("#count-comment")
+    const totalStar = $("#current-star-rating")
+
+    const countTotalComment = parseInt(countComment.text()) + 1
+    let newCurrentStarRating = (parseInt(totalStar.text()) * (countTotalComment - 1) + currentRating) / countTotalComment
+    newCurrentStarRating = `${newCurrentStarRating}`.length === 1 ? newCurrentStarRating + ".0" : newCurrentStarRating
     if (currentRating === 0 || commentText === "") return
+
     const commentElement = document.createElement("div")
     commentElement.className = "row product-review__comment-component mt-4_5"
     commentElement.innerHTML =
@@ -128,9 +135,14 @@ $("#send-comment").click(function () {
     for (let i = 0; i < currentRating; i++) {
         listMask[i].style.width = "0";
     }
+    for (let i = currentRating + 1; i < listMask.length; i++) {
+        listMask[i].style.width = "100%";
+    }
 
+    countComment.text(countTotalComment)
+    totalStar.text(newCurrentStarRating)
     $("#comment-container").prepend(commentElement)
     $(this).attr("disabled", true)
 })
 
-displayRating(3.6, $(".product-info__star-container").width())
+displayRating(4.0, $(".product-info__star-container").width())
