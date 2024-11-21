@@ -40,3 +40,6 @@
 .form-check-input{
     border: solid 1px var(--text-color);
 }
+.form-check-input:checked{
+    background-color: var(--sub-cta-button);
+}
