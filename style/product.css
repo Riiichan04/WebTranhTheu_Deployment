@@ -50,7 +50,7 @@ textarea {
     padding-left: 0.5rem;
 }
 
-#product-review__star .product-info__star-container, #show-popup {
+#product-review__star .product-info__star-container {
     cursor: pointer;
 }
 
@@ -62,12 +62,10 @@ textarea {
     text-indent: 3%;
 }
 
-.card {
-    background-color: var(--light-component-background-color);
-    border: 0;
-}
-
-.card-title {
-    font-weight: normal;
-    margin-bottom: 0;
+.notification-message {
+    position: absolute;
+    text-wrap: nowrap;
+    color: var(--label-color);
+    width: fit-content;
+    left: -100%;
 }
