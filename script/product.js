@@ -145,4 +145,8 @@ $("#send-comment").click(function () {
     $(this).attr("disabled", true)
 })
 
+$(".other-product__card").click(function () {
+    window.open("product.html").focus();
+})
+
 displayRating(4.0, $(".product-info__star-container").width())
