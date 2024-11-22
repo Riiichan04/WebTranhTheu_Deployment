@@ -10,22 +10,45 @@ $(document).ready(function () {
     })
 
     // Change password
-    $("#change_password").click(function () {
-        return $(".sub_change_pass").css("display", "block");
+    $("#change-password").click(function () {
+        return $(".sub-change-pass").css("display", "block");
     })
 
     //Change name
-    $("#save_info").click(function () {
+    $("#save-info").click(function () {
         var fname = $("#fname").val();
         var lname = $("#lname").val();
         return $("#nickname").text(fname + " " + lname);
     })
     //Thêm địa chỉ mới
+    $(".add-new-address").click(function (){
+        $(this).parents("#user-address").css("display","none");
+        $("#user-address-add").css("display","block");
+
+    })
+    $(".add-address").click(function (){
+        // add card into user's address
+        const parent =$(this).parents("#user-address-add")
+        const new_address= parent.find(".change_address_input").val()
+        $("#extended-addresses").append(' <div class="row p-4">\n' +
+            '                                <div class="card">\n' +
+            '                                    <div class="card-body">\n' +
+            '                                        <h5 class="card-title">Địa chỉ mở rộng</h5>\n' +
+            '                                        <p class="card-text">'+ new_address +'</p>\n' +
+            '                                    </div>\n' +
+            '                                </div>\n' +
+            '                            </div>')
+        $("#user-address-add").css("display","none")
+        $("#user-address").css("display","block")
+
+    })
 
     // Sửa địa chỉ mới
+    // coi lại
+
 
     //Thay đổi lịch sử xem sản phẩm
-    $('.add-to_cart').click(function () {
+    $('.add-to-cart').click(function () {
         $(this).parents(".shop");
         if ($(this).parents(".shop").find(".product-item").length <= 1) {
             $(this).parents(".shop").remove();
@@ -36,7 +59,7 @@ $(document).ready(function () {
 
 
     //Thêm hết vào giỏ hàng.
-    $(".addAll").click(function () {
+    $(".addAll-btn").click(function () {
         $('.shop').each(function () {
             $(this).find('.product-item').remove();
             $(this).remove();
@@ -45,7 +68,7 @@ $(document).ready(function () {
 
 
     // xoa san pham
-    $('.delete_btn').click(function () {
+    $('.delete-btn').click(function () {
         $(this).parents(".shop");
         if ($(this).parents(".shop").find(".product-item").length <= 1) {
             $(this).parents(".shop").remove();
@@ -75,11 +98,11 @@ $(document).ready(function () {
 
 
     // Change avatar
-    $(".change_img").click(function (){
+    $(".change-img").click(function (){
         $(".change_avatar").show();
     })
     //Change fullname
-    $(".change_name").click(function(){
+    $(".change-name").click(function(){
         $(".change-detail").show();
         $(".edit_name").click(function (){
             let fullname= $(".fullname_edit").val();
@@ -93,7 +116,7 @@ $(document).ready(function () {
         $(this).children(".answer").css("display","block");
     })
     //Log out
-    $(".logout_btn").click(function (){
+    $(".logout-btn").click(function (){
         $("#logout_alert").css("display","block");
     })
     $("#noBtn").click(function (){

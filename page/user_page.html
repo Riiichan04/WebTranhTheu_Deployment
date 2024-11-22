@@ -62,33 +62,33 @@
         </ol>
     </nav>
     <div class="row">
-        <div class="user_props_list col-4">
-            <div class="user_img_frame">
+        <div class="user-props-list col-4">
+            <div class="user-img-frame">
                 <img src="../asset/user_img.png" style="width: 100px;height: 100px;margin-top: 30px">
-                <p id="nickname" class="p-4">Loan Cute :3 </p>
+                <p id="nickname" class="p-4 title">Loan Cute :3 </p>
             </div>
             <div class="list-group list_props">
-                <button type="button" data-target="user_info" class="list-group-item list-group-item-action">
+                <button type="button" data-target="user-info" class="list-group-item list-group-item-action">
                     <i class="bi bi-person"></i>
                     Thông tin người dùng
                 </button>
-                <button type="button" data-target="user_address" class="list-group-item list-group-item-action user_address_info">
+                <button type="button" data-target="user-address" class="list-group-item list-group-item-action _info">
                     <i class="bi bi-geo-alt"></i>
                     Sổ địa chỉ
                 </button>
-                <button type="button" data-target="user_viewed_info" class="list-group-item list-group-item-action">
+                <button type="button" data-target="user-viewed-info" class="list-group-item list-group-item-action">
                     <i class="bi bi-eye"></i>
                     Lịch sử đã xem
                 </button>
-                <button type="button" data-target="user_wishlist" class="list-group-item list-group-item-action">
+                <button type="button" data-target="user-wishlist" class="list-group-item list-group-item-action">
                     <i class="bi bi-heart"></i>
                     Danh sách yêu thích
                 </button>
-                <button type="button" data-target="user_ordered_list" class="list-group-item list-group-item-action">
+                <button type="button" data-target="user-ordered-list" class="list-group-item list-group-item-action">
                     <i class="bi bi-box-seam"></i>
                     Đơn hàng của tôi
                 </button>
-                <button type="button" data-target="user_feedback_histories" class="list-group-item list-group-item-action">
+                <button type="button" data-target="user-feedback-histories" class="list-group-item list-group-item-action">
                     <i class="bi bi-pencil"></i>
                     Lịch sử đánh giá
                 </button>
@@ -105,8 +105,8 @@
                 </button>
             </div>
             <hr>
-            <div class="list-group user_logout">
-                    <button type="button" class="list-group-item list-group-item-action logout_btn">
+            <div class="list-group user-logout">
+                    <button type="button" class="list-group-item list-group-item-action logout-btn">
                         <i class="bi bi-box-arrow-left"></i>
                         Đăng xuất
                     </button>
@@ -119,7 +119,7 @@
             <div class="h1" style="opacity: 0.5;padding:200px 100px">Vui lòng chọn một mục</div>
         </div>
         <!--User Info Page-->
-        <div  id="user_info" class="content-details col-7" style="display: none">
+        <div  id="user-info" class="content-details col-7" style="display: none">
             <div class="h3 p-3">Thông tin tài khoản</div>
             <hr>
             <div class="input-info container">
@@ -141,9 +141,9 @@
                 <div class="change-pass container">
                     <div class="row">
                         <div class="col px-1 py-4">
-                            <button id="change_password"><span>Đổi mật khẩu</span></button>
+                            <button id="change-password"><span>Đổi mật khẩu</span></button>
                             <!-- show ra đổi MK như nào-->
-                            <div class="sub_change_pass container" style="display: none">
+                            <div class="sub-change-pass container" style="display: none">
                                 <div class="row">
                                     <div class="col p-2">Mật khẩu cũ:</div>
                                     <div class="col"><input type="password" placeholder="Nhập..."></div>
@@ -161,20 +161,19 @@
                     <div class="row">
                         <div class="col-8"></div>
                         <div class="col-4">
-                            <button id="save_info" type="reset" style="width:80%"><span>Lưu</span></button>
+                            <button id="save-info" type="reset" style="width:80%"><span>Lưu</span></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!--User Addresses-->
-        <div id="user_address" class="content-details col-7" style="display: none">
+        <div id="user-address" class="content-details col-7" style="display: none">
             <div class="h3 p-3">Sổ địa chỉ</div>
             <hr>
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <div class="container">
                             <div class="row p-4">
                                 <div class="card">
                                     <div class="card-body">
@@ -191,10 +190,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
-                    <div class="col-6">
-                        <div class="container">
+                    <div class="col-6" id="extended-addresses">
                             <div class="row p-4">
                                 <div class="card">
                                     <div class="card-body">
@@ -203,23 +200,35 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-7"></div>
                 <div class="col-5">
-                    <button type="button" style="width: 90%">Thêm địa chỉ</button>
+                    <button class="add-new-address" type="button" style="width: 90%">Thêm địa chỉ</button>
+                </div>
+            </div>
+        </div>
+        <!--User's add address-->
+        <div id="user-address-add" class="content-details col-7" style="display: none">
+            <div class="h3 p-3">Thêm địa chỉ</div>
+            <hr>
+            <div class="container pt-4 ps-4">
+                <div class="row h6">Địa chỉ:</div>
+                <div class="row"><input type="text" class="change_address_input"></div>
+                <div class="row pt-5">
+                    <div class="col-8"></div>
+                    <button class="col-4 add-address">Thêm</button>
                 </div>
             </div>
         </div>
         <!--User's viewed products Info-->
-        <div id="user_viewed_info" class="content-details col-7" style="display: none">
+        <div id="user-viewed-info" class="content-details col-7" style="display: none">
             <div class="h3 p-3">Lịch sử sản phẩm đã xem</div>
             <hr>
             <div class="container p-3">
-                <button type="button" class="addAll">Thêm tất cả vào giỏ hàng</button>
+                <button type="button" class="addAll-btn">Thêm tất cả vào giỏ hàng</button>
                 <!--Từng sản phẩm-->
                 <div class="row p-4 mt-4 border shop">
                     <div class="row title border-bottom px-4">tên sốp</div>
@@ -232,10 +241,10 @@
                             <div class="row pt-4">15.000.000đ</div>
                         </div>
                         <div class="col-2">
-                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                            <button class="add-to-cart"><i class="bi bi-cart-plus"></i></button>
                         </div>
                         <div class="col-2">
-                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                            <button class="delete-btn"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                 </div>
@@ -246,14 +255,14 @@
                         <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image">
                         </div>
                         <div class="col-4 container">
-                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row product-title">Tranh thêu thám tử lừng danh Conan</div>
                             <div class="row pt-4">15.000.000đ</div>
                         </div>
                         <div class="col-2">
-                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                            <button class="add-to-cart"><i class="bi bi-cart-plus"></i></button>
                         </div>
                         <div class="col-2">
-                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                            <button class="delete-btn"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                     <div class="row product-item p-2">
@@ -265,21 +274,21 @@
                             <div class="row pt-4">15.000.000đ</div>
                         </div>
                         <div class="col-2">
-                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                            <button class="add-to-cart"><i class="bi bi-cart-plus"></i></button>
                         </div>
                         <div class="col-2">
-                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                            <button class="delete-btn"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!--User's WishList-->
-        <div id="user_wishlist" class=" content-details col-7" style="display: none">
+        <div id="user-wishlist" class=" content-details col-7" style="display: none">
             <div class="h3 p-3">Danh sách yêu thích</div>
             <hr>
             <div class="container p-3">
-                <button type="button" class="addAll">Thêm tất cả vào giỏ hàng</button>
+                <button type="button" class="addAll-btn">Thêm tất cả vào giỏ hàng</button>
                 <!--Từng sản phẩm-->
                 <div class="row p-4 border shop">
                     <div class="row px-4 title">tên sốp</div>
@@ -288,14 +297,14 @@
                         <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image"
                                                 style="width: 148px;height: 97px"></div>
                         <div class="col-4 container">
-                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row product-title">Tranh thêu thám tử lừng danh Conan</div>
                             <div class="row pt-4">15.000.000đ</div>
                         </div>
                         <div class="col-2">
-                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                            <button class="add-to-cart"><i class="bi bi-cart-plus"></i></button>
                         </div>
                         <div class="col-2">
-                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                            <button class="delete-btn"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                 </div>
@@ -306,14 +315,14 @@
                         <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image"
                                                 style="width: 148px;height: 97px"></div>
                         <div class="col-4 container">
-                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row product-title">Tranh thêu thám tử lừng danh Conan</div>
                             <div class="row pt-4">15.000.000đ</div>
                         </div>
                         <div class="col-2">
-                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                            <button class="add-to-cart"><i class="bi bi-cart-plus"></i></button>
                         </div>
                         <div class="col-2">
-                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                            <button class="delete-btn"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                     <div class="row product-item p-2">
@@ -321,21 +330,21 @@
                         <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image"
                                                 style="width: 148px;height: 97px"></div>
                         <div class="col-4 container">
-                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row product-title">Tranh thêu thám tử lừng danh Conan</div>
                             <div class="row pt-4">15.000.000đ</div>
                         </div>
                         <div class="col-2">
-                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                            <button class="add-to-cart"><i class="bi bi-cart-plus"></i></button>
                         </div>
                         <div class="col-2">
-                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                            <button class="delete-btn"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!--List orders history-->
-        <div id="user_ordered_list" class=" content-details col-7" style="display: none">
+        <div id="user-ordered-list" class=" content-details col-7" style="display: none">
             <div class="h3 p-4">Đơn hàng của tôi</div>
             <hr>
             <div class="container px-3">
@@ -352,7 +361,7 @@
                         <!-- Card-->
                         <div class="card container">
                             <!--NSX-->
-                            <div class="row shop_info">
+                            <div class="row shop-info">
                                 <div class="col-1"><i class="bi bi-shop-window"></i></div>
                                 <div class="col">provider</div>
                                 <div class="col-3">Chờ xác nhận</div>
@@ -398,10 +407,10 @@
                             <div class="row py-2">
                                 <div class="col"></div>
                                 <div class="col-3">
-                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                    <button type="button" class="cancel-btn">Hủy hàng</button>
                                 </div>
                                 <div class="col-3">
-                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                    <button type="button" class="contact-btn">Liên hệ</button>
                                 </div>
                             </div>
                         </div>
@@ -454,10 +463,10 @@
                             <div class="row py-2">
                                 <div class="col"></div>
                                 <div class="col-3">
-                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                    <button type="button" class="cancel-btn">Hủy hàng</button>
                                 </div>
                                 <div class="col-3">
-                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                    <button type="button" class="contact-btn">Liên hệ</button>
                                 </div>
                             </div>
                         </div>
@@ -510,10 +519,10 @@
                             <div class="row py-2">
                                 <div class="col"></div>
                                 <div class="col-3">
-                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                    <button type="button" class="cancel-btn">Hủy hàng</button>
                                 </div>
                                 <div class="col-3">
-                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                    <button type="button" class="contact-btn">Liên hệ</button>
                                 </div>
                             </div>
                         </div>
@@ -569,10 +578,10 @@
                             <div class="row py-2">
                                 <div class="col"></div>
                                 <div class="col-3">
-                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                    <button type="button" class="cancel-btn">Hủy hàng</button>
                                 </div>
                                 <div class="col-3">
-                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                    <button type="button" class="contact-btn">Liên hệ</button>
                                 </div>
                             </div>
                         </div>
@@ -625,10 +634,10 @@
                             <div class="row py-2">
                                 <div class="col"></div>
                                 <div class="col-3">
-                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                    <button type="button" class="cancel-btn">Hủy hàng</button>
                                 </div>
                                 <div class="col-3">
-                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                    <button type="button" class="contact-btn">Liên hệ</button>
                                 </div>
                             </div>
                         </div>
@@ -681,10 +690,10 @@
                             <div class="row py-2">
                                 <div class="col"></div>
                                 <div class="col-3">
-                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                    <button type="button" class="cancel-btn">Hủy hàng</button>
                                 </div>
                                 <div class="col-3">
-                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                    <button type="button" class="contact-btn">Liên hệ</button>
                                 </div>
                             </div>
                         </div>
@@ -1344,7 +1353,7 @@
             </div>
         </div>
         <!--User's Feedback History-->
-        <div id="user_feedback_histories" class=" content-details col-7" style="display: none">
+        <div id="user-feedback-histories" class=" content-details col-7" style="display: none">
             <div class="h3 p-4">Lịch sử đánh giá</div>
             <hr>
             <div class="container">
@@ -1528,7 +1537,7 @@
                     <div class="col-3 py-5 ps-3">Ảnh đại diện:</div>
                     <div class="col-3"><img src="../asset/user_img.png" style="width: 100px;height: 100px;"></div>
                     <div class="col-3 pt-5">
-                        <button type="button" class="change_img">Thay đổi</button>
+                        <button type="button" class="change-img">Thay đổi</button>
                         <div class="change_avatar mt-1 ms-3 container border" style="display: none">
                             <div class="row ps-2 border-bottom">Lấy từ thiết bị</div>
                             <div class="row ps-2">Link url</div>
@@ -1539,7 +1548,7 @@
                     <div class="col-2 py-5 ps-3">Tên:</div>
                     <div class="col-4 pt-5"><input id="fullname" type="text" value="Nguyễn Bích Loan"></div>
                     <div class="col-5 pt-5">
-                        <button type="reset" class="change_name"> Thay đổi</button>
+                        <button type="reset" class="change-name"> Thay đổi</button>
                             <div class="row change-detail ps-4 pt-3" style="display: none">
                                 <p class="col-4">Tên mới:</p>
                                 <input class="fullname_edit col-5" placeholder="Enter new name...">
@@ -1547,7 +1556,7 @@
                             </div>
                     </div>
                 </div>
-                <div class="row feedback_form">
+                <div class="row feedback-form">
                     <form class="poll-form">
                         <div class="row ps-3">Thăm dò ý kiến:</div>
                         <div class="container border">
@@ -1572,7 +1581,7 @@
                 </div>
                 <div class="row">
                     <div class="col-9"></div>
-                    <div class="col-3 pt-3"><button type="button" class="delete_account">Xóa tài khoản</button></div>
+                    <div class="col-3 pt-3"><button type="button" class="delete-account">Xóa tài khoản</button></div>
                 </div>
             </div>
         </div>
