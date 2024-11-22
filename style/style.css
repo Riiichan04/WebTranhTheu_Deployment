@@ -1,3 +1,7 @@
+footer i, footer p {
+    color: var(--label-color);
+}
+
 .breadcrumb a {
     padding-left: 0 !important;
     padding-right: 0 !important;
