@@ -1,10 +1,12 @@
 const listData = []
+const LIMIT_PRODUCT = 100
+let currentLimitProduct = 0
 
 $.getJSON("../asset/data.json", (data) => {
     $.each(data, (index, element) => {
         listData.push(`
             <div class="col">
-                <div class="card p-2" style="cursor: pointer">
+                <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
                     <img src="../asset/product_image.png" class="card-img-top" alt="...">
                     <div class="card-body px-1">
                         <h6 class="card-title text-start pb-2">${element.title}</h6>
@@ -49,6 +51,7 @@ $.getJSON("../asset/data.json", (data) => {
 
     $("#hot-product-section>div").append(createRowProduct(5))
     $("#most-rated-product-section>div").append(createRowProduct(5))
+    $("#full-product__product-list").append(createRowProduct(5))
 
 })
 
@@ -71,16 +74,18 @@ function createListProduct(rowLength) {
     return result
 }
 
+function showProductPage() {
+    window.location = "../page/product.html"
+}
 
-let limitProduct = 100
 $("#full-product-button").click(function () {
-    if (limitProduct > 0) {
+    if (currentLimitProduct <= LIMIT_PRODUCT) {
         for (let num = 0; num < 4; num++) {
             $("#full-product__product-list").append(createRowProduct(5));
         }
-        limitProduct -= 4 * 5
+        currentLimitProduct += 4 * 5
     }
-    if (limitProduct <= 0) {
+    if (currentLimitProduct > LIMIT_PRODUCT) {
         $(this).attr('disabled', true)
     }
 })
