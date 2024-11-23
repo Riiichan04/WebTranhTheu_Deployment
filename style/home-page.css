@@ -33,3 +33,7 @@ footer p, footer i {
     color: var(--label-color);
     background-color: var(--sub-cta-button);
 }
+
+.open-category-button:hover {
+    color: var(--text-hover-color);
+}

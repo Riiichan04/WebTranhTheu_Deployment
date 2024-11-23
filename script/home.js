@@ -89,3 +89,7 @@ $("#full-product-button").click(function () {
         $(this).attr('disabled', true)
     }
 })
+
+$(".open-category-button").click(function () {
+    window.location = "../page/category.html"
+})
