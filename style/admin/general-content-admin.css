@@ -51,6 +51,6 @@ table.dataTable th.dt-type-numeric {
 
 .style-title {
     color: var(--big-text-color);
-    font-weight: bold;
+    font-weight: 500;
     padding-left: 10px;
 }

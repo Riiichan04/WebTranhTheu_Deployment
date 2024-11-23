@@ -1,5 +1,5 @@
 .style-big-title {
-    font-weight: bold;
+    font-weight: 500;
     color: var(--big-text-color);
 }
 
@@ -77,7 +77,17 @@
 .form-container {
     padding-left: 40px;
     padding-right: 40px;
+    border-radius: 10px;
     background-color: var(--light-component-background-color);
+}
+
+.form-container input, .form-container textarea, .form-container select {
+    border: solid 1px rgb(118, 118, 118);
+    border-radius: 5px;
+}
+
+.form-container input[type = 'file'] {
+    border: none;
 }
 
 .style-cancel-btn {
