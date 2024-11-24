@@ -91,6 +91,10 @@ $(".product-detail__remove-amount").click(function () {
     cart_item.find(".product-detail__add-amount").attr("disabled", false);
     amountElement.text(value + "")
 })
+// xóa sản phẩm khỏi giỏ hàng.
+$(".bi-trash").click(function (){
+    $(this).parents(".cart-item").remove()
+})
 
 
 
