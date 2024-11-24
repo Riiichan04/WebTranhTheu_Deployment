@@ -17,7 +17,7 @@ function changeFormOnCategory(btn) {
                 if(c.getHeightForm() < screen.height) {
                     $('#addIframe').css('height', c.getHeightForm() + 'px');
                 } else {
-                    $('#addIframe').css('height', (screen.height -170) + 'px');
+                    $('#addIframe').addClass('h-100');
                 }
             });
             break;
@@ -31,7 +31,7 @@ function changeFormOnCategory(btn) {
                 if(c.getHeightForm() < screen.height) {
                     $('#readAndEditIframe').css('height', c.getHeightForm() + 'px');
                 } else {
-                    $('#readAndEditIframe').css('height', (screen.height -170) + 'px');
+                    $('#readAndEditIframe').addClass('h-100');
                 }
             });
             break;
@@ -45,7 +45,7 @@ function changeFormOnCategory(btn) {
                 if(c.getHeightForm() < screen.height) {
                     $('#deleteIframe').css('height', c.getHeightForm() + 'px');
                 } else {
-                    $('#deleteIframe').css('height', (screen.height -170) + 'px');
+                    $('#deleteIframe').addClass('h-100');
                 }
             });
             break;
