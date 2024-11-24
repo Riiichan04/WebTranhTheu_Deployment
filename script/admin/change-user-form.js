@@ -2,13 +2,13 @@ function changeFormOnUser(btn) {
     const formWrapper = document.getElementById('formWrapper');
     switch (btn) {
         case 'addUserBtn':
-            formWrapper.innerHTML = `<iframe src="user-form/add-user-form.html" class="w-100 h-100" id="addIframe"></iframe>`;
+            formWrapper.innerHTML = `<iframe src="user-form/add-user-form.html" class="form-popup" id="addIframe"></iframe>`;
             break;
         case 'readAndEditUserBtn':
-            formWrapper.innerHTML = `<iframe src="user-form/read-edit-user-form.html" class="w-100 h-100" id="readAndEditIframe"></iframe>`;
+            formWrapper.innerHTML = `<iframe src="user-form/read-edit-user-form.html" class="form-popup" id="readAndEditIframe"></iframe>`;
             break;
         case 'deleteBtn':
-            formWrapper.innerHTML = `<iframe src="user-form/delete-popup.html" class="w-100 h-100" id="deleteIframe"></iframe>`;
+            formWrapper.innerHTML = `<iframe src="user-form/delete-popup.html" class="form-popup" id="deleteIframe"></iframe>`;
             break;
     }
 }
