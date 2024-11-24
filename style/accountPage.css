@@ -11,7 +11,7 @@ html,body{
 hr{
     margin: 0;
 }
-.h1,.h2,.h3{
+.h1,.h2,.h3,.h4,.h5 {
     color:var(--big-text-color);
     font-weight: bold;
 }
@@ -49,6 +49,7 @@ hr{
 }
 button{
     border: none;
+    border-radius: 5px;
 }
 input{
     border-radius: 3px;
@@ -169,8 +170,8 @@ header ul > li:hover * {
     color: var(--big-text-color);
     font-weight: bold;
 }
-.container #user-address button,.container #user-address-change .edit_address,
-.container #user-address-add .add-address{
+#user-address button,
+#user-address-add .add-address{
     background-color: var(--sub-cta-button);
     color:var(--web-background-color);
     border: none;
@@ -178,7 +179,15 @@ header ul > li:hover * {
     font-size: 15px;
     height: 40px;
 }
-
+#user-address .change-address{
+    height: 30px;
+}
+#user-address .sub-change-address{
+    display: none;
+}
+#user-address .sub-change-address input{
+    height: 40px;
+}
 /*User's viewed history */
 .product-title{
     font-weight: bold;
@@ -211,7 +220,7 @@ header ul > li:hover * {
     color: var(--web-background-color);
 }
 /*User's turnedback orders*/
-#user-ordered-list #turnedback .card .turnback_details{
+#user-ordered-list #turnedback .card .turnback_details,.submit-cancel-reason{
     background-color: var(--sub-cta-button);
     color: var(--web-background-color);
 }

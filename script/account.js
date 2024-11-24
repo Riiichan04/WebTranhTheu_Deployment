@@ -24,28 +24,49 @@ $(document).ready(function () {
     $(".add-new-address").click(function (){
         $(this).parents("#user-address").css("display","none");
         $("#user-address-add").css("display","block");
-
     })
     $(".add-address").click(function (){
         // add card into user's address
         const parent =$(this).parents("#user-address-add")
         const new_address= parent.find(".change_address_input").val()
-        $("#extended-addresses").append(' <div class="row p-4">\n' +
-            '                                <div class="card">\n' +
-            '                                    <div class="card-body">\n' +
-            '                                        <h5 class="card-title">Địa chỉ mở rộng</h5>\n' +
-            '                                        <p class="card-text">'+ new_address +'</p>\n' +
-            '                                    </div>\n' +
+        $("#extended-addresses").append('<div class="row address p-4">\n' +
+            '                            <div class="card row">\n' +
+            '                                <div class="card-body">\n' +
+            '                                    <h5 class="card-title">Địa chỉ mở rộng</h5>\n' +
+            '                                    <p class="card-text">'+new_address+'</p>\n' +
+            '                                    <button class="change-address" style="width: 50%">Sửa</button>\n' +
             '                                </div>\n' +
-            '                            </div>')
+            '                            </div>\n' +
+            '                            <div class="row sub-change-address">\n' +
+            '                                <input class="change-address-input col-9">\n' +
+            '                                <button class="col-2 confirm-change-address">Ok</button>\n' +
+            '                            </div>\n' +
+            '                        </div>')
+        $(this).parents("#user-address-add").find(".change_address_input").val("")
         $("#user-address-add").css("display","none")
         $("#user-address").css("display","block")
 
     })
 
     // Sửa địa chỉ mới
-    // coi lại
-
+    $(".change-address").click(function(){
+        $(".sub-change-address").css("display","none")
+        const parent= $(this).parents(".address")
+        const card_content= parent.find(".card").find(".card-text")
+        console.log(card_content.text())
+        const change_field= parent.find(".sub-change-address")
+        const field= change_field.find(".change-address-input")
+        field.val(card_content.text())
+        change_field.css("display","block")
+    })
+    // Sửa
+    $(".confirm-change-address").click(function (){
+        const parent= $(this).parents(".sub-change-address")
+        const fixed_address= parent.find(".change-address-input").val()
+        const card_text= $(this).parents(".address").find(".card").find(".card-text")
+        card_text.text(fixed_address)
+        $(this).parents(".sub-change-address").css("display","none")
+    })
 
     //Thay đổi lịch sử xem sản phẩm
     $('.add-to-cart').click(function () {
@@ -90,12 +111,18 @@ $(document).ready(function () {
 
 
     //Nút hủy hàng
+    $(".cancel-btn").click(function (){
+        $(".content-details").css("display","none")
+        $("#user-cancel-order").css("display","block")
+    })
 
     // Chi tiết đơn hàng.
 
 
     // Chi tiết đánh giá.
 
+
+    // Chi tiết hủy hàng.
 
     // Change avatar
     $(".change-img").click(function (){
