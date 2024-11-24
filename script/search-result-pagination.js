@@ -77,43 +77,25 @@ function displayProducts(page) {
 }
 
 function setupPagination(currentPage, totalPages) {
+
     let paginationHTML = '';
-    
-    //Nút Previous
-    if (currentPage > 1) {
-        paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(${currentPage - 1});">Trước</a></li>`
-    } else {
-        paginationHTML += `<li class="disabled btn-pagination"><span>Trước</span></li>`;
-    }
-
-    // Trang đầu tiên và dấu ...
-    if (currentPage > 3) {
-        paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(1)">1</a></li>`;
-        paginationHTML += `<li class="btn-pagination" style="background-color: var(--label-color)"><span>...</span></li>`;
-    }
-
-    // Cac trang gan trang hien tai
-    for (let i = Math.max(1, currentPage - 2); i <= Math.min(currentPage + 2, totalPages); i++) {
-        if (i === currentPage) {
-            paginationHTML += `<li class="btn-current-pagination"><span class="active">${i}</span></li>`;
-        } else {
-            paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(${i})">${i}</a></li>`;
-        }
-    }
-
-    // Dau ... va trang cuoi cung
-    if (currentPage < totalPages - 2) {
-        paginationHTML += `<li class="btn-pagination" style="background-color: var(--label-color)"><span>...</span></li>`;
-        paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(${totalPages})">${totalPages}</a></li>`;
-    }
-
-    //Nut next
-    if (currentPage < totalPages) {
-        paginationHTML += `<li class="btn-pagination"><a href="#" onclick="changePage(${currentPage + 1})">Sau</a></li>`;
-    } else {
-        paginationHTML += `<li class="disabled btn-pagination"><span>Next</span></li>`;
-    }
-
+    paginationHTML += `<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+      <a class="page-link" href="#" aria-label="Previous" onclick="changePage(${currentPage} - 1)"> 
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">${currentPage}</a></li>
+    <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+      <a class="page-link" href="#" aria-label="Next" onclick="changePage(${currentPage} + 1)">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>`
     document.getElementById('pagination').innerHTML = paginationHTML;
 }
 
