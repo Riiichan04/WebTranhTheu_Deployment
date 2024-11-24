@@ -24,6 +24,10 @@ footer p, footer i {
     margin-bottom: 5rem !important;
 }
 
+#full-product-button:disabled {
+    filter: opacity(50%);
+}
+
 .category-list p {
     margin: 0;
 }

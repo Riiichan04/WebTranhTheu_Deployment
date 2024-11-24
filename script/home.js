@@ -7,7 +7,7 @@ $.getJSON("../asset/data.json", (data) => {
         listData.push(`
             <div class="col">
                 <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     <div class="card-body px-1">
                         <h6 class="card-title text-start pb-2">${element.title}</h6>
                         <div class="col d-flex justify-content-start comment-rating">
