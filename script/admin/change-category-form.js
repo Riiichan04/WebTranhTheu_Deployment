@@ -93,7 +93,6 @@ $('#myTable').DataTable().on('draw', function () {
             iframeDoc.find('#cancelBtn').on('click', function () {
                 hiddenOverlay();
             });
-
         });
 
     });
