@@ -21,10 +21,8 @@
 
 </head>
 <body>
-<!-- Gray overlay -->
-<div id="overlay" class="hidden"></div>
 <!-- Form container -->
-<div id="formContainer" class="vh-100 align-content-center">
+<div id="formContainer">
     <!-- enter code -->
     <form class="form-container">
         <div class="row pt-3">
@@ -127,5 +125,11 @@
 </div>
 
 <script src="../../../script/admin/category-form/read-edit-category-form.js"></script>
+<script>
+    function getHeightForm() {
+        const addForm = document.getElementById('formContainer');
+        return addForm.offsetHeight;
+    }
+</script>
 </body>
 </html>

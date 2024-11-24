@@ -17,10 +17,8 @@
     
 </head>
 <body>
-<!-- Gray overlay -->
-<div id="overlay" class="hidden"></div>
 <!-- Form container -->
-<div id="formContainer" class="align-content-center vh-100">
+<div id="formContainer">
     <!-- Modal xác nhận -->
     <div id="confirmModal">
         <div class="modal-content py-4">
@@ -35,5 +33,11 @@
         </div>
     </div>
 </div>
+<script>
+    function getHeightForm() {
+        const addForm = document.getElementById('formContainer');
+        return addForm.offsetHeight;
+    }
+</script>
 </body>
 </html>
