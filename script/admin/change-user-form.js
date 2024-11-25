@@ -17,7 +17,7 @@ function changeFormOnUser(btn) {
                 if(c.getHeightForm() < screen.height) {
                     $('#addIframe').css('height', (c.getHeightForm()+2) + 'px');
                 } else {
-                    $('#addIframe').addClass('h-100');
+                    $('#addIframe').css('height', 'calc(100vh - 40px)');
                 }
             });
             break;
@@ -31,7 +31,7 @@ function changeFormOnUser(btn) {
                 if(c.getHeightForm() < screen.height) {
                     $('#readAndEditIframe').css('height', c.getHeightForm() + 'px');
                 } else {
-                    $('#readAndEditIframe').addClass('h-100');
+                    $('#readAndEditIframe').css('height', 'calc(100vh - 40px)');
                 }
             });
             break;
@@ -45,7 +45,7 @@ function changeFormOnUser(btn) {
                 if(c.getHeightForm() < screen.height) {
                     $('#deleteIframe').css('height', c.getHeightForm() + 'px');
                 } else {
-                    $('#deleteIframe').addClass('h-100');
+                    $('#deleteIframe').css('height', 'calc(100vh - 40px)');
                 }
             });
             break;

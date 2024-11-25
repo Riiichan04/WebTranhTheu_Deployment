@@ -3,6 +3,8 @@
 }
 
 #formWrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
     position: fixed;
     top: 0;
     left: 0;
