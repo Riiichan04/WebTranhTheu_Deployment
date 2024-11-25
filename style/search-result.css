@@ -110,4 +110,8 @@
     background-color: var(--light-component-background-color);
 }
 
+.page-link {
+    color: var(--big-text-color);
+}
+
 
