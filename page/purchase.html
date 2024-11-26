@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Confirm Purchase</title>
+    <title>Xác nhận thanh toán - Nét Việt</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -11,8 +11,10 @@
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/header.css">
     <link rel="stylesheet" href="../style/purchase.css">
+    <link rel="stylesheet" href="../style/footer.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -22,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-1 text-white d-flex text-center">
-                    <i class="bi bi-bootstrap text-white" id="header-logo"></i>
+                    <a href="index.html"><i class="bi bi-bootstrap text-white" id="header-logo"></i></a>
                 </div>
 
                 <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
@@ -51,11 +53,11 @@
         </div>
     </div>
 </header>
-<nav class="container">
-    <span id="back-btn" class="my-1" onclick="history.back()">< Quay lại trang trước</span>
+<nav class="container mt-2">
+    <span id="back-btn" onclick="history.back()">< Quay lại trang trước</span>
 </nav>
 
-<section class="container mt-2 mb-3" id="user-detail">
+<section class="container my-4_5" id="user-detail">
     <div class="background-container rounded p-4_5 row">
         <div class="col-6">
             <div>
@@ -66,7 +68,8 @@
                 </div>
                 <div class="row">
                     <p class="col-6">Địa chỉ nhận hàng: <span class="fw-semibold">Chưa chọn</span></p>
-                    <p class="col-6"></p>
+                    <p class="col-4"></p>
+                    <p class="col-2 text-end"><a class="text-decoration-none main-color fw-semibold" href="user-page.html">THAY ĐỔI</a></p>
                 </div>
             </div>
             <hr/>
@@ -104,40 +107,40 @@
             <div id="cart-display">
                 <div class="row my-2">
                     <div class="col-4">
-                        <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     </div>
                     <div class="col-7">
-                        <h5>Tranh thêu thám tử lừng danh Conan</h5>
+                        <h5 class="main-color">Tranh thêu tay Đào hạc</h5>
                         <p class="mb-1">Số lượng: 1</p>
                         <div class="row">
                             <div class="col-6">
                             </div>
                             <div class="col-6">
-                                <h6 class="product-price text-end">20.000.000 VNĐ</h6>
+                                <h6 class="product-price text-end">4.850.000 VNĐ</h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-1 d-flex align-items-center">
-                        <i style="color: var(--text-hover-color)" class="fa-solid fa-trash-can delete-product"></i>
+                        <i class="fa-solid fa-trash-can delete-product"></i>
                     </div>
                 </div>
                 <div class="row my-2">
                     <div class="col-4">
-                        <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     </div>
                     <div class="col-7">
-                        <h5>Tranh thêu phong cảnh trong rừng</h5>
+                        <h5 class="main-color">Tranh thêu tay Sen cá</h5>
                         <p class="mb-1">Số lượng: 1</p>
                         <div class="row">
                             <div class="col-6">
                             </div>
                             <div class="col-6">
-                                <h6 class="product-price text-end">10.000.000 VNĐ</h6>
+                                <h6 class="product-price text-end">3.450.000 VNĐ</h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-1 d-flex align-items-center">
-                        <i style="color: var(--text-hover-color)" class="fa-solid fa-trash-can delete-product"></i>
+                        <i class="fa-solid fa-trash-can delete-product"></i>
                     </div>
                 </div>
             </div>
@@ -148,7 +151,7 @@
                         <span>Thành tiền: </span>
                     </div>
                     <div class="col-6 text-end">
-                        <h5 id="product-sum-price" class="fw-semibold ">30.000.000 VNĐ</h5>
+                        <h5 id="product-sum-price" class="fw-semibold ">8.300.000 VNĐ</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -172,14 +175,15 @@
                         <h5>Tổng giá tiền: </h5>
                     </div>
                     <div class="col-6  text-end">
-                        <h3 id="total-price" style="color: var(--main-cta-button)">30.130.000 VNĐ</h3>
+                        <h3 id="total-price" style="color: var(--main-cta-button)">8.430.000 VNĐ</h3>
                     </div>
                 </div>
             </div>
             <div class="row px-5">
                 <div class="col-6 d-flex align-items-center">
-                    <button class="rounded sub-cta-button px-3 py-2"
-                            style="background-color: var(--light-component-background-color)">
+                    <button id="cancel-button" class="rounded sub-cta-button px-3 py-2"
+                            style="background-color: var(--light-component-background-color)"
+                            onclick="history.back()">
                         Hủy
                     </button>
                 </div>
@@ -204,6 +208,63 @@
         </div>
     </div>
 </div>
+
+<footer>
+    <div class="px-3 py-2 container">
+        <div class="row px-3 py-3">
+            <div class="col-4 border-end pe-3">
+                <div class="row"><i class="bi bi-bootstrap text-white" id="footer-logo"></i></div>
+                <div class="row p-3 text-white">
+                    Sự khác biệt giữa tranh thêu tay và tranh thêu chữ thập
+                    <br/>
+                    Đối với tranh thêu tay nghệ thuật thì khác hẳn. Tranh thêu tay truyền thống phải mất nhiều thời
+                    gian để làm quen và học, tranh truyền thống không đơn giản chỉ là kỹ thuật mà còn là tình cảm là
+                    tâm hồn của người thợ được truyền tải qua mỗi bức tranh. Chính vì thế mỗi bức tranh đều có nét
+                    riêng biệt và có hồn là như vậy.
+                </div>
+            </div>
+            <!--            <div class="col-1"></div>-->
+            <div class="col-8 text-white">
+                <div class="ms-4">
+                    <div class="row">
+                        <div class="col-4">
+                            <h4>Dịch vụ</h4>
+                            <div class="row px-3"><a href="about-us.html">Về chúng tôi</a></div>
+                            <div class="row px-3"><a href="privacy-policy.html">Chính sách quyền riêng tư</a></div>
+                            <div class="row px-3"><a href="terms.html">Điều khoản sử dụng</a></div>
+                        </div>
+                        <div class="col-4">
+                            <h4>Hỗ trợ</h4>
+                            <div class="row px-3"><a href="policy.html">Chính sách đổi - trả - hoàn tiền</a></div>
+                            <div class="row px-3"><a href="policy.html">Chính sách vận chuyển</a></div>
+                        </div>
+                        <div class="col-4">
+                            <h4>Đối tác liên kết</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <img src="../asset/VNPay.png" class="img-fluid" alt="Hình 1">
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <img src="../asset/momo-logo.png" class="img-fluid" alt="Hình 2"
+                                         style="width:50px;height: 50px ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-4">
+                        <div class="row "><h4>Liên hệ</h4></div>
+                        <div class="col-4 px-3"><i class="fa-solid fa-location-dot px-1"></i> Khu phố 6, phường Linh
+                            Trung, thành phố Thủ Đức, TP HCM
+                        </div>
+                        <div class="col-4 px-3 "><i class="fa-regular fa-envelope px-1"></i>hehe@gmail.com</div>
+                        <div class="col-4 px-3 "><i class="fa-solid fa-phone px-1"></i> 0392334750</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="../script/purchase.js"></script>
 </body>
 </html>

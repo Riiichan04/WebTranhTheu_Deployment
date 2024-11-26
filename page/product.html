@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Product Page</title>
+    <title>Tranh thêu Phong cảnh Đồng quê - Nét Việt</title>
+    <!--    <link rel="icon" href="../asset/favicon/web_logo.png" type="image/x-icon">-->
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -10,9 +11,12 @@
     <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/product.css">
     <link rel="stylesheet" href="../style/header.css">
+    <link rel="stylesheet" href="../style/footer.css">
+    <link rel="stylesheet" href="../style/style.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -22,7 +26,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-1 text-white d-flex text-center">
-                    <i class="bi bi-bootstrap text-white" id="header-logo"></i>
+                    <a href="index.html"><i class="bi bi-bootstrap text-white" id="header-logo"></i></a>
+                    <!--                    <img src="../asset/favicon/web_logo.png" alt="" id="header-logo" width="40px" height="40px">-->
                 </div>
 
                 <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
@@ -38,9 +43,12 @@
                         <i class="fa-solid fa-heart my-1"></i>
                         <p class="header-feature__label">Yêu thích</p>
                     </li>
-                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
                         <i class="fa-solid fa-cart-shopping my-1"></i>
                         <p class="header-feature__label">Giỏ hàng</p>
+                        <div id="cart-badge"
+                             class="rounded position-absolute align-items-center justify-content-center">0
+                        </div>
                     </li>
                     <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
                         <i class="fa-solid fa-user my-1"></i>
@@ -53,9 +61,8 @@
 </header>
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">
-        <li class="breadcrumb-item">Trang chủ</li>
-        <li class="breadcrumb-item" aria-current="page">Sản phẩm</li>
-        <li class="breadcrumb-item" aria-current="page">Tranh thêu Phong cảnh</li>
+        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="category.html">Tranh thêu Phong cảnh</a></li>
         <li class="breadcrumb-item active" aria-current="page">Tranh Phong cảnh Đồng quê</li>
     </ol>
 </nav>
@@ -63,8 +70,9 @@
 <section class="container my-4_5" id="product-detail">
     <div class="background-container rounded">
         <div class="row">
-            <div class="col-3 p-4_5 ">
-                <img id="product-image" src="../asset/product_image.png" alt="">
+            <div class="col-3 p-4_5">
+                <img id="product-image" src="../asset/image/product_image.png" alt="">
+
             </div>
             <div class="col ps-4_5 p-4_5 ">
                 <div class="row">
@@ -86,35 +94,54 @@
                     <div class="col-6">Nguyên liệu: <span class="fw-semibold">Vải, Kim, Chỉ</span></div>
                     <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh thêu Hà Sơn</span></div>
                 </div>
-                <div class="row col-4 my-2 mt-3 d-flex justify-content-center" id="product-info__rating">
-                    <div class="col-2 product-info__star-container   px-0">
-                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                        <div class="product-info__star-mask"></div>
-                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                <div class="row my-2 mt-3">
+                    <div class="col-4">
+                        <div class=" d-flex justify-content-around" id="product-info__rating">
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+                            <div class="col-2 product-info__star-container   px-0">
+                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <div class="product-info__star-mask"></div>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            </div>
+
+                        </div>
+                        <p class="text-center mt-2">15000 đánh giá</p>
                     </div>
-                    <div class="col-2 product-info__star-container   px-0">
-                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                        <div class="product-info__star-mask"></div>
-                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                    </div>
-                    <div class="col-2 product-info__star-container   px-0">
-                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                        <div class="product-info__star-mask"></div>
-                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                    </div>
-                    <div class="col-2 product-info__star-container   px-0">
-                        <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-                        <div class="product-info__star-mask"></div>
-                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                    </div>
-                    <div class="col-2 product-info__star-container   px-0">
-                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                        <div class="product-info__star-mask"></div>
-                        <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                    <div class="col-2"></div>
+                    <div class="col-6 row d-flex justify-content-start align-items-center">
+                        <div class="col"></div>
+                        <div id="product-detail__share-btn" class="col position-relative">
+                            <i class="cursor-pointer h4 main-color fa-regular fa-share-from-square"></i>
+                            <p class="bg-opacity-75 p-1 d-none notification-message bg-dark rounded">Đã copy link vào
+                                clipboard</p>
+                        </div>
+                        <div id="product-detail__loved-btn" class="col position-relative">
+                            <i class="cursor-pointer h4 main-color fa-regular fa-heart"></i>
+                            <p class="bg-opacity-75 p-1 d-none notification-message bg-dark rounded"></p>
+                        </div>
+                        <div class="col"></div>
                     </div>
                 </div>
                 <div class="row col-4 mt-1">
-                    <p class="text-center">15000 đánh giá</p>
                 </div>
                 <div class="row">
                     <div class="col-6 d-flex align-items-center">
@@ -125,7 +152,7 @@
                             <div class="row">
                                 <div class="col-4 text-center">
                                     <button class="rounded" id="product-detail__remove-amount" disabled>
-                                        <i class="fa-solid fa-minus" style="color: #000b0e;"></i>
+                                        <i class="fa-solid fa-minus"></i>
                                     </button>
                                 </div>
                                 <div class="col-4 text-center" id="product-detail__amount">
@@ -133,7 +160,7 @@
                                 </div>
                                 <div class="col-4 text-center">
                                     <button class="rounded" id="product-detail__add-amount">
-                                        <i class="fa-solid fa-plus" style="color: #000b0e;"></i>
+                                        <i class="fa-solid fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
@@ -145,14 +172,14 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-6">
-                        <button class="sub-cta-button  py-2 px-3 rounded"
-                                style="background-color: var(--light-component-background-color)">
+                        <button id="add-to-cart-btn" class="sub-cta-button  py-2 px-3 rounded">
                             <i class="fa-solid fa-cart-shopping" style="color: var(--sub-cta-button);"></i>
                             Thêm vào giỏ
                         </button>
                     </div>
                     <div class="col-6 d-flex justify-content-center">
-                        <button class="main-cta-button h4 py-3 px-4_5 rounded border-0">Mua ngay</button>
+                        <button id="purchase-btn" class="main-cta-button h4 py-3 px-4_5 rounded border-0">Mua ngay
+                        </button>
                     </div>
                 </div>
             </div>
@@ -163,48 +190,14 @@
                     </div>
                     <div class="row my-2 position-relative">
                         <div class="col-1">
-                            <!--                            <i class="fa-solid fa-location-dot"></i>-->
                             <i class="bi bi-geo-alt"></i>
                         </div>
                         <div class="col-6">
                             <span> Chưa chọn</span>
                         </div>
                         <div class="col-5 text-end position-relative ">
-                            <span id="show-popup" style="color: var(--big-text-color)">THAY ĐỔI</span>
-                        </div>
-                        <div class="position-absolute container-fluid py-2 px-4" id="shipping-location-container">
-                            <div class="row d-flex justify-content-end">
-                                <button type="button" id="shipping-location__close-popup" class="btn-close"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="overflow-x-auto mt-3" id="shipping-location__breadcrumb">
-                                <span class="my-2">Chọn tỉnh/thành phố</span>
-                                <span class="my-2"> > </span>
-                                <span class="my-2">Chọn quận/huyện</span>
-                                <span class="my-2"> > </span>
-                                <span class="my-2">Chọn phường/xã</span>
-                            </div>
-                            <div class="row my-3">
-                                <input class="form-control mb-2" type="text" placeholder="Tìm địa chỉ">
-                                <ul id="list-address" class="overflow-y-auto list-group list-group-flush"
-                                    style="height: 15rem">
-                                    <li class="list-group-item">Thành phố Hồ Chí Minh</li>
-                                    <li class="list-group-item">Hà Nội</li>
-                                    <li class="list-group-item">Huế</li>
-                                    <li class="list-group-item">Cần Thơ</li>
-                                    <li class="list-group-item">Hải Phòng</li>
-                                    <li class="list-group-item">Tiền Giang</li>
-                                    <li class="list-group-item">Bến Tre</li>
-                                    <li class="list-group-item">Khánh Hòa</li>
-                                    <li class="list-group-item">Ninh Thuận</li>
-                                    <li class="list-group-item">Phan Rang - Tháp Chàm</li>
-                                    <li class="list-group-item">Cà Mau</li>
-                                    <li class="list-group-item">Đồng Tháp</li>
-                                    <li class="list-group-item">Quảng Ninh</li>
-                                    <li class="list-group-item">Phú Thọ</li>
-                                    <li class="list-group-item">Hòa Bình</li>
-                                </ul>
-                            </div>
+                            <a class="text-decoration-none main-color" id="show-popup" href="user-page.html">THAY
+                                ĐỔI</a>
                         </div>
                     </div>
                     <div class="row my-2">
@@ -216,7 +209,7 @@
                             <span>Giao hàng tận nơi</span>
                         </div>
                         <div class="col-5 text-end">
-                            <span class="fw-bolder">100.000 VNĐ</span>
+                            <span class="fw-bolder">130.000 VNĐ</span>
                         </div>
                     </div>
                     <div class="row my-2">
@@ -226,7 +219,11 @@
                         </div>
                         <div class="col">
                             <span>Thanh toán bằng tiền mặt</span>
+                            <div class="col">
+                                <span>(Có thể thay đổi khi thanh toán)</span>
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="mb-4_5">
@@ -290,7 +287,7 @@
             <div class="row mt-4">
                 <div class="col-2 row">
                     <div class="text-center">
-                        <span class="h3 main-color">3.6</span><span class="h5">/5.0</span>
+                        <span id="current-star-rating" class="h3 main-color">4.0</span><span class="h5">/5.0</span>
                     </div>
                     <div id="product-review__star" class="mt-2 d-flex justify-content-center">
                         <div class="col-2 product-info__star-container   px-0">
@@ -329,140 +326,167 @@
                 <div class="col-8">
                     <textarea class="form-control" id="product-review--comment" rows="4"
                               placeholder="Đánh giá của bạn về sản phẩm"></textarea>
+                    <p class="text-center mt-1 mb-0" style="font-size: 12px">(Bạn cần mua sản phẩm để có thể bình
+                        luận)</p>
                 </div>
-                <div class="col-1 d-flex align-items-center">
-                    <button class="btn sub-cta-button-background px-4 py-2">Gửi</button>
+                <div class="col-1 row d-flex align-items-center">
+                    <button id="send-comment" class="btn sub-cta-button-background px-4 py-2">Gửi</button>
                 </div>
             </div>
         </div>
         <hr/>
         <div>
             <h4 class="main-color">Bình luận</h4>
-            <p class="text-start">(3 bình luận)</p>
-            <div class="row product-review__comment-component mt-4_5">
-                <div class="col-3 text-center">
-                    <h5>FanT1_20năm</h5>
-                    <p>03/11/2024</p>
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col d-flex justify-content-center comment-rating">
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+            <p class="text-start">(<span id="count-comment">3</span> bình luận)</p>
+            <div id="comment-container">
+                <div class="row product-review__comment-component mt-4_5">
+                    <div class="col-3 text-center">
+                        <h5>FanT1_20năm</h5>
+                        <p>03/11/2024</p>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col d-flex justify-content-center comment-rating">
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star sample_half"
+                                       style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask" style="width: 100%"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
                             </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask" style="width: 100%"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
+                            <div class="col-2"></div>
                         </div>
-                        <div class="col-2"></div>
+                    </div>
+                    <div class="col-8">
+                        <p class="" style="white-space: pre-line">
+                            - Đánh giá chung: Tranh khá là đẹp
+                            - Vị trí treo tranh: Nên treo ở phòng khách hoặc phòng ngủ
+                            - Giá cả: Với độ đẹp này thì giá cả vừa phải
+                            - Chất liệu: Với mức giá này thì chất liệu tranh rất tốt
+                        </p>
                     </div>
                 </div>
-                <div class="col-8">
-                    <p class="" style="white-space: pre-line">
-                        - Đánh giá chung: Tranh khá là đẹp
-                        - Vị trí treo tranh: Nên treo ở phòng khách hoặc phòng ngủ
-                        - Giá cả: Với độ đẹp này thì giá cả vừa phải
-                        - Chất liệu: Với mức giá này thì chất liệu tranh rất tốt
-                    </p>
-                </div>
-            </div>
-            <div class="row product-review__comment-component mt-4_5">
-                <div class="col-3 text-center">
-                    <h5>TraL04</h5>
-                    <p>01/11/2024</p>
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col d-flex justify-content-center comment-rating">
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                <div class="row product-review__comment-component mt-4_5">
+                    <div class="col-3 text-center">
+                        <h5>TraL04</h5>
+                        <p>01/11/2024</p>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col d-flex justify-content-center comment-rating">
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star sample_half"
+                                       style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask" style="width: 100%"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask" style="width: 100%"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
                             </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask" style="width: 100%"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask" style="width: 100%"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
+                            <div class="col-2"></div>
                         </div>
-                        <div class="col-2"></div>
+                    </div>
+                    <div class="col-8">
+                        <p class="" style="white-space: pre-line">Nét mềm mại, không chỉ thừa, phù hợp trang trí nhà,
+                            rất đáng tiền mua</p>
                     </div>
                 </div>
-                <div class="col-8">
-                    <p class="" style="white-space: pre-line">Nét mềm mại, không chỉ thừa, phù hợp trang trí nhà, rất
-                        đáng tiền mua</p>
-                </div>
-            </div>
-            <div class="row product-review__comment-component mt-4_5">
-                <div class="col-3 text-center">
-                    <h5>Anh Nguyễn</h5>
-                    <p>23/10/2024</p>
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col d-flex justify-content-center comment-rating">
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                <div class="row product-review__comment-component mt-4_5">
+                    <div class="col-3 text-center">
+                        <h5>Anh Nguyễn</h5>
+                        <p>23/10/2024</p>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col d-flex justify-content-center comment-rating">
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star sample_half"
+                                       style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: #4d6a55;"></i>
+                                </div>
                             </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
+                            <div class="col-2"></div>
                         </div>
-                        <div class="col-2"></div>
                     </div>
-                </div>
-                <div class="col-8">
-                    <p class="" style="white-space: pre-line">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="col-8">
+                        <p class="" style="white-space: pre-line">Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -472,9 +496,9 @@
     <div class="background-container rounded p-4_5">
         <h4 class="main-color">Sản phẩm khác</h4>
         <div class="row mt-2">
-            <div class="col">
+            <div class="col other-product__card">
                 <div class="card p-2" style="cursor: pointer">
-                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     <div class="card-body px-1 row">
                         <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 15</h6>
                         <div class="col d-flex justify-content-start comment-rating">
@@ -517,9 +541,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col other-product__card">
                 <div class="card p-2" style="cursor: pointer">
-                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     <div class="card-body px-1">
                         <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 14</h6>
                         <div class="col d-flex justify-content-start comment-rating">
@@ -562,9 +586,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col other-product__card">
                 <div class="card p-2" style="cursor: pointer">
-                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     <div class="card-body px-1">
                         <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 1</h6>
                         <div class="col d-flex justify-content-start comment-rating">
@@ -607,9 +631,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col other-product__card">
                 <div class="card p-2" style="cursor: pointer">
-                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     <div class="card-body px-1">
                         <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 2</h6>
                         <div class="col d-flex justify-content-start comment-rating">
@@ -652,9 +676,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col other-product__card">
                 <div class="card p-2" style="cursor: pointer">
-                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     <div class="card-body px-1">
                         <h6 class="card-title text-start pb-2">Tranh Phong cảnh Chùa một cột 3</h6>
                         <div class="col d-flex justify-content-start comment-rating">
@@ -697,55 +721,77 @@
                     </div>
                 </div>
             </div>
+            <div class="col">
+                <div class="card p-2" style="cursor: pointer">
+                    <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-start">Tranh thêu thám tử lừng danh Conan</h6>
+                        <p class="card-text text-end fw-semibold h5" style="color: var(--main-cta-button)">20.000.000
+                            VNĐ</p>
+                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                    </div>
+                </div>
+            </div>
         </div>
-        <!--        <div class="row g-4 mt-2">-->
-        <!--            <div class="col">-->
-        <!--                <div class="card p-2" style="cursor: pointer">-->
-        <!--                    <img src="../asset/product_image.png" class="card-img-top" alt="...">-->
-        <!--                    <div class="card-body">-->
-        <!--                        <h6 class="card-title text-start">Tranh Phong cảnh Đồng quê</h6>-->
-        <!--                        <p class="card-text text-end fw-semibold h5" style="color: var(&#45;&#45;main-cta-button)">20.000.000-->
-        <!--                            VNĐ</p>-->
-        <!--                        &lt;!&ndash;                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>&ndash;&gt;-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class="col">-->
-        <!--                <div class="card p-2" style="cursor: pointer">-->
-        <!--                    <img src="../asset/product_image.png" class="card-img-top" alt="...">-->
-        <!--                    <div class="card-body">-->
-        <!--                        <h6 class="card-title text-start">Tranh Phong cảnh Đồng quê</h6>-->
-        <!--                        <p class="card-text text-end fw-semibold h5" style="color: var(&#45;&#45;main-cta-button)">20.000.000-->
-        <!--                            VNĐ</p>-->
-        <!--                        &lt;!&ndash;                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>&ndash;&gt;-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class="col">-->
-        <!--                <div class="card p-2" style="cursor: pointer">-->
-        <!--                    <img src="../asset/product_image.png" class="card-img-top" alt="...">-->
-        <!--                    <div class="card-body">-->
-        <!--                        <h6 class="card-title text-start">Tranh Phong cảnh Đồng quê</h6>-->
-        <!--                        <p class="card-text text-end fw-semibold h5" style="color: var(&#45;&#45;main-cta-button)">20.000.000-->
-        <!--                            VNĐ</p>-->
-        <!--                        &lt;!&ndash;                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>&ndash;&gt;-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class="col">-->
-        <!--                <div class="card p-2" style="cursor: pointer">-->
-        <!--                    <img src="../asset/product_image.png" class="card-img-top" alt="...">-->
-        <!--                    <div class="card-body">-->
-        <!--                        <h6 class="card-title text-start">Tranh Phong cảnh Đồng quê</h6>-->
-        <!--                        <p class="card-text text-end fw-semibold h5" style="color: var(&#45;&#45;main-cta-button)">20.000.000-->
-        <!--                            VNĐ</p>-->
-        <!--                        &lt;!&ndash;                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>&ndash;&gt;-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
     </div>
 </section>
+
+<footer>
+    <div class="px-3 py-2 container">
+        <div class="row px-3 py-3">
+            <div class="col-4 border-end pe-3">
+                <div class="row"><i class="bi bi-bootstrap text-white" id="footer-logo"></i></div>
+                <div class="row p-3 text-white">
+                    Sự khác biệt giữa tranh thêu tay và tranh thêu chữ thập
+                    <br/>
+                    Đối với tranh thêu tay nghệ thuật thì khác hẳn. Tranh thêu tay truyền thống phải mất nhiều thời
+                    gian để làm quen và học, tranh truyền thống không đơn giản chỉ là kỹ thuật mà còn là tình cảm là
+                    tâm hồn của người thợ được truyền tải qua mỗi bức tranh. Chính vì thế mỗi bức tranh đều có nét
+                    riêng biệt và có hồn là như vậy.
+                </div>
+            </div>
+            <!--            <div class="col-1"></div>-->
+            <div class="col-8 text-white">
+                <div class="ms-4">
+                    <div class="row">
+                        <div class="col-4">
+                            <h4>Dịch vụ</h4>
+                            <div class="row px-3"><a href="about-us.html">Về chúng tôi</a></div>
+                            <div class="row px-3"><a href="privacy-policy.html">Chính sách quyền riêng tư</a></div>
+                            <div class="row px-3"><a href="terms.html">Điều khoản sử dụng</a></div>
+                        </div>
+                        <div class="col-4">
+                            <h4>Hỗ trợ</h4>
+                            <div class="row px-3"><a href="policy.html">Chính sách đổi - trả - hoàn tiền</a></div>
+                            <div class="row px-3"><a href="policy.html">Chính sách vận chuyển</a></div>
+                        </div>
+                        <div class="col-4">
+                            <h4>Đối tác liên kết</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <img src="../asset/VNPay.png" class="img-fluid" alt="Hình 1">
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <img src="../asset/momo-logo.png" class="img-fluid" alt="Hình 2"
+                                         style="width:50px;height: 50px ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-4">
+                        <div class="row "><h4>Liên hệ</h4></div>
+                        <div class="col-4 px-3"><i class="fa-solid fa-location-dot px-1"></i> Khu phố 6, phường Linh
+                            Trung, thành phố Thủ Đức, TP HCM
+                        </div>
+                        <div class="col-4 px-3 "><i class="fa-regular fa-envelope px-1"></i>hehe@gmail.com</div>
+                        <div class="col-4 px-3 "><i class="fa-solid fa-phone px-1"></i> 0392334750</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="../script/product.js"></script>
 </body>
 </html>
