@@ -21,6 +21,8 @@ body {
 }
 #header-logo{
     background-color: var(--web-background-color);
+    width: 70px;
+    height: 70px;
 }
 .p-4_5 {
     padding: 2rem !important;
