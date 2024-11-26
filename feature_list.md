@@ -96,3 +96,145 @@
 - Trang đăng nhập (Thư)
 - Trang admin (Thư)
 - About us (Loan)
+## DB
+- accounts:
+  - aid*
+  - avatar_url
+  - user_name
+  - full_name
+  - email
+  - password
+  - phone
+  - gender
+  - description
+  - status (trạng thái đăng nhập)
+  - createdAt
+  - updatedAt
+  - role
+- addresses:
+    - adid*
+    - location
+- account_addresses:
+  - adid*
+  - aid*
+  - createdAt 
+  - updatedAt
+- favour_products:
+    - aid*
+    - pid*
+    - createdAt
+- carts:
+  - cid*
+  - aid
+  - updatedAt
+- cart_products_details:
+  - cid*
+  - pid*
+  - amount
+- review_histories:(?????)
+  - rid*
+  - aid
+  - createdAt 
+  - updatedAt
+- review_history_details:(????)
+  - rid*
+  - pid*
+  - rating
+  - comment
+  - countStar
+- categories:
+  - carid*
+  - name
+- products:
+  - pid*
+  - name 
+  - description
+  - images (Chuẩn hóa)
+  - price 
+  - size
+  - materials 
+  - proid 
+  - createdAt 
+  - updatedAt
+- category_products_details:
+  - carid*
+  - pid*
+  - updatedAt
+- products_images:
+  - imgid*
+  - pid*
+  - image_url 
+  - alt 
+- providers:
+  - proid*
+  - name 
+  - adid
+- viewed_histories:(???)
+  - vid*
+  - aid*
+  - createdAt
+  - updatedAt 
+- view_history_details:(???)
+  - vid*
+  - pid*
+  - createdAt
+- policies:
+  - polid*
+  - name 
+  - description.
+  - createdAt 
+  - updatedAt
+- discounts:
+  - discount_id*
+  - name 
+  - description
+  - status 
+  - createdAt 
+  - expiredAt 
+- product_discount_details:
+  - discount_id*
+  - pid*
+  - value
+  - amountLimit
+- orders:
+  - oid*
+  - aid*
+  - createdAt 
+  - deliveredAt
+- order_products_details:
+  - oid*
+  - pid*
+  - amount
+- order_discount_details:(???)
+  - oid*
+  - discount_id*
+  - value
+  - amountLimit 
+- payments:
+  - payid*
+  - aid
+  - status
+  - createdAt
+- payment_orders_details:
+  - payid*
+  - oid*
+  - method
+- inventories:
+  - iid*
+  - location
+- inventory_products_details:
+  - iid*
+  - pid*
+  - amount
+- **a: account.
+- **av: avatar.
+- **ad: address.
+- **c: cart.
+- **car: category.
+- **pro: provider.
+- **r: review.
+- **v: view.
+- **pol: policy.
+- **o: order.
+- **pay: payment.
+- **i: inventory.

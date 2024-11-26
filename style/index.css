@@ -19,7 +19,10 @@
 body {
     background-color: var(--web-background-color) !important;
 }
-
+#header-logo{
+    width: 70px;
+    height: 70px;
+}
 .p-4_5 {
     padding: 2rem !important;
 }
