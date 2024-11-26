@@ -95,6 +95,14 @@ $(".product-detail__remove-amount").click(function () {
 $(".bi-trash").click(function (){
     $(this).parents(".cart-item").remove()
 })
+// chi tiết giảm giá
+$(".discount-detail").click(function (){
+    $(".discount-detail-info").addClass("show")
+})
+// bỏ đánh giá
+$(".cancel-discount").click(function (){
+    $(".discount-detail-info").removeClass("show")
+})
 
 
 

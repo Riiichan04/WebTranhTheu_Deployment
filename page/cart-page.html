@@ -57,7 +57,7 @@
 <!--Breadcrumbs-->
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb p-4">
-        <li class="breadcrumb-item"><a href="#" style="text-decoration: none">Trang chủ </a></li>
+        <li class="breadcrumb-item"><a href="../page/index.html" style="text-decoration: none">Trang chủ </a></li>
         <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
     </ol>
 </nav>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-3 text-center">Sản phẩm</div>
                 <div class="col-3 text-center">Số lượng</div>
-                <div class="col-2">Tổng tiền</div>
+                <div class="col-2">Giá tiền</div>
             </div>
             <hr/>
             <div class="cart-item-list">
@@ -360,21 +360,30 @@
                 <div class="discounts-list">
                     <div class="row ps-3 py-2 discount-item">
                         <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
-                        <div class="row discount-description">Đơn từ 10.000.000.</div>
+                        <div class="row p-0">
+                            <div class=" col-9 discount-description">Đơn từ 10.000.000.</div>
+                            <div class="col-3 discount-detail">Chi tiết</div>
+                        </div>
                         <div class="row">
                             <button class="apply_discount">Áp dụng</button>
                         </div>
                     </div>
                     <div class="row ps-3 py-2 discount-item">
                         <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
-                        <div class="row discount-description">Đơn từ 10.000.000.</div>
+                        <div class="row p-0">
+                            <div class=" col-9 discount-description">Đơn từ 10.000.000.</div>
+                            <div class="col-3 discount-detail">Chi tiết</div>
+                        </div>
                         <div class="row">
                             <button class="apply_discount">Áp dụng</button>
                         </div>
                     </div>
                     <div class="row ps-3 py-2 discount-item">
                         <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
-                        <div class="row discount-description">Đơn từ 10.000.000.</div>
+                        <div class="row p-0">
+                            <div class=" col-9 discount-description">Đơn từ 10.000.000.</div>
+                            <div class="col-3 discount-detail">Chi tiết</div>
+                        </div>
                         <div class="row">
                             <button class="apply_discount">Áp dụng</button>
                         </div>
@@ -393,11 +402,22 @@
                     <div class="col-4" id="total-price">0</div>
                 </div>
                 <div class="row ps-5 py-4 ">
-                    <button class="payable">Thanh toán</button>
+                    <button class="payable"><a href="../page/purchase.html" style="text-decoration: none;color: var(--web-background-color)">Thanh toán</a></button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class=" container p-4 discount-detail-info">
+    <div class="row">
+        <div class=" col-11 text-center h5">Điều kiện áp dụng</div>
+        <i class="col-1 bi bi-x-lg cancel-discount"></i>
+    </div>
+    <hr/>
+    <div class="row ps-3">- Áp dụng cho đơn hàng KHÔNG bao gồm giá trị của các sản phẩm Ngoại Văn, Manga, Phiếu Quà Tặng, Sách Giáo Khoa, Máy Tính và Giấy Photo và Một Số Loại Giấy và Bảng Khác</div>
+    <div class="row ps-3">- Khách hàng có thể áp dụng cùng lúc với mã giảm phí vận chuyển</div>
+    <div class="py-4"></div>
+    <div class="row text-center"><button class="apply_discount">Áp dụng</button></div>
 </div>
 <script src="../script/cart.js"></script>
 </body>

@@ -43,3 +43,23 @@
 .form-check-input:checked{
     background-color: var(--sub-cta-button);
 }
+/* discount detail*/
+.discount-detail-info{
+    width: 40%;
+    height: 35%;
+    border-radius: 5px;
+    border: solid 1px var(--big-text-color);
+    position: fixed;
+    top:20%;
+    left: 30%;
+    background: var(--web-background-color);
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+.discount-detail-info.show {
+    visibility: visible;
+    opacity: 1;
+}
