@@ -16,8 +16,8 @@ $(document).ready(function () {
 
     //Change name
     $("#save-info").click(function () {
-        var fname = $("#fname").val();
-        var lname = $("#lname").val();
+        const fname = $("#fname").val();
+        const lname = $("#lname").val();
         return $("#nickname").text(fname + " " + lname);
     })
     //Thêm địa chỉ mới

@@ -3,7 +3,9 @@ html, body, p, a {
     padding: 0;
 
 }
-
+body{
+    height: 2000px;
+}
 html,body{
     background-color: var(--web-background-color);
     font-family: SansSerif,"Roboto Thin",SansSerif,sans-serif;
@@ -57,42 +59,42 @@ input{
     border: solid 1px #dddddd;
     font-size: 16px ;
 }
-/*Header*/
-header {
-    background-color: var(--dark-component-background-color) !important;
-}
+/*!*Header*!*/
+/*header {*/
+/*    background-color: var(--dark-component-background-color) !important;*/
+/*}*/
 
-header input {
-    background-color: var(--label-color) !important;
-    padding-left: 1.75rem !important;
-    padding-right: 1.75rem !important;
-}
+/*header input {*/
+/*    background-color: var(--label-color) !important;*/
+/*    padding-left: 1.75rem !important;*/
+/*    padding-right: 1.75rem !important;*/
+/*}*/
 
-header i {
-    font-size: 24px;
-    color: var(--label-color) !important;
-}
+/*header i {*/
+/*    font-size: 24px;*/
+/*    color: var(--label-color) !important;*/
+/*}*/
 
-header p {
-    margin: 0;
-    color: var(--label-color) !important;
-}
+/*header p {*/
+/*    margin: 0;*/
+/*    color: var(--label-color) !important;*/
+/*}*/
 
-header ul > li, header i {
-    cursor: pointer;
-}
+/*header ul > li, header i {*/
+/*    cursor: pointer;*/
+/*}*/
 
-header ul > li:hover * {
-    color: var(--text-hover-color) !important;
-}
+/*header ul > li:hover * {*/
+/*    color: var(--text-hover-color) !important;*/
+/*}*/
 
-#header-logo {
-    font-size: 40px;
-}
+/*#header-logo {*/
+/*    font-size: 40px;*/
+/*}*/
 
 /*Content*/
 .content {
-    height: 1024px;
+    height: 1580px;
     padding: 0 30px;
     /*background-color: var(--web-background-color);*/
 }
@@ -215,7 +217,7 @@ header ul > li:hover * {
     opacity: 0.5;
 }
 /*User's shipped list*/
-#user-ordered-list #shippedlist .card .received,#user-ordered-list #canceledlist .card .rebuy_btn{
+#user-ordered-list #shippedlist .card .received,.rebuy_btn{
     background-color: var(--main-cta-button);
     color: var(--web-background-color);
 }
@@ -279,5 +281,126 @@ header ul > li:hover * {
     border: solid 1px var(--sub-cta-button);
     border-radius: 5px;
 }
+/*Chi tiết đơn hàng*/
+.timeline-step {
+    text-align: center;
+}
 
+.timeline-line {
+    position: relative;
+    height: 2px;
+    background-color: var(--sub-cta-button);
+    margin: 20px 0;
+}
 
+.timeline-circle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--sub-cta-button);
+    border-radius: 50%;
+    background-color: #fff;
+    color: var(--sub-cta-button);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+}
+
+.timeline-text {
+    font-size: 14px;
+    color: #333;
+}
+
+.timeline-date {
+    font-size: 12px;
+    color: #999;
+}
+
+.timeline-container {
+    display: flex;
+    align-items: center;
+}
+
+.timeline-connector {
+    flex-grow: 1;
+    height: 2px;
+    background-color: var(--sub-cta-button);
+}
+.rebuy-area .rebuy_btn{
+    width: 200px;
+    height: 40px;
+}
+/*Chi tiết vận chuyển*/
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 2px;
+    height: 100%;
+    background: #ddd;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    background-color: #fff;
+    text-align: center;
+    color: #007bff;
+    font-size: 12px;
+}
+
+.timeline-icon.completed {
+    border-color: #28a745;
+    background-color: #28a745;
+    color: #fff;
+}
+
+.timeline-content {
+    margin-left: 40px;
+}
+
+.timeline-time {
+    font-size: 14px;
+    color: #666;
+}
+
+.timeline-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.timeline-description {
+    font-size: 14px;
+    color: #555;
+}
+
+.timeline-link {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.timeline-link:hover {
+    text-decoration: underline;
+}
