@@ -44,7 +44,7 @@
     background-color: var(--sub-cta-button);
 }
 /* discount detail*/
-.discount-detail-info{
+.discount-detail-info,.discount-more-info{
     width: 40%;
     height: 35%;
     border-radius: 5px;
@@ -59,7 +59,10 @@
     opacity: 0;
     transition: visibility 0.3s, opacity 0.3s;
 }
-.discount-detail-info.show {
+.discount-more-info{
+    height: 450px;
+}
+.discount-detail-info.show, .discount-more-info.show {
     visibility: visible;
     opacity: 1;
 }

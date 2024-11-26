@@ -99,10 +99,16 @@ $(".bi-trash").click(function (){
 $(".discount-detail").click(function (){
     $(".discount-detail-info").addClass("show")
 })
-// bỏ đánh giá
+// bỏ xem giảm giá
 $(".cancel-discount").click(function (){
     $(".discount-detail-info").removeClass("show")
 })
+// Thêm giảm giá.
+$('.discount-more').click(function (){
+    $(".discount-more-info").addClass("show")
+})
 
-
+$(".cancel-more").click(function (){
+    $(".discount-more-info").removeClass("show")
+})
 
