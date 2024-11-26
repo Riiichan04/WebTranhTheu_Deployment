@@ -145,6 +145,7 @@ $(document).ready(function () {
     //Log out
     $(".logout-btn").click(function (){
         $("#logout_alert").css("display","block");
+        window.location= index.html
     })
     $("#noBtn").click(function (){
         $("#logout_alert").css("display","none");
