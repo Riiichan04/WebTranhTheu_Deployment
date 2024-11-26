@@ -25,7 +25,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-1 text-white d-flex text-center">
-                    <a href="index.html"><i class="bi bi-bootstrap text-white" id="header-logo"></i></a>
+                    <!--                    <a href="index.html"><i class="bi bi-bootstrap text-white" id="header-logo"></i></a>-->
+                    <a href="index.html"><img src="../asset/favicon/web_logo.png" alt="" id="header-logo" width="60px"
+                                              height="60px"></a>
                 </div>
 
                 <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
@@ -41,9 +43,14 @@
                         <i class="fa-solid fa-heart my-1"></i>
                         <p class="header-feature__label">Yêu thích</p>
                     </li>
-                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
-                        <i class="fa-solid fa-cart-shopping my-1"></i>
-                        <p class="header-feature__label">Giỏ hàng</p>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
+                        <a href="cart-page.html">
+                            <i class="fa-solid fa-cart-shopping my-1"></i>
+                            <p class="header-feature__label">Giỏ hàng</p>
+                        </a>
+                        <div id="cart-badge"
+                             class="rounded position-absolute align-items-center justify-content-center">0
+                        </div>
                     </li>
                     <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
                         <i class="fa-solid fa-user my-1"></i>

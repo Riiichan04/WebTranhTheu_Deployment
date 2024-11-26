@@ -25,6 +25,16 @@ header ul>li:hover * {
     color: var(--label-hover-color) !important;
 }
 
+header a {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-decoration: none;
+    color: var(--label-color);
+}
+header a:hover {
+    color: var(--label-hover-color);
+}
+
 #header-logo {
     font-size: 40px;
 }
