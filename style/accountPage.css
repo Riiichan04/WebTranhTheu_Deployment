@@ -96,7 +96,6 @@ input{
 .content {
     height: 1580px;
     padding: 0 30px;
-    /*background-color: var(--web-background-color);*/
 }
 /*Navigation Bar*/
 .breadcrumb {

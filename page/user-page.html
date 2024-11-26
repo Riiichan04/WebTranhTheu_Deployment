@@ -119,7 +119,7 @@
         <p class="col-1"></p>
         <!--User's property Page-->
         <!--Empty prop-->
-        <div class="user_page_each_prop empty-prop content-details col-7" style="display: none">
+        <div class="user_page_each_prop empty-prop content-details col-7">
             <div class="h1" style="opacity: 0.5;padding:200px 100px">Vui lòng chọn một mục</div>
         </div>
         <!--User Info Page-->
@@ -1475,8 +1475,8 @@
             </div>
         </div>
         <!--Order details info-->
-        <div id="user-detail-info" class=" content-details col-7">
-            <div class="row"><i class="pt-4 bi bi-chevron-left">Trở lại</i></div>
+        <div id="order-detail-info" class=" content-details col-7" style="display: none">
+            <div class="row"><i class="backpage pt-4 bi bi-chevron-left">Trở lại</i></div>
             <div class="row">
                 <div class="col-7 h3 px-4 pt-2 pb-2 ">Chi tiết đơn hàng</div>
                 <div class="col-3 p">Mã đơn: 24091778WTHEHEHE</div>
@@ -1545,64 +1545,66 @@
                     </div>
                 </div>
                 <div class="col-7">
-                        <div class="timeline container ">
-                            <!-- Reusable Timeline Item -->
-                            <div class="timeline-item">
-                                <div class="timeline-icon completed">
-                                    <i class="bi bi-check-lg"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-time">16:35 20-09-2024</div>
-                                    <div class="timeline-title text-success">Đã giao</div>
-                                    <div class="timeline-description">
-                                        Giao hàng thành công<br>
-                                        Người nhận hàng: <strong>Bích Loan</strong> - <a href="#" class="timeline-link">Xem hình ảnh giao hàng</a>
-                                    </div>
+                    <div class="timeline container ">
+                        <!-- Reusable Timeline Item -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon completed">
+                                <i class="bi bi-check-lg"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-time">16:35 20-09-2024</div>
+                                <div class="timeline-title text-success">Đã giao</div>
+                                <div class="timeline-description">
+                                    Giao hàng thành công<br>
+                                    Người nhận hàng: <strong>Bích Loan</strong> - <a href="#" class="timeline-link">Xem
+                                    hình ảnh giao hàng</a>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-icon">
-                                    <i class="bi bi-truck"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-time">16:35 20-09-2024</div>
-                                    <div class="timeline-title">Đang vận chuyển</div>
-                                    <div class="timeline-description">
-                                        Đơn hàng sẽ sớm được giao, vui lòng chú ý điện thoại
-                                    </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-time">16:35 20-09-2024</div>
+                                <div class="timeline-title">Đang vận chuyển</div>
+                                <div class="timeline-description">
+                                    Đơn hàng sẽ sớm được giao, vui lòng chú ý điện thoại
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-icon">
-                                    <i class="bi bi-clock"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-time">09:06 20-09-2024</div>
-                                    <div class="timeline-title">Đang vận chuyển</div>
-                                    <div class="timeline-description">
-                                        Đơn hàng đã đến trạm giao hàng tại khu vực của bạn và sẽ được giao trong vòng 24 giờ tiếp theo.
-                                    </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-time">09:06 20-09-2024</div>
+                                <div class="timeline-title">Đang vận chuyển</div>
+                                <div class="timeline-description">
+                                    Đơn hàng đã đến trạm giao hàng tại khu vực của bạn và sẽ được giao trong vòng 24 giờ
+                                    tiếp theo.
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-icon">
-                                    <i class="bi bi-box"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-time">12:07 19-09-2024</div>
-                                    <div class="timeline-title">Rời khỏi phân loại</div>
-                                    <div class="timeline-description">
-                                        Đơn hàng đã đến kho phân loại tại TP. Hồ Chí Minh.
-                                    </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="bi bi-box"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-time">12:07 19-09-2024</div>
+                                <div class="timeline-title">Rời khỏi phân loại</div>
+                                <div class="timeline-description">
+                                    Đơn hàng đã đến kho phân loại tại TP. Hồ Chí Minh.
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="text-center mt-3">
-                                <a href="#" class="timeline-link">Xem thêm</a>
-                            </div>
+                        <div class="text-center mt-3">
+                            <a href="#" class="timeline-link">Xem thêm</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1644,22 +1646,22 @@
                     <div class="col-7 border-end">
                         <div class="row">
                             <div class="col"></div>
-                            <div class="col-5">Tổng tiền hàng: </div>
+                            <div class="col-5">Tổng tiền hàng:</div>
                         </div>
                         <hr/>
                         <div class="row">
                             <div class="col"></div>
-                            <div class="col-5">Phí vận chuyển:  </div>
+                            <div class="col-5">Phí vận chuyển:</div>
                         </div>
                         <hr/>
                         <div class="row">
                             <div class="col"></div>
-                            <div class="col-5">Giảm giá: </div>
+                            <div class="col-5">Giảm giá:</div>
                         </div>
                         <hr/>
                         <div class="row">
                             <div class="col"></div>
-                            <div class="col-5">Thành tiền: </div>
+                            <div class="col-5">Thành tiền:</div>
                         </div>
                         <hr/>
                     </div>
@@ -1679,6 +1681,11 @@
                     <div class="col-3"></div>
                     <div class="col-4 border-end">Phương thức thanh toán</div>
                     <div class="col-5">Thanh toán khi nhận hàng</div>
+                </div>
+                <div class="row p-0 my-3">
+                    <div class="col-3"></div>
+                    <div class="col-4 border-end">Lý do hủy:</div>
+                    <div class="col-5">Không muốn mua hàng nữa.</div>
                 </div>
             </div>
         </div>
@@ -1715,7 +1722,7 @@
                                 <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
                             </div>
                         </div>
-                        <div class="col-1 p-0">Chi tiết</div>
+                        <div class="col-1 p-0 feedback-details">Chi tiết</div>
                     </div>
                     <div class="row py-2">
                         <div class="col-2">09/11/2024</div>
@@ -1738,7 +1745,7 @@
                                 <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
                             </div>
                         </div>
-                        <div class="col-1 p-0">Chi tiết</div>
+                        <div class="col-1 p-0 feedback-details">Chi tiết</div>
                     </div>
                     <div class="row py-2">
                         <div class="col-2">09/11/2024</div>
@@ -1761,7 +1768,7 @@
                                 <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
                             </div>
                         </div>
-                        <div class="col-1 p-0">Chi tiết</div>
+                        <div class="col-1 p-0 feedback-details">Chi tiết</div>
                     </div>
                     <div class="row py-2">
                         <div class="col-2">09/11/2024</div>
@@ -1784,7 +1791,7 @@
                                 <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
                             </div>
                         </div>
-                        <div class="col-1 p-0">Chi tiết</div>
+                        <div class="col-1 p-0 feedback-details">Chi tiết</div>
                     </div>
                     <div class="row py-2">
                         <div class="col-2">09/11/2024</div>
@@ -1807,7 +1814,7 @@
                                 <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
                             </div>
                         </div>
-                        <div class="col-1 p-0">Chi tiết</div>
+                        <div class="col-1 p-0 feedback-details">Chi tiết</div>
                     </div>
                     <div class="row py-2">
                         <div class="col-2">09/11/2024</div>
@@ -1830,7 +1837,7 @@
                                 <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
                             </div>
                         </div>
-                        <div class="col-1 p-0">Chi tiết</div>
+                        <div class="col-1 p-0 feedback-details">Chi tiết</div>
                     </div>
                     <div class="row py-2">
                         <div class="col-2">09/11/2024</div>
@@ -1853,7 +1860,44 @@
                                 <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
                             </div>
                         </div>
-                        <div class="col-1 p-0">Chi tiết</div>
+                        <div class="col-1 p-0 feedback-details">Chi tiết</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Feedback details-->
+        <div id="user-feedback-info" class=" content-details col-7" style="display: none">
+            <div class="row"><i class="backpage-feedback pt-4 bi bi-chevron-left">Trở lại</i></div>
+            <div class="h3 px-4 py-2">Chi tiết đánh giá</div>
+            <hr/>
+            <div class="row p-4">
+                <img src="../asset/image/product_image.png" alt="Artwork" class="col-3">
+                <div class="col-6 h6 pt-2 ">
+                    Tranh thêu thám tử lừng dang Conan
+                    <br/>
+                    NXB Kim Đồng
+                </div>
+                <div class="col-1 pt-4">15.000.000đ</div>
+            </div>
+            <div class="feedback-detail p-4">
+                <div class="row">
+                    <i class="col-1 bi bi-person"></i>
+                    <p class="col-2 p-0">Loan Cute</p>
+                </div>
+                <div class="row">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
+                    </div>
+                </div>
+                <hr/>
+                <div class="row pt-3">
+                    <div class="h5">Đánh giá</div>
+                    <div class="p py-1">
+                        Tranh đẹp, kích thước đúng thông tin, phù hợp trang trí nhà, rất đáng tiền mua.
                     </div>
                 </div>
             </div>
@@ -2021,14 +2065,17 @@
                                 <img src="../asset/VNPay.png" class="img-fluid" alt="Hình 1">
                             </div>
                             <div class="col-md-6 mb-4">
-                                <img src="../asset/momo-logo.png" class="img-fluid" alt="Hình 2" style="width:50px;height: 50px ">
+                                <img src="../asset/momo-logo.png" class="img-fluid" alt="Hình 2"
+                                     style="width:50px;height: 50px ">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row py-4">
-                    <div class="row "><h4>Liên hệ</h4> </div>
-                    <div class="col-4 px-3"><i class="fa-solid fa-location-dot px-1"></i> Khu phố 6, phường Linh Trung, thành phố Thủ Đức, TP HCM</div>
+                    <div class="row "><h4>Liên hệ</h4></div>
+                    <div class="col-4 px-3"><i class="fa-solid fa-location-dot px-1"></i> Khu phố 6, phường Linh Trung,
+                        thành phố Thủ Đức, TP HCM
+                    </div>
                     <div class="col-4 px-3 "><i class="fa-regular fa-envelope px-1"></i>hehe@gmail.com</div>
                     <div class="col-4 px-3 "><i class="fa-solid fa-phone px-1"></i> 0392334750</div>
                 </div>
