@@ -116,9 +116,6 @@ $(document).ready(function () {
         $("#user-cancel-order").css("display","block")
     })
 
-    // Chi tiết đánh giá.
-
-
     // Chi tiết hủy hàng.
 
 
