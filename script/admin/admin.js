@@ -1,8 +1,8 @@
 function loadPage(page) {
     let content = document.getElementById("content")
     switch (page) {
-        case "home":
-            content.innerHTML = "<iframe src='content-admin-page/home.html' class='w-100 vh-100'></iframe>";
+        case "dashboard":
+            content.innerHTML = "<iframe src='content-admin-page/dashboard.html' class='w-100 vh-100'></iframe>";
             break;
         case "product":
             content.innerHTML = "<iframe src='content-admin-page/manage-product.html' class='w-100 vh-100'></iframe>";
@@ -34,4 +34,4 @@ $(".select-nav").click(function () {
 });
 
 //khoi tao
-loadPage("home");
+loadPage("dashboard");
