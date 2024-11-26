@@ -49,20 +49,27 @@
     height: 35%;
     border-radius: 5px;
     border: solid 1px var(--big-text-color);
-    position: fixed;
     top:20%;
     left: 30%;
     background: var(--web-background-color);
     justify-content: center;
     align-items: center;
-    visibility: hidden;
     opacity: 0;
     transition: visibility 0.3s, opacity 0.3s;
 }
 .discount-more-info{
     height: 450px;
 }
-.discount-detail-info.show, .discount-more-info.show {
+
+.popup{
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    overflow: hidden !important;
+    display: none;
+}
+.popup.show {
     visibility: visible;
     opacity: 1;
 }

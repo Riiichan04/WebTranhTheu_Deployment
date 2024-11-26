@@ -20,7 +20,6 @@ body {
     background-color: var(--web-background-color) !important;
 }
 #header-logo{
-    background-color: var(--web-background-color);
     width: 70px;
     height: 70px;
 }
