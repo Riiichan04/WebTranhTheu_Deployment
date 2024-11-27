@@ -37,8 +37,8 @@
     font-size: 20px;
 }
 
-.checkbox-container {
-    flex: 0.1;
+.radio-container {
+    flex: 0.15;
 }
 
 .sort-container {
@@ -112,6 +112,13 @@
 
 .page-link {
     color: var(--big-text-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--sub-cta-button);
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 
 
