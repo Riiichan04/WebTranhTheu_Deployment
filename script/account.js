@@ -70,6 +70,7 @@ $(document).ready(function () {
 
     //Thay đổi lịch sử xem sản phẩm
     $('.add-to-cart').click(function () {
+
         $(this).parents(".shop");
         if ($(this).parents(".shop").find(".product-item").length <= 1) {
             $(this).parents(".shop").remove();
@@ -125,6 +126,7 @@ $(document).ready(function () {
     })
     //Change fullname
     $(".change-name").click(function(){
+
         $(".change-detail").show();
         $(".edit_name").click(function (){
             let fullname= $(".fullname_edit").val();
