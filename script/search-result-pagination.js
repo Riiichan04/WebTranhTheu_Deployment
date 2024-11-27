@@ -38,7 +38,7 @@ function displayProducts(page) {
                              <h5 class="card-title">${product.name}</h5>
 
                             <!-- Star Ratings -->                                           
-                             <div class="col d-flex justify-content-center comment-rating">
+                            <div class="col d-flex justify-content-center comment-rating">
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
                                 <div class="product-info__star-mask"></div>
