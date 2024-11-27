@@ -1,4 +1,5 @@
 .style-big-title {
+    padding-top: 10px;
     font-weight: 500;
     color: var(--big-text-color);
 }
