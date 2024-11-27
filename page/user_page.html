@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Account</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--Bootstrap Icon-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--Style CSS-->
+    <link rel="stylesheet" href="../style/accountPage.css">
+    <link rel="stylesheet" href="../style/index.css">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<!--Header-->
+<header>
+    <div class="px-3 py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-1 text-white d-flex text-center">
+                    <i class="bi bi-bootstrap text-white" id="header-logo"></i>
+                </div>
+
+                <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
+                    <span id="input-icon" class="fas ps-2" style="position: absolute; color: #56595C">&#xf002 </span>
+                    <input type="search" name="" id="" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                </div>
+                <ul class="col-4 m-0 d-flex justify-content-end align-items-center">
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-list my-1"></i>
+                        <p class="header-feature__label">Danh mục</p>
+                    </li>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-heart my-1"></i>
+                        <p class="header-feature__label">Yêu thích</p>
+                    </li>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-cart-shopping my-1"></i>
+                        <p class="header-feature__label">Giỏ hàng</p>
+                    </li>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <i class="fa-solid fa-user my-1"></i>
+                        <p class="header-feature__label">Tài khoản</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<!--User's Content-->
+<div class="content container">
+    <!--Breadcrumbs-->
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" style="text-decoration: none">Trang chủ </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tài khoản</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="user_props_list col-4">
+            <div class="user_img_frame">
+                <img src="../asset/user_img.png" style="width: 100px;height: 100px;margin-top: 30px">
+                <p id="nickname" class="p-4">Loan Cute :3 </p>
+            </div>
+            <div class="list-group list_props">
+                <button type="button" data-target="user_info" class="list-group-item list-group-item-action">
+                    <i class="bi bi-person"></i>
+                    Thông tin người dùng
+                </button>
+                <button type="button" data-target="user_address" class="list-group-item list-group-item-action user_address_info">
+                    <i class="bi bi-geo-alt"></i>
+                    Sổ địa chỉ
+                </button>
+                <button type="button" data-target="user_viewed_info" class="list-group-item list-group-item-action">
+                    <i class="bi bi-eye"></i>
+                    Lịch sử đã xem
+                </button>
+                <button type="button" data-target="user_wishlist" class="list-group-item list-group-item-action">
+                    <i class="bi bi-heart"></i>
+                    Danh sách yêu thích
+                </button>
+                <button type="button" data-target="user_ordered_list" class="list-group-item list-group-item-action">
+                    <i class="bi bi-box-seam"></i>
+                    Đơn hàng của tôi
+                </button>
+                <button type="button" data-target="user_feedback_histories" class="list-group-item list-group-item-action">
+                    <i class="bi bi-pencil"></i>
+                    Lịch sử đánh giá
+                </button>
+            </div>
+            <hr>
+            <div class="list-group user_setting_help">
+                <button type="button" data-target="user_setting" class="list-group-item list-group-item-action">
+                    <i class="bi bi-gear"></i>
+                    Cài đặt
+                </button>
+                <button type="button" data-target="user_support" class="list-group-item list-group-item-action">
+                    <i class="bi bi-question-circle"></i>
+                    Hỗ trợ
+                </button>
+            </div>
+            <hr>
+            <div class="list-group user_logout">
+                <button type="button"  class="list-group-item list-group-item-action">
+                    <i class="bi bi-box-arrow-left"></i>
+                    Đăng xuất
+                </button>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <!--User's property Page-->
+        <!--Empty prop-->
+        <div class="user_page_each_prop content-details col-7">
+            <div class="h1" style="opacity: 0.5;padding:200px 100px">Vui lòng chọn một mục</div>
+        </div>
+        <!--User Info Page-->
+        <div  id="user_info" class="content-details col-7" style="display: none">
+            <div class="h3 p-3">Thông tin tài khoản</div>
+            <hr>
+            <div class="input-info container">
+                <div class="user-inputs">
+                    <div class="row">
+                        <div class="col p-3">Tên:</div>
+                        <div class="col p-3">Họ:</div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><input id="fname" type="text" placeholder="Tên"></div>
+                        <div class="col"><input id="lname" type="text" placeholder="Họ"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-3">Địa chỉ email:</div>
+                        <div class="col-8"><input type="email" placeholder="Email" style="width: 100%"></div>
+                    </div>
+                </div>
+                <!-- Thay đổi mật khẩu -->
+                <div class="change-pass container">
+                    <div class="row">
+                        <div class="col px-1 py-4">
+                            <button id="change_password"><span>Đổi mật khẩu</span></button>
+                            <!-- show ra đổi MK như nào-->
+                            <div class="sub_change_pass container" style="display: none">
+                                <div class="row">
+                                    <div class="col p-2">Mật khẩu cũ:</div>
+                                    <div class="col"><input type="password" placeholder="Nhập..."></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col p-2">Mật khẩu mới:</div>
+                                    <div class="col"><input type="password" placeholder="Nhập..."></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nút lưu-->
+                <div class=" save-info container">
+                    <div class="row">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <button id="save_info" type="reset" style="width:80%"><span>Lưu</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--User Addresses-->
+        <div id="user_address" class="content-details col-7" style="display: none">
+            <div class="h3 p-3">Sổ địa chỉ</div>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="container">
+                            <div class="row p-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Địa chỉ mặc định</h5>
+                                        <p class="card-text">Khu phố 6, phường Linh Trung, TP Thủ Đức, TPHCM.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Địa chỉ mở rộng</h5>
+                                        <p class="card-text">Khu phố 6, phường Linh Trung, TP Thủ Đức, TPHCM.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="container">
+                            <div class="row p-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Địa chỉ mở rộng</h5>
+                                        <p class="card-text">Khu phố 6, phường Linh Trung, TP Thủ Đức, TPHCM.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-7"></div>
+                <div class="col-5">
+                    <button type="button" style="width: 90%">Thêm địa chỉ</button>
+                </div>
+            </div>
+        </div>
+        <!--User's viewed products Info-->
+        <div id="user_viewed_info" class="content-details col-7" style="display: none">
+            <div class="h3 p-3">Lịch sử sản phẩm đã xem</div>
+            <hr>
+            <div class="container p-3">
+                <button type="button" class="addAll">Thêm tất cả vào giỏ hàng</button>
+                <!--Từng sản phẩm-->
+                <div class="row p-4 mt-4 border shop">
+                    <div class="row title border-bottom px-4">tên sốp</div>
+                    <div class="row product-item p-2">
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image">
+                        </div>
+                        <div class="col-4 container">
+                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row pt-4">15.000.000đ</div>
+                        </div>
+                        <div class="col-2">
+                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-4 mt-4 border shop">
+                    <div class="row title border-bottom px-4">tên sốp</div>
+                    <div class="row product-item p-2">
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image">
+                        </div>
+                        <div class="col-4 container">
+                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row pt-4">15.000.000đ</div>
+                        </div>
+                        <div class="col-2">
+                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="row product-item p-2">
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image">
+                        </div>
+                        <div class="col-4 container">
+                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row pt-4">15.000.000đ</div>
+                        </div>
+                        <div class="col-2">
+                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--User's WishList-->
+        <div id="user_wishlist" class=" content-details col-7" style="display: none">
+            <div class="h3 p-3">Danh sách yêu thích</div>
+            <hr>
+            <div class="container p-3">
+                <button type="button" class="addAll">Thêm tất cả vào giỏ hàng</button>
+                <!--Từng sản phẩm-->
+                <div class="row p-4 border shop">
+                    <div class="row px-4 title">tên sốp</div>
+                    <div class="row product-item p-2">
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image"
+                                                style="width: 148px;height: 97px"></div>
+                        <div class="col-4 container">
+                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row pt-4">15.000.000đ</div>
+                        </div>
+                        <div class="col-2">
+                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-4 border shop">
+                    <div class="row px-4 title">tên sốp</div>
+                    <div class="row product-item p-2">
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image"
+                                                style="width: 148px;height: 97px"></div>
+                        <div class="col-4 container">
+                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row pt-4">15.000.000đ</div>
+                        </div>
+                        <div class="col-2">
+                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="row product-item p-2">
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-3"><img src="../asset/product_image.png" alt="Artwork" class="resized-image"
+                                                style="width: 148px;height: 97px"></div>
+                        <div class="col-4 container">
+                            <div class="row product_title">Tranh thêu thám tử lừng danh Conan</div>
+                            <div class="row pt-4">15.000.000đ</div>
+                        </div>
+                        <div class="col-2">
+                            <button class="add-to_cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="delete_btn"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--List orders history-->
+        <div id="user_ordered_list" class=" content-details col-7" style="display: none">
+            <div class="h3 p-4">Đơn hàng của tôi</div>
+            <hr>
+            <div class="container px-3">
+                <div class="row order-categories">
+                    <div class="col order-item p-2" data-target="waitlist">Chờ xác nhận</div>
+                    <div class="col order-item p-2" data-target="pickedlist">Chờ lấy hàng</div>
+                    <div class="col order-item p-2" data-target="shippinglist">Chờ giao hàng</div>
+                    <div class="col order-item p-2" data-target="turnedback">Trả hàng</div>
+                    <div class="col order-item p-2" data-target="shippedlist">Đã giao</div>
+                    <div class="col order-item p-2" data-target="canceledlist">Đã hủy</div>
+                </div>
+                    <!-- Waitlist Orders-->
+                    <div  id="waitlist" class="order-details">
+                        <!-- Card-->
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-3">Chờ xác nhận</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-3">Chờ xác nhận</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-3">Chờ xác nhận</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Pickup Orders (PAID)-->
+                    <div id="pickedlist" class="order-details" style="display: none">
+                        <!-- Card-->
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-3">Chờ lấy hàng</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-3">Chờ lấy hàng</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-3">Chờ lấy hàng</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="cancel_btn">Hủy hàng</button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="contact_btn">Liên hệ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Shipping Order-->
+                    <div id="shippinglist" class="order-details" style="display: none">
+                        <!-- Card-->
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-2">Đang giao</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="received" disabled>Đã nhận hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-2">Đang giao</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="received" disabled>Đã nhận hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-2">Đang giao</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="received" disabled>Đã nhận hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Shipped Orders-->
+                    <div id="shippedlist" class=" order-details" style="display: none">
+                        <!-- Card-->
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-4 shipped">Giao hàng thành công</div>
+                                <div class="col-2">Đã giao</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="received">Đã nhận hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-4 shipped">Giao hàng thành công</div>
+                                <div class="col-2">Đã giao</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="received">Đã nhận hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-4 shipped">Giao hàng thành công</div>
+                                <div class="col-2">Đã giao</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="received">Đã nhận hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Turned back Orders-->
+                    <div id="turnedback" class=" order-details" style="display: none">
+                        <!-- Card-->
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-4">Yêu cầu hoàn trả/Hủy</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="turnback_details">Chi tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-4">Yêu cầu hoàn trả/Hủy</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="turnback_details">Chi tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-4">Yêu cầu hoàn trả/Hủy</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="turnback_details">Chi tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Canceled Orders-->
+                    <div id="canceledlist" class="order-details" style="display: none">
+                        <!-- Card-->
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-2">Đã hủy</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="rebuy_btn">Mua lại</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-2">Đã hủy</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="rebuy_btn">Mua lại</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="card container">
+                            <!--NSX-->
+                            <div class="row shop_info">
+                                <div class="col-1"><i class="bi bi-shop-window"></i></div>
+                                <div class="col">provider</div>
+                                <div class="col-2">Đã hủy</div>
+                            </div>
+                            <hr>
+                            <!--Danh sach sp trong 1 orrder-->
+                            <div class="row py-4 list-products">
+                                <div class="container">
+                                    <!-- Sản phẩm 1-->
+                                    <div class="row py-3">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                    <!--Sản phẩm 2-->
+                                    <div class="row py-3 ">
+                                        <div class="col-3"><img src="../asset/product_image.png" class="resized-image">
+                                        </div>
+                                        <div class="col container">
+                                            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
+                                            <div class="row">x1</div>
+                                        </div>
+                                        <div class="col-3 p-4">15.000.000 đ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Tổng tiền-->
+                            <div class="row py-3">
+                                <div class="col"></div>
+                                <div class="col-3 title">
+                                    Thành tiền:
+                                </div>
+                                <div class="col-3">
+                                    30.000.000 đ
+                                </div>
+                            </div>
+                            <!--Hủy hàng + Liên hệ chi tiết-->
+                            <div class="row py-2">
+                                <div class="col"></div>
+                                <div class="col-3">
+                                    <button type="button" class="rebuy_btn">Mua lại</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!--End-->
+            </div>
+        </div>
+        <!--User's Feedback History-->
+        <div id="user_feedback_histories" class=" content-details col-7" style="display: none">
+            <div class="h3 p-4">Lịch sử đánh giá</div>
+            <hr>
+            <div class="container">
+                <div class="row title p-2">
+                    <div class="col-2">Ngày</div>
+                    <div class="col-6 p-0 ">Sản phẩm</div>
+                    <div class="col-3 p-0">Đánh giá</div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row ">
+                    <div class="row py-2">
+                        <div class="col-2">09/11/2024</div>
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-6 ">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="../asset/product_image.png" alt="Artwork" class="resized-image-his">
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
+                            </div>
+                        </div>
+                        <div class="col-1 p-0">Chi tiết</div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-2">09/11/2024</div>
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-6 ">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="../asset/product_image.png" alt="Artwork" class="resized-image-his">
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
+                            </div>
+                        </div>
+                        <div class="col-1 p-0">Chi tiết</div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-2">09/11/2024</div>
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-6 ">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="../asset/product_image.png" alt="Artwork" class="resized-image-his">
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
+                            </div>
+                        </div>
+                        <div class="col-1 p-0">Chi tiết</div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-2">09/11/2024</div>
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-6 ">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="../asset/product_image.png" alt="Artwork" class="resized-image-his">
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
+                            </div>
+                        </div>
+                        <div class="col-1 p-0">Chi tiết</div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-2">09/11/2024</div>
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-6 ">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="../asset/product_image.png" alt="Artwork" class="resized-image-his">
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
+                            </div>
+                        </div>
+                        <div class="col-1 p-0">Chi tiết</div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-2">09/11/2024</div>
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-6 ">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="../asset/product_image.png" alt="Artwork" class="resized-image-his">
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
+                            </div>
+                        </div>
+                        <div class="col-1 p-0">Chi tiết</div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-2">09/11/2024</div>
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-6 ">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="../asset/product_image.png" alt="Artwork" class="resized-image-his">
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
+                            </div>
+                        </div>
+                        <div class="col-1 p-0">Chi tiết</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- User's Setting-->
+        <div id="user_setting" class=" content-details col-7" style="display: none"  >
+            <div class="h3 pt-3 ps-3">Cài đặt</div>
+            <hr>
+            <div class="container py-3">
+                <div class="row avatar">
+                    <div class="col-3 py-5 ps-3">Ảnh đại diện:</div>
+                    <div class="col-3"><img src="../asset/user_img.png" style="width: 100px;height: 100px;"></div>
+                    <div class="col-3 pt-5">
+                        <button type="button" class="change_img">Thay đổi</button>
+                        <div class="change_avatar mt-1 ms-3 container border" style="display: none">
+                            <div class="row ps-2 border-bottom">Lấy từ thiết bị</div>
+                            <div class="row ps-2">Link url</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row fullname">
+                    <div class="col-2 py-5 ps-3">Tên:</div>
+                    <div class="col-4 pt-5"><input id="fullname" type="text" value="Nguyễn Bích Loan"></div>
+                    <div class="col-5 pt-5">
+                        <button type="reset" class="change_name"> Thay đổi</button>
+                            <div class="row change-detail ps-4 pt-3" style="display: none">
+                                <p class="col-4">Tên mới:</p>
+                                <input class="fullname_edit col-5" placeholder="Enter new name...">
+                                <button class="col-2 edit_name">Change</button>
+                            </div>
+                    </div>
+                </div>
+                <div class="row feedback_form">
+                    <form class="poll-form">
+                        <div class="row ps-3">Thăm dò ý kiến:</div>
+                        <div class="container border">
+                            <div class="row p-2">
+                                <div class="col-8">Bạn thấy tranh thêu có đẹp không?</div>
+                                <div class="col-2"><input type="radio" name="question1" value="Có"> Có</div>
+                                <div class="col-2"><input type="radio" name="question1" value="Không"> Không</div>
+                            </div>
+                            <div class="row p-2">
+                                <div class="col-8">Tranh thêu có giúp ngôi nhà bạn trở nên đẹp hơn không?</div>
+                                <div class="col-2"><input type="radio" name="question2" value="Có"> Có</div>
+                                <div class="col-2"><input type="radio" name="question2" value="Không"> Không</div>
+                            </div>
+                            <div class="row p-4">
+                                <div class="col-8"></div>
+                                <div class="col-4">
+                                    <button type="submit" class="submit-btn" style="width: 100%">Gửi đánh giá</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col-3 pt-3"><button type="button" class="delete_account">Xóa tài khoản</button></div>
+                </div>
+            </div>
+        </div>
+        <!--User's help-->
+        <div id="user_support" class="  content-details col-7" style="display: none">
+            <div class="h3 pt-3 ps-3">Hỗ trợ</div>
+            <hr>
+            <div class="container p-4">
+                <div class="row border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
+                </div>
+                <div class="row pt-2 border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
+                </div>
+                <div class="row pt-2 border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
+                </div>
+                <div class="row pt-2 border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle"></i></div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
+                </div>
+                <div class="row pt-2 border-bottom">
+                    <div class="col-1"><i class="bi bi-question-circle" ></i></div>
+                    <div class="col-11 question">Tại sao tôi không thể áp dụng khuyến mãi?</div>
+                    <div class="col ps-5 pt-3 answer" style="display: none">
+                        Có thể do bạn đã nhập mã khuyến mãi sai hoặc mã đã hết hạn. Vui lòng kiểm tra lại mã khuyến mãi và thử lại.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../script/account.js"></script>
+</body>
+</html>
