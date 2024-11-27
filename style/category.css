@@ -16,57 +16,7 @@
     cursor: pointer;
 }
 
-/* Sẽ đẩy css này sang style.css */
-.main-color {
-    color: var(--big-text-color);
-}
-.background-container {
-    background-color: var(--light-component-background-color);
-}
-
-.sub-cta-button {
-    background-color: var(--sub-cta-button);
-    color: var(--label-color);
-    border: solid 2px var(--sub-cta-button) !important;
-}
-
-.sub-cta-button:hover {
-    background-color: var(--sub-cta-button-hover);
-}
-
-.card {
-    background-color: var(--light-component-background-color);
-    border: 0;
-}
-
-.card-title {
-    font-weight: normal;
-    margin-bottom: 0;
-}
-
-.product-info__star-container {
-    position: relative;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.product-info__star-outline, .product-info__star {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-}
-
-.product-info__star-mask {
-    width: 0;
-    height: 28px;
-    position: absolute;
-    right: 0;
-    background-color: var(--light-component-background-color);
-}
-
-.form-check-input:checked {
-    background-color: var(--sub-cta-button);
-    border-color: var(--sub-cta-button);
+.style-star {
+    color: var(--sub-cta-button);
+    font-size: 20px;
 }

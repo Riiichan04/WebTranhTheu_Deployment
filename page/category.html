@@ -25,7 +25,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-1 text-white d-flex text-center">
-                    <i class="bi bi-bootstrap text-white" id="header-logo"></i>
+                    <!--                    <a href="index.html"><i class="bi bi-bootstrap text-white" id="header-logo"></i></a>-->
+                    <!--                    <a href="index.html"><i class="bi bi-bootstrap text-white" id="header-logo"></i></a>-->
+                    <a href="index.html"><img src="../asset/favicon/web_logo.png" alt="" id="header-logo" width="60px"
+                                              height="60px"></a>
                 </div>
 
                 <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
@@ -41,9 +44,14 @@
                         <i class="fa-solid fa-heart my-1"></i>
                         <p class="header-feature__label">Yêu thích</p>
                     </li>
-                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
-                        <i class="fa-solid fa-cart-shopping my-1"></i>
-                        <p class="header-feature__label">Giỏ hàng</p>
+                    <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
+                        <a href="cart-page.html">
+                            <i class="fa-solid fa-cart-shopping my-1"></i>
+                            <p class="header-feature__label">Giỏ hàng</p>
+                        </a>
+                        <div id="cart-badge"
+                             class="rounded position-absolute align-items-center justify-content-center">0
+                        </div>
                     </li>
                     <li class="mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
                         <i class="fa-solid fa-user my-1"></i>
@@ -55,9 +63,10 @@
     </div>
 </header>
 
+
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">
-        <li class="breadcrumb-item"><a href="home-page.html">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
         <li class="breadcrumb-item active" aria-current="page">Tranh thêu Phong cảnh</li>
     </ol>
 </nav>
@@ -76,228 +85,76 @@
                     <p class=" p-2 category-element">Tranh thêu Tứ quý</p>
                     <p class=" p-2 category-element">Tranh thêu VIP</p>
                 </div>
-
                 <div class="category-filter mt-4_5">
-                    <h5 class="mb-2 main-color p-2">Bộ lọc </h5>
+                    <h5 class="mb-2 main-color p-1 ps-2">Bộ lọc </h5>
                     <hr/>
                     <div class="ps-2">
                         <p>Theo giá tiền (VNĐ):</p>
-                        <div class="d-flex">
+                        <div class="d-flex mt-1">
                             <input type="text" class="rounded border-0 col-5" placeholder="Từ">
                             <div class=" mb-1 col-1 text-center">-</div>
                             <input type="text" class="rounded border-0 col-5" placeholder="Đến">
                         </div>
                         <p class="mt-3">Theo đánh giá:</p>
                         <div class="d-flex">
-                            <input type="text" class="rounded border-0 col-5" placeholder="Từ">
-                            <div class="text-line mb-1 col-1 text-center">-</div>
-                            <input type="text" class="rounded border-0 col-5" placeholder="Đến">
+                            <div>
+                                <div class="d-flex align-items-center">
+                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                                                             name="rating-star"></div>
+                                    <div class="style-label"><span
+                                            class="style-star ms-2">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                                                             name="rating-star"></div>
+                                    <div class="style-label"><span
+                                            class="style-star mx-2">&#9733; &#9733; &#9733; &#9733; &#x2729;</span>trở lên
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                                                             name="rating-star"></div>
+                                    <div class="style-label"><span
+                                            class="style-star mx-2">&#9733; &#9733; &#9733; &#x2729; &#x2729;</span>trở lên
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                                                             name="rating-star"></div>
+                                    <div class="style-label"><span
+                                            class="style-star mx-2">&#9733; &#9733; &#x2729; &#x2729; &#x2729;</span>trở lên
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                                                             name="rating-star"></div>
+                                    <div class="style-label"><span
+                                            class="style-star mx-2">&#9733; &#x2729; &#x2729; &#x2729; &#x2729;</span>trở lên
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-<!--                    <div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="filter-from-5">-->
-<!--                            <div class="col d-flex justify-content-start comment-rating">-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star sample_half"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="filter-from-4">-->
-<!--                            <div class="col d-flex justify-content-start comment-rating">-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star sample_half"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                            </div>-->
 
-<!--                        </div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="filter-from-3">-->
-<!--                            <div class="col d-flex justify-content-start comment-rating">-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star sample_half"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                        </div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="filter-from-2">-->
-<!--                            <div class="col d-flex justify-content-start comment-rating">-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star sample_half"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                        </div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="filter-from-1">-->
-<!--                            <div class="col d-flex justify-content-start comment-rating">-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star sample_half"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-2 product-info__star-container   px-0">-->
-<!--                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>-->
-<!--                                    <div class="product-info__star-mask" style="width: 100%"></div>-->
-<!--                                    <i class="fa-regular fa-star product-info__star-outline"-->
-<!--                                       style="color: #4d6a55;"></i>-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                        </div>-->
-<!--                    </div>-->
-
-                    <div class="row d-flex justify-content-center mt-4">
-                        <button class="col-6 p-2 rounded sub-cta-button">Áp dụng</button>
+                    <div class="row d-flex justify-content-evenly mt-4">
+                        <button id="remove-filter"  class="col-3 p-2 border-0 rounded sub-cta-button">Hủy</button>
+                        <button id="filter-btn" class="col-6 p-2 border-0 rounded sub-cta-button-background">Áp dụng</button>
                     </div>
                 </div>
             </div>
 
         </div>
         <div class="col-10 background-container rounded p-4_5">
-            <h4 class="main-color">Tranh thêu Phong cảnh</h4>
+            <h4 id="category-title" class="main-color">Tranh thêu Phong cảnh</h4>
             <hr class="mb-5"/>
             <div>
                 <div class="row mt-1">
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1 row">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -333,7 +190,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -341,9 +198,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -379,7 +236,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -387,9 +244,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -425,7 +282,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -433,9 +290,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -471,7 +328,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -479,9 +336,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -517,239 +374,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-1">
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -759,9 +384,9 @@
                 <div class="row mt-1">
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -797,7 +422,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -805,9 +430,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -843,7 +468,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -851,9 +476,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -889,7 +514,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -897,9 +522,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -935,7 +560,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -943,9 +568,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -981,239 +606,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-1">
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
-                                    VNĐ</p>
-                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
-                            <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -1223,9 +616,9 @@
                 <div class="row mt-1">
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -1261,7 +654,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -1269,9 +662,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -1307,7 +700,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -1315,9 +708,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -1353,7 +746,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -1361,9 +754,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -1399,7 +792,7 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
@@ -1407,9 +800,9 @@
                     </div>
                     <div class="col">
                         <div class="card p-2" style="cursor: pointer">
-                            <img src="../asset/product_image.png" class="card-img-top" alt="...">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
-                                <h6 class="card-title text-start pb-2">Tranh thêu thám tử lừng danh Conan</h6>
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
                                 <div class="col d-flex justify-content-start comment-rating">
                                     <div class="col-2 product-info__star-container   px-0">
                                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -1445,7 +838,471 @@
                                 </div>
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
-                                    20.000.000
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
+                                    VNĐ</p>
+                                <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-2" style="cursor: pointer">
+                            <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                            <div class="card-body px-1">
+                                <h6 class="card-title text-start pb-2">Tranh thêu Phong cảnh</h6>
+                                <div class="col d-flex justify-content-start comment-rating">
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star sample_half"
+                                           style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                    <div class="col-2 product-info__star-container   px-0">
+                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                        <div class="product-info__star-mask" style="width: 100%"></div>
+                                        <i class="fa-regular fa-star product-info__star-outline"
+                                           style="color: #4d6a55;"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    1.840.000
                                     VNĐ</p>
                                 <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
                             </div>
