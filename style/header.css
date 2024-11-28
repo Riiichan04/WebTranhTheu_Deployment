@@ -36,5 +36,6 @@ header a:hover {
 }
 
 #header-logo {
-    font-size: 40px;
+    width: 60px;
+    height: 60px;
 }
