@@ -17,11 +17,7 @@ header p {
     color: var(--label-color) !important;
 }
 
-header ul>li, header i {
-    cursor: pointer;
-}
-
-header ul>li:hover * {
+header ul>li:hover *:not(.header-popup *) {
     color: var(--label-hover-color) !important;
 }
 
@@ -33,6 +29,31 @@ header a {
 }
 header a:hover {
     color: var(--label-hover-color);
+}
+
+.header-popup {
+    border: solid var(--text-hover-color) 2px;
+    color: var(--text-color);
+    width: 28rem;
+    height: 25rem;
+    z-index: 2;
+    cursor: default;
+}
+
+.header-popup__title {
+    border-bottom: solid 1px var(--label-hover-color);
+}
+
+.header-popup__content {
+    height: 75%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-bottom: solid 1px var(--label-hover-color);
+}
+
+.header-popup__close-btn {
+    width: 0.35em !important;
+    height: 0.35em !important;
 }
 
 #header-logo {

@@ -90,6 +90,7 @@ $("#purchase-btn").click(function () {
 // Nút thêm vào giỏ
 $("#add-to-cart-btn").click(function () {
     const cartBadge = $("#cart-badge")
+    cartBadge.removeClass("d-none")
     let cartValue = parseInt(cartBadge.prop("innerText"))
     cartValue += parseInt($("#product-detail__amount").prop("innerText"))
     cartBadge.text(cartValue)
