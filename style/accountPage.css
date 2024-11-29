@@ -3,9 +3,9 @@ html, body, p, a {
     padding: 0;
 
 }
-body{
-    height: 2000px;
-}
+/*body{*/
+/*    height: 1270px;*/
+/*}*/
 
 html,body{
     background-color: var(--web-background-color);
@@ -63,7 +63,7 @@ input{
 
 /*Content*/
 .content {
-    height: 1580px;
+    height: 750px;
     padding: 0 30px;
 }
 /*Navigation Bar*/
@@ -115,6 +115,10 @@ input{
     border-radius: 5px;
     /*text-align: center;*/
     background-color: var(--light-component-background-color);
+}
+.order-details{
+    height: 600px;
+    overflow-y: scroll;
 }
 .container #user-info{
     height: 500px;
