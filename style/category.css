@@ -1,0 +1,22 @@
+.category-list p {
+    margin: 0;
+}
+
+.category-active {
+    font-weight: bolder;
+    color: var(--label-color);
+    background-color: var(--sub-cta-button);
+}
+
+.page-link {
+    color: var(--sub-cta-button);
+}
+
+.category-element {
+    cursor: pointer;
+}
+
+.style-star {
+    color: var(--sub-cta-button);
+    font-size: 20px;
+}
