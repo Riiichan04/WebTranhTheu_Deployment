@@ -40,6 +40,10 @@ header a:hover {
     cursor: default;
 }
 
+.header-popup p {
+    color: var(--text-color) !important
+}
+
 .header-popup__title {
     border-bottom: solid 1px var(--label-hover-color);
 }
