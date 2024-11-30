@@ -3,9 +3,6 @@ html, body, p, a {
     padding: 0;
 
 }
-/*body{*/
-/*    height: 1270px;*/
-/*}*/
 
 html,body{
     background-color: var(--web-background-color);
