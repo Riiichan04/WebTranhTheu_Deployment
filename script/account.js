@@ -5,8 +5,8 @@ $(document).ready(function () {
         $(this).addClass("active");
         //Get content each item
         var contents = $(this).data('target');
-        $(".content-details").hide()
-        return $("#" + contents).show();
+        $(".content-details").css("display","none")
+        $("#" + contents).css("display","block");
     })
 
     // Change password
@@ -82,7 +82,8 @@ $(document).ready(function () {
 
     //Thêm hết vào giỏ hàng.
     $(".addAll-btn").click(function () {
-        $('.shop').each(function () {
+        const shop= $(this).parents(".container").children(".shop");
+        shop.each(function () {
             $(this).find('.product-item').remove();
             $(this).remove();
         })
