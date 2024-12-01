@@ -115,7 +115,7 @@ input{
 }
 .order-details{
     height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .container #user-info{
     height: 500px;
