@@ -70,11 +70,20 @@ $(document).ready(function () {
 
     //Thay đổi lịch sử xem sản phẩm
     $('.add-to-cart').click(function () {
-
         $(this).parents(".shop");
+        const cartBadge = $("#cart-badge")
+        let cartValue = parseInt(cartBadge.prop("innerText"))
         if ($(this).parents(".shop").find(".product-item").length <= 1) {
+            cartValue++
+            console.log(cartValue)
+            cartBadge.text(cartValue)
+            cartBadge.css("display", "flex");
             $(this).parents(".shop").remove();
         } else {
+            cartValue++
+            console.log(cartValue)
+            cartBadge.text(cartValue)
+            cartBadge.css("display", "flex");
             $(this).closest('.product-item').remove();
         }
     })
