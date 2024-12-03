@@ -57,7 +57,7 @@ input{
     border: solid 1px #dddddd;
     font-size: 16px ;
 }
-#cart-badge {
+#cart-badge{
     top: -0.5rem;
     right: 0;
     background-color: var(--main-cta-button);
