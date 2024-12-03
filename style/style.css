@@ -32,6 +32,14 @@ footer i, footer p {
     background-color: var(--main-cta-button-hover);
 }
 
+.text-button {
+    color: var(--text-color) !important;
+}
+
+.text-button:hover {
+    color: var(--text-hover-color) !important;
+}
+
 .sub-cta-button {
     color: var(--sub-cta-button);
     border: solid 2px var(--sub-cta-button) !important;
