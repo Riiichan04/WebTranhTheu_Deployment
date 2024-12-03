@@ -1,5 +1,9 @@
-$(".product-item").click(function(){
+$(".product-item:not(#category-popup .product-item)").click(function(){
     window.location = "../page/product.html"
+})
+
+$("#category-popup .product-item").click(function () {
+    window.location = "../page/category.html"
 })
 
 $(".header-popup__close-btn").click(function(){

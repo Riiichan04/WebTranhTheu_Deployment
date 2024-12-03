@@ -93,11 +93,6 @@
     border: none;
 }
 
-.card-title {
-    font-weight: normal;
-    font-size: 18px;
-}
-
 .card-text {
     color: #4d6a55;
     text-align: right;
@@ -121,4 +116,12 @@
     border: none;
 }
 
+#back-btn {
+    cursor: pointer;
+    user-select: none;
+}
 
+#back-btn:hover {
+    /*Sẽ thêm màu vào index.css*/
+    color: var(--text-hover-color);
+}
