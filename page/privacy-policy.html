@@ -31,41 +31,48 @@
 
                 <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
                     <span id="input-icon" class="fas ps-2" style="position: absolute; color: #56595C">&#xf002 </span>
-                    <input type="search" name="" id="search-product-btn" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                    <input type="search" name="" id="search-product-btn" class="form-control"
+                           placeholder="Tìm kiếm sản phẩm">
                 </div>
                 <ul class="col-4 m-0 d-flex justify-content-end align-items-center">
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
-                        <a id="header-category" href="category.html">
+                        <div id="header-category">
                             <i class="fa-solid fa-list my-1"></i>
                             <p class="header-feature__label">Danh mục</p>
-                        </a>
-                        <!--                        <div id="category-popup"-->
-                        <!--                             class="rounded header-popup position-absolute background-container p-3 d-none">-->
-                        <!--                            <div class="d-flex justify-content-end">-->
-                        <!--                                <button type="button" class="btn-close header-popup__close-btn"-->
-                        <!--                                        aria-label="Close"></button>-->
-                        <!--                            </div>-->
-                        <!--                            &lt;!&ndash;                            <h5 class="header-popup__title main-color text-start pb-2 mb-4">Danh mục</h5>&ndash;&gt;-->
-                        <!--                            <div class="header-popup__content py-1">-->
-                        <!--                                <div class="product-item row my-2 cursor-pointer border-black border-bottom">-->
-                        <!--                                    <h5 class="main-color text-start">Tranh thêu phong cảnh</h5>-->
-                        <!--                                </div>-->
-                        <!--                                <div class="product-item row my-2 cursor-pointer border-black border-bottom">-->
-                        <!--                                    <h5 class="main-color text-start">Tranh thêu chân dung</h5>-->
-                        <!--                                </div>-->
-                        <!--                                <div class="product-item row my-2 cursor-pointer border-black border-bottom">-->
-                        <!--                                    <h5 class="main-color text-start">Tranh thêu động vật</h5>-->
-                        <!--                                </div>-->
-                        <!--                                <div class="product-item row my-2 cursor-pointer border-black border-bottom">-->
-                        <!--                                    <h5 class="main-color text-start">Tranh thêu tứ quý</h5>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                            <a href="category.html" class="">-->
-                        <!--                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">-->
-                        <!--                                    Xem tất cả >-->
-                        <!--                                </p>-->
-                        <!--                            </a>-->
-                        <!--                        </div>-->
+                        </div>
+                        <div id="category-popup"
+                             class="rounded header-popup position-absolute background-container p-3 d-none">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn-close header-popup__close-btn"
+                                        aria-label="Close"></button>
+                            </div>
+                            <h6 class="header-popup__title main-color text-start pb-2 mb-1">Danh mục</h6>
+                            <div class="header-popup__content py-1">
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu phong cảnh</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu chân dung</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu động vật</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu tứ quý</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu hoa</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu VIP</p>
+                                </div>
+                            </div>
+                            <a href="category.html" class="">
+                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
+                                    Xem tất cả >
+                                </p>
+                            </a>
+                        </div>
                     </li>
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
                         <div id="header-favorite">
@@ -238,8 +245,6 @@
         </div>
     </div>
 </header>
-
-
 
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">

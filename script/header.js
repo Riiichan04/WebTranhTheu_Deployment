@@ -16,6 +16,11 @@ $("#search-product-btn").on("keyup", function (e) {
     }
 })
 
+$("#header-category").click(function () {
+    $(".header-popup").addClass("d-none")
+    $("#category-popup").removeClass("d-none");
+})
+
 $("#header-favorite").click(function(){
     $(".header-popup").addClass("d-none")
     $("#favorite-popup").removeClass("d-none");

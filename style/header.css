@@ -64,3 +64,16 @@ header a:hover {
     width: 60px;
     height: 60px;
 }
+
+#category-popup {
+    width: 15rem !important;
+    height: 20rem;
+}
+
+#category-popup .header-popup__content {
+    height: 75%;
+}
+
+#category-popup i {
+    color: var(--text-color);
+}
