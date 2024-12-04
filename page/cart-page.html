@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../style/header.css">
     <link rel="stylesheet" href="../style/cart.css">
     <link rel="stylesheet" href="../style/footer.css">
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
 <!--Header-->
@@ -138,7 +139,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="user-page.html" class="">
+                            <a href="account-page.html" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
                                     Xem tất cả >
                                 </p>
@@ -234,7 +235,7 @@
                         </div>
                     </li>
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
-                        <a id="header-account" href="user-page.html">
+                        <a id="header-account" href="account-page.html">
                             <i class="fa-solid fa-user my-1"></i>
                             <p class="header-feature__label">Tài khoản</p>
                         </a>
@@ -246,13 +247,11 @@
     </div>
 </header>
 
-
-
 <!--Body-->
 <!--Breadcrumbs-->
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-    <ol class="breadcrumb p-4">
-        <li class="breadcrumb-item"><a href="../page/index.html" style="text-decoration: none">Trang chủ </a></li>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
+    <ol class="breadcrumb pt-2">
+        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
         <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
     </ol>
 </nav>
@@ -542,13 +541,15 @@
         </div>
         <div class="col-1"></div>
         <div class="col-3 ms-0 discount_pay">
-            <div class="row discount_area">
-                <div class="row pt-3">
-                    <div class="col-2 ps-4"><i class="bi bi-ticket-perforated" style="width: 50px;height: 50px"></i>
+            <div class="row discount_area p-3 py-4">
+                <div class="row">
+                    <div class="col-8 h5">
+                        <i class="bi bi-ticket-perforated me-1"></i>
+                        <span>Khuyến mãi</span>
                     </div>
-                    <div class="col-8 h5">Khuyến mãi</div>
+                    <div class="col"></div>
                     <div class="col-2 row">
-                        <i class="bi bi-arrow-right-short discount-more"></i>
+                        <i class="bi bi-arrow-right-short discount-more h4 my-0"></i>
                     </div>
                 </div>
                 <hr>
@@ -556,40 +557,40 @@
                     <div class="row ps-3 py-2 discount-item">
                         <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
                         <div class="row p-0">
-                            <div class=" col-9 discount-description">Đơn từ 10.000.000.</div>
-                            <div class="col-3 discount-detail">Chi tiết</div>
+                            <div class=" col-8 discount-description">Đơn từ 10.000.000.</div>
+                            <div class="col-4 discount-detail">Chi tiết</div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <button class="apply_discount">Áp dụng</button>
                         </div>
                     </div>
                     <div class="row ps-3 py-2 discount-item">
                         <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
                         <div class="row p-0">
-                            <div class=" col-9 discount-description">Đơn từ 10.000.000.</div>
-                            <div class="col-3 discount-detail">Chi tiết</div>
+                            <div class=" col-8 discount-description">Đơn từ 10.000.000.</div>
+                            <div class="col-4 discount-detail">Chi tiết</div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <button class="apply_discount">Áp dụng</button>
                         </div>
                     </div>
                     <div class="row ps-3 py-2 discount-item">
                         <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
                         <div class="row p-0">
-                            <div class=" col-9 discount-description">Đơn từ 10.000.000.</div>
-                            <div class="col-3 discount-detail">Chi tiết</div>
+                            <div class=" col-8 discount-description">Đơn từ 10.000.000.</div>
+                            <div class="col-4 discount-detail">Chi tiết</div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <button class="apply_discount">Áp dụng</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row py-2"></div>
-            <div class="row pay_area">
+            <div class="row pay_area p-3">
                 <div class="row pt-2">
-                    <div class="col-2 ps-4"><i class="bi bi-cash-stack"></i></div>
-                    <div class="col-10 h5">Thành tiền</div>
+<!--                    <div class="col-2 ps-4"></div>-->
+                    <div class="col-10 h5"><i class="bi bi-cash-stack me-2"></i><span>Thành tiền</span></div>
                 </div>
                 <hr>
                 <div class="row">
