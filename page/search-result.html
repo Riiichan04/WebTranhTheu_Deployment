@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="user-page.html" class="">
+                            <a href="account-page.html" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
                                     Xem tất cả >
                                 </p>
@@ -235,7 +235,7 @@
                         </div>
                     </li>
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
-                        <a id="header-account" href="user-page.html">
+                        <a id="header-account" href="account-page.html">
                             <i class="fa-solid fa-user my-1"></i>
                             <p class="header-feature__label">Tài khoản</p>
                         </a>
@@ -247,16 +247,20 @@
     </div>
 </header>
 
+<nav class="container mt-2">
+    <span id="back-btn" onclick="history.back()">< Quay lại trang trước</span>
+</nav>
+
 <div class="container mt-3">
     <div class="row mb-3">
-        <div class="col"><a href="#" class="return-home-link"> << Trở về trang chủ </a></div>
-        <div class="col text-end"><i class="fa-solid fa-lightbulb me-2"
-                                     style="color: var(--sub-cta-button); font-size: 20px"></i>
-            Kết quả tìm kiếm cho từ khóa <span style="font-weight: bold">"Từ khóa"</span></div>
+        <div class="col text-end">
+            <i class="fa-solid fa-lightbulb me-2" style="color: var(--sub-cta-button); font-size: 20px"></i>
+            Kết quả tìm kiếm cho từ khóa <span style="font-weight: bold">"Từ khóa"</span>
+        </div>
     </div>
     <div class="row">
         <div class="col-2 style-menu">
-            <h5 class="pt-3 mb-0">BỘ LỌC TÌM KIẾM</h5>
+            <h5 class="pt-3 mb-0">Bộ lọc</h5>
             <fieldset class="pt-3">
                 <legend class="style-label">Theo danh mục</legend>
                 <div class="d-flex">
@@ -296,30 +300,35 @@
             <fieldset>
                 <legend class="style-label">Theo đánh giá</legend>
                 <div class="d-flex">
-                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star"></div>
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
                     <div class="style-label"><span class="style-star">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
                     </div>
                 </div>
                 <div class="d-flex">
-                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star"></div>
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
                     <div class="style-label"><span
                             class="style-star me-2">&#9733; &#9733; &#9733; &#9733; &#x2729;</span>trở lên
                     </div>
                 </div>
                 <div class="d-flex">
-                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star"></div>
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
                     <div class="style-label"><span
                             class="style-star me-2">&#9733; &#9733; &#9733; &#x2729; &#x2729;</span>trở lên
                     </div>
                 </div>
                 <div class="d-flex">
-                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star"></div>
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
                     <div class="style-label"><span
                             class="style-star me-2">&#9733; &#9733; &#x2729; &#x2729; &#x2729;</span>trở lên
                     </div>
                 </div>
                 <div class="d-flex">
-                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star"></div>
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
                     <div class="style-label"><span
                             class="style-star me-2">&#9733; &#x2729; &#x2729; &#x2729; &#x2729;</span>trở lên
                     </div>
@@ -389,12 +398,12 @@
                     </div>
                     <div class="col-4">
                         <h4>Đối tác liên kết</h4>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <img src="../asset/image/VNPay.png" class="img-fluid" alt="Hình 1">
+                        <div class="row mt-3">
+                            <div class="col-3 mb-4 d-flex justify-content-start">
+                                <img src="../asset/image/VNPay.png" class="img-fluid" alt="VNPay">
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <img src="../asset/image/momo-logo.png" class="img-fluid" alt="Hình 2"
+                            <div class="col-3 mb-4 d-flex justify-content-start">
+                                <img src="../asset/image/momo-logo.png" class="img-fluid" alt="Momo"
                                      style="width:50px;height: 50px ">
                             </div>
                         </div>

@@ -28,17 +28,18 @@ function displayProducts(page) {
             rowProduct.className = "row pe-0";
         }
         const productItem = document.createElement('div');
+        productItem.onclick = () => window.location = "../page/product.html"
         if (countProductPerRow === 4) {
-            productItem.className = 'col product-item mb-3 pe-0';
-        } else productItem.className = 'col product-item mb-3 pe-1';
+            productItem.className = 'cursor-pointer col product-item mb-3 pe-0';
+        } else productItem.className = 'cursor-pointer col product-item mb-3 pe-1';
         productItem.innerHTML = `<div class="card card-container w-100">
                         <img src="${product.url}"
                              class="card-img-top" alt="Product Image">
                         <div class="card-body">
-                             <h5 class="card-title">${product.name}</h5>
+                             <h6 class="card-title text-start pb-2">${product.name}</h6>
 
                             <!-- Star Ratings -->                                           
-                            <div class="col d-flex justify-content-center comment-rating">
+                            <div class="col d-flex justify-content-start comment-rating">
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
                                 <div class="product-info__star-mask"></div>
@@ -65,10 +66,10 @@ function displayProducts(page) {
                                 <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
                             </div>
                         </div>
-                        
-                             <p class="card-text">
-                                 ${product.price}
-                             </p>
+                                <p class="card-text text-center fw-semibold h5 mt-2"
+                                   style="color: var(--sub-cta-button)">
+                                    ${product.price}
+                                </p>
                         </div>
                     </div>`;
         rowProduct.appendChild(productItem);

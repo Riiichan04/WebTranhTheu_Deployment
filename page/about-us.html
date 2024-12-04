@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="user-page.html" class="">
+                            <a href="account-page.html" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
                                     Xem tất cả >
                                 </p>
@@ -235,7 +235,7 @@
                         </div>
                     </li>
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
-                        <a id="header-account" href="user-page.html">
+                        <a id="header-account" href="account-page.html">
                             <i class="fa-solid fa-user my-1"></i>
                             <p class="header-feature__label">Tài khoản</p>
                         </a>
@@ -247,18 +247,16 @@
     </div>
 </header>
 
-
-
 <!--Breadcrumbs-->
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
-    <ol class="breadcrumb p-3">
-        <li class="breadcrumb-item"><a href="index.html" style="text-decoration: none">Trang chủ </a></li>
+    <ol class="breadcrumb pt-2">
+        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
         <li class="breadcrumb-item active" aria-current="page">Về chúng tôi</li>
     </ol>
 </nav>
 <!-- About us -->
 <div class="container about-us mt-4_5 mb-5">
-    <div class="row about-us-content rounded p-4_5">
+    <div class="row about-us-content rounded p-4_5 background-container">
         <h2 class="text-center main-color">Về chúng tôi</h2>
         <section class="container p-4">
             <p>
@@ -281,27 +279,29 @@
         </section>
     </div>
     <div class="row p-4 "></div>
-    <div class="row customer-poll rounded">
-        <form class="poll-form p-4_5">
-            <h5 class="main-color">Thăm dò ý kiến</h5>
-            <div class="container">
-                <div class="row p-2">
-                    <div class="col-8">Bạn thấy tranh thêu có đẹp không?</div>
-                    <div class="col-2"><input class="form-check-input" type="radio" name="question1" value="Có"> Có</div>
-                    <div class="col-2"><input class="form-check-input" type="radio" name="question1" value="Không"> Không</div>
+    <div class="row customer-poll rounded background-container pt-4_5 px-4_5 pb-0">
+        <h4 class="main-color">Liên lạc với chúng tôi</h4>
+        <p>Hãy điền thông tin vào form sau để liên lạc với chúng tôi</p>
+        <form class="my-2 row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="mt-3">
+                    <p class="fw-semibold py-2">Tên của bạn <span class="text-danger">*</span></p>
+                    <input class="form-control rounded border-2" type="text" name="" id="form-name">
                 </div>
-                <div class="row p-2">
-                    <div class="col-8">Tranh thêu có giúp ngôi nhà bạn trở nên đẹp hơn không?</div>
-                    <div class="col-2"><input class="form-check-input" type="radio" name="question2" value="Có"> Có</div>
-                    <div class="col-2"><input class="form-check-input" type="radio" name="question2" value="Không"> Không</div>
+                <div class="mt-3">
+                    <p class="fw-semibold py-2">Email của bạn <span class="text-danger">*</span></p>
+                    <input class="form-control rounded border-2" type="email" name="" id="form-email">
                 </div>
-                <div class="row p-4">
-                    <div class="col-10"></div>
-                    <div class="col-2">
-                        <button type="submit" class="submit-btn rounded" style="width: 100%">Gửi đánh giá</button>
-                    </div>
+                <div class="mt-3">
+                    <p class="fw-semibold py-2">Nội dung <span class="text-danger">*</span></p>
+                    <textarea name="" id="form-content" class="form-control rounded border-2" cols="30" rows="10"></textarea>
+                </div>
+                <div class="my-2 mt-4 d-flex justify-content-center">
+                    <button class="sub-cta-button-background border px-4 py-3 rounded h5">Gửi</button>
                 </div>
             </div>
+            <div class="col-3"></div>
         </form>
     </div>
 </div>
@@ -338,12 +338,12 @@
                     </div>
                     <div class="col-4">
                         <h4>Đối tác liên kết</h4>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <img src="../asset/image/VNPay.png" class="img-fluid" alt="Hình 1">
+                        <div class="row mt-3">
+                            <div class="col-3 mb-4 d-flex justify-content-start">
+                                <img src="../asset/image/VNPay.png" class="img-fluid" alt="VNPay">
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <img src="../asset/image/momo-logo.png" class="img-fluid" alt="Hình 2"
+                            <div class="col-3 mb-4 d-flex justify-content-start">
+                                <img src="../asset/image/momo-logo.png" class="img-fluid" alt="Momo"
                                      style="width:50px;height: 50px ">
                             </div>
                         </div>
@@ -361,6 +361,7 @@
         </div>
     </div>
 </footer>
+
 <script src="../script/header.js"></script>
 
 </body>

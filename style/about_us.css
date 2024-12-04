@@ -2,26 +2,6 @@ section p {
     text-indent: 1%;
 }
 
-.main-color {
-    color: var(--big-text-color);
-}
-
-.about-us-content{
-    background-color:var(--light-component-background-color);
-}
-
-.poll-form{
-    background-color:var(--light-component-background-color);
-}
-.about-us .poll-form .submit-btn{
-    background-color: var(--sub-cta-button);
-    color:var(--web-background-color);
-    border:none;
-    font-size: 16px;
-    height: 30px;
-}
-
-.form-check-input:checked {
-    background-color: var(--sub-cta-button);
-    border-color: var(--sub-cta-button);
+textarea {
+    resize: none;
 }
