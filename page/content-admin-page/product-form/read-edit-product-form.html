@@ -65,35 +65,38 @@
             <div class="col p-0"><textarea class="w-100 style-area" id="descriptionProduct" required disabled>Mô tả sản phẩm này</textarea>
             </div>
         </div>
+        
+        <!-- loại tranh: kích thước khác nhau giá khác nhau -->
+        <div class="row pt-2">
+            <div class="col"><p class="style-title m-0">Loại tranh 1</p></div>
+        </div>
         <!-- giá bán và số lượng -->
         <div class="row pt-2">
-            <div class="col"><span class="style-title">Giá bán (VND)</span></div>
-            <div class="col"><span class="style-title">Số lượng</span></div>
-        </div>
-        <div class="row pt-2">
-            <div class="col p-0 pe-1"><input type="number" id="price" class="w-100 style-input"
+            <div class="col p-0 pe-1 text-center">
+                <label class="style-label pb-2">Giá bán (VNĐ)</label>
+                <input type="number" id="price" class="w-100 style-input"
                                              placeholder="Nhập giá bán sản phẩm" value="8000000" required disabled>
             </div>
-            <div class="col p-0 ps-1"><input type="number" id="quantityProduct" class="w-100 style-input"
+            <div class="col p-0 ps-1 text-center">
+                <label class="style-label pb-2">Số lượng</label>
+                <input type="number" id="quantityProduct" class="w-100 style-input"
                                              placeholder="Nhập số lượng sản phẩm" value="100" required disabled>
             </div>
         </div>
         <!-- kích thước -->
-        <div class="row pt-3">
-            <div class="col"><span class="style-title">Kích thước (cm)</span></div>
-        </div>
         <div class="row pt-2">
-            <div class="col p-0 pe-1">
-                <label class="style-label ps-5 pb-2">Chiều rộng</label>
+            <div class="col p-0 pe-1 text-center">
+                <label class="style-label pb-2">Chiều rộng</label>
                 <input type="number" class="w-100 style-input" id="widthProduct" placeholder="Chiều rộng (cm)"
                        value="40" disabled>
             </div>
-            <div class="col p-0 ps-1">
-                <label class="style-label ps-5 pb-2">Chiều cao</label>
+            <div class="col p-0 ps-1 text-center">
+                <label class="style-label pb-2">Chiều cao</label>
                 <input type="number" class="w-100 style-input" id="heightProduct" placeholder="Chiều cao (cm)"
                        value="60" disabled>
             </div>
         </div>
+        
         <!-- chất liệu -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Chất liệu</span></div>
