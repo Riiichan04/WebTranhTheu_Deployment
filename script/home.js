@@ -2,14 +2,12 @@ const listData = []
 const LIMIT_PRODUCT = 100
 let currentLimitProduct = 0
 
-$.getJSON("../asset/data.json", (data) => {
-    $.each(data, (index, element) => {
-        listData.push(`
+listData.push(`
             <div class="col">
                 <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
                     <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">${element.title}</h6>
+                        <h6 class="card-title text-start pb-2">Tranh thêu phong cảnh</h6>
                         <div class="col d-flex justify-content-start comment-rating">
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -43,17 +41,10 @@ $.getJSON("../asset/data.json", (data) => {
                                    style="color: #4d6a55;"></i>
                             </div>
                         </div>
-                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${element.price}</p>
+                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
                     </div>
                 </div>
             </div>`)
-    })
-
-    $("#hot-product-section>div").append(createRowProduct(5))
-    $("#most-rated-product-section>div").append(createRowProduct(5))
-    $("#full-product__product-list").append(createRowProduct(5))
-
-})
 
 function createRowProduct(rowLength) {
     const productContainer = document.createElement("div")
