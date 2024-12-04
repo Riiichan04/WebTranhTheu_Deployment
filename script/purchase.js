@@ -13,7 +13,7 @@ $("#payment-button").click(function () {
 $(".delete-product").click(function () {
     $(this).parent().parent().remove();
     let newPrice = 0;
-    const remainProduct = $(".product-price")
+    const remainProduct = $("section .product-price")
     remainProduct.each(function () {
         newPrice += parseInt($(this).text().replace(replacePriceRegex, ""))
     })
@@ -22,6 +22,9 @@ $(".delete-product").click(function () {
     $("#remain-item").text(`(${remainProduct.length} sản phẩm)`)
     $("#product-sum-price").text(modifyPriceValue(newPrice))
     $("#total-price").text((newPrice !== 0) ? modifyPriceValue(totalPrice) : "0 VNĐ")
+    if (remainProduct.length === 0) {
+        $("#ship-price").text("0 VNĐ")
+    }
 })
 
 function modifyPriceValue(price) {
