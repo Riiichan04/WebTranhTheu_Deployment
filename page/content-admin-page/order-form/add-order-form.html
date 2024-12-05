@@ -63,6 +63,61 @@
                 </div>
             </div>
         </div>
+        <!-- Địa chỉ giao hàng -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Địa chỉ giao hàng<span class="text-danger"> * </span></span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <div class="row">
+                    <div class="col"><select class="style-select" disabled>
+                        <option selected>Việt Nam</option>
+                    </select></div>
+                    <div class="col">
+                        <select class="style-select location">
+                            <option disabled>--Chọn thành phố--</option>
+                            <option>Tp. Hồ Chí Minh</option>
+                            <option>Tp 2</option>
+                            <option>Tp 3</option>
+                            <option>Tp 4</option>
+                            <option>Tp 5</option>
+                            <option>Tp 6</option>
+                            <option>Tp 7</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col">
+                        <select class="style-select location">
+                            <option disabled>--Chọn quận/huyện--</option>
+                            <option selected>Tp. Thủ Đức</option>
+                            <option>Quận Bình Thạnh</option>
+                            <option>Quận 1</option>
+                            <option>Quận 3</option>
+                            <option>Quận 4</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="style-select location">
+                            <option disabled>--Chọn xã/phường--</option>
+                            <option selected>Phường Linh Trung</option>
+                            <option>Phường 2</option>
+                            <option>Phường 3</option>
+                            <option>Phường 4</option>
+                            <option>Phường 5</option>
+                            <option>Phường 6</option>
+                            <option>Phường 7</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pt-2" style="padding-left: 12px; padding-right: 12px">
+                    <input type="text" class="style-input location" placeholder="Nhập tên đường, tòa nhà, số nhà,..."
+                           value="Khu phố 6">
+                </div>
+            </div>
+        </div>
+        
         <!-- ngày tạo -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày tạo đơn hàng<span class="text-danger"> * </span></span>
@@ -91,6 +146,19 @@
                     <option>Đang giao</option>
                     <option>Đã hoàn thành</option>
                     <option>Đã hủy</option>
+                </select>
+            </div>
+        </div>
+        <!-- trạng thái thanh toán -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Trạng thái thanh toán<span class="text-danger"> * </span></span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" required>
+                    <option>Chưa thanh toán</option>
+                    <option>Đã thanh toán</option>
                 </select>
             </div>
         </div>

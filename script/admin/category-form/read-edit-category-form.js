@@ -9,6 +9,8 @@ $('#editBtn').click(function () {
 
     $('#nameCategory').prop('disabled', false);
 
+    $('.status-category').prop('disabled', false);
+
     $('.edit-hidden').removeClass('d-none');
 });
 

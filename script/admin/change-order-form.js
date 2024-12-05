@@ -9,17 +9,7 @@ function changeFormOnOrder(btn) {
     switch (btn) {
         case 'addOrderBtn':
             formWrapper.innerHTML = `<iframe src="order-form/add-order-form.html" class="form-popup" id="addIframe"></iframe>`;
-            const add_iframe = document.getElementById('addIframe');
-
-            // Lắng nghe sự kiện load để đảm bảo iframe đã tải xong
-            add_iframe.addEventListener('load', function () {
-                const c = add_iframe.contentWindow;
-                if(c.getHeightForm() < screen.height) {
-                    $('#addIframe').css('height', c.getHeightForm() + 'px');
-                } else {
-                    $('#addIframe').css('height', 'calc(100vh - 40px)');
-                }
-            });
+            $('#addIframe').css('height', 'calc(100vh - 40px)');
             break;
         case 'readAndEditUserBtn':
             formWrapper.innerHTML = `<iframe src="order-form/read-edit-order-form.html" class="form-popup" id="readAndEditIframe" height="633px"></iframe>`;

@@ -43,6 +43,8 @@ $('#editBtn').click(function () {
     $('#statusOrder').prop('disabled', false);
     
     $('#reasonCancelOrder').prop('disabled', false);
+
+    $('.payment-select').prop('disabled', false);
     
     $('.edit-hidden').removeClass('d-none');
 });
