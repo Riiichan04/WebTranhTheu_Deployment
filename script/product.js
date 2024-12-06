@@ -84,12 +84,13 @@ $("#product-detail__remove-amount").click(function () {
 
 // Nút mua ngay -> Mở trang thanh toán
 $("#purchase-btn").click(function () {
-    window.open("purchase.html").focus();
+    window.location = "../page/purchase.html"
 })
 
 // Nút thêm vào giỏ
 $("#add-to-cart-btn").click(function () {
     const cartBadge = $("#cart-badge")
+    cartBadge.removeClass("d-none")
     let cartValue = parseInt(cartBadge.prop("innerText"))
     cartValue += parseInt($("#product-detail__amount").prop("innerText"))
     cartBadge.text(cartValue)

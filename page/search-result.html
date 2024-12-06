@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kết quả tìm kiếm - Nét Việt</title>
+    <link rel="icon" href="../asset/favicon/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- css property -->
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/header.css">
+    <link rel="stylesheet" href="../style/search-result.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/footer.css">
+
+</head>
+<body>
+<header>
+    <div class="px-3 py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-1 text-white d-flex text-center">
+                    <!--                    <a href="index.html"><i class="bi bi-bootstrap text-white" id="header-logo"></i></a>-->
+                    <a href="index.html"><img src="../asset/favicon/web_logo.png" alt="" id="header-logo"></a>
+                </div>
+
+                <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
+                    <span id="input-icon" class="fas ps-2" style="position: absolute; color: #56595C">&#xf002 </span>
+                    <input type="search" name="" id="search-product-btn" class="form-control"
+                           placeholder="Tìm kiếm sản phẩm">
+                </div>
+                <ul class="col-4 m-0 d-flex justify-content-end align-items-center">
+                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <div id="header-category">
+                            <i class="fa-solid fa-list my-1"></i>
+                            <p class="header-feature__label">Danh mục</p>
+                        </div>
+                        <div id="category-popup"
+                             class="rounded header-popup position-absolute background-container p-3 d-none">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn-close header-popup__close-btn"
+                                        aria-label="Close"></button>
+                            </div>
+                            <h6 class="header-popup__title main-color text-start pb-2 mb-1">Danh mục</h6>
+                            <div class="header-popup__content py-1">
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu phong cảnh</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu chân dung</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu động vật</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu tứ quý</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu hoa</p>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer ">
+                                    <p class="main-color text-start">Tranh thêu VIP</p>
+                                </div>
+                            </div>
+                            <a href="category.html" class="">
+                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
+                                    Xem tất cả >
+                                </p>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
+                        <div id="header-favorite">
+                            <i class="fa-solid fa-heart my-1"></i>
+                            <p class="header-feature__label">Yêu thích</p>
+                        </div>
+                        <div id="favorite-popup"
+                             class="rounded header-popup position-absolute background-container p-3 d-none">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn-close header-popup__close-btn"
+                                        aria-label="Close"></button>
+                            </div>
+                            <h5 class="header-popup__title main-color text-start pb-2 mb-4">Danh sách yêu thích</h5>
+                            <div class="header-popup__content py-1">
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="account-page.html" class="">
+                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
+                                    Xem tất cả >
+                                </p>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
+                        <!--                        <a id="header-cart" href="cart-page.html">-->
+                        <!--                            <i class="fa-solid fa-cart-shopping my-1"></i>-->
+                        <!--                            <p class="header-feature__label">Giỏ hàng</p>-->
+                        <!--                        </a>-->
+                        <div id="header-cart">
+                            <i class="fa-solid fa-cart-shopping my-1"></i>
+                            <p class="header-feature__label">Giỏ hàng</p>
+                        </div>
+                        <div id="cart-badge"
+                             class="d-none rounded position-absolute align-items-center justify-content-center">0
+                        </div>
+                        <div id="cart-popup"
+                             class="rounded header-popup position-absolute background-container p-3 d-none">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn-close header-popup__close-btn"
+                                        aria-label="Close"></button>
+                            </div>
+                            <h5 class="header-popup__title main-color text-start pb-2 mb-4">Giỏ hàng của bạn</h5>
+                            <div class="header-popup__content py-1">
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="cart-page.html" class="">
+                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
+                                    Xem tất cả >
+                                </p>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <a id="header-account" href="account-page.html">
+                            <i class="fa-solid fa-user my-1"></i>
+                            <p class="header-feature__label">Tài khoản</p>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="container mt-2">
+    <span id="back-btn" onclick="history.back()">< Quay lại trang trước</span>
+</nav>
+
+<div class="container mt-3">
+    <div class="row mb-3">
+        <div class="col text-end">
+            <i class="fa-solid fa-lightbulb me-2" style="color: var(--sub-cta-button); font-size: 20px"></i>
+            Kết quả tìm kiếm cho từ khóa <span style="font-weight: bold">"Từ khóa"</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 style-menu">
+            <h5 class="pt-3 mb-0">Bộ lọc</h5>
+            <fieldset class="pt-3">
+                <legend class="style-label">Theo danh mục</legend>
+                <div class="d-flex">
+                    <div class="radio-container"><input type="checkbox"></div>
+                    <div class="style-label">Tranh thêu phong thủy (1k+)</div>
+                </div>
+                <div class="d-flex">
+                    <div class="radio-container"><input type="checkbox"></div>
+                    <div class="style-label">Tranh thêu phong thủy (1k+)</div>
+                </div>
+                <div class="d-flex">
+                    <div class="radio-container"><input type="checkbox"></div>
+                    <div class="style-label">Tranh thêu phong thủy (1k+)</div>
+                </div>
+                <div class="d-flex">
+                    <div class="radio-container"><input type="checkbox"></div>
+                    <div class="style-label">Tranh thêu phong thủy (1k+)</div>
+                </div>
+                <div class="d-flex">
+                    <div class="radio-container"><input type="checkbox"></div>
+                    <div class="style-label">Tranh thêu phong thủy (1k+)</div>
+                </div>
+            </fieldset>
+            <hr>
+            <fieldset>
+                <legend class="style-label mb-3">Theo nhà cung cấp</legend>
+                <div class="align-items-center mt-0">
+                    <input type="text" class="" placeholder="Nhập tên nhà cung cấp">
+                </div>
+                <div class="text-center mt-3">
+                    <button class="filter-price-btn">ÁP DỤNG</button>
+                </div>
+            </fieldset>
+            <hr/>
+            <fieldset>
+                <legend class="style-label mb-3">Theo khoản giá (VNĐ)</legend>
+                <div class="align-items-center mt-0">
+                    <input type="number" class="filter-price-input" placeholder="Từ">
+                    <div class="text-line mx-1 mb-1"></div>
+                    <input type="number" class="filter-price-input" placeholder="Đến">
+                </div>
+                <div class="text-center mt-3">
+                    <button class="filter-price-btn">ÁP DỤNG</button>
+                </div>
+            </fieldset>
+            <hr>
+            <fieldset>
+                <legend class="style-label">Theo đánh giá</legend>
+                <div class="d-flex">
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
+                    <div class="style-label"><span class="style-star">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
+                    <div class="style-label"><span
+                            class="style-star me-2">&#9733; &#9733; &#9733; &#9733; &#x2729;</span>trở lên
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
+                    <div class="style-label"><span
+                            class="style-star me-2">&#9733; &#9733; &#9733; &#x2729; &#x2729;</span>trở lên
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
+                    <div class="style-label"><span
+                            class="style-star me-2">&#9733; &#9733; &#x2729; &#x2729; &#x2729;</span>trở lên
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="radio-container pt-2"><input class="form-check-input" type="radio" name="rating-star">
+                    </div>
+                    <div class="style-label"><span
+                            class="style-star me-2">&#9733; &#x2729; &#x2729; &#x2729; &#x2729;</span>trở lên
+                    </div>
+                </div>
+
+            </fieldset>
+            <hr>
+            <div>
+                <button class="filter-delete-btn">XÓA TẤT CẢ</button>
+            </div>
+        </div>
+        <div class="col-10 ps-4 pe-0">
+            <div class="style-container-product px-3">
+                <div class="sort-container d-flex align-items-center">
+                    <p class="m-0 me-2">Sắp xếp theo</p>
+                    <select class="me-2 form-select sort-date-product__select">
+                        <option value="1" selected>Mới nhất</option>
+                        <option value="2">Cũ nhất</option>
+                    </select>
+                    <select class="form-select sort-price-product__select">
+                        <option value="1" selected>Giá: Từ thấp đến cao</option>
+                        <option value="2">Giá: Từ cao đến thấp</option>
+                    </select>
+                </div>
+                <div class="content-card mt-3 row" id="productList"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-4">
+        <div class="col-10"></div>
+        <div class="col">
+            <div class="pagination text-end" id="pagination"></div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="px-3 py-2 container">
+        <div class="row px-3 py-3">
+            <div class="col-4 border-end pe-3">
+                <div class="row d-flex justify-content-center">
+                    <img class="col-4" src="../asset/favicon/web_logo.png" alt="" id="footer-logo">
+                </div>
+                <div class="row p-3 text-white">
+                    Sự khác biệt giữa tranh thêu tay và tranh thêu chữ thập
+                    <br/>
+                    Đối với tranh thêu tay nghệ thuật thì khác hẳn. Tranh thêu tay truyền thống phải mất nhiều thời
+                    gian để làm quen và học, tranh truyền thống không đơn giản chỉ là kỹ thuật mà còn là tình cảm là
+                    tâm hồn của người thợ được truyền tải qua mỗi bức tranh. Chính vì thế mỗi bức tranh đều có nét
+                    riêng biệt và có hồn là như vậy.
+                </div>
+            </div>
+            <!--            <div class="col-1"></div>-->
+            <div class="col-8 text-white d-flex flex-column justify-content-between py-2">
+                <div class="ms-3 row">
+                    <div class="col-4">
+                        <h4>Dịch vụ</h4>
+                        <div class="row px-3"><a href="about-us.html">Về chúng tôi</a></div>
+                        <div class="row px-3"><a href="privacy-policy.html">Chính sách quyền riêng tư</a></div>
+                        <div class="row px-3"><a href="terms.html">Điều khoản sử dụng</a></div>
+                    </div>
+                    <div class="col-4">
+                        <h4>Hỗ trợ</h4>
+                        <div class="row px-3"><a href="policy.html">Chính sách đổi - trả - hoàn tiền</a></div>
+                        <div class="row px-3"><a href="policy.html">Chính sách vận chuyển</a></div>
+                    </div>
+                    <div class="col-4">
+                        <h4>Đối tác liên kết</h4>
+                        <div class="row mt-3">
+                            <div class="col-3 mb-4 d-flex justify-content-start">
+                                <img src="../asset/image/VNPay.png" class="img-fluid" alt="VNPay">
+                            </div>
+                            <div class="col-3 mb-4 d-flex justify-content-start">
+                                <img src="../asset/image/momo-logo.png" class="img-fluid" alt="Momo"
+                                     style="width:50px;height: 50px ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-3 row py-4">
+                    <div class="row "><h4>Liên hệ</h4></div>
+                    <div class="col-4 px-3"><i class="fa-solid fa-location-dot px-1"></i> Khu phố 6, phường Linh
+                        Trung, thành phố Thủ Đức, TP.HCM
+                    </div>
+                    <div class="col-4 px-3 "><i class="fa-regular fa-envelope px-1"></i>hehe@gmail.com</div>
+                    <div class="col-4 px-3 "><i class="fa-solid fa-phone px-1"></i> 0392334750</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../script/header.js"></script>
+<script src="../script/search-result-pagination.js"></script>
+</body>
+</html>
