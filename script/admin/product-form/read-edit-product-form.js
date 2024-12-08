@@ -1,3 +1,19 @@
+function addProductPrice() {
+    const productRow = document.querySelector('.product-price-row');
+    const newRow = productRow.cloneNode(true);
+    newRow.querySelectorAll('input').forEach(input => input.value = '');
+    document.getElementById('product_price').appendChild(newRow);
+}
+
+function removeProductPrice(button) {
+    const row = button.parentElement.parentElement;
+    if (document.querySelectorAll('.product-price-row').length > 1) {
+        row.remove();
+    } else {
+        alert("Phải có ít nhất một loại sản phẩm!");
+    }
+}
+
 $(document).ready(function () {
     $('#myTable').DataTable( {
         destroy: true,
@@ -21,6 +37,7 @@ $('#editBtn').click(function () {
     $('#cancelEditBtn').click(function () {
         location.reload();
     });
+    $('#code_product').prop('disabled', false);
     
     $('#nameProduct').prop('disabled', false);
 
@@ -40,7 +57,11 @@ $('#editBtn').click(function () {
     
     $('#policy').prop('disabled', false);
     
-    $('#titleCategory').text('Xóa danh mục (Chọn nhiều)');
+    $('#title-topic-product').text('Xóa chủ đề (Chọn nhiều)');
+    
+    $('#topic-product').prop('disabled', false);
+    
+    $('#titleCategory').text('Xóa danh mục');
     
     $('#category').prop('disabled', false);
     
