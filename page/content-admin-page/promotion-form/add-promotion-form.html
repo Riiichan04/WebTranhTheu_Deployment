@@ -72,7 +72,7 @@
         </div>
         <!-- giảm giá từng sp -->
         <div class="row pt-3 d-none chooseIndividual">
-            <div class="col"><span class="style-title">Giảm giá</span></div>
+            <div class="col"><span class="style-title">Giảm giá<i class="fas fa-plus-circle ms-2 style-add-btn" onclick="addProduct()"></i></span></div>
         </div>
         <div class="row pt-2 d-none chooseIndividual">
             <div class="col p-0">
@@ -91,13 +91,10 @@
                             <label class="style-label">Số lượng giới hạn</label>
                             <input type="number" class="w-100 style-input" min="1" placeholder="Nhập số lượng">
                         </div>
-                        <div class="col-2">
-                            <button type="button" class="remove-product-btn" style="margin-top: 27px" onclick="removeProduct(this)">Xóa</button>
+                        <div class="col-1 p-0 mt-3">
+                            <i class="fa-solid fa-trash icon-del" onclick="removeProduct(this)"></i>
                         </div>
                     </div>
-                </div>
-                <div class="text-center">
-                    <button type="button" class="add-product-btn px-2" onclick="addProduct()">Thêm Sản Phẩm</button>
                 </div>
             </div>
         </div>
