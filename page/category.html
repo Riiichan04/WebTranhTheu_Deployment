@@ -248,12 +248,10 @@
 </header>
 
 
-
-
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">
         <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Tranh thêu Phong cảnh</li>
+        <li class="breadcrumb-item active" aria-current="page">Tranh thêu tay</li>
     </ol>
 </nav>
 
@@ -262,31 +260,67 @@
         <div class="col-2 pe-3 ps-0">
             <div class="rounded py-4_5 background-container">
                 <div class="category-list">
-                    <h5 class="mb-2 main-color p-1 ps-2">Danh mục </h5>
+                    <h5 class="ms-2 mb-2 main-color p-1 ps-2">Danh mục </h5>
                     <hr/>
-                    <p class="category-active p-2 category-element">Tranh thêu Phong cảnh</p>
-                    <p class=" p-2 category-element">Tranh thêu Chân dung</p>
-                    <p class=" p-2 category-element">Tranh thêu Động Vật</p>
-                    <p class=" p-2 category-element">Tranh thêu Hoa</p>
-                    <p class=" p-2 category-element">Tranh thêu Tứ quý</p>
-                    <p class=" p-2 category-element">Tranh thêu VIP</p>
+                    <p class="category-active p-2 category-element">Tranh thêu tay</p>
+                    <p class=" p-2 category-element">Tranh thêu chữ thập</p>
+                    <p class=" p-2 category-element">Tranh thêu máy tính</p>
                 </div>
                 <div class="category-filter mt-4_5">
-                    <h5 class="mb-2 main-color p-1 ps-2">Bộ lọc </h5>
+                    <h5 class="ms-2 mb-2 main-color p-1 ps-2">Bộ lọc </h5>
                     <hr/>
-                    <div class="ps-2">
-                        <p>Theo nhà cung cấp:</p>
-                        <div class="mt-1">
+                    <div class="mt-3 ps-2">
+                        <p class="mb-2 fw-semibold">Theo chủ đề tranh:</p>
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="sceneryTopic">
+                                <label class="form-check-label" for="sceneryTopic">
+                                    Tranh thêu Phong cảnh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="portraitTopic">
+                                <label class="form-check-label" for="portraitTopic">
+                                    Tranh thêu Chân dung
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="animalTopic">
+                                <label class="form-check-label" for="animalTopic">
+                                    Tranh thêu Động vật
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="fourSeasonTopic">
+                                <label class="form-check-label" for="fourSeasonTopic">
+                                    Tranh thêu Tứ quý
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flowerTopic">
+                                <label class="form-check-label" for="flowerTopic">
+                                    Tranh thêu Hoa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="vipTopic">
+                                <label class="form-check-label" for="vipTopic">
+                                    Tranh thêu VIP
+                                </label>
+                            </div>
+                        </div>
+                        <p class="fw-semibold">Theo nhà cung cấp:</p>
+                        <div class="mt-1 mb-4">
                             <input type="text" class="rounded border-0 col" placeholder="Nhập tên nhà cung cấp">
                         </div>
-                        <p class="mt-3">Theo giá tiền (VNĐ):</p>
-                        <div class="d-flex mt-1">
+                        <p class="mt-3 fw-semibold">Theo giá tiền (VNĐ):</p>
+                        <div class="d-flex mt-1 mb-4">
                             <input type="text" class="rounded border-0 col-5" placeholder="Từ">
                             <div class=" mb-1 col-1 text-center">-</div>
                             <input type="text" class="rounded border-0 col-5" placeholder="Đến">
                         </div>
-                        <p class="mt-3">Theo đánh giá:</p>
-                        <div class="d-flex">
+                        <p class="mt-3 fw-semibold">Theo đánh giá:</p>
+                        <div class="d-flex mb-4">
                             <div>
                                 <div class="d-flex align-items-center">
                                     <div class="radio-container pt-2"><input class="form-check-input" type="radio"
@@ -338,10 +372,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="col-10 background-container rounded p-4_5">
-            <h4 id="category-title" class="main-color">Tranh thêu Phong cảnh</h4>
+            <h4 id="category-title" class="main-color">Tranh thêu tay</h4>
             <hr class="mb-5"/>
             <div>
                 <div class="row mt-1">
@@ -350,39 +383,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1 row">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -396,39 +397,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -442,39 +411,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -488,39 +425,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -534,39 +439,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -582,39 +455,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -628,39 +469,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -674,39 +483,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -720,39 +497,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -766,39 +511,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -814,39 +527,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -860,39 +541,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -906,39 +555,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -952,39 +569,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -998,39 +583,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1046,39 +599,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1092,39 +613,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1138,39 +627,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1184,39 +641,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1230,39 +655,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1278,39 +671,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1324,39 +685,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1370,39 +699,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1416,39 +713,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000
@@ -1462,39 +727,7 @@
                             <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                             <div class="card-body px-1">
                                 <h6 class="card-title text-start pb-2">Tranh thêu sông nước</h6>
-                                <div class="col d-flex justify-content-start comment-rating">
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star sample_half"
-                                           style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                    <div class="col-2 product-info__star-container   px-0">
-                                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                        <div class="product-info__star-mask" style="width: 100%"></div>
-                                        <i class="fa-regular fa-star product-info__star-outline"
-                                           style="color: #4d6a55;"></i>
-                                    </div>
-                                </div>
+
                                 <p class="card-text text-center fw-semibold h5 mt-2"
                                    style="color: var(--sub-cta-button)">
                                     1.840.000

@@ -7,40 +7,7 @@ listData.push(`
                 <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
                     <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
                     <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">Tranh thêu phong cảnh</h6>
-                        <div class="col d-flex justify-content-start comment-rating">
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half"
-                                   style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask" style="width: 100%"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: #4d6a55;"></i>
-                            </div>
-                        </div>
+                        <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
                         <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
                     </div>
                 </div>

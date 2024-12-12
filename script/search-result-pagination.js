@@ -32,46 +32,16 @@ function displayProducts(page) {
         if (countProductPerRow === 4) {
             productItem.className = 'cursor-pointer col product-item mb-3 pe-0';
         } else productItem.className = 'cursor-pointer col product-item mb-3 pe-1';
-        productItem.innerHTML = `<div class="card card-container w-100">
-                        <img src="${product.url}"
-                             class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                             <h6 class="card-title text-start pb-2">${product.name}</h6>
-
-                            <!-- Star Ratings -->                                           
-                            <div class="col d-flex justify-content-start comment-rating">
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                            <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                <div class="product-info__star-mask" style="width: 100%"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                            </div>
-                        </div>
-                                <p class="card-text text-center fw-semibold h5 mt-2"
-                                   style="color: var(--sub-cta-button)">
-                                    ${product.price}
-                                </p>
-                        </div>
-                    </div>`;
+        productItem.innerHTML = `
+        <div class="card card-container w-100">
+            <img src="${product.url}" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+                <h6 class="card-title text-start pb-2">${product.name}</h6>
+                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">
+                        ${product.price}
+                    </p>
+            </div>
+        </div>`;
         rowProduct.appendChild(productItem);
         countProductPerRow++;
     });
