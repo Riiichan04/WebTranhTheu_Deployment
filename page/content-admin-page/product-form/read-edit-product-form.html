@@ -75,7 +75,7 @@
         
         <!-- loại tranh: kích thước khác nhau giá khác nhau -->
         <div class="row pt-2">
-            <div class="col"><p class="style-title m-0">Loại tranh</p></div>
+            <div class="col"><p class="style-title m-0">Loại tranh<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addProductPrice()"></i></p></div>
         </div>
         <div class="row pt-2">
             <div class="col">
@@ -117,21 +117,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center pt-2 d-none edit-hidden">
-                    <button type="button" class="style-add-product-price-btn" id="add_product_price" onclick="addProductPrice()">Thêm
-                        loại tranh
-                    </button>
-                </div>
             </div>
         </div>
         
         <!-- chất liệu -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Chất liệu</span></div>
+            <div class="col"><span class="style-title">Chất liệu<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden"></i></span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" id="material"
-                                        placeholder="Nhập chất liệu sản phẩm" value="vải, chỉ, gỗ" disabled>
+            <div class="col p-0">
+                <select class="style-select material" disabled>
+                    <option>Vải</option>
+                    <option>Chỉ</option>
+                    <option>Gỗ</option>
+                </select>
+            </div>
+            <div class="col-1 pe-0 edit-hidden d-none">
+                <i class="fa-solid fa-trash icon-del"></i>
             </div>
         </div>
         <!-- nhà phân phối -->

@@ -51,7 +51,7 @@ $('#editBtn').click(function () {
     
     $('#heightProduct').prop('disabled', false);
     
-    $('#material').prop('disabled', false);
+    $('.material').prop('disabled', false);
     
     $('#provider').prop('disabled', false);
     
