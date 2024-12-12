@@ -64,6 +64,8 @@ $('#editBtn').click(function () {
     $('#titleCategory').text('Xóa danh mục');
     
     $('#category').prop('disabled', false);
+
+    $('#status').prop('disabled', false);
     
     $('.reviewByStar').prop('disabled', false);
     

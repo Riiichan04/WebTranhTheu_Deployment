@@ -38,22 +38,3 @@
     pointer-events: auto; /* Cho phép tương tác */
     opacity: 1; /* Đảm bảo luôn hiển thị */
 }
-
-.icon-del {
-    position: absolute;
-    right: 30px;
-    font-size: 20px;
-    color: var(--dark-component-background-color);
-    padding: 10px 0px 10px 10px;
-    cursor: pointer;
-}
-
-.icon-del:hover {
-    color: var(--text-color);
-    opacity: 0.8;
-}
-
-.style-add-btn {
-    font-size: 16px;
-    cursor: pointer;
-}
