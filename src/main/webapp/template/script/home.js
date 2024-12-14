@@ -33,7 +33,7 @@ function createListProduct(rowLength) {
 }
 
 function showProductPage() {
-    window.location = "../page/product.html"
+    window.location = "../user/product.html"
 }
 
 $("#full-product-button").click(function () {
