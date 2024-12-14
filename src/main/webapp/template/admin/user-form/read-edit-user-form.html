@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xem và Sửa thông tin người dùng</title>
+    <link rel="icon" href="/template/asset/favicon/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- DataTable -->
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
+    <!-- css property -->
+    <link rel="stylesheet" href="/template/style/index.css">
+    <link rel="stylesheet" href="/template/style/admin/general-form-admin.css">
+    <link rel="stylesheet" href="/template/style/admin/style-form/general-form.css">
+    <link rel="stylesheet" href="/template/style/admin/style-form/style-read-edit-user-form.css">
+
+</head>
+<body>
+<!-- Form container -->
+<div id="formContainer">
+    <!-- enter code -->
+    <form class="form-container">
+        <div class="row pt-3">
+            <div class="col"><h2 class="style-big-title" id="title">Xem người dùng</h2></div>
+        </div>
+        <!-- tên đăng nhập -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Tên đăng nhập</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên đăng nhập"
+                                        value="tho123" required disabled>
+            </div>
+        </div>
+        <!-- mật khẩu -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Mật khẩu</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="password" id="password" class="w-100 style-input" placeholder="Nhập mật khẩu"
+                                        value="1234" required disabled>
+            </div>
+        </div>
+        <!-- họ và tên -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Họ và tên</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="name" placeholder="Nhập họ và tên"
+                                        value="Nguyễn Văn Thọ" required disabled>
+            </div>
+        </div>
+        <!-- avatar -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ảnh đại diện</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <div class="img-container">
+                    <img src="/template/asset/image/avt-admin.png" id="avatarImage">
+                    <i class="fa-solid fa-pen-to-square icon-edit-avt d-none edit-hidden" id="editAvatar"></i>
+                    <input type="file" value="/template/img/avt-admin.png" accept="image/*" class="d-none"
+                           id="fileInput">
+                </div>
+            </div>
+        </div>
+        <!-- email -->
+        <div class="row">
+            <div class="col"><span class="style-title">Email</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="email" class="w-100 style-input" id="email" placeholder="Nhập email"
+                                        value="tho123@gmail.com" disabled>
+            </div>
+        </div>
+        <!-- sdt -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Số điện thoại</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="tel" class="w-100 style-input" id="phone" placeholder="Nhập số điện thoại"
+                                        value="0123456789" disabled>
+            </div>
+        </div>
+        <!-- giới tính -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Giới tính</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col text-end">
+                <label>Nam</label>
+                <input type="radio" class="gender" name="gender" value="man" checked required disabled>
+            </div>
+            <div class="col">
+                <label>Nữ</label>
+                <input type="radio" class="gender" name="gender" value="woman" required disabled>
+            </div>
+        </div>
+        <!-- mô tả -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Mô tả</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><textarea class="w-100 style-area" id="description" placeholder="Nhập mô tả người dùng" disabled>Mô tả người dùng này</textarea>
+            </div>
+        </div>
+        
+        <!-- địa chỉ -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Địa chỉ</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <div id="addresses">
+                    <div class="row form-group address-row mb-2">
+                        <div class="row ps-5 pb-2">
+                            <span class="style-label">Địa chỉ 1</span>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col"><select class="style-select" disabled>
+                                    <option selected>Việt Nam</option>
+                                </select></div>
+                                <div class="col">
+                                    <select class="style-select location" disabled>
+                                        <option disabled>--Chọn thành phố--</option>
+                                        <option selected>Tp. Hồ Chí Minh</option>
+                                        <option>Tp 2</option>
+                                        <option>Tp 3</option>
+                                        <option>Tp 4</option>
+                                        <option>Tp 5</option>
+                                        <option>Tp 6</option>
+                                        <option>Tp 7</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row pt-2">
+                                <div class="col">
+                                    <select class="style-select location" disabled>
+                                        <option disabled>--Chọn quận/huyện--</option>
+                                        <option selected>Tp. Thủ Đức</option>
+                                        <option>Quận Bình Thạnh</option>
+                                        <option>Quận 1</option>
+                                        <option>Quận 3</option>
+                                        <option>Quận 4</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="style-select location" disabled>
+                                        <option disabled>--Chọn xã/phường--</option>
+                                        <option selected>Phường Linh Trung</option>
+                                        <option>Phường 2</option>
+                                        <option>Phường 3</option>
+                                        <option>Phường 4</option>
+                                        <option>Phường 5</option>
+                                        <option>Phường 6</option>
+                                        <option>Phường 7</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row pt-2" style="padding-left: 12px; padding-right: 12px">
+                                <input type="text" class="style-input location" placeholder="Nhập tên đường, tòa nhà, số nhà,..."
+                                       value="Khu phố 6" disabled>
+                            </div>
+                        </div>
+                        <div class="col-1 d-none edit-hidden">
+                            <i class="fa-solid fa-trash icon-del" onclick="removeAddress(this)"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pt-2 d-none edit-hidden">
+                    <button type="button" class="style-add-address-btn" id="addAddressBtn" onclick="addAddress()">Thêm
+                        địa chỉ
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ds sản phẩm yêu thích -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title" id="titleFavourProduct">Danh sách sản phẩm yêu thích</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select-many" id="favourProduct" multiple disabled>
+                    <option>SP01 - Sản phẩm 1 - 1/1/2024</option>
+                    <option>SP02 - Sản phẩm 2 - 1/1/2024</option>
+                    <option>SP03 - Sản phẩm 3 - 1/1/2024</option>
+                    <option>SP04 - Sản phẩm 4 - 1/1/2024</option>
+                    <option>SP05 - Sản phẩm 5 - 1/1/2024</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- ngày tạo -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày tạo tài khoản</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-01" required disabled></div>
+        </div>
+        <!-- ngày cập nhật -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày cập nhật tài khoản</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-01" disabled></div>
+        </div>
+
+        <div class="row pt-4 pb-4">
+            <div class="col" id="containerCancelBtn">
+                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col" id="containerEditBtn">
+                <button class="style-button" type="button" id="editBtn">Chỉnh sửa</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="/template/script/admin/user-form/read-edit-user-form.js"></script>
+<script src="/template/script/admin/js-get-height-form.js"></script>
+</body>
+</html>
