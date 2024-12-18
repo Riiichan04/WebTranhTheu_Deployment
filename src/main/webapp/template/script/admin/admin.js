@@ -16,6 +16,9 @@ function loadPage(page) {
         case "category":
             content.innerHTML = "<iframe src='content-admin-page/manage-category.html' class='w-100 vh-100'></iframe>";
             break;
+        case "topic":
+            content.innerHTML = "<iframe src='content-admin-page/manage-topic.html' class='w-100 vh-100'></iframe>";
+            break;
         case "order":
             content.innerHTML = "<iframe src='content-admin-page/manage-order.html' class='w-100 vh-100'></iframe>";
             break;

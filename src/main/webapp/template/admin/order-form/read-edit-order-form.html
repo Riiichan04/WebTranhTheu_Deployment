@@ -35,7 +35,7 @@
         </div>
         <!-- sản phẩm mua -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Sản phẩm mua</span></div>
+            <div class="col"><span class="style-title">Sản phẩm mua<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addProduct()"></i></span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
@@ -43,23 +43,74 @@
                 <div id="products">
                     <div class="form-group product-row row mb-2">
                         <div class="col-6 pe-0">
-                            <select class="w-100 style-select" required disabled>
-                                <option value="" disabled>Chọn sản phẩm</option>
-                                <option value="product1" selected>Sản phẩm 1</option>
+                            <select class="w-100 style-select product-select" required disabled>
+                                <option value="" disabled selected>Chọn sản phẩm</option>
+                                <option value="product1">Sản phẩm 1</option>
                                 <option value="product2">Sản phẩm 2</option>
                                 <option value="product3">Sản phẩm 3</option>
                             </select>
                         </div>
-                        <div class="col">
-                            <input type="number" class="w-100 style-input amount-product-input" min="1" placeholder="Nhập số lượng" value="1" required disabled>
+                        <div class="col pe-0">
+                            <input type="number" class="w-100 style-input amount-product-input" min="1" placeholder="Nhập số lượng" required disabled>
                         </div>
-                        <div class="col-2 d-none edit-hidden">
-                            <button type="button" class="remove-product-btn" onclick="removeProduct(this)">Xóa</button>
+                        <div class="col-1 p-0 d-none edit-hidden">
+                            <i class="fa-solid fa-trash icon-del" onclick="removeProduct(this)"></i>
                         </div>
                     </div>
                 </div>
-                <div class="text-center d-none edit-hidden">
-                    <button type="button" class="add-product-btn px-2" onclick="addProduct()">Thêm Sản Phẩm</button>
+            </div>
+        </div>
+        <!-- Địa chỉ giao hàng -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Địa chỉ giao hàng</span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <div class="row">
+                    <div class="col"><select class="style-select" disabled>
+                        <option selected>Việt Nam</option>
+                    </select></div>
+                    <div class="col">
+                        <select class="style-select location" disabled>
+                            <option disabled>--Chọn thành phố--</option>
+                            <option>Tp. Hồ Chí Minh</option>
+                            <option>Tp 2</option>
+                            <option>Tp 3</option>
+                            <option>Tp 4</option>
+                            <option>Tp 5</option>
+                            <option>Tp 6</option>
+                            <option>Tp 7</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col">
+                        <select class="style-select location" disabled>
+                            <option disabled>--Chọn quận/huyện--</option>
+                            <option selected>Tp. Thủ Đức</option>
+                            <option>Quận Bình Thạnh</option>
+                            <option>Quận 1</option>
+                            <option>Quận 3</option>
+                            <option>Quận 4</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="style-select location" disabled>
+                            <option disabled>--Chọn xã/phường--</option>
+                            <option selected>Phường Linh Trung</option>
+                            <option>Phường 2</option>
+                            <option>Phường 3</option>
+                            <option>Phường 4</option>
+                            <option>Phường 5</option>
+                            <option>Phường 6</option>
+                            <option>Phường 7</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pt-2" style="padding-left: 12px; padding-right: 12px">
+                    <input type="text" class="style-input location" placeholder="Nhập tên đường, tòa nhà, số nhà,..."
+                           value="Khu phố 6" disabled>
                 </div>
             </div>
         </div>
@@ -115,7 +166,7 @@
         </div>
         <!-- trạng thái thanh toán -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Trạng thái thanh toán<span class="text-danger"> * </span></span>
+            <div class="col"><span class="style-title">Trạng thái thanh toán</span>
             </div>
         </div>
         <div class="row pt-2">

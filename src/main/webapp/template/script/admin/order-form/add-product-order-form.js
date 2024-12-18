@@ -36,7 +36,11 @@ $('#editBtn').click(function () {
         location.reload();
     });
     
+    $('.product-select').prop('disabled', false);
+    
     $('.amount-product-input').prop('disabled', false);
+    
+    $('.location').prop('disabled', false);
     
     $('#dateDelivery').prop('disabled', false);
     
