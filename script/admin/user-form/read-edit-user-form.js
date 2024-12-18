@@ -129,6 +129,8 @@ $('#editBtn').click(function () {
     $('#titleFavourProduct').text('Xóa sản phẩm yêu thích (Chọn nhiều)');
     
     $('#favourProduct').prop('disabled', false);
+    
+    $('#status').prop('disabled', false);
 
     $('.quantity-product').prop('disabled', false);
     

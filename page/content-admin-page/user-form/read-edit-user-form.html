@@ -16,7 +16,6 @@
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
-    <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
     <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
     <link rel="stylesheet" href="../../../style/admin/style-form/style-read-edit-user-form.css">
 
@@ -113,7 +112,7 @@
         
         <!-- địa chỉ -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Địa chỉ</span></div>
+            <div class="col"><span class="style-title">Địa chỉ<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addAddress()"></i></span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
@@ -174,11 +173,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center pt-2 d-none edit-hidden">
-                    <button type="button" class="style-add-address-btn" id="addAddressBtn" onclick="addAddress()">Thêm
-                        địa chỉ
-                    </button>
-                </div>
             </div>
         </div>
         
@@ -197,7 +191,19 @@
                 </select>
             </div>
         </div>
-        
+
+        <!-- trạng thái -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Trạng thái</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" id="status" required disabled>
+                    <option selected>Đang hoạt động</option>
+                    <option>Vô hiệu hóa</option>
+                </select>
+            </div>
+        </div>
         <!-- ngày tạo -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày tạo tài khoản</span></div>

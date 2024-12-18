@@ -16,10 +16,8 @@
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
     <!-- css property -->
     <link rel="stylesheet" href="../../../style/index.css">
-    <link rel="stylesheet" href="../../../style/admin/general-form-admin.css">
     <link rel="stylesheet" href="../../../style/admin/style-form/general-form.css">
     <link rel="stylesheet" href="../../../style/admin/style-form/style-read-edit-product-form.css">
-    
 </head>
 <body>
 <!-- Form container -->
@@ -28,6 +26,14 @@
     <form class="form-container">
         <div class="row pt-3">
             <div class="col"><h2 class="style-big-title" id="title">Xem sản phẩm</h2></div>
+        </div>
+        <!-- mã sản phẩm -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Mã sản phẩm</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" id="code_product" class="w-100 style-input" value="SP01" placeholder="Nhập mã sản phẩm" disabled required>
+            </div>
         </div>
         <!-- tên sản phẩm -->
         <div class="row pt-2">
@@ -69,42 +75,65 @@
         
         <!-- loại tranh: kích thước khác nhau giá khác nhau -->
         <div class="row pt-2">
-            <div class="col"><p class="style-title m-0">Loại tranh 1</p></div>
+            <div class="col"><p class="style-title m-0">Loại tranh<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addProductPrice()"></i></p></div>
         </div>
-        <!-- giá bán và số lượng -->
         <div class="row pt-2">
-            <div class="col p-0 pe-1 text-center">
-                <label class="style-label pb-2">Giá bán (VNĐ)</label>
-                <input type="number" id="price" class="w-100 style-input"
-                                             placeholder="Nhập giá bán sản phẩm" value="8000000" required disabled>
-            </div>
-            <div class="col p-0 ps-1 text-center">
-                <label class="style-label pb-2">Số lượng</label>
-                <input type="number" id="quantityProduct" class="w-100 style-input"
-                                             placeholder="Nhập số lượng sản phẩm" value="100" required disabled>
-            </div>
-        </div>
-        <!-- kích thước -->
-        <div class="row pt-2">
-            <div class="col p-0 pe-1 text-center">
-                <label class="style-label pb-2">Chiều rộng</label>
-                <input type="number" class="w-100 style-input" id="widthProduct" placeholder="Chiều rộng (cm)"
-                       value="40" disabled>
-            </div>
-            <div class="col p-0 ps-1 text-center">
-                <label class="style-label pb-2">Chiều cao</label>
-                <input type="number" class="w-100 style-input" id="heightProduct" placeholder="Chiều cao (cm)"
-                       value="60" disabled>
+            <div class="col">
+                <div id="product_price">
+                    <div class="row form-group product-price-row mb-2">
+                        <div class="row ps-5">
+                            <span class="style-label">Loại tranh 1</span>
+                        </div>
+                        <div class="col">
+                            <!-- giá bán và số lượng -->
+                            <div class="row pt-2">
+                                <div class="col p-0 pe-1 text-center">
+                                    <label class="style-label pb-2">Giá bán (VNĐ)</label>
+                                    <input type="number" id="price" class="w-100 style-input"
+                                           placeholder="Nhập giá bán sản phẩm" value="8000000" required disabled>
+                                </div>
+                                <div class="col p-0 ps-1 text-center">
+                                    <label class="style-label pb-2">Số lượng</label>
+                                    <input type="number" id="quantityProduct" class="w-100 style-input"
+                                           placeholder="Nhập số lượng sản phẩm" value="100" required disabled>
+                                </div>
+                            </div>
+                            <!-- kích thước -->
+                            <div class="row pt-2">
+                                <div class="col p-0 pe-1 text-center">
+                                    <label class="style-label pb-2">Chiều rộng</label>
+                                    <input type="number" class="w-100 style-input" id="widthProduct" placeholder="Chiều rộng (cm)"
+                                           value="40" disabled>
+                                </div>
+                                <div class="col p-0 ps-1 text-center">
+                                    <label class="style-label pb-2">Chiều cao</label>
+                                    <input type="number" class="w-100 style-input" id="heightProduct" placeholder="Chiều cao (cm)"
+                                           value="60" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1 d-none edit-hidden">
+                            <i class="fa-solid fa-trash icon-del" onclick="removeProductPrice(this)"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
         <!-- chất liệu -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Chất liệu</span></div>
+            <div class="col"><span class="style-title">Chất liệu<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden"></i></span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" id="material"
-                                        placeholder="Nhập chất liệu sản phẩm" value="vải, chỉ, gỗ" disabled>
+            <div class="col p-0">
+                <select class="style-select material" disabled>
+                    <option>Vải</option>
+                    <option>Chỉ</option>
+                    <option>Gỗ</option>
+                </select>
+            </div>
+            <div class="col-1 pe-0 edit-hidden d-none">
+                <i class="fa-solid fa-trash icon-del"></i>
             </div>
         </div>
         <!-- nhà phân phối -->
@@ -144,13 +173,26 @@
                 </select>
             </div>
         </div>
+        <!-- chủ đề -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title" id="title-topic-product">Chủ đề (Chọn nhiều)</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select-many" id="topic-product" multiple disabled> 
+                    <option>Chủ để 1</option>
+                    <option>Chủ để 2</option>
+                    <option>Chủ để 3</option>
+                </select>
+            </div>
+        </div>
         <!-- danh mục -->
         <div class="row pt-3">
             <div class="col"><span class="style-title" id="titleCategory">Danh mục</span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select-many" id="category" multiple disabled>
+                <select class="style-select" id="category" disabled>
                     <option>Danh mục 4</option>
                     <option>Danh mục 5</option>
                 </select>
@@ -205,6 +247,18 @@
                     </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <!-- trạng thái -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Trạng thái</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" id="status" required disabled>
+                    <option selected>Đang hoạt động</option>
+                    <option>Vô hiệu hóa</option>
+                </select>
             </div>
         </div>
         <!-- ngày tạo -->
