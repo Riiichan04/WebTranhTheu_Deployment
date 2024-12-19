@@ -1,5 +1,113 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
-public class ProductDAO {
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.*;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
+import java.util.List;
+
+public class ProductDAO {
+    public static Product getProductById(int id) {
+        Product product = getProductBasicInfo(id);
+        if (product == null) return null;
+        product.setPolicies(getProductPolicies(id));
+        product.setListPrice(getProductPrices(id));
+        product.setListMaterial(getMaterials(id));
+        product.setListImageUrl(getImageUrls(id));
+        product.setListReview(getProductReviews(id, 0)); //Mặc định offset = 0
+
+        return product;
+    }
+
+    //Lấy thông tin cơ bản của sản phẩm
+    private static Product getProductBasicInfo(int id) {
+        return JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("""
+                                select products.title, products.code, products.description, products.typeOfProduct
+                                from products
+                                join category_product_details
+                                    on products.id = category_product_details.productId
+                                join product_images
+                                    on product_images.productId = products.id
+                                """)
+                        .bind("id", id).map((rs, ctx) -> {
+                            Product product = new Product();
+                            product.setId(id);
+                            product.setCode(rs.getString("code"));
+                            product.setTitle(rs.getString("title"));
+                            product.setDescription(rs.getString("description"));
+                            product.setType(ProductType.getTypeByValue(rs.getInt("typeOfProduct")));
+
+                            return product;
+                        }).one()
+        );
+    }
+
+    //Lấy nhà cung cấp của sản phẩm
+    private static Provider getProductProvider(int id) {
+        return JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("select providers.* from providers " +
+                                "join products on providers.id = products.providerId " +
+                                "where products.id = :id")
+                        .bind("id", id)
+                        .mapToBean(Provider.class).one()
+        );
+    }
+
+    // Lấy giá tiền của sản phẩm theo mọi kích thước
+    private static List<ProductPrice> getProductPrices(int id) {
+        return JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("select price, width, height from product_prices where productId = :id")
+                        .bind("id", id)
+                        .mapToBean(ProductPrice.class)
+                        .list()
+        );
+    }
+
+    // Lấy danh sách chính sách hiện có của sản phẩm
+    private static List<ProductPolicy> getProductPolicies(int id) {
+        return JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("select policies.title, policies.description " +
+                                "from policies join products on policies.id = products.policyId " +
+                                "where product.id = :id")
+                        .bind("id", id)
+                        .mapToBean(ProductPolicy.class)
+                        .list()
+        );
+    }
+
+    // Lấy danh sách nguyên liệu của sản phẩm
+    private static List<Material> getMaterials(int id) {
+        return JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("select materials.name " +
+                                "from product_materials join materials on product_materials.materialId = materials.id " +
+                                "where productId = :id")
+                        .bind("id", id)
+                        .mapToBean(Material.class)
+                        .list()
+        );
+    }
+
+    //Lấy danh sách hình ảnh của sản phẩm
+    private static List<String> getImageUrls(int id) {
+        return JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("select img_url from product_images where productId = :id")
+                        .bind("id", id)
+                        .mapToBean(String.class)
+                        .list()
+        );
+    }
+
+    //Lấy danh sách review của sản phẩm
+    private static List<ProductReview> getProductReviews(int id, int offset) {
+        return JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("select accountId, rating, content " +
+                                "from product_reviews " +
+                                "where productId = :id and content is not null " +
+                                "limit :offset, 5")
+                        .bind("id", id)
+                        .bind("offset", offset)
+                        .mapToBean(ProductReview.class).list()
+        );
+    }
 }

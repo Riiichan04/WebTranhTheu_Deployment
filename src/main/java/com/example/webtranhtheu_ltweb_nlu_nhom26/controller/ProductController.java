@@ -12,6 +12,8 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        String productId = request.getParameter("id");
+
         request.getRequestDispatcher("/layout/product.jsp").forward(request, response);
     }
 
