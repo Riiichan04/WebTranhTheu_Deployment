@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Product implements Serializable {
@@ -12,11 +13,11 @@ public class Product implements Serializable {
     private String description;
     private ProductType type;
     private Provider provider;
-    private List<ProductPolicy> policies; //Còn sửa sau
-    private List<ProductPrice> listPrice;
-    private List<Material> listMaterial;
-    private List<String> listImageUrl;
-    private List<ProductReview> listReview;
+    private List<ProductPolicy> policies = new ArrayList<>(); //Còn sửa sau
+    private List<ProductPrice> listPrice = new ArrayList<>();
+    private List<Material> listMaterial = new ArrayList<>();
+    private List<String> listImageUrl = new ArrayList<>();
+    private List<ProductReview> listReview = new ArrayList<>();
     //Discount?
 
     public Product() {

@@ -11,11 +11,12 @@ public class ProductDAO {
     public static Product getProductById(int id) {
         Product product = getProductBasicInfo(id);
         if (product == null) return null;
+        //Xử lý NullPointerException
         product.setPolicies(getProductPolicies(id));
-        product.setListPrice(getProductPrices(id));
-        product.setListMaterial(getMaterials(id));
-        product.setListImageUrl(getImageUrls(id));
-        product.setListReview(getProductReviews(id, 0)); //Mặc định offset = 0
+        product.getListPrice().addAll(getProductPrices(id));
+        product.getListMaterial().addAll(getMaterials(id));
+        product.getListImageUrl().addAll(getImageUrls(id));
+        product.getListReview().addAll(getProductReviews(id, 0)); //Mặc định offset = 0
 
         return product;
     }

@@ -4,7 +4,7 @@ public enum ProductType {
 //    HANDMADE_PAINTING, CROSS_PAINTING, COMPUTER_PAINTING;
     HANDMADE_PAINTING(0), CROSS_PAINTING(1), COMPUTER_PAINTING(2);
 
-    private int value;
+    private final int value;
 
     ProductType(int i) {
         this.value = i;
