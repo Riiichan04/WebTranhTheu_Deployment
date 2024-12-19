@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "CartSessionController", value = "/CartSessionController")
+@WebServlet(name = "CartSessionController", value = "/session/cart")
 public class CartSessionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

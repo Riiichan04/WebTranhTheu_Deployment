@@ -1,4 +1,4 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.controller;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.order;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,11 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "HomeController", value = "/home")
-public class HomeController extends HttpServlet {
+@WebServlet(name = "OrderController", value = "/OrderController")
+public class OrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("layout/public/header.jsp").forward(request, response);
+
     }
 
     @Override
