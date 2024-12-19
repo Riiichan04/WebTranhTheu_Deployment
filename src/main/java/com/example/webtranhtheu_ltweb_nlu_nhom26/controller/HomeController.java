@@ -8,11 +8,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "HomeController", value = "/home")
+@WebServlet("") //Để index.jsp nhận attribute thì cần cấu hình @WebServlet như dòng này
 public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("layout/public/header.jsp").forward(request, response);
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     @Override
