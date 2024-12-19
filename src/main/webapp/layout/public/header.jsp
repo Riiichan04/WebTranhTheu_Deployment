@@ -5,8 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-1 text-white d-flex text-center">
-                    <!--                    <a href="index.html"><i class="bi bi-bootstrap text-white" id="header-logo"></i></a>-->
-                    <a href="index.html"><img src="../asset/favicon/web_logo.png" alt="" id="header-logo"></a>
+                    <a href="/"><img src="../../template/asset/favicon/web_logo.png" alt="" id="header-logo"></a>
                 </div>
 
                 <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
@@ -69,7 +68,7 @@
                             <div class="header-popup__content py-1">
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -79,7 +78,7 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -89,7 +88,7 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -99,7 +98,7 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -109,7 +108,7 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -126,16 +125,12 @@
                         </div>
                     </li>
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
-                        <!--                        <a id="header-cart" href="cart-page.html">-->
-                        <!--                            <i class="fa-solid fa-cart-shopping my-1"></i>-->
-                        <!--                            <p class="header-feature__label">Giỏ hàng</p>-->
-                        <!--                        </a>-->
                         <div id="header-cart">
                             <i class="fa-solid fa-cart-shopping my-1"></i>
                             <p class="header-feature__label">Giỏ hàng</p>
                         </div>
                         <div id="cart-badge"
-                             class="rounded position-absolute align-items-center justify-content-center">0
+                             class="d-none rounded position-absolute align-items-center justify-content-center">0
                         </div>
                         <div id="cart-popup"
                              class="rounded header-popup position-absolute background-container p-3 d-none">
@@ -147,7 +142,7 @@
                             <div class="header-popup__content py-1">
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -159,7 +154,7 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -171,7 +166,7 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -183,7 +178,7 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -195,7 +190,7 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>

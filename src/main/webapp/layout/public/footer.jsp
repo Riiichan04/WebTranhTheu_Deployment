@@ -1,10 +1,11 @@
 <%@include file="/layout/common.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer>
     <div class="px-3 py-2 container">
         <div class="row px-3 py-3">
             <div class="col-4 border-end pe-3">
                 <div class="row d-flex justify-content-center">
-                    <img class="col-4" src="../asset/favicon/web_logo.png" alt="" id="footer-logo">
+                    <img class="col-4" src="../../template/asset/favicon/web_logo.png" alt="" id="footer-logo">
 
                 </div>
                 <div class="row p-3 text-white">
@@ -21,23 +22,23 @@
                 <div class="ms-3 row">
                     <div class="col-4">
                         <h4>Dịch vụ</h4>
-                        <div class="row px-3"><a href="about-us.html">Về chúng tôi</a></div>
-                        <div class="row px-3"><a href="privacy-policy.html">Chính sách quyền riêng tư</a></div>
-                        <div class="row px-3"><a href="terms.html">Điều khoản sử dụng</a></div>
+                        <div class="row px-3"><a href="/about-us">Về chúng tôi</a></div>
+                        <div class="row px-3"><a href="/privacy-policy">Chính sách quyền riêng tư</a></div>
+                        <div class="row px-3"><a href="/terms">Điều khoản sử dụng</a></div>
                     </div>
                     <div class="col-4">
                         <h4>Hỗ trợ</h4>
-                        <div class="row px-3"><a href="policy.html">Chính sách đổi - trả - hoàn tiền</a></div>
-                        <div class="row px-3"><a href="policy.html">Chính sách vận chuyển</a></div>
+                        <div class="row px-3"><a href="/policy">Chính sách đổi - trả - hoàn tiền</a></div>
+                        <div class="row px-3"><a href="/policy">Chính sách vận chuyển</a></div>
                     </div>
                     <div class="col-4">
                         <h4>Đối tác liên kết</h4>
                         <div class="row">
                             <div class="col-md-6 mb-4">
-                                <img src="../asset/VNPay.png" class="img-fluid" alt="Hình 1">
+                                <img src="../../template/asset/VNPay.png" class="img-fluid" alt="Hình 1">
                             </div>
                             <div class="col-md-6 mb-4">
-                                <img src="../asset/momo-logo.png" class="img-fluid" alt="Hình 2"
+                                <img src="../../template/asset/momo-logo.png" class="img-fluid" alt="Hình 2"
                                      style="width:50px;height: 50px ">
                             </div>
                         </div>
