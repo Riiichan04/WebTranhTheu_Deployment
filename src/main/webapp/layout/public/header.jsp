@@ -130,7 +130,7 @@
                             <p class="header-feature__label">Giỏ hàng</p>
                         </div>
                         <div id="cart-badge"
-                             class="rounded position-absolute align-items-center justify-content-center">0
+                             class="d-none rounded position-absolute align-items-center justify-content-center">0
                         </div>
                         <div id="cart-popup"
                              class="rounded header-popup position-absolute background-container p-3 d-none">

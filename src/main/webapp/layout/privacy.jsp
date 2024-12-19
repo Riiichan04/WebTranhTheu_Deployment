@@ -8,6 +8,12 @@
 </head>
 <body>
 <jsp:include page="public/header.jsp"/>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
+    <ol class="breadcrumb pt-2">
+        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Chính sách quyền riêng tư</li>
+    </ol>
+</nav>
 <section class="container mt-4_5 mb-5">
     <div class="background-container rounded">
         <div class="p-4_5">
