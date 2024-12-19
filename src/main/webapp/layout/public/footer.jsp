@@ -1,10 +1,11 @@
 <%@include file="/layout/common.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer>
     <div class="px-3 py-2 container">
         <div class="row px-3 py-3">
             <div class="col-4 border-end pe-3">
                 <div class="row d-flex justify-content-center">
-                    <img class="col-4" src="../asset/favicon/web_logo.png" alt="" id="footer-logo">
+                    <img class="col-4" src="../../template/asset/favicon/web_logo.png" alt="" id="footer-logo">
 
                 </div>
                 <div class="row p-3 text-white">

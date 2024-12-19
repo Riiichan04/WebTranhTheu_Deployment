@@ -10,7 +10,9 @@ import java.io.IOException;
 public class PrivacyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        request.getRequestDispatcher("/layout/privacy.jsp").forward(request, response);
     }
 
     @Override

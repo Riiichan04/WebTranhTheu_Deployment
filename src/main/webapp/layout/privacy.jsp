@@ -96,7 +96,8 @@
                             dung
                             nào được cung cấp bởi bên thứ ba hoặc có sử dụng chính sách quyền riêng tư riêng. </p>
                         <p><strong>4. Chính sách Quyền riêng tư bao gồm các nội dung sau:</strong></p>
-                        <p style="text-indent: 0">(1) Các thông tin cá nhân được chúng tôi thu thập<br>(2) Các nguồn thông tin được chúng tôi
+                        <p style="text-indent: 0">(1) Các thông tin cá nhân được chúng tôi thu thập<br>(2) Các nguồn
+                            thông tin được chúng tôi
                             thu
                             thập<br>(3) Thu thập các dữ liệu khác<br>(4) Quy định đối với thông tin thu thập bởi quảng
                             cáo
@@ -809,7 +810,7 @@
                 <article id="privacy-policy__note">
                     <div>
                         <p style="text-indent: 0">
-                            <sup>
+                            <sup style="line-height: unset">
                                 [1] Đáp ứng quy định tại Điều 70 Nghị định 52/2013/NĐ-CP
                                 <br>
                                 [2] Đáp ứng quy định tại Điều 71 Nghị định 52/2013/NĐ-CP
