@@ -7,6 +7,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import java.util.List;
 
 public class ProductDAO {
+    //Lấy thông tin sản phẩm
     public static Product getProductById(int id) {
         Product product = getProductBasicInfo(id);
         if (product == null) return null;
