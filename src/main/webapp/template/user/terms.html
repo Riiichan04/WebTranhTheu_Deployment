@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Điều khoản sử dụng - Nét Việt</title>
+    <link rel="icon" href="../asset/favicon/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/user/header.css">
+    <link rel="stylesheet" href="../style/user/footer.css">
+    <link rel="stylesheet" href="../style/user/policy.css">
+    <link rel="stylesheet" href="../style/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        section p {
+            text-indent: 1%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="px-3 py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-1 text-white d-flex text-center">
+                    <!--                    <a href="index.html"><i class="bi bi-bootstrap text-white" id="header-logo"></i></a>-->
+                    <a href="index.html"><img src="../asset/favicon/web_logo.png" alt="" id="header-logo"></a>
+                </div>
+
+                <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
+                    <span id="input-icon" class="fas ps-2" style="position: absolute; color: #56595C">&#xf002 </span>
+                    <input type="search" name="" id="search-product-btn" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                </div>
+                <ul class="col-4 m-0 d-flex justify-content-end align-items-center">
+                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <a id="header-category" href="category.html">
+                            <i class="fa-solid fa-list my-1"></i>
+                            <p class="header-feature__label">Danh mục</p>
+                        </a>
+                        <!--                        <div id="category-popup"-->
+                        <!--                             class="rounded header-popup position-absolute background-container p-3 d-none">-->
+                        <!--                            <div class="d-flex justify-content-end">-->
+                        <!--                                <button type="button" class="btn-close header-popup__close-btn"-->
+                        <!--                                        aria-label="Close"></button>-->
+                        <!--                            </div>-->
+                        <!--                            &lt;!&ndash;                            <h5 class="header-popup__title main-color text-start pb-2 mb-4">Danh mục</h5>&ndash;&gt;-->
+                        <!--                            <div class="header-popup__content py-1">-->
+                        <!--                                <div class="product-item row my-2 cursor-pointer border-black border-bottom">-->
+                        <!--                                    <h5 class="main-color text-start">Tranh thêu phong cảnh</h5>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="product-item row my-2 cursor-pointer border-black border-bottom">-->
+                        <!--                                    <h5 class="main-color text-start">Tranh thêu chân dung</h5>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="product-item row my-2 cursor-pointer border-black border-bottom">-->
+                        <!--                                    <h5 class="main-color text-start">Tranh thêu động vật</h5>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="product-item row my-2 cursor-pointer border-black border-bottom">-->
+                        <!--                                    <h5 class="main-color text-start">Tranh thêu tứ quý</h5>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                            <a href="category.html" class="">-->
+                        <!--                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">-->
+                        <!--                                    Xem tất cả >-->
+                        <!--                                </p>-->
+                        <!--                            </a>-->
+                        <!--                        </div>-->
+                    </li>
+                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
+                        <div id="header-favorite">
+                            <i class="fa-solid fa-heart my-1"></i>
+                            <p class="header-feature__label">Yêu thích</p>
+                        </div>
+                        <div id="favorite-popup"
+                             class="rounded header-popup position-absolute background-container p-3 d-none">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn-close header-popup__close-btn"
+                                        aria-label="Close"></button>
+                            </div>
+                            <h5 class="header-popup__title main-color text-start pb-2 mb-4">Danh sách yêu thích</h5>
+                            <div class="header-popup__content py-1">
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="account-page.html" class="">
+                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
+                                    Xem tất cả >
+                                </p>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
+                        <!--                        <a id="header-cart" href="cart-page.html">-->
+                        <!--                            <i class="fa-solid fa-cart-shopping my-1"></i>-->
+                        <!--                            <p class="header-feature__label">Giỏ hàng</p>-->
+                        <!--                        </a>-->
+                        <div id="header-cart">
+                            <i class="fa-solid fa-cart-shopping my-1"></i>
+                            <p class="header-feature__label">Giỏ hàng</p>
+                        </div>
+                        <div id="cart-badge"
+                             class="d-none rounded position-absolute align-items-center justify-content-center">0
+                        </div>
+                        <div id="cart-popup"
+                             class="rounded header-popup position-absolute background-container p-3 d-none">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn-close header-popup__close-btn"
+                                        aria-label="Close"></button>
+                            </div>
+                            <h5 class="header-popup__title main-color text-start pb-2 mb-4">Giỏ hàng của bạn</h5>
+                            <div class="header-popup__content py-1">
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                                <div class="product-item row my-2 cursor-pointer">
+                                    <div class="col-4">
+                                        <img src="../asset/image/product_image.png" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="col-8 row">
+                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
+                                        <p class="product-price text-start">
+                                            4.850.000 VNĐ</p>
+                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="cart-page.html" class="">
+                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
+                                    Xem tất cả >
+                                </p>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <a id="header-account" href="account-page.html">
+                            <i class="fa-solid fa-user my-1"></i>
+                            <p class="header-feature__label">Tài khoản</p>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
+    <ol class="breadcrumb pt-2">
+        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Điều khoản sử dụng</li>
+    </ol>
+</nav>
+
+<section class="container mt-4_5 mb-5">
+    <div class="background-container rounded p-4_5">
+        <h2 class="text-center main-color">Điều khoản sử dụng</h2>
+        <div class="col-main my-4">
+            <article>
+                <h5 style="text-indent: 1%">Dù biết rằng bạn rất dễ bỏ qua những Điều khoản dịch vụ này, nhưng chúng tôi
+                    cần
+                    phải nêu rõ trách nhiệm của chúng tôi cũng như trách nhiệm của bạn trong quá trình bạn sử dụng các
+                    dịch
+                    vụ của Nét Việt</h5>
+                <p>Chào mừng quý khách đến mua sắm tại Nét Việt. Sau khi truy cập vào website Nét Việt để tham khảo hoặc
+                    mua
+                    sắm, quý khách đã đồng ý tuân thủ và ràng buộc với những quy định của Nét Việt. Vui lòng xem kỹ các
+                    quy định và hợp tác với chúng tôi để xây dựng 1 website Nét Việt ngày càng thân thiện và phục vụ tốt
+                    những yêu cầu của chính quý khách. Ngoài ra, nếu có bất cứ câu hỏi nào về những thỏa thuận dưới đây,
+                    vui lòng liên hệ với Nét Việt theo số điện thoại hotline 0392334750 hoặc email cho chúng tôi qua địa
+                    chỉ <strong>hehe@gmail.com</strong></p>
+            </article>
+            <hr/>
+            <h4 class="main-color my-4">I. Tài khoản của khách hàng</h4>
+            <article>
+                <p>Một số dịch vụ, tính năng tại đây yêu cầu quý khách cần phải đăng ký Tài khoản Nét Việt thì mới có
+                    thể
+                    sử dụng. Do đó, để tận hưởng đầy đủ các dịch vụ và tính năng này, quý khách vui lòng cho phép Nét
+                    Việt
+                    tiến hành xử lý các dữ liệu cá nhân cơ bản sau:</p>
+                <p>• <b>Dữ liệu cá nhân cơ bản bắt buộc phải cung cấp</b>, là các thông tin
+                    giúp xác định danh tính đối với từng tài khoản Nét Việt, bao gồm họ tên, địa chỉ email, số điện
+                    thoại,... của quý khách.</p>
+                <p>Trường hợp quý khách đăng ký tài khoản Nét Việt thông qua tài khoản Facebook
+                    hoặc Google, các dữ liệu cá nhân cơ bản của quý khách cung cấp cho các nền tảng này như họ tên, địa
+                    chỉ email, số điện thoại, ảnh đại diện,... sẽ được gửi đến Nét Việt ngay khi quý khách cho phép Nét
+                    Việt
+                    truy cập vào thông tin của quý khách trên các nền tảng này theo từng chính sách của nền tảng.</p>
+                <p>• <b>Dữ liệu cá nhân cơ bản được cung cấp để phục vụ giao dịch</b>, là các
+                    thông tin cần thiết để thực hiện một giao dịch tại website localhost:3000, bao gồm địa chỉ giao
+                    hàng,
+                    địa chỉ thanh toán, phương thức thanh toán,... của quý khách.</p>
+                <p>• <b>Dữ liệu cá nhân cơ bản tự nguyện cung cấp</b>, là các thông tin mà quý
+                    khách có thể chia sẻ (hoặc không) để cá nhân hóa trải nghiệm sử dụng dịch vụ tại Nét Việt, bao gồm
+                    ngày tháng năm sinh, giới tính, sở thích, nghề nghiệp,... của quý khách.</p>
+                <p>Việc sử dụng và bảo mật thông tin Tài khoản Nét Việt là trách nhiệm và quyền lợi của quý khách khi sử
+                    dụng dịch vụ tại Nét Việt. Quý khách phải giữ kín mật khẩu và tài khoản, hoàn toàn chịu trách nhiệm
+                    đối với tất cả các hoạt động diễn ra thông qua việc sử dụng mật khẩu hoặc tài khoản của mình. Quý
+                    khách nên đảm bảo thoát khỏi Tài khoản Nét Việt sau mỗi lần sử dụng để bảo mật dữ liệu cá nhân của
+                    mình.</p>
+                <p>Trong trường hợp thông tin do quý khách cung cấp không đầy đủ hoặc có sai sót dẫn đến việc không thể
+                    giao hàng cho quý khách, chúng tôi có quyền đình chỉ hoặc từ chối phục vụ, giao hàng mà không phải
+                    chịu bất cứ trách nhiệm nào đối với quý khách. Khi có những thay đổi thông tin của quý khách, vui
+                    lòng cập nhật lại thông tin trong Tài khoản Nét Việt.</p>
+            </article>
+            <hr/>
+            <h4 class="main-color my-4">II. Quyền lợi bảo mật dữ liệu cá nhân của khách hàng</h4>
+            <article>
+                <p>Khi sử dụng dịch vụ tại website Nét Việt, quý khách được đảm bảo rằng những thông tin cung cấp cho
+                    chúng tôi sẽ chỉ được dùng để nâng cao chất lượng dịch vụ dành cho khách hàng của Nét Việt và sẽ
+                    không
+                    được chuyển giao cho một bên thứ ba nào khác vì mục đích thương mại. Trường hợp quý khách có yêu
+                    cầu: rút lại sự đồng ý, xóa, chỉnh sửa, phản đối, yêu cầu cung cấp, yêu cầu hạn chế xử lý đối với
+                    các dữ liệu cá nhân của mình, quý khách vui lòng thao tác trên hệ thống website hoặc liên hệ với
+                    Nét Việt theo số điện thoại hotline 0392334750 hoặc email cho chúng tôi qua địa chỉ <strong>hehe@gmail.com</strong>
+                </p>
+                <p>Dữ liệu cá nhân của quý khách tại Nét Việt sẽ được chúng tôi bảo mật và chỉ trong trường hợp pháp
+                    luật
+                    yêu cầu, chúng tôi sẽ buộc phải cung cấp những thông tin này cho các cơ quan có thẩm quyền.</p>
+            </article>
+            <hr/>
+            <h4 class="main-color my-4">III. Trách nhiệm của khách hàng khi sử dụng dịch vụ của Nét Việt</h4>
+            <article>
+                <p>Quý khách tuyệt đối không được sử dụng bất kỳ công cụ, phương pháp nào để can thiệp, xâm nhập bất hợp
+                    pháp vào hệ thống hay làm thay đổi cấu trúc dữ liệu tại website Nét Việt. Quý khách không được có
+                    những hành động (như thực hiện, cổ vũ,...) việc can thiệp, xâm nhập dữ liệu của Nét Việt cũng như hệ
+                    thống máy chủ của chúng tôi.</p>
+                <p>Quý khách không được đưa ra những nhận xét, đánh giá có ý xúc phạm, quấy rối, làm phiền hoặc có bất
+                    cứ hành vi nào thiếu văn hóa đối với người khác. Không nêu ra những nhận xét có tính chính trị
+                    (tuyên truyền, chống phá, xuyên tạc chính quyền), kỳ thị tôn giáo, giới tính, sắc tộc.... Tuyệt đối
+                    cấm mọi hành vi mạo nhận, cố ý tạo sự nhầm lẫn mình là một khách hàng khác hoặc là thành viên Ban
+                    Quản Trị Nét Việt.</p>
+            </article>
+            <hr/>
+            <h4 class="main-color my-4">IV. Trách nhiệm và quyền lợi của Nét Việt</h4>
+            <article>
+                <p><b>Trách nhiệm của Nét Việt</b>: Chúng tôi chịu trách nhiệm tuân thủ các nguyên tắc về xử lý dữ liệu
+                    cá
+                    nhân theo đúng quy định pháp luật và các điều khoản được nêu ra tại Chính sách bảo mật dữ liệu cá
+                    nhân của khách hàng (vui lòng xem chi tiết
+                    <a href="privacy-policy.html" class="text-primary">tại đây</a>).
+                    Trong trường hợp có những phát sinh ngoài ý muốn hoặc trách nhiệm của mình,
+                    Nét Việt sẽ không chịu trách nhiệm về mọi tổn thất phát sinh.</p>
+                <p><b>Quyền lợi của Nét Việt</b>: Chúng tôi không cho phép bất kỳ tổ chức, cá nhân nào quảng bá sản phẩm
+                    tại website Nét Việt mà chưa có sự đồng ý bằng văn bản từ Nét Việt. Các thỏa thuận và quy định trong
+                    Điều khoản sử dụng này có thể thay đổi vào bất cứ lúc nào nhưng sẽ được Nét Việt thông báo cụ thể
+                    trên
+                    website Nét Việt.</p>
+                <p>Ngoài ra, xin vui lòng thông báo cho quản trị web của Nét Việt ngay khi quý khách phát hiện ra lỗi hệ
+                    thống theo số điện thoại hotline 0392334750 hoặc email cho chúng tôi qua địa chỉ
+                    <strong>hehe@gmail.com</strong></p>
+            </article>
+            <hr/>
+            <h4 class="main-color my-4">V. Hiệu Lực</h4>
+            <article>
+                <p>Điều Khoản Sử Dụng Dịch Vụ này được cập nhật và có hiệu lực từ ngày 01/06/2024.</p>
+                <p>Nét Việt có thể điều chỉnh Điều Khoản Sử Dụng Dịch Vụ này vào bất kỳ thời điểm nào, và đăng tải công
+                    khai Điều Khoản Sử Dụng đã được điều chỉnh trên website localhost:3000. Việc khách hàng tiếp tục sử
+                    dụng
+                    dịch vụ của Nét Việt mà không có bất kỳ khiếu nại nào đối với Chính Sách được điều chỉnh sẽ được
+                    hiểu
+                    rằng khách hàng đã chấp thuận Điều Khoản Sử Dụng Dịch Vụ được điều chỉnh đó của Nét Việt.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="px-3 py-2 container">
+        <div class="row px-3 py-3">
+            <div class="col-4 border-end pe-3">
+                <div class="row d-flex justify-content-center">
+                    <img class="col-4" src="../asset/favicon/web_logo.png" alt="" id="footer-logo">
+                </div>
+                <div class="row p-3 text-white">
+                    Sự khác biệt giữa tranh thêu tay và tranh thêu chữ thập
+                    <br/>
+                    Đối với tranh thêu tay nghệ thuật thì khác hẳn. Tranh thêu tay truyền thống phải mất nhiều thời
+                    gian để làm quen và học, tranh truyền thống không đơn giản chỉ là kỹ thuật mà còn là tình cảm là
+                    tâm hồn của người thợ được truyền tải qua mỗi bức tranh. Chính vì thế mỗi bức tranh đều có nét
+                    riêng biệt và có hồn là như vậy.
+                </div>
+            </div>
+            <!--            <div class="col-1"></div>-->
+            <div class="col-8 text-white d-flex flex-column justify-content-between py-2">
+                <div class="ms-3 row">
+                    <div class="col-4">
+                        <h4>Dịch vụ</h4>
+                        <div class="row px-3"><a href="about-us.html">Về chúng tôi</a></div>
+                        <div class="row px-3"><a href="privacy-policy.html">Chính sách quyền riêng tư</a></div>
+                        <div class="row px-3"><a href="terms.html">Điều khoản sử dụng</a></div>
+                    </div>
+                    <div class="col-4">
+                        <h4>Hỗ trợ</h4>
+                        <div class="row px-3"><a href="policy.html">Chính sách đổi - trả - hoàn tiền</a></div>
+                        <div class="row px-3"><a href="policy.html">Chính sách vận chuyển</a></div>
+                    </div>
+                    <div class="col-4">
+                        <h4>Đối tác liên kết</h4>
+                        <div class="row mt-3">
+                            <div class="col-3 mb-4 d-flex justify-content-start">
+                                <img src="../asset/image/VNPay.png" class="img-fluid" alt="VNPay">
+                            </div>
+                            <div class="col-3 mb-4 d-flex justify-content-start">
+                                <img src="../asset/image/momo-logo.png" class="img-fluid" alt="Momo"
+                                     style="width:50px;height: 50px ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-3 row py-4">
+                    <div class="row "><h4>Liên hệ</h4></div>
+                    <div class="col-4 px-3"><i class="fa-solid fa-location-dot px-1"></i> Khu phố 6, phường Linh
+                        Trung, thành phố Thủ Đức, TP.HCM
+                    </div>
+                    <div class="col-4 px-3 "><i class="fa-regular fa-envelope px-1"></i>hehe@gmail.com</div>
+                    <div class="col-4 px-3 "><i class="fa-solid fa-phone px-1"></i> 0392334750</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../script/header.js"></script>
+
+</body>
+</html>
