@@ -2,6 +2,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class ProductDAO {
         product.getListMaterial().addAll(getMaterials(id));
         product.getListImageUrl().addAll(getImageUrls(id));
         product.getListReview().addAll(getProductReviews(id, 0)); //Mặc định offset = 0
+        product.getListDiscount().addAll(getProductDiscounts(id));
 
         return product;
     }
@@ -110,6 +112,19 @@ public class ProductDAO {
                         .bind("id", id)
                         .bind("offset", offset)
                         .mapToBean(ProductReview.class).list()
+        );
+    }
+
+    //Lấy danh sách chương trình giảm giá đang được áp dụng cho sản phẩm
+    private static List<ProductDiscount> getProductDiscounts(int id) {
+        return JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("select discounts.title, discounts.description, discounts.startedAt, discounts.endedAt" +
+                                "from discounts " +
+                                "join product_discounts_details on discounts.id = product_discounts_details.discountId" +
+                                "join products where product_discounts_details.productId = products.id" +
+                                "where discounts.startedAt <= now() and discounts.endedAt >= now() and products.id = :id")
+                        .bind("id", id)
+                        .mapToBean(ProductDiscount.class).list()
         );
     }
 }

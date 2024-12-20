@@ -1,8 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.ProductPrice;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductPrice;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

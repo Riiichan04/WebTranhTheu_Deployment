@@ -1,8 +1,8 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.ProductPrice;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.ProductReview;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductPrice;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductReview;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 
 import java.util.Comparator;

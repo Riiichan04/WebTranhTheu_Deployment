@@ -1,5 +1,6 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.bean;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Material;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
 
 import java.io.Serializable;
@@ -18,7 +19,7 @@ public class Product implements Serializable {
     private List<Material> listMaterial = new ArrayList<>();
     private List<String> listImageUrl = new ArrayList<>();
     private List<ProductReview> listReview = new ArrayList<>();
-    //Discount?
+    private List<ProductDiscount> listDiscount = new ArrayList<>();
 
     public Product() {
     }
@@ -109,5 +110,13 @@ public class Product implements Serializable {
 
     public void setListReview(List<ProductReview> listReview) {
         this.listReview = listReview;
+    }
+
+    public List<ProductDiscount> getListDiscount() {
+        return listDiscount;
+    }
+
+    public void setListDiscount(List<ProductDiscount> listDiscount) {
+        this.listDiscount = listDiscount;
     }
 }
