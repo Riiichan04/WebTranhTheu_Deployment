@@ -1,6 +1,8 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductPrice;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -39,8 +41,15 @@ public class ProductController extends HttpServlet {
         }
     }
 
+    //Khi người dùng gửi comment lên
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.setContentType("application/json;charset=utf-8");
+        //Kiểm tra session
+        HttpSession session = request.getSession();
+        JsonObject jsonResult = new JsonObject();
+        //Insert review vào db
+        jsonResult.addProperty("result", session.getAttribute("user") != null);
+        response.getWriter().write(jsonResult.toString());
     }
 }

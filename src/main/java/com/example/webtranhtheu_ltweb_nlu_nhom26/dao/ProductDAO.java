@@ -4,6 +4,8 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
+import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class ProductDAO {
                                     on products.id = category_product_details.productId
                                 join product_images
                                     on product_images.productId = products.id
+                                where products.id = :id
                                 """)
                         .bind("id", id).map((rs, ctx) -> {
                             Product product = new Product();
@@ -126,5 +129,15 @@ public class ProductDAO {
                         .bind("id", id)
                         .mapToBean(ProductDiscount.class).list()
         );
+    }
+
+
+    //Chọn cách nào để làm ???
+    interface ProductQueries {
+        @SqlQuery("select products.title, products.code, products.description, products.typeOfProduct from products join category_product_details on products.id = category_product_details.productId join product_images on product_images.productId = products.id where products.id = :id")
+        Product getProductBasicInfo(@Bind("id") int id);    //Có thể bỏ vì Map cái này khó
+
+        @SqlQuery("select providers.* from providers join products on providers.id = products.providerId where products.id = :id")
+        Provider getProductProvider(@Bind("id") int id);
     }
 }
