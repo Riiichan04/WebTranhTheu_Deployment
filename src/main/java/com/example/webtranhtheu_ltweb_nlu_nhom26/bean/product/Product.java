@@ -4,6 +4,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Material;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +13,11 @@ public class Product implements Serializable {
     private String code;
     private String title;
     private String description;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
     private ProductType type;
     private Provider provider;
-    private List<ProductPolicy> policies = new ArrayList<>(); //Còn sửa sau
+    private ProductPolicy policy;
     private List<ProductPrice> listPrice = new ArrayList<>();
     private List<Material> listMaterial = new ArrayList<>();
     private List<String> listImageUrl = new ArrayList<>();
@@ -22,6 +25,23 @@ public class Product implements Serializable {
     private List<ProductDiscount> listDiscount = new ArrayList<>();
 
     public Product() {
+    }
+
+    public Product(int id, String code, String title, String description, Timestamp createdAt, Timestamp updatedAt, ProductType type, Provider provider, ProductPolicy policy, List<ProductPrice> listPrice, List<Material> listMaterial, List<String> listImageUrl, List<ProductReview> listReview, List<ProductDiscount> listDiscount) {
+        this.id = id;
+        this.code = code;
+        this.title = title;
+        this.description = description;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.type = type;
+        this.provider = provider;
+        this.policy = policy;
+        this.listPrice = listPrice;
+        this.listMaterial = listMaterial;
+        this.listImageUrl = listImageUrl;
+        this.listReview = listReview;
+        this.listDiscount = listDiscount;
     }
 
     public int getId() {
@@ -56,6 +76,22 @@ public class Product implements Serializable {
         this.description = description;
     }
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public ProductType getType() {
         return type;
     }
@@ -72,12 +108,12 @@ public class Product implements Serializable {
         this.provider = provider;
     }
 
-    public List<ProductPolicy> getPolicies() {
-        return policies;
+    public ProductPolicy getPolicy() {
+        return policy;
     }
 
-    public void setPolicies(List<ProductPolicy> policies) {
-        this.policies = policies;
+    public void setPolicy(ProductPolicy policy) {
+        this.policy = policy;
     }
 
     public List<ProductPrice> getListPrice() {

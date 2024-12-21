@@ -1,34 +1,40 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Material;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Provider;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Provider;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductDiscount;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductPolicy;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductPrice;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductReview;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartProduct implements Serializable {
     private int id;
+    private static final int MAX_PRODUCTS= 5;
     private String productCode;
     private String title;
     private String description;
     private List<Material> materialList=new ArrayList<>();
     private Provider provider;
     private ProductPolicy policy;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+    private ProductType typeOfProduct;
     private List<ProductPrice> listPrice = new ArrayList<>();
     private List<Material> listMaterial = new ArrayList<>();
     private List<String> listImageUrl = new ArrayList<>();
     private List<ProductReview> listReview = new ArrayList<>();
     private List<ProductDiscount> listDiscount = new ArrayList<>();
-
+    private int quantity;
     public CartProduct() {
     }
 
-    public CartProduct(int id, String productCode, String title, String description, List<Material> materialList, Provider provider, ProductPolicy policy, List<ProductPrice> listPrice, List<Material> listMaterial, List<String> listImageUrl, List<ProductReview> listReview, List<ProductDiscount> listDiscount) {
+    public CartProduct(int id, String productCode, String title, String description, List<Material> materialList, Provider provider, ProductPolicy policy,Timestamp createdAt, Timestamp updatedAt, ProductType typeOfProduct, List<ProductPrice> listPrice, List<Material> listMaterial, List<String> listImageUrl, List<ProductReview> listReview, List<ProductDiscount> listDiscount,int quantity) {
         this.id = id;
         this.productCode = productCode;
         this.title = title;
@@ -36,11 +42,15 @@ public class CartProduct implements Serializable {
         this.materialList = materialList;
         this.provider = provider;
         this.policy = policy;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.typeOfProduct = typeOfProduct;
         this.listPrice = listPrice;
         this.listMaterial = listMaterial;
         this.listImageUrl = listImageUrl;
         this.listReview = listReview;
         this.listDiscount = listDiscount;
+        this.quantity = quantity;
     }
 
     public int getId() {
@@ -137,6 +147,38 @@ public class CartProduct implements Serializable {
 
     public void setListDiscount(List<ProductDiscount> listDiscount) {
         this.listDiscount = listDiscount;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public ProductType getTypeOfProduct() {
+        return typeOfProduct;
+    }
+
+    public void setTypeOfProduct(ProductType typeOfProduct) {
+        this.typeOfProduct = typeOfProduct;
     }
 }
 

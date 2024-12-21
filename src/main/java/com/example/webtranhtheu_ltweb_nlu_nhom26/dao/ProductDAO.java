@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.*;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Provider;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
@@ -15,7 +16,7 @@ public class ProductDAO {
         Product product = getProductBasicInfo(id);
         if (product == null) return null;
         //Xử lý NullPointerException
-        product.setPolicies(getProductPolicies(id));
+        product.setPolicy(getProductPolicy(id));
         product.getListPrice().addAll(getProductPrices(id));
         product.getListMaterial().addAll(getMaterials(id));
         product.getListImageUrl().addAll(getImageUrls(id));
@@ -72,14 +73,14 @@ public class ProductDAO {
     }
 
     // Lấy danh sách chính sách hiện có của sản phẩm
-    private static List<ProductPolicy> getProductPolicies(int id) {
+    private static ProductPolicy getProductPolicy(int id) {
+        // Coi lai
         return JDBIConnector.getInstance().withHandle(handle ->
                 handle.createQuery("select policies.title, policies.description " +
                                 "from policies join products on policies.id = products.policyId " +
                                 "where product.id = :id")
                         .bind("id", id)
-                        .mapToBean(ProductPolicy.class)
-                        .list()
+                        .mapToBean(ProductPolicy.class).first()
         );
     }
 
