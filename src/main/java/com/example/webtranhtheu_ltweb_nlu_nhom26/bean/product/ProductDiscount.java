@@ -1,14 +1,15 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class ProductDiscount implements Serializable {
     private int id;
     private String title;
     private int available;
-    private LocalDateTime startedAt;
-    private LocalDateTime endedAt;
+    private Timestamp startedAt;
+    private Timestamp endedAt;
 
     public ProductDiscount() {
     }
@@ -37,19 +38,19 @@ public class ProductDiscount implements Serializable {
         this.available = available;
     }
 
-    public LocalDateTime getStartedAt() {
+    public Timestamp getStartedAt() {
         return startedAt;
     }
 
-    public void setStartedAt(LocalDateTime startedAt) {
+    public void setStartedAt(Timestamp startedAt) {
         this.startedAt = startedAt;
     }
 
-    public LocalDateTime getEndedAt() {
+    public Timestamp getEndedAt() {
         return endedAt;
     }
 
-    public void setEndedAt(LocalDateTime endedAt) {
+    public void setEndedAt(Timestamp endedAt) {
         this.endedAt = endedAt;
     }
 }

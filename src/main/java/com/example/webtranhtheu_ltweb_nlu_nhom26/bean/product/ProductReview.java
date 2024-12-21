@@ -1,18 +1,18 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 public class ProductReview implements Serializable {
     private int accountId;
     private int rating;
     private String content;
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     public ProductReview() {
     }
 
-    public ProductReview(int accountId, int rating, String content, LocalDateTime createTime) {
+    public ProductReview(int accountId, int rating, String content, Timestamp createTime) {
         this.accountId = accountId;
         this.rating = rating;
         this.content = content;
@@ -43,11 +43,11 @@ public class ProductReview implements Serializable {
         this.content = content;
     }
 
-    public LocalDateTime getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 }

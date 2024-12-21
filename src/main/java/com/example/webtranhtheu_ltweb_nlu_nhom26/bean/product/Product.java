@@ -14,7 +14,7 @@ public class Product implements Serializable {
     private String description;
     private ProductType type;
     private Provider provider;
-    private List<ProductPolicy> policies = new ArrayList<>(); //Còn sửa sau
+    private ProductPolicy policies; //Còn sửa sau
     private List<ProductPrice> listPrice = new ArrayList<>();
     private List<Material> listMaterial = new ArrayList<>();
     private List<String> listImageUrl = new ArrayList<>();
@@ -72,11 +72,11 @@ public class Product implements Serializable {
         this.provider = provider;
     }
 
-    public List<ProductPolicy> getPolicies() {
+    public ProductPolicy getPolicies() {
         return policies;
     }
 
-    public void setPolicies(List<ProductPolicy> policies) {
+    public void setPolicies(ProductPolicy policies) {
         this.policies = policies;
     }
 
