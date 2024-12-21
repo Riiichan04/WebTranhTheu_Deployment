@@ -4,14 +4,14 @@
 <head>
     <title>404 - Không tìm thấy trang - Nét Việt</title>
     <jsp:include page="public/library.jsp"/>
-    <link rel="stylesheet" href="../template/style/user/error404.css">
+    <link rel="stylesheet" href="/template/style/user/error404.css">
 </head>
 <body>
 <jsp:include page="public/header.jsp"/>
 <div class="container my-5 main-info">
     <div class="row">
         <div class="col-5 row">
-            <img src="../template/asset/image/404image.png" alt="" class="col">
+            <img src="/template/asset/image/404image.png" alt="" class="col">
         </div>
         <div class="col-1"></div>
         <div class="col-6 d-flex flex-column justify-content-center">

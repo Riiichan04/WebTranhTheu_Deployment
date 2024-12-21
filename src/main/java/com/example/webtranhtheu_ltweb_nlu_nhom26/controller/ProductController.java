@@ -48,8 +48,15 @@ public class ProductController extends HttpServlet {
         //Kiểm tra session
         HttpSession session = request.getSession();
         JsonObject jsonResult = new JsonObject();
-        //Insert review vào db
-        jsonResult.addProperty("result", session.getAttribute("user") != null);
+        if (session.getAttribute("user") != null) {
+            //Insert review vào db
+
+            //Kết quả thực hiện
+            jsonResult.addProperty("result", true);
+        }
+        else {
+            jsonResult.addProperty("result", false);
+        }
         response.getWriter().write(jsonResult.toString());
     }
 }
