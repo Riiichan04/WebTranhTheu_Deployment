@@ -20,6 +20,8 @@ public class Product implements Serializable {
     private List<String> listImageUrl = new ArrayList<>();
     private List<ProductReview> listReview = new ArrayList<>();
     private List<ProductDiscount> listDiscount = new ArrayList<>();
+    //Chủ đề
+    //Category
 
     public Product() {
     }
