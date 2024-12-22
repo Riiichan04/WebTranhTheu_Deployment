@@ -1,7 +1,6 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.controller;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductPrice;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

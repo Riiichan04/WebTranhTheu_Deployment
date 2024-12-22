@@ -1,6 +1,5 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Material;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
 
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.controller;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

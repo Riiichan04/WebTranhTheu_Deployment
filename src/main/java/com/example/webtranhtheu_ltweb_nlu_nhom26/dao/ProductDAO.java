@@ -1,6 +1,5 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
