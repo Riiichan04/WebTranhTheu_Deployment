@@ -56,7 +56,9 @@ public class Cart implements Serializable {
         Double totalPrice = 0.0;
         return totalPrice;
     }
-
+    public CartProduct getProduct(int productId) {
+        return listProducts.get(productId);
+    }
     private CartProduct convert(Product product) {
         CartProduct cartProduct = new CartProduct();
         cartProduct.setId(product.getId());
