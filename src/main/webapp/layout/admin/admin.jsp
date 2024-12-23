@@ -19,9 +19,9 @@
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- css property -->
-    <link rel="stylesheet" href="../style/index.css">
-    <link rel="stylesheet" href="../style/admin/nav-admin.css">
-    <link rel="stylesheet" href="../style/admin/popup-logout.css">
+    <link rel="stylesheet" href="../../template/style/index.css">
+    <link rel="stylesheet" href="../../template/style/admin/nav-admin.css">
+    <link rel="stylesheet" href="../../template/style/admin/popup-logout.css">
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -33,48 +33,48 @@
     <div class="row vh-100">
         <div class="col-2 nav-style pt-4 px-0">
             <div class="info-admin">
-                <div class="avt-admin mx-auto"><img src="../asset/image/avt-admin.png" class="img text-center"></div>
+                <div class="avt-admin mx-auto"><img src="../../template/asset/image/avt-admin.png" class="img text-center"></div>
                 <div class="mt-3 px-4 text-center">Chào mừng admin <span class="fw-bold">"Tên admin"</span>!
                 </div>
                 <div class="hr-under-info my-3"></div>
             </div>
             <nav>
                 <ul class="list-manage ps-0">
-                    <li><a href="#" class="select-nav px-4 active" id="dashboard">
+                    <li><a href="dashboard.jsp" class="select-nav px-4 active ajax-link" id="dashboard">
                         <i class="fa-solid fa-house me-2"></i>
                         Dashboard
                     </a></li>
-                    <li><a href="#" class="select-nav px-4" id="product">
+                    <li><a href="manage-product.jsp" class="select-nav px-4 ajax-link" id="product">
                         <i class="fa-brands fa-product-hunt me-2"></i>
                         Quản lý sản phẩm
                     </a></li>
-                    <li><a href="#" class="select-nav px-4" id="user">
+                    <li><a href="manage-user.jsp" class="select-nav px-4 ajax-link" id="user">
                         <i class="fa-solid fa-people-roof me-2"></i>
                         Quản lý người dùng
                     </a></li>
-                    <li><a href="#" class="select-nav px-4" id="promotion">
+                    <li><a href="manage-promotion.jsp" class="select-nav px-4 ajax-link" id="promotion">
                         <i class="fa-solid fa-tags me-2"></i>
                         Quản lý giảm giá
                     </a></li>
-                    <li><a href="#" class="select-nav px-4" id="category">
+                    <li><a href="manage-category.jsp" class="select-nav px-4 ajax-link" id="category">
                         <i class="fa-solid fa-list me-2"></i>
                         Quản lý danh mục
                     </a></li>
-                    <li><a href="#" class="select-nav px-4" id="topic">
+                    <li><a href="manage-topic.jsp" class="select-nav px-4 ajax-link" id="topic">
                         <i class="fa-solid fa-lightbulb me-2"></i>
                         Quản lý chủ đề
                     </a></li>
-                    <li><a href="#" class="select-nav px-4" id="order">
+                    <li><a href="manage-order.jsp" class="select-nav px-4 ajax-link" id="order">
                         <i class="fa-solid fa-money-bill-trend-up me-2"></i>
                         Quản lý đơn hàng
                     </a></li>
-                    <li><a href="#" class="select-nav px-4" id="policy">
+                    <li><a href="manage-policy.jsp" class="select-nav px-4 ajax-link" id="policy">
                         <i class="fa-solid fa-building-shield me-2"></i>
                         Quản lý chính sách
                     </a></li>
                 </ul>
                 <div class="hr-under-info my-3"></div>
-                <div><a href="#" class="select-nav px-4" id="setting">
+                <div><a href="setting-user.jsp" class="select-nav px-4 ajax-link" id="setting">
                     <i class="fa-solid fa-gear me-2"></i>
                     Cài đặt tài khoản
                 </a></div>
@@ -117,6 +117,6 @@
     </div>
 </div>
 
-<script src="../script/admin/admin.js"></script>
+<script src="../../template/script/admin/admin.js"></script>
 </body>
 </html>
