@@ -22,6 +22,12 @@ public class Product implements Serializable {
     //Chủ đề
     //Category
 
+
+
+
+
+
+
     public Product() {
     }
 
