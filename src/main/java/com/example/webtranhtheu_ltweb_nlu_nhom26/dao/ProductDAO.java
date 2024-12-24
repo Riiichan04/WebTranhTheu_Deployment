@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
@@ -48,10 +49,27 @@ public class ProductDAO {
         );
     }
 
-    //Tạm
+    //Lấy danh sách các product có đánh giá cao nhất
     public List<Object> getMostRatedProducts() {
-        return JDBIConnector.getInstance().withHandle(handle ->
-            handle.createQuery("").mapToBean(Object.class).list()
-        );
+//    public List<Product> getMostRatedProducts() {
+        List<Integer> listProductId = JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("select products.id" +
+                                "from products" +
+                                "join (" +
+                                "  select productId, avg(rating) as rating" +
+                                "  from product_reviews" +
+                                "  group by productId" +
+                                "  order by rating desc" +
+                                "  limit 5)" +
+                                "as product_ratings" +
+                                "  on product_ratings.productId = products.id")
+                        .mapToBean(Integer.class).list());
+
+//        List<Product> listProduct = new ArrayList<>();
+//        for (int id : listProductId) {
+//            listProduct.add(getProductById(id));
+//        }
+//        return listProduct;
+        return null;
     }
 }
