@@ -11,6 +11,65 @@ public class Product implements Serializable {
     private String title;
     private String description;
     private ProductType productType;
-    List<Review> listReviews;
-    List<Price> listPrices;
+    private List<Review> listReviews;
+    private List<Price> listPrices;
+
+    public Product() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
+
+    public List<Review> getListReviews() {
+        return listReviews;
+    }
+
+    public void setListReviews(List<Review> listReviews) {
+        this.listReviews = listReviews;
+    }
+
+    public List<Price> getListPrices() {
+        return listPrices;
+    }
+
+    public void setListPrices(List<Price> listPrices) {
+        this.listPrices = listPrices;
+    }
 }
