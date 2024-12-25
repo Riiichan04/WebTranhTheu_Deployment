@@ -2,16 +2,15 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
-public class ProductDiscount implements Serializable {
+public class Discount implements Serializable {
     private int id;
     private String title;
     private int available;
     private Timestamp startedAt;
     private Timestamp endedAt;
 
-    public ProductDiscount() {
+    public Discount() {
     }
 
     public int getId() {

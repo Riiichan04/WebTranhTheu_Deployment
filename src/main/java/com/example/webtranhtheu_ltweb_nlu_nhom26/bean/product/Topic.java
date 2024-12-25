@@ -2,12 +2,12 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
 import java.io.Serializable;
 
-public class ProductTopic implements Serializable {
-    private int id;
-    private String name;
-    private int active;
+public class Topic implements Serializable {
+    private int id; //Id của topic
+    private String name;    //Tên của topic
+    private int active; //Trạng thái của topic
 
-    public ProductTopic() {
+    public Topic() {
     }
 
     public int getId() {

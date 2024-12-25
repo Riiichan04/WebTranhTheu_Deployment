@@ -2,12 +2,12 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
 import java.io.Serializable;
 
-public class ProductCategory implements Serializable {
+public class Category implements Serializable {
     private int id;
     private String name;
     private int active;
 
-    public ProductCategory() {
+    public Category() {
     }
 
     public int getId() {

@@ -1,32 +1,19 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.enums.ProductType;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Product implements Serializable {
-    private int id;
-    private String code;
-    private String title;
-    private String description;
-    private ProductType type;
-    private Provider provider;
-    private ProductPolicy policies; //Còn sửa sau
-    private List<ProductPrice> listPrice = new ArrayList<>();
-    private List<Material> listMaterial = new ArrayList<>();
-    private List<String> listImageUrl = new ArrayList<>();
-    private List<ProductReview> listReview = new ArrayList<>();
-    private List<ProductDiscount> listDiscount = new ArrayList<>();
-    //Chủ đề
-    //Category
-
-
-
-
-
-
+    private int id; //Id của sản phẩm
+    private String code;    //Mã của sản phẩm
+    private String title;   //Tên sản phẩm
+    private String description; //Mô tả sản phẩm
+    private Category category;    //Loại danh mục của sản phẩm
+    private List<Review> listReviews;   //Danh sách review của sản phảm
+    private List<Price> listPrices; //Danh sách giá tiền của sản phẩm
+    private List<String> listImageUrls; //Danh sách hình ảnh của sản phẩm
+    private List<Discount> listDiscounts; //Danh sách chuương trình giảm giá của sản phẩm
+    private int type; //Cho biết đây là tranh hay nguyên liệu
 
     public Product() {
     }
@@ -63,67 +50,51 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public ProductType getType() {
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Review> getListReviews() {
+        return listReviews;
+    }
+
+    public void setListReviews(List<Review> listReviews) {
+        this.listReviews = listReviews;
+    }
+
+    public List<Price> getListPrices() {
+        return listPrices;
+    }
+
+    public void setListPrices(List<Price> listPrices) {
+        this.listPrices = listPrices;
+    }
+
+    public List<String> getListImageUrls() {
+        return listImageUrls;
+    }
+
+    public void setListImageUrls(List<String> listImageUrls) {
+        this.listImageUrls = listImageUrls;
+    }
+
+    public List<Discount> getListDiscounts() {
+        return listDiscounts;
+    }
+
+    public void setListDiscounts(List<Discount> listDiscounts) {
+        this.listDiscounts = listDiscounts;
+    }
+
+    public int getType() {
         return type;
     }
 
-    public void setType(ProductType type) {
+    public void setType(int type) {
         this.type = type;
-    }
-
-    public Provider getProvider() {
-        return provider;
-    }
-
-    public void setProvider(Provider provider) {
-        this.provider = provider;
-    }
-
-    public ProductPolicy getPolicies() {
-        return policies;
-    }
-
-    public void setPolicies(ProductPolicy policies) {
-        this.policies = policies;
-    }
-
-    public List<ProductPrice> getListPrice() {
-        return listPrice;
-    }
-
-    public void setListPrice(List<ProductPrice> listPrice) {
-        this.listPrice = listPrice;
-    }
-
-    public List<Material> getListMaterial() {
-        return listMaterial;
-    }
-
-    public void setListMaterial(List<Material> listMaterial) {
-        this.listMaterial = listMaterial;
-    }
-
-    public List<String> getListImageUrl() {
-        return listImageUrl;
-    }
-
-    public void setListImageUrl(List<String> listImageUrl) {
-        this.listImageUrl = listImageUrl;
-    }
-
-    public List<ProductReview> getListReview() {
-        return listReview;
-    }
-
-    public void setListReview(List<ProductReview> listReview) {
-        this.listReview = listReview;
-    }
-
-    public List<ProductDiscount> getListDiscount() {
-        return listDiscount;
-    }
-
-    public void setListDiscount(List<ProductDiscount> listDiscount) {
-        this.listDiscount = listDiscount;
     }
 }
