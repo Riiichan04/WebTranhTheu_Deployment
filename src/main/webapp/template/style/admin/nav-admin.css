@@ -1,5 +1,5 @@
 body, html {
-    overflow: hidden; /*để tránh thanh cuộn không cần thiết*/
+    overflow: visible;
 }
 
 .nav-style {

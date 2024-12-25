@@ -10,16 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Trang admin - Nét Việt</title>
-    <link rel="icon" href="../asset/favicon/favicon.ico">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- FontAwesome -->
-    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <%@include file="../public/library.jsp"%>
     <!-- css property -->
-    <link rel="stylesheet" href="../../template/style/index.css">
     <link rel="stylesheet" href="../../template/style/admin/nav-admin.css">
     <link rel="stylesheet" href="../../template/style/admin/popup-logout.css">
     <!-- Bootstrap JavaScript -->
@@ -40,7 +32,7 @@
             </div>
             <nav>
                 <ul class="list-manage ps-0">
-                    <li><a href="dashboard.jsp" class="select-nav px-4 active ajax-link" id="dashboard">
+                    <li><a href="dashboard.jsp" class="select-nav px-4 ajax-link active" id="dashboard">
                         <i class="fa-solid fa-house me-2"></i>
                         Dashboard
                     </a></li>
@@ -113,7 +105,9 @@
                 </div>
             </nav>
         </div>
-        <div class="col-10 p-0" id="content"></div>
+        <div class="col-10 p-0" id="content">
+            <%@include file="dashboard.jsp"%>
+        </div>
     </div>
 </div>
 

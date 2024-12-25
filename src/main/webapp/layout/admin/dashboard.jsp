@@ -6,22 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="../public/library.jsp"%>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link rel="icon" href="../asset/favicon/favicon.ico">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- FontAwesome -->
-    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- css property -->
-    <link rel="stylesheet" href="../style/index.css">
-    <link rel="stylesheet" href="../style/admin/general-content-admin.css">
-    <link rel="stylesheet" href="../style/admin/dashboard.css">
+    <link rel="stylesheet" href="../../template/style/admin/general-content-admin.css">
+    <link rel="stylesheet" href="../../template/style/admin/dashboard.css">
     <!-- datatable -->
     <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
@@ -309,6 +301,6 @@
     </div>
 </div>
 
-<script src="../script/admin/dashboard.js"></script>
+<script src="../../template/script/admin/dashboard.js"></script>
 </body>
 </html>

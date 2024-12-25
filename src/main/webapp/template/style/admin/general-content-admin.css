@@ -1,7 +1,3 @@
-body, html {
-    background-color: var(--web-background-color);
-}
-
 .btn-delete,  .btn-add, .btn-read-edit {
     display: inline-block;
     border: none;
@@ -53,4 +49,8 @@ table.dataTable th.dt-type-numeric {
     color: var(--big-text-color);
     font-weight: 500;
     padding-left: 10px;
+}
+
+.card {
+    background-color: white;
 }
