@@ -10,21 +10,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Xem và Sửa thông tin danh mục</title>
-    <link rel="icon" href="../../asset/favicon/favicon.ico">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- FontAwesome -->
-    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <%@include file="../../public/library.jsp"%>>
+    <!-- css property -->
+    <link rel="stylesheet" href="../../../template/style/admin/style-form/general-form.css">
+    <link rel="stylesheet" href="../../../template/style/admin/style-form/style-read-edit-category-form.css">
     <!-- DataTable -->
     <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
-    <!-- css property -->
-    <link rel="stylesheet" href="../../style/index.css">
-    <link rel="stylesheet" href="../../style/admin/style-form/general-form.css">
-    <link rel="stylesheet" href="../../style/admin/style-form/style-read-edit-category-form.css">
 
 </head>
 <body>
@@ -49,7 +41,7 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <table id="myTable" class="display custom-table w-100">
+                <table id="myCategoryEditTable" class="display custom-table w-100">
                     <thead>
                     <tr>
                         <th class="text-center">STT</th>
@@ -143,7 +135,6 @@
 
 </div>
 
-<script src="../../script/admin/category-form/read-edit-category-form.js"></script>
-<script src="../../script/admin/js-get-height-form.js"></script>
+<script src="../../../template/script/admin/category-form/read-edit-category-form.js"></script>
 </body>
 </html>

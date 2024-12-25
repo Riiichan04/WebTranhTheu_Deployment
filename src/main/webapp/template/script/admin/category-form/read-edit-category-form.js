@@ -14,16 +14,15 @@ $('#editBtn').click(function () {
     $('.edit-hidden').removeClass('d-none');
 });
 
-$(document).ready(function () {
-    $('#myTable').DataTable( {
-        destroy: true,
-        scrollY: "300px"
-    }); // Khởi tạo DataTable
-    $('.dt-search label').text("Tìm kiếm: ");
-    $('.dt-search label').css("margin-right", "10px");
-    $('.dt-length label').text("Số lượng hiển thị mỗi trang");
-    $('.dt-length label').css("margin-left", "10px");
-    $('.dt-info').css("display", "none");
-    $('.dt-search input').css("width", "300px");
-    $('table.dataTable th.dt-type-numeric').css("text-align", "center");
+$('#myCategoryEditTable').DataTable({
+    destroy: true,
+    scrollY: "300px",
+    scrollX: true,
 });
+
+// Cập nhật giao diện
+$('.dt-search label').text("Tìm kiếm: ").css("margin-right", "10px");
+$('.dt-length label').text("Số lượng hiển thị mỗi trang").css("margin-left", "10px");
+$('.dt-info').css("display", "none");
+$('.dt-search input').css("width", "300px");
+$('table.dataTable th.dt-type-numeric').css("text-align", "center");

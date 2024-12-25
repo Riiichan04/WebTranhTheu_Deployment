@@ -79,9 +79,9 @@
     </div>
 </div>
 
-<div id="formWrapper" class="hidden mx-auto"></div>
+<div id="formWrapper" class="hidden"></div>
 
 <script src="../../template/script/admin/manage-adminpage.js"></script>
-<%--<script src="../../template/script/admin/change-category-form.js"></script>--%>
+<script src="../../template/script/admin/change-category-form.js"></script>
 </body>
 </html>

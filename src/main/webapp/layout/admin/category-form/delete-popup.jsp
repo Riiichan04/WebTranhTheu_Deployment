@@ -10,17 +10,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Xóa danh mục</title>
-    <link rel="icon" href="../../asset/favicon/favicon.ico">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- FontAwesome -->
-    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <%@include file="../../public/library.jsp"%>>
     <!-- css property -->
-    <link rel="stylesheet" href="../../style/index.css">
-    <link rel="stylesheet" href="../../style/admin/style-form/style-delete-form.css">
+    <link rel="stylesheet" href="../../../template/style/admin/style-form/style-delete-form.css">
 
 </head>
 <body>
@@ -41,6 +33,5 @@
     </div>
 </div>
 
-<script src="../../script/admin/js-get-height-form.js"></script>
 </body>
 </html>
