@@ -1,16 +1,18 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductCategory;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.temp_dao.ConcreateProductDAO;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.temp_dao.FullProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class CategoryDAO {
-    private static List<ProductCategory> getCategories() {
+    private static List<Category> getCategories() {
         return JDBIConnector.getInstance().withHandle(handle ->
-                handle.createQuery("select * from categories").mapToBean(ProductCategory.class).list());
+                handle.createQuery("select * from categories").mapToBean(Category.class).list());
     }
 
     private static List<Product> getProductByCategory(int categoryId) {
@@ -23,7 +25,7 @@ public class CategoryDAO {
 
         List<Product> listProduct = new LinkedList<>();
         for (Integer productId : listProductIdByCategory) {
-            listProduct.add(ProductDAO.getProductById(productId));
+            listProduct.add(new FullProductDAO(new ConcreateProductDAO()).getFullProductInfo(productId));
         }
         return listProduct;
     }

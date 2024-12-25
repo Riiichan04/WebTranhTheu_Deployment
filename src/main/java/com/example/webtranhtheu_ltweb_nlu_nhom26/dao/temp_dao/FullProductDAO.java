@@ -14,12 +14,23 @@ public class FullProductDAO extends DecorationProductDAO {
     public Product getFullProductInfo(int productId) {
         Product product = super.getProductInfo(productId);
         product.setPolicy(getProductPolicy(productId));
+        product.setProvider(getProductProvider(productId));
         product.getListPrices().addAll(getProductPrices(productId));
         product.getListMaterials().addAll(getMaterials(productId));
-        product.getListImageUrls().addAll(getImageUrls(productId));
+        product.getListImageUrls().addAll(getListImageUrls(productId));
         product.getListReviews().addAll(getProductReviews(productId, 0)); //Mặc định offset = 0
         product.getListDiscounts().addAll(getProductDiscounts(productId));
         return product;
+    }
+
+    //Lấy hình ảnh của product
+    private List<String> getListImageUrls(int productId) {
+        return JDBIConnector.getInstance().withHandle(handle ->
+                handle.createQuery("select imgUrl from product_images where productId = :id")
+                        .bind("id", productId)
+                        .mapToBean(String.class)
+                        .list()
+        );
     }
 
 

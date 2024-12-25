@@ -25,18 +25,9 @@ public class ConcreateProductDAO implements ProductDAO {
                             product.setTitle(rs.getString("title"));
                             product.setDescription(rs.getString("description"));
                             product.setType(rs.getInt("typeOfProduct"));
-                            product.setListImageUrls(getListImageUrls(productId));
                             return product;
                         }).one()
         );
     }
 
-    private List<String> getListImageUrls(int productId) {
-        return JDBIConnector.getInstance().withHandle(handle ->
-                handle.createQuery("select imgUrl from product_images where productId = :id")
-                        .bind("id", productId)
-                        .mapToBean(String.class)
-                        .list()
-        );
-    }
 }
