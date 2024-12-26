@@ -1,6 +1,5 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductPrice;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -18,7 +17,6 @@ public class ProductController extends HttpServlet {
         String widthParam = request.getParameter("width");
         String heightParam = request.getParameter("height");
         try {
-            ProductPrice productPrice;
             if (widthParam == null && heightParam == null) { //Nếu thiếu cả 2 param thì lấy giá nhỏ nhất
 //                productPrice = ProductService.getMinProductPrice(id);
             } else if (widthParam == null || heightParam == null) { //Nhập thiếu width hoặc height
