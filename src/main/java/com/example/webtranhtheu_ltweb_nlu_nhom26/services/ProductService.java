@@ -2,11 +2,9 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.temp_dao.CardProductDAO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.temp_dao.ConcreateProductDAO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.temp_dao.FullProductDAO;
-
-import java.util.Comparator;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
 
 public class ProductService {
     //Lấy đánh giá trung bình của sản phẩm (Sẽ cho vào product)
@@ -15,10 +13,10 @@ public class ProductService {
     }
 
     public static Product getFullProductInfo(int productId) {
-        return new FullProductDAO(new ConcreateProductDAO()).getFullProductInfo(productId);
+        return new DisplayFullProduct(new ConcreateProductDetail()).getFullProductInfo(productId);
     }
 
     public static Product getDisplayProductInfo(int productId) {
-        return new CardProductDAO(new ConcreateProductDAO()).getDisplayProductInfo(productId);
+        return new DisplayCardProduct(new ConcreateProductDetail()).getDisplayProductInfo(productId);
     }
 }

@@ -2,8 +2,8 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.temp_dao.ConcreateProductDAO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.temp_dao.FullProductDAO;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
 import java.util.LinkedList;
@@ -25,7 +25,7 @@ public class CategoryDAO {
 
         List<Product> listProduct = new LinkedList<>();
         for (Integer productId : listProductIdByCategory) {
-            listProduct.add(new FullProductDAO(new ConcreateProductDAO()).getFullProductInfo(productId));
+            listProduct.add(new DisplayFullProduct(new ConcreateProductDetail()).getFullProductInfo(productId));
         }
         return listProduct;
     }
