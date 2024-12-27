@@ -1,6 +1,11 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
+import org.jdbi.v3.core.mapper.RowMapper;
+import org.jdbi.v3.core.statement.StatementContext;
+
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,4 +135,33 @@ public class Product implements Serializable {
     public void setType(int type) {
         this.type = type;
     }
+
+    public Price getSelectedPrice(int width, int height) {
+        for (int i = 0; i < this.listPrices.size(); i++) {
+            Price price = this.getListPrices().get(i);
+            if (price.getWidth() == width && price.getHeight() == height) return price;
+        }
+        return null;
+    }
+
+    public String getThumbnail() {
+        //Mặc định lấy hình đầu tiên
+        return this.listImageUrls.get(0);
+    }
+
+
+    public static class ProductMapper implements RowMapper<Product> {
+
+        @Override
+        public Product map(ResultSet rs, StatementContext ctx) throws SQLException {
+            Product product = new Product();
+            product.setId(rs.getInt("id"));
+            product.setCode(rs.getString("codeProduct"));
+            product.setTitle(rs.getString("title"));
+            product.setDescription(rs.getString("description"));
+            product.setType(rs.getInt("typeOfProduct"));
+            return product;
+        }
+    }
 }
+

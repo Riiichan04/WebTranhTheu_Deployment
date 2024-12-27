@@ -1,5 +1,10 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -22,16 +27,23 @@ public class ProductController extends HttpServlet {
             } else if (widthParam == null || heightParam == null) { //Nhập thiếu width hoặc height
                 response.sendError(HttpServletResponse.SC_NOT_FOUND); //Ném trang 404
             }
-            else { //Test
-                int width = Integer.parseInt(widthParam);
-                int height = Integer.parseInt(heightParam);
+            int width = Integer.parseInt(widthParam);
+            int height = Integer.parseInt(heightParam);
+            int id = Integer.parseInt(productId);
+//            Product product = ProductService.getFullProductInfo(id);
+            DisplayFullProduct productOperator = new DisplayFullProduct(new ConcreateProductDetail());
+            Product product = productOperator.getFullProductInfo(id);
+            System.out.println(product);
+            if (product == null) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
             }
-            int triggerErrorPage = Integer.parseInt(productId); //Trigger error khi cần
-//            Chưa có db để chạy
-//            Product product = ProductService.getProduct(Integer.parseInt(productId));
-//            productPrice = ProductService.getProductPrice(id, width, height);
-//            request.setAttribute("product", product);
-//            request.setAttribute("displayPrice", productPrice);
+            //Sẽ cho vào service
+            Price displayPrice = product.getSelectedPrice(width, height);
+            if (displayPrice == null) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            }
+            request.setAttribute("product", product);
+            request.setAttribute("displayPrice", displayPrice);
             request.getRequestDispatcher("/layout/product.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND); //Ném trang 404
@@ -50,8 +62,7 @@ public class ProductController extends HttpServlet {
 
             //Kết quả thực hiện
             jsonResult.addProperty("result", true);
-        }
-        else {
+        } else {
             jsonResult.addProperty("result", false);
         }
         response.getWriter().write(jsonResult.toString());
