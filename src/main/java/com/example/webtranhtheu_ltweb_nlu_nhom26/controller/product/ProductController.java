@@ -28,6 +28,7 @@ public class ProductController extends HttpServlet {
             int id = Integer.parseInt(productId);
             DisplayFullProduct service = new DisplayFullProduct(new ConcreateProductDetail());
             Product product = service.getFullProductInfo(id);
+            System.out.println(product.getCategory().getTitle());
             if (product == null) {  //Không tìm thấy product với id đã nhập
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
             }

@@ -153,19 +153,5 @@ public class Product implements Serializable {
         //Mặc định lấy hình đầu tiên
         return this.listImageUrls.get(0);
     }
-
-    public static class ProductMapper implements RowMapper<Product> {
-
-        @Override
-        public Product map(ResultSet rs, StatementContext ctx) throws SQLException {
-            Product product = new Product();
-            product.setId(rs.getInt("id"));
-            product.setCode(rs.getString("codeProduct"));
-            product.setTitle(rs.getString("title"));
-            product.setDescription(rs.getString("description"));
-            product.setType(rs.getInt("typeOfProduct"));
-            return product;
-        }
-    }
 }
 

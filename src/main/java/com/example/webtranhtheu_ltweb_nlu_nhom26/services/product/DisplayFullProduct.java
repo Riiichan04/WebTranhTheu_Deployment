@@ -15,6 +15,7 @@ public class DisplayFullProduct extends DecorationProductDetail {
         Product product = this.wrapper.getProductInfo(productId);
         product.setPolicy(super.productDAO.getProductPolicy(productId));
         product.setProvider(super.productDAO.getProductProvider(productId));
+        product.setCategory(super.productDAO.getCategory(productId));
         product.getListPrices().addAll(super.productDAO.getProductPrices(productId));
         product.getListMaterials().addAll(super.productDAO.getMaterials(productId));
         product.getListImageUrls().addAll(super.productDAO.getListImageUrls(productId));

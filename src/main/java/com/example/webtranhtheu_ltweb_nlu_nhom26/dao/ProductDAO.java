@@ -1,9 +1,9 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseProductMapper;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
-import org.jdbi.v3.sqlobject.config.RegisterRowMapperFactories;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
@@ -12,16 +12,18 @@ import java.util.List;
 public interface ProductDAO {
 
     @SqlQuery("select products.id, products.title, products.codeProduct, products.description, products.typeOfProduct from products join category_products_details on products.id = category_products_details.productId where products.id = :id")
-    @RegisterRowMapper(Product.ProductMapper.class)
+    @RegisterRowMapper(BaseProductMapper.class)
     Product getProductInfo(@Bind("id") int id);
 
-    //Thiếu Category
+    @SqlQuery("select categories.* from categories join category_products_details on categories.id = category_products_details.categoryId where category_products_details.productId = :id")
+    @RegisterBeanMapper(Category.class)
+    Category getCategory(@Bind("id") int id);
 
-    @SqlQuery("select img_url from product_images where productId = :id limit 1")
+    @SqlQuery("select imgUrl from product_images where productId = :id limit 1")
     String getThumbnail(@Bind("id") int id);
 
-    @SqlQuery("select providers.id, providers.provider_name, addresses.location from providers join products on providers.id = products.providerId join addresses on providers.addressId = addresses.id where products.id = :id")
-    @RegisterRowMapper(Provider.ProviderMapper.class)
+    @SqlQuery("select providers.id, providers.providerName, addresses.location from providers join products on providers.id = products.providerId join addresses on providers.addressId = addresses.id where products.id = :id")
+    @RegisterBeanMapper(Provider.class)
     Provider getProductProvider(@Bind("id") int id);
 
     @SqlQuery("select policies.title, policies.description from policies join products on policies.id = products.policyId where products.id = :id")

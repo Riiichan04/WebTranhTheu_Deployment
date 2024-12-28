@@ -48,7 +48,7 @@ public class Provider implements Serializable {
     public static class ProviderMapper implements RowMapper<Provider> { //Cần sửa cái này
         @Override
         public Provider map(ResultSet rs, StatementContext ctx) throws SQLException {
-            return new Provider(rs.getInt("id"), rs.getString("provider_name"), rs.getString("location"));
+            return new Provider(rs.getInt("id"), rs.getString("providerName"), rs.getString("location"));
         }
     }
 }
