@@ -16,6 +16,7 @@ function displayRating(rating, starWidth) {
         }
     });
 }
+
 displayRating(4.0, $(".product-info__star-container").width())
 
 // Nút chia sẻ (copy vào clipboard)
@@ -197,3 +198,60 @@ $(".other-product__card").click(function () {
     window.open("product.html").focus();
 })
 
+$("#send-comment").click(function (e) {
+    e.preventDefault()
+    if ($("#comment-content").val() === "" && currentRating === 0) {
+        //Thông báo nhập chưa đủ nội dung
+    } else {
+        $.ajax({
+            url: window.location.href,
+            type: 'POST',
+            data: {
+                account: $("#session-account").val(), //Cần một trường input:hidden để chứa trên jsp
+                rating: currentRating,
+                content: $("#comment-content").val()
+            },
+            success: (response) => {
+                if (response.result) {
+                    //Thông báo thành công
+                } else {
+                    //Thông báo thất bại
+                }
+            },
+            error: (response) => {
+                //Thông báo lỗi server
+            }
+        })
+    }
+})
+
+$.ajax({
+    url: '/get-product-review', //Tạm
+    type: 'GET',
+    data: {
+        id: null, //Tạm
+        offset: $(".comment-container div").length
+    },
+    success: (response) => {
+        //Hiển thị bình luận
+    },
+    error: (response) => {
+        //Không làm gì hết
+    }
+})
+
+//Dùng để lấy các sản phẩm khác
+$.ajax({
+    url: null,
+    type: 'GET',
+    data: {
+        id: null, //Tạm (Sẽ d8ưa lên jsp)
+        topic: null //Tạm (Sẽ đưa lên jsp)
+    },
+    success: (response) => {
+        //Hiển thị các sản phẩm khác
+    },
+    error: (response) => {
+        //Không tìm thấy các sản phẩm tương tự với sản phẩm này
+    }
+})

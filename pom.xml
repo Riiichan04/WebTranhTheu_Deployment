@@ -42,6 +42,11 @@
             <version>3.0.1</version>
         </dependency>
         <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
@@ -57,6 +62,13 @@
             <groupId>org.jdbi</groupId>
             <artifactId>jdbi3-sqlobject</artifactId>
             <version>3.47.0</version>
+        </dependency>
+
+        <!-- GSON để xử lý ajax-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.11.0</version>
         </dependency>
     </dependencies>
 
