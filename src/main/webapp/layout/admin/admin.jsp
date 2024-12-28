@@ -11,13 +11,13 @@
     <meta charset="UTF-8">
     <title>Trang admin - Nét Việt</title>
     <%@include file="../public/library.jsp"%>
-    <!-- css property -->
-    <link rel="stylesheet" href="../../template/style/admin/nav-admin.css">
-    <link rel="stylesheet" href="../../template/style/admin/popup-logout.css">
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
+    <!-- css property -->
+    <link rel="stylesheet" href="../../template/style/admin/nav-admin.css">
+    <link rel="stylesheet" href="../../template/style/admin/popup-logout.css">
 
 </head>
 <body>
@@ -72,12 +72,12 @@
                 </a></div>
                 <div>
                     <button type="button" class="px-4 w-100 text-start" id="log-out" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
+                            data-bs-target="#logOutModal">
                         <i class="fa-solid fa-right-from-bracket me-2"></i>
                         Đăng xuất
                     </button>
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                          aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
