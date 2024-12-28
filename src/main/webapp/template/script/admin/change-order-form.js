@@ -1,90 +1,112 @@
-function changeFormOnOrder(btn) {
-    $('#formWrapper').css({
-        'display': 'flex',
-        'justify-content': 'center',
-        'align-items': 'center'
-    });
-    
-    const formWrapper = document.getElementById('formWrapper');
-    switch (btn) {
-        case 'addOrderBtn':
-            formWrapper.innerHTML = `<iframe src="order-form/add-order-form.html" class="form-popup" id="addIframe"></iframe>`;
-            $('#addIframe').css('height', 'calc(100vh - 40px)');
-            break;
-        case 'readAndEditUserBtn':
-            formWrapper.innerHTML = `<iframe src="order-form/read-edit-order-form.html" class="form-popup" id="readAndEditIframe" height="633px"></iframe>`;
-            break;
-        case 'deleteBtn':
-            formWrapper.innerHTML = `<iframe src="order-form/delete-popup.html" class="form-popup" id="deleteIframe"></iframe>`;
-            const del_iframe = document.getElementById('deleteIframe');
-
-            // Lắng nghe sự kiện load để đảm bảo iframe đã tải xong
-            del_iframe.addEventListener('load', function () {
-                const c = del_iframe.contentWindow;
-                if(c.getHeightForm() < screen.height) {
-                    $('#deleteIframe').css('height', c.getHeightForm() + 'px');
-                } else {
-                    $('#deleteIframe').css('height', 'calc(100vh - 40px)');
-                }
-            });
-            break;
-    }
-}
-
-$('#myTable').DataTable().on('draw', function () {
-    $('#addOrderBtn').click(function () {
-        changeFormOnOrder(this.id);
-        $('#formWrapper').removeClass('hidden');
-
-        $('#addIframe').on('load', function () {
-            const iframeDoc = $(this).contents();
-            // Gán sự kiện vào phần tử bên trong iframe
-            iframeDoc.find('#cancelBtn').on('click', function () {
-                hiddenOverlay();
-            });
-        });
-    });
-
-    $('.btn-read-edit').click(function () {
-        changeFormOnOrder('readAndEditUserBtn');
-        $('#formWrapper').removeClass('hidden');
-
-        $('#readAndEditIframe').on('load', function () {
-            const iframeDoc = $(this).contents();
-
-            // Gán sự kiện vào phần tử bên trong iframe
-            iframeDoc.find('#cancelBtn').on('click', function () {
-                hiddenOverlay();
-            });
-        });
-
-    });
-
-    $('.btn-delete').click(function () {
-        changeFormOnOrder('deleteBtn');
-        $('#formWrapper').removeClass('hidden');
-
-        $('#deleteIframe').on('load', function () {
-            const iframeDoc = $(this).contents();
-
-            // Gán sự kiện vào phần tử bên trong iframe
-            iframeDoc.find('#cancelBtn').on('click', function () {
-                hiddenOverlay();
-            });
-        });
-
-    });
-
+// Gắn sự kiện click cho formWrapper
+$('#formWrapper').on('click', function (event) {
+    hiddenOverlay() // Tắt overlay
 });
 
-$('#formWrapper').click(function () {
-    hiddenOverlay();
+$('#addOrderBtn').on('click', function(event) {
+    event.preventDefault();
+    const url = "order-form/add-order-form.jsp"
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (data) {
+            openOverlay();
+            $("#formWrapper").html(data);
+
+            // Ngăn sự kiện click trong form không lan lên formWrapper
+            $('form').on('click', function (event) {
+                event.stopPropagation();
+            });
+
+            $('#formContainer').css({
+                'width': '600px',
+                'max-height': '90vh',
+                'z-index': '2',
+                'overflow': 'auto',
+            });
+            $('#cancelBtn').click(function () {
+                hiddenOverlay();
+            });
+        },
+        error: function () {
+            alert("Có lỗi xảy ra khi tải nội dung.");
+        }
+    });
 });
+
+$('.btn-read-edit').on("click", function(event) {
+    event.preventDefault();
+    const url = "order-form/read-edit-order-form.jsp"
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (data) {
+            openOverlay();
+            $('#formWrapper').html(data);
+
+            // Ngăn sự kiện click trong form không lan lên formWrapper
+            $('form').on('click', function (event) {
+                event.stopPropagation();
+            });
+
+            $('#formContainer').css({
+                'width': '600px',
+                'max-height': '90vh',
+                'z-index': '2',
+                'overflow': 'auto',
+            });
+
+            // Xử lý nút hủy
+            $('#cancelBtn').on('click', function () {
+                hiddenOverlay();
+            })
+        },
+        error: function () {
+            alert("Có lỗi xảy ra khi tải nội dung.");
+        }
+    });
+});
+
+$('.btn-delete').on("click", function(event) {
+    event.preventDefault();
+    const url = "order-form/delete-popup.jsp"
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (data) {
+            openOverlay();
+            $('#formWrapper').html(data);
+
+            // Ngăn sự kiện click trong form không lan lên formWrapper
+            $('form').on('click', function (event) {
+                event.stopPropagation();
+            });
+
+            $('#formContainer').css({
+                'width': '500px',
+                'max-height': '90vh',
+                'z-index': '2',
+            })
+            $('#cancelBtn').click(function () {
+                hiddenOverlay();
+            });
+        },
+        error: function () {
+            alert("Có lỗi xảy ra khi tải nội dung.");
+        }
+    });
+})
 
 function hiddenOverlay() {
     $('#formWrapper').css({
         'display': 'none',
-        'justify-content': 'none',
-        'align-items': 'none'
+    });
+}
+
+function openOverlay() {
+    $('#formWrapper').css({
+        'display': 'flex',
+        'justify-content': 'center',
+        'align-items': 'center',
     });
 }

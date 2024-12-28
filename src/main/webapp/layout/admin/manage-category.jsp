@@ -14,9 +14,6 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../template/style/admin/general-content-admin.css">
     <link rel="stylesheet" href="../../template/style/admin/display-form-admin.css">
-    <!-- datatable -->
-    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
 
 </head>
 <body>

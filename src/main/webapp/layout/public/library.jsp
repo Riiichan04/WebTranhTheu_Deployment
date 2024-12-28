@@ -15,3 +15,6 @@
 <link rel="stylesheet" href="../../template/style/style.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!-- DataTable -->
+<link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+<script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>

@@ -14,9 +14,6 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../template/style/admin/general-content-admin.css">
     <link rel="stylesheet" href="../../template/style/admin/display-form-admin.css">
-    <!-- datatable -->
-    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
 
 </head>
 <body>
@@ -87,22 +84,9 @@
     </div>
 </div>
 
-<div id="formWrapper" class="">
-    <div>
-        <form style="z-index: 2">
-            Theem kskc
-            bsjhh
-            <button type="button">jasjk</button>
-        </form>
-    </div>
-</div>
+<div id="formWrapper" class="hidden"></div>
 
-<script>
-    $("#formWrapper").click(function () {
-        $("#formWrapper").addClass("hidden")
-    })
-</script>
 <script src="../../template/script/admin/manage-adminpage.js"></script>
-<%--<script src="../../template/script/admin/change-order-form.js"></script>--%>
+<script src="../../template/script/admin/change-order-form.js"></script>
 </body>
 </html>

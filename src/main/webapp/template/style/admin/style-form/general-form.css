@@ -100,8 +100,6 @@ body, html {
 }
 
 .icon-del {
-    position: absolute;
-    right: 30px;
     font-size: 20px;
     color: var(--dark-component-background-color);
     padding: 10px 0px 10px 10px;

@@ -12,6 +12,12 @@ $('#addCategoryBtn').on("click", function(event) {
         success: function (data) {
             openOverlay();
             $("#formWrapper").html(data);
+
+            // Ngăn sự kiện click trong form không lan lên formWrapper
+            $('form').on('click', function (event) {
+                event.stopPropagation();
+            });
+
             $('#formContainer').css({
                 'width': '500px',
                 'max-height': '90vh',
@@ -51,10 +57,10 @@ $('.btn-read-edit').on("click", function(event) {
 
             $('#myCategoryEditTable').DataTable().columns.adjust();
 
-            // Xử lý nút hủy với event delegation
-            $(document).on('click', '#cancelBtn', function() {
+            // Xử lý nút hủy
+            $('#cancelBtn').on('click', function () {
                 hiddenOverlay();
-            });
+            })
         },
         error: function () {
             alert("Có lỗi xảy ra khi tải nội dung.");
@@ -71,6 +77,12 @@ $('.btn-delete').on("click", function(event) {
         success: function (data) {
             openOverlay();
             $('#formWrapper').html(data);
+
+            // Ngăn sự kiện click trong form không lan lên formWrapper
+            $('form').on('click', function (event) {
+                event.stopPropagation();
+            });
+
             $('#formContainer').css({
                 'width': '500px',
                 'max-height': '90vh',
