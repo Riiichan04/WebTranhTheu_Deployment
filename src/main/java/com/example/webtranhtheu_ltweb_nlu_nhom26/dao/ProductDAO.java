@@ -30,7 +30,7 @@ public interface ProductDAO {
     @RegisterBeanMapper(Policy.class)
     Policy getProductPolicy(@Bind("id") int id);
 
-    @SqlQuery("select img_url from product_images where productId = :id")
+    @SqlQuery("select imgUrl from product_images where productId = :id")
     List<String> getListImageUrls(@Bind("id") int id);
 
     @SqlQuery("select productId, width, height, price, available from product_prices where productId = :id")
@@ -118,7 +118,7 @@ public interface ProductDAO {
 //    //Lấy danh sách hình ảnh của sản phẩm
 //    private static List<String> getImageUrls(int id) {
 //        return JDBIConnector.getInstance().withHandle(handle ->
-//                handle.createQuery("select img_url from product_images where productId = :id")
+//                handle.createQuery("select imgUrl from product_images where productId = :id")
 //                        .bind("id", id)
 //                        .mapToBean(String.class)
 //                        .list()
