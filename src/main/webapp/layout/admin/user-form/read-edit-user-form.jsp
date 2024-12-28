@@ -10,21 +10,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Xem và Sửa thông tin người dùng</title>
-    <link rel="icon" href="../../asset/favicon/favicon.ico">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- FontAwesome -->
-    <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- DataTable -->
-    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
+    <%@include file="../../public/library.jsp"%>
     <!-- css property -->
-    <link rel="stylesheet" href="../../style/index.css">
-    <link rel="stylesheet" href="../../style/admin/style-form/general-form.css">
-    <link rel="stylesheet" href="../../style/admin/style-form/style-read-edit-user-form.css">
+    <link rel="stylesheet" href="../../../template/style/admin/style-form/general-form.css">
+    <link rel="stylesheet" href="../../../template/style/admin/style-form/style-read-edit-user-form.css">
 
 </head>
 <body>
@@ -69,11 +58,13 @@
         <div class="row pt-2">
             <div class="col p-0">
                 <div class="img-container">
-                    <img src="../../asset/image/avt-admin.png" id="avatarImage">
-                    <i class="fa-solid fa-pen-to-square icon-edit-avt d-none edit-hidden" id="editAvatar"></i>
-                    <input type="file" value="../../img/avt-admin.png" accept="image/*" class="d-none"
-                           id="fileInput">
+                    <img src="../../../template/asset/image/avt-admin.png" id="avatarImage">
                 </div>
+            </div>
+            <div class="col-1 d-none edit-hidden">
+                <i class="fa-solid fa-pen-to-square icon-edit-avt" id="editAvatar"></i>
+                <input type="file" value="../../../template/asset/image/avt-admin.png" accept="image/*" class="d-none"
+                       id="fileInput">
             </div>
         </div>
         <!-- email -->
@@ -237,7 +228,6 @@
     </form>
 </div>
 
-<script src="../../script/admin/user-form/read-edit-user-form.js"></script>
-<script src="../../script/admin/js-get-height-form.js"></script>
+<script src="../../../template/script/admin/user-form/read-edit-user-form.js"></script>
 </body>
 </html>

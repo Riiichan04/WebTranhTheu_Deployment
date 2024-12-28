@@ -19,18 +19,18 @@
 <!-- Form container -->
 <div id="formContainer">
     <!-- Modal xác nhận -->
-    <div id="confirmModal">
+    <form id="confirmModal">
         <div class="modal-content py-4">
             <h5 class="style-title"><i class="fa-solid fa-circle-question me-2"></i>Xóa chính sách</h5>
             <hr>
             <h6 class="style-text">Bạn chắc chắn muốn xóa <span class="style-name-element">Chính sách 1</span>?</h6>
             <hr>
             <div class="text-end">
-                <button class="btn-no d-inline" id="cancelBtn">Không</button>
-                <button class="btn-yes d-inline" id="confirmYes">Có</button>
+                <button type="button" class="btn-no d-inline" id="cancelBtn">Không</button>
+                <button type="button" class="btn-yes d-inline" id="confirmYes">Có</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 
 </body>

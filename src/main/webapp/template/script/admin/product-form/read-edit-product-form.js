@@ -15,7 +15,7 @@ function removeProductPrice(button) {
 }
 
 // Khởi tạo DataTable
-if ($.fn.DataTable.isDataTable('#myCategoryEditTable')) {
+if ($.fn.DataTable.isDataTable('#myProductEditTable')) {
     $('#myProductEditTable').DataTable().destroy();
 }
 

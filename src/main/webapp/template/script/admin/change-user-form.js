@@ -1,111 +1,112 @@
-function changeFormOnUser(btn) {
-    $('#formWrapper').css({
-        'display': 'flex',
-        'justify-content': 'center',
-        'align-items': 'center'
-    });
-    
-    const formWrapper = document.getElementById('formWrapper');
-    switch (btn) {
-        case 'addUserBtn':
-            formWrapper.innerHTML = `<iframe src="user-form/add-user-form.html" class="form-popup" id="addIframe"></iframe>`;
-            const add_iframe = document.getElementById('addIframe');
+// Gắn sự kiện click cho formWrapper
+$('#formWrapper').on('click', function (event) {
+    hiddenOverlay() // Tắt overlay
+});
 
-            // Lắng nghe sự kiện load để đảm bảo iframe đã tải xong
-            add_iframe.addEventListener('load', function () {
-                const c = add_iframe.contentWindow;
-                if(c.getHeightForm() < screen.height) {
-                    $('#addIframe').css('height', (c.getHeightForm()+2) + 'px');
-                } else {
-                    $('#addIframe').css('height', 'calc(100vh - 40px)');
-                }
+$('#addUserBtn').on("click", function(event) {
+    event.preventDefault();
+    const url = "user-form/add-user-form.jsp"
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (data) {
+            openOverlay();
+            $("#formWrapper").html(data);
+
+            // Ngăn sự kiện click trong form không lan lên formWrapper
+            $('form').on('click', function (event) {
+                event.stopPropagation();
             });
-            break;
-        case 'readAndEditUserBtn':
-            formWrapper.innerHTML = `<iframe src="user-form/read-edit-user-form.html" class="form-popup" id="readAndEditIframe" style="width: 600px"></iframe>`;
-            const re_iframe = document.getElementById('readAndEditIframe');
 
-            // Lắng nghe sự kiện load để đảm bảo iframe đã tải xong
-            re_iframe.addEventListener('load', function () {
-                const c = re_iframe.contentWindow;
-                if(c.getHeightForm() < screen.height) {
-                    $('#readAndEditIframe').css('height', c.getHeightForm() + 'px');
-                } else {
-                    $('#readAndEditIframe').css('height', 'calc(100vh - 40px)');
-                }
-            });
-            break;
-        case 'deleteBtn':
-            formWrapper.innerHTML = `<iframe src="user-form/delete-popup.html" class="form-popup" id="deleteIframe"></iframe>`;
-            const del_iframe = document.getElementById('deleteIframe');
-
-            // Lắng nghe sự kiện load để đảm bảo iframe đã tải xong
-            del_iframe.addEventListener('load', function () {
-                const c = del_iframe.contentWindow;
-                if(c.getHeightForm() < screen.height) {
-                    $('#deleteIframe').css('height', c.getHeightForm() + 'px');
-                } else {
-                    $('#deleteIframe').css('height', 'calc(100vh - 40px)');
-                }
-            });
-            break;
-    }
-}
-
-$('#myTable').DataTable().on('draw', function () {
-    $('#addUserBtn').click(function () {
-        changeFormOnUser(this.id);
-        $('#formWrapper').removeClass('hidden');
-
-        $('#addIframe').on('load', function () {
-            const iframeDoc = $(this).contents();
-
-            // Gán sự kiện vào phần tử bên trong iframe
-            iframeDoc.find('#cancelBtn').on('click', function () {
+            $('#formContainer').css({
+                'width': '500px',
+                'max-height': '90vh',
+                'z-index': '2',
+                'overflow': 'auto',
+            })
+            $('#cancelBtn').click(function () {
                 hiddenOverlay();
             });
-        });
-    });
-
-    $('.btn-read-edit').click(function () {
-        changeFormOnUser('readAndEditUserBtn');
-        $('#formWrapper').removeClass('hidden');
-
-        $('#readAndEditIframe').on('load', function () {
-            const iframeDoc = $(this).contents();
-
-            // Gán sự kiện vào phần tử bên trong iframe
-            iframeDoc.find('#cancelBtn').on('click', function () {
-                hiddenOverlay();
-            });
-        });
-
-    });
-
-    $('.btn-delete').click(function () {
-        changeFormOnUser('deleteBtn');
-        $('#formWrapper').removeClass('hidden');
-
-        $('#deleteIframe').on('load', function () {
-            const iframeDoc = $(this).contents();
-
-            // Gán sự kiện vào phần tử bên trong iframe
-            iframeDoc.find('#cancelBtn').on('click', function () {
-                hiddenOverlay();
-            });
-        });
-
+        },
+        error: function () {
+            alert("Có lỗi xảy ra khi tải nội dung.");
+        }
     });
 });
 
-$('#formWrapper').click(function () {
-    hiddenOverlay();
+$('.btn-read-edit').on("click", function(event) {
+    event.preventDefault();
+    const url = "user-form/read-edit-user-form.jsp"
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (data) {
+            openOverlay();
+            $('#formWrapper').html(data);
+
+            // Ngăn sự kiện click trong form không lan lên formWrapper
+            $('form').on('click', function (event) {
+                event.stopPropagation();
+            });
+
+            $('#formContainer').css({
+                'width': '600px',
+                'max-height': '90vh',
+                'z-index': '2',
+                'overflow': 'auto',
+            });
+
+            // Xử lý nút hủy
+            $('#cancelBtn').on('click', function () {
+                hiddenOverlay();
+            })
+        },
+        error: function () {
+            alert("Có lỗi xảy ra khi tải nội dung.");
+        }
+    });
 });
+
+$('.btn-delete').on("click", function(event) {
+    event.preventDefault();
+    const url = "user-form/delete-popup.jsp"
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (data) {
+            openOverlay();
+            $('#formWrapper').html(data);
+
+            // Ngăn sự kiện click trong form không lan lên formWrapper
+            $('form').on('click', function (event) {
+                event.stopPropagation();
+            });
+
+            $('#formContainer').css({
+                'width': '500px',
+                'max-height': '90vh',
+                'z-index': '2',
+            })
+            $('#cancelBtn').click(function () {
+                hiddenOverlay();
+            });
+        },
+        error: function () {
+            alert("Có lỗi xảy ra khi tải nội dung.");
+        }
+    });
+})
 
 function hiddenOverlay() {
     $('#formWrapper').css({
         'display': 'none',
-        'justify-content': 'none',
-        'align-items': 'none'
+    });
+}
+
+function openOverlay() {
+    $('#formWrapper').css({
+        'display': 'flex',
+        'justify-content': 'center',
+        'align-items': 'center',
     });
 }
