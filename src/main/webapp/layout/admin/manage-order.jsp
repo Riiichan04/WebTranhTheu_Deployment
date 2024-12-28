@@ -87,8 +87,21 @@
     </div>
 </div>
 
-<div id="formWrapper" class="hidden mx-auto"></div>
+<div id="formWrapper" class="">
+    <div>
+        <form style="z-index: 2">
+            Theem kskc
+            bsjhh
+            <button type="button">jasjk</button>
+        </form>
+    </div>
+</div>
 
+<script>
+    $("#formWrapper").click(function () {
+        $("#formWrapper").addClass("hidden")
+    })
+</script>
 <script src="../../template/script/admin/manage-adminpage.js"></script>
 <%--<script src="../../template/script/admin/change-order-form.js"></script>--%>
 </body>

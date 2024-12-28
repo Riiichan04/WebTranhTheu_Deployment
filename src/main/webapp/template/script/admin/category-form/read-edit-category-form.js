@@ -1,4 +1,4 @@
-$('#editBtn').click(function () {
+$('#editBtn').on("click", function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     $('#title').text('Chỉnh sửa danh mục')
     $('#containerEditBtn').html(`<button class="style-update-btn" id="editBtn" type="submit">Cập nhật</button>`);
@@ -14,15 +14,20 @@ $('#editBtn').click(function () {
     $('.edit-hidden').removeClass('d-none');
 });
 
+// Khởi tạo DataTable
+if ($.fn.DataTable.isDataTable('#myCategoryEditTable')) {
+    $('#myCategoryEditTable').DataTable().destroy();
+}
+
 $('#myCategoryEditTable').DataTable({
-    destroy: true,
     scrollY: "300px",
     scrollX: true,
+    initComplete: function() {
+        // Tùy chỉnh giao diện DataTable
+        $('.dt-search label').text("Tìm kiếm: ").css("margin-right", "10px");
+        $('.dt-length label').text("Số lượng hiển thị mỗi trang").css("margin-left", "10px");
+        $('.dt-info').css("display", "none");
+        $('.dt-search input').css("width", "300px");
+        $('table.dataTable th.dt-type-numeric').css("text-align", "center");
+    },
 });
-
-// Cập nhật giao diện
-$('.dt-search label').text("Tìm kiếm: ").css("margin-right", "10px");
-$('.dt-length label').text("Số lượng hiển thị mỗi trang").css("margin-left", "10px");
-$('.dt-info').css("display", "none");
-$('.dt-search input').css("width", "300px");
-$('table.dataTable th.dt-type-numeric').css("text-align", "center");

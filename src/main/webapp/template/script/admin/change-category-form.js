@@ -1,3 +1,8 @@
+// Gắn sự kiện click cho formWrapper
+$('#formWrapper').on('click', function (event) {
+    hiddenOverlay() // Tắt overlay
+});
+
 $('#addCategoryBtn').on("click", function(event) {
     event.preventDefault();
     const url = "category-form/add-category-form.jsp"
@@ -30,18 +35,24 @@ $('.btn-read-edit').on("click", function(event) {
         type: "GET",
         success: function (data) {
             openOverlay();
-            $("#formWrapper").html(data);
+            $('#formWrapper').html(data);
+
+            // Ngăn sự kiện click trong form không lan lên formWrapper
+            $('form').on('click', function (event) {
+                event.stopPropagation();
+            });
+
             $('#formContainer').css({
                 'width': '600px',
                 'max-height': '90vh',
                 'z-index': '2',
                 'overflow': 'auto',
-            })
+            });
 
             $('#myCategoryEditTable').DataTable().columns.adjust();
 
-            // Xử lý nút hủy
-            $('#cancelBtn').on('click', function () {
+            // Xử lý nút hủy với event delegation
+            $(document).on('click', '#cancelBtn', function() {
                 hiddenOverlay();
             });
         },
@@ -59,7 +70,7 @@ $('.btn-delete').on("click", function(event) {
         type: "GET",
         success: function (data) {
             openOverlay();
-            $("#formWrapper").html(data);
+            $('#formWrapper').html(data);
             $('#formContainer').css({
                 'width': '500px',
                 'max-height': '90vh',

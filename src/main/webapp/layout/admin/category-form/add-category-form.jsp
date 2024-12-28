@@ -13,6 +13,9 @@
     <%@include file="../../public/library.jsp"%>>
     <!-- css property -->
     <link rel="stylesheet" href="../../../template/style/admin/style-form/general-form.css">
+    <!-- DataTable -->
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
 
 </head>
 <body>

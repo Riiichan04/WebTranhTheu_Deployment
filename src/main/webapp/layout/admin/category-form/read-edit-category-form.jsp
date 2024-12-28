@@ -41,7 +41,7 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <table id="myCategoryEditTable" class="display custom-table w-100">
+                <table id="myCategoryEditTable" class="w-100">
                     <thead>
                     <tr>
                         <th class="text-center">STT</th>
