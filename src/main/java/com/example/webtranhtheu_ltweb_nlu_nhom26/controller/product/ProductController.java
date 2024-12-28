@@ -2,18 +2,14 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ProductDetailService;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Comparator;
 
 @WebServlet(name = "ProductController", value = "/product")
 public class ProductController extends HttpServlet {
@@ -28,7 +24,6 @@ public class ProductController extends HttpServlet {
             int id = Integer.parseInt(productId);
             DisplayFullProduct service = new DisplayFullProduct(new ConcreateProductDetail());
             Product product = service.getFullProductInfo(id);
-            System.out.println(product.getCategory().getTitle());
             if (product == null) {  //Không tìm thấy product với id đã nhập
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
             }
@@ -44,7 +39,8 @@ public class ProductController extends HttpServlet {
             }
 
             if (displayPrice == null) { //Không thể tìm thấy giá của sản phẩm do lỗi nào đó ở db
-                response.sendError(418, "Tui là ấm trà mà, sao mấy người muốn bắt tui pha cà phê vậy :<"); //Joke giải trí trước khi thi cuối kì =))
+//                response.sendError(418, "Tui là ấm trà mà, sao mấy người muốn bắt tui pha cà phê vậy :<"); //Joke giải trí trước khi thi cuối kì =))
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
             } else {
                 request.setAttribute("product", product);
                 request.setAttribute("displayPrice", displayPrice);
