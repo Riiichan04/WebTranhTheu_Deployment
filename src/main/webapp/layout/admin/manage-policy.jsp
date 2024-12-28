@@ -14,9 +14,6 @@
     <!-- css property -->
     <link rel="stylesheet" href="../../template/style/admin/general-content-admin.css">
     <link rel="stylesheet" href="../../template/style/admin/display-form-admin.css">
-    <!-- datatable -->
-    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
 
 </head>
 <body>
@@ -78,6 +75,6 @@
 <div id="formWrapper" class="hidden mx-auto"></div>
 
 <script src="../../template/script/admin/manage-adminpage.js"></script>
-<%--<script src="../../template/script/admin/change-policy-form.js"></script>--%>
+<script src="../../template/script/admin/change-policy-form.js"></script>
 </body>
 </html>
