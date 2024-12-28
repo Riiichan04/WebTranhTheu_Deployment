@@ -106,10 +106,10 @@
 
         <div class="row pt-4 pb-4">
             <div class="col" id="containerCancelBtn">
-                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+                <button type="button" id="cancelBtn" class="style-cancel-btn">Hủy</button>
             </div>
             <div class="col" id="containerEditBtn">
-                <button class="style-button" id="editBtn">Chỉnh sửa</button>
+                <button type="button" class="style-button" id="editBtn">Chỉnh sửa</button>
             </div>
         </div>
     </form>

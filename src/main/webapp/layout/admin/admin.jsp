@@ -76,37 +76,38 @@
                         <i class="fa-solid fa-right-from-bracket me-2"></i>
                         Đăng xuất
                     </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel"><i
-                                            class="fa-solid fa-circle-question pe-2"
-                                            style="color: var(--sub-cta-button)"></i>Đăng xuất</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Bạn chắc chắn muốn đăng xuất ?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                            id="choose-close">Hủy
-                                    </button>
-                                    <button type="button" class="btn btn-primary" id="choose-log-out"
-                                            onclick="window.location.replace('sign-in.html');">Đăng xuất
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </nav>
         </div>
         <div class="col-10 p-0" id="content">
             <%@include file="dashboard.jsp"%>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i
+                        class="fa-solid fa-circle-question pe-2"
+                        style="color: var(--sub-cta-button)"></i>Đăng xuất</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn chắc chắn muốn đăng xuất ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="choose-close">Hủy
+                </button>
+                <button type="button" class="btn btn-primary" id="choose-log-out"
+                        onclick="window.location.replace('sign-in.html');">Đăng xuất
+                </button>
+            </div>
         </div>
     </div>
 </div>
