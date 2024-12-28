@@ -21,7 +21,7 @@ if ($.fn.DataTable.isDataTable('#myCategoryEditTable')) {
 
 $('#myCategoryEditTable').DataTable({
     scrollY: "300px",
-    scrollX: true,
+    scrollX: "100%",
     initComplete: function() {
         // Tùy chỉnh giao diện DataTable
         $('.dt-search label').text("Tìm kiếm: ").css("margin-right", "10px");

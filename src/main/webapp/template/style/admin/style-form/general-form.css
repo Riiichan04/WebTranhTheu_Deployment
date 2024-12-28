@@ -75,10 +75,6 @@ body, html {
     border-right: none;
 }
 
-.fa-brands {
-    color: var(--sub-cta-button);
-}
-
 .form-container {
     padding-left: 40px;
     padding-right: 40px;
