@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Product implements Serializable {
@@ -136,6 +137,10 @@ public class Product implements Serializable {
         this.type = type;
     }
 
+    public Price getMinPrice() {
+        return listPrices.stream().min(Comparator.comparingDouble(Price::getPrice)).orElse(null);
+    }
+
     public Price getSelectedPrice(int width, int height) {
         for (int i = 0; i < this.listPrices.size(); i++) {
             Price price = this.getListPrices().get(i);
@@ -148,7 +153,6 @@ public class Product implements Serializable {
         //Mặc định lấy hình đầu tiên
         return this.listImageUrls.get(0);
     }
-
 
     public static class ProductMapper implements RowMapper<Product> {
 

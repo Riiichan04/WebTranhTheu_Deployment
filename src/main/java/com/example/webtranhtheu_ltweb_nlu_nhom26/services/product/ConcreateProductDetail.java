@@ -4,6 +4,8 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
+import java.util.Arrays;
+
 public class ConcreateProductDetail implements ProductDetailService {
     ProductDAO productDAO;
 

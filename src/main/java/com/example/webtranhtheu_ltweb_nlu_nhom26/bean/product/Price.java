@@ -1,6 +1,11 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
+import org.jdbi.v3.core.mapper.RowMapper;
+import org.jdbi.v3.core.statement.StatementContext;
+
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Price implements Serializable {
     private int productId;  //Id sản phẩm
@@ -60,3 +65,4 @@ public class Price implements Serializable {
         this.available = available;
     }
 }
+

@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
+import org.jdbi.v3.sqlobject.config.RegisterRowMapperFactories;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
@@ -10,10 +11,11 @@ import java.util.List;
 
 public interface ProductDAO {
 
-
     @SqlQuery("select products.id, products.title, products.codeProduct, products.description, products.typeOfProduct from products join category_products_details on products.id = category_products_details.productId where products.id = :id")
     @RegisterRowMapper(Product.ProductMapper.class)
     Product getProductInfo(@Bind("id") int id);
+
+    //Thiếu Category
 
     @SqlQuery("select img_url from product_images where productId = :id limit 1")
     String getThumbnail(@Bind("id") int id);
@@ -29,7 +31,7 @@ public interface ProductDAO {
     @SqlQuery("select img_url from product_images where productId = :id")
     List<String> getListImageUrls(@Bind("id") int id);
 
-    @SqlQuery("select price, width, height from product_prices where productId = :id")
+    @SqlQuery("select productId, width, height, price, available from product_prices where productId = :id")
     @RegisterBeanMapper(Price.class)
     List<Price> getProductPrices(@Bind("id") int id);
 
