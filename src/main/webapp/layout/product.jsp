@@ -28,15 +28,11 @@
                 <img id="product-image" src="${product.getThumbnail()}" alt="">
                 <p class="mt-4 mb-1">Kích thước: </p>
                 <div class="w-100">
-                    <button class="sub-cta-button py-2 px-2 rounded">
-                        40x30cm
-                    </button>
-                    <button class="sub-cta-button py-2 px-2 rounded">
-                        50x40cm
-                    </button>
-                    <button class="sub-cta-button py-2 px-2 rounded">
-                        65x50cm
-                    </button>
+                    <c:forEach var="price" items="${product.getListPrices()}">
+                        <button class="sub-cta-button py-2 px-2 rounded">
+                            ${price.width}x${price.height}cm
+                        </button>
+                    </c:forEach>
                 </div>
             </div>
             <div class="col ps-4_5 p-4_5 ">
@@ -54,7 +50,12 @@
                             <c:if test="${!status.last}">, </c:if>
                         </c:forEach>
                     </span></div>
-                    <div class="col-6">Chủ đề: <span class="fw-semibold">${product.category.title}</span></div>
+                    <div class="col-6">Chủ đề: <span class="fw-semibold">
+                        <c:forEach var="topic" items="${product.listTopics}" varStatus="status">
+                            ${topic.title}
+                            <c:if test="${!status.last}">, </c:if>
+                        </c:forEach>
+                    </span></div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh thêu Hà Sơn</span></div>

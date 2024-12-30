@@ -2,8 +2,6 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 
-import java.util.Arrays;
-
 public class DisplayFullProduct extends DecorationProductDetail {
     ProductDetailService wrapper;
 
@@ -16,6 +14,7 @@ public class DisplayFullProduct extends DecorationProductDetail {
         product.setPolicy(super.productDAO.getProductPolicy(productId));
         product.setProvider(super.productDAO.getProductProvider(productId));
         product.setCategory(super.productDAO.getCategory(productId));
+        product.getListTopics().addAll(super.productDAO.getTopics(productId));
         product.getListPrices().addAll(super.productDAO.getProductPrices(productId));
         product.getListMaterials().addAll(super.productDAO.getMaterials(productId));
         product.getListImageUrls().addAll(super.productDAO.getListImageUrls(productId));

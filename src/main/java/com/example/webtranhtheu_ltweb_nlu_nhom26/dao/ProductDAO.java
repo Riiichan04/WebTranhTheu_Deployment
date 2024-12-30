@@ -30,6 +30,10 @@ public interface ProductDAO {
     @RegisterBeanMapper(Policy.class)
     Policy getProductPolicy(@Bind("id") int id);
 
+    @SqlQuery("select topics.id, topics.title, topics.active from topics join topic_products_details on topic_products_details.topicId = topics.id where topic_products_details.productId = :id")
+    @RegisterBeanMapper(Topic.class)
+    List<Topic> getTopics(@Bind("id") int id);
+
     @SqlQuery("select imgUrl from product_images where productId = :id")
     List<String> getListImageUrls(@Bind("id") int id);
 

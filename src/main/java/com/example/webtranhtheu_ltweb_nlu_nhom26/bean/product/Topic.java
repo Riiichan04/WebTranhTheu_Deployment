@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Topic implements Serializable {
     private int id; //Id của topic
-    private String name;    //Tên của topic
+    private String title;    //Tên của topic
     private int active; //Trạng thái của topic
 
     public Topic() {
@@ -18,12 +18,12 @@ public class Topic implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getActive() {
