@@ -8,6 +8,7 @@ public class JDBIConnector {
     private static Jdbi createJdbi() {
         if (jdbi == null) {
             jdbi = Jdbi.create(new DBProperties().getConnection());
+            jdbi.installPlugins();
         }
         return jdbi;
     }

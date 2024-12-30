@@ -20,6 +20,10 @@ body {
     background-color: var(--web-background-color) !important;
 }
 
+textarea {
+    resize: none;
+}
+
 .p-4_5 {
     padding: 2rem !important;
 }

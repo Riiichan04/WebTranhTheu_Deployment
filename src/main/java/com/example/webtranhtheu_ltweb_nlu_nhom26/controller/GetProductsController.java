@@ -1,14 +1,14 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "PaintingController", value = "/painting")
-public class PaintingController extends HttpServlet {
+//Dùng để lấy 1 hàng 5 sản phẩm
+@WebServlet(name = "GetProductsController", value = "/GetProductsController")
+public class GetProductsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
