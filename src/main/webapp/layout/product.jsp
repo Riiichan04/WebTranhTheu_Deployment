@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="common.jsp"/>
 <html>
@@ -11,9 +12,11 @@
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">
         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay/tranh-phong-canh">Tranh thêu Phong cảnh</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Tranh Phong cảnh Đồng quê</li>
+        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">${product.category.title}</a></li>
+<%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>--%>
+<%--        Phần topic xử lý sau        --%>
+<%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay/tranh-phong-canh">Tranh thêu Phong cảnh</a></li>--%>
+        <li class="breadcrumb-item active" aria-current="page">${product.title}</li>
     </ol>
 </nav>
 
@@ -37,15 +40,20 @@
             </div>
             <div class="col ps-4_5 p-4_5 ">
                 <div class="row">
-                    <h3 class="main-color">Tranh Phong cảnh Đồng quê</h3>
+                    <h3 class="main-color">${product.title}</h3>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-6">Mã sản phẩm: <span class="fw-semibold">TTPC-0001</span></div>
+                    <div class="col-6">Mã sản phẩm: <span class="fw-semibold">${product.code}</span></div>
                     <div class="col-6">Danh mục: <span class="fw-semibold">Tranh thêu tay</span></div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-6">Nguyên liệu: <span class="fw-semibold">Vải, Kim, Chỉ</span></div>
-                    <div class="col-6">Chủ đề: <span class="fw-semibold">Tranh Phong cảnh</span></div>
+                    <div class="col-6">Nguyên liệu: <span class="fw-semibold">
+                        <c:forEach var="material" items="${product.listMaterials}" varStatus="status">
+                            ${material.title}
+                            <c:if test="${!status.last}">, </c:if>
+                        </c:forEach>
+                    </span></div>
+                    <div class="col-6">Chủ đề: <span class="fw-semibold">${product.category.title}</span></div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh thêu Hà Sơn</span></div>

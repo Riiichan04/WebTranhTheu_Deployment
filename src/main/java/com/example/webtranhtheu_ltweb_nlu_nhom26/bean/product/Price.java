@@ -1,18 +1,23 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
+import org.jdbi.v3.core.mapper.RowMapper;
+import org.jdbi.v3.core.statement.StatementContext;
+
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class ProductPrice implements Serializable {
-    private int productId;
-    private int width;
-    private int height;
-    private double price;
-    private int available;
+public class Price implements Serializable {
+    private int productId;  //Id sản phẩm
+    private int width;  //Chiều dày của sản phẩm
+    private int height; //Chiều cao của sản phẩm
+    private double price;   //Giá tiền
+    private int available;  //Số lượng tồn kho hiện tại
 
-    public ProductPrice() {
+    public Price() {
     }
 
-    public ProductPrice(int productId, int width, int height, double price, int available) {
+    public Price(int productId, int width, int height, double price, int available) {
         this.productId = productId;
         this.width = width;
         this.height = height;
@@ -60,3 +65,4 @@ public class ProductPrice implements Serializable {
         this.available = available;
     }
 }
+

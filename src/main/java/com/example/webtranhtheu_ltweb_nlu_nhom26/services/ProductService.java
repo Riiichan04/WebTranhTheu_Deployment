@@ -1,29 +1,11 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductPrice;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.ProductReview;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
-
-import java.util.Comparator;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 
 public class ProductService {
+    //Lấy đánh giá trung bình của sản phẩm (Sẽ cho vào product)
     public static double getProductRating(Product product) {
-        return product.getListReview().stream().mapToInt(ProductReview::getRating).average().orElse(0.0);
-    }
-
-    public static Product getProduct(int id) {
-        return ProductDAO.getProductById(id);
-    }
-
-    public static ProductPrice getProductPrice(int id, int w, int h) {
-        Product product = ProductDAO.getProductById(id);
-        return product.getListPrice().stream().filter(obj -> obj.getWidth() == w && obj.getHeight() == h).toList().get(0);
-    }
-
-    //Hiển thị mặc định
-    public static ProductPrice getMinProductPrice(int id) {
-        Product product = ProductDAO.getProductById(id);
-        return product.getListPrice().stream().min(Comparator.comparing(ProductPrice::getWidth).thenComparing(ProductPrice::getHeight)).orElse(null);
+        return product.getListReviews().stream().mapToInt(Review::getRating).average().orElse(0.0);
     }
 }
