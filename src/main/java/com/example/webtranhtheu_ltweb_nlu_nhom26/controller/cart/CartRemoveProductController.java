@@ -17,11 +17,11 @@ public class CartRemoveProductController extends HttpServlet {
         HttpSession session = request.getSession();
         int productId = Integer.parseInt(request.getParameter("productId"));
         Cart cart = (Cart) session.getAttribute("Cart");
+        session.removeAttribute("Cart");
         if(cart == null) {
             cart = new Cart();
         }
         cart.remove(productId);
-        // removeAttribute Cart?????
         session.setAttribute("Cart", cart);
     }
 
