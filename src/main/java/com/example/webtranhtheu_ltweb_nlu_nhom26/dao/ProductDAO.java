@@ -49,6 +49,13 @@ public interface ProductDAO {
     @RegisterBeanMapper(Discount.class)
     List<Discount> getProductDiscounts(@Bind("id") int id);
 
+    @SqlQuery("select products.id from products join select order_products_details.productId from orders_products_details join orders on orders_products_details.orderId = orders.id where orders.createdAt >= now() - interval 3 month and order_products_details.productId in (select productId from order_products_details group by productId order by count(productId) limit 5) as limit_orders on limit_orders.productId = products.id limit 5")
+    List<Integer> getIdOfHotProduct();
+
+    //Lấy danh sách các product có đánh giá cao nhất
+    @SqlQuery("select products.id from products join ( select productId, avg(rating) as rating from product_reviews group by productId order by rating desc limit 5) as product_ratings on product_ratings.productId = products.id")
+    List<Integer> getMostRatedProductsId();
+
 //    default Product getProductInfo(int productId) {
 //        return JDBIConnector.getInstance().withHandle(handle -> handle
 //                .createQuery("""
@@ -149,5 +156,68 @@ public interface ProductDAO {
 //                        .bind("id", id)
 //                        .mapToBean(Discount.class).list()
 //        );
+//    }
+//
+//    public List<Object> getHotProducts() {
+//        return JDBIConnector.getInstance().withHandle(handle ->
+//                handle.createQuery("select products.title, product_prices.price, product_ratings.rating, images.productId\n" +
+//                        "from products \n" +
+//                        "  join category_product_details\n" +
+//                        "    on products.id = category_product_details.productId\n" +
+//                        "\n" +
+//                        "  right join product_prices\n" +
+//                        "    on products.id = product_prices.productId\n" +
+//                        "\n" +
+//                        "  join (\n" +
+//                        "    select productId, avg(rating) as rating\n" +
+//                        "    from product_reviews\n" +
+//                        "    group by productId\n" +
+//                        "  ) \n" +
+//                        "  as product_ratings\n" +
+//                        "    on product_ratings.productId = products.id\n" +
+//                        "    \n" +
+//                        "  left join (\n" +
+//                        "    select productId, img_url\n" +
+//                        "    from product_images\n" +
+//                        "    limit 1\n" +
+//                        "  ) as images on products.id = images.productId\n" +
+//                        "\n" +
+//                        "  join (\n" +
+//                        "    select order_products_details.productId\n" +
+//                        "    from orders_products_details join orders\n" +
+//                        "      on orders_products_details.orderId = orders.id\n" +
+//                        "    where \n" +
+//                        "      orders.createdAt >= now() - interval 3 month\n" +
+//                        "      and order_products_details.productId in (\n" +
+//                        "        select productId \n" +
+//                        "        from order_products_details\n" +
+//                        "        group by productId \n" +
+//                        "        order by count(productId)\n" +
+//                        "        limit 5\n" +
+//                        "    ) as limit_orders on limit_orders.productId = products.id\n" +
+//                        "limit 5\n").mapToBean(Object.class).list()
+//        );
+//    }
+//
+//    //Lấy danh sách các product có đánh giá cao nhất
+//    public List<Product> getMostRatedProducts() {
+//        List<Integer> listProductId = JDBIConnector.getInstance().withHandle(handle ->
+//                handle.createQuery("select products.id" +
+//                                "from products" +
+//                                "join (" +
+//                                "  select productId, avg(rating) as rating" +
+//                                "  from product_reviews" +
+//                                "  group by productId" +
+//                                "  order by rating desc" +
+//                                "  limit 5)" +
+//                                "as product_ratings" +
+//                                "  on product_ratings.productId = products.id")
+//                        .mapToBean(Integer.class).list());
+//
+//        List<Product> listProduct = new ArrayList<>();
+//        for (int id : listProductId) {
+//            listProduct.add(getProductById(id));
+//        }
+//        return listProduct;
 //    }
 }
