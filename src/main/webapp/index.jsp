@@ -82,6 +82,18 @@
                 </div>
             </div>
         </div>
+        <c:forEach var="product" items="${hotProduct}">
+            <div class="col">
+                <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
+                    <img src="${product.getThumbnail()}"  class="card-img-top" alt="...">
+                    <div class="card-body px-1">
+                            <%-- Tạm --%>
+                        <h6 class="card-title text-center pb-2">${product.category} ${product.title}</h6>
+                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.getListPrice().get(0).getDisplayPriceToString()}</p>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
 </section>
 <section class="container background-container p-4_5 rounded my-4_5" id="most-rated-product-section">
@@ -138,6 +150,18 @@
                 </div>
             </div>
         </div>
+        <c:forEach var="product" items="${mostRatedProduct}">
+            <div class="col">
+                <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
+                    <img src="${product.getThumbnail()}"  class="card-img-top" alt="...">
+                    <div class="card-body px-1">
+                            <%-- Tạm --%>
+                        <h6 class="card-title text-center pb-2">${product.category} ${product.title}</h6>
+                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.getListPrice().get(0).getDisplayPriceToString()}</p>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
 </section>
 <section class="container background-container p-4_5 rounded my-4_5" id="category-section">
