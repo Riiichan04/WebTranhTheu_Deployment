@@ -1,74 +1,39 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.services.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseProductMapper;
-import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
-import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
-import org.jdbi.v3.sqlobject.customizer.Bind;
-import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
-import java.util.List;
+import java.util.Arrays;
 
-public interface ProductDAO {
+public class DisplayFullProduct extends DecorationProductDetail {
+    ProductDetailService wrapper;
 
-    @SqlQuery("select products.id, products.title, products.codeProduct, products.description, products.typeOfProduct from products join category_products_details on products.id = category_products_details.productId where products.id = :id")
-    @RegisterRowMapper(BaseProductMapper.class)
-    Product getProductInfo(@Bind("id") int id);
+    public DisplayFullProduct(ProductDetailService wrapper) {
+        this.wrapper = wrapper;
+    }
 
-    @SqlQuery("select categories.* from categories join category_products_details on categories.id = category_products_details.categoryId where category_products_details.productId = :id")
-    @RegisterBeanMapper(Category.class)
-    Category getCategory(@Bind("id") int id);
+    public Product getFullProductInfo(int productId) {
+        Product product = this.wrapper.getProductInfo(productId);
+        product.setPolicy(super.productDAO.getProductPolicy(productId));
+        product.setProvider(super.productDAO.getProductProvider(productId));
+        product.setCategory(super.productDAO.getCategory(productId));
+        product.getListPrices().addAll(super.productDAO.getProductPrices(productId));
+        product.getListMaterials().addAll(super.productDAO.getMaterials(productId));
+        product.getListImageUrls().addAll(super.productDAO.getListImageUrls(productId));
+        product.getListReviews().addAll(super.productDAO.getProductReviews(productId, 0)); //Mặc định offset = 0
+        product.getListDiscounts().addAll(super.productDAO.getProductDiscounts(productId));
+        return product;
+    }
 
-    @SqlQuery("select imgUrl from product_images where productId = :id limit 1")
-    String getThumbnail(@Bind("id") int id);
-
-    @SqlQuery("select providers.id, providers.providerName, addresses.location from providers join products on providers.id = products.providerId join addresses on providers.addressId = addresses.id where products.id = :id")
-    @RegisterBeanMapper(Provider.class)
-    Provider getProductProvider(@Bind("id") int id);
-
-    @SqlQuery("select policies.title, policies.description from policies join products on policies.id = products.policyId where products.id = :id")
-    @RegisterBeanMapper(Policy.class)
-    Policy getProductPolicy(@Bind("id") int id);
-
-    @SqlQuery("select img_url from product_images where productId = :id")
-    List<String> getListImageUrls(@Bind("id") int id);
-
-    @SqlQuery("select productId, width, height, price, available from product_prices where productId = :id")
-    @RegisterBeanMapper(Price.class)
-    List<Price> getProductPrices(@Bind("id") int id);
-
-    @SqlQuery("select materials.title from material_products_details join materials on material_products_details.materialId = materials.id where productId = :id")
-    @RegisterBeanMapper(Material.class)
-    List<Material> getMaterials(@Bind("id") int id);
-
-    @SqlQuery("select accountId, rating, content from product_reviews where productId = :id and content is not null limit :offset, 5")
-    @RegisterBeanMapper(Review.class)
-    List<Review> getProductReviews(@Bind("id") int id, @Bind("offset") int offset);
-
-    @SqlQuery("select discounts.title, discounts.description, discounts.startedAt, discounts.endedAt from discounts join product_discounts_details on discounts.id = product_discounts_details.discountId join products where product_discounts_details.productId = products.id and discounts.startedAt <= now() and discounts.endedAt >= now() and products.id = :id")
-    @RegisterBeanMapper(Discount.class)
-    List<Discount> getProductDiscounts(@Bind("id") int id);
-
-//    default Product getProductInfo(int productId) {
-//        return JDBIConnector.getInstance().withHandle(handle -> handle
-//                .createQuery("""
-//                        select products.id products.title, products.code, products.description, products.typeOfProduct
-//                        from products
-//                        join category_product_details
-//                            on products.id = category_product_details.productId
-//                        where products.id = :id
-//                        """)
-//                .bind("id", productId).map((rs, ctx) -> {
-//                    Product product = new Product();
-//                    product.setId(productId);
-//                    product.setCode(rs.getString("code"));
-//                    product.setTitle(rs.getString("title"));
-//                    product.setDescription(rs.getString("description"));
-//                    product.setType(rs.getInt("typeOfProduct"));
-//                    return product;
-//                }).one()
+//    //Lấy hình ảnh của product
+//    private List<String> getListImageUrls(int productId) {
+//        return JDBIConnector.getInstance().withHandle(handle ->
+//                handle.createQuery("select imgUrl from product_images where productId = :id")
+//                        .bind("id", productId)
+//                        .mapToBean(String.class)
+//                        .list()
 //        );
 //    }
+//
 //
 //    //Lấy nhà cung cấp của sản phẩm
 //    private static Provider getProductProvider(int id) {
