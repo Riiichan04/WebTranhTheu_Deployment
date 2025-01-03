@@ -80,7 +80,6 @@
             </nav>
         </div>
         <div class="col-10 p-0" id="content">
-            <%@include file="dashboard.jsp"%>
         </div>
     </div>
 </div>
