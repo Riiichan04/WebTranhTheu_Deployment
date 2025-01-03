@@ -5,7 +5,7 @@ $('#formWrapper').on('click', function (event) {
 
 $('#addUserBtn').on("click", function(event) {
     event.preventDefault();
-    const url = "user-form/add-user-form.jsp"
+    const url = "/add-user";
     $.ajax({
         url: url,
         type: "GET",
@@ -36,7 +36,7 @@ $('#addUserBtn').on("click", function(event) {
 
 $('.btn-read-edit').on("click", function(event) {
     event.preventDefault();
-    const url = "user-form/read-edit-user-form.jsp"
+    const url = "/update-user";
     $.ajax({
         url: url,
         type: "GET",
@@ -69,7 +69,7 @@ $('.btn-read-edit').on("click", function(event) {
 
 $('.btn-delete').on("click", function(event) {
     event.preventDefault();
-    const url = "user-form/delete-popup.jsp"
+    const url = "/delete-user";
     $.ajax({
         url: url,
         type: "GET",

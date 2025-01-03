@@ -76,6 +76,7 @@ body, html {
 }
 
 .form-container {
+    margin-bottom: 0px;
     padding-left: 40px;
     padding-right: 40px;
     background-color: var(--light-component-background-color);

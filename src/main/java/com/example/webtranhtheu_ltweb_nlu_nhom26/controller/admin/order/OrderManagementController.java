@@ -8,11 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "OrderController", value = "/OrderController")
-public class OrderController extends HttpServlet {
+@WebServlet(name = "OrderManagementController", value = "/order-management")
+public class OrderManagementController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
+
+        request.getRequestDispatcher("layout/admin/manage-order.jsp").forward(request, response);
     }
 
     @Override

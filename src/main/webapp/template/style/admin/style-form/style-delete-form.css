@@ -1,4 +1,5 @@
 #confirmModal {
+    margin-bottom: 0px;
     background-color: var(--light-component-background-color);
     padding-right: 20px;
     padding-left: 20px;

@@ -5,7 +5,7 @@ $('#formWrapper').on('click', function (event) {
 
 $('#addCategoryBtn').on("click", function(event) {
     event.preventDefault();
-    const url = "category-form/add-category-form.jsp"
+    const url = "/add-category";
     $.ajax({
         url: url,
         type: "GET",
@@ -35,7 +35,7 @@ $('#addCategoryBtn').on("click", function(event) {
 
 $('.btn-read-edit').on("click", function(event) {
     event.preventDefault();
-    const url = "category-form/read-edit-category-form.jsp"
+    const url = "/update-category";
     $.ajax({
         url: url,
         type: "GET",
@@ -70,7 +70,7 @@ $('.btn-read-edit').on("click", function(event) {
 
 $('.btn-delete').on("click", function(event) {
     event.preventDefault();
-    const url = "category-form/delete-popup.jsp"
+    const url = "/delete-category";
     $.ajax({
         url: url,
         type: "GET",

@@ -5,7 +5,7 @@ $('#formWrapper').on('click', function (event) {
 
 $('#addTopicBtn').on("click", function(event) {
     event.preventDefault();
-    const url = "topic-form/add-topic-form.jsp"
+    const url = "/add-topic";
     $.ajax({
         url: url,
         type: "GET",
@@ -35,7 +35,7 @@ $('#addTopicBtn').on("click", function(event) {
 
 $('.btn-read-edit').on("click", function(event) {
     event.preventDefault();
-    const url = "topic-form/read-edit-topic-form.jsp"
+    const url = "/update-promotion";
     $.ajax({
         url: url,
         type: "GET",
@@ -70,7 +70,7 @@ $('.btn-read-edit').on("click", function(event) {
 
 $('.btn-delete').on("click", function(event) {
     event.preventDefault();
-    const url = "topic-form/delete-popup.jsp"
+    const url = "/delete-promotion";
     $.ajax({
         url: url,
         type: "GET",
