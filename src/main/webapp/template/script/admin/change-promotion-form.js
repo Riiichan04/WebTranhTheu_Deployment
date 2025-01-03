@@ -5,7 +5,7 @@ $('#formWrapper').on('click', function (event) {
 
 $('#addPromotionBtn').on("click", function(event) {
     event.preventDefault();
-    const url = "/add-promotion";
+    const url = "/admin/promotion-management/add-promotion";
     $.ajax({
         url: url,
         type: "GET",
@@ -36,7 +36,7 @@ $('#addPromotionBtn').on("click", function(event) {
 
 $('.btn-read-edit').on("click", function(event) {
     event.preventDefault();
-    const url = "/update-promotion";
+    const url = "/admin/promotion-management/update-promotion";
     $.ajax({
         url: url,
         type: "GET",
@@ -71,7 +71,7 @@ $('.btn-read-edit').on("click", function(event) {
 
 $('.btn-delete').on("click", function(event) {
     event.preventDefault();
-    const url = "/delete-promotion";
+    const url = "/admin/promotion-management/delete-promotion";
     $.ajax({
         url: url,
         type: "GET",

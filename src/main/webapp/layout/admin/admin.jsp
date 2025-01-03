@@ -32,41 +32,41 @@
             </div>
             <nav>
                 <ul class="list-manage ps-0">
-                    <li><a href="/dashboard" class="select-nav px-4 ajax-link active" id="dashboard">
+                    <li><a href="${pageContext.request.contextPath}/admin/dashboard" class="select-nav px-4 ajax-link active" id="dashboard">
                         <i class="fa-solid fa-house me-2"></i>
                         Dashboard
                     </a></li>
-                    <li><a href="/product-management" class="select-nav px-4 ajax-link" id="product">
+                    <li><a href="${pageContext.request.contextPath}/admin/product-management" class="select-nav px-4 ajax-link" id="product">
                         <i class="fa-brands fa-product-hunt me-2"></i>
                         Quản lý sản phẩm
                     </a></li>
-                    <li><a href="/user-management" class="select-nav px-4 ajax-link" id="user">
+                    <li><a href="${pageContext.request.contextPath}/admin/user-management" class="select-nav px-4 ajax-link" id="user">
                         <i class="fa-solid fa-people-roof me-2"></i>
                         Quản lý người dùng
                     </a></li>
-                    <li><a href="/promotion-management" class="select-nav px-4 ajax-link" id="promotion">
+                    <li><a href="${pageContext.request.contextPath}/admin/promotion-management" class="select-nav px-4 ajax-link" id="promotion">
                         <i class="fa-solid fa-tags me-2"></i>
                         Quản lý giảm giá
                     </a></li>
-                    <li><a href="/category-management" class="select-nav px-4 ajax-link" id="category">
+                    <li><a href="${pageContext.request.contextPath}/admin/category-management" class="select-nav px-4 ajax-link" id="category">
                         <i class="fa-solid fa-list me-2"></i>
                         Quản lý danh mục
                     </a></li>
-                    <li><a href="/topic-management" class="select-nav px-4 ajax-link" id="topic">
+                    <li><a href="${pageContext.request.contextPath}/admin/topic-management" class="select-nav px-4 ajax-link" id="topic">
                         <i class="fa-solid fa-lightbulb me-2"></i>
                         Quản lý chủ đề
                     </a></li>
-                    <li><a href="/order-management" class="select-nav px-4 ajax-link" id="order">
+                    <li><a href="${pageContext.request.contextPath}/admin/order-management" class="select-nav px-4 ajax-link" id="order">
                         <i class="fa-solid fa-money-bill-trend-up me-2"></i>
                         Quản lý đơn hàng
                     </a></li>
-                    <li><a href="/policy-management" class="select-nav px-4 ajax-link" id="policy">
+                    <li><a href="${pageContext.request.contextPath}/admin/policy-management" class="select-nav px-4 ajax-link" id="policy">
                         <i class="fa-solid fa-building-shield me-2"></i>
                         Quản lý chính sách
                     </a></li>
                 </ul>
                 <div class="hr-under-info my-3"></div>
-                <div><a href="/setting" class="select-nav px-4 ajax-link" id="setting">
+                <div><a href="${pageContext.request.contextPath}/admin/setting" class="select-nav px-4 ajax-link" id="setting">
                     <i class="fa-solid fa-gear me-2"></i>
                     Cài đặt tài khoản
                 </a></div>

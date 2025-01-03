@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "DeleteCategoryController", value = "/delete-category")
+@WebServlet(name = "DeleteCategoryController", value = "/admin/category-management/delete-category")
 public class DeleteCategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,7 +16,7 @@ public class DeleteCategoryController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        request.getRequestDispatcher("layout/admin/category-form/delete-popup.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/category-form/delete-popup.jsp").forward(request, response);
     }
 
     @Override

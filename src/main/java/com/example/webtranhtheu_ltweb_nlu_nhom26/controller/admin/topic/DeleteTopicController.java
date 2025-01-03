@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "DeleteTopicController", value = "/delete-topic")
+@WebServlet(name = "DeleteTopicController", value = "/admin/topic-management/delete-topic")
 public class DeleteTopicController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,7 +16,7 @@ public class DeleteTopicController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        request.getRequestDispatcher("layout/admin/topic-form/delete-popup.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/topic-form/delete-popup.jsp").forward(request, response);
     }
 
     @Override

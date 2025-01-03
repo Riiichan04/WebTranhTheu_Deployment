@@ -8,14 +8,14 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "Admin", value = "/admin")
-public class Admin extends HttpServlet {
+@WebServlet(name = "AdminController", value = "/admin")
+public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        request.getRequestDispatcher("layout/admin/admin.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/admin.jsp").forward(request, response);
     }
 
     @Override

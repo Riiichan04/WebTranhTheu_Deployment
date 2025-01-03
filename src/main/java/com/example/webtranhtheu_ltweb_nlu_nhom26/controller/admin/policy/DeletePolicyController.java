@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "DeletePolicyController", value = "/delete-policy")
+@WebServlet(name = "DeletePolicyController", value = "/admin/policy-management/delete-policy")
 public class DeletePolicyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,7 +16,7 @@ public class DeletePolicyController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        request.getRequestDispatcher("layout/admin/policy-form/delete-popup.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/policy-form/delete-popup.jsp").forward(request, response);
     }
 
     @Override

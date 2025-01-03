@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "PolicyManagementController", value = "/policy-management")
+@WebServlet(name = "PolicyManagementController", value = "/admin/policy-management")
 public class PolicyManagementController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,7 +16,7 @@ public class PolicyManagementController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        request.getRequestDispatcher("layout/admin/manage-policy.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/manage-policy.jsp").forward(request, response);
     }
 
     @Override

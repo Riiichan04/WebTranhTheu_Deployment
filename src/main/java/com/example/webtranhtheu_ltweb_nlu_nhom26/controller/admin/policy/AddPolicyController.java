@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "AddPolicyController", value = "/add-policy")
+@WebServlet(name = "AddPolicyController", value = "/admin/policy-management/add-policy")
 public class AddPolicyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,7 +16,7 @@ public class AddPolicyController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        request.getRequestDispatcher("layout/admin/policy-form/add-policy-form.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/policy-form/add-policy-form.jsp").forward(request, response);
     }
 
     @Override

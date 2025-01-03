@@ -5,7 +5,7 @@ $('#formWrapper').on('click', function (event) {
 
 $('#addPolicyBtn').on('click', function(event) {
     event.preventDefault();
-    const url = "/add-policy";
+    const url = "/admin/policy-management/add-policy";
     $.ajax({
         url: url,
         type: "GET",
@@ -36,7 +36,7 @@ $('#addPolicyBtn').on('click', function(event) {
 
 $('.btn-read-edit').on("click", function(event) {
     event.preventDefault();
-    const url = "/update-policy";
+    const url = "/admin/policy-management/update-policy";
     $.ajax({
         url: url,
         type: "GET",
@@ -69,7 +69,7 @@ $('.btn-read-edit').on("click", function(event) {
 
 $('.btn-delete').on("click", function(event) {
     event.preventDefault();
-    const url = "/delete-policy";
+    const url = "/admin/policy-management/delete-policy";
     $.ajax({
         url: url,
         type: "GET",

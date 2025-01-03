@@ -5,7 +5,7 @@ $('#formWrapper').on('click', function (event) {
 
 $('#addProductBtn').on("click", function(event) {
     event.preventDefault();
-    const url = "/add-product";
+    const url = "/admin/product-management/add-product";
     $.ajax({
         url: url,
         type: "GET",
@@ -36,7 +36,7 @@ $('#addProductBtn').on("click", function(event) {
 
 $('.btn-read-edit').on("click", function(event) {
     event.preventDefault();
-    const url = "/update-product";
+    const url = "/admin/product-management/update-product";
     $.ajax({
         url: url,
         type: "GET",
@@ -71,7 +71,7 @@ $('.btn-read-edit').on("click", function(event) {
 
 $('.btn-delete').on("click", function(event) {
     event.preventDefault();
-    const url = "/delete-product";
+    const url = "/admin/product-management/delete-product";
     $.ajax({
         url: url,
         type: "GET",

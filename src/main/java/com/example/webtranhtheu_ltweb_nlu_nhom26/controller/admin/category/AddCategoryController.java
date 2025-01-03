@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "AddCategoryController", value = "/add-category")
+@WebServlet(name = "AddCategoryController", value = "/admin/category-management/add-category")
 public class AddCategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -15,7 +15,7 @@ public class AddCategoryController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        request.getRequestDispatcher("layout/admin/category-form/add-category-form.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/category-form/add-category-form.jsp").forward(request, response);
     }
 
     @Override

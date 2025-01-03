@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "AddTopicController", value = "/add-topic")
+@WebServlet(name = "AddTopicController", value = "/admin/topic-management/add-topic")
 public class AddTopicController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,7 +16,7 @@ public class AddTopicController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        request.getRequestDispatcher("layout/admin/topic-form/add-topic-form.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/topic-form/add-topic-form.jsp").forward(request, response);
     }
 
     @Override

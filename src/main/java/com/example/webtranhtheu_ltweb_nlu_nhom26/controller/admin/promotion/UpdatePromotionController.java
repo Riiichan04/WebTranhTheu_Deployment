@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "UpdatePromotionController", value = "/update-promotion")
+@WebServlet(name = "UpdatePromotionController", value = "/admin/promotion-management/update-promotion")
 public class UpdatePromotionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,7 +16,7 @@ public class UpdatePromotionController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        request.getRequestDispatcher("layout/admin/promotion-form/read-edit-promotion-form.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/promotion-form/read-edit-promotion-form.jsp").forward(request, response);
     }
 
     @Override
