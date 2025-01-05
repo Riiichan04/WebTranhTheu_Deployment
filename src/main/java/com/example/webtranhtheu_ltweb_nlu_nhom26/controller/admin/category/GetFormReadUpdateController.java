@@ -36,7 +36,7 @@ public class GetFormReadUpdateController extends HttpServlet {
             request.setAttribute("listProduct", listProduct);
             request.setAttribute("noListProductOfCategory", noListProductOfCategory);
 
-            Timestamp timestamp = c.getCreateAt();
+            Timestamp timestamp = c.getCreatedAt();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String formattedDate = dateFormat.format(timestamp); // Chuyển đổi sang định dạng yyyy-MM-dd
             request.setAttribute("createAt", formattedDate);

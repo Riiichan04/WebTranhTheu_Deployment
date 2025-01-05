@@ -36,37 +36,6 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Chống hàng kém chất lượng</td>
-                <td>123</td>
-                <td>13/12/2021</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Chính sách bồi thường</td>
-                <td>123</td>
-                <td>13/12/2021</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete" data-policy = 'Chính sách 1'>Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Chính sách hoàn hàng</td>
-                <td>123</td>
-                <td>13/12/2021</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Xóa</button>
-                </td>
-            </tr>
-
             </tbody>
         </table>
     </div>
@@ -74,7 +43,6 @@
 
 <div id="formWrapper" class="hidden mx-auto"></div>
 
-<script src="../../template/script/admin/manage-adminpage.js"></script>
 <script src="../../template/script/admin/change-policy-form.js"></script>
 </body>
 </html>

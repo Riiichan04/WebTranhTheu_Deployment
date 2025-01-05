@@ -39,46 +39,6 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Nguyễn Văn Hòa</td>
-                <td>van123</td>
-                <td>10.000.000 VNĐ</td>
-                <td>12/12/2024</td>
-                <td>Đã hoàn thành</td>
-                <td>Đã thanh toán</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Trần Thị Hoa</td>
-                <td>hoa$$$</td>
-                <td>10.000.000 VNĐ</td>
-                <td>1/12/2024</td>
-                <td>Đã hoàn thành</td>
-                <td>Đã thanh toán</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Nguyễn Phương Thảo</td>
-                <td>phuong_thao_789</td>
-                <td>10.000.000 VNĐ</td>
-                <td>12/12/2024</td>
-                <td>Đã hoàn thành</td>
-                <td>Đã thanh toán</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Xóa</button>
-                </td>
-            </tr>
-
             </tbody>
         </table>
     </div>
@@ -86,7 +46,6 @@
 
 <div id="formWrapper" class="hidden"></div>
 
-<script src="../../template/script/admin/manage-adminpage.js"></script>
 <script src="../../template/script/admin/change-order-form.js"></script>
 </body>
 </html>

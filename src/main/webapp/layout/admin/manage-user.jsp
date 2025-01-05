@@ -34,6 +34,7 @@
                 <th>Số điện thoại</th>
                 <th>Giới tính</th>
                 <th>Ngày đăng ký</th>
+                <th>Trạng thái</th>
                 <th>Tiện ích</th>
             </tr>
             </thead>
@@ -81,7 +82,6 @@
 
 <div id="formWrapper" class="hidden mx-auto"></div>
 
-<script src="../../template/script/admin/manage-adminpage.js"></script>
 <script src="../../template/script/admin/change-user-form.js"></script>
 </body>
 </html>

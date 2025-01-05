@@ -2,7 +2,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin;
 
 import java.sql.Timestamp;
 
-public class CategoryDTO {
+public class TopicDTO {
     private int id;
     private String name;
     private int quantity;
@@ -10,7 +10,7 @@ public class CategoryDTO {
     private Timestamp createdAt;
     private int status;
 
-    public CategoryDTO(int id, String name, int quantity, int numProductBought, Timestamp createdAt, int status) {
+    public TopicDTO(int id, String name, int quantity, int numProductBought, Timestamp createdAt, int status) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -19,7 +19,7 @@ public class CategoryDTO {
         this.status = status;
     }
 
-    public CategoryDTO() {}
+    public TopicDTO() {}
 
     public int getId() {
         return id;
@@ -68,5 +68,4 @@ public class CategoryDTO {
     public void setStatus(int status) {
         this.status = status;
     }
-
 }

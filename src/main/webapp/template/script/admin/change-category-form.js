@@ -6,15 +6,31 @@ $(document).ready(function () {
             url: '/admin/category-management/get-category',
             dataSrc: function (json) {
                 for (var i = 0; i < json.length; i++) {
-                    var timestamp = json[i].createAt;
+                    var timestamp = json[i].createdAt;
 
                     // Sử dụng Intl.DateTimeFormat để định dạng ngày theo định dạng "DD-MM-YYYY"
                     if (timestamp && !isNaN(Date.parse(timestamp))) {
                         var date = new Date(timestamp);
                         var formattedDate = new Intl.DateTimeFormat('en-GB').format(date); // 'en-GB' để định dạng "DD/MM/YYYY"
-                        json[i].createAt = formattedDate;
+                        json[i].createdAt = formattedDate;
                     } else {
-                        json[i].createAt = ''; // Nếu không phải là ngày hợp lệ, để trống
+                        json[i].createdAt = ''; // Nếu không phải là ngày hợp lệ, để trống
+                    }
+
+                    // xử lý trạng thaí danh mục
+                    var status = json[i].status;
+                    if(status) {
+                        switch (status) {
+                            case 0:
+                                json[i].status = "Vô hiệu hóa";
+                                break;
+                            case 1:
+                                json[i].status = "Đang hoạt động";
+                                break;
+                            default: json[i].status = "";
+                        }
+                    } else {
+                        json[i].status = "";
                     }
                 }
                 return json;
@@ -28,7 +44,7 @@ $(document).ready(function () {
                 }
             },
             {
-                targets: 5, // Cột hành động
+                targets: 6, // Cột hành động
                 render: function (data, type, row) {
                     return `
                         <button class="btn-read-edit" data-id="${row.id}">Xem và Chỉnh Sửa</button>
@@ -42,7 +58,8 @@ $(document).ready(function () {
             {data: 'name'}, // Tên danh mục
             {data: 'quantity'}, // Số lượng
             {data: 'numProductBought'}, // Số sản phẩm đã bán
-            {data: 'createAt'}, // Ngày tạo
+            {data: 'createdAt'}, // Ngày tạo
+            {data: 'status'},
             {data: null} // Cột hành động
         ]
     });

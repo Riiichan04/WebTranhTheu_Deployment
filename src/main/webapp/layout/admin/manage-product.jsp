@@ -35,54 +35,13 @@
                 <th>Hình ảnh</th>
                 <th>Số lượng tồn kho</th>
                 <th>Đánh giá tổng (<span
-                        style="color: #e9f1ec">★</span>)/Số lượng</th>
+                        style="color: #e9f1ec">★</span>)</th>
+                <th>Số lượng đánh giá</th>
+                <th>Trạng thái</th>
                 <th>Tiện ích</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>SP01</td>
-                <td>Tranh thêu tay Phố cổ Hà Nội</td>
-                <td>
-                    <div class="img-container"><img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"></div>
-                </td>
-                <td>6</td>
-                <td>4.5/2</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Tắt</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>SP01</td>
-                <td>Tranh thêu tay Cao cấp Hồ Gươm</td>
-                <td>
-                    <div class="img-container"><img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"></div>
-                </td>
-                <td>4</td>
-                <td>4.8/2</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Tắt</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>SP01</td>
-                <td>Tranh thêu tay Mã đáo thành công</td>
-                <td>
-                    <div class="img-container"><img src="https://www.thegioitranhtheu.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/f/i/file_7_35.jpg"></div>
-                </td>
-                <td>2</td>
-                <td>4.9/2</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Tắt</button>
-                </td>
-            </tr>
-
             </tbody>
         </table>
     </div>
@@ -90,7 +49,6 @@
 
 <div id="formWrapper" class="hidden mx-auto"></div>
 
-<script src="../../template/script/admin/manage-adminpage.js"></script>
 <script src="../../template/script/admin/change-product-form.js"></script>
 </body>
 </html>

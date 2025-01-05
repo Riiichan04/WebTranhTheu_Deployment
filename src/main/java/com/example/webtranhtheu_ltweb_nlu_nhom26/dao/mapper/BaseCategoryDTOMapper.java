@@ -1,14 +1,11 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.CategoryDTO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import org.jdbi.v3.core.mapper.RowMapper;
 import org.jdbi.v3.core.statement.StatementContext;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BaseCategoryDTOMapper implements RowMapper<CategoryDTO> {
     @Override

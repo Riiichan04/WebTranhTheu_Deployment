@@ -33,6 +33,7 @@
                 <th>Số lượng sản phẩm trong danh mục</th>
                 <th>Số lượng sản phẩm đã bán</th>
                 <th>Ngày tạo</th>
+                <th>Trạng thái</th>
                 <th>Tiện ích</th>
             </tr>
             </thead>

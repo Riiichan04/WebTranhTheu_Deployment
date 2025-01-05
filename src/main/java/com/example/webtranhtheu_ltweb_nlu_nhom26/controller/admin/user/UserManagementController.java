@@ -16,7 +16,7 @@ public class UserManagementController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        request.getRequestDispatcher("/layout/admin/manage-order.jsp").forward(request, response);
+        request.getRequestDispatcher("/layout/admin/manage-user.jsp").forward(request, response);
     }
 
     @Override

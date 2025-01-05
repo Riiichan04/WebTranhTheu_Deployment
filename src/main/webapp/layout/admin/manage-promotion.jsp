@@ -32,44 +32,12 @@
                 <th>Tiêu đề giảm giá</th>
                 <th>Ngày bắt đầu</th>
                 <th>Ngày kết thúc</th>
+                <th>Số sản phẩm áp dụng</th>
                 <th>Trạng thái</th>
                 <th>Tiện ích</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Giảm lễ 30/4</td>
-                <td>30/4/2024</td>
-                <td>2/5/2024</td>
-                <td>Đã kết thúc</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Giảm lễ 30/4</td>
-                <td>30/4/2024</td>
-                <td>2/5/2024</td>
-                <td>Đã kết thúc</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Giảm lễ 30/4</td>
-                <td>1/11/2024</td>
-                <td>5/11/2024</td>
-                <td>Đang áp dụng</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Xóa</button>
-                </td>
-            </tr>
             </tbody>
         </table>
     </div>
@@ -77,7 +45,6 @@
 
 <div id="formWrapper" class="hidden mx-auto"></div>
 
-<script src="../../template/script/admin/manage-adminpage.js"></script>
 <script src="../../template/script/admin/change-promotion-form.js"></script>
 </body>
 </html>
