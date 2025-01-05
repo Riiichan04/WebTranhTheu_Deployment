@@ -40,7 +40,7 @@
             </button>
         </div>
     </div>
-    <form style="padding-left: 150px; padding-right: 150px">
+    <form style="padding-left: 150px; padding-right: 150px" id="info-admin-form">
         <div class="row pb-5">
             <div class="col">
                 <div class="row mt-2">
@@ -83,10 +83,10 @@
         <div class="row mb-2 update-hidden d-none">
             <div class="col-2"></div>
             <div class="col">
-                <button class="w-100 me-1 style-button" id="btn-close">Hủy</button>
+                <button class="w-100 me-1 style-button" id="btn-close" type="button">Hủy</button>
             </div>
             <div class="col">
-                <button class="w-100 ms-1 style-button" id="btn-update">Cập nhật</button>
+                <button class="w-100 ms-1 style-button" id="btn-update" type="submit">Cập nhật</button>
             </div>
             <div class="col-2"></div>
         </div>
@@ -105,6 +105,30 @@
             "opacity": "0.7"
         })
         $('.update-hidden').removeClass('d-none');
+    });
+
+    $('#info-admin-form').on('submit', function (event) {
+            event.preventDefault(); // Ngăn chặn reload trang
+
+            // Gửi dữ liệu qua AJAX
+            $.ajax({
+                url: '/admin/update-info-admin', // Endpoint API thêm sản phẩm
+                type: 'POST',
+                data: {
+                    password: $('#password').val(),
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    phone: $('#phone').val(),
+                    gender: $('input[name="gender"]:checked').val(),
+                },
+                success: function (response) {
+                    alert('Cập nhập thông tin thành công!');
+                    location.reload();
+                },
+                error: function (error) {
+                    alert('Lỗi khi cập nhật thông tin!');
+                }
+            });
     });
 </script>
 </body>
