@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../public/library.jsp"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -30,7 +32,7 @@
                         <div class="row">
                             <div class="col-10">
                                 <h5 class="card-title widget-card-title mb-3">Tổng doanh thu</h5>
-                                <h4 class="card-subtitle text-body-secondary m-0">7.123.567.000đ</h4>
+                                <h4 class="card-subtitle text-body-secondary m-0">${totalRevenue}</h4>
                             </div>
                             <div class="col-2">
                                 <div class="d-flex justify-content-end">
@@ -50,7 +52,7 @@
                     <div class="row">
                         <div class="col-10">
                             <h5 class="card-title widget-card-title mb-3">Tổng số lượng sản phẩm</h5>
-                            <h4 class="card-subtitle text-body-secondary m-0">4321</h4>
+                            <h4 class="card-subtitle text-body-secondary m-0">${totalProduct}</h4>
                         </div>
                         <div class="col-2">
                             <div class="d-flex justify-content-end">
@@ -68,13 +70,13 @@
                 <div class="card-body p-4">
                     <div class="row">
                         <div class="col-10">
-                            <h5 class="card-title widget-card-title mb-3">Tổng số lượng khuyến mãi</h5>
-                            <h4 class="card-subtitle text-body-secondary m-0">1000</h4>
+                            <h5 class="card-title widget-card-title mb-3">Tổng số lượng chủ đề</h5>
+                            <h4 class="card-subtitle text-body-secondary m-0">${totalTopic}</h4>
                         </div>
                         <div class="col-2">
                             <div class="d-flex justify-content-end">
                                 <div class="lh-1 text-white rounded-circle p-3 d-flex align-items-center justify-content-center">
-                                    <i class="fa-solid fa-tag"></i>
+                                    <i class="fa-solid fa-lightbulb"></i>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +92,7 @@
                     <div class="row">
                         <div class="col-10">
                             <h5 class="card-title widget-card-title mb-3">Tổng số lượng chính sách</h5>
-                            <h4 class="card-subtitle text-body-secondary m-0">7.123</h4>
+                            <h4 class="card-subtitle text-body-secondary m-0">${totalPolicy}</h4>
                         </div>
                         <div class="col-2">
                             <div class="d-flex justify-content-end">
@@ -109,7 +111,7 @@
                     <div class="row">
                         <div class="col-10">
                             <h5 class="card-title widget-card-title mb-3">Tổng danh mục</h5>
-                            <h4 class="card-subtitle text-body-secondary m-0">4321</h4>
+                            <h4 class="card-subtitle text-body-secondary m-0">${totalCategory}</h4>
                         </div>
                         <div class="col-2">
                             <div class="d-flex justify-content-end">
@@ -128,7 +130,7 @@
                     <div class="row">
                         <div class="col-10">
                             <h5 class="card-title widget-card-title mb-3">Tổng số lượng người dùng</h5>
-                            <h4 class="card-subtitle text-body-secondary m-0">12456</h4>
+                            <h4 class="card-subtitle text-body-secondary m-0">${totalUser}</h4>
                         </div>
                         <div class="col-2">
                             <div class="d-flex justify-content-end">
@@ -157,104 +159,16 @@
                 </tr>
                 </thead>
                 <tbody>
+                <c:forEach var="o" items="${listOrder}" varStatus="status">
                 <tr>
-                    <td>1</td>
-                    <td>Nguyễn Văn Hòa</td>
-                    <td>van123</td>
-                    <td>12/12/2024</td>
-                    <td>13.000.000đ</td>
-                    <td>Đã hoàn thành</td>
+                    <td>${status.index + 1}</td>
+                    <td>${o.getName()}</td>
+                    <td>${o.getUsername()}</td>
+                    <td><fmt:formatDate value="${o.getCreatedAt()}" pattern="dd-MM-yyyy" /></td>
+                    <td>${o.getTotalPrice()}</td>
+                    <td>${o.getOrderStatus()}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Trần Thị Hoa</td>
-                    <td>hoa$$$</td>
-                    <td>1/12/2024</td>
-                    <td>12.002.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nguyễn Phương Thảo</td>
-                    <td>phuong_thao_789</td>
-                    <td>12/12/2024</td>
-                    <td>5.000.000đ</td>
-                    <td>Đã hoàn thành</td>
-                </tr>
-
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -264,18 +178,21 @@
                     <div class="row">
                         <div class="col choose-radio-order" id="choose-order-1">
                             <h5 class="card-title widget-card-title mb-3">Tổng số lượng đơn hàng</h5>
-                            <h4 class="card-subtitle text-body-order m-0">12456</h4>
+                            <h4 class="card-subtitle text-body-order m-0">${totalOrder}</h4>
                         </div>
                         <div class="col choose-radio-order" id="choose-order-3">
                             <h5 class="card-title widget-card-title mb-3">Tổng số lượng đơn hàng</h5>
-                            <h6 class="card-subtitle text-body-order m-0 mb-1">Đang xử lý: 12</h6>
-                            <h6 class="card-subtitle text-body-order m-0 mb-1">Đang giao: 134</h6>
-                            <h6 class="card-subtitle text-body-order m-0">Đã hủy: 1234</h6>
+                            <h6 class="card-subtitle text-body-order m-0 mb-1">Chờ xác nhận: ${totalOn1StatusOrder}</h6>
+                            <h6 class="card-subtitle text-body-order m-0 mb-1">Chờ lấy hàng: ${totalOn2StatusOrder}</h6>
+                            <h6 class="card-subtitle text-body-order m-0 mb-1">Chờ giao hàng: ${totalOn3StatusOrder}</h6>
+                            <h6 class="card-subtitle text-body-order m-0 mb-1">Đã giao: ${totalOn4StatusOrder}</h6>
+                            <h6 class="card-subtitle text-body-order m-0 mb-1">Đã nhận hàng: ${totalOn5StatusOrder}</h6>
+                            <h6 class="card-subtitle text-body-order m-0">Đơn yêu cầu hoàn trả: ${totalOn6StatusOrder}</h6>
                         </div>
                         <div class="col choose-radio-order" id="choose-order-4">
                             <h5 class="card-title widget-card-title mb-3">Tổng số lượng đơn hàng</h5>
-                            <h6 class="card-subtitle text-body-order m-0 mb-1">Chưa thanh toán: 12</h6>
-                            <h6 class="card-subtitle text-body-order m-0">Đã thanh toán: 12</h6>
+                            <h6 class="card-subtitle text-body-order m-0 mb-1">Chưa thanh toán: ${totalOn0StatusPayment}</h6>
+                            <h6 class="card-subtitle text-body-order m-0">Đã thanh toán: ${totalOn1StatusPayment}</h6>
                         </div>
                         <div class="col ps-0">
                             <div class="d-block">
