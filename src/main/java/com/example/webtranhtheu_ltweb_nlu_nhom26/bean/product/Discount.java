@@ -7,6 +7,8 @@ public class Discount implements Serializable {
     private int id;
     private String title;
     private int available;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
     private Timestamp startedAt;
     private Timestamp endedAt;
 
@@ -35,6 +37,22 @@ public class Discount implements Serializable {
 
     public void setAvailable(int available) {
         this.available = available;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public Timestamp getStartedAt() {
