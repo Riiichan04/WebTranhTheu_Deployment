@@ -11,15 +11,17 @@ import java.io.IOException;
 public class AddCategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
 
-
-        request.getRequestDispatcher("/layout/admin/category-form/add-category-form.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Lấy dữ liệu từ form
+        String name = request.getParameter("name");
+        String quantity = request.getParameter("status");
 
+        // Lưu dữ liệu vào cơ sở dữ liệu (chưa xử lý)
+        System.out.println("Tên sản phẩm: " + name);
+        System.out.println("Số lượng: " + quantity);
     }
 }

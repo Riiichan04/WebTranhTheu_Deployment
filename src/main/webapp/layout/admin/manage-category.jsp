@@ -37,40 +37,6 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Tranh thêu phong cảnh</td>
-                <td>1000</td>
-                <td>1000</td>
-                <td>12/12/2020</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Tắt</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Tranh thêu tài lộc</td>
-                <td>600</td>
-                <td>1000</td>
-                <td>12/12/2020</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Tắt</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Tranh thêu phong thủy</td>
-                <td>231</td>
-                <td>1000</td>
-                <td>12/12/2020</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Tắt</button>
-                </td>
-            </tr>
-
             </tbody>
         </table>
     </div>
@@ -78,7 +44,6 @@
 
 <div id="formWrapper" class="hidden"></div>
 
-<script src="../../template/script/admin/manage-adminpage.js"></script>
 <script src="../../template/script/admin/change-category-form.js"></script>
 </body>
 </html>

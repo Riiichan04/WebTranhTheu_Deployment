@@ -19,7 +19,7 @@
 <!-- Form container -->
 <div id="formContainer">
     <!--enter code -->
-    <form class="form-container">
+    <form class="form-container" id="add-category-form">
         <div class="row pt-3">
             <div class="col"><h2 class="style-big-title">Thêm danh mục</h2></div>
         </div>
@@ -28,7 +28,7 @@
             <div class="col"><span class="style-title">Tên danh mục<span class="text-danger"> * </span></span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên danh mục" required>
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên danh mục" id="name-category" required>
             </div>
         </div>
         <!-- trạng thái -->
@@ -37,23 +37,24 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select" required>
-                    <option selected>Đang hoạt động</option>
-                    <option>Vô hiệu hóa</option>
+                <select class="style-select" id="status-category" required>
+                    <option value="1" selected>Đang hoạt động</option>
+                    <option value="0">Vô hiệu hóa</option>
                 </select>
             </div>
         </div>
 
         <div class="row pt-4 pb-4">
             <div class="col">
-                <button id="cancelBtn" class="style-cancel-btn">Hủy</button>
+                <button id="cancelBtn" type="button" class="style-cancel-btn">Hủy</button>
             </div>
             <div class="col">
-                <button class="style-button">Thêm danh mục</button>
+                <button id="add-category" type="submit" class="style-button">Thêm danh mục</button>
             </div>
         </div>
     </form>
 </div>
 
 </body>
+
 </html>

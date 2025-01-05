@@ -15,7 +15,6 @@ public class DeleteCategoryController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-
         request.getRequestDispatcher("/layout/admin/category-form/delete-popup.jsp").forward(request, response);
     }
 

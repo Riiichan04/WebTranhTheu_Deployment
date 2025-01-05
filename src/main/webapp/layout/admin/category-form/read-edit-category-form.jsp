@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.sql.Timestamp" %><%--
   Created by IntelliJ IDEA.
   User: MINH THU
   Date: 12/23/2024
@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -20,7 +22,7 @@
 <!-- Form container -->
 <div id="formContainer">
     <!-- enter code -->
-    <form class="form-container">
+    <form class="form-container" id="read-edit-category-form">
         <div class="row pt-3">
             <div class="col"><h2 class="style-big-title" id="title">Xem danh mục</h2></div>
         </div>
@@ -29,7 +31,7 @@
             <div class="col"><span class="style-title">Tên danh mục</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" id="nameCategory" placeholder="Nhập tên danh mục" value="Tranh thêu phong cảnh" required disabled>
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="name-category" placeholder="Nhập tên danh mục" value= <c:out value="${category.getName()}"/> required disabled>
             </div>
         </div>
         <!-- ds sản phẩm thuộc danh mục -->
@@ -49,24 +51,17 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="p" items="${listProduct}" varStatus="status">
                     <tr>
-                        <td>1</td>
-                        <td>SP01</td>
-                        <td>Tranh thêu sông nước</td>
-                        <td>1/2/2024</td>
+                        <td>${status.index + 1}</td>
+                        <td>${p.getCode()}</td>
+                        <td>${p.getTitle()}</td>
+                        <td><fmt:formatDate value="${p.getCreateAt()}" pattern="dd-MM-yyyy" /></td>
                         <td class="d-none edit-hidden">
-                            <input type="checkbox" style="width: 15px; height: 15px">
+                            <input type="checkbox" class="delete-product-of-category" style="width: 15px; height: 15px" data-id="${p.getId()}">
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>SP02</td>
-                        <td>Tranh thêu sông nước</td>
-                        <td>1/2/2024</td>
-                        <td class="d-none edit-hidden">
-                            <input type="checkbox" style="width: 15px; height: 15px">
-                        </td>
-                    </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -78,22 +73,9 @@
         <div class="row pt-2 d-none add-product edit-hidden">
             <div class="col p-0">
                 <select class="style-select-many" id='addProduct' name="products" multiple>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
-                    <option>Tranh thêu phong cảnh</option>
+                    <c:forEach var="p" items="${nolistProductOfCategory}">
+                    <option value="${p.getId()}">${p.getCode()} - ${p.getTitle()}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -103,9 +85,11 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select status-category" required disabled>
-                    <option selected>Đang hoạt động</option>
-                    <option>Vô hiệu hóa</option>
+                <!-- lấy giá trị trạng thái -->
+                <c:set var="status" value="${category.getStatus()}"/>
+                <select class="style-select status-category" id="status-category" required disabled>
+                    <option value="1" ${status == '1' ? 'selected' : ''}>Đang hoạt động</option>
+                    <option value="0" ${status == '0' ? 'selected' : ''}>Vô hiệu hóa</option>
                 </select>
             </div>
         </div>
@@ -114,16 +98,23 @@
             <div class="col"><span class="style-title">Ngày tạo danh mục</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-30" required disabled></div>
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="${createAt}" required disabled></div>
         </div>
 
         <div class="row pt-4 pb-4">
-            <div class="col" id="containerCancelBtn">
+            <div class="col read">
                 <button type="button" id="cancelBtn" class="style-cancel-btn">Hủy</button>
             </div>
-            <div class="col" id="containerEditBtn">
+            <div class="col read">
                 <button type="button" class="style-button" id="editBtn">Chỉnh sửa</button>
             </div>
+            <div class="col d-none edit-hidden">
+                <button type="button" id="cancelEditBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col d-none edit-hidden">
+                <button class="style-update-btn" type="submit">Cập nhật</button>
+            </div>
+
         </div>
     </form>
 

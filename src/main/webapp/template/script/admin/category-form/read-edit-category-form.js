@@ -1,13 +1,17 @@
 $('#editBtn').on("click", function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    $('#title').text('Chỉnh sửa danh mục')
-    $('#containerEditBtn').html(`<button class="style-update-btn" id="editBtn" type="submit">Cập nhật</button>`);
-    $('#containerCancelBtn').html(`<button type="button" id="cancelEditBtn" class="style-cancel-btn">Hủy</button>`)
+    const categoryId = $(this).data("id");
+    $('#title').text('Chỉnh sửa danh mục');
+    $('.read').addClass('d-none');
     $('#cancelEditBtn').click(function () {
-        location.reload();
+        $('#read-edit-category-form')[0].reset();  // Reset form về trạng thái ban đầu
+        $('#title').text('Xem danh mục');
+        $('.read').removeClass('d-none');
+        $('#name-category').prop('disabled', true);
+        $('.status-category').prop('disabled', true);
+        $('.edit-hidden').addClass('d-none');
     });
 
-    $('#nameCategory').prop('disabled', false);
+    $('#name-category').prop('disabled', false);
 
     $('.status-category').prop('disabled', false);
 
