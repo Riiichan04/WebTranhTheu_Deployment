@@ -22,7 +22,7 @@ public interface ProductDAO {
     @SqlQuery("select imgUrl from product_images where productId = :id limit 1")
     String getThumbnail(@Bind("id") int id);
 
-    @SqlQuery("select providers.id, providers.providerName, addresses.location from providers join products on providers.id = products.providerId join addresses on providers.addressId = addresses.id where products.id = :id")
+    @SqlQuery("select providers.id, providers.providerName, addresses.location, providers.createdAt, providers.updatedAt from providers join products on providers.id = products.providerId join addresses on providers.addressId = addresses.id where products.id = :id")
     @RegisterBeanMapper(Provider.class)
     Provider getProductProvider(@Bind("id") int id);
 

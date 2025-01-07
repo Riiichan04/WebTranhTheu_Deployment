@@ -41,7 +41,9 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Mã sản phẩm: <span class="fw-semibold">${product.code}</span></div>
-                    <div class="col-6">Danh mục: <span class="fw-semibold">Tranh thêu tay</span></div>
+                    <div class="col-6">Danh mục:
+                        <span class="fw-semibold">${product.category.title}</span>
+                    </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Nguyên liệu: <span class="fw-semibold">
@@ -59,7 +61,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh thêu Hà Sơn</span></div>
-                    <div class="col-6">Còn lại: <span class="fw-semibold">200</span></div>
+                    <div class="col-6">Còn lại: <span class="fw-semibold">${displayPrice.available}</span></div>
                 </div>
                 <div class="row my-2 mt-3">
                     <div class="col-4">
