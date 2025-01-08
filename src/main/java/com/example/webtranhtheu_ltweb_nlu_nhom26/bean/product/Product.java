@@ -24,7 +24,6 @@ public class Product implements Serializable {
     private List<Review> listReviews;   //Danh sách review của sản phảm
     private List<Price> listPrices; //Danh sách giá tiền của sản phẩm
     private List<String> listImageUrls; //Danh sách hình ảnh của sản phẩm
-    private List<Discount> listDiscounts; //Danh sách chuương trình giảm giá của sản phẩm
     private int type; //Cho biết đây là tranh hay nguyên liệu
     private Timestamp createdAt;
     private Timestamp updatedAt;
@@ -33,7 +32,6 @@ public class Product implements Serializable {
         this.listTopics = new ArrayList<>();
         this.listMaterials = new ArrayList<>();
         this.listReviews = new ArrayList<>();
-        this.listDiscounts = new ArrayList<>();
         this.listPrices = new ArrayList<>();
         this.listImageUrls = new ArrayList<>();
     }
@@ -132,14 +130,6 @@ public class Product implements Serializable {
 
     public void setListImageUrls(List<String> listImageUrls) {
         this.listImageUrls = listImageUrls;
-    }
-
-    public List<Discount> getListDiscounts() {
-        return listDiscounts;
-    }
-
-    public void setListDiscounts(List<Discount> listDiscounts) {
-        this.listDiscounts = listDiscounts;
     }
 
     public int getType() {

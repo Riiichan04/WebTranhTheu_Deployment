@@ -204,7 +204,7 @@ $("#send-comment").click(function (e) {
         //Thông báo nhập chưa đủ nội dung
     } else {
         $.ajax({
-            url: window.location.href,
+            url: '/upload-review',
             type: 'POST',
             data: {
                 account: $("#session-account").val(), //Cần một trường input:hidden để chứa trên jsp

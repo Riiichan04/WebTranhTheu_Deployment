@@ -1,7 +1,9 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
@@ -13,7 +15,7 @@ import java.util.List;
 
 //Dùng để lấy review của sản phẩm
 @WebServlet(name = "ProductReviewController", value = "/get-product-review")
-public class ProductReviewController extends HttpServlet {
+public class GetProductReview extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
@@ -25,11 +27,11 @@ public class ProductReviewController extends HttpServlet {
             //Gọi method lấy review
             //Kiểm tra offset
             //Kiểm tra lấy theo id được không
-            List<Review> listReview = null;
+            List<Review> listReview = new DisplayFullProduct(new ConcreateProductDetail()).getListReviews(productId, offset);
             JsonArray jsonArray = new JsonArray();
             for (Review review : listReview) {
                 JsonObject jsonReview = new JsonObject();
-                jsonReview.addProperty("username", null); //Một hàm nào đó sẽ viết trong service sau
+                jsonReview.addProperty("username", new UserService().getUsername(review.getAccountId())); //Một hàm nào đó sẽ viết trong service sau
                 jsonReview.addProperty("rating", review.getRating());
                 jsonReview.addProperty("content", review.getContent());
                 jsonReview.addProperty("reviewTime", review.getCreatedAt().toString());
@@ -43,12 +45,6 @@ public class ProductReviewController extends HttpServlet {
         catch (Exception e) {
             jsonResult.addProperty("result", false);
             response.getWriter().write(jsonResult.toString());
-
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }
