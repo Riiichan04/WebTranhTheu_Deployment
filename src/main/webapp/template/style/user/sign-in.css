@@ -22,7 +22,7 @@ a {
     border: none;
     background-color: var(--sub-cta-button);
     color: var(--label-color);
-    height: 50px;
+    height: 40px;
     width: 150px;
     border-radius: 10px;
 }

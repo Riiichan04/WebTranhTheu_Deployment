@@ -14,4 +14,10 @@ public class UserService {
     public String getUsername(int userId) {
         return userDAO.getUsername(userId);
     }
+
+    // cập nhật trạng thái cho user
+    public boolean updateStatus(int userId, int status) {
+        return userDAO.updateStatus(userId, status);
+    }
+
 }
