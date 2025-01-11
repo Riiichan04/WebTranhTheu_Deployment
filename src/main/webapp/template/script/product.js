@@ -204,7 +204,7 @@ $("#send-comment").click(function (e) {
         //Thông báo nhập chưa đủ nội dung
     } else {
         $.ajax({
-            url: window.location.href,
+            url: '/upload-review',
             type: 'POST',
             data: {
                 account: $("#session-account").val(), //Cần một trường input:hidden để chứa trên jsp
@@ -229,14 +229,20 @@ $.ajax({
     url: '/get-product-review', //Tạm
     type: 'GET',
     data: {
-        id: null, //Tạm
+        id: new URL(window.location.href).searchParams.get('id'), //Tạm
         offset: $(".comment-container div").length
     },
     success: (response) => {
         //Hiển thị bình luận
+        if (response.result) {
+            response.reviewData.forEach((index, review) =>
+                $("#comment-container").append(createReviewElement(review))
+            )
+        }
+        else $("#comment-container").append(`<p class="row text-center">Đã tải hết bình luận</p>`)
     },
     error: (response) => {
-        //Không làm gì hết
+        $("#comment-container").append(`<p class="row text-center">Đã tải hết bình luận</p>`)
     }
 })
 
@@ -255,3 +261,59 @@ $.ajax({
         //Không tìm thấy các sản phẩm tương tự với sản phẩm này
     }
 })
+
+
+function createReviewElement(review) {
+    //Viết hàm xử lý phần sao sau
+    return `
+        <div class="row product-review__comment-component mt-4_5">
+            <div class="col-3 text-center">
+                <h5>${review.username}</h5>
+                <p>${review.reviewTime}</p>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col d-flex justify-content-center comment-rating">
+                        ${createReviewStar(review.rating)}
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+            <div class="col-8">
+                <p class="" style="white-space: pre-line">
+                    ${review.content}
+                </p>
+            </div>
+        </div>
+        `
+}
+
+//Xử lý sau
+function createReviewStar(rating) {
+    return `
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>
+                        <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask" style="width: 100%"></div>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                        </div>        
+    `
+}
