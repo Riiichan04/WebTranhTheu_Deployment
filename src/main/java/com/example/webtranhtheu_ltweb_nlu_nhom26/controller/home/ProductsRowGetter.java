@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.home;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,8 +13,8 @@ import java.io.IOException;
 import java.util.List;
 
 //Dùng để lấy 1 hàng 5 sản phẩm
-@WebServlet(name = "GetProducts", value = "/get-row-product")
-public class GetProducts extends HttpServlet {
+@WebServlet(name = "ProductsRowGetter", value = "/get-product-row")
+public class ProductsRowGetter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
@@ -31,7 +32,14 @@ public class GetProducts extends HttpServlet {
             //TODO: Xử lý nhận biết khi nào không còn để lấy
             // - Cho offset = -1
 
-            request.setAttribute("newRow", productsRow);
+            JsonArray listProducts = new JsonArray();
+            for (Product product : productsRow) {
+                //FIXME: Chọn giá nào để hiển thị
+                // - Mặc định: lấy product Price để hiển thị
+                // - Cần cho hiển thị với giá bất kì k ????
+                ControllerUtil.addProductToJson(listProducts, product, product.getMinPrice());
+            }
+            jsonResult.add("listProducts", listProducts);
             ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
         }
         catch (Exception e) {

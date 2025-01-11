@@ -16,6 +16,7 @@ public class ProductService {
 
     public static List<Product> getOneProductsRow(int offset, int amount) {
         //FIXME: Thêm phần nhận biết đã lấy hết sản phẩm chưa
+        //FIXME: Xử lý phần lấy giá nếu lấy thế này
         List<Product> products = new ArrayList<>();
         DisplayCardProduct productInfoGetter = new DisplayCardProduct(new ConcreateProductDetail());
         for (int i = offset; i < amount; i++) {
