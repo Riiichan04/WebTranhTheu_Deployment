@@ -16,6 +16,8 @@ public class BaseProductMapper implements RowMapper<Product> {
         product.setTitle(rs.getString("title"));
         product.setDescription(rs.getString("description"));
         product.setType(rs.getInt("typeOfProduct"));
+        product.setCreatedAt(rs.getTimestamp("createdAt"));
+        product.setUpdatedAt(rs.getTimestamp("updatedAt"));
         return product;
     }
 }
