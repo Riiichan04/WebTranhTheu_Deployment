@@ -26,14 +26,17 @@ public class VerifyController extends HttpServlet {
         VerifyService verifyService = new VerifyService();
         if (verifyService.checkCode(code) != null) {
             UserService userService = new UserService();
-            boolean update = userService.updateStatus(verifyService.checkCode(code), 2);
+            int accountId = verifyService.checkCode(code);
+            boolean update = userService.updateStatus(accountId, 2);
             response.setContentType("application/json");
             if (update) {
+                verifyService.deleteVerificationCodeOld(verifyService.checkCode(code));
                 response.getWriter().write("{\"success\": true}");
             } else {
                 response.getWriter().write("{\"success\": false}");
             }
+        } else {
+            response.getWriter().write("{\"success\": false}");
         }
-
     }
 }

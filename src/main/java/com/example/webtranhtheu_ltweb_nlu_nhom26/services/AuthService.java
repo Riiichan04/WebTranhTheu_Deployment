@@ -34,6 +34,10 @@ public class AuthService {
         return userDao.getId(username);
     }
 
+    public Integer getAccountIdByEmailAndUsername(String email, String username) {
+        return userDao.getIdByEmailAndUsername(email, username);
+    }
+
     public String normalizeEmail(String email) {
         // Tách phần local-part và domain
         String[] parts = email.split("@");

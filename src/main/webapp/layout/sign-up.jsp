@@ -12,6 +12,16 @@
     <title>Đăng Ký - Nét Việt</title>
     <%@include file="public/library.jsp" %>
     <link rel="stylesheet" href="../template/style/user/sign-in.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const confirmPasswordInput = document.getElementById("confirmPassword");
+
+            // Disable paste, copy, and cut
+            confirmPasswordInput.addEventListener("paste", (e) => e.preventDefault());
+            confirmPasswordInput.addEventListener("copy", (e) => e.preventDefault());
+            confirmPasswordInput.addEventListener("cut", (e) => e.preventDefault());
+        });
+    </script>
 </head>
 <body class="d-flex justify-content-center align-items-center">
 <div class="container px-5 mt-0">
@@ -66,7 +76,7 @@
             <div class="col-1 text-center p-0">
                 <div class="icon-container"><i class="fa-solid fa-lock icon-input"></i></div>
             </div>
-            <div class="col-11 p-0"><input type="password" name="password" min="8" class="w-100 style-input" placeholder="Ít nhất 8 kí tự có chứa chữ số, chữ hoa, kí tự đặc biệt" required></div>
+            <div class="col-11 p-0"><input type="password" name="password" min="8" class="w-100 style-input" placeholder="Ít nhất 8 kí tự, có chứa chữ số, chữ hoa, kí tự đặc biệt" required></div>
         </div>
         <div class="row pt-2">
             <div class="col"><span class="style-title">Xác nhận mật khẩu:<span class="text-danger"> * </span></span>
@@ -76,7 +86,7 @@
             <div class="col-1 text-center p-0">
                 <div class="icon-container"><i class="fa-solid fa-lock icon-input"></i></div>
             </div>
-            <div class="col-11 p-0"><input type="password" name="pre-password" class="w-100 style-input" placeholder="Nhập lại mật khẩu" required>
+            <div class="col-11 p-0"><input type="password" name="pre-password" id="confirmPassword" class="w-100 style-input" placeholder="Nhập lại mật khẩu" required>
             </div>
         </div>
 

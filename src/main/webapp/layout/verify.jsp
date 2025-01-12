@@ -21,7 +21,7 @@
     <form id="verify-form" method="post">
         <h3 class="title mb-4">Chúc mừng bạn đã tạo tài khoản thành công. Xác thực ngay!</h3>
         <input type="number" class="input-verify d-inline" id="verify" name="code" placeholder="Nhập mã xác thực" required>
-        <button class="d-inline btn-verify ms-2" type="submit">Xác thực</button>
+        <button class="d-inline btn-verify ms-2" id="submitBtn" type="submit">Xác thực</button>
     </form>
 </div>
 
@@ -48,8 +48,10 @@
         $('.overlay').addClass('d-none');
     });
 
-    $('.overlay').click(function () {
-        $('.overlay').addClass('d-none');
+    $('.overlay').click(function (event) {
+        if($(event.target).closest('form').length === 0) {
+            $('.overlay').addClass('d-none');
+        }
     });
 
     $('#verify-form').on('submit', function (event) {
@@ -67,9 +69,11 @@
                 } else {
                     $('.fail-verify').removeClass('d-none');
                 }
+                $('#submitBtn').prop('disabled', false);
             },
             error: function () {
                 $('.fail-verify').removeClass('d-none');
+                $('#submitBtn').prop('disabled', false);
             }
         });
     });

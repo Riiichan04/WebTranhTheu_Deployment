@@ -50,7 +50,7 @@
                                            placeholder="Nhập mật khẩu" required></div>
         </div>
         <div class="row pt-3">
-            <div class="col text-end"><a href="forget-password.html">Quên mật khẩu?</a></div>
+            <div class="col text-end"><a href="/forget-password">Quên mật khẩu?</a></div>
         </div>
         <div class="row pt-3">
             <div class="col text-center">

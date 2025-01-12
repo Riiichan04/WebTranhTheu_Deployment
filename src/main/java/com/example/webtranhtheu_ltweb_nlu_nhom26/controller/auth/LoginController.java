@@ -30,15 +30,13 @@ public class LoginController extends HttpServlet {
         AuthService authService = new AuthService();
         AuthDTO authDTO = authService.getAuth(username, password);
 
-        if (authDTO == null) {
+        if (authDTO == null || authDTO.getStatusAccount() == 0) {
             error = "Tên đăng nhập hoặc mật khẩu sai.";
         }
         else if (authDTO.getStatusAccount() == 1) {
             request.setAttribute("accountId", authDTO.getId());
             request.getRequestDispatcher("/layout/sign-in.jsp").forward(request, response);
             return;
-        } else if (authDTO.getStatusAccount() == 0) {
-            error = "Tài khoản bạn đã bị khóa.";
         }
 
         if (error != null) {

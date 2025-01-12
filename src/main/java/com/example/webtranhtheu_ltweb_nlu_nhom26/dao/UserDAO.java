@@ -29,8 +29,14 @@ public interface UserDAO {
     @SqlQuery("select id from accounts where username = :username")
     Integer getId(@Bind("username") String username);
 
+    @SqlQuery("select id from accounts where email = :email and username = :username and statusAccount = 2")
+    Integer getIdByEmailAndUsername(@Bind("email") String email, @Bind("username") String username);
+
     @SqlUpdate("Update accounts set statusAccount = :status where id = :id")
     boolean updateStatus(@Bind("id") int id, @Bind("status") int status);
+
+    @SqlUpdate("Update accounts set pass = :password where id = :id and statusAccount = 2")
+    boolean updatePassword(@Bind("id") int id, @Bind("password") String password);
 
     @SqlQuery("select id, statusAccount, role from accounts where username = :username")
     @RegisterBeanMapper(AuthDTO.class)
