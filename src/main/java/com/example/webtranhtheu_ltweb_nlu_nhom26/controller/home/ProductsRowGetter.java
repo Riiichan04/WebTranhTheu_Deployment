@@ -34,9 +34,8 @@ public class ProductsRowGetter extends HttpServlet {
 
             JsonArray listProducts = new JsonArray();
             for (Product product : productsRow) {
-                //FIXME: Chọn giá nào để hiển thị
-                // - Mặc định: lấy product Price để hiển thị
-                // - Cần cho hiển thị với giá bất kì k ????
+                //Thêm thông tin hiển thị card product dạng json
+                //Lấy product Price để hiển thị
                 ControllerUtil.addProductToJson(listProducts, product, product.getMinPrice());
             }
             jsonResult.add("listProducts", listProducts);
