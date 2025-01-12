@@ -20,17 +20,18 @@ public class Product implements Serializable {
     private Provider provider;  //Thông tin nhà cung cấp
     private Policy policy;  //Thông tin chính sách áp dụng cho sản phẩm
     private List<Material> listMaterials;   //Thông tin nguyên liệu của sản phẩm
+    private List<Topic> listTopics;
     private List<Review> listReviews;   //Danh sách review của sản phảm
     private List<Price> listPrices; //Danh sách giá tiền của sản phẩm
     private List<String> listImageUrls; //Danh sách hình ảnh của sản phẩm
-    private List<Discount> listDiscounts; //Danh sách chuương trình giảm giá của sản phẩm
     private int type; //Cho biết đây là tranh hay nguyên liệu
     private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     public Product() {
+        this.listTopics = new ArrayList<>();
         this.listMaterials = new ArrayList<>();
         this.listReviews = new ArrayList<>();
-        this.listDiscounts = new ArrayList<>();
         this.listPrices = new ArrayList<>();
         this.listImageUrls = new ArrayList<>();
     }
@@ -91,6 +92,14 @@ public class Product implements Serializable {
         this.policy = policy;
     }
 
+    public List<Topic> getListTopics() {
+        return listTopics;
+    }
+
+    public void setListTopics(List<Topic> listTopics) {
+        this.listTopics = listTopics;
+    }
+
     public List<Material> getListMaterials() {
         return listMaterials;
     }
@@ -123,14 +132,6 @@ public class Product implements Serializable {
         this.listImageUrls = listImageUrls;
     }
 
-    public List<Discount> getListDiscounts() {
-        return listDiscounts;
-    }
-
-    public void setListDiscounts(List<Discount> listDiscounts) {
-        this.listDiscounts = listDiscounts;
-    }
-
     public int getType() {
         return type;
     }
@@ -139,6 +140,23 @@ public class Product implements Serializable {
         this.type = type;
     }
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    //Sẽ bỏ phần này
     public Price getMinPrice() {
         return listPrices.stream().min(Comparator.comparingDouble(Price::getPrice)).orElse(null);
     }
@@ -154,14 +172,6 @@ public class Product implements Serializable {
     public String getThumbnail() {
         //Mặc định lấy hình đầu tiên
         return this.listImageUrls.get(0);
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
     }
 }
 
