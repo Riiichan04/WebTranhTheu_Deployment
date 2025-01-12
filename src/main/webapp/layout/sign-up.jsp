@@ -76,7 +76,7 @@
             <div class="col-1 text-center p-0">
                 <div class="icon-container"><i class="fa-solid fa-lock icon-input"></i></div>
             </div>
-            <div class="col-11 p-0"><input type="password" class="w-100 style-input" placeholder="Nhập lại mật khẩu" required>
+            <div class="col-11 p-0"><input type="password" name="pre-password" class="w-100 style-input" placeholder="Nhập lại mật khẩu" required>
             </div>
         </div>
 

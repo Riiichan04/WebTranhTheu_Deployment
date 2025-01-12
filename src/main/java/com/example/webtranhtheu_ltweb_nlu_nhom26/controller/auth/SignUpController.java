@@ -31,16 +31,20 @@ public class SignUpController extends HttpServlet {
         String password = request.getParameter("password");
         String email = authService.normalizeEmail(request.getParameter("email"));
         String fullName = request.getParameter("full-name");
+        String prePass = request.getParameter("pre-password");
         String error = null;
 
-        if(!authService.checkPassword(password)) {
-            error = "Mật khẩu không hợp lệ!";
-        }
         if(!authService.checkUsername(username)) {
             error = "Tên đăng nhập đã tồn tại!";
         }
         if(!authService.checkEmail(email)) {
             error = "Tài khoản email đã được dùng, vui lòng đổi taì khoản!";
+        }
+        if(!authService.checkPassword(password)) {
+            error = "Mật khẩu không hợp lệ!";
+        }
+        if(!password.equals(prePass)) {
+            error = "Mật khẩu không khớp. Hãy xác nhận lại mật khẩu của bạn!";
         }
 
         if(error != null) {
