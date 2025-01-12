@@ -12,4 +12,7 @@ public interface VerifyDAO {
 
     @SqlQuery("select accountId from verify_accounts where verifycode = :verifyCode and dateExpire > NOW()")
     Integer getVerifyCode(@Bind("verifyCode") int verifyCode);
+
+    @SqlUpdate("delete from verify_accounts WHERE accountId = :accountId")
+    void deleteVerifyAccount(@Bind("accountId") int accountId);
 }

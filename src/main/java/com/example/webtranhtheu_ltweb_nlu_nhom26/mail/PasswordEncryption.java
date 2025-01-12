@@ -10,4 +10,9 @@ public class PasswordEncryption {
         return BCrypt.hashpw(password, salt);
     }
 
+    //kiểm tra pass có hợp lệ không
+    public static boolean checkPassword(String password, String hashedPassword) {
+        return BCrypt.checkpw(password, hashedPassword);
+    }
+
 }

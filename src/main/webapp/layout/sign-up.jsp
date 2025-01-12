@@ -12,11 +12,6 @@
     <title>Đăng Ký - Nét Việt</title>
     <%@include file="public/library.jsp" %>
     <link rel="stylesheet" href="../template/style/user/sign-in.css">
-    <style>
-        .icon-container, .style-input {
-            height: 40px;
-        }
-    </style>
 </head>
 <body class="d-flex justify-content-center align-items-center">
 <div class="container px-5 mt-0">
@@ -29,7 +24,7 @@
                 <span class="style-caption">Chào mừng bạn đến với website</span>
             </div>
         </div>
-        <div>${error}</div>
+        <div style="color: red; font-size: 14px">${error}</div>
         <!-- email -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Email:<span class="text-danger"> * </span></span></div>
@@ -99,17 +94,10 @@
         <div class="row pb-3 mt-3">
             <div class="col text-center">
                 <span>Bạn đã có tài khoản?</span>
-                <a href="sign-in.jsp">Đăng nhập ngay!</a>
+                <a href="/login">Đăng nhập ngay!</a>
             </div>
         </div>
     </form>
 </div>
-
-<script>
-    function validatePassword(password) {
-        const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        return regex.test(password);
-    }
-</script>
 </body>
 </html>

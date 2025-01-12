@@ -19,7 +19,7 @@
 
 <div class="container verify-container text-center">
     <form id="verify-form" method="post">
-        <h2 class="title mb-4">Xác thực tài khoản</h2>
+        <h3 class="title mb-4">Chúc mừng bạn đã tạo tài khoản thành công. Xác thực ngay!</h3>
         <input type="number" class="input-verify d-inline" id="verify" name="code" placeholder="Nhập mã xác thực" required>
         <button class="d-inline btn-verify ms-2" type="submit">Xác thực</button>
     </form>

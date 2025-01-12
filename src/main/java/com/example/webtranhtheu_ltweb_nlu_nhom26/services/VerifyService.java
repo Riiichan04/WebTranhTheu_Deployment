@@ -40,4 +40,9 @@ public class VerifyService {
         // Gửi email logic
         EmailSender.sendConfirmationEmail(toEmail, generatedVerificationCode);
     }
+
+    //xóa mã xác thực cũ nếu gửi lại mã mới
+    public void deleteVerificationCodeOld(int accountId) {
+        verifyDAO.deleteVerifyAccount(accountId);
+    }
 }

@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.mail;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 public class EmailSender {
@@ -42,7 +43,8 @@ public class EmailSender {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            message.setSubject("Xác thực tài khoản!");
+            String subject = "Xác thực tài khoản!";
+            message.setSubject(MimeUtility.encodeText(subject, "UTF-8", "B"));
 
             String emailContent = "<html>" +
                     "<head>" +
@@ -68,7 +70,7 @@ public class EmailSender {
 
             System.out.println("Email đã được gửi thành công!");
 
-        } catch (MessagingException e) {
+        } catch (MessagingException | UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
     }

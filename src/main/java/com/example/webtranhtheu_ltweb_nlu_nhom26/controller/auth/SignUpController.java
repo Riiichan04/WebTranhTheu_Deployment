@@ -48,7 +48,6 @@ public class SignUpController extends HttpServlet {
             request.getRequestDispatcher("/layout/sign-up.jsp").forward(request, response);
         } else {
             password = PasswordEncryption.hashPassword(password);
-            System.out.println(password);
             User user = new User(username, fullName, password, email, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), 0, 1);
             if(authService.addUser(user)) {
                 VerifyService verifyService = new VerifyService();

@@ -1,8 +1,10 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.AuthDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.UserDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.mail.PasswordEncryption;
 
 
 public class AuthService {
@@ -46,5 +48,20 @@ public class AuthService {
 
         return localPart + "@" + domain;
     }
+
+    public AuthDTO getAuth(String username, String password) {
+        String hashedPassword = userDao.getPassword(username);
+        if(hashedPassword != null) {
+            if(PasswordEncryption.checkPassword(password, hashedPassword)) {
+                return userDao.getAuth(username);
+            }
+        }
+        return null;
+    }
+
+    public String getEmail(int id) {
+        return userDao.getEmail(id);
+    }
+
 
 }
