@@ -1,6 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.auth;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.mail.PasswordEncryption;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.PasswordEncryption;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.AuthService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.VerifyService;
@@ -26,9 +26,7 @@ public class UpdatePasswordController extends HttpServlet {
         int code = Integer.parseInt(request.getParameter("code"));
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
-        System.out.println(code);
-        System.out.println(password);
-        System.out.println(confirmPassword);
+
         String error = null;
         AuthService authService = new AuthService();
 

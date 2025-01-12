@@ -3,7 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Verify;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.VerifyDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.mail.EmailSender;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.EmailSender;
 import java.sql.Timestamp;
 import java.util.Random;
 

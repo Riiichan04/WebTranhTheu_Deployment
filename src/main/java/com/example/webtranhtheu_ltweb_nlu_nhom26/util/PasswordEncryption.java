@@ -1,4 +1,4 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.mail;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.util;
 
 import org.mindrot.jbcrypt.BCrypt;
 

@@ -4,7 +4,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.AuthDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.UserDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.mail.PasswordEncryption;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.PasswordEncryption;
 
 
 public class AuthService {

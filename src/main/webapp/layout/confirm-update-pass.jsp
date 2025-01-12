@@ -114,7 +114,6 @@
                     if (response.success) {
                         $('.success-update-pass').removeClass('d-none');
                     } else if (!response.success) {
-                        console.log("whyyyyyyyyyyyy")
                         $('.fail-update-pass').removeClass('d-none');
                     }
                 } else {
