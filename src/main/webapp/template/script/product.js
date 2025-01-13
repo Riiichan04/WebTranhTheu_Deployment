@@ -225,27 +225,6 @@ $("#send-comment").click(function (e) {
     }
 })
 
-$.ajax({
-    url: '/get-product-review', //Tạm
-    type: 'GET',
-    data: {
-        id: new URL(window.location.href).searchParams.get('id'), //Tạm
-        offset: $(".comment-container div").length
-    },
-    success: (response) => {
-        //Hiển thị bình luận
-        if (response.result) {
-            response.reviewData.forEach((index, review) =>
-                $("#comment-container").append(createReviewElement(review))
-            )
-        }
-        else $("#comment-container").append(`<p class="row text-center">Đã tải hết bình luận</p>`)
-    },
-    error: (response) => {
-        $("#comment-container").append(`<p class="row text-center">Đã tải hết bình luận</p>`)
-    }
-})
-
 //Dùng để lấy các sản phẩm khác
 $.ajax({
     url: null,
@@ -262,6 +241,36 @@ $.ajax({
     }
 })
 
+let reviewOffset = 0
+let amount = 3
+
+
+
+function getReviewList(amount) {
+    if (reviewOffset !== -1) {
+        $.ajax({
+            url: '/get-product-review', //Tạm
+            type: 'GET',
+            data: {
+                id: new URL(window.location.href).searchParams.get('id'), //Tạm
+                offset: $(".comment-container div").length,
+                amount: amount
+            },
+            success: (response) => {
+                //Hiển thị bình luận
+                if (response.result) {
+                    response.reviewData.forEach((index, review) =>
+                        $("#comment-container").append(createReviewElement(review))
+                    )
+                }
+                else $("#comment-container").append(`<p class="row text-center">Đã tải hết bình luận</p>`)
+            },
+            error: (response) => {
+                $("#comment-container").append(`<p class="row text-center">Có lỗi khi tải bình luận của bạn</p>`)
+            }
+        })
+    }
+}
 
 function createReviewElement(review) {
     //Viết hàm xử lý phần sao sau
@@ -289,6 +298,15 @@ function createReviewElement(review) {
 
 //Xử lý sau
 function createReviewStar(rating) {
+    const filledStar = `
+    <div class="col-2 product-info__star-container   px-0">
+                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <div class="product-info__star-mask" ></div>
+         <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+    </div>
+    `
+
+
     return `
                         <div class="col-2 product-info__star-container   px-0">
                             <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
@@ -317,3 +335,5 @@ function createReviewStar(rating) {
                         </div>        
     `
 }
+
+getReviewList(3)

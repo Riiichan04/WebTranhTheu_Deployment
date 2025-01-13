@@ -37,7 +37,6 @@ public class ProductController extends HttpServlet {
                 int height = Integer.parseInt(heightParam);
                 displayPrice = product.getSelectedPrice(width, height);
             }
-
             if (displayPrice == null) { //Không thể tìm thấy giá của sản phẩm do lỗi nào đó ở db
 //                response.sendError(418, "Tui là ấm trà mà, sao mấy người muốn bắt tui pha cà phê vậy :<"); //Joke giải trí trước khi thi cuối kì =))
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);

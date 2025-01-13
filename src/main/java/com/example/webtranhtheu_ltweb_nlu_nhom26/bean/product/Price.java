@@ -1,11 +1,8 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
-import org.jdbi.v3.core.mapper.RowMapper;
-import org.jdbi.v3.core.statement.StatementContext;
-
 import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 public class Price implements Serializable {
     private int productId;  //Id sản phẩm
@@ -66,23 +63,11 @@ public class Price implements Serializable {
     }
 
     public String getDisplayPriceToString() {
-        double tempPrice = this.price;
-        String convertPrice = tempPrice + "";
-        String result = "";
-        if (tempPrice < 1000) return tempPrice + " VNĐ";
-        else {
-            int cursor = convertPrice.indexOf('.') != -1 ? convertPrice.indexOf('.') : convertPrice.length();
-            String decimalPart = convertPrice.substring(convertPrice.indexOf('.'));
-            System.out.println(cursor);
-            while ((int) (tempPrice / 1000) > 0) {
-                result = "." + convertPrice.substring(cursor-3, cursor) + result;
-                cursor -= 3;
-                tempPrice /= 1000;
-            }
-            int headVal = Math.max(cursor - 3, 0);
-            result = convertPrice.substring(headVal, cursor) + result;//+ decimalPart;  (Do là VND nên bỏ decimalPart)
-            return result + " VNĐ";
-        }
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setGroupingSeparator('.');
+        symbols.setDecimalSeparator(',');
+        return new DecimalFormat("#,###", symbols).format(price) + " VNĐ";
     }
 }
+
 
