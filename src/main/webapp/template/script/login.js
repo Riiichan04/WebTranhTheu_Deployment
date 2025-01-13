@@ -24,7 +24,7 @@ function handleCredentialResponse(response) {
             image: userImage,
         },
         success: function () {
-            alert("Đăng nhập thành công!");
+            window.location.href = "/";
         },
         error: function () {
             alert("Đăng nhập không thành công!");
