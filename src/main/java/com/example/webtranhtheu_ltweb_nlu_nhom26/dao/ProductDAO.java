@@ -154,4 +154,6 @@ public interface ProductDAO {
 //                        .mapToBean(Discount.class).list()
 //        );
 //    }
+    @SqlQuery("select id from products join category_products_details on products.id = category_products_details.productId where id != :id and category_products_details.categoryId = :categoryId order by rand() limit 5")
+    List<Integer> getSimilarProductId(@Bind("id") int id, @Bind("categoryId") int categoryId);
 }

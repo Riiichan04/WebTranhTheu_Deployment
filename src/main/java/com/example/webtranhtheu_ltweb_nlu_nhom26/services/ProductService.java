@@ -3,6 +3,8 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 
+import java.util.List;
+
 public class ProductService {
     //Lấy đánh giá trung bình của sản phẩm (Sẽ cho vào product)
     public static double getProductRating(Product product) {

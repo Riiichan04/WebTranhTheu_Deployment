@@ -2,6 +2,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayFullProduct extends DecorationProductDetail {
@@ -55,5 +56,15 @@ public class DisplayFullProduct extends DecorationProductDetail {
     public List<Review> getListReviews(int productId, int offset) { //Lấy 5 review
         //FIXME Thêm phần kiểm tra khi nào hết bình luận có thể lấy
         return super.productDAO.getProductReviews(productId, offset);
+    }
+
+    //Sẽ chuyển qua chỗ khác
+    public List<Product> getSimilarProduct(int productId, int cagegoryId) {
+        List<Integer> listId = super.productDAO.getSimilarProductId(productId, cagegoryId);
+        List<Product> result = new ArrayList<>();
+        for (int id : listId) {
+            result.add(getFullProductInfo(id));
+        }
+        return result;
     }
 }
