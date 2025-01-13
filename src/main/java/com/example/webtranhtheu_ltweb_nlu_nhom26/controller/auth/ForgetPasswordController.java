@@ -34,13 +34,13 @@ public class ForgetPasswordController extends HttpServlet {
 
         if(error != null){
             request.setAttribute("error", error);
-            request.getRequestDispatcher("/layout/forget-password.jsp").forward(request, response);
         } else {
             int accountId = authService.getAccountIdByEmailAndUsername(email, username);
+            request.setAttribute("accountId", accountId);
             VerifyService verifyService = new VerifyService();
             verifyService.deleteVerificationCodeOld(accountId);
             verifyService.sendVerificationEmail(email, accountId);
-            response.sendRedirect("/update-pass");
         }
+        request.getRequestDispatcher("/layout/forget-password.jsp").forward(request, response);
     }
 }

@@ -16,13 +16,14 @@ import java.io.IOException;
 public class UpdatePasswordController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/layout/confirm-update-pass.jsp").forward(request, response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        int accountId = Integer.parseInt(request.getParameter("accountId"));
         int code = Integer.parseInt(request.getParameter("code"));
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
@@ -42,13 +43,12 @@ public class UpdatePasswordController extends HttpServlet {
             response.getWriter().write("{\"error\": true, \"message\": \"" + error + "\"}");
         } else {
             VerifyService verifyService = new VerifyService();
-            if (verifyService.checkCode(code) != null) {
-                int accountId = verifyService.checkCode(code);
+            if (verifyService.checkCode(code) != null && accountId == verifyService.checkCode(code)) {
                 String updatePass = PasswordEncryption.hashPassword(password);
                 UserService userService = new UserService();
                 boolean update = userService.updatePassword(accountId, updatePass);
                 if (update) {
-                    verifyService.deleteVerificationCodeOld(verifyService.checkCode(code));
+                    verifyService.deleteVerificationCodeOld(accountId);
                     response.getWriter().write("{\"success\": true}");
                 } else {
                     response.getWriter().write("{\"success\": false}");
