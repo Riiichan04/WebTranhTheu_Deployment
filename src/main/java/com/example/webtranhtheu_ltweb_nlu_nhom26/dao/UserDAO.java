@@ -39,6 +39,9 @@ public interface UserDAO {
     @RegisterBeanMapper(AuthDTO.class)
     AuthDTO getAuth(@Bind("username") String username);
 
+    @SqlQuery("select statusAccount from accounts where id = :id")
+    Integer getStatusAccount(@Bind("id") int id);
+
     @SqlQuery("select pass from accounts where username = :username")
     String getPassword(@Bind("username") String username);
 

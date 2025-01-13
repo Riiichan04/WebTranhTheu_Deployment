@@ -63,5 +63,9 @@ public class AuthService {
         return userDao.getEmail(id);
     }
 
+    public Integer getStatusById(int id) {
+        return userDao.getStatusAccount(id);
+    }
+
 
 }

@@ -26,15 +26,25 @@ public class GoogleLoginController extends HttpServlet {
 
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String image  = request.getParameter("image");
+        String image = request.getParameter("image");
         AuthService authService = new AuthService();
         Integer accountId = authService.getIdByEmail(email);
-        if(accountId == null){
+        response.setContentType("application/json");
+        if (accountId == null) {
             User user = new User(name, email, image, 2, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), 0);
             authService.addUser(user);
             accountId = authService.getIdByEmail(email);
+            HttpSession session = request.getSession();
+            session.setAttribute("accountId", accountId);
+            response.getWriter().write("{\"success\": true}");
+        } else {
+            if (authService.getStatusById(accountId) == 2) {
+                HttpSession session = request.getSession();
+                session.setAttribute("accountId", accountId);
+                response.getWriter().write("{\"success\": true}");
+            } else {
+                response.getWriter().write("{\"success\": false}");
+            }
         }
-        HttpSession session = request.getSession();
-        session.setAttribute("accountId", accountId);
     }
 }

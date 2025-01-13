@@ -23,8 +23,12 @@ function handleCredentialResponse(response) {
             email: userEmail,
             image: userImage,
         },
-        success: function () {
-            window.location.href = "/";
+        success: function (response) {
+            if (response.success) {
+                window.location.href = "/";
+            } else if(!response.success) {
+                alert("Đăng nhập không thành công!");
+            }
         },
         error: function () {
             alert("Đăng nhập không thành công!");
