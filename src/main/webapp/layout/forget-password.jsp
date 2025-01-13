@@ -6,6 +6,16 @@
     <%@include file="public/library.jsp" %>
     <link rel="stylesheet" href="../template/style/user/sign-in.css">
     <link rel="stylesheet" href="../template/style/user/verify.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const confirmPasswordInput = document.getElementById("pre-password");
+
+            // Disable paste, copy, and cut
+            confirmPasswordInput.addEventListener("paste", (e) => e.preventDefault());
+            confirmPasswordInput.addEventListener("copy", (e) => e.preventDefault());
+            confirmPasswordInput.addEventListener("cut", (e) => e.preventDefault());
+        });
+    </script>
 
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
@@ -119,49 +129,6 @@
     </div>
 </div>
 
-<script>
-
-    $('.verify-cancel-button').click(function () {
-        $('.overlay').addClass('d-none');
-    });
-
-    $('.overlay').click(function (event) {
-        if ($(event.target).closest('.popup-container').length === 0) {
-            $('.overlay').addClass('d-none');
-        }
-    });
-
-    $('#confirm-update-pass-form').on('submit', function (event) {
-        event.preventDefault();
-
-        $.ajax({
-            url: "/update-pass",
-            type: "POST",
-            data: {
-                accountId: $('#submitBtn').val(),
-                code: $('#code').val(),
-                password: $('#password').val(),
-                confirmPassword: $('#pre-password').val(),
-            },
-            success: function (response) {
-                if (!response.error) {
-                    if (response.success) {
-                        $('.success-update-pass').removeClass('d-none');
-                    } else if (!response.success) {
-                        $('.fail-update-pass').removeClass('d-none');
-                    }
-                } else {
-                    $("#error").text(response.message);
-                }
-                $('#submitBtn').prop('disabled', false);
-            },
-            error: function () {
-                console.log("wwhyyyyyy")
-                $('.fail-update-pass').removeClass('d-none');
-                $('#submitBtn').prop('disabled', false);
-            }
-        });
-    });
-</script>
+<script src="../template/script/forget-password.js"></script>
 </body>
 </html>
