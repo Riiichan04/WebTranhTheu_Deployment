@@ -34,11 +34,11 @@ public class SignUpController extends HttpServlet {
         String prePass = request.getParameter("pre-password");
         String error = null;
 
-        if(!authService.checkUsername(username)) {
+        if(authService.getAccountId(username) != null) {
             error = "Tên đăng nhập đã tồn tại!";
         }
-        if(!authService.checkEmail(email)) {
-            error = "Tài khoản email đã được dùng, vui lòng đổi taì khoản!";
+        if(authService.getIdByEmail(email) != null) {
+            error = "Tài khoản email đã được dùng, vui lòng đổi email!";
         }
         if(!authService.checkPassword(password)) {
             error = "Mật khẩu không hợp lệ!";

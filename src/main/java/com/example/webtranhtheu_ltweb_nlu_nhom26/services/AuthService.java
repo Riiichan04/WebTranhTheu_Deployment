@@ -17,17 +17,13 @@ public class AuthService {
         return userDao.addUser(user);
     }
 
-    public boolean checkUsername(String username) {
-        return userDao.getUsername(username) == null;
-    }
-
     public boolean checkPassword(String password) {
         String regex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$";
         return password.matches(regex);
     }
 
-    public boolean checkEmail(String email) {
-        return userDao.getEmail(email) == null;
+    public Integer getIdByEmail(String email) {
+        return userDao.getIdByEmail(email);
     }
 
     public Integer getAccountId(String username) {

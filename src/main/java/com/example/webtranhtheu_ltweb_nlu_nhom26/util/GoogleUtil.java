@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class GoogleUtil {
     public static String getGoogleClientId() {
-        return GoogleProperties.getProperties().getProperty("loginId");
+        return GoogleProperties.getProperties().getProperty("google.loginId");
     }
 
     //Các method khác cần Google Client ID viết ở đây

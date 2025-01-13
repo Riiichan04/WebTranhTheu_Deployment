@@ -30,6 +30,16 @@ public class User {
         this.statusAccount = statusAccount;
     }
 
+    public User(String fullName, String email, String avatarUrl, int statusAccount, Timestamp createdAt, Timestamp updatedAt, int role) {
+        this.fullName = fullName;
+        this.email = email;
+        this.avatarUrl = avatarUrl;
+        this.statusAccount = statusAccount;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.role = role;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

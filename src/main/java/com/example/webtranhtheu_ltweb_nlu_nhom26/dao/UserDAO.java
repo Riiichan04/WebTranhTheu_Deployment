@@ -17,11 +17,8 @@ public interface UserDAO {
             "VALUES (:email, :avatarUrl, :username, :fullName, :password, :phone, :gender, :description, :statusAccount, :createdAt, :updatedAt, :role)")
     boolean addUser(@BindBean User user);
 
-    @SqlQuery("select username from accounts where username = :username")
-    String getUsername(@Bind("username") String username);
-
-    @SqlQuery("select email from accounts where email = :email")
-    String getEmail(@Bind("email") String email);
+    @SqlQuery("select id from accounts where email = :email")
+    Integer getIdByEmail(@Bind("email") String email);
 
     @SqlQuery("select email from accounts where id = :id")
     String getEmail(@Bind("id") int id);

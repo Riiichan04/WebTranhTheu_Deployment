@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINH THU
-  Date: 1/11/2025
-  Time: 3:28 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.example.webtranhtheu_ltweb_nlu_nhom26.util.GoogleUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,6 +7,8 @@
     <%@include file="public/library.jsp" %>
     <link rel="stylesheet" href="../template/style/user/sign-in.css">
     <link rel="stylesheet" href="../template/style/user/verify.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
 <div class="container px-5">
@@ -57,17 +53,18 @@
                 <button class="style-button" type="submit">Đăng nhập</button>
             </div>
         </div>
-        <div class="row pt-3">
+        <div class="row pt-2">
             <div class="col text-center"><span class="style-label">------Hoặc-----</span></div>
         </div>
         <div class="row text-center pt-2">
-            <div class="col-2"></div>
-            <div class="col-3 icon-social p-0">
-                <h5><i class="fa-brands fa-facebook"></i></h5>
+            <div class="col">
+                <!-- Nút đăng nhập Google -->
+                <div id="g_id_onload"
+                     data-client_id="<%= GoogleUtil.getGoogleClientId()%>"
+                     data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
             </div>
-            <div class="col-2 icon-social p-0"><h5><i class="fa-brands fa-google"></i></h5></div>
-            <div class="col-3 icon-social p-0"><h5><i class="fa-brands fa-x-twitter"></i></h5></div>
-            <div class="col-2"></div>
         </div>
         <div class="row mt-3 pb-3">
             <div class="col text-center">
@@ -92,10 +89,6 @@
 </div>
 <% } %>
 
-<script>
-    $('.verify-cancel-button').on('click', function () {
-        $('.overlay').addClass('d-none');
-    });
-</script>
+<script src="../template/script/login.js"></script>
 </body>
 </html>
