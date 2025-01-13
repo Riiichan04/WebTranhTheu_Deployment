@@ -31,7 +31,7 @@
             <div class="col"><span class="style-title">Tên danh mục</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" id="name-category" placeholder="Nhập tên danh mục" value= <c:out value="${category.getName()}"/> required disabled>
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="name-category" placeholder="Nhập tên danh mục" value= "<c:out value="${category.getTitle()}"/>" required disabled>
             </div>
         </div>
         <!-- ds sản phẩm thuộc danh mục -->
@@ -46,7 +46,7 @@
                         <th class="text-center">STT</th>
                         <th class="text-center">Mã sản phẩm</th>
                         <th class="text-center">Tên sản phẩm</th>
-                        <th class="text-center">Ngày thêm</th>
+                        <th class="text-center">Loại</th>
                         <th class="text-center d-none edit-hidden">Xóa</th>
                     </tr>
                     </thead>
@@ -56,9 +56,9 @@
                         <td>${status.index + 1}</td>
                         <td>${p.getCode()}</td>
                         <td>${p.getTitle()}</td>
-                        <td><fmt:formatDate value="${p.getCreateAt()}" pattern="dd-MM-yyyy" /></td>
+                        <td>${p.getType()}</td>
                         <td class="d-none edit-hidden">
-                            <input type="checkbox" class="delete-product-of-category" style="width: 15px; height: 15px" data-id="${p.getId()}">
+                            <input type="checkbox" name="selectedProductIdsDelete" class="delete-product-of-category" style="width: 15px; height: 15px" data-id="${p.getId()}">
                         </td>
                     </tr>
                     </c:forEach>
@@ -72,8 +72,8 @@
         </div>
         <div class="row pt-2 d-none add-product edit-hidden">
             <div class="col p-0">
-                <select class="style-select-many" id='addProduct' name="products" multiple>
-                    <c:forEach var="p" items="${nolistProductOfCategory}">
+                <select class="style-select-many" id='addProduct' name="selectedProductIdsAdd" multiple>
+                    <c:forEach var="p" items="${listProductNotInCategory}">
                     <option value="${p.getId()}">${p.getCode()} - ${p.getTitle()}</option>
                     </c:forEach>
                 </select>
@@ -86,10 +86,10 @@
         <div class="row pt-2">
             <div class="col p-0">
                 <!-- lấy giá trị trạng thái -->
-                <c:set var="status" value="${category.getStatus()}"/>
+                <c:set var="status" value="${category.getActive()}"/>
                 <select class="style-select status-category" id="status-category" required disabled>
-                    <option value="1" ${status == '1' ? 'selected' : ''}>Đang hoạt động</option>
-                    <option value="0" ${status == '0' ? 'selected' : ''}>Vô hiệu hóa</option>
+                    <option value="1" ${status == 1 ? 'selected' : ''}>Đang hoạt động</option>
+                    <option value="0" ${status == 0 ? 'selected' : ''}>Vô hiệu hóa</option>
                 </select>
             </div>
         </div>
@@ -112,7 +112,7 @@
                 <button type="button" id="cancelEditBtn" class="style-cancel-btn">Hủy</button>
             </div>
             <div class="col d-none edit-hidden">
-                <button class="style-update-btn" type="submit">Cập nhật</button>
+                <button class="style-update-btn" name="categoryId" value="<c:out value="${category.getId()}"/>" type="submit" id="submitBtn">Cập nhật</button>
             </div>
 
         </div>

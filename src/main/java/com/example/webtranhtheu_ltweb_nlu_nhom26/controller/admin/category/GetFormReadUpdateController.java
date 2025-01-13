@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.CategoryDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import com.google.gson.Gson;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,16 +26,17 @@ public class GetFormReadUpdateController extends HttpServlet {
 
         int categoryId = request.getParameter("categoryId") == null ? -1 : Integer.parseInt(request.getParameter("categoryId"));
         //chưa xử lý
-        CategoryDTO c = new CategoryDTO(1, "Tranh thêu chữ thập", 1200, 122, new Timestamp(System.currentTimeMillis()), 1);
-        List<Product> listProduct = new ArrayList<>();
-        List<Product> noListProductOfCategory = new ArrayList<>();
+        CategoryService categoryService = new CategoryService();
+        Category c = categoryService.getCategoryById(categoryId);
+        List<Product> listProduct = categoryService.listProductInCategory(categoryId);
+        List<Product> listProductNotInCategory = categoryService.listProductNotInCategory(categoryId);
 
-        if(c == null || listProduct == null) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // Đặt mã trạng thái HTTP 400 (Bad Request)
+        if (c == null) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         } else {
             request.setAttribute("category", c);
             request.setAttribute("listProduct", listProduct);
-            request.setAttribute("noListProductOfCategory", noListProductOfCategory);
+            request.setAttribute("listProductNotInCategory", listProductNotInCategory);
 
             Timestamp timestamp = c.getCreatedAt();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

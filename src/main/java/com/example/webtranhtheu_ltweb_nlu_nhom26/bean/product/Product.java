@@ -173,5 +173,26 @@ public class Product implements Serializable {
         //Mặc định lấy hình đầu tiên
         return this.listImageUrls.get(0);
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", category=" + category +
+                ", provider=" + provider +
+                ", policy=" + policy +
+                ", listMaterials=" + listMaterials +
+                ", listTopics=" + listTopics +
+                ", listReviews=" + listReviews +
+                ", listPrices=" + listPrices +
+                ", listImageUrls=" + listImageUrls +
+                ", type=" + type +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }
 

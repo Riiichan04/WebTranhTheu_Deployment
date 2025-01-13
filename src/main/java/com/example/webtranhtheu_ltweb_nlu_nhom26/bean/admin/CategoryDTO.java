@@ -4,19 +4,19 @@ import java.sql.Timestamp;
 
 public class CategoryDTO {
     private int id;
-    private String name;
+    private String title;
     private int quantity;
     private int numProductBought;
     private Timestamp createdAt;
-    private int status;
+    private int active;
 
-    public CategoryDTO(int id, String name, int quantity, int numProductBought, Timestamp createdAt, int status) {
+    public CategoryDTO(int id, String name, int quantity, int numProductBought, Timestamp createdAt, int active) {
         this.id = id;
-        this.name = name;
+        this.title = name;
         this.quantity = quantity;
         this.numProductBought = numProductBought;
         this.createdAt = createdAt;
-        this.status = status;
+        this.active = active;
     }
 
     public CategoryDTO() {}
@@ -25,8 +25,8 @@ public class CategoryDTO {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public int getQuantity() {
@@ -41,16 +41,16 @@ public class CategoryDTO {
         return createdAt;
     }
 
-    public int getStatus() {
-        return status;
+    public int getActive() {
+        return active;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = name;
     }
 
     public void setQuantity(int quantity) {
@@ -65,8 +65,23 @@ public class CategoryDTO {
         this.createdAt = createdAt;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setActive(int active) {
+        this.active = active;
     }
 
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryDTO{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", quantity=" + quantity +
+                ", numProductBought=" + numProductBought +
+                ", createdAt=" + createdAt +
+                ", status=" + active +
+                '}';
+    }
 }

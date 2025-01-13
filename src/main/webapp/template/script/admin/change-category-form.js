@@ -18,19 +18,20 @@ $(document).ready(function () {
                     }
 
                     // xử lý trạng thaí danh mục
-                    var status = json[i].status;
-                    if(status) {
+                    var status = json[i].active;
+                    if (status != null) {
                         switch (status) {
                             case 0:
-                                json[i].status = "Vô hiệu hóa";
+                                json[i].active = "Vô hiệu hóa";
                                 break;
                             case 1:
-                                json[i].status = "Đang hoạt động";
+                                json[i].active = "Đang hoạt động";
                                 break;
-                            default: json[i].status = "";
+                            default:
+                                json[i].active = "";
                         }
                     } else {
-                        json[i].status = "";
+                        json[i].active = "";
                     }
                 }
                 return json;
@@ -48,18 +49,17 @@ $(document).ready(function () {
                 render: function (data, type, row) {
                     return `
                         <button class="btn-read-edit" data-id="${row.id}">Xem và Chỉnh Sửa</button>
-                        <button class="btn-delete" data-id="${row.id}">Tắt</button>
                     `;
                 }
             }
         ],
         columns: [
             {data: null}, // Cột STT
-            {data: 'name'}, // Tên danh mục
+            {data: 'title'}, // Tên danh mục
             {data: 'quantity'}, // Số lượng
             {data: 'numProductBought'}, // Số sản phẩm đã bán
             {data: 'createdAt'}, // Ngày tạo
-            {data: 'status'},
+            {data: 'active'},
             {data: null} // Cột hành động
         ]
     });
@@ -106,19 +106,23 @@ $(document).ready(function () {
 
                     // Gửi dữ liệu qua AJAX
                     $.ajax({
-                        url: '/admin/category-management/add-category', // Endpoint API thêm sản phẩm
+                        url: '/admin/category-management/add-category',
                         type: 'POST',
                         data: {
                             name: $('#name-category').val(),
                             status: $('#status-category').val()
                         },
                         success: function (response) {
-                            alert('Thêm danh mục thành công!');
-                            $('#add-category-form')[0].reset(); // Reset form
-                            table.ajax.reload();
-                            hiddenOverlay();
+                            if (response.success) {
+                                alert('Thêm danh mục thành công!');
+                                $('#add-category-form')[0].reset(); // Reset form
+                                table.ajax.reload();
+                                hiddenOverlay();
+                            } else {
+                                alert('Lỗi khi thêm danh mục!');
+                            }
                         },
-                        error: function (error) {
+                        error: function () {
                             alert('Lỗi khi thêm danh mục!');
                         }
                     });
@@ -153,7 +157,23 @@ $(document).ready(function () {
                     'overflow': 'auto',
                 });
 
-                $('#myCategoryEditTable').DataTable().columns.adjust();
+                //Khởi tạo DataTable
+                if ($.fn.DataTable.isDataTable('#myCategoryEditTable')) {
+                    $('#myCategoryEditTable').DataTable().destroy();
+                }
+
+                $('#myCategoryEditTable').DataTable({
+                    scrollY: "300px",
+                    scrollX: "100%",
+                    initComplete: function() {
+                        // Tùy chỉnh giao diện DataTable
+                        $('.dt-search label').text("Tìm kiếm: ").css("margin-right", "10px");
+                        $('.dt-length label').text("Số lượng hiển thị mỗi trang").css("margin-left", "10px");
+                        $('.dt-info').css("display", "none");
+                        $('.dt-search input').css("width", "300px");
+                        $('table.dataTable th.dt-type-numeric').css("text-align", "center");
+                    },
+                });
 
                 // Xử lý nút hủy
                 $('#cancelBtn').on('click', function () {
@@ -184,20 +204,22 @@ $(document).ready(function () {
 
                     // Gửi dữ liệu qua AJAX
                     $.ajax({
-                        url: '/admin/category-management/update-category', // Endpoint API thêm sản phẩm
+                        url: '/admin/category-management/update-category',
                         type: 'POST',
+                        traditional: true, //đảm bảo mảng có thể gửi qua servlet có thể lấy được dữ liệu
                         data: {
+                            categoryId: $('#submitBtn').val(),
                             name: $('#name-category').val(),
                             selectedProductIdsDelete: selectedProductIdsDelete,
                             selectedProductIdsAdd: selectedProductIdsAdd,
                             statusCategory: $('#status-category').val(),
                         },
-                        success: function (response) {
+                        success: function () {
                             alert('Cập nhật danh mục thành công!');
                             table.ajax.reload();
                             hiddenOverlay();
                         },
-                        error: function (error) {
+                        error: function () {
                             alert('Lỗi khi cập nhật danh mục!');
                         }
                     });
@@ -209,35 +231,35 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-delete').on("click", function (event) {
-        event.preventDefault();
-        const url = "/admin/category-management/delete-category";
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                openOverlay();
-                $('#formWrapper').html(data);
-
-                // Ngăn sự kiện click trong form không lan lên formWrapper
-                $('form').on('click', function (event) {
-                    event.stopPropagation();
-                });
-
-                $('#formContainer').css({
-                    'width': '500px',
-                    'max-height': '90vh',
-                    'z-index': '2',
-                })
-                $('#cancelBtn').click(function () {
-                    hiddenOverlay();
-                });
-            },
-            error: function () {
-                alert("Có lỗi xảy ra khi tải nội dung.");
-            }
-        });
-    })
+    // $('.btn-delete').on("click", function (event) {
+    //     event.preventDefault();
+    //     const url = "/admin/category-management/delete-category";
+    //     $.ajax({
+    //         url: url,
+    //         type: "GET",
+    //         success: function (data) {
+    //             openOverlay();
+    //             $('#formWrapper').html(data);
+    //
+    //             // Ngăn sự kiện click trong form không lan lên formWrapper
+    //             $('form').on('click', function (event) {
+    //                 event.stopPropagation();
+    //             });
+    //
+    //             $('#formContainer').css({
+    //                 'width': '500px',
+    //                 'max-height': '90vh',
+    //                 'z-index': '2',
+    //             })
+    //             $('#cancelBtn').click(function () {
+    //                 hiddenOverlay();
+    //             });
+    //         },
+    //         error: function () {
+    //             alert("Có lỗi xảy ra khi tải nội dung.");
+    //         }
+    //     });
+    // })
 
     function hiddenOverlay() {
         $('#formWrapper').css({
