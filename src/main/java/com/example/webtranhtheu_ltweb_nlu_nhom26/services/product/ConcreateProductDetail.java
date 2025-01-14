@@ -18,4 +18,10 @@ public class ConcreateProductDetail implements ProductDetailService {
     public Product getProductInfo(int productId) {
         return productDAO.getProductInfo(productId);
     }
+
+
+    //Đây là method tạm
+    public int countProducts() {
+        return productDAO.countProducts();
+    }
 }

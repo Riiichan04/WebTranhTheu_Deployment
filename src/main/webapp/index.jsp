@@ -20,8 +20,10 @@
             <h2 class="text-center main-color">Thanh tao, Mộc mạc, Uyển chuyển</h2>
             <p class="text-center mt-2 mx-5">
                 Nét Việt tự hào mang đến một trang web chứa đựng các tác phẩm qua nét thêu của nghệ nhân Việt,
-                mang đến cho người sở hữu một cảm giác đầy tính nghệ thuật và tao nhã. Tập hợp các bộ sưu tập với nhiều chủ đề khác nhau,
-                phù hợp để trang trí không gian sống. Tranh thêu của Nét Việt chính là quà tặng ý nghĩa cho bạn bè và người thân
+                mang đến cho người sở hữu một cảm giác đầy tính nghệ thuật và tao nhã. Tập hợp các bộ sưu tập với nhiều
+                chủ đề khác nhau,
+                phù hợp để trang trí không gian sống. Tranh thêu của Nét Việt chính là quà tặng ý nghĩa cho bạn bè và
+                người thân
             </p>
         </div>
         <div class="col-6 p-0 position-relative">
@@ -35,12 +37,13 @@
         <hr/>
         <c:forEach var="product" items="${hotProduct}">
             <div class="col">
-                <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
+                <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
                             <%-- Tạm --%>
                         <h6 class="card-title text-center pb-2">${product.category} ${product.title}</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                        <p class="card-text text-center fw-semibold h5 mt-2"
+                           style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
                     </div>
                 </div>
             </div>
@@ -53,12 +56,13 @@
         <hr/>
         <c:forEach var="product" items="${mostRatedProduct}">
             <div class="col">
-                <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                    <img src="${product.getThumbnail()}"  class="card-img" alt="...">
+                <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
+                    <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
                             <%-- Tạm --%>
                         <h6 class="card-title text-center pb-2">${product.category} ${product.title}</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                        <p class="card-text text-center fw-semibold h5 mt-2"
+                           style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
                     </div>
                 </div>
             </div>
@@ -85,114 +89,12 @@
         <h5 class="main-color mb-3">Tất cả sản phẩm </h5>
         <hr/>
         <div id="full-product__product-list">
-            <div class="row">
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
-                        <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-                            <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="col"></div>
             <div class="col-4  d-flex justify-content-center">
-                <button id="full-product-button" class="rounded sub-cta-button-background px-3 py-2 border-0">Xem thêm</button>
+                <button id="full-product-button" class="rounded sub-cta-button-background px-3 py-2 border-0">Xem thêm
+                </button>
             </div>
             <div class="col"></div>
         </div>
@@ -201,6 +103,5 @@
 <jsp:include page="layout/public/footer.jsp"/>
 <script src="template/script/home.js"></script>
 <script src="template/script/header.js"></script>
-
 </body>
 </html>

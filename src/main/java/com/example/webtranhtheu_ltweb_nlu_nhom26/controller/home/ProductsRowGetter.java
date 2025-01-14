@@ -10,6 +10,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 //Dùng để lấy 1 hàng 5 sản phẩm
@@ -24,24 +25,37 @@ public class ProductsRowGetter extends HttpServlet {
             //Lấy offset và số lượng cần lấy
             String ajaxOffset = request.getParameter("offset");
             String ajaxAmount = request.getParameter("amount");
-            int offset = (ajaxOffset != null) ? Integer.parseInt(ajaxOffset) : 0;
-            int amount = (ajaxAmount != null) ? Integer.parseInt(ajaxAmount): 5;
-            //Lấy một hàng sản phẩm
-            List<Product> productsRow = ProductService.getOneProductsRow(offset, amount);
-            if (productsRow.isEmpty()) ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
-            //TODO: Xử lý nhận biết khi nào không còn để lấy
-            // - Cho offset = -1
+            String limit = request.getParameter("limit");
 
-            JsonArray listProducts = new JsonArray();
-            for (Product product : productsRow) {
-                //Thêm thông tin hiển thị card product dạng json
-                //Lấy product Price để hiển thị
-                ControllerUtil.addProductToJson(listProducts, product, product.getMinPrice());
+            int limitValue = -1;
+            //Nếu có limit trên request thì lấy xuống
+            if (limit == null) {
+                limitValue = ProductService.countProduct();
+                jsonResult.addProperty("limit", limitValue);
             }
-            jsonResult.add("listProducts", listProducts);
-            ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
-        }
-        catch (Exception e) {
+            else limitValue = Integer.parseInt(limit);
+
+            int offset = (ajaxOffset != null) ? Integer.parseInt(ajaxOffset) : 1;
+            int amount = (ajaxAmount != null) ? Integer.parseInt(ajaxAmount) : 5;
+
+            if (offset > limitValue) {
+                ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
+            } else {
+                //Lấy một hàng sản phẩm
+                List<Product> productsRow = ProductService.getOneProductsRow(offset, amount);
+                if (productsRow.isEmpty()) ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
+                JsonArray listProducts = new JsonArray();
+                for (Product product : productsRow) {
+                    //Thêm thông tin hiển thị card product dạng json
+                    ControllerUtil.addProductToJson(listProducts, product, product.getMinPrice());
+                }
+                jsonResult.addProperty("currentOffset", productsRow.getLast().getId() + 1);
+                jsonResult.add("listProducts", listProducts);
+
+                ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
+            }
+        } catch (Exception e) {
+            jsonResult.addProperty("currentOffset", -1);
             ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
         }
     }

@@ -60,6 +60,9 @@ public interface ProductDAO {
     @SqlQuery("select products.id from products join ( select productId, avg(rating) as rating from product_reviews group by productId order by rating desc limit 5) as product_ratings on product_ratings.productId = products.id")
     List<Integer> getMostRatedProductsId();
 
+    @SqlQuery("select count(id) from products")
+    int countProducts();
+
 //    default Product getProductInfo(int productId) {
 //        return JDBIConnector.getInstance().withHandle(handle -> handle
 //                .createQuery("""
