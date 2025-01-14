@@ -17,7 +17,7 @@
 </head>
 <body>
 <!-- Form container -->
-<div id="formContainer">
+<div class="formContainer">
     <!-- Modal xác nhận -->
     <form id="confirmModal">
         <div class="modal-content py-4">

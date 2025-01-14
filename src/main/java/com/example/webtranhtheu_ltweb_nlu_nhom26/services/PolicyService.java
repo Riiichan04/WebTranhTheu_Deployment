@@ -39,10 +39,15 @@ public class PolicyService {
     public void updatePolicy(Policy policy, String[] deleteProductId, String[] addProductId){
         policyDAO.updatePolicy(policy);
         for(String productId : deleteProductId) {
-            policyDAO.deletePolicyProductById(Integer.parseInt(productId));
+            policyDAO.deletePolicyProductByProductId(Integer.parseInt(productId));
         }
         for(String productId : addProductId) {
             policyDAO.updatePolicyProductById(Integer.parseInt(productId), policy.getId());
         }
+    }
+
+    public void deletePolicy(int policyId){
+        policyDAO.deletePolicyProductByPolicyId(policyId);
+        policyDAO.deletePolicyById(policyId);
     }
 }

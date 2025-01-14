@@ -20,7 +20,7 @@
 <!-- Form container -->
 <div id="formContainer">
     <!-- Modal xác nhận -->
-    <form id="confirmModal">
+    <form class="confirmModal">
         <div class="modal-content py-4">
             <h5 class="style-title"><i class="fa-solid fa-circle-question me-2"></i>Xóa sản phẩm</h5>
             <hr>

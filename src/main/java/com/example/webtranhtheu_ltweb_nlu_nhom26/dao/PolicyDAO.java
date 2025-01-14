@@ -3,14 +3,12 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.PolicyDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Policy;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 public interface PolicyDAO {
@@ -25,7 +23,7 @@ public interface PolicyDAO {
 
     @SqlQuery("select id, title, description, createdAt as createAt, updatedAt as updateAt from policies where id = :id")
     @RegisterBeanMapper(Policy.class)
-    Policy getPolicyById(@Bind("id") long id);
+    Policy getPolicyById(@Bind("id") int id);
 
     @SqlQuery("select id, codeProduct as code, title, typeOfProduct as type from products where policyId = :policyId")
     @RegisterBeanMapper(Product.class)
@@ -40,9 +38,15 @@ public interface PolicyDAO {
     void updatePolicy(@BindBean Policy policy);
 
     @SqlUpdate("update products set policyId = 1 where id = :productId")
-    void deletePolicyProductById(@Bind("productId") int productId);
+    void deletePolicyProductByProductId(@Bind("productId") int productId);
 
     @SqlUpdate("update products set policyId = :policyId where id = :productId")
     void updatePolicyProductById(@Bind("productId") int productId, @Bind("policyId") int policyId);
+
+    @SqlUpdate("update products set policyId = 1 where policyId = :policyId")
+    void deletePolicyProductByPolicyId(@Bind("policyId") int policyId);
+
+    @SqlUpdate("delete from policies where id = :id")
+    void deletePolicyById(@Bind("id") int id);
 
 }

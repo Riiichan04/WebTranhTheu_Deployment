@@ -194,12 +194,13 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-delete').on("click", function(event) {
-        event.preventDefault();
+    $('#myTable').on('click', '.btn-delete', function () {
+        const policyId = $(this).data('id');
         const url = "/admin/policy-management/delete-policy-form";
         $.ajax({
             url: url,
             type: "GET",
+            data: {policyId: policyId},
             success: function (data) {
                 openOverlay();
                 $('#formWrapper').html(data);
@@ -214,9 +215,29 @@ $(document).ready(function () {
                     'max-height': '90vh',
                     'z-index': '2',
                 })
+
                 $('#cancelBtn').click(function () {
                     hiddenOverlay();
                 });
+
+                $('#delete-policy-form').on('submit', function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "/admin/policy-management/delete-policy",
+                        type: "POST",
+                        data: {policyId: $('#confirmYes').val()},
+                        success: function () {
+                            alert('Xóa chính sách thành công!');
+                            table.ajax.reload();
+                            hiddenOverlay();
+                        },
+                        error: function () {
+                            alert('Xóa chính sách thất bại!');
+                        }
+                    });
+                });
+
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
