@@ -53,7 +53,7 @@ public interface ProductDAO {
     @RegisterBeanMapper(Discount.class)
     List<Discount> getProductDiscounts(@Bind("id") int id);
 
-    @SqlQuery("select products.id from products join select order_products_details.productId from orders_products_details join orders on orders_products_details.orderId = orders.id where orders.createdAt >= now() - interval 3 month and order_products_details.productId in (select productId from order_products_details group by productId order by count(productId) limit 5) as limit_orders on limit_orders.productId = products.id limit 5")
+    @SqlQuery("select products.id from products join (select order_products_details.productId from order_products_details join orders on order_products_details.orderId = orders.id where orders.createdAt >= now() - interval 3 month and order_products_details.productId in (select productId from order_products_details group by productId order by count(productId))) as limit_orders on limit_orders.productId = products.id limit 5")
     List<Integer> getIdOfHotProduct();
 
     //Lấy danh sách các product có đánh giá cao nhất
