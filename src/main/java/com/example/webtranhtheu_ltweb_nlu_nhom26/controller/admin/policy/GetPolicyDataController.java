@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.policy;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.PolicyDTO;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.PolicyService;
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,9 +21,8 @@ public class GetPolicyDataController extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        //chưa xử lý service
-        List<PolicyDTO> policies = new ArrayList<>();
-        policies.add(new PolicyDTO(1, "Chính sách 1", 1200, new Timestamp(System.currentTimeMillis())));
+        PolicyService policyService = new PolicyService();
+        List<PolicyDTO> policies = policyService.getPoliciesDTO();
 
         Gson gson = new Gson();
         response.getWriter().print(gson.toJson(policies));

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#myTable').DataTable( {
+    const table = $('#myTable').DataTable( {
         destroy: true,
         scrollY: "470px",
         ajax: {
@@ -32,14 +32,14 @@ $(document).ready(function () {
                 render: function (data, type, row) {
                     return `
                         <button class="btn-read-edit" data-id="${row.id}">Xem và Chỉnh Sửa</button>
-                        <button class="btn-delete" data-id="${row.id}">Tắt</button>
+                        <button class="btn-delete" data-id="${row.id}">Xóa</button>
                     `;
                 }
             }
         ],
         columns: [
             {data: null}, // Cột STT
-            {data: 'name'},
+            {data: 'title'},
             {data: 'countProduct'},
             {data: 'createdAt'},
             {data: null} // Cột hành động
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
     $('#addPolicyBtn').on('click', function(event) {
         event.preventDefault();
-        const url = "/admin/policy-management/add-policy";
+        const url = "/admin/policy-management/add-policy-form";
         $.ajax({
             url: url,
             type: "GET",
@@ -77,9 +77,39 @@ $(document).ready(function () {
                     'z-index': '2',
                     'overflow': 'auto',
                 });
+
                 $('#cancelBtn').click(function () {
                     hiddenOverlay();
                 });
+
+                // Gửi dữ liệu từ form thêm chính sách
+                $('#add-policy-form').on('submit', function (event) {
+                    event.preventDefault(); // Ngăn chặn reload trang
+
+                    // Gửi dữ liệu qua AJAX
+                    $.ajax({
+                        url: '/admin/policy-management/add-policy',
+                        type: 'POST',
+                        data: {
+                            name: $('#name-policy').val(),
+                            description: $('#description').val()
+                        },
+                        success: function (response) {
+                            if (response.success) {
+                                alert('Thêm chính sách thành công!');
+                                $('#add-policy-form')[0].reset(); // Reset form
+                                table.ajax.reload();
+                                hiddenOverlay();
+                            } else {
+                                alert('Lỗi khi thêm chính sách!');
+                            }
+                        },
+                        error: function () {
+                            alert('Lỗi khi thêm chính sách!');
+                        }
+                    });
+                });
+
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
@@ -87,12 +117,13 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-read-edit').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/policy-management/update-policy";
+    $('#myTable').on('click', '.btn-read-edit', function () {
+        const policyId = $(this).data("id");
+        const url = "/admin/policy-management/read-edit-policy-form";
         $.ajax({
             url: url,
             type: "GET",
+            data: {policyId: policyId},
             success: function (data) {
                 openOverlay();
                 $('#formWrapper').html(data);
@@ -112,7 +143,50 @@ $(document).ready(function () {
                 // Xử lý nút hủy
                 $('#cancelBtn').on('click', function () {
                     hiddenOverlay();
-                })
+                });
+
+                // Gửi dữ liệu từ form chỉnh sửa danh mục
+                $('#read-edit-policy-form').on('submit', function (event) {
+                    event.preventDefault(); // Ngăn chặn reload trang
+
+                    // Mảng để lưu các ID sản phẩm được chọn
+                    var selectedProductIdsDelete = [];
+
+                    $('#deleteProduct option:selected').each(function () {
+                        selectedProductIdsDelete.push($(this).val());
+                    });
+
+                    // Mảng để lưu các ID sản phẩm được chọn
+                    var selectedProductIdsAdd = [];
+
+                    // Lấy tất cả các option được chọn trong select
+                    $('#addProduct option:selected').each(function () {
+                        // Lấy giá trị của mỗi option đã chọn và thêm vào mảng
+                        selectedProductIdsAdd.push($(this).val());
+                    });
+
+                    // Gửi dữ liệu qua AJAX
+                    $.ajax({
+                        url: '/admin/policy-management/update-policy',
+                        type: 'POST',
+                        traditional: true, //đảm bảo mảng có thể gửi qua servlet có thể lấy được dữ liệu
+                        data: {
+                            policyId: $('#submitBtn').val(),
+                            name: $('#name-policy').val(),
+                            selectedProductIdsDelete: selectedProductIdsDelete,
+                            selectedProductIdsAdd: selectedProductIdsAdd,
+                            description: $('#description').val(),
+                        },
+                        success: function () {
+                            alert('Cập nhật chính sách thành công!');
+                            table.ajax.reload();
+                            hiddenOverlay();
+                        },
+                        error: function () {
+                            alert('Lỗi khi cập nhật chính sách!');
+                        }
+                    });
+                });
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
@@ -122,7 +196,7 @@ $(document).ready(function () {
 
     $('.btn-delete').on("click", function(event) {
         event.preventDefault();
-        const url = "/admin/policy-management/delete-policy";
+        const url = "/admin/policy-management/delete-policy-form";
         $.ajax({
             url: url,
             type: "GET",

@@ -4,13 +4,13 @@ import java.sql.Timestamp;
 
 public class PolicyDTO {
     private int id;
-    private String name;
+    private String title;
     private int countProduct;
     private Timestamp createdAt;
 
-    public PolicyDTO(int id, String name, int countProduct, Timestamp createdAt) {
+    public PolicyDTO(int id, String title, int countProduct, Timestamp createdAt) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.countProduct = countProduct;
         this.createdAt = createdAt;
     }
@@ -20,8 +20,8 @@ public class PolicyDTO {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public int getCountProduct() {
@@ -36,8 +36,8 @@ public class PolicyDTO {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setCountProduct(int countProduct) {
