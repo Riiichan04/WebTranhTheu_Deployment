@@ -18,7 +18,7 @@ public class AuthService {
     }
 
     public boolean checkPassword(String password) {
-        String regex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$";
+        String regex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
         return password.matches(regex);
     }
 

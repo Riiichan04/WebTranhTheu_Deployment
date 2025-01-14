@@ -89,7 +89,7 @@
                 <div class="icon-container"><i class="fa-solid fa-lock icon-input"></i></div>
             </div>
             <div class="col-11 p-0"><input type="password" min="8" class="w-100 style-input" id="password"
-                                           placeholder="Ít nhất 8 kí tự, có chứa chữ số, chữ hoa, kí tự đặc biệt"
+                                           placeholder="Ít nhất 8 kí tự chứa số và chữ cái"
                                            required></div>
         </div>
         <!-- nhập lại mật khẩu -->
