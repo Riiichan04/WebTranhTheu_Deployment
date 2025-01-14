@@ -6,11 +6,14 @@ import org.jdbi.v3.core.statement.StatementContext;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Provider implements Serializable {
     private int id;
     private String prodiverName;
     private String address; //Còn sửa sau
+    private Timestamp createdAt; // ngày tạo provider
+    private Timestamp updatedAt; // ngày cập nhật provider
 
     public Provider(int id, String prodiverName, String address) {
         this.id = id;
@@ -50,5 +53,21 @@ public class Provider implements Serializable {
         public Provider map(ResultSet rs, StatementContext ctx) throws SQLException {
             return new Provider(rs.getInt("id"), rs.getString("providerName"), rs.getString("location"));
         }
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

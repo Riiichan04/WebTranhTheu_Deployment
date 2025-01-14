@@ -8,6 +8,7 @@ public class Review implements Serializable {
     private int rating;
     private String content;
     private Timestamp createTime;
+    private Timestamp updateTime;
 
     public Review() {
     }

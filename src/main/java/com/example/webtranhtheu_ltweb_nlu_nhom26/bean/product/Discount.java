@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 public class Discount implements Serializable {
     private int id;
     private String title;
+    private double amount;
     private int available;
     private Timestamp startedAt;
     private Timestamp endedAt;
@@ -27,6 +28,14 @@ public class Discount implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public int getAvailable() {
@@ -52,4 +61,5 @@ public class Discount implements Serializable {
     public void setEndedAt(Timestamp endedAt) {
         this.endedAt = endedAt;
     }
+
 }

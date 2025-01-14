@@ -6,8 +6,8 @@ import java.sql.Timestamp;
 public class Policy implements Serializable {
     private String title;
     private String description;
-//    private Timestamp createAt;
-//    private Timestamp updateAt;
+    private Timestamp createAt;
+    private Timestamp updateAt;
 
     public Policy() {
     }
@@ -28,19 +28,19 @@ public class Policy implements Serializable {
         this.description = description;
     }
 
-    //    public Timestamp getCreateAt() {
-//        return createAt;
-//    }
-//
-//    public void setCreateAt(Timestamp createAt) {
-//        this.createAt = createAt;
-//    }
-//
-//    public Timestamp getUpdateAt() {
-//        return updateAt;
-//    }
-//
-//    public void setUpdateAt(Timestamp updateAt) {
-//        this.updateAt = updateAt;
-//    }
+        public Timestamp getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
+    }
+
+    public Timestamp getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Timestamp updateAt) {
+        this.updateAt = updateAt;
+    }
 }

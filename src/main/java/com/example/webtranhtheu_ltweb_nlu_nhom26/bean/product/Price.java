@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class Price implements Serializable {
     private int productId;  //Id sản phẩm
-    private int width;  //Chiều dày của sản phẩm
+    private int width;  //Chiều dài của sản phẩm
     private int height; //Chiều cao của sản phẩm
     private double price;   //Giá tiền
     private int available;  //Số lượng tồn kho hiện tại

@@ -1,6 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.cart;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.cart.Cart;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.Cart;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +19,7 @@ public class CartRemoveProductController extends HttpServlet {
         Cart cart = (Cart) session.getAttribute("Cart");
         session.removeAttribute("Cart");
         if(cart == null) {
-            cart = new Cart();
+            cart = Cart.getInstance();
         }
         cart.remove(productId);
         session.setAttribute("Cart", cart);

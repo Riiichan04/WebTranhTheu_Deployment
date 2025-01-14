@@ -6,6 +6,7 @@ import org.jdbi.v3.core.statement.StatementContext;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -24,6 +25,8 @@ public class Product implements Serializable {
     private List<String> listImageUrls; //Danh sách hình ảnh của sản phẩm
     private List<Discount> listDiscounts; //Danh sách chuương trình giảm giá của sản phẩm
     private int type; //Cho biết đây là tranh hay nguyên liệu
+    private Timestamp createdAt; // ngày tạo sản phẩm
+    private Timestamp updatedAt; //ngày cập nhật sản phẩm
 
     public Product() {
         this.listMaterials = new ArrayList<>();
@@ -148,10 +151,33 @@ public class Product implements Serializable {
         }
         return null;
     }
-
     public String getThumbnail() {
         //Mặc định lấy hình đầu tiên
         return this.listImageUrls.get(0);
+    }
+    public Discount maxDiscount() {
+        // lấy discount có giá trị lớn nhất
+        return listDiscounts.stream().max(Comparator.comparingDouble(Discount::getAmount)).orElse(null);
+    }
+    public Discount getSelectedDiscount(){
+        // lấy discount người dùng chọn
+        return null;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
 
