@@ -93,7 +93,7 @@
                             </div>
 
                         </div>
-                        <p class="text-center mt-2">150 đánh giá</p>
+                        <p class="text-center mt-2">${countReview} đánh giá</p>
                     </div>
                     <div class="col-2"></div>
                     <div class="col-6 row d-flex justify-content-start align-items-center">
@@ -201,7 +201,6 @@
                     </div>
                     <div class="row">
                         <div class="col-1">
-                            <!--                            <i class="fa-solid fa-tag"></i>-->
                             <i class="bi bi-tag"></i>
                         </div>
                         <div class="col">
@@ -214,15 +213,7 @@
                     <div class="row">
                         <p class="fw-semibold">Chính sách: </p>
                     </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <!--                            <i class="bi bi-shield"></i>-->
-                            <i class="bi bi-shield-slash"></i>
-                        </div>
-                        <div class="col">
-                            <span>Không áp dụng chính sách bảo hành</span>
-                        </div>
-                    </div>
+                    ${product.getPolicy().getDescription()}
                 </div>
 
             </div>
@@ -246,7 +237,7 @@
             <div class="row mt-4">
                 <div class="col-2 row">
                     <div class="text-center">
-                        <span id="current-star-rating" class="h3 main-color">4.0</span><span class="h5">/5.0</span>
+                        <span id="current-star-rating" class="h3 main-color">${avgRating}</span><span class="h5">/5.0</span>
                     </div>
                     <div id="product-review__star" class="mt-2 d-flex justify-content-center">
                         <div class="col-2 product-info__star-container   px-0">
@@ -276,7 +267,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <span>150 đánh giá</span>
+                        <span>${countReview} đánh giá</span>
                     </div>
                     <div class="text-center">
                         <span style="font-size: 12px">(Click vào số sao để đánh giá)</span>
@@ -296,157 +287,8 @@
         <hr/>
         <div>
             <h4 class="main-color">Bình luận</h4>
-            <p class="text-start">(<span id="count-comment">3</span> bình luận)</p>
+            <p class="text-start">(<span id="count-comment">${countReview}</span> bình luận)</p>
             <div id="comment-container">
-                <div class="row product-review__comment-component mt-4_5">
-                    <div class="col-3 text-center">
-                        <h5>FanT1_20năm</h5>
-                        <p>03/11/2024</p>
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col d-flex justify-content-center comment-rating">
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star sample_half"
-                                       style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask" style="width: 100%"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                            </div>
-                            <div class="col-2"></div>
-                        </div>
-                    </div>
-                    <div class="col-8">
-                        <p class="" style="white-space: pre-line">
-                            - Đánh giá chung: Tranh khá là đẹp
-                            - Vị trí treo tranh: Nên treo ở phòng khách hoặc phòng ngủ
-                            - Giá cả: Với độ đẹp này thì giá cả vừa phải
-                            - Chất liệu: Với mức giá này thì chất liệu tranh rất tốt
-                        </p>
-                    </div>
-                </div>
-                <div class="row product-review__comment-component mt-4_5">
-                    <div class="col-3 text-center">
-                        <h5>TraL04</h5>
-                        <p>01/11/2024</p>
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col d-flex justify-content-center comment-rating">
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star sample_half"
-                                       style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask" style="width: 100%"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask" style="width: 100%"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                            </div>
-                            <div class="col-2"></div>
-                        </div>
-                    </div>
-                    <div class="col-8">
-                        <p class="" style="white-space: pre-line">Nét mềm mại, không chỉ thừa, phù hợp trang trí nhà,
-                            rất đáng tiền mua</p>
-                    </div>
-                </div>
-                <div class="row product-review__comment-component mt-4_5">
-                    <div class="col-3 text-center">
-                        <h5>Anh Nguyễn</h5>
-                        <p>23/10/2024</p>
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col d-flex justify-content-center comment-rating">
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star sample_half"
-                                       style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                            </div>
-                            <div class="col-2"></div>
-                        </div>
-                    </div>
-                    <div class="col-8">
-                        <p class="" style="white-space: pre-line">Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum.</p>
-                    </div>
-                </div>
             </div>
             <div class="d-flex justify-content-center mt-4">
                 <button class="sub-cta-button  py-2 px-3 rounded">

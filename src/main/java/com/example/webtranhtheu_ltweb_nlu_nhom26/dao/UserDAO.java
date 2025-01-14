@@ -8,6 +8,6 @@ import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import java.util.List;
 
 public interface UserDAO {
-    @SqlQuery("select username from accounts where id = :id")
+    @SqlQuery("select fullname from accounts where id = :id")
     String getUsername(@Bind("id") int id);
 }

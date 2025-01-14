@@ -256,26 +256,31 @@ function getReviewList(amount) {
                 amount: amount
             },
             success: (response) => {
+                response = $.parseJSON(response)
+                console.log(response)
                 //Hiển thị bình luận
                 if (response.result) {
-                    response.reviewData.forEach((index, review) =>
+                    for (let review of response.reviewData) {
                         $("#comment-container").append(createReviewElement(review))
-                    )
-                } else $("#comment-container").append(`<p class="row text-center">Đã tải hết bình luận</p>`)
+                    }
+                } else $("#comment-container").append(`<p class="d-flex justify-content-center row text-center">Đã tải hết bình luận</p>`)
             },
             error: (response) => {
-                $("#comment-container").append(`<p class="row text-center">Có lỗi khi tải bình luận của bạn</p>`)
+                $("#comment-container").append(`<p class="d-flex justify-content-center row text-center">Có lỗi khi tải bình luận của bạn</p>`)
             }
         })
     }
 }
 
 function createReviewElement(review) {
+    const date = new Date(review.reviewTime)
+    const formattedDate = new Intl.DateTimeFormat('en-GB').format(date)
+
     return `
         <div class="row product-review__comment-component mt-4_5">
             <div class="col-3 text-center">
                 <h5>${review.username}</h5>
-                <p>${review.reviewTime}</p>
+                <p>${formattedDate}</p>
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col d-flex justify-content-center comment-rating">
@@ -347,10 +352,13 @@ function getPrice(width, height) {
                     const url = new URL(window.location.href)
                     url.searchParams.set("width", response.width)
                     url.searchParams.set("height", response.height)
+                    window.history.pushState({}, '', url)
                 }
                 $("#product-detail__available--value").text(response.available)
                 $("#product-details__price").text(response.price)
                 currentPrice = response.price
+                currentWidth = response.width
+                currentHeight = response.height
             }
         },
     })
