@@ -1,10 +1,4 @@
-<%@ page import="java.sql.Timestamp" %><%--
-  Created by IntelliJ IDEA.
-  User: MINH THU
-  Date: 12/23/2024
-  Time: 1:42 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.sql.Timestamp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -99,6 +93,13 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0"><input type="date" class="w-100 style-input" value="${createAt}" required disabled></div>
+        </div>
+        <!-- ngày chỉnh sửa -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày cập nhật danh mục</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="${updateAt}" required disabled></div>
         </div>
 
         <div class="row pt-4 pb-4">

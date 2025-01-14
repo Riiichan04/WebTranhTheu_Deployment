@@ -49,6 +49,7 @@ $(document).ready(function () {
                 render: function (data, type, row) {
                     return `
                         <button class="btn-read-edit" data-id="${row.id}">Xem và Chỉnh Sửa</button>
+                        <!--<button class="btn-delete" data-id="${row.id}">Tắt</button>-->
                     `;
                 }
             }
@@ -71,7 +72,7 @@ $(document).ready(function () {
     $('table.dataTable th.dt-type-numeric').css("text-align", "center");
 
     // Gắn sự kiện click cho formWrapper
-    $('#formWrapper').on('click', function (event) {
+    $('#formWrapper').on('click', function () {
         hiddenOverlay() // Tắt overlay
     });
 
@@ -94,7 +95,7 @@ $(document).ready(function () {
                     'width': '500px',
                     'max-height': '90vh',
                     'z-index': '2',
-                })
+                });
 
                 $('#cancelBtn').click(function () {
                     hiddenOverlay();
@@ -155,24 +156,6 @@ $(document).ready(function () {
                     'max-height': '90vh',
                     'z-index': '2',
                     'overflow': 'auto',
-                });
-
-                //Khởi tạo DataTable
-                if ($.fn.DataTable.isDataTable('#myCategoryEditTable')) {
-                    $('#myCategoryEditTable').DataTable().destroy();
-                }
-
-                $('#myCategoryEditTable').DataTable({
-                    scrollY: "300px",
-                    scrollX: "100%",
-                    initComplete: function() {
-                        // Tùy chỉnh giao diện DataTable
-                        $('.dt-search label').text("Tìm kiếm: ").css("margin-right", "10px");
-                        $('.dt-length label').text("Số lượng hiển thị mỗi trang").css("margin-left", "10px");
-                        $('.dt-info').css("display", "none");
-                        $('.dt-search input').css("width", "300px");
-                        $('table.dataTable th.dt-type-numeric').css("text-align", "center");
-                    },
                 });
 
                 // Xử lý nút hủy

@@ -4,19 +4,19 @@ import java.sql.Timestamp;
 
 public class TopicDTO {
     private int id;
-    private String name;
+    private String title;
     private int quantity;
     private int numProductBought;
     private Timestamp createdAt;
-    private int status;
+    private int active;
 
-    public TopicDTO(int id, String name, int quantity, int numProductBought, Timestamp createdAt, int status) {
+    public TopicDTO(int id, String title, int quantity, int numProductBought, Timestamp createdAt, int active) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.quantity = quantity;
         this.numProductBought = numProductBought;
         this.createdAt = createdAt;
-        this.status = status;
+        this.active = active;
     }
 
     public TopicDTO() {}
@@ -25,8 +25,8 @@ public class TopicDTO {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public int getQuantity() {
@@ -41,16 +41,16 @@ public class TopicDTO {
         return createdAt;
     }
 
-    public int getStatus() {
-        return status;
+    public int getActive() {
+        return active;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setQuantity(int quantity) {
@@ -61,11 +61,11 @@ public class TopicDTO {
         this.numProductBought = numProductBought;
     }
 
-    public void setCreateAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
+    public void setActive(int active) {
+        this.active = active;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 }

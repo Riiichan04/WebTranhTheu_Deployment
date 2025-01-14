@@ -1,10 +1,8 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.CategoryDTO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.ProductDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
@@ -50,13 +48,4 @@ public interface CategoryDAO {
                                 @Bind("productId") int productId,
                                 @Bind("updatedAt") Timestamp updatedAt);
 
-    public static void main(String[] args) {
-        CategoryDAO categoryDAO = JDBIConnector.getInstance().onDemand(CategoryDAO.class);
-        for(CategoryDTO categoryDTO : categoryDAO.getListCategoryDTO()) {
-            System.out.println(categoryDTO.toString());
-        }
-        Category category = new Category(1,"Tranh thêu kim cương", 1, null, new Timestamp(System.currentTimeMillis() + 1000));
-        //System.out.println(categoryDAO.insertCategory(category));
-        categoryDAO.insertCategoryProducts(2, 1, new Timestamp(System.currentTimeMillis()));
-    }
 }

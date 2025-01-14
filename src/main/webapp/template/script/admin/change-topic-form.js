@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#myTable').DataTable( {
+    const table = $('#myTable').DataTable( {
         destroy: true,
         scrollY: "470px",
         ajax: {
@@ -18,19 +18,19 @@ $(document).ready(function () {
                     }
 
                     // xử lý trạng thaí chủ đề
-                    var status = json[i].status;
-                    if(status) {
+                    var status = json[i].active;
+                    if(status != null) {
                         switch (status) {
                             case 0:
-                                json[i].status = "Vô hiệu hóa";
+                                json[i].active = "Vô hiệu hóa";
                                 break;
                             case 1:
-                                json[i].status = "Đang hoạt động";
+                                json[i].active = "Đang hoạt động";
                                 break;
-                            default: json[i].status = "";
+                            default: json[i].active = "";
                         }
                     } else {
-                        json[i].status = "";
+                        json[i].active = "";
                     }
                 }
                 return json;
@@ -48,18 +48,18 @@ $(document).ready(function () {
                 render: function (data, type, row) {
                     return `
                         <button class="btn-read-edit" data-id="${row.id}">Xem và Chỉnh Sửa</button>
-                        <button class="btn-delete" data-id="${row.id}">Tắt</button>
+                        <!--<button class="btn-delete" data-id="${row.id}">Tắt</button>-->
                     `;
                 }
             }
         ],
         columns: [
             {data: null}, // Cột STT
-            {data: 'name'}, // Tên danh mục
+            {data: 'title'}, // Tên danh mục
             {data: 'quantity'}, // Số lượng
             {data: 'numProductBought'}, // Số sản phẩm đã bán
             {data: 'createdAt'}, // Ngày tạo
-            {data: 'status'}, // Ngày tạo
+            {data: 'active'},
             {data: null} // Cột hành động
         ]
     }); // Khởi tạo DataTable
@@ -70,13 +70,13 @@ $(document).ready(function () {
     $('table.dataTable th.dt-type-numeric').css("text-align", "center");
 
     // Gắn sự kiện click cho formWrapper
-    $('#formWrapper').on('click', function (event) {
+    $('#formWrapper').on('click', function () {
         hiddenOverlay() // Tắt overlay
     });
 
     $('#addTopicBtn').on("click", function(event) {
         event.preventDefault();
-        const url = "/admin/topic-management/add-topic";
+        const url = "/admin/topic-management/add-topic-form";
         $.ajax({
             url: url,
             type: "GET",
@@ -93,10 +93,40 @@ $(document).ready(function () {
                     'width': '500px',
                     'max-height': '90vh',
                     'z-index': '2',
-                })
+                });
+
                 $('#cancelBtn').click(function () {
                     hiddenOverlay();
                 });
+
+                // Gửi dữ liệu từ form thêm chủ đề
+                $('#add-topic-form').on('submit', function (event) {
+                    event.preventDefault(); // Ngăn chặn reload trang
+
+                    // Gửi dữ liệu qua AJAX
+                    $.ajax({
+                        url: '/admin/topic-management/add-topic',
+                        type: 'POST',
+                        data: {
+                            name: $('#name-topic').val(),
+                            status: $('#status-topic').val()
+                        },
+                        success: function (response) {
+                            if (response.success) {
+                                alert('Thêm chủ đề thành công!');
+                                $('#add-topic-form')[0].reset(); // Reset form
+                                table.ajax.reload();
+                                hiddenOverlay();
+                            } else {
+                                alert('Lỗi khi thêm chủ đề!');
+                            }
+                        },
+                        error: function () {
+                            alert('Lỗi khi thêm chủ đề!');
+                        }
+                    });
+                });
+
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
@@ -104,12 +134,13 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-read-edit').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/topic-management/update-topic";
+    $('#myTable').on('click', '.btn-read-edit', function () {
+        const topicId = $(this).data('id');
+        const url = "/admin/topic-management/read-edit-topic-form";
         $.ajax({
             url: url,
             type: "GET",
+            data: {topicId: topicId},
             success: function (data) {
                 openOverlay();
                 $('#formWrapper').html(data);
@@ -126,12 +157,55 @@ $(document).ready(function () {
                     'overflow': 'auto',
                 });
 
-                $('#myTopicEditTable').DataTable().columns.adjust();
-
                 // Xử lý nút hủy
                 $('#cancelBtn').on('click', function () {
                     hiddenOverlay();
-                })
+                });
+
+                //Gửi dữ liệu từ form chỉnh sửa chủ đề
+                $('#read-edit-topic-form').on('submit', function (event) {
+                    event.preventDefault(); // Ngăn chặn reload trang
+
+                    // Mảng để lưu các ID sản phẩm được chọn
+                    var selectedProductIdsDelete = [];
+
+                    // Lặp qua tất cả các checkbox có class .delete-product-of-category
+                    $('.delete-product-of-topic:checked').each(function () {
+                        // Lấy giá trị data-id của mỗi checkbox đã chọn và thêm vào mảng
+                        selectedProductIdsDelete.push($(this).data('id'));
+                    });
+
+                    // Mảng để lưu các ID sản phẩm được chọn
+                    var selectedProductIdsAdd = [];
+
+                    // Lấy tất cả các option được chọn trong select
+                    $('#addProduct option:selected').each(function () {
+                        // Lấy giá trị của mỗi option đã chọn và thêm vào mảng
+                        selectedProductIdsAdd.push($(this).val());
+                    });
+
+                    // Gửi dữ liệu qua AJAX
+                    $.ajax({
+                        url: '/admin/topic-management/update-topic',
+                        type: 'POST',
+                        traditional: true, //đảm bảo mảng có thể gửi qua servlet có thể lấy được dữ liệu
+                        data: {
+                            topicId: $('#submitBtn').val(),
+                            name: $('#name-topic').val(),
+                            selectedProductIdsDelete: selectedProductIdsDelete,
+                            selectedProductIdsAdd: selectedProductIdsAdd,
+                            statusTopic: $('#status-topic').val(),
+                        },
+                        success: function () {
+                            alert('Cập nhật chủ đề thành công!');
+                            table.ajax.reload();
+                            hiddenOverlay();
+                        },
+                        error: function () {
+                            alert('Lỗi khi cập nhật chủ đề!');
+                        }
+                    });
+                });
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
@@ -139,35 +213,35 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-delete').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/topic-management/delete-topic";
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                openOverlay();
-                $('#formWrapper').html(data);
-
-                // Ngăn sự kiện click trong form không lan lên formWrapper
-                $('form').on('click', function (event) {
-                    event.stopPropagation();
-                });
-
-                $('#formContainer').css({
-                    'width': '500px',
-                    'max-height': '90vh',
-                    'z-index': '2',
-                })
-                $('#cancelBtn').click(function () {
-                    hiddenOverlay();
-                });
-            },
-            error: function () {
-                alert("Có lỗi xảy ra khi tải nội dung.");
-            }
-        });
-    })
+    // $('.btn-delete').on("click", function(event) {
+    //     event.preventDefault();
+    //     const url = "/admin/topic-management/delete-topic";
+    //     $.ajax({
+    //         url: url,
+    //         type: "GET",
+    //         success: function (data) {
+    //             openOverlay();
+    //             $('#formWrapper').html(data);
+    //
+    //             // Ngăn sự kiện click trong form không lan lên formWrapper
+    //             $('form').on('click', function (event) {
+    //                 event.stopPropagation();
+    //             });
+    //
+    //             $('#formContainer').css({
+    //                 'width': '500px',
+    //                 'max-height': '90vh',
+    //                 'z-index': '2',
+    //             })
+    //             $('#cancelBtn').click(function () {
+    //                 hiddenOverlay();
+    //             });
+    //         },
+    //         error: function () {
+    //             alert("Có lỗi xảy ra khi tải nội dung.");
+    //         }
+    //     });
+    // })
 
     function hiddenOverlay() {
         $('#formWrapper').css({
@@ -183,4 +257,6 @@ $(document).ready(function () {
         });
     }
 });
+
+
 
