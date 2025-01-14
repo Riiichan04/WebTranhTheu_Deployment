@@ -28,7 +28,7 @@ public class Policy implements Serializable {
         this.description = description;
     }
 
-        public Timestamp getCreateAt() {
+    public Timestamp getCreateAt() {
         return createAt;
     }
 

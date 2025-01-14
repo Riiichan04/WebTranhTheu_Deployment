@@ -5,8 +5,8 @@ import java.sql.Timestamp;
 
 public class Material implements Serializable {
     private String title;
-    private Timestamp createdAt; // ngày tạo material
-    private Timestamp updatedAt; // ngày cập nhật material
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     public Material(String title) {
         this.title = title;

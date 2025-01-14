@@ -20,18 +20,18 @@ public class Product implements Serializable {
     private Provider provider;  //Thông tin nhà cung cấp
     private Policy policy;  //Thông tin chính sách áp dụng cho sản phẩm
     private List<Material> listMaterials;   //Thông tin nguyên liệu của sản phẩm
+    private List<Topic> listTopics;
     private List<Review> listReviews;   //Danh sách review của sản phảm
     private List<Price> listPrices; //Danh sách giá tiền của sản phẩm
     private List<String> listImageUrls; //Danh sách hình ảnh của sản phẩm
-    private List<Discount> listDiscounts; //Danh sách chuương trình giảm giá của sản phẩm
     private int type; //Cho biết đây là tranh hay nguyên liệu
-    private Timestamp createdAt; // ngày tạo sản phẩm
-    private Timestamp updatedAt; //ngày cập nhật sản phẩm
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     public Product() {
+        this.listTopics = new ArrayList<>();
         this.listMaterials = new ArrayList<>();
         this.listReviews = new ArrayList<>();
-        this.listDiscounts = new ArrayList<>();
         this.listPrices = new ArrayList<>();
         this.listImageUrls = new ArrayList<>();
     }
@@ -92,6 +92,14 @@ public class Product implements Serializable {
         this.policy = policy;
     }
 
+    public List<Topic> getListTopics() {
+        return listTopics;
+    }
+
+    public void setListTopics(List<Topic> listTopics) {
+        this.listTopics = listTopics;
+    }
+
     public List<Material> getListMaterials() {
         return listMaterials;
     }
@@ -124,44 +132,12 @@ public class Product implements Serializable {
         this.listImageUrls = listImageUrls;
     }
 
-    public List<Discount> getListDiscounts() {
-        return listDiscounts;
-    }
-
-    public void setListDiscounts(List<Discount> listDiscounts) {
-        this.listDiscounts = listDiscounts;
-    }
-
     public int getType() {
         return type;
     }
 
     public void setType(int type) {
         this.type = type;
-    }
-
-    public Price getMinPrice() {
-        return listPrices.stream().min(Comparator.comparingDouble(Price::getPrice)).orElse(null);
-    }
-
-    public Price getSelectedPrice(int width, int height) {
-        for (int i = 0; i < this.listPrices.size(); i++) {
-            Price price = this.getListPrices().get(i);
-            if (price.getWidth() == width && price.getHeight() == height) return price;
-        }
-        return null;
-    }
-    public String getThumbnail() {
-        //Mặc định lấy hình đầu tiên
-        return this.listImageUrls.get(0);
-    }
-    public Discount maxDiscount() {
-        // lấy discount có giá trị lớn nhất
-        return listDiscounts.stream().max(Comparator.comparingDouble(Discount::getAmount)).orElse(null);
-    }
-    public Discount getSelectedDiscount(){
-        // lấy discount người dùng chọn
-        return null;
     }
 
     public Timestamp getCreatedAt() {
@@ -178,6 +154,24 @@ public class Product implements Serializable {
 
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    //Sẽ bỏ phần này
+    public Price getMinPrice() {
+        return listPrices.stream().min(Comparator.comparingDouble(Price::getPrice)).orElse(null);
+    }
+
+    public Price getSelectedPrice(int width, int height) {
+        for (int i = 0; i < this.listPrices.size(); i++) {
+            Price price = this.getListPrices().get(i);
+            if (price.getWidth() == width && price.getHeight() == height) return price;
+        }
+        return null;
+    }
+
+    public String getThumbnail() {
+        //Mặc định lấy hình đầu tiên
+        return this.listImageUrls.get(0);
     }
 }
 

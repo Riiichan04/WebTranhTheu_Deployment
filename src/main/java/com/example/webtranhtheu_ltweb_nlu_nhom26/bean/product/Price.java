@@ -64,5 +64,25 @@ public class Price implements Serializable {
     public void setAvailable(int available) {
         this.available = available;
     }
+
+    public String getDisplayPriceToString() {
+        double tempPrice = this.price;
+        String convertPrice = tempPrice + "";
+        String result = "";
+        if (tempPrice < 1000) return tempPrice + " VNĐ";
+        else {
+            int cursor = convertPrice.indexOf('.') != -1 ? convertPrice.indexOf('.') : convertPrice.length();
+            String decimalPart = convertPrice.substring(convertPrice.indexOf('.'));
+            System.out.println(cursor);
+            while ((int) (tempPrice / 1000) > 0) {
+                result = "." + convertPrice.substring(cursor-3, cursor) + result;
+                cursor -= 3;
+                tempPrice /= 1000;
+            }
+            int headVal = Math.max(cursor - 3, 0);
+            result = convertPrice.substring(headVal, cursor) + result;//+ decimalPart;  (Do là VND nên bỏ decimalPart)
+            return result + " VNĐ";
+        }
+    }
 }
 

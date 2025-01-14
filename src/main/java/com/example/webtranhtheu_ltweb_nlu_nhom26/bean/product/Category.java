@@ -7,8 +7,8 @@ public class Category implements Serializable {
     private int id;
     private String title;
     private int active;
-    private Timestamp createdAt; // ngày tạo ra category
-    private Timestamp updatedAt; // ngày cập nhật category
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     public Category() {
     }

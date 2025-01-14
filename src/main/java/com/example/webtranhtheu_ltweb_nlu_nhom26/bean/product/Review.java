@@ -7,8 +7,8 @@ public class Review implements Serializable {
     private int accountId;
     private int rating;
     private String content;
-    private Timestamp createTime;
-    private Timestamp updateTime;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     public Review() {
     }
@@ -37,11 +37,19 @@ public class Review implements Serializable {
         this.content = content;
     }
 
-    public Timestamp getCreateTime() {
-        return createTime;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

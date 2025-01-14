@@ -3,7 +3,7 @@
 <jsp:include page="common.jsp"/>
 <html>
 <head>
-<%--    <title>Các chính sách khác - Nét Việt</title>--%>
+    <title>${product.category.title} ${product.title} - Nét Việt</title>
     <link rel="stylesheet" href="../template/style/user/product.css">
     <jsp:include page="public/library.jsp"/>
 </head>
@@ -24,27 +24,26 @@
     <div class="background-container rounded">
         <div class="row">
             <div class="col-3 p-4_5">
-                <img id="product-image" src="../template/asset/image/product_image.png" alt="">
+<%--                <img id="product-image" src="../template/asset/image/product_image.png" alt="">--%>
+                <img id="product-image" src="${product.getThumbnail()}" alt="">
                 <p class="mt-4 mb-1">Kích thước: </p>
                 <div class="w-100">
-                    <button class="sub-cta-button py-2 px-2 rounded">
-                        40x30cm
-                    </button>
-                    <button class="sub-cta-button py-2 px-2 rounded">
-                        50x40cm
-                    </button>
-                    <button class="sub-cta-button py-2 px-2 rounded">
-                        65x50cm
-                    </button>
+                    <c:forEach var="price" items="${product.getListPrices()}">
+                        <button class="sub-cta-button py-2 px-2 rounded">
+                            ${price.width}x${price.height}cm
+                        </button>
+                    </c:forEach>
                 </div>
             </div>
             <div class="col ps-4_5 p-4_5 ">
                 <div class="row">
-                    <h3 class="main-color">${product.title}</h3>
+                    <h3 class="main-color">${product.category.title} ${product.title}</h3>
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Mã sản phẩm: <span class="fw-semibold">${product.code}</span></div>
-                    <div class="col-6">Danh mục: <span class="fw-semibold">Tranh thêu tay</span></div>
+                    <div class="col-6">Danh mục:
+                        <span class="fw-semibold">${product.category.title}</span>
+                    </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Nguyên liệu: <span class="fw-semibold">
@@ -53,11 +52,16 @@
                             <c:if test="${!status.last}">, </c:if>
                         </c:forEach>
                     </span></div>
-                    <div class="col-6">Chủ đề: <span class="fw-semibold">${product.category.title}</span></div>
+                    <div class="col-6">Chủ đề: <span class="fw-semibold">
+                        <c:forEach var="topic" items="${product.listTopics}" varStatus="status">
+                            ${topic.title}
+                            <c:if test="${!status.last}">, </c:if>
+                        </c:forEach>
+                    </span></div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh thêu Hà Sơn</span></div>
-                    <div class="col-6">Còn lại: <span class="fw-semibold">200</span></div>
+                    <div class="col-6">Còn lại: <span class="fw-semibold">${displayPrice.available}</span></div>
                 </div>
                 <div class="row my-2 mt-3">
                     <div class="col-4">
@@ -132,7 +136,7 @@
                         </div>
                     </div>
                     <div class="col-6 text-center">
-                        <h2 style="color: var(--main-cta-button)">1.480.000 VNĐ</h2>
+                        <h2 style="color: var(--main-cta-button)">${displayPrice.getDisplayPriceToString()}</h2>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -230,17 +234,7 @@
     <div class="background-container rounded p-4_5">
         <h4 class="main-color">Mô tả sản phẩm</h4>
         <p class="product-description m-3">
-            Bức tranh thêu tay phong cảnh đồng quê thích hợp làm quà tặng mừng tân gia,
-            quà tặng đối tác là khách hay bạn bè quốc tế.
-            Bức tranh không chỉ giới thiệu được phong cảnh nên thơ của đất nước
-            mà còn giới thiệu đến bạn bè quốc tế một nghề truyền thống lâu đời của quê hương.
-        </p>
-        <p class="product-description m-3">
-            Bằng bàn tay khéo léo của các nghệ nhân, những bức tranh thêu phong cảnh được thêu lên thật sinh động, sắc
-            nét và tinh tế.
-            Tranh thêu phong cảnh luôn mang lại cảm giác nhẹ nhàng, thanh thoát và thư thái tâm hồn cho người ngắm nhìn
-            chúng. Mỗi mẫu tranh thêu phong cảnh đều tái hiện được những nét đẹp của phong cảnh đó như sự hung vỹ, huyền
-            ảo của rừng núi, sự thơ mộng của con thuyền, mái đò…
+           ${product.description}
         </p>
     </div>
 </section>

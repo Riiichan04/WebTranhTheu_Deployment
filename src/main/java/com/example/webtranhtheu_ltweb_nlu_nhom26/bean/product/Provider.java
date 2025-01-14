@@ -11,14 +11,16 @@ import java.sql.Timestamp;
 public class Provider implements Serializable {
     private int id;
     private String prodiverName;
-    private String address; //Còn sửa sau
-    private Timestamp createdAt; // ngày tạo provider
-    private Timestamp updatedAt; // ngày cập nhật provider
+    private String address;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    public Provider(int id, String prodiverName, String address) {
+    public Provider(int id, String prodiverName, String address, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.prodiverName = prodiverName;
         this.address = address;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public Provider() {
@@ -48,13 +50,6 @@ public class Provider implements Serializable {
         this.address = address;
     }
 
-    public static class ProviderMapper implements RowMapper<Provider> { //Cần sửa cái này
-        @Override
-        public Provider map(ResultSet rs, StatementContext ctx) throws SQLException {
-            return new Provider(rs.getInt("id"), rs.getString("providerName"), rs.getString("location"));
-        }
-    }
-
     public Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -69,5 +64,12 @@ public class Provider implements Serializable {
 
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public static class ProviderMapper implements RowMapper<Provider> { //Cần sửa cái này
+        @Override
+        public Provider map(ResultSet rs, StatementContext ctx) throws SQLException {
+            return new Provider(rs.getInt("id"), rs.getString("providerName"), rs.getString("location"), rs.getTimestamp("createdAt"), rs.getTimestamp("updatedAt"));
+        }
     }
 }
