@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet("") //Để index.jsp nhận attribute thì cần cấu hình @WebServlet như dòng này
@@ -20,6 +21,8 @@ public class HomeController extends HttpServlet {
         HomeService service = new HomeService();
         List<Product> listHotProduct = service.getHotProduct();
         List<Product> listMostRatedProduct = service.getMostRatedProduct();
+        System.out.println(Arrays.toString(listHotProduct.toArray()));
+        System.out.println(Arrays.toString(listMostRatedProduct.toArray()));
         request.setAttribute("hotProduct", listHotProduct);
         request.setAttribute("mostRatedProduct", listMostRatedProduct);
         request.getRequestDispatcher("index.jsp").forward(request, response);

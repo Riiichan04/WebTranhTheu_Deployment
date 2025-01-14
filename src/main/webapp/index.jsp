@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="layout/common.jsp"/>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,64 +33,14 @@
     <div class="row">
         <h5 class="main-color mb-3"> Sản phẩm HOT</h5>
         <hr/>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
         <c:forEach var="product" items="${hotProduct}">
             <div class="col">
                 <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                    <img src="${product.getThumbnail()}"  class="card-img-top" alt="...">
+                    <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
                             <%-- Tạm --%>
                         <h6 class="card-title text-center pb-2">${product.category} ${product.title}</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.getListPrice().get(0).getDisplayPriceToString()}</p>
+                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
                     </div>
                 </div>
             </div>
@@ -100,64 +51,14 @@
     <div class="row">
         <h5 class="main-color mb-3"> Sản phẩm được đánh giá cao nhất</h5>
         <hr/>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
-                <div class="card-body px-1">
-                    <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
-
-                    <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
         <c:forEach var="product" items="${mostRatedProduct}">
             <div class="col">
                 <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                    <img src="${product.getThumbnail()}"  class="card-img-top" alt="...">
+                    <img src="${product.getThumbnail()}"  class="card-img" alt="...">
                     <div class="card-body px-1">
                             <%-- Tạm --%>
                         <h6 class="card-title text-center pb-2">${product.category} ${product.title}</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.getListPrice().get(0).getDisplayPriceToString()}</p>
+                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
                     </div>
                 </div>
             </div>
@@ -187,7 +88,7 @@
             <div class="row">
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
 
@@ -197,7 +98,7 @@
                 </div>
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
 
@@ -207,7 +108,7 @@
                 </div>
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
 
@@ -217,7 +118,7 @@
                 </div>
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
 
@@ -227,7 +128,7 @@
                 </div>
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
 
@@ -239,7 +140,7 @@
             <div class="row">
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
 
@@ -249,7 +150,7 @@
                 </div>
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
 
@@ -259,7 +160,7 @@
                 </div>
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
 
@@ -269,7 +170,7 @@
                 </div>
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
 
@@ -279,7 +180,7 @@
                 </div>
                 <div class="col">
                     <div onclick="showProductPage()" class="card p-2" style="cursor: pointer">
-                        <img src="template/asset/image/product_image.png" class="card-img-top" alt="...">
+                        <img src="template/asset/image/product_image.png" class="card-img" alt="...">
                         <div class="card-body px-1">
                             <h6 class="card-title text-center pb-2">Tranh thêu phong cảnh</h6>
                             <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">1.500.000 VNĐ</p>
