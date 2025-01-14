@@ -30,6 +30,6 @@ public class ProductService {
 
     public Product getProduct(int productId) {
         //TODO
-        return null;
+        return productDAO.getProductInfo(productId);
     }
 }

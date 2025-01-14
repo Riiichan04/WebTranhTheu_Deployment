@@ -30,25 +30,24 @@ public class Cart implements Serializable {
         return instance;
     }
 
-    public boolean addProduct(Product product, Price price, int quantity) {
+    public boolean addProduct(int productId, Price price, int quantity) {
         if (quantity > price.getAvailable() && quantity > CartProduct.MAX_PER_PRODUCT) return false;
         String productCode;
         if (price == null) {
             productCode = "no price";
         }
-        productCode = generateProductCode(product.getId(), price);
+        productCode = generateProductCode(productId, price);
         if (products.containsKey(productCode)) {
             return updateProductByQuantity(productCode, quantity); // kiểm tra
         } else {
-            CartProduct cartProduct = covertToCart(product.getId());
-            cartProduct.setDiscount(product.maxDiscount());
+            CartProduct cartProduct = covertToCart(productId);
             cartProduct.setQuantity(quantity);
             if (!productCode.equals("no price")) {
                 return cartProduct.updateBySize(price);
             }
             cartProduct.setPrice(price);
             // Có xử lý cái total Price ko??
-            cartProduct.getFinalPrice();
+            cartProduct.getTotalPrice();
             this.getTotalPrice();
             products.put(productCode, cartProduct);
             return true;
@@ -66,7 +65,7 @@ public class Cart implements Serializable {
         if (cartProduct != null) {
             if (cartProduct.getPrice().getAvailable() > quantity) {
                 cartProduct.setQuantity(quantity);
-                cartProduct.getFinalPrice();
+                cartProduct.getTotalPrice();
                 this.getTotalPrice();
             } else return false;
         }
@@ -98,12 +97,15 @@ public class Cart implements Serializable {
     public String generateProductCode(int productId, Price price) {
         return productId + "_" + price.getWidth() + "_" + price.getHeight();
     }
-
+    public double getSale(){
+        return this.discount.getAmount();
+    }
     public double getTotalPrice() {
         double totalPrice = 0;
         for (CartProduct cartProduct : products.values()) {
-            totalPrice += cartProduct.getFinalPrice();
+            totalPrice += cartProduct.getTotalPrice();
         }
+        totalPrice-= getSale()*totalPrice;
         setTotalPrice(totalPrice);
         return totalPrice;
     }

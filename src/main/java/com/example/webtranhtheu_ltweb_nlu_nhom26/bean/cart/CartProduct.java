@@ -14,14 +14,13 @@ public class CartProduct implements Serializable {
     public static final int MAX_PER_PRODUCT = 5; // số lượng tối đa có thể thêm 1 loại sản phẩm
     public Price price; // lưu giá tiền đã chọn.
     public double totalPrice; // tính tổng tiền.
-    public double finalPrice; // giá trị cuối cùng.
 
 
     public CartProduct(int productId, int quantity, Price price) {
         this.productId = productId;
         this.quantity = quantity;
         this.price = price;
-        this.totalPrice= getPrices();
+        this.totalPrice= getTotalPrice();
     }
 
     public CartProduct() {
@@ -29,7 +28,7 @@ public class CartProduct implements Serializable {
 
     }
 
-    public double getPrices() {
+    public double getTotalPrice() {
         return price.getPrice() * quantity;
     }
 
@@ -57,17 +56,6 @@ public class CartProduct implements Serializable {
         this.price = price;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public void setFinalPrice(double finalPrice) {
-        this.finalPrice = finalPrice;
-    }
 
     public boolean updateBySize(Price price) {
         if(price==null) return false;

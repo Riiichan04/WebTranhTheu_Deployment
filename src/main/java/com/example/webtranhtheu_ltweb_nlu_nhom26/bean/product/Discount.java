@@ -10,7 +10,7 @@ public class Discount implements Serializable {
     private Timestamp updatedAt;
     private Timestamp startedAt;
     private Timestamp endedAt;
-
+    private double amount;
     public Discount() {
     }
 
@@ -60,5 +60,13 @@ public class Discount implements Serializable {
 
     public void setEndedAt(Timestamp endedAt) {
         this.endedAt = endedAt;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 }

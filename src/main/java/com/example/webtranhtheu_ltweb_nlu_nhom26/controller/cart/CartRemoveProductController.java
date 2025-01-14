@@ -21,7 +21,7 @@ public class CartRemoveProductController extends HttpServlet {
         if(cart == null) {
             cart = Cart.getInstance();
         }
-        cart.remove(productId);
+//        cart.remove(productId);
         session.setAttribute("Cart", cart);
     }
 
