@@ -29,7 +29,7 @@
                 <p class="mt-4 mb-1">Kích thước: </p>
                 <div class="w-100">
                     <c:forEach var="price" items="${product.getListPrices()}">
-                        <button class="sub-cta-button py-2 px-2 rounded">
+                        <button class="sub-cta-button py-2 px-2 rounded switch-size-btn" data-width=${price.width} data-height=${price.height}>
                             ${price.width}x${price.height}cm
                         </button>
                     </c:forEach>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh thêu Hà Sơn</span></div>
-                    <div class="col-6">Còn lại: <span class="fw-semibold">${displayPrice.available}</span></div>
+                    <div class="col-6">Còn lại: <span class="fw-semibold"  id="product-detail__available--value"></span></div>
                 </div>
                 <div class="row my-2 mt-3">
                     <div class="col-4">
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                     <div class="col-6 text-center">
-                        <h2 style="color: var(--main-cta-button)">${displayPrice.getDisplayPriceToString()}</h2>
+                        <h2 id="product-details__price" style="color: var(--main-cta-button)"></h2>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -524,5 +524,7 @@
     </div>
 </section>
 <jsp:include page="public/footer.jsp"/>
+<script src="template/script/header.js"></script>
+<script src="template/script/product.js"></script>
 </body>
 </html>

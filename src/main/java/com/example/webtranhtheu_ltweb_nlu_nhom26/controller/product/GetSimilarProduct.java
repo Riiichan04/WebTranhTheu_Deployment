@@ -26,6 +26,7 @@ public class GetSimilarProduct extends HttpServlet {
             //Nếu rỗng trả vè ajax false
             JsonArray jsonArray = new JsonArray();
             for (Product product : listResult) {
+                //Đoạn này dùng code ở homepage
                 JsonObject obj = new JsonObject();
                 obj.addProperty("productId", product.getId());
                 obj.addProperty("thumbnail", product.getThumbnail());

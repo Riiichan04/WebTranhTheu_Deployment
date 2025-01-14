@@ -323,3 +323,43 @@ function createReviewStar(rating) {
 }
 
 getReviewList(3)
+
+//Ajax cho phần chuyển đổi thông tin sản phẩm
+const urlParams = new URLSearchParams(window.location.search);
+let currentWidth = urlParams.get("width")
+let currentHeight = urlParams.get("height")
+let currentPrice = 0.0
+
+function getPrice(width, height) {
+    const productId = urlParams.get("id")
+    $.ajax({
+        url: '/get-product-price',
+        method: 'GET',
+        data: {
+            width: width,
+            height: height,
+            id: productId
+        },
+        success: function (response) {
+            response = $.parseJSON(response)
+            if (response.result) {
+                if (currentWidth !== response.width && currentHeight !== response.height) {
+                    const url = new URL(window.location.href)
+                    url.searchParams.set("width", response.width)
+                    url.searchParams.set("height", response.height)
+                }
+                $("#product-detail__available--value").text(response.available)
+                $("#product-details__price").text(response.price)
+                currentPrice = response.price
+            }
+        },
+    })
+}
+
+getPrice(currentWidth, currentHeight)
+
+$(".switch-size-btn").click(function () {
+    let inputWidth = $(this).data("width")
+    let inputHeight = $(this).data("height")
+    getPrice(inputWidth, inputHeight)
+})

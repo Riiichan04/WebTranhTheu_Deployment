@@ -18,33 +18,20 @@ public class ProductController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String productId = request.getParameter("id");
-        String widthParam = request.getParameter("width");
-        String heightParam = request.getParameter("height");
         try {
-            int id = Integer.parseInt(productId);
-            DisplayFullProduct service = new DisplayFullProduct(new ConcreateProductDetail());
-            Product product = service.getFullProductInfo(id);
-            if (product == null) {  //Không tìm thấy product với id đã nhập
-                response.sendError(HttpServletResponse.SC_NOT_FOUND);
-            }
-            Price displayPrice = null;
-            if (widthParam == null && heightParam == null) {    //Nếu cả width và height đều không có
-                displayPrice = product.getMinPrice();
-            } else if (widthParam == null || heightParam == null) {   //Nếu chỉ có 1 trong 2
-                response.sendError(HttpServletResponse.SC_NOT_FOUND);
-            } else {  //Nếu có đủ cả width và height
-                int width = Integer.parseInt(widthParam);
-                int height = Integer.parseInt(heightParam);
-                displayPrice = product.getSelectedPrice(width, height);
-            }
-
-            if (displayPrice == null) { //Không thể tìm thấy giá của sản phẩm do lỗi nào đó ở db
-                response.sendError(HttpServletResponse.SC_NOT_FOUND);
-            } else {
-                request.setAttribute("product", product);
-                request.setAttribute("displayPrice", displayPrice);
-                request.getRequestDispatcher("/layout/product.jsp").forward(request, response);
-            }
+            String width = request.getParameter("width");
+            String height = request.getParameter("height");
+            if (width == null && height == null || width != null && height != null) {
+                int id = Integer.parseInt(productId);
+                DisplayFullProduct service = new DisplayFullProduct(new ConcreateProductDetail());
+                Product product = service.getFullProductInfo(id);
+                //Không tìm thấy product với id đã nhập
+                if (product == null) response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                else {
+                    request.setAttribute("product", product);
+                    request.getRequestDispatcher("/layout/product.jsp").forward(request, response);
+                }
+            } else response.sendError(HttpServletResponse.SC_NOT_FOUND);
 
         } catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND); //Ném trang 404
