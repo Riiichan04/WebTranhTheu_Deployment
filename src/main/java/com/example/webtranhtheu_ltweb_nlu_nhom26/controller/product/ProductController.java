@@ -43,7 +43,7 @@ public class ProductController extends HttpServlet {
             }
             request.setAttribute("product", product);
             request.setAttribute("countReview", ProductService.countReviews(product.getId()));
-            request.setAttribute("avgRating", ProductService.getProductRating(product));
+            request.setAttribute("avgRating", ProductService.getProductRating(product.getId()));
             request.getRequestDispatcher("/layout/product.jsp").forward(request, response);
 
         } catch (NumberFormatException e) {

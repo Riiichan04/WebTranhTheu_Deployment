@@ -8,6 +8,7 @@ import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface ProductDAO {
@@ -235,11 +236,11 @@ public interface ProductDAO {
     @SqlQuery("select id from products join category_products_details on products.id = category_products_details.productId where id != :id and category_products_details.categoryId = :categoryId order by rand() limit 5")
     List<Integer> getSimilarProductId(@Bind("id") int id, @Bind("categoryId") int categoryId);
 
-    @SqlUpdate("insert into product_reviews values(:accountId, :productId, :rating, :content)")
-    int insertReview(@Bind("accountId") int accountId, @Bind("productId") int productId, @Bind("rating") int rating, @Bind("content") String content);
+    @SqlUpdate("insert into product_reviews(productId, accountId, rating, content, createdAt, updatedAt) values(:accountId, :productId, :rating, :content, :createdAt, :updatedAt)")
+    int insertReview(@Bind("accountId") int accountId, @Bind("productId") int productId, @Bind("rating") int rating, @Bind("content") String content, @Bind("createdAt") Timestamp createdAt, @Bind("updatedAt") Timestamp updatedAt);
 
     @SqlQuery("""
-                select ifnull(count(orders.accountId) > reviews.count_review, 0) as result
+                select ifnull(count(orders.accountId) > reviews.count_review, 1) as result
                 from orders
                 join order_products_details
                 on orders.id = order_products_details.orderId
@@ -253,4 +254,11 @@ public interface ProductDAO {
                 where orders.accountId = :accountId and order_products_details.productId = :productId
             """)
     boolean isUserCanReview(@Bind("accountId") int accountId, @Bind("productId") int productId);
+
+    @SqlQuery("""
+        select avg(rating)
+        from product_reviews
+        where productId = :productId
+    """)
+    double getProductRating(@Bind("productId") int productId);
 }

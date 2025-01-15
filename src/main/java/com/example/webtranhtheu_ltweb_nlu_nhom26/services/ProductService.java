@@ -19,8 +19,8 @@ public class ProductService {
     }
     //Lấy đánh giá trung bình của sản phẩm (Sẽ cho vào product)
 
-    public static double getProductRating(Product product) {
-        return product.getListReviews().stream().mapToInt(Review::getRating).average().orElse(0.0);
+    public static double getProductRating(int productId) {
+        return new ConcreateProductDetail().getProductRating(productId);
     }
 
     public static List<Product> getOneProductsRow(int offset, int amount) {

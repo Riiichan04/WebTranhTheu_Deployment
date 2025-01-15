@@ -93,7 +93,7 @@
                             </div>
 
                         </div>
-                        <p class="text-center mt-2">${countReview} đánh giá</p>
+                        <p class="text-center mt-2"><span class="current-review">${countReview}</span> đánh giá</p>
                     </div>
                     <div class="col-2"></div>
                     <div class="col-6 row d-flex justify-content-start align-items-center">
@@ -267,7 +267,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <span>${countReview} đánh giá</span>
+                        <span class="current-review">${countReview} đánh giá</span>
                     </div>
                     <div class="text-center">
                         <span style="font-size: 12px">(Click vào số sao để đánh giá)</span>
@@ -278,6 +278,7 @@
                               placeholder="Đánh giá của bạn về sản phẩm"></textarea>
                     <p class="text-center mt-1 mb-0" style="font-size: 12px">(Bạn cần mua sản phẩm để có thể bình
                         luận)</p>
+                    <p class="d-none d-flex justify-content-center" id="post-review-result"></p>
                 </div>
                 <div class="col-1 row d-flex align-items-center">
                     <button id="send-comment" class="btn sub-cta-button-background px-4 py-2">Gửi</button>
@@ -302,66 +303,66 @@
     <div class="background-container rounded p-4_5">
         <h4 class="main-color">Sản phẩm khác</h4>
         <div class="row mt-2">
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1 row">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 15</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.850.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                    </div>
-                </div>
-            </div>
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 14</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.850.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                    </div>
-                </div>
-            </div>
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 1</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.250.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                    </div>
-                </div>
-            </div>
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 2</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.250.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                    </div>
-                </div>
-            </div>
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Chùa một cột 3</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.850.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                    </div>
-                </div>
-            </div>
+<%--            <div class="col other-product__card">--%>
+<%--                <div class="card p-2" style="cursor: pointer">--%>
+<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
+<%--                    <div class="card-body px-1 row">--%>
+<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 15</h6>--%>
+<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
+<%--                           style="color: var(--sub-cta-button)">--%>
+<%--                            1.850.000 VNĐ</p>--%>
+<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col other-product__card">--%>
+<%--                <div class="card p-2" style="cursor: pointer">--%>
+<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
+<%--                    <div class="card-body px-1">--%>
+<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 14</h6>--%>
+<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
+<%--                           style="color: var(--sub-cta-button)">--%>
+<%--                            1.850.000 VNĐ</p>--%>
+<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col other-product__card">--%>
+<%--                <div class="card p-2" style="cursor: pointer">--%>
+<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
+<%--                    <div class="card-body px-1">--%>
+<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 1</h6>--%>
+<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
+<%--                           style="color: var(--sub-cta-button)">--%>
+<%--                            1.250.000 VNĐ</p>--%>
+<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col other-product__card">--%>
+<%--                <div class="card p-2" style="cursor: pointer">--%>
+<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
+<%--                    <div class="card-body px-1">--%>
+<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 2</h6>--%>
+<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
+<%--                           style="color: var(--sub-cta-button)">--%>
+<%--                            1.250.000 VNĐ</p>--%>
+<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col other-product__card">--%>
+<%--                <div class="card p-2" style="cursor: pointer">--%>
+<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
+<%--                    <div class="card-body px-1">--%>
+<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Chùa một cột 3</h6>--%>
+<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
+<%--                           style="color: var(--sub-cta-button)">--%>
+<%--                            1.850.000 VNĐ</p>--%>
+<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
     </div>
 </section>

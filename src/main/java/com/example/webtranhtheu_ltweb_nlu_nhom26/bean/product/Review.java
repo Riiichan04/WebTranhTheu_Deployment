@@ -14,11 +14,13 @@ public class Review implements Serializable {
     public Review() {
     }
 
-    public Review(int productId, int accountId, int rating, String content) {
+    public Review(int productId, int accountId, int rating, String content, Timestamp createdAt, Timestamp updatedAt) {
         this.productId = productId;
         this.accountId = accountId;
         this.rating = rating;
         this.content = content;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public int getProductId() {
