@@ -241,29 +241,40 @@ $.ajax({
     }
 })
 
-let reviewOffset = 0
-let amount = 3
-
+let reviewAmount = 3
+let currentReviewOffset = 0
+let reviewLimit
 
 function getReviewList(amount) {
-    if (reviewOffset !== -1) {
+    if (currentReviewOffset !== -1) {
         $.ajax({
-            url: '/get-product-review', //Tạm
+            url: '/get-product-review',
             type: 'GET',
             data: {
-                id: new URL(window.location.href).searchParams.get('id'), //Tạm
-                offset: $(".comment-container div").length,
-                amount: amount
+                id: new URL(window.location.href).searchParams.get('id'),
+                offset: currentReviewOffset,
+                amount: amount,
+                limit: reviewLimit
             },
             success: (response) => {
+                console.log(response)
                 response = $.parseJSON(response)
                 console.log(response)
                 //Hiển thị bình luận
                 if (response.result) {
+                    reviewLimit = response.limit ? response.limit : reviewLimit
                     for (let review of response.reviewData) {
                         $("#comment-container").append(createReviewElement(review))
                     }
-                } else $("#comment-container").append(`<p class="d-flex justify-content-center row text-center">Đã tải hết bình luận</p>`)
+                    currentReviewOffset = response.currentOffset
+                } else offset = -1
+                console.log(currentReviewOffset)
+                console.log(reviewLimit)
+                if (currentReviewOffset >= reviewLimit || currentReviewOffset === -1) {
+                    $("#comment-container").append(`<p class="d-flex justify-content-center row text-center">Đã tải hết bình luận</p>`)
+                    $("#load-more-review").attr("disabled", true)
+                    $("#load-more-review").addClass("d-none")
+                }
             },
             error: (response) => {
                 $("#comment-container").append(`<p class="d-flex justify-content-center row text-center">Có lỗi khi tải bình luận của bạn</p>`)
@@ -327,7 +338,11 @@ function createReviewStar(rating) {
     return result
 }
 
-getReviewList(3)
+
+$("#load-more-review").click(function () {
+    if (currentReviewOffset !== -1) getReviewList(reviewAmount)
+})
+
 
 //Ajax cho phần chuyển đổi thông tin sản phẩm
 const urlParams = new URLSearchParams(window.location.search);
@@ -364,10 +379,12 @@ function getPrice(width, height) {
     })
 }
 
-getPrice(currentWidth, currentHeight)
 
 $(".switch-size-btn").click(function () {
     let inputWidth = $(this).data("width")
     let inputHeight = $(this).data("height")
     getPrice(inputWidth, inputHeight)
 })
+
+getReviewList(reviewAmount)
+getPrice(currentWidth, currentHeight)

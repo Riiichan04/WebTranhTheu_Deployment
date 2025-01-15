@@ -291,7 +291,7 @@
             <div id="comment-container">
             </div>
             <div class="d-flex justify-content-center mt-4">
-                <button class="sub-cta-button  py-2 px-3 rounded">
+                <button class="sub-cta-button  py-2 px-3 rounded" id="load-more-review">
                     Xem thêm
                 </button>
             </div>

@@ -21,7 +21,7 @@ public class DisplayFullProduct extends DecorationProductDetail {
         product.getListPrices().addAll(this.getListPrices(productId));
         product.getListMaterials().addAll(this.getListMaterials(productId));
         product.getListImageUrls().addAll(this.getListImageUrls(productId));
-        product.getListReviews().addAll(this.getListReviews(productId, 0)); //Mặc định offset = 0
+        product.getListReviews().addAll(this.getListReviews(productId, 0, 3)); //Mặc định offset = 0
         return product;
     }
 
@@ -53,9 +53,9 @@ public class DisplayFullProduct extends DecorationProductDetail {
         return super.productDAO.getListImageUrls(productId);
     }
 
-    public List<Review> getListReviews(int productId, int offset) { //Lấy 5 review
+    public List<Review> getListReviews(int productId, int offset, int amount) { //Lấy amount review
         //FIXME Thêm phần kiểm tra khi nào hết bình luận có thể lấy
-        return super.productDAO.getProductReviews(productId, offset);
+        return super.productDAO.getProductReviews(productId, offset, amount);
     }
 
     //Sẽ chuyển qua chỗ khác

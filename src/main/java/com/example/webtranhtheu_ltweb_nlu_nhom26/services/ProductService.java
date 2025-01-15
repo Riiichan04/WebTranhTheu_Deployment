@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService {
+
     public static int countReviews(Product product) {
         return product.getListReviews().size();
     }
 
-    //Lấy đánh giá trung bình của sản phẩm (Sẽ cho vào product)
-    public static double getProductRating(Product product) {
-        return product.getListReviews().stream().mapToInt(Review::getRating).average().orElse(0.0);
-    }
-
-    //Tạm
     public static int countProduct() {
         return new ConcreateProductDetail().countProducts();
+    }
+    //Lấy đánh giá trung bình của sản phẩm (Sẽ cho vào product)
+
+    public static double getProductRating(Product product) {
+        return product.getListReviews().stream().mapToInt(Review::getRating).average().orElse(0.0);
     }
 
     public static List<Product> getOneProductsRow(int offset, int amount) {

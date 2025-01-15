@@ -45,9 +45,9 @@ public interface ProductDAO {
     @RegisterBeanMapper(Material.class)
     List<Material> getMaterials(@Bind("id") int id);
 
-    @SqlQuery("select accountId, rating, content, createdAt, updatedAt from product_reviews where productId = :id and content is not null limit :offset, 5")
+    @SqlQuery("select accountId, rating, content, createdAt, updatedAt from product_reviews where productId = :id and content is not null limit :offset, :amount")
     @RegisterBeanMapper(Review.class)
-    List<Review> getProductReviews(@Bind("id") int id, @Bind("offset") int offset);
+    List<Review> getProductReviews(@Bind("id") int id, @Bind("offset") int offset, @Bind("amount") int amount);
 
     @SqlQuery("select discounts.title, discounts.description, discounts.createdAt, discounts.updatedAt, discounts.startedAt, discounts.endedAt from discounts join product_discounts_details on discounts.id = product_discounts_details.discountId join products where product_discounts_details.productId = products.id and discounts.startedAt <= now() and discounts.endedAt >= now() and products.id = :id")
     @RegisterBeanMapper(Discount.class)
