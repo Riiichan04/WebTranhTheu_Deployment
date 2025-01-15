@@ -38,6 +38,28 @@ public class User {
         this.role = role;
     }
 
+    public User(String username, String avatarUrl, String fullName, String password, String email, Timestamp createdAt, Timestamp updatedAt, int role, int statusAccount) {
+        this.username = username;
+        this.fullName = fullName;
+        this.avatarUrl = avatarUrl;
+        this.password = password;
+        this.email = email;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.role = role;
+        this.statusAccount = statusAccount;
+    }
+
+    public User(String fullName, String email, String avatarUrl, int statusAccount, Timestamp createdAt, Timestamp updatedAt, int role) {
+        this.fullName = fullName;
+        this.email = email;
+        this.avatarUrl = avatarUrl;
+        this.statusAccount = statusAccount;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.role = role;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

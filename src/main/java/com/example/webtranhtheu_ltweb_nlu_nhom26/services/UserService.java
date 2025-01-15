@@ -56,4 +56,15 @@ public class UserService {
 
     }
 
+
+    // cập nhật trạng thái cho user
+    public boolean updateStatus(int userId, int status) {
+        return userDAO.updateStatus(userId, status);
+    }
+
+    //cập nhật password
+    public boolean updatePassword(int userId, String password) {
+        return userDAO.updatePassword(userId, password);
+    }
+
 }
