@@ -5,6 +5,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.VerifyDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.util.EmailSender;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Random;
 
 public class VerifyService {
@@ -43,6 +44,9 @@ public class VerifyService {
 
     //xóa mã xác thực cũ nếu gửi lại mã mới
     public void deleteVerificationCodeOld(int accountId) {
-        verifyDAO.deleteVerifyAccount(accountId);
+        List<Integer> verifies = verifyDAO.getVerifyIdsByAccount(accountId);
+        for (Integer id : verifies) {
+            verifyDAO.setDateExpire(id);
+        }
     }
 }

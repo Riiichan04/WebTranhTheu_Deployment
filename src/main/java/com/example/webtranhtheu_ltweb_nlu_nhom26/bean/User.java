@@ -19,9 +19,10 @@ public class User {
 
     public User() {}
 
-    public User(String username, String fullName, String password, String email, Timestamp createdAt, Timestamp updatedAt, int role, int statusAccount) {
+    public User(String username, String avatarUrl, String fullName, String password, String email, Timestamp createdAt, Timestamp updatedAt, int role, int statusAccount) {
         this.username = username;
         this.fullName = fullName;
+        this.avatarUrl = avatarUrl;
         this.password = password;
         this.email = email;
         this.createdAt = createdAt;
