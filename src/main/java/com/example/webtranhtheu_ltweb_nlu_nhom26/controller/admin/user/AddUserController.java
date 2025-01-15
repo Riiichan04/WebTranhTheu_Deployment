@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.user;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.util.CloudinaryConfig;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.PasswordEncryption;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,8 +26,7 @@ public class AddUserController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
-        //chua ma hoa password
-        String password = request.getParameter("password");
+        String password = PasswordEncryption.hashPassword(request.getParameter("password"));
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email") == null ? request.getParameter("email") : "";
         String phone = request.getParameter("phone") == null ? "" : request.getParameter("phone");

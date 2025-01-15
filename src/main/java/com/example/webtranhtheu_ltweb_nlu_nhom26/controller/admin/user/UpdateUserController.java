@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.user;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.util.CloudinaryConfig;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.PasswordEncryption;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,7 +25,7 @@ public class UpdateUserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String pass = request.getParameter("password");
+        String pass = PasswordEncryption.hashPassword(request.getParameter("password"));
         String fullName = request.getParameter("fullName");
 
         Part avatar = request.getPart("avatar");

@@ -22,8 +22,11 @@ public class AdminFilter implements Filter{
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(true);
-        User user = (User) session.getAttribute("auth");
-//        if (user == null || user.getRole() != 1) {
+        Integer userId = (Integer) session.getAttribute("accountId");
+ //       if (userId!=null) {
+//            response.sendRedirect("/login");
+//            return;
+//        } else {
 //            response.sendRedirect("/login");
 //            return;
 //        }
