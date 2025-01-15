@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class User {
     private int id;
@@ -13,6 +14,8 @@ public class User {
     private int gender;
     private String description;
     private int statusAccount;
+    private List<Address> location;
+    private List<WishProduct> wishProducts;
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private int role;
