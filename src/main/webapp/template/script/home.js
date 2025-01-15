@@ -101,6 +101,7 @@ function sendProductRequest() {
             if (offset >= limitProduct) {
                 $("#full-product-button").addClass("d-none")
                 $("#full-product-button").attr("disabled", true)
+                $("#more-product-btn").append("<p class='mt-4 d-flex justify-content-center text-center'>Bạn đã xem hết sản phẩm</p>")
             }
         },
         error: function(response) {

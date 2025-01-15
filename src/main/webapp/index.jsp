@@ -92,7 +92,7 @@
         </div>
         <div class="row">
             <div class="col"></div>
-            <div class="col-4  d-flex justify-content-center">
+            <div class="col-4  d-flex justify-content-center" id="more-product-btn">
                 <button id="full-product-button" class="rounded sub-cta-button-background px-3 py-2 border-0">Xem thêm
                 </button>
             </div>

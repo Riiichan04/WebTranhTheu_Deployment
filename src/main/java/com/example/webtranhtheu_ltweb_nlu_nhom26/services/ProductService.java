@@ -20,12 +20,10 @@ public class ProductService {
     }
 
     public static List<Product> getOneProductsRow(int offset, int amount) {
-        //FIXME: Thêm phần nhận biết đã lấy hết sản phẩm chưa
         List<Product> products = new ArrayList<>();
         DisplayCardProduct productInfoGetter = new DisplayCardProduct(new ConcreateProductDetail());
         for (int i = offset; i < offset + amount; i++) {
             Product product = productInfoGetter.getDisplayProductInfo(i);
-            //TODO: Thêm phần xử lý trường hợp lấy ra bằng null (do lấy hết product hoặc do status = 0)
             products.add(product);
         }
         return products;
