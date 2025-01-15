@@ -44,6 +44,7 @@ public class ProductController extends HttpServlet {
             request.setAttribute("product", product);
             request.setAttribute("countReview", ProductService.countReviews(product.getId()));
             request.setAttribute("avgRating", ProductService.getProductRating(product.getId()));
+            request.setAttribute("similarProduct", service.getSimilarProduct(product));
             request.getRequestDispatcher("/layout/product.jsp").forward(request, response);
 
         } catch (NumberFormatException e) {

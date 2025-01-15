@@ -4,6 +4,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DisplayFullProduct extends DecorationProductDetail {
     ProductDetailService wrapper;
@@ -59,8 +60,8 @@ public class DisplayFullProduct extends DecorationProductDetail {
     }
 
     //Sẽ chuyển qua chỗ khác
-    public List<Product> getSimilarProduct(int productId, int cagegoryId) {
-        List<Integer> listId = super.productDAO.getSimilarProductId(productId, cagegoryId);
+    public List<Product> getSimilarProduct(Product product) {
+        List<Integer> listId = super.productDAO.findAllSimilarProducts(product.getListTopics().stream().map(Topic::getId).collect(Collectors.toList()), product.getId());
         List<Product> result = new ArrayList<>();
         for (int id : listId) {
             result.add(getFullProductInfo(id));

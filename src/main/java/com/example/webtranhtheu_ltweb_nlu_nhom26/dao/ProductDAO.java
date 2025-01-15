@@ -5,6 +5,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseProductMapper;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.customizer.BindList;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
@@ -236,7 +237,10 @@ public interface ProductDAO {
     @SqlQuery("select id from products join category_products_details on products.id = category_products_details.productId where id != :id and category_products_details.categoryId = :categoryId order by rand() limit 5")
     List<Integer> getSimilarProductId(@Bind("id") int id, @Bind("categoryId") int categoryId);
 
-    @SqlUpdate("insert into product_reviews(productId, accountId, rating, content, createdAt, updatedAt) values(:accountId, :productId, :rating, :content, :createdAt, :updatedAt)")
+    @SqlUpdate("""
+        insert into product_reviews(productId, accountId, rating, content, createdAt, updatedAt)
+        values(:accountId, :productId, :rating, :content, :createdAt, :updatedAt)
+    """)
     int insertReview(@Bind("accountId") int accountId, @Bind("productId") int productId, @Bind("rating") int rating, @Bind("content") String content, @Bind("createdAt") Timestamp createdAt, @Bind("updatedAt") Timestamp updatedAt);
 
     @SqlQuery("""
@@ -252,7 +256,7 @@ public interface ProductDAO {
                 ) as reviews
                 on reviews.accountId = orders.accountId
                 where orders.accountId = :accountId and order_products_details.productId = :productId
-            """)
+    """)
     boolean isUserCanReview(@Bind("accountId") int accountId, @Bind("productId") int productId);
 
     @SqlQuery("""
@@ -261,4 +265,12 @@ public interface ProductDAO {
         where productId = :productId
     """)
     double getProductRating(@Bind("productId") int productId);
+
+    @SqlQuery("""
+        select products.id
+        from products join topic_products_details on products.id = topic_products_details.productId
+        where topic_products_details.topicId in (<topicIds>) and products.id != :productId
+        limit 4
+    """)
+    List<Integer> findAllSimilarProducts(@BindList("topicIds") List<Integer> topicIds, @Bind("productId") int productId);
 }

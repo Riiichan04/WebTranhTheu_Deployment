@@ -69,3 +69,8 @@ textarea {
     width: fit-content;
     left: -100%;
 }
+
+.card-img {
+    object-fit: contain;
+    aspect-ratio: 3/2;
+}

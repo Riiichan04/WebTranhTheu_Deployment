@@ -12,10 +12,11 @@
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">
         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">${product.category.title}</a></li>
-<%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>--%>
-<%--        Phần topic xử lý sau        --%>
-<%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay/tranh-phong-canh">Tranh thêu Phong cảnh</a></li>--%>
+        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">${product.category.title}</a>
+        </li>
+        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>--%>
+        <%--        Phần topic xử lý sau        --%>
+        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay/tranh-phong-canh">Tranh thêu Phong cảnh</a></li>--%>
         <li class="breadcrumb-item active" aria-current="page">${product.title}</li>
     </ol>
 </nav>
@@ -24,13 +25,14 @@
     <div class="background-container rounded">
         <div class="row">
             <div class="col-3 p-4_5">
-<%--                <img id="product-image" src="../template/asset/image/product_image.png" alt="">--%>
+                <%--                <img id="product-image" src="../template/asset/image/product_image.png" alt="">--%>
                 <img id="product-image" src="${product.getThumbnail()}" alt="">
                 <p class="mt-4 mb-1">Kích thước: </p>
                 <div class="w-100">
                     <c:forEach var="price" items="${product.getListPrices()}">
-                        <button class="sub-cta-button py-2 px-2 rounded switch-size-btn" data-width=${price.width} data-height=${price.height}>
-                            ${price.width}x${price.height}cm
+                        <button class="sub-cta-button py-2 px-2 rounded switch-size-btn"
+                                data-width=${price.width} data-height=${price.height}>
+                                ${price.width}x${price.height}cm
                         </button>
                     </c:forEach>
                 </div>
@@ -61,7 +63,8 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh thêu Hà Sơn</span></div>
-                    <div class="col-6">Còn lại: <span class="fw-semibold"  id="product-detail__available--value"></span></div>
+                    <div class="col-6">Còn lại: <span class="fw-semibold" id="product-detail__available--value"></span>
+                    </div>
                 </div>
                 <div class="row my-2 mt-3">
                     <div class="col-4">
@@ -225,7 +228,7 @@
     <div class="background-container rounded p-4_5">
         <h4 class="main-color">Mô tả sản phẩm</h4>
         <p class="product-description m-3">
-           ${product.description}
+            ${product.description}
         </p>
     </div>
 </section>
@@ -237,7 +240,8 @@
             <div class="row mt-4">
                 <div class="col-2 row">
                     <div class="text-center">
-                        <span id="current-star-rating" class="h3 main-color">${avgRating}</span><span class="h5">/5.0</span>
+                        <span id="current-star-rating" class="h3 main-color">${avgRating}</span><span
+                            class="h5">/5.0</span>
                     </div>
                     <div id="product-review__star" class="mt-2 d-flex justify-content-center">
                         <div class="col-2 product-info__star-container   px-0">
@@ -303,66 +307,19 @@
     <div class="background-container rounded p-4_5">
         <h4 class="main-color">Sản phẩm khác</h4>
         <div class="row mt-2">
-<%--            <div class="col other-product__card">--%>
-<%--                <div class="card p-2" style="cursor: pointer">--%>
-<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
-<%--                    <div class="card-body px-1 row">--%>
-<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 15</h6>--%>
-<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
-<%--                           style="color: var(--sub-cta-button)">--%>
-<%--                            1.850.000 VNĐ</p>--%>
-<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col other-product__card">--%>
-<%--                <div class="card p-2" style="cursor: pointer">--%>
-<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
-<%--                    <div class="card-body px-1">--%>
-<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 14</h6>--%>
-<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
-<%--                           style="color: var(--sub-cta-button)">--%>
-<%--                            1.850.000 VNĐ</p>--%>
-<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col other-product__card">--%>
-<%--                <div class="card p-2" style="cursor: pointer">--%>
-<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
-<%--                    <div class="card-body px-1">--%>
-<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 1</h6>--%>
-<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
-<%--                           style="color: var(--sub-cta-button)">--%>
-<%--                            1.250.000 VNĐ</p>--%>
-<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col other-product__card">--%>
-<%--                <div class="card p-2" style="cursor: pointer">--%>
-<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
-<%--                    <div class="card-body px-1">--%>
-<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 2</h6>--%>
-<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
-<%--                           style="color: var(--sub-cta-button)">--%>
-<%--                            1.250.000 VNĐ</p>--%>
-<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col other-product__card">--%>
-<%--                <div class="card p-2" style="cursor: pointer">--%>
-<%--                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
-<%--                    <div class="card-body px-1">--%>
-<%--                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Chùa một cột 3</h6>--%>
-<%--                        <p class="card-text text-center fw-semibold h5 mt-2"--%>
-<%--                           style="color: var(--sub-cta-button)">--%>
-<%--                            1.850.000 VNĐ</p>--%>
-<%--                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
+            <c:forEach var="product" items="${similarProduct}">
+                <div class="col-3 other-product__card">
+                    <div onclick="window.location = '/product?id=${product.id}'" class="card p-2"
+                         style="cursor: pointer">
+                        <img src="${product.getThumbnail()}" class="card-img" alt="...">
+                        <div class="card-body px-1">
+                            <h6 class="card-title text-center pb-2">${product.title}</h6>
+                            <p class="card-text text-center fw-semibold h5 mt-2"
+                               style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </section>
