@@ -10,19 +10,18 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "CartRemoveProductController", value = "/session/remove-product")
+@WebServlet(name = "CartRemoveProductController", value = "/remove-product")
 public class CartRemoveProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String productKey = request.getParameter("productKey");
         HttpSession session = request.getSession();
-        int productId = Integer.parseInt(request.getParameter("productId"));
-        Cart cart = (Cart) session.getAttribute("Cart");
-        session.removeAttribute("Cart");
-        if(cart == null) {
-            cart = Cart.getInstance();
+        Cart cart = (Cart) session.getAttribute("cart");
+        if(cart!=null){
+            cart.removeProduct(productKey);
+            session.setAttribute("cart", cart);
         }
-//        cart.remove(productId);
-        session.setAttribute("Cart", cart);
+        response.sendRedirect(request.getContextPath() + "/cart");
     }
 
     @Override

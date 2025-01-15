@@ -12,7 +12,6 @@ import java.util.StringTokenizer;
 
 
 public class Cart implements Serializable {
-    private int userId; // xác định sở hữu cart.
     private double totalPrice; // tổng tiền của các sản phẩm trong cart.
     private Map<String, CartProduct> products; // key là Code của Product, Value là 1 CartProduct
     public static final int MAX_CART_PRODUCTS = 10;
@@ -36,14 +35,14 @@ public class Cart implements Serializable {
         if (price == null) {
             productCode = "no price";
         }
-        productCode = generateProductCode(productId, price);
+        productCode = generateProductCode(productId, price.getWidth(),price.getHeight());
         if (products.containsKey(productCode)) {
             return updateProductByQuantity(productCode, quantity); // kiểm tra
         } else {
             CartProduct cartProduct = covertToCart(productId);
             cartProduct.setQuantity(quantity);
             if (!productCode.equals("no price")) {
-                return cartProduct.updateBySize(price);
+                return cartProduct.updateBySize(price.getWidth(), price.getHeight());
             }
             cartProduct.setPrice(price);
             // Có xử lý cái total Price ko??
@@ -72,21 +71,21 @@ public class Cart implements Serializable {
         return false;
     }
 
-    public boolean updateProductByPrice(String productCode, Price price) {
-        StringTokenizer str = new StringTokenizer(productCode, "_");
-        int productId = Integer.parseInt(str.nextToken());
-//        int width= Integer.parseInt(str.nextToken());
-//        int height= Integer.parseInt(str.nextToken());
-        if (products.containsKey(productCode)) {
-            CartProduct oldProduct = products.get(productCode);
+    public boolean updateProductByPrice(String productCode, int width, int height) {
+        StringTokenizer tokenizer = new StringTokenizer(productCode, "_");
+        String oldWidth = tokenizer.nextToken();
+        String oldHeight = tokenizer.nextToken();
+        if(products.containsKey(productCode)) {
+            CartProduct existingProduct = products.get(productCode);
             products.remove(productCode);
-            String newProductCode = generateProductCode(productId, price);
-            if (products.containsKey(newProductCode)) {
-                CartProduct product = products.get(newProductCode);
-                product.setQuantity(product.getQuantity() + oldProduct.getQuantity());
-            } else {
-                oldProduct.updateBySize(price);
-                products.put(newProductCode, oldProduct);
+
+            String newProductCode= generateProductCode(existingProduct.getProductId(), width, height);
+            if(products.containsKey(newProductCode)) {
+                CartProduct newProduct = products.get(newProductCode);
+                newProduct.setQuantity(newProduct.getQuantity()+existingProduct.getQuantity());
+            }else{
+                existingProduct.updateBySize(width, height);
+                products.put(newProductCode, existingProduct);
             }
             this.getTotalPrice();
             return true;
@@ -94,8 +93,8 @@ public class Cart implements Serializable {
         return false;
     }
 
-    public String generateProductCode(int productId, Price price) {
-        return productId + "_" + price.getWidth() + "_" + price.getHeight();
+    public String generateProductCode(int productId, int width,int height) {
+        return productId + "_" + width + "_" + height;
     }
     public double getSale(){
         return this.discount.getAmount();
@@ -123,9 +122,6 @@ public class Cart implements Serializable {
         return false;
     }
 
-    public int getUserId() {
-        return userId;
-    }
 
     public Discount getDiscount() {
         return discount;
