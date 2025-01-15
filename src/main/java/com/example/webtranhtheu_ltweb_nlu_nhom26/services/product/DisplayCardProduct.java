@@ -15,6 +15,7 @@ public class DisplayCardProduct extends DecorationProductDetail {
 
     public Product getDisplayProductInfo(int productId) {
         Product product = super.getProductInfo(productId);
+        product.getListPrices().addAll(this.productDAO.getProductPrices(productId));
         product.getListImageUrls().add(this.productDAO.getThumbnail(productId));
         return product;
     }
