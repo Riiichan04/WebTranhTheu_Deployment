@@ -6,6 +6,7 @@ import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
+import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public interface ProductDAO {
     @RegisterBeanMapper(Material.class)
     List<Material> getMaterials(@Bind("id") int id);
 
-    @SqlQuery("select accountId, rating, content, createdAt, updatedAt from product_reviews where productId = :id and content is not null limit :offset, :amount")
+    @SqlQuery("select productId, accountId, rating, content, createdAt, updatedAt from product_reviews where productId = :id and content is not null limit :offset, :amount")
     @RegisterBeanMapper(Review.class)
     List<Review> getProductReviews(@Bind("id") int id, @Bind("offset") int offset, @Bind("amount") int amount);
 
@@ -62,6 +63,9 @@ public interface ProductDAO {
 
     @SqlQuery("select count(id) from products")
     int countProducts();
+
+    @SqlQuery("select count(id) from product_reviews where productId = :id")
+    int countReviews(@Bind("id") int id);
 
     //    default Product getProductInfo(int productId) {
 //        return JDBIConnector.getInstance().withHandle(handle -> handle
@@ -230,4 +234,23 @@ public interface ProductDAO {
 
     @SqlQuery("select id from products join category_products_details on products.id = category_products_details.productId where id != :id and category_products_details.categoryId = :categoryId order by rand() limit 5")
     List<Integer> getSimilarProductId(@Bind("id") int id, @Bind("categoryId") int categoryId);
+
+    @SqlUpdate("insert into product_reviews values(:accountId, :productId, :rating, :content)")
+    int insertReview(@Bind("accountId") int accountId, @Bind("productId") int productId, @Bind("rating") int rating, @Bind("content") String content);
+
+    @SqlQuery("""
+                select ifnull(count(orders.accountId) > reviews.count_review, 0) as result
+                from orders
+                join order_products_details
+                on orders.id = order_products_details.orderId
+                join (
+                    select count(accountId) as count_review, accountId
+                    from product_reviews
+                    where accountId = :accountId and productId = :productId
+                    group by accountId
+                ) as reviews
+                on reviews.accountId = orders.accountId
+                where orders.accountId = :accountId and order_products_details.productId = :productId
+            """)
+    boolean isUserCanReview(@Bind("accountId") int accountId, @Bind("productId") int productId);
 }

@@ -17,7 +17,6 @@ function displayRating(rating, starWidth) {
     });
 }
 
-displayRating(4.0, $(".product-info__star-container").width())
 
 // Nút chia sẻ (copy vào clipboard)
 $("#product-detail__share-btn i").click(function () {
@@ -241,7 +240,7 @@ $.ajax({
     }
 })
 
-let reviewAmount = 3
+let reviewAmount = 1
 let currentReviewOffset = 0
 let reviewLimit
 
@@ -270,7 +269,7 @@ function getReviewList(amount) {
                 } else offset = -1
                 console.log(currentReviewOffset)
                 console.log(reviewLimit)
-                if (currentReviewOffset >= reviewLimit || currentReviewOffset === -1) {
+                if (currentReviewOffset > reviewLimit || currentReviewOffset === -1) {
                     $("#comment-container").append(`<p class="d-flex justify-content-center row text-center">Đã tải hết bình luận</p>`)
                     $("#load-more-review").attr("disabled", true)
                     $("#load-more-review").addClass("d-none")

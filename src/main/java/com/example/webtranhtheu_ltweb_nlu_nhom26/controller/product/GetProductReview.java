@@ -34,9 +34,10 @@ public class GetProductReview extends HttpServlet {
             //Kiểm tra lấy theo id được không
             List<Review> listReview = new DisplayFullProduct(new ConcreateProductDetail()).getListReviews(productId, offset, amount);
             if (limit == null || limit.isEmpty()) {
-                limitValue = listReview.size();
+                limitValue = ProductService.countReviews(productId);
                 jsonResult.addProperty("limit", limitValue);
             }
+            else limitValue = Integer.parseInt(limit);
             if (offset > limitValue) {
                 jsonResult.addProperty("currentOffset", -1);
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
@@ -52,7 +53,7 @@ public class GetProductReview extends HttpServlet {
                     jsonReview.addProperty("reviewTime", review.getCreatedAt().toString());
                     jsonArray.add(jsonReview);
                 }
-                jsonResult.addProperty("currentOffset", offset + listReview.size() + 1);
+                jsonResult.addProperty("currentOffset", offset + listReview.size());
                 jsonResult.add("reviewData", jsonArray);
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
             }

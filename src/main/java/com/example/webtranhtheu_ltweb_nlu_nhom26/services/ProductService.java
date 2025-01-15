@@ -10,8 +10,8 @@ import java.util.List;
 
 public class ProductService {
 
-    public static int countReviews(Product product) {
-        return product.getListReviews().size();
+    public static int countReviews(int id) {
+        return new ConcreateProductDetail().countReviews(id);
     }
 
     public static int countProduct() {

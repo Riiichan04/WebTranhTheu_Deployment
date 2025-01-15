@@ -1,4 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -20,17 +23,24 @@ public class UploadProductReview extends HttpServlet {
                 jsonResult.addProperty("result", false);
             }
             else {
-                //TODO - Làm phần gửi bình luận:
-                //- Kiểm tra điều kiện xem có được bình luận không + có đủ thông tin không
-                //- Thực hiện post review vào
-                //- Trả về kết quả
+                int productId = Integer.parseInt(request.getParameter("productId"));
+                int rating = Integer.parseInt(request.getParameter("rating"));
+                String content = request.getParameter("content");
+
+                if (!new ConcreateProductDetail().isUserCanReview(validateUserId, productId)) {
+                    ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
+                }
+                else {
+                    Review newReview = new Review(productId, validateUserId, rating, content);
+                    boolean insertResult = new ConcreateProductDetail().uploadReview(newReview);
+                    jsonResult.addProperty("result", insertResult);
+                    response.getWriter().write(jsonResult.toString());
+                }
             }
-            response.getWriter().write(jsonResult.toString());
 
         }
         catch (Exception e) {
-            jsonResult.addProperty("result", false);
-            response.getWriter().write(jsonResult.toString());
+            ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
         }
 
     }

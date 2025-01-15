@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
@@ -23,5 +24,13 @@ public class ConcreateProductDetail implements ProductDetailService {
     //Đây là method tạm
     public int countProducts() {
         return productDAO.countProducts();
+    }
+    public int countReviews(int id) {return productDAO.countReviews(id);}
+    public boolean isUserCanReview(int productId, int userId) {
+        return productDAO.isUserCanReview(productId, userId);
+    }
+    //Đây là method tạm, sau này sẽ tách sang review
+    public boolean uploadReview(Review review) {
+        return productDAO.insertReview(review.getAccountId(), review.getProductId(), review.getRating(), review.getContent()) != 0;
     }
 }

@@ -368,5 +368,8 @@
 <jsp:include page="public/footer.jsp"/>
 <script src="template/script/header.js"></script>
 <script src="template/script/product.js"></script>
+<script>
+    displayRating(${avgRating}, $(".product-info__star-container").width())
+</script>
 </body>
 </html>
