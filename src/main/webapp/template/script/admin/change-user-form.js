@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#myTable').DataTable( {
+    const table = $('#myTable').DataTable({
         destroy: true,
         scrollY: "470px",
         ajax: {
@@ -19,31 +19,36 @@ $(document).ready(function () {
 
                     // xử lý giá trị giới tính
                     var status = json[i].gender;
-                    if(status) {
+                    if (status != null) {
                         switch (status) {
-                            case 0:
-                                json[i].gender = "Nữ";
-                                break;
                             case 1:
                                 json[i].gender = "Nam";
                                 break;
-                            default: json[i].gender = "";
+                            case 2:
+                                json[i].gender = "Nữ";
+                                break;
+                            default:
+                                json[i].gender = "";
                         }
                     } else {
                         json[i].gender = "";
                     }
 
                     // xử lý trạng thaí người dùng
-                    var status = json[i].status;
-                    if(status) {
-                        switch (status) {
+                    var statusAccount = json[i].statusAccount;
+                    if (statusAccount != null) {
+                        switch (statusAccount) {
                             case 0:
-                                json[i].status = "Vô hiệu hóa";
+                                json[i].statusAccount = "Vô hiệu hóa";
                                 break;
                             case 1:
-                                json[i].status = "Đang hoạt động";
+                                json[i].statusAccount = "Chưa xác thực";
                                 break;
-                            default: json[i].status = "";
+                            case 2:
+                                json[i].statusAccount = "Đang hoạt động";
+                                break;
+                            default:
+                                json[i].statusAccount = "";
                         }
                     } else {
                         json[i].status = "";
@@ -64,19 +69,19 @@ $(document).ready(function () {
                 render: function (data, type, row) {
                     return `
                         <button class="btn-read-edit" data-id="${row.id}">Xem và Chỉnh Sửa</button>
-                        <button class="btn-delete" data-id="${row.id}">Tắt</button>
+                        <!--<button class="btn-delete" data-id="${row.id}">Tắt</button>-->
                     `;
                 }
             }
         ],
         columns: [
             {data: null}, // Cột STT
-            {data: 'name'}, // Tên danh mục
+            {data: 'fullName'}, // Tên danh mục
             {data: 'username'}, // Số lượng
-            {data: 'phone'}, // Số sản phẩm đã bán
+            {data: 'numOrderBought'}, // Số sản phẩm đã bán
             {data: 'gender'}, // Ngày tạo
             {data: 'createdAt'}, // Ngày tạo
-            {data: 'status'},
+            {data: 'statusAccount'},
             {data: null} // Cột hành động
         ]
     }); // Khởi tạo DataTable
@@ -87,14 +92,13 @@ $(document).ready(function () {
     $('table.dataTable th.dt-type-numeric').css("text-align", "center");
 
     // Gắn sự kiện click cho formWrapper
-    $('#formWrapper').on('click', function (event) {
+    $('#formWrapper').on('click', function () {
         hiddenOverlay() // Tắt overlay
     });
 
-    $('#addUserBtn').on("click", function(event) {
+    $('#addUserBtn').on("click", function (event) {
         event.preventDefault();
-        const url = "/admin/user-management/add-user";
-        console.log(url);
+        const url = "/admin/user-management/add-user-form";
         $.ajax({
             url: url,
             type: "GET",
@@ -113,8 +117,37 @@ $(document).ready(function () {
                     'z-index': '2',
                     'overflow': 'auto',
                 })
+
                 $('#cancelBtn').click(function () {
                     hiddenOverlay();
+                });
+
+                // Gửi dữ liệu từ form thêm chủ đề
+                $('#add-user-form').on('submit', function (event) {
+                    event.preventDefault(); // Ngăn chặn reload trang
+
+                    var formdata = new FormData(this);
+                    // Gửi dữ liệu qua AJAX
+                    $.ajax({
+                        url: '/admin/user-management/add-user',
+                        type: 'POST',
+                        data: formdata,
+                        processData: false, // Không tuần tự hóa dữ liệu
+                        contentType: false, // Không đặt Content-Type
+                        success: function (response) {
+                            if (response.success) {
+                                alert('Thêm người dùng thành công!');
+                                $('#add-user-form')[0].reset(); // Reset form
+                                table.ajax.reload();
+                                hiddenOverlay();
+                            } else {
+                                alert('Lỗi khi thêm người dùng!');
+                            }
+                        },
+                        error: function () {
+                            alert('Lỗi khi thêm người dùng!');
+                        }
+                    });
                 });
             },
             error: function () {
@@ -123,12 +156,13 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-read-edit').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/user-management/update-user";
+    $('#myTable').on('click', '.btn-read-edit', function () {
+        const userId = $(this).data('id');
+        const url = "/admin/user-management/read-edit-user-form";
         $.ajax({
             url: url,
             type: "GET",
+            data: {userId: userId},
             success: function (data) {
                 openOverlay();
                 $('#formWrapper').html(data);
@@ -148,43 +182,40 @@ $(document).ready(function () {
                 // Xử lý nút hủy
                 $('#cancelBtn').on('click', function () {
                     hiddenOverlay();
-                })
+                });
+
+                $('#read-edit-user-form').on('submit', function (event) {
+                    event.preventDefault();
+
+                    var formData = new FormData(this);
+                    formData.append("userId", $('#submitBtn').val())
+                    formData.forEach((value, key) => {
+                        console.log(key, value);  // In ra key và value trong FormData
+                    });
+                    $.ajax({
+                        url: "/admin/user-management/update-user",
+                        type: "POST",
+                        data: formData,
+                        processData: false,  // Không chuyển đổi dữ liệu thành chuỗi
+                        contentType: false,
+                        success: function (response) {
+                            alert('Chỉnh sửa người dùng thành công!');
+                            table.ajax.reload();
+                            hiddenOverlay();
+                        },
+                        error: function () {
+                            console.log("herree")
+                            alert('Lỗi khi chỉnh sửa người dùng!');
+                        }
+                    });
+                });
+
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
             }
         });
     });
-
-    $('.btn-delete').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/user-management/delete-user";
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                openOverlay();
-                $('#formWrapper').html(data);
-
-                // Ngăn sự kiện click trong form không lan lên formWrapper
-                $('form').on('click', function (event) {
-                    event.stopPropagation();
-                });
-
-                $('#formContainer').css({
-                    'width': '500px',
-                    'max-height': '90vh',
-                    'z-index': '2',
-                })
-                $('#cancelBtn').click(function () {
-                    hiddenOverlay();
-                });
-            },
-            error: function () {
-                alert("Có lỗi xảy ra khi tải nội dung.");
-            }
-        });
-    })
 
     function hiddenOverlay() {
         $('#formWrapper').css({

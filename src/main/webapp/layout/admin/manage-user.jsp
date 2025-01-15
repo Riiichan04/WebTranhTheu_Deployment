@@ -31,7 +31,7 @@
                 <th>STT</th>
                 <th>Tên người dùng</th>
                 <th>Tên đăng nhập</th>
-                <th>Số điện thoại</th>
+                <th>Số đơn hàng đặt</th>
                 <th>Giới tính</th>
                 <th>Ngày đăng ký</th>
                 <th>Trạng thái</th>
@@ -39,42 +39,6 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Nguyễn văn Hùng</td>
-                <td>nguyen123</td>
-                <td>0123456789</td>
-                <td>Nam</td>
-                <td>1/5/2024</td>
-                <td>
-                    <button class="btn-read-edit" id="user-1">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Tắt</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Trần Thị Hoa Hồng</td>
-                <td>hoa_hong608</td>
-                <td>0123456789</td>
-                <td>Nữ</td>
-                <td>2/7/2024</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Tắt</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Nguyễn Phương Hòa</td>
-                <td>phuong0909</td>
-                <td>0123456789</td>
-                <td>Nữ</td>
-                <td>3/7/2024</td>
-                <td>
-                    <button class="btn-read-edit">Xem và Chỉnh Sửa</button>
-                    <button class="btn-delete">Tắt</button>
-                </td>
-            </tr>
             </tbody>
         </table>
     </div>

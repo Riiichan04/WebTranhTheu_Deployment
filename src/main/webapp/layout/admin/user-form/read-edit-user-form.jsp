@@ -1,16 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINH THU
-  Date: 12/23/2024
-  Time: 1:52 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Xem và Sửa thông tin người dùng</title>
-    <%@include file="../../public/library.jsp"%>
+    <%@include file="../../public/library.jsp" %>
     <!-- css property -->
     <link rel="stylesheet" href="../../../template/style/admin/style-form/general-form.css">
     <link rel="stylesheet" href="../../../template/style/admin/style-form/style-read-edit-user-form.css">
@@ -20,7 +15,7 @@
 <!-- Form container -->
 <div id="formContainer">
     <!-- enter code -->
-    <form class="form-container">
+    <form class="form-container" id="read-edit-user-form" enctype="multipart/form-data">
         <div class="row pt-3">
             <div class="col"><h2 class="style-big-title" id="title">Xem người dùng</h2></div>
         </div>
@@ -29,8 +24,7 @@
             <div class="col"><span class="style-title">Tên đăng nhập</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên đăng nhập"
-                                        value="tho123" required disabled>
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên đăng nhập" name="username" value="<c:out value="${user.getUsername()}"/>" required disabled>
             </div>
         </div>
         <!-- mật khẩu -->
@@ -38,8 +32,10 @@
             <div class="col"><span class="style-title">Mật khẩu</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="password" id="password" class="w-100 style-input" placeholder="Nhập mật khẩu"
-                                        value="1234" required disabled>
+            <div class="col p-0"><input type="password" id="password" class="w-100 style-input"
+                                        placeholder="Nhập mật khẩu"
+                                        name="password" value="<c:out value="${user.getPassword()}"/>" required
+                                        disabled>
             </div>
         </div>
         <!-- họ và tên -->
@@ -48,7 +44,8 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0"><input type="text" class="w-100 style-input" id="name" placeholder="Nhập họ và tên"
-                                        value="Nguyễn Văn Thọ" required disabled>
+                                        name="fullName" value="<c:out value="${user.getFullName()}"/>" required
+                                        disabled>
             </div>
         </div>
         <!-- avatar -->
@@ -58,13 +55,14 @@
         <div class="row pt-2">
             <div class="col p-0">
                 <div class="img-container">
-                    <img src="../../../template/asset/image/avt-admin.png" id="avatarImage">
+                    <img src="<c:out value="${user.getAvatarUrl()}"/>" id="sampleAvatarImage" class="d-none">
+                    <img src="<c:out value="${user.getAvatarUrl()}"/>" id="avatarImage">
                 </div>
             </div>
             <div class="col-1 d-none edit-hidden">
                 <i class="fa-solid fa-pen-to-square icon-edit-avt" id="editAvatar"></i>
-                <input type="file" value="../../../template/asset/image/avt-admin.png" accept="image/*" class="d-none"
-                       id="fileInput">
+                <input type="file" accept="image/*" class="d-none"
+                       value="<c:out value="${user.getAvatarUrl()}"/>" name="avatar" id="fileInput">
             </div>
         </div>
         <!-- email -->
@@ -73,7 +71,7 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0"><input type="email" class="w-100 style-input" id="email" placeholder="Nhập email"
-                                        value="tho123@gmail.com" disabled>
+                                        name="email" value="<c:out value="${user.getEmail()}"/>" disabled>
             </div>
         </div>
         <!-- sdt -->
@@ -82,7 +80,7 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0"><input type="tel" class="w-100 style-input" id="phone" placeholder="Nhập số điện thoại"
-                                        value="0123456789" disabled>
+                                        name="phone" value="<c:out value="${user.getPhone()}"/>" disabled>
             </div>
         </div>
         <!-- giới tính -->
@@ -92,11 +90,13 @@
         <div class="row pt-2">
             <div class="col text-end">
                 <label>Nam</label>
-                <input type="radio" class="gender" name="gender" value="man" checked required disabled>
+                <input type="radio" class="gender" name="gender" value="1" ${user.getGender() == 1 ? 'checked' : ''}
+                       disabled>
             </div>
             <div class="col">
                 <label>Nữ</label>
-                <input type="radio" class="gender" name="gender" value="woman" required disabled>
+                <input type="radio" class="gender" name="gender" value="2" ${user.getGender() == 2 ? 'checked' : ''}
+                       disabled>
             </div>
         </div>
         <!-- mô tả -->
@@ -104,89 +104,65 @@
             <div class="col"><span class="style-title">Mô tả</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><textarea class="w-100 style-area" id="description" placeholder="Nhập mô tả người dùng" disabled>Mô tả người dùng này</textarea>
+            <div class="col p-0"><textarea class="w-100 style-area" id="description" placeholder="Nhập mô tả người dùng"
+                                           name="description" disabled><c:out
+                    value="${user.getDescription()}"/> </textarea>
             </div>
         </div>
 
         <!-- địa chỉ -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Địa chỉ<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addAddress()"></i></span></div>
+            <div class="col"><span class="style-title">Địa chỉ<i
+                    class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addAddress()"></i></span>
+            </div>
         </div>
-        <div class="row pt-2">
-            <div class="col p-0">
-                <div id="addresses">
-                    <div class="row form-group address-row mb-2">
-                        <div class="row ps-5 pb-2">
-                            <span class="style-label">Địa chỉ 1</span>
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col"><select class="style-select" disabled>
-                                    <option selected>Việt Nam</option>
-                                </select></div>
-                                <div class="col">
-                                    <select class="style-select location" disabled>
-                                        <option disabled>--Chọn thành phố--</option>
-                                        <option selected>Tp. Hồ Chí Minh</option>
-                                        <option>Tp 2</option>
-                                        <option>Tp 3</option>
-                                        <option>Tp 4</option>
-                                        <option>Tp 5</option>
-                                        <option>Tp 6</option>
-                                        <option>Tp 7</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row pt-2">
-                                <div class="col">
-                                    <select class="style-select location" disabled>
-                                        <option disabled>--Chọn quận/huyện--</option>
-                                        <option selected>Tp. Thủ Đức</option>
-                                        <option>Quận Bình Thạnh</option>
-                                        <option>Quận 1</option>
-                                        <option>Quận 3</option>
-                                        <option>Quận 4</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <select class="style-select location" disabled>
-                                        <option disabled>--Chọn xã/phường--</option>
-                                        <option selected>Phường Linh Trung</option>
-                                        <option>Phường 2</option>
-                                        <option>Phường 3</option>
-                                        <option>Phường 4</option>
-                                        <option>Phường 5</option>
-                                        <option>Phường 6</option>
-                                        <option>Phường 7</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row pt-2" style="padding-left: 12px; padding-right: 12px">
-                                <input type="text" class="style-input location" placeholder="Nhập tên đường, tòa nhà, số nhà,..."
-                                       value="Khu phố 6" disabled>
-                            </div>
-                        </div>
-                        <div class="col-1 d-none edit-hidden">
-                            <i class="fa-solid fa-trash icon-del" onclick="removeAddress(this)"></i>
-                        </div>
+        <div class="row pt-2" id="addresses">
+            <c:forEach items="${user.getLocation()}" var="a">
+                <div class="row">
+                    <div class="col p-0">
+                        <input type="text" class="style-input w-100 mb-2" value="${a.getLocation()}" disabled>
+                    </div>
+                    <div class="col-1 text-end d-none edit-hidden">
+                        <input type="checkbox" class="style-checkbox" name="delete-location" value="${a.getId()}">
+                        <label style="font-size: 14px">Xóa</label>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
 
         <!-- ds sản phẩm yêu thích -->
-        <div class="row pt-3">
+        <div class="row pt-2">
             <div class="col"><span class="style-title" id="titleFavourProduct">Danh sách sản phẩm yêu thích</span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select-many" id="favourProduct" multiple disabled>
-                    <option>SP01 - Sản phẩm 1 - 1/1/2024</option>
-                    <option>SP02 - Sản phẩm 2 - 1/1/2024</option>
-                    <option>SP03 - Sản phẩm 3 - 1/1/2024</option>
-                    <option>SP04 - Sản phẩm 4 - 1/1/2024</option>
-                    <option>SP05 - Sản phẩm 5 - 1/1/2024</option>
+                <select class="style-select-many" name="delete-wish-product" id="favourProduct" multiple disabled>
+                    <c:forEach items="${user.getWishProducts()}" var="wp">
+                        <option value="${wp.getProduct().getId()}">${wp.getProduct().getCode()}
+                            - ${wp.getProduct().getTitle()} - <fmt:formatDate value="${wp.getCreatedAt()}"
+                                                                              pattern="dd/MM/yyyy"/></option>
+                    </c:forEach>
                 </select>
+            </div>
+        </div>
+
+        <!-- thêm sản phẩm yêu thích -->
+        <div class="row pt-2 d-none edit-hidden">
+            <div class="col"><span class="style-title">Thêm sản phẩm yêu thích <i
+                    class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addWishProducts()"></i></span></div>
+        </div>
+        <div class="row pt-2 d-none edit-hidden" id="addWishProducts">
+            <div class="row d-none" id="sampleAddWishProduct">
+                <div class="col">
+                    <select class="style-select" name="add-wish-product">
+                        <c:forEach items="${listProducts}" var="p">
+                            <option value="${p.getId()}">${p.getCode()} - ${p.getTitle()}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="col-1">
+                    <i class="fa-solid fa-trash icon-del"></i>
+                </div>
             </div>
         </div>
 
@@ -196,9 +172,10 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select" id="status" required disabled>
-                    <option selected>Đang hoạt động</option>
-                    <option>Vô hiệu hóa</option>
+                <select class="style-select" name="status-account" id="status" required disabled>
+                    <option value="2" ${user.getStatusAccount() == 2 ? 'selected' : ''}>Đang hoạt động</option>
+                    <option value="0" ${user.getStatusAccount() == 0 ? 'selected' : ''}>Vô hiệu hóa</option>
+                    <option value="1" ${user.getStatusAccount() == 1 ? 'selected' : ''}>Chưa xác thực</option>
                 </select>
             </div>
         </div>
@@ -207,22 +184,31 @@
             <div class="col"><span class="style-title">Ngày tạo tài khoản</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-01" required disabled></div>
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="${createAt}" required disabled>
+            </div>
         </div>
         <!-- ngày cập nhật -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày cập nhật tài khoản</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-01" disabled></div>
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="${updateAt}" disabled></div>
         </div>
 
         <div class="row pt-4 pb-4">
-            <div class="col" id="containerCancelBtn">
+            <div class="col read">
                 <button type="button" id="cancelBtn" class="style-cancel-btn">Hủy</button>
             </div>
-            <div class="col" id="containerEditBtn">
-                <button type="button" class="style-button" type="button" id="editBtn">Chỉnh sửa</button>
+            <div class="col read">
+                <button type="button" class="style-button" id="editBtn">Chỉnh sửa</button>
+            </div>
+            <div class="col d-none edit-hidden">
+                <button type="button" id="cancelEditBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col d-none edit-hidden">
+                <button class="style-update-btn" name="userId" value="<c:out value="${user.getId()}"/>" type="submit"
+                        id="submitBtn">Cập nhật
+                </button>
             </div>
         </div>
     </form>

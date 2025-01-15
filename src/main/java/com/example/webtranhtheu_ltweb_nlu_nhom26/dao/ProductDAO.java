@@ -154,4 +154,8 @@ public interface ProductDAO {
 //                        .mapToBean(Discount.class).list()
 //        );
 //    }
+
+    @SqlQuery("select id, codeProduct as code, title from products")
+    @RegisterBeanMapper(Product.class)
+    List<Product> getProductsCodeAndTitle();
 }

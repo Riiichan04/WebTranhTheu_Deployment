@@ -6,7 +6,6 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.PolicyDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 public class PolicyService {

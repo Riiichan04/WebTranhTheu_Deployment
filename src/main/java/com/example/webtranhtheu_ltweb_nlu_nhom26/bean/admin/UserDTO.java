@@ -5,21 +5,21 @@ import java.sql.Timestamp;
 
 public class UserDTO {
     private int id;
-    private String name;
+    private String fullName;
     private String username;
-    private String phone;
+    private int numOrderBought;
     private int gender;
     private Timestamp createdAt;
-    private int status;
+    private int statusAccount;
 
-    public UserDTO(int id, String name, String username, String phone, int gender, Timestamp createdAt, int status) {
+    public UserDTO(int id, String fullName, String username, int numOrderBought, int gender, Timestamp createdAt, int statusAccount) {
         this.id = id;
-        this.name = name;
+        this.fullName = fullName;
         this.username = username;
-        this.phone = phone;
+        this.numOrderBought = numOrderBought;
         this.gender = gender;
         this.createdAt = createdAt;
-        this.status = status;
+        this.statusAccount = statusAccount;
     }
 
     public UserDTO() {}
@@ -28,16 +28,16 @@ public class UserDTO {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setNumOrderBought(int numOrderBought) {
+        this.numOrderBought = numOrderBought;
     }
 
     public void setGender(int gender) {
@@ -52,16 +52,16 @@ public class UserDTO {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public String getPhone() {
-        return phone;
+    public int getNumOrderBought() {
+        return numOrderBought;
     }
 
     public int getGender() {
@@ -72,11 +72,11 @@ public class UserDTO {
         return createdAt;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStatusAccount(int statusAccount) {
+        this.statusAccount = statusAccount;
     }
 
-    public int getStatus() {
-        return status;
+    public int getStatusAccount() {
+        return statusAccount;
     }
 }
