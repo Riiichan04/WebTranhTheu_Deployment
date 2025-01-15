@@ -1,6 +1,5 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.UserDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
@@ -14,4 +13,15 @@ public class UserService {
     public String getUsername(int userId) {
         return userDAO.getUsername(userId);
     }
+
+    // cập nhật trạng thái cho user
+    public boolean updateStatus(int userId, int status) {
+        return userDAO.updateStatus(userId, status);
+    }
+
+    //cập nhật password
+    public boolean updatePassword(int userId, String password) {
+        return userDAO.updatePassword(userId, password);
+    }
+
 }
