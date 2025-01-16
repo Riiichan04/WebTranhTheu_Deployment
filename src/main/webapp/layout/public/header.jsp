@@ -46,7 +46,7 @@
                                     <p class="main-color text-start">Tranh thêu VIP</p>
                                 </div>
                             </div>
-                            <a href="category.html" class="">
+                            <a href="/category" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
                                     Xem tất cả >
                                 </p>
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="account-page.html" class="">
+                            <a href="/account-page.html" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
                                     Xem tất cả >
                                 </p>
@@ -201,7 +201,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="cart-page.html" class="">
+                            <a href="/cart-page.html" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
                                     Xem tất cả >
                                 </p>
@@ -209,7 +209,7 @@
                         </div>
                     </li>
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
-                        <a id="header-account" href="account-page.html">
+                        <a id="header-account" href="/account-page.html">
                             <i class="fa-solid fa-user my-1"></i>
                             <p class="header-feature__label">Tài khoản</p>
                         </a>

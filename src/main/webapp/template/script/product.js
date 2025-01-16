@@ -293,6 +293,8 @@ function getPrice(width, height) {
                     $("#product-details__price").text(response.discountedPrice)
                     $("#product-details__old-price span").text((currentDiscountValue * 100).toFixed(0) + " %")
                 }
+                $("#product-detail").data("width", currentWidth)
+                $("#product-detail").data("height", currentHeight)
             }
         },
     })
@@ -307,3 +309,4 @@ $(".switch-size-btn").click(function () {
 
 getReviewList(reviewAmount)
 getPrice(currentWidth, currentHeight)
+

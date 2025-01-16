@@ -3,7 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
@@ -33,12 +33,12 @@ public class UploadProductReview extends HttpServlet {
             int rating = Integer.parseInt(request.getParameter("rating"));
             String content = request.getParameter("content");
 
-            if (!new ConcreateProductDetail().isUserCanReview(userSessionId, productId)) {
+            if (!new ConcreteProductDetail().isUserCanReview(userSessionId, productId)) {
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
             } else {
                 Timestamp currentTime = new Timestamp(System.currentTimeMillis());
                 Review newReview = new Review(productId, userSessionId, rating, content, currentTime, currentTime);
-                boolean insertResult = new ConcreateProductDetail().uploadReview(newReview);
+                boolean insertResult = new ConcreteProductDetail().uploadReview(newReview);
                 jsonResult.addProperty("currentAvgRating", ProductService.getProductRating(productId));
                 jsonResult.addProperty("result", insertResult);
 

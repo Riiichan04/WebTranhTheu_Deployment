@@ -3,7 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
 import java.util.LinkedList;
@@ -20,7 +20,7 @@ public class HomeService {
         List<Integer> listProductId = this.productDAO.getMostRatedProductsId();
         List<Product> listProduct = new LinkedList<>();
         for (int id : listProductId) {
-            listProduct.add(new DisplayCardProduct(new ConcreateProductDetail()).getDisplayProductInfo(id));
+            listProduct.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(id));
         }
         return listProduct;
     }
@@ -29,7 +29,7 @@ public class HomeService {
         List<Integer> listProductId = this.productDAO.getIdOfHotProduct();
         List<Product> listProduct = new LinkedList<>();
         for (int id : listProductId) {
-            listProduct.add(new DisplayCardProduct(new ConcreateProductDetail()).getDisplayProductInfo(id));
+            listProduct.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(id));
         }
         return listProduct;
     }
