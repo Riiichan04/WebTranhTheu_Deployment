@@ -1,17 +1,15 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.controller;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.category;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.StringTokenizer;
 
 @WebServlet(name = "category", value = "/category/*")
-public class Category extends HttpServlet {
+public class CategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
@@ -19,9 +17,13 @@ public class Category extends HttpServlet {
         String pathName = request.getPathInfo();
         StringTokenizer tokenizer = new StringTokenizer(pathName, "/");
         String categoryName = tokenizer.nextToken();
-        List<Product> listProduct = CategoryService.getDisplayProductByCategory(categoryName);
 
-        request.getRequestDispatcher("/layout/category.jsp").forward(request, response);
+        if (CategoryService.isCategoryNameExist(categoryName)) {
+            request.getRequestDispatcher("/layout/category.jsp").forward(request, response);
+        }
+        else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
     }
 
     @Override

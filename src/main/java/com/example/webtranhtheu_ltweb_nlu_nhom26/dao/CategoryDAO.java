@@ -13,32 +13,21 @@ import java.util.List;
 
 public interface CategoryDAO {
     @SqlQuery("""
+        select patternName
+        from categories
+        where patternName = :categoryName
+    """)
+    String getCategoryPatternName(@Bind("categoryName") String categoryName);
+
+    @SqlQuery("""
         select products.id
         from products
             join category_products_details
             on products.id = category_products_details.productId
             join categories
             on category_products_details.categoryId = categories.id
-        where categories.title like :categoryName
+        where categories.patternName like :categoryName
+        limit :offset, :limit
     """)
-    List<Integer> getListIdInCategory(@Bind("categoryName") String categoryName);
-//    private static List<Category> getCategories() {
-//        return JDBIConnector.getInstance().withHandle(handle ->
-//                handle.createQuery("select * from categories").mapToBean(Category.class).list());
-//    }
-//
-//    private static List<Product> getProductByCategory(int categoryId) {
-//        List<Integer> listProductIdByCategory = JDBIConnector.getInstance().withHandle(handle ->
-//                handle.createQuery("select productId " +
-//                                "from category_product_details " +
-//                                "join categories on category_product_details.categoryId = categories.id" +
-//                                "where categories.id = :categoryId")
-//                        .bind("categoryId", categoryId).mapToBean(Integer.class).list());
-//
-//        List<Product> listProduct = new LinkedList<>();
-//        for (Integer productId : listProductIdByCategory) {
-//            listProduct.add(new DisplayFullProduct(new ConcreateProductDetail()).getFullProductInfo(productId));
-//        }
-//        return listProduct;
-//    }
+    List<Integer> getListIdInCategory(@Bind("categoryName") String categoryName, @Bind("offset") int offset, @Bind("limit") int limit);
 }

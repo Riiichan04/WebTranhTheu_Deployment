@@ -12,16 +12,21 @@ import java.util.List;
 public class CategoryService {
     static CategoryDAO categoryDAO = JDBIConnector.getInstance().onDemand(CategoryDAO.class);
 
-    public static List<Integer> getListProductIdByCategory(String categoryName) {
-        return categoryDAO.getListIdInCategory(categoryName);
+    //Lấy amount sản phẩm tính từ offset
+    public static List<Integer> getListProductIdByCategory(String categoryName, int offset, int amount) {
+        return categoryDAO.getListIdInCategory(categoryName, (offset - 1), amount);
     }
 
-    public static List<Product> getDisplayProductByCategory(String categoryName) {
-        List<Integer> listProductId = categoryDAO.getListIdInCategory(categoryName);
+    public static List<Product> getDisplayProductByCategory(String categoryName, int offset, int amount) {
+        List<Integer> listProductId = categoryDAO.getListIdInCategory(categoryName, (offset - 1) * amount, amount);
         List<Product> listProduct = new ArrayList<>();
         for (int productId : listProductId) {
             listProduct.add(new DisplayCardProduct(new ConcreateProductDetail()).getProductInfo(productId));
         }
         return listProduct;
+    }
+
+    public static boolean isCategoryNameExist(String categoryName) {
+        return categoryName.equals(categoryDAO.getCategoryPatternName(categoryName));
     }
 }
