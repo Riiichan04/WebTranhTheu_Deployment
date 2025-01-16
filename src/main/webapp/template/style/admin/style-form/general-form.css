@@ -1,3 +1,7 @@
+body, html {
+    overflow: visible;
+}
+
 .style-big-title {
     padding-top: 10px;
     font-weight: 500;
@@ -71,14 +75,10 @@
     border-right: none;
 }
 
-.fa-brands {
-    color: var(--sub-cta-button);
-}
-
 .form-container {
+    margin-bottom: 0px;
     padding-left: 40px;
     padding-right: 40px;
-    border-radius: 10px;
     background-color: var(--light-component-background-color);
 }
 
@@ -97,8 +97,6 @@
 }
 
 .icon-del {
-    position: absolute;
-    right: 30px;
     font-size: 20px;
     color: var(--dark-component-background-color);
     padding: 10px 0px 10px 10px;
@@ -113,4 +111,9 @@
 .style-add-btn {
     font-size: 16px;
     cursor: pointer;
+}
+
+.style-checkbox {
+    height: 16px;
+    width: 16px;
 }

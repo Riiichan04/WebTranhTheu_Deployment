@@ -10,8 +10,6 @@
 }
 
 .icon-edit-avt {
-    position: absolute;
-    right: 30px;
     font-size: 20px;
     color: var(--dark-component-background-color);
     padding: 10px;
@@ -30,8 +28,4 @@
     color: white;
     border: none;
     border-radius: 5px;
-}
-
-#myTable tbody tr td{
-    font-size: 14px;
 }

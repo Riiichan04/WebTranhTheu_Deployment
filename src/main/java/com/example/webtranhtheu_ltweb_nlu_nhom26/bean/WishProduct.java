@@ -2,9 +2,10 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class WishProduct {
+public class WishProduct implements Serializable {
     private Product product;
     private Timestamp createdAt;
 

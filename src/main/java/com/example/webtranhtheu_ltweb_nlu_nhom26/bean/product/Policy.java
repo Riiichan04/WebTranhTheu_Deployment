@@ -4,12 +4,36 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class Policy implements Serializable {
+    private int id;
     private String title;
     private String description;
     private Timestamp createAt;
     private Timestamp updateAt;
 
     public Policy() {
+    }
+
+    public Policy(String title, String description, Timestamp createAt, Timestamp updateAt) {
+        this.title = title;
+        this.description = description;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+    }
+
+    public Policy(int id, String title, String description, Timestamp createAt, Timestamp updateAt) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {

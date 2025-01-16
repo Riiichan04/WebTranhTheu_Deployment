@@ -59,6 +59,10 @@ public class AuthService {
         return null;
     }
 
+    public AuthDTO getAuthById(int id) {
+        return userDao.getAuthById(id);
+    }
+
     public String getEmail(int id) {
         return userDao.getEmail(id);
     }

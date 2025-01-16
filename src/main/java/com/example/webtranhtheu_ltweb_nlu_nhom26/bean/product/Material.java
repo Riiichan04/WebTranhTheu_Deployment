@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class Material implements Serializable {
+    private int id;
     private String title;
     private Timestamp createdAt;
     private Timestamp updatedAt;
@@ -13,6 +14,14 @@ public class Material implements Serializable {
     }
 
     public Material() {
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {

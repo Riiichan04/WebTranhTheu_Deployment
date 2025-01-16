@@ -1,9 +1,19 @@
 body, html {
-    overflow: hidden; /*để tránh thanh cuộn không cần thiết*/
+    overflow: visible;
 }
 
 .nav-style {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow: visible;
     background-color: var(--light-component-background-color);
+}
+
+#content {
+    position: absolute;
+    margin-left: 253px;
 }
 
 .avt-admin {

@@ -22,6 +22,13 @@ public class Price implements Serializable {
         this.available = available;
     }
 
+    public Price(int width, int height, double price, int available) {
+        this.width = width;
+        this.height = height;
+        this.price = price;
+        this.available = available;
+    }
+
     public int getProductId() {
         return productId;
     }

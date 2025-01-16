@@ -17,6 +17,7 @@
     right: 15px;
     font-size: 30px;
     color: var(--sub-cta-button);
+    cursor: pointer;
 }
 
 .style-label {

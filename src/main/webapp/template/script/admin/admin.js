@@ -1,41 +1,37 @@
-function loadPage(page) {
-    let content = document.getElementById("content")
-    switch (page) {
-        case "dashboard":
-            content.innerHTML = "<iframe src='dashboard.html' class='w-100 vh-100'></iframe>";
-            break;
-        case "product":
-            content.innerHTML = "<iframe src='manage-product.html' class='w-100 vh-100'></iframe>";
-            break;
-        case "user":
-            content.innerHTML = "<iframe src='manage-user.html' class='w-100 vh-100'></iframe>";
-            break;
-        case "promotion":
-            content.innerHTML = "<iframe src='manage-promotion.html' class='w-100 vh-100'></iframe>";
-            break;
-        case "category":
-            content.innerHTML = "<iframe src='manage-category.html' class='w-100 vh-100'></iframe>";
-            break;
-        case "topic":
-            content.innerHTML = "<iframe src='manage-topic.html' class='w-100 vh-100'></iframe>";
-            break;
-        case "order":
-            content.innerHTML = "<iframe src='manage-order.html' class='w-100 vh-100'></iframe>";
-            break;
-        case "policy":
-            content.innerHTML = "<iframe src='manage-policy.html' class='w-100 vh-100'></iframe>";
-            break;
-        case "setting":
-            content.innerHTML = "<iframe src='setting-user.html' class='w-100 vh-100'></iframe>";
-            break;
-    }
-}
-$(".select-nav").click(function () {
-    loadPage(this.id);
-    console.log(this.id)
-    $('.select-nav.active').removeClass('active');
-    this.classList.add('active');
+$(".ajax-link").on("click", function (event) {
+    event.preventDefault(); // Ngăn tải lại trang
+    const url = $(this).attr("href"); // Lấy URL của trang cần tải
+
+    // Dọn sạch content
+    $('#content').empty();
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (data) {
+            $("#content").html(data); // Cập nhật nội dung vào phần #content
+        },
+        error: function () {
+            alert("Có lỗi xảy ra khi tải nội dung.");
+        }
+    });
 });
 
-//khoi tao
-loadPage("dashboard");
+// Xử lý hiển thị trang hiện tại trong menu
+$(".ajax-link").click(function () {
+    $('.ajax-link.active').removeClass('active');
+    $(this).addClass('active'); // Đánh dấu menu đang chọn
+});
+
+// Lần đầu khởi tạo trang
+$.ajax({
+    url: $('#dashboard').attr("href"),
+    type: "GET",
+    success: function (data) {
+        $("#content").html(data); // Cập nhật nội dung vào phần #content
+    },
+    error: function () {
+        alert("Có lỗi xảy ra khi tải nội dung.");
+    }
+});
+
