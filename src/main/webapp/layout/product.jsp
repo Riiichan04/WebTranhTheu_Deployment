@@ -36,6 +36,7 @@
                         </button>
                     </c:forEach>
                 </div>
+                <div class="mt-4_5" id="current-size-notice"></div>
             </div>
             <div class="col ps-4_5 p-4_5 ">
                 <div class="row">

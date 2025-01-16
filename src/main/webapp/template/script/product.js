@@ -118,85 +118,6 @@ $("#product-review__star .product-info__star-container").click(function () {
     }
 })
 
-// Nút gửi bình luận
-// $("#send-comment").click(function () {
-//     const commentText = $("#product-review--comment").val()
-//     const countComment = $("#count-comment")
-//     const totalStar = $("#current-star-rating")
-//
-//     //Tính toán tổng đánh giá mới cho sản phẩm và tăng ố lượng bình luận của sản phẩm
-//     const countTotalComment = parseInt(countComment.text()) + 1
-//     let newCurrentStarRating = (parseInt(totalStar.text()) * (countTotalComment - 1) + currentRating) / countTotalComment
-//     newCurrentStarRating = `${newCurrentStarRating}`.length === 1 ? newCurrentStarRating + ".0" : newCurrentStarRating
-//     if (currentRating === 0 || commentText === "") return
-//
-//     //Tạo element sản phẩm (Sẽ chuyển vào DAO)
-//     const commentElement = document.createElement("div")
-//     commentElement.className = "row product-review__comment-component mt-4_5"
-//     commentElement.innerHTML =
-//         `
-//             <div class="col-3 text-center">
-//                 <h5>Admin</h5>
-//                 <p>22/11/2024</p>
-//                 <div class="row">
-//                     <div class="col-2"></div>
-//                     <div class="col d-flex justify-content-center comment-rating">
-//                         <div class="col-2 product-info__star-container   px-0">
-//                             <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-//                             <div class="product-info__star-mask"></div>
-//                             <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-//                         </div>
-//                         <div class="col-2 product-info__star-container   px-0">
-//                         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-//                             <div class="product-info__star-mask"></div>
-//                             <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-//                         </div>
-//                         <div class="col-2 product-info__star-container   px-0">
-//                             <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-//                             <div class="product-info__star-mask"></div>
-//                             <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-//                         </div>
-//                         <div class="col-2 product-info__star-container   px-0">
-//                             <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-//                             <div class="product-info__star-mask"></div>
-//                             <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-//                         </div>
-//                         <div class="col-2 product-info__star-container   px-0">
-//                             <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-//                             <div class="product-info__star-mask" style="width: 100%"></div>
-//                             <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-//                         </div>
-//                     </div>
-//                     <div class="col-2"></div>
-//                 </div>
-//             </div>
-//             <div class="col-8">
-//                 <p class="" style="white-space: pre-line">
-//                     ${commentText}
-//                 </p>
-//             </div>
-//         `
-//     //Cập nhật số sao của bình luận
-//     const listMask = commentElement.querySelectorAll(".product-info__star-mask")
-//     for (let i = 0; i < currentRating; i++) {
-//         listMask[i].style.width = "0";
-//     }
-//     for (let i = currentRating; i < listMask.length; i++) {
-//         listMask[i].style.width = "100%";
-//     }
-//
-//     //Thêm nội dung, hiển thị elememt bình luận và cập nhật các giá trị cần thiết
-//     countComment.text(countTotalComment)
-//     totalStar.text(newCurrentStarRating)
-//     $("#comment-container").prepend(commentElement)
-//     $(this).attr("disabled", true)
-// })
-
-// Click vào sản phẩm khác sẽ mở cửa sổ sản phẩm khác
-$(".other-product__card").click(function () {
-    window.open("product.html").focus();
-})
-
 $("#send-comment").click(function (e) {
     e.preventDefault()
     if ($("#product-review--comment").val() === "" && currentRating === 0) {
@@ -230,22 +151,6 @@ $("#send-comment").click(function (e) {
                 //Thông báo lỗi server
             }
         })
-    }
-})
-
-//Dùng để lấy các sản phẩm khác
-$.ajax({
-    url: null,
-    type: 'GET',
-    data: {
-        id: null, //Tạm (Sẽ d8ưa lên jsp)
-        topic: null //Tạm (Sẽ đưa lên jsp)
-    },
-    success: (response) => {
-        //Hiển thị các sản phẩm khác
-    },
-    error: (response) => {
-        //Không tìm thấy các sản phẩm tương tự với sản phẩm này
     }
 })
 
@@ -375,6 +280,7 @@ function getPrice(width, height) {
                 }
                 $("#product-detail__available--value").text(response.available)
                 $("#product-details__price").text(response.price)
+                $("#current-size-notice").html(`<p>Kích thước hiện tại bạn đang chọn là: <span class="h5">${response.width}x${response.height} cm</span></p>`)
                 currentPrice = response.price
                 currentWidth = response.width
                 currentHeight = response.height
