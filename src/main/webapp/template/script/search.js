@@ -26,7 +26,8 @@ function getProductsByCategory(page) {
             page: page,
             amount: amount,
             maxPage: maxPage,
-            patternName: patternName
+            patternName: patternName,
+            validValue: originalResultArr.join(',')
         },
         success: function (response) {
             response = $.parseJSON(response)
@@ -94,8 +95,6 @@ $("#prev-page").click(function () {
 $("#next-page").click(function () {
     getProductsByCategory(++currentPage)
 })
-
-getProductsByCategory(currentPage)
 
 
 function changeCategoryName(pattern) {

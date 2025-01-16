@@ -1,7 +1,9 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.controller;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.search;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -17,10 +19,16 @@ public class SearchProductController extends HttpServlet {
         response.setCharacterEncoding("utf-8");
 
         String keyword = request.getParameter("keyword");
-
-        List<Category> listCategory = CategoryService.getNameAndPatternCategory();
-        request.setAttribute("listCategoryName", listCategory);
-        request.getRequestDispatcher("layout/search.jsp").forward(request, response);
+        List<Product> productResult = ProductService.findProductByName(keyword);
+        if (productResult.isEmpty()) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
+        else {
+            List<Category> listCategory = CategoryService.getNameAndPatternCategory();
+            request.setAttribute("listProduct", productResult);
+            request.setAttribute("listCategoryName", listCategory);
+            request.getRequestDispatcher("layout/search.jsp").forward(request, response);
+        }
     }
 
     @Override

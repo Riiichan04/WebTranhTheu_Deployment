@@ -143,7 +143,23 @@
             <h4></h4>
             <%--            <h4 id="category-title" class="main-color">${categoryTitle}</h4>--%>
             <hr class="mb-5"/>
-            <div id="category-displayed-product"></div>
+            <div id="category-displayed-product">
+                <div class="row">
+                    <c:forEach var="product" items="${listProduct}">
+                        <div class="" style="width: 20%">
+                            <div onclick="window.location='/product?id=${product.getId()}'" class="card p-2"
+                                 style="cursor: pointer">
+                                <img src="${product.getThumbnail()}" class="card-img" alt="">
+                                <div class="card-body px-1">
+                                    <h6 class="card-title text-center pb-2">${product.getTitle()}</h6>
+                                    <p class="card-text text-center fw-semibold h5 mt-2"
+                                       style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
         </div>
         <nav>
             <ul class="pagination d-flex justify-content-center">
@@ -163,6 +179,12 @@
 
 <jsp:include page="public/footer.jsp"/>
 <script src="/template/script/header.js"></script>
+<script>
+    let originalResultArr = []
+    <c:forEach var="product" items="${listProduct}">
+    originalResultArr.push(${product.getId()})
+    </c:forEach>
+</script>
 <script src="/template/script/search.js"></script>
 </body>
 </html>

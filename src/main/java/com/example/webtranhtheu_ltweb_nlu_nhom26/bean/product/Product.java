@@ -180,7 +180,7 @@ public class Product implements Serializable {
 
     public String getThumbnail() {
         //Mặc định lấy hình đầu tiên
-        return this.listImageUrls.get(0);
+        return this.listImageUrls.getFirst();
     }
 }
 

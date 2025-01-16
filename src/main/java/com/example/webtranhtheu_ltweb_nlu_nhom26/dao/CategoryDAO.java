@@ -8,6 +8,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullPro
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.customizer.BindList;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
 import java.util.LinkedList;
@@ -52,4 +53,18 @@ public interface CategoryDAO {
     """)
     @RegisterRowMapper(CategoryNameMapper.class)
     List<Category> getAllCategoriesName();
+
+    @SqlQuery("""
+        select products.id
+        from products
+            join category_products_details
+            on products.id = category_products_details.productId
+            join categories
+            on category_products_details.categoryId = categories.id
+        where categories.patternName like :categoryName
+            and products.id in (<listId>)
+            and products.status = 1
+        limit :offset, :limit
+    """)
+    List<Integer> filterProductIdWithNameAndCategory(@Bind("categoryName") String categoryName, @Bind("offset") int offset, @Bind("limit") int limit, @BindList("listId") List<Integer> listId);
 }

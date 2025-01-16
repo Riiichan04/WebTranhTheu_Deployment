@@ -55,4 +55,14 @@ public class CategoryService {
         }
         return null;
     }
+
+    //Method tạm cho báo cáo. Sẽ xóa và thay bằng filter hoàn chỉnh
+    public static List<Product> getDisplayProductByCategoryAndName(String categoryName, int offset, int amount, List<Integer> listId) {
+        List<Integer> listProductId = categoryDAO.filterProductIdWithNameAndCategory(categoryName, (offset - 1), amount, listId);
+        List<Product> listProduct = new ArrayList<>();
+        for (int productId : listProductId) {
+            listProduct.add(new DisplayCardProduct(new ConcreateProductDetail()).getDisplayProductInfo(productId));
+        }
+        return listProduct;
+    }
 }

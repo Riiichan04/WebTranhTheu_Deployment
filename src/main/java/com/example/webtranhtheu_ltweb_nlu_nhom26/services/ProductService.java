@@ -34,4 +34,14 @@ public class ProductService {
         }
         return products;
     }
+
+    //Tìm sản phẩm theo tên
+    public static List<Product> findProductByName(String productName) {
+        List<Integer> listProductId = new ConcreateProductDetail().findProductByName(productName);
+        List<Product> products = new ArrayList<>();
+        for (int productId : listProductId) {
+            products.add(new DisplayCardProduct(new ConcreateProductDetail()).getDisplayProductInfo(productId));
+        }
+        return products;
+    }
 }

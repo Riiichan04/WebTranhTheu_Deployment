@@ -5,7 +5,9 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ConcreateProductDetail implements ProductDetailService {
     ProductDAO productDAO;
@@ -36,5 +38,8 @@ public class ConcreateProductDetail implements ProductDetailService {
     }
     public double getProductRating(int productId) {
         return productDAO.getProductRating(productId);
+    }
+    public List<Integer> findProductByName(String productName) {
+         return productDAO.findProductsIdByName("%" + productName + "%");
     }
 }

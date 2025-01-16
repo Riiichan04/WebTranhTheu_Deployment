@@ -26,7 +26,7 @@ public class CategoryProductGetter extends HttpServlet {
             String maxPage = request.getParameter("maxPage");
             String categoryPatternName = request.getParameter("patternName");
             //Không hợp lệ
-            if (!CategoryService.isCategoryNameExist(categoryPatternName) || page <= 0 || amount <= 0)  {
+            if (!CategoryService.isCategoryNameExist(categoryPatternName) || page <= 0 || amount <= 0) {
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
                 return;
             }
