@@ -30,4 +30,15 @@ public interface CategoryDAO {
         limit :offset, :limit
     """)
     List<Integer> getListIdInCategory(@Bind("categoryName") String categoryName, @Bind("offset") int offset, @Bind("limit") int limit);
+
+    @SqlQuery("""
+        select count(products.id)
+        from products
+            join category_products_details
+            on products.id = category_products_details.productId
+            join categories
+            on category_products_details.categoryId = categories.id
+        where categories.patternName like :categoryName
+    """)
+    int countProductByCategory(@Bind("categoryName") String categoryName);
 }

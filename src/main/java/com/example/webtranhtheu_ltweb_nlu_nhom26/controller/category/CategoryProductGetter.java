@@ -23,20 +23,32 @@ public class CategoryProductGetter extends HttpServlet {
         try {
             int page = Integer.parseInt(request.getParameter("page"));  //Trang hiện tại
             int amount = Integer.parseInt(request.getParameter("amount"));  //Số lượng cần lấy
+            String maxPage = request.getParameter("maxPage");
             String categoryPatternName = request.getParameter("patternName");
-            if (CategoryService.isCategoryNameExist(categoryPatternName) || page <= 0 || amount <= 0)  {
+            //Không hợp lệ
+            if (!CategoryService.isCategoryNameExist(categoryPatternName) || page <= 0 || amount <= 0)  {
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
                 return;
             }
+            if (maxPage == null || maxPage.isEmpty()) {
+                jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(categoryPatternName, amount));
+            }
+            //Không tìm thấy sp nào
             List<Product> listProductByCategory = CategoryService.getDisplayProductByCategory(categoryPatternName, page, amount);
+            System.out.println(listProductByCategory);
             if (listProductByCategory.isEmpty()) {
+                jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
             }
             else {
                 JsonArray listProducts = new JsonArray();
+                System.out.println(listProductByCategory.size());
                 for (Product product : listProductByCategory) {
+                    System.out.println(product);
+                    System.out.println(product.getMinPrice());
                     ControllerUtil.addProductToJson(listProducts, product, product.getMinPrice());
                 }
+                System.out.println(listProducts.asList().size());
                 jsonResult.addProperty("currentPage", page + 1);
                 jsonResult.add("listProducts", listProducts);
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);

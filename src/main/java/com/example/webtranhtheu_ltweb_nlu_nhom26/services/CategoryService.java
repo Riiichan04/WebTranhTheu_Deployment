@@ -21,12 +21,17 @@ public class CategoryService {
         List<Integer> listProductId = categoryDAO.getListIdInCategory(categoryName, (offset - 1) * amount, amount);
         List<Product> listProduct = new ArrayList<>();
         for (int productId : listProductId) {
-            listProduct.add(new DisplayCardProduct(new ConcreateProductDetail()).getProductInfo(productId));
+            listProduct.add(new DisplayCardProduct(new ConcreateProductDetail()).getDisplayProductInfo(productId));
         }
         return listProduct;
     }
 
     public static boolean isCategoryNameExist(String categoryName) {
         return categoryName.equals(categoryDAO.getCategoryPatternName(categoryName));
+    }
+
+    public static int calculateCategoryPage(String categoryName, int amount) {
+        int baseVal = categoryDAO.countProductByCategory(categoryName) / amount;
+        return categoryDAO.countProductByCategory(categoryName) % amount == 0 ? baseVal : baseVal + 1;
     }
 }
