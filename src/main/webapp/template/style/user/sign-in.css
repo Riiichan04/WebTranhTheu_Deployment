@@ -6,6 +6,9 @@ a {
 .container {
     width: 450px;
     background-color: var(--light-component-background-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+    0 6px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }
 
 .style-big-title {
@@ -22,7 +25,7 @@ a {
     border: none;
     background-color: var(--sub-cta-button);
     color: var(--label-color);
-    height: 50px;
+    height: 40px;
     width: 150px;
     border-radius: 10px;
 }
@@ -44,13 +47,13 @@ a {
 }
 
 .style-input {
-    height: 50px;
+    height: 40px;
     padding-left: 10px;
     font-size: 14px;
 }
 
 .icon-container {
-    height: 50px;
+    height: 40px;
     background-color: white;
     align-content: center;
     border: solid 1px rgb(118, 118, 118);

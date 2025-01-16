@@ -12,10 +12,11 @@
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">
         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">${product.category.title}</a></li>
-<%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>--%>
-<%--        Phần topic xử lý sau        --%>
-<%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay/tranh-phong-canh">Tranh thêu Phong cảnh</a></li>--%>
+        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">${product.category.title}</a>
+        </li>
+        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>--%>
+        <%--        Phần topic xử lý sau        --%>
+        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay/tranh-phong-canh">Tranh thêu Phong cảnh</a></li>--%>
         <li class="breadcrumb-item active" aria-current="page">${product.title}</li>
     </ol>
 </nav>
@@ -24,16 +25,18 @@
     <div class="background-container rounded">
         <div class="row">
             <div class="col-3 p-4_5">
-<%--                <img id="product-image" src="../template/asset/image/product_image.png" alt="">--%>
+                <%--                <img id="product-image" src="../template/asset/image/product_image.png" alt="">--%>
                 <img id="product-image" src="${product.getThumbnail()}" alt="">
                 <p class="mt-4 mb-1">Kích thước: </p>
                 <div class="w-100">
                     <c:forEach var="price" items="${product.getListPrices()}">
-                        <button class="sub-cta-button py-2 px-2 rounded">
-                            ${price.width}x${price.height}cm
+                        <button class="sub-cta-button py-2 px-2 rounded switch-size-btn"
+                                data-width=${price.width} data-height=${price.height}>
+                                ${price.width}x${price.height}cm
                         </button>
                     </c:forEach>
                 </div>
+                <div class="mt-4_5" id="current-size-notice"></div>
             </div>
             <div class="col ps-4_5 p-4_5 ">
                 <div class="row">
@@ -61,7 +64,8 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Hãng sản xuất: <span class="fw-semibold">Tranh thêu Hà Sơn</span></div>
-                    <div class="col-6">Còn lại: <span class="fw-semibold">${displayPrice.available}</span></div>
+                    <div class="col-6">Còn lại: <span class="fw-semibold" id="product-detail__available--value"></span>
+                    </div>
                 </div>
                 <div class="row my-2 mt-3">
                     <div class="col-4">
@@ -93,7 +97,7 @@
                             </div>
 
                         </div>
-                        <p class="text-center mt-2">150 đánh giá</p>
+                        <p class="text-center mt-2"><span class="current-review">${countReview}</span> đánh giá</p>
                     </div>
                     <div class="col-2"></div>
                     <div class="col-6 row d-flex justify-content-start align-items-center">
@@ -135,13 +139,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 text-center">
-                        <h2 style="color: var(--main-cta-button)">${displayPrice.getDisplayPriceToString()}</h2>
+                    <div class="col-6 text-center" style="position: relative">
+                        <h2 id="product-details__price" style="color: var(--main-cta-button)"></h2>
+                        <p class="d-none" id="product-details__old-price"><s class="text-secondary"></s><span class="ms-2 main-cta-button h6 p-1 rounded" id="discount-value"></span></p>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-6">
-                        <button id="add-to-cart-btn" class="sub-cta-button  py-2 px-3 rounded">
+                        <button id="add-to-cart-btn" class="sub-cta-button py-2 px-3 rounded">
                             <i class="fa-solid fa-cart-shopping" style="color: var(--sub-cta-button);"></i>
                             Thêm vào giỏ
                         </button>
@@ -201,11 +206,10 @@
                     </div>
                     <div class="row">
                         <div class="col-1">
-                            <!--                            <i class="fa-solid fa-tag"></i>-->
                             <i class="bi bi-tag"></i>
                         </div>
                         <div class="col">
-                            <span>Chưa có chương trình khuyến mãi</span>
+                            <span>${product.getDiscount().getDescription()}</span>
                         </div>
                     </div>
                 </div>
@@ -214,15 +218,7 @@
                     <div class="row">
                         <p class="fw-semibold">Chính sách: </p>
                     </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <!--                            <i class="bi bi-shield"></i>-->
-                            <i class="bi bi-shield-slash"></i>
-                        </div>
-                        <div class="col">
-                            <span>Không áp dụng chính sách bảo hành</span>
-                        </div>
-                    </div>
+                    ${product.getPolicy().getDescription()}
                 </div>
 
             </div>
@@ -234,7 +230,7 @@
     <div class="background-container rounded p-4_5">
         <h4 class="main-color">Mô tả sản phẩm</h4>
         <p class="product-description m-3">
-           ${product.description}
+            ${product.description}
         </p>
     </div>
 </section>
@@ -246,7 +242,8 @@
             <div class="row mt-4">
                 <div class="col-2 row">
                     <div class="text-center">
-                        <span id="current-star-rating" class="h3 main-color">4.0</span><span class="h5">/5.0</span>
+                        <span id="current-star-rating" class="h3 main-color">${avgRating}</span><span
+                            class="h5">/5.0</span>
                     </div>
                     <div id="product-review__star" class="mt-2 d-flex justify-content-center">
                         <div class="col-2 product-info__star-container   px-0">
@@ -276,7 +273,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <span>150 đánh giá</span>
+                        <span class="current-review">${countReview} đánh giá</span>
                     </div>
                     <div class="text-center">
                         <span style="font-size: 12px">(Click vào số sao để đánh giá)</span>
@@ -287,6 +284,7 @@
                               placeholder="Đánh giá của bạn về sản phẩm"></textarea>
                     <p class="text-center mt-1 mb-0" style="font-size: 12px">(Bạn cần mua sản phẩm để có thể bình
                         luận)</p>
+                    <p class="d-none d-flex justify-content-center" id="post-review-result"></p>
                 </div>
                 <div class="col-1 row d-flex align-items-center">
                     <button id="send-comment" class="btn sub-cta-button-background px-4 py-2">Gửi</button>
@@ -296,160 +294,11 @@
         <hr/>
         <div>
             <h4 class="main-color">Bình luận</h4>
-            <p class="text-start">(<span id="count-comment">3</span> bình luận)</p>
+            <p class="text-start">(<span id="count-comment">${countReview}</span> bình luận)</p>
             <div id="comment-container">
-                <div class="row product-review__comment-component mt-4_5">
-                    <div class="col-3 text-center">
-                        <h5>FanT1_20năm</h5>
-                        <p>03/11/2024</p>
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col d-flex justify-content-center comment-rating">
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star sample_half"
-                                       style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask" style="width: 100%"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                            </div>
-                            <div class="col-2"></div>
-                        </div>
-                    </div>
-                    <div class="col-8">
-                        <p class="" style="white-space: pre-line">
-                            - Đánh giá chung: Tranh khá là đẹp
-                            - Vị trí treo tranh: Nên treo ở phòng khách hoặc phòng ngủ
-                            - Giá cả: Với độ đẹp này thì giá cả vừa phải
-                            - Chất liệu: Với mức giá này thì chất liệu tranh rất tốt
-                        </p>
-                    </div>
-                </div>
-                <div class="row product-review__comment-component mt-4_5">
-                    <div class="col-3 text-center">
-                        <h5>TraL04</h5>
-                        <p>01/11/2024</p>
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col d-flex justify-content-center comment-rating">
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star sample_half"
-                                       style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask" style="width: 100%"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask" style="width: 100%"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                            </div>
-                            <div class="col-2"></div>
-                        </div>
-                    </div>
-                    <div class="col-8">
-                        <p class="" style="white-space: pre-line">Nét mềm mại, không chỉ thừa, phù hợp trang trí nhà,
-                            rất đáng tiền mua</p>
-                    </div>
-                </div>
-                <div class="row product-review__comment-component mt-4_5">
-                    <div class="col-3 text-center">
-                        <h5>Anh Nguyễn</h5>
-                        <p>23/10/2024</p>
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col d-flex justify-content-center comment-rating">
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star sample_half"
-                                       style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                                <div class="col-2 product-info__star-container   px-0">
-                                    <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                                    <div class="product-info__star-mask"></div>
-                                    <i class="fa-regular fa-star product-info__star-outline"
-                                       style="color: #4d6a55;"></i>
-                                </div>
-                            </div>
-                            <div class="col-2"></div>
-                        </div>
-                    </div>
-                    <div class="col-8">
-                        <p class="" style="white-space: pre-line">Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum.</p>
-                    </div>
-                </div>
             </div>
             <div class="d-flex justify-content-center mt-4">
-                <button class="sub-cta-button  py-2 px-3 rounded">
+                <button class="sub-cta-button  py-2 px-3 rounded" id="load-more-review">
                     Xem thêm
                 </button>
             </div>
@@ -460,69 +309,27 @@
     <div class="background-container rounded p-4_5">
         <h4 class="main-color">Sản phẩm khác</h4>
         <div class="row mt-2">
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1 row">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 15</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.850.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
+            <c:forEach var="product" items="${similarProduct}">
+                <div class="col-3 other-product__card">
+                    <div onclick="window.location = '/product?id=${product.id}'" class="card p-2"
+                         style="cursor: pointer">
+                        <img src="${product.getThumbnail()}" class="card-img" alt="...">
+                        <div class="card-body px-1">
+                            <h6 class="card-title text-center pb-2">${product.title}</h6>
+                            <p class="card-text text-center fw-semibold h5 mt-2"
+                               style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Hồ gươm 14</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.850.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                    </div>
-                </div>
-            </div>
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 1</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.250.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                    </div>
-                </div>
-            </div>
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Gánh lúa 2</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.250.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                    </div>
-                </div>
-            </div>
-            <div class="col other-product__card">
-                <div class="card p-2" style="cursor: pointer">
-                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    <div class="card-body px-1">
-                        <h6 class="card-title text-start pb-2">Tranh Phong cảnh Chùa một cột 3</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">
-                            1.850.000 VNĐ</p>
-                        <!--                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>-->
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </section>
 <jsp:include page="public/footer.jsp"/>
+<script src="template/script/header.js"></script>
+<script src="template/script/product.js"></script>
+<script>
+    displayRating(${avgRating}, $(".product-info__star-container").width())
+</script>
 </body>
 </html>
