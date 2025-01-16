@@ -1,9 +1,11 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
@@ -24,27 +26,43 @@ public class GetProductReview extends HttpServlet {
         try {
             int productId = Integer.parseInt(request.getParameter("id"));
             int offset = Integer.parseInt(request.getParameter("offset"));
+            int amount = Integer.parseInt(request.getParameter("amount"));
+            String limit = request.getParameter("limit");
+            int limitValue = -1;
             //Gọi method lấy review
             //Kiểm tra offset
             //Kiểm tra lấy theo id được không
-            List<Review> listReview = new DisplayFullProduct(new ConcreateProductDetail()).getListReviews(productId, offset);
-            JsonArray jsonArray = new JsonArray();
-            for (Review review : listReview) {
-                JsonObject jsonReview = new JsonObject();
-                jsonReview.addProperty("username", new UserService().getUsername(review.getAccountId())); //Một hàm nào đó sẽ viết trong service sau
-                jsonReview.addProperty("rating", review.getRating());
-                jsonReview.addProperty("content", review.getContent());
-                jsonReview.addProperty("reviewTime", review.getCreatedAt().toString());
-                jsonArray.add(jsonReview);
+            List<Review> listReview = new DisplayFullProduct(new ConcreateProductDetail()).getListReviews(productId, offset, amount);
+            if (limit == null || limit.isEmpty()) {
+                limitValue = ProductService.countReviews(productId);
+                jsonResult.addProperty("limit", limitValue);
+            }
+            else limitValue = Integer.parseInt(limit);
+            if (offset > limitValue) {
+                jsonResult.addProperty("currentOffset", -1);
+                ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
+            }
+            else {
+                //Thêm review vào json
+                JsonArray jsonArray = new JsonArray();
+                for (Review review : listReview) {
+                    JsonObject jsonReview = new JsonObject();
+                    jsonReview.addProperty("username", new UserService().getUsername(review.getAccountId())); //Một hàm nào đó sẽ viết trong service sau
+                    jsonReview.addProperty("rating", review.getRating());
+                    jsonReview.addProperty("content", review.getContent());
+                    jsonReview.addProperty("reviewTime", review.getCreatedAt().toString());
+                    jsonArray.add(jsonReview);
+                }
+                jsonResult.addProperty("currentOffset", offset + listReview.size());
+                jsonResult.add("reviewData", jsonArray);
+                ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
             }
 
-            jsonResult.addProperty("result", true);
-            jsonResult.add("reviewData", jsonArray);
-            response.getWriter().write(jsonResult.toString());
         }
         catch (Exception e) {
-            jsonResult.addProperty("result", false);
-            response.getWriter().write(jsonResult.toString());
+            jsonResult.addProperty("currentOffset", -1);
+            ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
+
         }
     }
 }

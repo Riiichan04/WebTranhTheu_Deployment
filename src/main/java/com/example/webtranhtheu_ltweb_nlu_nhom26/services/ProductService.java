@@ -12,14 +12,20 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardPro
 import java.util.ArrayList;
 
 public class ProductService {
-    //Tạm
+
+    //Cần lấy phần discount ra class này
+
+    public static int countReviews(int id) {
+        return new ConcreateProductDetail().countReviews(id);
+    }
+
     public static int countProduct() {
         return new ConcreateProductDetail().countProducts();
     }
 
     //Lấy đánh giá trung bình của sản phẩm (Sẽ cho vào product)
-    public static double getProductRating(Product product) {
-        return product.getListReviews().stream().mapToInt(Review::getRating).average().orElse(0.0);
+    public static double getProductRating(int productId) {
+        return new ConcreateProductDetail().getProductRating(productId);
     }
 
     ProductDAO productDAO;

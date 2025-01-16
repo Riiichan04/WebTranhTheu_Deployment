@@ -19,6 +19,7 @@ public class Product implements Serializable {
     private Category category;    //Loại danh mục của sản phẩm
     private Provider provider;  //Thông tin nhà cung cấp
     private Policy policy;  //Thông tin chính sách áp dụng cho sản phẩm
+    private Discount discount;
     private List<Material> listMaterials;   //Thông tin nguyên liệu của sản phẩm
     private List<Topic> listTopics;
     private List<Review> listReviews;   //Danh sách review của sản phảm
@@ -99,6 +100,14 @@ public class Product implements Serializable {
 
     public void setPolicy(Policy policy) {
         this.policy = policy;
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
     }
 
     public List<Topic> getListTopics() {

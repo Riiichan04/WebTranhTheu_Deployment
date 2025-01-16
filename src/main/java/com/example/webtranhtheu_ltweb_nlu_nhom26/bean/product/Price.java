@@ -1,8 +1,5 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
-import org.jdbi.v3.core.mapper.RowMapper;
-import org.jdbi.v3.core.statement.StatementContext;
-
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -78,5 +75,13 @@ public class Price implements Serializable {
         symbols.setDecimalSeparator(',');
         return new DecimalFormat("#,###", symbols).format(price) + " VNĐ";
     }
+
+    public Price getDiscountedPrice(double value) {
+        if (value != 0.0) {
+            return new Price(productId, width, height, (1 - value)*price, available);
+        }
+        return this;
+    }
 }
+
 

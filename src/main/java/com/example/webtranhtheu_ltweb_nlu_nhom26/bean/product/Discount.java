@@ -13,7 +13,13 @@ public class Discount implements Serializable {
     private Timestamp startedAt;
     private Timestamp endedAt;
 
-    public Discount() {
+    public Discount() {}
+
+    public Discount(int id, String description, String title) {
+        this.id = id;
+        this.description = description;
+        this.title = title;
+        this.value = 0;
     }
 
     public Discount(String title, String description, double value, Timestamp startedAt, Timestamp endedAt) {
@@ -38,6 +44,22 @@ public class Discount implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
     }
 
     public Timestamp getCreatedAt() {

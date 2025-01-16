@@ -60,7 +60,7 @@
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
                             <%-- Tạm --%>
-                        <h6 class="card-title text-center pb-2">${product.category} ${product.title}</h6>
+                        <h6 class="card-title text-center pb-2">${product.title}</h6>
                         <p class="card-text text-center fw-semibold h5 mt-2"
                            style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
                     </div>

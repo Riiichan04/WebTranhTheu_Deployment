@@ -29,7 +29,7 @@ public class ProductsRowGetter extends HttpServlet {
 
             int limitValue = -1;
             //Nếu có limit trên request thì lấy xuống
-            if (limit == null) {
+            if (limit == null || limit.isEmpty()) {
                 limitValue = ProductService.countProduct();
                 jsonResult.addProperty("limit", limitValue);
             }
