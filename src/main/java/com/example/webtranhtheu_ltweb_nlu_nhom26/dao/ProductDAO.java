@@ -133,4 +133,12 @@ public interface ProductDAO {
         limit 4
     """)
     List<Integer> findAllSimilarProducts(@BindList("topicIds") List<Integer> topicIds, @Bind("productId") int productId);
+
+    //Tìm id sản phẩm theo tên
+    @SqlQuery("""
+        select products.id
+        from products
+        where title like :productName
+    """)
+    List<Integer> findProductsIdByName(@Bind("productName") String productName);
 }
