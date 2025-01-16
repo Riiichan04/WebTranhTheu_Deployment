@@ -22,9 +22,7 @@ public class UpdateInfoAdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Part avatar = request.getPart("avatar");
-        System.out.println(avatar.getSubmittedFileName()+"dddd");
         String avatarUrl = CloudinaryConfig.getUrl(avatar);
-        System.out.println(avatarUrl);
         String password = request.getParameter("password");
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");

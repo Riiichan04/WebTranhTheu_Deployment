@@ -40,8 +40,8 @@
     <div class="row vh-100">
         <div class="col-2 nav-style pt-4 px-0">
             <div class="info-admin">
-                <div class="avt-admin mx-auto"><img src="../../template/asset/image/avt-admin.png" class="img text-center"></div>
-                <div class="mt-3 px-4 text-center">Chào mừng admin <span class="fw-bold">"Tên admin"</span>!
+                <div class="avt-admin mx-auto"><img src="${user.getAvatarUrl()}" class="img text-center"></div>
+                <div class="mt-3 px-4 text-center">Chào mừng admin <span class="fw-bold">${user.getFullName()}</span>!
                 </div>
                 <div class="hr-under-info my-3"></div>
             </div>
