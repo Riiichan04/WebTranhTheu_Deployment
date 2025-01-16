@@ -71,7 +71,7 @@ public class Price implements Serializable {
 
     public Price getDiscountedPrice(double value) {
         if (value != 0.0) {
-            return new Price(productId, width, height, value*price, available);
+            return new Price(productId, width, height, (1 - value)*price, available);
         }
         return this;
     }

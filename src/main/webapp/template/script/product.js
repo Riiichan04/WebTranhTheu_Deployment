@@ -258,6 +258,7 @@ const urlParams = new URLSearchParams(window.location.search);
 let currentWidth = urlParams.get("width")
 let currentHeight = urlParams.get("height")
 let currentPrice = 0.0
+let currentDiscountValue
 
 function getPrice(width, height) {
     const productId = urlParams.get("id")
@@ -267,7 +268,8 @@ function getPrice(width, height) {
         data: {
             width: width,
             height: height,
-            id: productId
+            id: productId,
+            discountValue: currentDiscountValue
         },
         success: function (response) {
             response = $.parseJSON(response)
@@ -284,6 +286,13 @@ function getPrice(width, height) {
                 currentPrice = response.price
                 currentWidth = response.width
                 currentHeight = response.height
+                if (currentDiscountValue == null) currentDiscountValue = response.discountValue
+                if (currentDiscountValue !== 0 && response.discountedPrice !== null) {
+                    $("#product-details__old-price").removeClass("d-none")
+                    $("#product-details__old-price s").text(response.price)
+                    $("#product-details__price").text(response.discountedPrice)
+                    $("#product-details__old-price span").text((currentDiscountValue * 100).toFixed(0) + " %")
+                }
             }
         },
     })

@@ -7,6 +7,7 @@ public class Discount implements Serializable {
     private int id;
     private String title;
     private String description;
+    private double value;
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp startedAt;
@@ -18,6 +19,7 @@ public class Discount implements Serializable {
         this.id = id;
         this.description = description;
         this.title = title;
+        this.value = 0;
     }
 
     public int getId() {
@@ -42,6 +44,14 @@ public class Discount implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
     }
 
     public Timestamp getCreatedAt() {

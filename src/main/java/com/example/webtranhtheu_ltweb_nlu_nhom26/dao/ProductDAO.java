@@ -52,7 +52,7 @@ public interface ProductDAO {
     @RegisterBeanMapper(Review.class)
     List<Review> getProductReviews(@Bind("id") int id, @Bind("offset") int offset, @Bind("amount") int amount);
 
-    @SqlQuery("select id, title, description, createdAt, updatedAt, startedAt, endedAt from discounts where discounts.startedAt <= now() and discounts.endedAt >= now()")
+    @SqlQuery("select id, title, description, discounts.value, createdAt, updatedAt, startedAt, endedAt from discounts where discounts.startedAt <= now() and discounts.endedAt >= now()")
     @RegisterBeanMapper(Discount.class)
     Discount getProductDiscounts();
 

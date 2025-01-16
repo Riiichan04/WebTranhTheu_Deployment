@@ -1,5 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Discount;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
@@ -24,12 +25,19 @@ public class GetProductPrice extends HttpServlet {
             String widthParam = request.getParameter("width");
             String heightParam = request.getParameter("height");
             String productId = request.getParameter("id");
+            String discountValue = request.getParameter("discount");
+
             int id = Integer.parseInt(productId);
             DisplayFullProduct service = new DisplayFullProduct(new ConcreateProductDetail());
             List<Price> listPrices = service.getListPrices(id);
 
             if (listPrices == null || listPrices.isEmpty()) {  //Không tìm thấy product với id đã nhập
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            }
+            Discount currentDiscount = null;
+            if (discountValue == null || discountValue.isEmpty()) {
+                currentDiscount = new DisplayFullProduct(new ConcreateProductDetail()).getDiscount();
+                jsonResult.addProperty("discountValue", currentDiscount.getValue());
             }
 
             Price displayPrice = null;
@@ -51,6 +59,7 @@ public class GetProductPrice extends HttpServlet {
             jsonResult.addProperty("height", displayPrice.getHeight());
             jsonResult.addProperty("price", displayPrice.getDisplayPriceToString());
             jsonResult.addProperty("available", displayPrice.getAvailable());
+            jsonResult.addProperty("discountedPrice", currentDiscount == null ? null : displayPrice.getDiscountedPrice(currentDiscount.getValue()).getDisplayPriceToString());
             jsonResult.addProperty("result", true);
             response.getWriter().write(jsonResult.toString());
         } catch (Exception e) {
