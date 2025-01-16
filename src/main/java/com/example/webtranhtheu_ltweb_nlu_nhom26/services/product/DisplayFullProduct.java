@@ -4,6 +4,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class DisplayFullProduct extends DecorationProductDetail {
@@ -18,6 +19,7 @@ public class DisplayFullProduct extends DecorationProductDetail {
         product.setPolicy(this.getPolicy(productId));
         product.setProvider(this.getProvider(productId));
         product.setCategory(this.getCategory(productId));
+        product.setDiscount(generateDiscount(this.getDiscount()));
         product.getListTopics().addAll(this.getListTopics(productId));
         product.getListPrices().addAll(this.getListPrices(productId));
         product.getListMaterials().addAll(this.getListMaterials(productId));
@@ -36,6 +38,10 @@ public class DisplayFullProduct extends DecorationProductDetail {
 
     public Category getCategory(int productId) {
         return super.productDAO.getCategory(productId);
+    }
+
+    public Discount getDiscount() {
+        return super.productDAO.getProductDiscounts();
     }
 
     public List<Topic> getListTopics(int productId) {
@@ -67,5 +73,13 @@ public class DisplayFullProduct extends DecorationProductDetail {
             result.add(getFullProductInfo(id));
         }
         return result;
+    }
+
+    //Đây là method tạm
+    private Discount generateDiscount(Discount discount) {
+        if (discount == null) {
+            discount = new Discount(0, "Chưa có chương trình khuyến mãi", "Chưa có chương trình khuyến mãi");
+        }
+        return discount;
     }
 }

@@ -139,13 +139,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 text-center">
+                    <div class="col-6 text-center" style="position: relative">
                         <h2 id="product-details__price" style="color: var(--main-cta-button)"></h2>
+                        <p class="d-none" id="product-details__old-price"><s class="text-secondary"></s><span class="ms-2 main-cta-button h6 p-1 rounded" id="discount-value"></span></p>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-6">
-                        <button id="add-to-cart-btn" class="sub-cta-button  py-2 px-3 rounded">
+                        <button id="add-to-cart-btn" class="sub-cta-button py-2 px-3 rounded">
                             <i class="fa-solid fa-cart-shopping" style="color: var(--sub-cta-button);"></i>
                             Thêm vào giỏ
                         </button>
@@ -208,7 +209,7 @@
                             <i class="bi bi-tag"></i>
                         </div>
                         <div class="col">
-                            <span>Chưa có chương trình khuyến mãi</span>
+                            <span>${product.getDiscount().getDescription()}</span>
                         </div>
                     </div>
                 </div>

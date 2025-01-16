@@ -68,6 +68,13 @@ public class Price implements Serializable {
         symbols.setDecimalSeparator(',');
         return new DecimalFormat("#,###", symbols).format(price) + " VNĐ";
     }
+
+    public Price getDiscountedPrice(double value) {
+        if (value != 0.0) {
+            return new Price(productId, width, height, value*price, available);
+        }
+        return this;
+    }
 }
 
 
