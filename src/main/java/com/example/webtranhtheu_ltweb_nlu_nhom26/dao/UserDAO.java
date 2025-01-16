@@ -45,6 +45,10 @@ public interface UserDAO {
     @RegisterBeanMapper(AuthDTO.class)
     AuthDTO getAuth(@Bind("username") String username);
 
+    @SqlQuery("select id, statusAccount, role from accounts where id = :id")
+    @RegisterBeanMapper(AuthDTO.class)
+    AuthDTO getAuthById(@Bind("id") int id);
+
     @SqlQuery("select statusAccount from accounts where id = :id")
     Integer getStatusAccount(@Bind("id") int id);
 

@@ -5,17 +5,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "SettingInfoController", value = "/admin/setting")
-public class SettingInfoController extends HttpServlet {
+@WebServlet(name = "LogOutController", value = "/logout-admin")
+public class LogOutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession(false);
 
-        request.getRequestDispatcher("/layout/admin/setting-user.jsp").forward(request, response);
+        if (session != null) {
+            session.invalidate();  // Hủy session hiện tại
+        }
+
+        response.sendRedirect("/login");
     }
 
     @Override

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.example.webtranhtheu_ltweb_nlu_nhom26.bean.AuthDTO" %>
+<%@ page import="com.example.webtranhtheu_ltweb_nlu_nhom26.services.AuthService" %><%--
   Created by IntelliJ IDEA.
   User: MINH THU
   Date: 12/23/2024
@@ -21,6 +22,20 @@
 
 </head>
 <body>
+<%
+    HttpSession s = request.getSession(false); // Lấy session hiện tại, không tạo mới
+    Integer accountId = s.getAttribute("accountId") != null ? Integer.parseInt(s.getAttribute("accountId").toString()) : null;
+
+    if (accountId == null) {
+        // Người dùng chưa đăng nhập
+        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+    } else {
+        AuthDTO auth = new AuthService().getAuthById(accountId);
+        if(auth.getRole() != 1 || auth.getStatusAccount() != 2) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
+    }
+%>
 <div class="container-fluid">
     <div class="row vh-100">
         <div class="col-2 nav-style pt-4 px-0">
@@ -103,8 +118,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                         id="choose-close">Hủy
                 </button>
-                <button type="button" class="btn btn-primary" id="choose-log-out"
-                        onclick="window.location.replace('sign-in.html');">Đăng xuất
+                <button type="button" class="btn btn-primary" id="choose-log-out" onclick="window.location.href = '/logout-admin';">Đăng xuất
                 </button>
             </div>
         </div>
