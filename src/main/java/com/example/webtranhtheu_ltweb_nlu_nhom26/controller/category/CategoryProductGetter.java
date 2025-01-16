@@ -35,21 +35,16 @@ public class CategoryProductGetter extends HttpServlet {
             }
             //Không tìm thấy sp nào
             List<Product> listProductByCategory = CategoryService.getDisplayProductByCategory(categoryPatternName, page, amount);
-            System.out.println(listProductByCategory);
             if (listProductByCategory.isEmpty()) {
                 jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
             }
             else {
                 JsonArray listProducts = new JsonArray();
-                System.out.println(listProductByCategory.size());
                 for (Product product : listProductByCategory) {
-                    System.out.println(product);
-                    System.out.println(product.getMinPrice());
                     ControllerUtil.addProductToJson(listProducts, product, product.getMinPrice());
                 }
-                System.out.println(listProducts.asList().size());
-                jsonResult.addProperty("currentPage", page + 1);
+                jsonResult.addProperty("currentPage", page);
                 jsonResult.add("listProducts", listProducts);
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
             }

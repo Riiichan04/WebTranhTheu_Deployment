@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 public class Category implements Serializable {
     private int id;
     private String title;
+    private String patternName;
     private int active;
     private Timestamp createdAt;
     private Timestamp updatedAt;
@@ -27,6 +28,14 @@ public class Category implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPatternName() {
+        return patternName;
+    }
+
+    public void setPatternName(String patternName) {
+        this.patternName = patternName;
     }
 
     public int getActive() {

@@ -2,9 +2,11 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.CategoryNameMapper;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
+import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
@@ -41,4 +43,13 @@ public interface CategoryDAO {
         where categories.patternName like :categoryName
     """)
     int countProductByCategory(@Bind("categoryName") String categoryName);
+
+
+    @SqlQuery("""
+        select title, patternName
+        from categories
+        where active = 1
+    """)
+    @RegisterRowMapper(CategoryNameMapper.class)
+    List<Category> getAllCategoriesName();
 }

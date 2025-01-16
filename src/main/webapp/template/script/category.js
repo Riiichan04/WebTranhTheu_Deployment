@@ -1,9 +1,3 @@
-$(".category-element").click(function () {
-    $(".category-element").removeClass("category-active");
-    $(this).addClass("category-active");
-    $("#category-title").text($(this).text());
-})
-
 $(".card").click(function () {
     window.location = "../page/product.html"
 })
@@ -23,12 +17,13 @@ let currentPage = 1 //Trang hiện tại
 let maxPage
 const amount = 25 //Số lượng sp/trang cần display
 
-function getProductsByCategory() {
+function getProductsByCategory(page) {
+    console.log(page)
     $.ajax({
         url: '/category-product-getter',
         method: 'GET',
         data: {
-            page: currentPage,
+            page: page,
             amount: amount,
             maxPage: maxPage,
             patternName: patternName
@@ -37,11 +32,29 @@ function getProductsByCategory() {
             response = $.parseJSON(response)
             if (response.result) {
                 if (maxPage == null) maxPage = response.maxPage
+                //Thêm product vào category
                 getOneProductsRow(response.listProducts)
                 currentPage = response.currentPage
+
+                $("#current-page").text((currentPage) + "")
+                //Disable và enable các button chuyển trang
+                if (currentPage === 1) {
+                    $("#prev-page").addClass("disabled")
+                    $("#next-page").removeClass("disabled")
+                }
+                if (currentPage === maxPage) {
+                    $("#next-page").addClass("disabled", true)
+                    $("#prev-page").removeClass("disabled", false)
+                }
+                //Set active cho button category đang chọn
+                $(".category-element").each(function () {
+                    if ($(this).data("categoryName") === patternName) {
+                        $(this).addClass("active")
+                    }
+                })
             }
             else {
-                $("#category-displayed-product").append(`<p class="d-flex justify-content-center align-items-center">${response.notice}</p>`)
+                $("#category-displayed-product").html(`<p class="d-flex justify-content-center align-items-center">${response.notice}</p>`)
             }
         },
         error: function (response) {
@@ -66,7 +79,39 @@ function getOneProductsRow(listProducts) {
         `
     }
     productHtml += `</div>`
-    $("#category-displayed-product").append(productHtml)
+    $("#category-displayed-product").html(productHtml)
 }
 
-getProductsByCategory()
+
+$("#prev-page").click(function () {
+    getProductsByCategory(--currentPage)
+})
+
+$("#next-page").click(function () {
+    getProductsByCategory(++currentPage)
+})
+
+$("#prev-page").attr("disabled", true)
+getProductsByCategory(currentPage)
+
+
+function changeCategoryName(pattern) {
+    let url = window.location.href
+    url = url.substring(0, url.lastIndexOf("/")+1) + pattern
+    if (patternName !== pattern) {
+        window.history.pushState({}, '', url)
+        patternName = pattern
+        currentPage = 1
+        maxPage = null
+        getProductsByCategory(currentPage)
+    }
+
+}
+
+$(".category-element").click(function() {
+    $(".category-element").removeClass("category-active");
+    $(this).addClass("category-active");
+    $("#category-title").text($(this).text() + " - Nét Việt");
+    document.title = $(this).text()
+    changeCategoryName($(this).attr("data-categoryName"))
+})

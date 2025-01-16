@@ -1,5 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.CategoryDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
@@ -33,5 +34,25 @@ public class CategoryService {
     public static int calculateCategoryPage(String categoryName, int amount) {
         int baseVal = categoryDAO.countProductByCategory(categoryName) / amount;
         return categoryDAO.countProductByCategory(categoryName) % amount == 0 ? baseVal : baseVal + 1;
+    }
+
+    public static List<Category> getNameAndPatternCategory() {
+        return categoryDAO.getAllCategoriesName();
+    }
+
+    public static int getIndexPatternName(List<Category> categories, String patternName) {
+        for (int i = 0; i < categories.size(); i++) {
+            if (categories.get(i).getPatternName().equals(patternName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static String getCategoryTitleByPatternName(List<Category> listCategory, String patternName) {
+        for (Category category : listCategory) {
+            if (category.getPatternName().equals(patternName)) return category.getTitle();
+        }
+        return null;
     }
 }

@@ -3,6 +3,7 @@
 <jsp:include page="common.jsp"/>
 <html>
 <head>
+    <title>${categoryTitle} - Nét Việt</title>
     <link rel="stylesheet" href="../template/style/user/category.css">
     <jsp:include page="public/library.jsp"/>
 </head>
@@ -23,9 +24,19 @@
                 <div class="category-list">
                     <h5 class="ms-2 mb-2 main-color p-1 ps-2">Danh mục </h5>
                     <hr/>
-                    <p class="category-active p-2 category-element">Tranh thêu tay</p>
-                    <p class=" p-2 category-element">Tranh thêu chữ thập</p>
-                    <p class=" p-2 category-element">Tranh thêu máy tính</p>
+                    <c:forEach var="category" items="${listCategoryName}" varStatus="status">
+                        <c:choose>
+                            <c:when test="${category.getPatternName() eq categoryName}">
+                                <p class="p-2 category-element category-active" data-categoryName ='${category.getPatternName()}'>${category.getTitle()}</p>
+                            </c:when>
+                            <c:otherwise>
+                                <p class="p-2 category-element" data-categoryName ='${category.getPatternName()}'>${category.getTitle()}</p>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+<%--                    <p class="category-active p-2 category-element">Tranh thêu tay</p>--%>
+<%--                    <p class=" p-2 category-element">Tranh thêu chữ thập</p>--%>
+<%--                    <p class=" p-2 category-element">Tranh thêu máy tính</p>--%>
                 </div>
                 <div class="category-filter mt-4_5">
                     <h5 class="ms-2 mb-2 main-color p-1 ps-2">Bộ lọc </h5>
@@ -135,26 +146,23 @@
             </div>
         </div>
         <div class="col-10 background-container rounded p-4_5">
-            <h4 id="category-title" class="main-color">Tranh thêu tay</h4>
+            <h4 id="category-title" class="main-color">${categoryTitle}</h4>
             <hr class="mb-5"/>
             <div id="category-displayed-product"></div>
         </div>
         <nav>
             <ul class="pagination d-flex justify-content-center">
-                <li class="page-item">
-                    <a class="page-link disabled" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
+                <li class="page-item cursor-pointer">
+                    <p class="page-link text-button" id="prev-page"><span aria-hidden="true">&laquo;</span></p>
                 </li>
-                <li class="page-item"><p class="page-link">1</p></li>
-                <li class="page-item">
-                    <a class="page-link disabled" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
+                <li class="page-item" style="user-select: none"><p class="page-link" id="current-page">1</p></li>
+                <li class="page-item cursor-pointer">
+                    <p class="page-link text-button" id="next-page"><span aria-hidden="true">&raquo;</span></p>
                 </li>
             </ul>
         </nav>
     </div>
+
 </section>
 
 <jsp:include page="public/footer.jsp"/>
