@@ -84,7 +84,7 @@ $("#product-detail__remove-amount").click(function () {
 
 // Nút mua ngay -> Mở trang thanh toán
 $("#purchase-btn").click(function () {
-    window.location = "../page/purchase.html"
+    // window.location = "../page/purchase.html"
 })
 
 // Nút thêm vào giỏ
