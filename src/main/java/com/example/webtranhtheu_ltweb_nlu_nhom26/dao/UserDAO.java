@@ -10,7 +10,7 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 
 public interface UserDAO {
-    @SqlQuery("select username from accounts where id = :id")
+    @SqlQuery("select fullname from accounts where id = :id")
     String getUsername(@Bind("id") int id);
 
     @SqlUpdate("INSERT INTO accounts (email, avatar_url, username, fullname, pass, phone, gender, description, statusAccount, createdAt, updatedAt, role) " +

@@ -35,10 +35,10 @@
                         <h4>Đối tác liên kết</h4>
                         <div class="row">
                             <div class="col-md-6 mb-4">
-                                <img src="../../template/asset/VNPay.png" class="img-fluid" alt="Hình 1">
+                                <img src="../../template/asset/image/VNPay.png" class="img-fluid" alt="Hình 1">
                             </div>
                             <div class="col-md-6 mb-4">
-                                <img src="../../template/asset/momo-logo.png" class="img-fluid" alt="Hình 2"
+                                <img src="../../template/asset/image/momo-logo.png" class="img-fluid" alt="Hình 2"
                                      style="width:50px;height: 50px ">
                             </div>
                         </div>
