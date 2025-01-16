@@ -1,4 +1,4 @@
-<%@include file="/layout/common.jsp"%>
+<%@include file="/layout/common.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header>
     <div class="px-3 py-2">
@@ -46,7 +46,8 @@
                                     <p class="main-color text-start">Tranh thêu VIP</p>
                                 </div>
                             </div>
-                            <a href="category.html" class="">
+<%--                            Xử lý sau --%>
+                            <a href="/category/tranh-theu-tay" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
                                     Xem tất cả >
                                 </p>
@@ -68,7 +69,8 @@
                             <div class="header-popup__content py-1">
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -78,7 +80,8 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -88,7 +91,8 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -98,7 +102,8 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -108,7 +113,8 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -117,7 +123,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="account-page.html" class="">
+                            <a href="/user" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
                                     Xem tất cả >
                                 </p>
@@ -142,7 +148,8 @@
                             <div class="header-popup__content py-1">
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -154,7 +161,8 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -166,7 +174,8 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -178,7 +187,8 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -190,7 +200,8 @@
                                 </div>
                                 <div class="product-item row my-2 cursor-pointer">
                                     <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
+                                             alt="...">
                                     </div>
                                     <div class="col-8 row">
                                         <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
@@ -201,7 +212,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="cart-page.html" class="">
+                            <a href="/cart" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
                                     Xem tất cả >
                                 </p>
@@ -209,11 +220,29 @@
                         </div>
                     </li>
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
-                        <a id="header-account" href="account-page.html">
-                            <i class="fa-solid fa-user my-1"></i>
-                            <p class="header-feature__label">Tài khoản</p>
-                        </a>
+                        <c:choose>
+                            <c:when test="${sessionScope.accountId == null}">
+                                <a id="header-account" href="/login">
+                                    <i class="fa-solid fa-right-to-bracket my-1"></i>
+                                    <p class="header-feature__label">Đăng nhập</p>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <a id="header-account" href="/user">
+                                    <i class="fa-solid fa-user my-1"></i>
+                                    <p class="header-feature__label">Tài khoản</p>
+                                </a>
+                            </c:otherwise>
+                        </c:choose>
 
+                    </li>
+                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
+                        <c:if test="${sessionScope.role == 1}">
+                            <a id="header-account" href="/admin">
+                                <i class="fa-solid fa-screwdriver-wrench my-1"></i>
+                                <p class="header-feature__label">Admin</p>
+                            </a>
+                        </c:if>
                     </li>
                 </ul>
             </div>
