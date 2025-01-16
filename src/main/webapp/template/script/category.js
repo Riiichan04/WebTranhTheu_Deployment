@@ -42,9 +42,13 @@ function getProductsByCategory(page) {
                     $("#prev-page").addClass("disabled")
                     $("#next-page").removeClass("disabled")
                 }
-                if (currentPage === maxPage) {
-                    $("#next-page").addClass("disabled", true)
-                    $("#prev-page").removeClass("disabled", false)
+                if (currentPage === maxPage && maxPage !== 1) {
+                    $("#next-page").addClass("disabled")
+                    $("#prev-page").removeClass("disabled")
+                }
+                if (maxPage === 1) {
+                    $("#next-page").addClass("disabled")
+                    $("#prev-page").addClass("disabled")
                 }
                 //Set active cho button category đang chọn
                 $(".category-element").each(function () {
@@ -91,7 +95,6 @@ $("#next-page").click(function () {
     getProductsByCategory(++currentPage)
 })
 
-$("#prev-page").attr("disabled", true)
 getProductsByCategory(currentPage)
 
 
@@ -111,7 +114,8 @@ function changeCategoryName(pattern) {
 $(".category-element").click(function() {
     $(".category-element").removeClass("category-active");
     $(this).addClass("category-active");
-    $("#category-title").text($(this).text() + " - Nét Việt");
-    document.title = $(this).text()
+    $("#category-title").text($(this).text());
+    $("#breadcrumb-current").text($(this).text())
+    document.title = $(this).text() + " - Nét Việt"
     changeCategoryName($(this).attr("data-categoryName"))
 })
