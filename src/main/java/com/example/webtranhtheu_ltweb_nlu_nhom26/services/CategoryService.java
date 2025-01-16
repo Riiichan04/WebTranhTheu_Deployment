@@ -5,7 +5,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.CategoryDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
 import java.sql.Timestamp;
@@ -61,7 +61,7 @@ public class CategoryService {
         List<Integer> listProductId = categoryDAO.getListIdInCategory(categoryName, (offset - 1) * amount, amount);
         List<Product> listProduct = new ArrayList<>();
         for (int productId : listProductId) {
-            listProduct.add(new DisplayCardProduct(new ConcreateProductDetail()).getDisplayProductInfo(productId));
+            listProduct.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(productId));
         }
         return listProduct;
     }

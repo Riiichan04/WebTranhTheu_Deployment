@@ -3,7 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
 import com.google.gson.JsonArray;
@@ -32,7 +32,7 @@ public class GetProductReview extends HttpServlet {
             //Gọi method lấy review
             //Kiểm tra offset
             //Kiểm tra lấy theo id được không
-            List<Review> listReview = new DisplayFullProduct(new ConcreateProductDetail()).getListReviews(productId, offset, amount);
+            List<Review> listReview = new DisplayFullProduct(new ConcreteProductDetail()).getListReviews(productId, offset, amount);
             if (limit == null || limit.isEmpty()) {
                 limitValue = ProductService.countReviews(productId);
                 jsonResult.addProperty("limit", limitValue);
