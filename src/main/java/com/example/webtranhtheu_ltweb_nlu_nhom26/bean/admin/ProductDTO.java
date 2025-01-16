@@ -3,19 +3,19 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin;
 public class ProductDTO {
     private int id;
     private String code;
-    private String name;
-    private String urlImg;
-    private int quantity;
+    private String title;
+    private String imgUrl;
+    private int available;
     private double totalStar;
     private int countEvaluate;
     private int status;
 
-    public ProductDTO(int id, String code, String name, String urlImg, int quantity, double totalStar, int countEvaluate, int status) {
+    public ProductDTO(int id, String code, String title, String imgUrl, int available, double totalStar, int countEvaluate, int status) {
         this.id = id;
         this.code = code;
-        this.name = name;
-        this.urlImg = urlImg;
-        this.quantity = quantity;
+        this.title = title;
+        this.imgUrl = imgUrl;
+        this.available = available;
         this.totalStar = totalStar;
         this.countEvaluate = countEvaluate;
         this.status = status;
@@ -31,12 +31,12 @@ public class ProductDTO {
         return code;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public String getUrlImg() {
-        return urlImg;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
     public double getTotalStar() {
@@ -59,12 +59,12 @@ public class ProductDTO {
         this.code = code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setUrlImg(String urlImg) {
-        this.urlImg = urlImg;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public void setTotalStar(double totalStar) {
@@ -79,11 +79,11 @@ public class ProductDTO {
         this.status = status;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setAvailable(int available) {
+        this.available = available;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getAvailable() {
+        return available;
     }
 }

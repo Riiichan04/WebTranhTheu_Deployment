@@ -1,7 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.ProductDTO;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
@@ -40,5 +40,35 @@ public class ProductService {
             products.add(product);
         }
         return products;
+    }
+
+    public List<ProductDTO> listProductsDTO() {
+        return productDAO.getProductsDTO();
+    }
+
+    public List<Material> getMaterials() {
+        return productDAO.getMaterials();
+    }
+
+    public List<Provider> getProviders() {
+        return productDAO.getProviders();
+    }
+
+    public void addProduct(Product product, int providerId, String[] materials, List<Price> prices, List<String> listImg) {
+        int id = productDAO.insertProduct(product);
+        productDAO.updateProvider(providerId, id);
+
+        for(int i = 0; i < materials.length; i++) {
+            productDAO.updateMaterial(Integer.parseInt(materials[i]), id);
+        }
+
+        for(Price price : prices) {
+            price.setProductId(id);
+            productDAO.insertProductPrice(price);
+        }
+
+        for(String img : listImg) {
+            productDAO.insertProductImage(id, img);
+        }
     }
 }

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#myTable').DataTable( {
+    const table = $('#myTable').DataTable( {
         destroy: true,
         scrollY: "470px",
         ajax: {
@@ -8,7 +8,7 @@ $(document).ready(function () {
                 for (var i = 0; i < json.length; i++) {
                     // xử lý tình trạng đơn hàng
                     var status = json[i].status;
-                    if(status) {
+                    if(status != null) {
                         switch (status) {
                             case 0:
                                 json[i].status = "Vô hiệu hóa";
@@ -36,7 +36,7 @@ $(document).ready(function () {
                 targets: 3, //cột hình ảnh
                 render: function (data, type, row) {
                     return `
-                    <div class="img-container"><img src="${row.urlImg}"></div>
+                    <div class="img-container"><img src="${row.imgUrl}"></div>
                     `;
                 }
             },
@@ -45,7 +45,6 @@ $(document).ready(function () {
                 render: function (data, type, row) {
                     return `
                         <button class="btn-read-edit mb-2" data-id="${row.id}">Xem và Chỉnh Sửa</button>
-                        <button class="btn-delete" data-id="${row.id}">Tắt</button>
                     `;
                 }
             }
@@ -53,9 +52,9 @@ $(document).ready(function () {
         columns: [
             {data: null}, // Cột STT
             {data: 'code'},
-            {data: 'name'},
+            {data: 'title'},
             {data: null},
-            {data: 'quantity'},
+            {data: 'available'},
             {data: 'totalStar'},
             {data: 'countEvaluate'},
             {data: 'status'},
@@ -69,13 +68,13 @@ $(document).ready(function () {
     $('table.dataTable th.dt-type-numeric').css("text-align", "center");
 
     // Gắn sự kiện click cho formWrapper
-    $('#formWrapper').on('click', function (event) {
+    $('#formWrapper').on('click', function () {
         hiddenOverlay() // Tắt overlay
     });
 
     $('#addProductBtn').on("click", function(event) {
         event.preventDefault();
-        const url = "/admin/product-management/add-product";
+        const url = "/admin/product-management/add-product-form";
         $.ajax({
             url: url,
             type: "GET",
@@ -94,8 +93,32 @@ $(document).ready(function () {
                     'z-index': '2',
                     'overflow': 'auto',
                 })
+
                 $('#cancelBtn').click(function () {
                     hiddenOverlay();
+                });
+
+                $('#add-product-form').on('submit', function (event) {
+                    event.preventDefault(); // Ngăn chặn reload trang
+
+                    var formdata = new FormData(this);
+                    // Gửi dữ liệu qua AJAX
+                    $.ajax({
+                        url: '/admin/product-management/add-product',
+                        type: 'POST',
+                        data: formdata,
+                        processData: false, // Không tuần tự hóa dữ liệu
+                        contentType: false, // Không đặt Content-Type
+                        success: function () {
+                            alert('Thêm sản phẩm thành công!');
+                            $('#add-product-form')[0].reset(); // Reset form
+                            table.ajax.reload();
+                            hiddenOverlay();
+                        },
+                        error: function () {
+                            alert('Lỗi khi thêm sản phẩm!');
+                        }
+                    });
                 });
             },
             error: function () {

@@ -128,7 +128,6 @@ $(document).ready(function () {
                     hiddenOverlay();
                 });
 
-                // Gửi dữ liệu từ form thêm chủ đề
                 $('#add-user-form').on('submit', function (event) {
                     event.preventDefault(); // Ngăn chặn reload trang
 
