@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINH THU
-  Date: 12/23/2024
-  Time: 1:40 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -26,8 +20,8 @@
     <div class="row">
         <div class="col">
             <div class="img-container mx-auto">
-                <img src="../../template/asset/image/avt-admin.png" class="img">
-                <i class="fa-solid fa-pen-to-square icon-edit-avt"></i>
+                <img src="<c:out value="${user.getAvatarUrl()}"/>" class="img" id="avatar-container">
+                <i class="fa-solid fa-pen-to-square icon-edit-avt update-hidden d-none" onclick="changeAvatar()"></i>
             </div>
         </div>
     </div>
@@ -40,41 +34,42 @@
             </button>
         </div>
     </div>
-    <form style="padding-left: 150px; padding-right: 150px" id="info-admin-form">
+    <form style="padding-left: 150px; padding-right: 150px" id="info-admin-form" enctype="multipart/form-data">
+        <input type="file" accept="image/*" id="file-avatar" class="d-none" name="avatar">
         <div class="row pb-5">
             <div class="col">
                 <div class="row mt-2">
                     <div class="mb-3">Tên đăng nhập</div>
-                    <div><input type="text" value="admin-01" class="w-100 style-input" id="username" disabled></div>
+                    <div><input type="text" value="<c:out value="${user.getUsername()}"/>" name="username" class="w-100 style-input" id="username" required disabled></div>
                 </div>
                 <div class="row mt-4">
                     <div class="mb-3">Mật khẩu:</div>
-                    <div><input type="password" value="fcmhmgjhhynm" class="w-100 style-input"
+                    <div><input type="password" value="<c:out value="${user.getPassword()}"/>" name="password" class="w-100 style-input"
                                 id="password" disabled></div>
                 </div>
                 <div class="row mt-4">
                     <div class="mb-3">Họ và tên</div>
-                    <div><input type="text" value="Nguyễn Phương Thảo" class="w-100 style-input"
+                    <div><input type="text" value="<c:out value="${user.getFullName()}"/>" name="fullName" class="w-100 style-input"
                                 id="name" disabled></div>
                 </div>
             </div>
             <div class="col">
                 <div class="row mt-2">
                     <div class="mb-3">Email</div>
-                    <div><input type="text" value="phuongthao123@gmail.com" class="w-100 style-input"
+                    <div><input type="text" value="<c:out value="${user.getEmail()}"/>" name="email" class="w-100 style-input"
                                 id="email" disabled>
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="mb-3">Số điện thoại</div>
-                    <div><input type="text" value="0123456789" class="w-100 style-input" id="phone"
+                    <div><input type="text" value="<c:out value="${user.getPhone()}"/>" name="phone" class="w-100 style-input" id="phone"
                                 disabled></div>
                 </div>
                 <div class="row mt-4">
                     <div class="mb-3">Giới tính</div>
                     <div>
-                        Nam<input type="radio" name="gender" value="Nam" class="ms-1 me-3" id="gender-man" disabled>
-                        Nữ<input type="radio" name="gender" value="Nữ" class="ms-1" id="gender-woman" disabled
+                        Nam<input type="radio" name="gender" value="1" ${user.getGender() == 1 ? 'selected' : ''} class="ms-1 me-3" id="gender-man" disabled>
+                        Nữ<input type="radio" name="gender" value="2" ${user.getGender() == 2 ? 'selected' : ''} class="ms-1" id="gender-woman" disabled
                                  checked>
                     </div>
                 </div>
@@ -107,25 +102,43 @@
         $('.update-hidden').removeClass('d-none');
     });
 
+    $('#btn-close').on('click', function () {
+       location.reload();
+    });
+
+    function changeAvatar() {
+        document.getElementById("file-avatar").click();
+    }
+
+    $('#file-avatar').on('change', function () {
+        // Kiểm tra nếu có tệp được chọn
+        if (this.files && this.files[0]) {
+            // Tạo URL tạm thời cho ảnh đã chọn
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                // Cập nhật src của avatar-container với URL ảnh đã chọn
+                $('#avatar-container').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(this.files[0]);  // Đọc file ảnh dưới dạng URL
+        }
+    });
+
     $('#info-admin-form').on('submit', function (event) {
             event.preventDefault(); // Ngăn chặn reload trang
 
+            var formData = new FormData(this);
             // Gửi dữ liệu qua AJAX
             $.ajax({
-                url: '/admin/update-info-admin', // Endpoint API thêm sản phẩm
+                url: '/admin/update-info-admin',
                 type: 'POST',
-                data: {
-                    password: $('#password').val(),
-                    name: $('#name').val(),
-                    email: $('#email').val(),
-                    phone: $('#phone').val(),
-                    gender: $('input[name="gender"]:checked').val(),
-                },
-                success: function (response) {
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function () {
                     alert('Cập nhập thông tin thành công!');
                     location.reload();
                 },
-                error: function (error) {
+                error: function () {
                     alert('Lỗi khi cập nhật thông tin!');
                 }
             });

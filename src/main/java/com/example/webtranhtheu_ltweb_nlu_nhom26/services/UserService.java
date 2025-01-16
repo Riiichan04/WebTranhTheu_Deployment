@@ -67,4 +67,7 @@ public class UserService {
         return userDAO.updatePassword(userId, password);
     }
 
+    public void updateInfoAdmin(User user) {
+        userDAO.updateInfoAdmin(user);
+    }
 }
