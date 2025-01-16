@@ -14,18 +14,22 @@ function removeProductPrice(button) {
     }
 }
 
-$(document).ready(function () {
-    $('#myTable').DataTable( {
-        destroy: true,
-        scrollY: "300px"
-    }); // Khởi tạo DataTable
-    $('.dt-search label').text("Tìm kiếm: ");
-    $('.dt-search label').css("margin-right", "10px");
-    $('.dt-length label').text("Số lượng hiển thị mỗi trang");
-    $('.dt-length label').css("margin-left", "10px");
-    $('.dt-info').css("display", "none");
-    $('.dt-search input').css("width", "300px");
-    $('table.dataTable th.dt-type-numeric').css("text-align", "center");
+// Khởi tạo DataTable
+if ($.fn.DataTable.isDataTable('#myProductEditTable')) {
+    $('#myProductEditTable').DataTable().destroy();
+}
+
+$('#myProductEditTable').DataTable({
+    scrollY: "300px",
+    scrollX: "100%",
+    initComplete: function() {
+        // Tùy chỉnh giao diện DataTable
+        $('.dt-search label').text("Tìm kiếm: ").css("margin-right", "10px");
+        $('.dt-length label').text("Số lượng hiển thị mỗi trang").css("margin-left", "10px");
+        $('.dt-info').css("display", "none");
+        $('.dt-search input').css("width", "300px");
+        $('table.dataTable th.dt-type-numeric').css("text-align", "center");
+    },
 });
 
 $('#editBtn').click(function () {

@@ -1,10 +1,13 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.ProductDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseProductMapper;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.customizer.BindBean;
+import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.customizer.BindList;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
@@ -133,4 +136,43 @@ public interface ProductDAO {
         limit 4
     """)
     List<Integer> findAllSimilarProducts(@BindList("topicIds") List<Integer> topicIds, @Bind("productId") int productId);
+
+    @SqlQuery("select id, codeProduct as code, title from products")
+    @RegisterBeanMapper(Product.class)
+    List<Product> getProductsCodeAndTitle();
+
+    @SqlQuery("select p.id, p.codeProduct as code,  p.title, x.available, y.imgUrl, ifnull(z.countEvaluate, 0) as countEvaluate, ifnull(z.totalStar, 0) as totalStar, p.status as status from products p " +
+            "LEFT JOIN (select productId, sum(available) as available  from product_prices GROUP BY productId) x on p.id = x.productId LEFT JOIN (select productId, min(imgUrl) as imgUrl from product_images GROUP BY productId) y on p.id = y.productId " +
+            "LEFT JOIN (select productId, count(productId) as countEvaluate, avg(rating) as totalStar from product_reviews GROUP BY productId) z on p.id = z.productId")
+    @RegisterBeanMapper(ProductDTO.class)
+    List<ProductDTO> getProductsDTO();
+
+    @SqlQuery("select id, title from materials")
+    @RegisterBeanMapper(Material.class)
+    List<Material> getMaterials();
+
+    @SqlQuery("select id, providerName from providers")
+    @RegisterBeanMapper(Provider.class)
+    List<Provider> getProviders();
+
+    @SqlUpdate("insert into products(codeProduct, title, description, status, typeOfProduct, createdAt, updatedAt)\n" +
+            "values(:code, :title, :description, :status, :type, NOW(), NOW())")
+    @GetGeneratedKeys
+    int insertProduct(@BindBean Product product);
+
+    @SqlUpdate("update products set providerId = :providerId where id = :id")
+    void updateProvider(@Bind("providerId") int providerId, @Bind("id") int id);
+
+    @SqlUpdate("INSERT INTO material_products_details (materialId, productId, updatedAt) " +
+            "VALUES (:materialId, :productId, NOW())")
+    void updateMaterial(@Bind("materialId") int materialId, @Bind("productId") int productId);
+
+    @SqlUpdate("insert into product_prices(productId, width, height, price, available)\n" +
+            "values(:productId, :width, :height, :price, :available)")
+    void insertProductPrice(@BindBean Price price);
+
+    @SqlUpdate("insert into product_images(productId, imgUrl)\n" +
+            "values(:productId, :imgUrl)")
+    void insertProductImage(@Bind("productId") int productId, @Bind("imgUrl") String imgUrl);
+
 }

@@ -12,6 +12,22 @@ public class Category implements Serializable {
     private Timestamp updatedAt;
 
     public Category() {
+
+    }
+
+    public Category(int id, String title, int active, Timestamp createdAt, Timestamp updatedAt) {
+        this.id = id;
+        this.title = title;
+        this.active = active;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Category(String title, int active, Timestamp createdAt, Timestamp updatedAt) {
+        this.title = title;
+        this.active = active;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public int getId() {

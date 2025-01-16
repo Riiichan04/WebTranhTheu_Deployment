@@ -1,9 +1,10 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     private int id;
     private String avatarUrl;
     private String username;
@@ -21,6 +22,22 @@ public class User {
     private int role;
 
     public User() {}
+
+    // constructor để thêm người dùng
+    public User(String avatarUrl, String username, String fullName, String password, String email, String phone, int gender, String description, int statusAccount, Timestamp createdAt, Timestamp updatedAt, int role) {
+        this.avatarUrl = avatarUrl;
+        this.username = username;
+        this.fullName = fullName;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.description = description;
+        this.statusAccount = statusAccount;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.role = role;
+    }
 
     public User(String username, String avatarUrl, String fullName, String password, String email, Timestamp createdAt, Timestamp updatedAt, int role, int statusAccount) {
         this.username = username;
@@ -146,5 +163,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setLocation(List<Address> location) {
+        this.location = location;
+    }
+
+    public List<Address> getLocation() {
+        return location;
+    }
+
+    public List<WishProduct> getWishProducts() {
+        return wishProducts;
+    }
+
+    public void setWishProducts(List<WishProduct> wishProducts) {
+        this.wishProducts = wishProducts;
     }
 }

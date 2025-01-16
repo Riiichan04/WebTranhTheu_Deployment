@@ -1,19 +1,24 @@
-$('#editBtn').click(function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    $('#title').text('Chỉnh sửa chính sách')
-    $('#containerEditBtn').html(`<button class="style-update-btn" id="editBtn" type="submit">Cập nhật</button>`);
-    $('#containerCancelBtn').html(`<button type="button" id="cancelEditBtn" class="style-cancel-btn">Hủy</button>`)
-    $('#cancelEditBtn').click(function () {
-        location.reload();
+$(document).ready(function () {
+    $('#editBtn').click(function () {
+        $('#title').text('Chỉnh sửa chính sách')
+        $('.read').addClass('d-none');
+        $('#name-policy').prop('disabled', false);
+        $('#description').prop('disabled', false);
+        $('#deleteProduct').prop('disabled', false);
+        $('#titleProductApplyPolicy').text('Xóa sản phẩm đã áp dụng chính sách (Chọn nhiều)');
+
+        $('.edit-hidden').removeClass('d-none');
     });
-    
-    $('#namePolicy').prop('disabled', false);
 
-    $('#descriptionPolicy').prop('disabled', false);
+    $('#cancelEditBtn').click(function () {
+        $('#read-edit-policy-form')[0].reset(); // Reset form
+        $('#title').text('Xem chính sách')
+        $('.read').removeClass('d-none');
+        $('#name-policy').prop('disabled', true);
+        $('#description').prop('disabled', true);
+        $('#deleteProduct').prop('disabled', true);
+        $('#titleProductApplyPolicy').text('Danh sách sản phẩm áp dụng chính sách');
 
-    $('#listProduct').prop('disabled', false);
-    
-    $('#titleProductApplyPolicy').text('Xóa sản phẩm đã áp dụng chính sách (Chọn nhiều)');
-
-    $('.edit-hidden').removeClass('d-none');
+        $('.edit-hidden').addClass('d-none');
+    });
 });

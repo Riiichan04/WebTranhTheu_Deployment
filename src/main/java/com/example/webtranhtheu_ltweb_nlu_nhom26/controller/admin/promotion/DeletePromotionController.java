@@ -1,4 +1,4 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.painting;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.promotion;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,11 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "PaintingManagementController", value = "/PaintingManagementController")
-public class PaintingManagementController extends HttpServlet {
+@WebServlet(name = "DeletePromotionController", value = "/admin/promotion-management/delete-promotion")
+public class DeletePromotionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
+
+        request.getRequestDispatcher("/layout/admin/promotion-form/delete-popup.jsp").forward(request, response);
     }
 
     @Override
