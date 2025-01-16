@@ -25,7 +25,7 @@ public class UpdateUserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String pass = PasswordEncryption.hashPassword(request.getParameter("password"));
+        String pass = request.getParameter("password") == null ? null : PasswordEncryption.hashPassword(request.getParameter("password"));
         String fullName = request.getParameter("fullName");
 
         Part avatar = request.getPart("avatar");

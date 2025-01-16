@@ -53,6 +53,12 @@ $(document).ready(function () {
                     } else {
                         json[i].status = "";
                     }
+
+                    //xử lý username, password
+                    var username = json[i].username;
+                    if(username == null) {
+                        json[i].username = "";
+                    }
                 }
                 return json;
             }
@@ -76,11 +82,11 @@ $(document).ready(function () {
         ],
         columns: [
             {data: null}, // Cột STT
-            {data: 'fullName'}, // Tên danh mục
-            {data: 'username'}, // Số lượng
-            {data: 'numOrderBought'}, // Số sản phẩm đã bán
-            {data: 'gender'}, // Ngày tạo
-            {data: 'createdAt'}, // Ngày tạo
+            {data: 'fullName'},
+            {data: 'username'},
+            {data: 'numOrderBought'},
+            {data: 'gender'},
+            {data: 'createdAt'},
             {data: 'statusAccount'},
             {data: null} // Cột hành động
         ]

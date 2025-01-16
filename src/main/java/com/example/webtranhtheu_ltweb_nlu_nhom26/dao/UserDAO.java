@@ -5,9 +5,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.WishProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.UserDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseWishProductMapper;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.AuthDTO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
@@ -83,7 +81,7 @@ public interface UserDAO {
 
     @SqlUpdate("DELETE from account_addresses_details\n" +
             "WHERE accountId = :accountId and addressId = :addressId")
-    boolean deleteUserAddress(@Bind("accountId") int accountId, @Bind("addressId") int addressId);
+    void deleteUserAddress(@Bind("accountId") int accountId, @Bind("addressId") int addressId);
 
     @SqlUpdate("insert into addresses(location) values(:location)")
     boolean insertAddress(@Bind("location") String location);

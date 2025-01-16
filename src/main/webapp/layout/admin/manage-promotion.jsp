@@ -30,10 +30,9 @@
             <tr class="head-table">
                 <th>STT</th>
                 <th>Tiêu đề giảm giá</th>
+                <th>Phần trăm giảm</th>
                 <th>Ngày bắt đầu</th>
                 <th>Ngày kết thúc</th>
-                <th>Số sản phẩm áp dụng</th>
-                <th>Trạng thái</th>
                 <th>Tiện ích</th>
             </tr>
             </thead>

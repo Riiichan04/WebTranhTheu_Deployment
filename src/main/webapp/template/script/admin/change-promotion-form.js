@@ -1,48 +1,37 @@
 $(document).ready(function () {
-    $('#myTable').DataTable( {
+    const table = $('#myTable').DataTable({
         destroy: true,
         scrollY: "470px",
         ajax: {
             url: '/admin/promotion-management/get-promotion',
             dataSrc: function (json) {
                 for (var i = 0; i < json.length; i++) {
-                    var startTime = json[i].startTime;
+                    var startTime = json[i].startedAt;
 
                     // Sử dụng Intl.DateTimeFormat để định dạng ngày theo định dạng "DD-MM-YYYY"
                     if (startTime && !isNaN(Date.parse(startTime))) {
                         var date = new Date(startTime);
                         var formattedDate = new Intl.DateTimeFormat('en-GB').format(date); // 'en-GB' để định dạng "DD/MM/YYYY"
-                        json[i].startTime = formattedDate;
+                        json[i].startedAt = formattedDate;
                     } else {
-                        json[i].startTime = ''; // Nếu không phải là ngày hợp lệ, để trống
+                        json[i].startedAt = ''; // Nếu không phải là ngày hợp lệ, để trống
                     }
 
-                    var endTime = json[i].endTime;
+                    var endTime = json[i].endedAt;
 
                     // Sử dụng Intl.DateTimeFormat để định dạng ngày theo định dạng "DD-MM-YYYY"
                     if (endTime && !isNaN(Date.parse(endTime))) {
                         var date = new Date(endTime);
                         var formattedDate = new Intl.DateTimeFormat('en-GB').format(date); // 'en-GB' để định dạng "DD/MM/YYYY"
-                        json[i].endTime = formattedDate;
+                        json[i].endedAt = formattedDate;
                     } else {
-                        json[i].endTime = ''; // Nếu không phải là ngày hợp lệ, để trống
+                        json[i].endedAt = ''; // Nếu không phải là ngày hợp lệ, để trống
                     }
 
-                    // xử lý tình trạng đơn hàng
-                    var status = json[i].status;
-                    if(status) {
-                        switch (status) {
-                            case 0:
-                                json[i].status = "Vô hiệu hóa";
-                                break;
-                            case 1:
-                                json[i].status = "Đang hoạt động";
-                                break;
-                            default: json[i].status = "";
-                        }
-                    } else {
-                        json[i].status = "";
+                    if (json[i].value == null) {
+                        json[i].value = 0;
                     }
+
                 }
                 return json;
             }
@@ -55,22 +44,21 @@ $(document).ready(function () {
                 }
             },
             {
-                targets: 6, // Cột hành động
+                targets: 5, // Cột hành động
                 render: function (data, type, row) {
                     return `
                         <button class="btn-read-edit" data-id="${row.id}">Xem và Chỉnh Sửa</button>
-                        <button class="btn-delete" data-id="${row.id}">Tắt</button>
+                        <!--<button class="btn-delete" data-id="${row.id}">Tắt</button>-->
                     `;
                 }
             }
         ],
         columns: [
             {data: null}, // Cột STT
-            {data: 'name'},
-            {data: 'startTime'},
-            {data: 'endTime'},
-            {data: 'countProduct'},
-            {data: 'status'},
+            {data: 'title'},
+            {data: 'value'},
+            {data: 'startedAt'},
+            {data: 'endedAt'},
             {data: null} // Cột hành động
         ]
     }); // Khởi tạo DataTable
@@ -81,13 +69,13 @@ $(document).ready(function () {
     $('table.dataTable th.dt-type-numeric').css("text-align", "center");
 
     // Gắn sự kiện click cho formWrapper
-    $('#formWrapper').on('click', function (event) {
+    $('#formWrapper').on('click', function () {
         hiddenOverlay() // Tắt overlay
     });
 
-    $('#addPromotionBtn').on("click", function(event) {
+    $('#addPromotionBtn').on("click", function (event) {
         event.preventDefault();
-        const url = "/admin/promotion-management/add-promotion";
+        const url = "/admin/promotion-management/add-promotion-form";
         $.ajax({
             url: url,
             type: "GET",
@@ -105,9 +93,40 @@ $(document).ready(function () {
                     'max-height': '90vh',
                     'z-index': '2',
                     'overflow': 'auto',
-                })
+                });
+
                 $('#cancelBtn').click(function () {
                     hiddenOverlay();
+                });
+
+                $('#add-promotion-form').on('submit', function (event) {
+                    event.preventDefault(); // Ngăn chặn reload trang
+
+                    // Gửi dữ liệu qua AJAX
+                    $.ajax({
+                        url: '/admin/promotion-management/add-promotion',
+                        type: 'POST',
+                        data: {
+                            name: $('#name-promotion').val(),
+                            description: $('#description').val(),
+                            value: $('#discount-value').val(),
+                            startedAt: $('#start-discount').val(),
+                            endedAt: $('#end-discount').val(),
+                        },
+                        success: function (response) {
+                            if (response.success) {
+                                alert('Thêm giảm giá thành công!');
+                                $('#add-promotion-form')[0].reset(); // Reset form
+                                table.ajax.reload();
+                                hiddenOverlay();
+                            } else {
+                                alert('Lỗi khi thêm giảm giá!');
+                            }
+                        },
+                        error: function () {
+                            alert('Lỗi khi thêm giảm giá!');
+                        }
+                    });
                 });
             },
             error: function () {
@@ -116,12 +135,13 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-read-edit').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/promotion-management/update-promotion";
+    $('#myTable').on('click', '.btn-read-edit', function () {
+        const discountId = $(this).data('id');
+        const url = "/admin/promotion-management/read-edit-promotion-form";
         $.ajax({
             url: url,
             type: "GET",
+            data: {discountId: discountId},
             success: function (data) {
                 openOverlay();
                 $('#formWrapper').html(data);
@@ -138,12 +158,37 @@ $(document).ready(function () {
                     'overflow': 'auto',
                 });
 
-                $('#myPromotionEditTable').DataTable().columns.adjust();
-
                 // Xử lý nút hủy
                 $('#cancelBtn').on('click', function () {
                     hiddenOverlay();
-                })
+                });
+
+                $('#read-edit-promotion-form').on('submit', function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "/admin/promotion-management/update-promotion",
+                        type: "POST",
+                        data: {
+                            promotionId: $('#submitBtn').val(),
+                            title: $('#nameDiscount').val(),
+                            description: $('#description').val(),
+                            value: $('#percentDiscount').val(),
+                            startedAt: $('#startDateDiscount').val(),
+                            endedAt: $('#endDateDiscount').val()
+                        },
+                        success: function () {
+                            alert('Chỉnh sửa giảm giá thành công!');
+                            table.ajax.reload();
+                            hiddenOverlay();
+                        },
+                        error: function () {
+                            alert('Lỗi khi chỉnh sửa giảm giá!');
+                        }
+                    });
+                });
+
+
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
@@ -151,35 +196,35 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-delete').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/promotion-management/delete-promotion";
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                openOverlay();
-                $('#formWrapper').html(data);
-
-                // Ngăn sự kiện click trong form không lan lên formWrapper
-                $('form').on('click', function (event) {
-                    event.stopPropagation();
-                });
-
-                $('#formContainer').css({
-                    'width': '500px',
-                    'max-height': '90vh',
-                    'z-index': '2',
-                })
-                $('#cancelBtn').click(function () {
-                    hiddenOverlay();
-                });
-            },
-            error: function () {
-                alert("Có lỗi xảy ra khi tải nội dung.");
-            }
-        });
-    })
+    // $('.btn-delete').on("click", function(event) {
+    //     event.preventDefault();
+    //     const url = "/admin/promotion-management/delete-promotion";
+    //     $.ajax({
+    //         url: url,
+    //         type: "GET",
+    //         success: function (data) {
+    //             openOverlay();
+    //             $('#formWrapper').html(data);
+    //
+    //             // Ngăn sự kiện click trong form không lan lên formWrapper
+    //             $('form').on('click', function (event) {
+    //                 event.stopPropagation();
+    //             });
+    //
+    //             $('#formContainer').css({
+    //                 'width': '500px',
+    //                 'max-height': '90vh',
+    //                 'z-index': '2',
+    //             })
+    //             $('#cancelBtn').click(function () {
+    //                 hiddenOverlay();
+    //             });
+    //         },
+    //         error: function () {
+    //             alert("Có lỗi xảy ra khi tải nội dung.");
+    //         }
+    //     });
+    // })
 
     function hiddenOverlay() {
         $('#formWrapper').css({
