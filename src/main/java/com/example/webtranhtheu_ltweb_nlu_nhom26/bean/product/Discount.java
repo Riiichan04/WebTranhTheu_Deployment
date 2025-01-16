@@ -94,20 +94,5 @@ public class Discount implements Serializable {
         this.endedAt = endedAt;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
-    }
-
-    public double getValue() {
-        return value;
-    }
 
 }
