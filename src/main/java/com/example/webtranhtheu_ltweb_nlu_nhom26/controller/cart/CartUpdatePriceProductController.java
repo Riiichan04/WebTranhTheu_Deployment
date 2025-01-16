@@ -15,7 +15,7 @@ import java.io.IOException;
 public class CartUpdatePriceProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String productKey=request.getParameter("productKey");
+        String productCode=request.getParameter("productCode");
         String widthParam=request.getParameter("width");
         String heightParam=request.getParameter("height");
         HttpSession session=request.getSession();
@@ -24,7 +24,7 @@ public class CartUpdatePriceProductController extends HttpServlet {
             int width=Integer.parseInt(widthParam);
             int height=Integer.parseInt(heightParam);
             if(cart!=null){
-                cart.updateProductByPrice(productKey,width,height);
+                cart.updateProductByPrice(productCode,width,height);
                 session.setAttribute("cart",cart);
             }
             response.sendRedirect("/cart");

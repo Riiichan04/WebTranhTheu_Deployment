@@ -97,7 +97,7 @@ public class Cart implements Serializable {
         return productId + "_" + width + "_" + height;
     }
     public double getSale(){
-        return this.discount.getAmount();
+        return this.discount.getValue();
     }
     public double getTotalPrice() {
         double totalPrice = 0;
