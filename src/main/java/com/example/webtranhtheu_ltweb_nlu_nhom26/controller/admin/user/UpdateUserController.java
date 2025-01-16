@@ -53,7 +53,9 @@ public class UpdateUserController extends HttpServlet {
         int statusAccount = Integer.parseInt(request.getParameter("status-account"));
         String userId = request.getParameter("userId");
 
-        User user = new User(avatarUrl, null, fullName, pass, email, phone, gender, description, statusAccount, null, new Timestamp(System.currentTimeMillis()), 0);
+        String role = request.getParameter("role");
+
+        User user = new User(avatarUrl, null, fullName, pass, email, phone, gender, description, statusAccount, null, new Timestamp(System.currentTimeMillis()), Integer.parseInt(role));
         user.setId(Integer.parseInt(userId));
 
         UserService userService = new UserService();

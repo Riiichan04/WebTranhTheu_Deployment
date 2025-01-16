@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.OrderDTO;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.DashboardAdminService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,50 +20,24 @@ public class DashBoardController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        //chưa xử lý service
-        String totalRevenue = "7.123.567.000";
-        int totalProduct = 1200;
-        int totalTopic = 12;
-        int totalCategory = 3;
-        int totalPolicy = 20;
-        int totalUser = 3012;
-        int totalOrder = 13000;
-        int totalOn1StatusOrder = 12; //Chờ xác nhận
-        int totalOn2StatusOrder = 10; //Chờ lấy hàng
-        int totalOn3StatusOrder = 40; //Chờ giao hàng
-        int totalOn4StatusOrder = 120; //Đã giao
-        int totalOn5StatusOrder = 1040; //Đã nhận hàng
-        int totalOn6StatusOrder = 130; //Đơn yêu cầu hoàn trả
-        int totalOn1StatusPayment = 1200; //Đã thanh toán
-        int totalOn0StatusPayment = 1200; //Chưa thanh toán
+        DashboardAdminService dashboardAdminService = new DashboardAdminService();
+        String totalRevenue = dashboardAdminService.getSumAllOrderPrice();
+        int totalProduct = dashboardAdminService.getTotalProduct();
+        int totalTopic = dashboardAdminService.getTotalTopic();
+        int totalCategory = dashboardAdminService.getTotalCategory();
+        int totalPolicy = dashboardAdminService.getTotalPolicy();
+        int totalUser = dashboardAdminService.getTotalUser();
+        int totalOrder = dashboardAdminService.getTotalOrder();
+        int totalOn1StatusOrder = dashboardAdminService.getTotalOrderStatus1(); //Chờ xác nhận
+        int totalOn2StatusOrder = dashboardAdminService.getTotalOrderStatus2(); //Chờ lấy hàng
+        int totalOn3StatusOrder = dashboardAdminService.getTotalOrderStatus3(); //Chờ giao hàng
+        int totalOn4StatusOrder = dashboardAdminService.getTotalOrderStatus4(); //Đã giao
+        int totalOn5StatusOrder = dashboardAdminService.getTotalOrderStatus5(); //Đã nhận hàng
+        int totalOn6StatusOrder = dashboardAdminService.getTotalOrderStatus6(); //Đơn yêu cầu hoàn trả
+        int totalOn1StatusPayment = dashboardAdminService.getTotalOrderPayStatus0(); //Đã thanh toán
+        int totalOn0StatusPayment = dashboardAdminService.getTotalOrderPayStatus1(); //Chưa thanh toán
 
-        List<OrderDTO> listOrder = new ArrayList<>();
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 2000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
-        listOrder.add(new OrderDTO(1, "Nguyễn Văn An", "anvan2k4", 20000000, new Timestamp(System.currentTimeMillis()), 1, 1));
+        List<OrderDTO> listOrder = dashboardAdminService.getLastListOrder();
 
         request.setAttribute("totalRevenue", totalRevenue);
         request.setAttribute("totalProduct", totalProduct);

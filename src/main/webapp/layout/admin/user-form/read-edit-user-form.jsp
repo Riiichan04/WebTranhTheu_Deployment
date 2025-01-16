@@ -179,6 +179,18 @@
                 </select>
             </div>
         </div>
+        <!-- phân quyền -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Phân quyền</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" id="role" name="role" disabled required>
+                    <option value="0" ${user.getRole() == 0 ? 'selected' : ''}>Người dùng bình thường</option>
+                    <option value="1" ${user.getRole() == 1 ? 'selected' : ''}>Admin</option>
+                </select>
+            </div>
+        </div>
         <!-- ngày tạo -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Ngày tạo tài khoản</span></div>

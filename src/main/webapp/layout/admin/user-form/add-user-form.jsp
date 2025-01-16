@@ -104,6 +104,18 @@
                 </select>
             </div>
         </div>
+        <!-- phân quyền -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Phân quyền<span class="text-danger"> * </span></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" name="role" required>
+                    <option value="0">Người dùng bình thường</option>
+                    <option value="1">Admin</option>
+                </select>
+            </div>
+        </div>
 
         <div class="row pt-4 pb-4">
             <div class="col">

@@ -33,13 +33,14 @@ public class AddUserController extends HttpServlet {
         int gender = Integer.parseInt(request.getParameter("gender"));
         String description = request.getParameter("description") == null ? "" : request.getParameter("description");
         int statusAccount = Integer.parseInt(request.getParameter("statusAccount"));
+        int role = Integer.parseInt(request.getParameter("role"));
 
         Part filePart = request.getPart("avatar");
 
         String avatarUrl = CloudinaryConfig.getUrl(filePart);
 
         UserService userService = new UserService();
-        User user = new User(avatarUrl, username, fullName, password, email, phone, gender, description, statusAccount, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), 0);
+        User user = new User(avatarUrl, username, fullName, password, email, phone, gender, description, statusAccount, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), role);
         response.setContentType("application/json");
         if(userService.addUser(user)) {
             response.getWriter().write("{\"success\":true}");

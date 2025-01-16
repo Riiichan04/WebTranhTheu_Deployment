@@ -1,18 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINH THU
-  Date: 12/23/2024
-  Time: 1:31 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="../public/library.jsp"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <%@include file="../public/library.jsp"%>
     <!-- css property -->
     <link rel="stylesheet" href="../../template/style/admin/general-content-admin.css">
     <link rel="stylesheet" href="../../template/style/admin/dashboard.css">
@@ -150,7 +143,6 @@
             <table id="myTable" class="m-0 p-0 display custom-table w-100">
                 <thead>
                 <tr class="head-table">
-                    <th>STT</th>
                     <th>Tên khách hàng</th>
                     <th>Tên đăng nhập</th>
                     <th>Ngày đặt hàng</th>
@@ -159,14 +151,35 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="o" items="${listOrder}" varStatus="status">
+                <c:forEach var="o" items="${listOrder}">
                 <tr>
-                    <td>${status.index + 1}</td>
                     <td>${o.getName()}</td>
                     <td>${o.getUsername()}</td>
-                    <td><fmt:formatDate value="${o.getCreatedAt()}" pattern="dd-MM-yyyy" /></td>
-                    <td>${o.getTotalPrice()}</td>
-                    <td>${o.getOrderStatus()}</td>
+                    <td><fmt:formatDate value="${o.getCreatedAt()}" pattern="dd/MM/yyyy" /></td>
+                    <td><fmt:formatNumber value="${o.getTotalPrice()}" type="number" maxFractionDigits="0" /></td>
+                    <td><c:choose>
+                        <c:when test="${o.getOrderStatus() == 1}">
+                            Chờ xác nhận
+                        </c:when>
+                        <c:when test="${o.getOrderStatus() == 2}">
+                            Chờ lấy hàng
+                        </c:when>
+                        <c:when test="${o.getOrderStatus() == 3}">
+                            Chờ giao hàng
+                        </c:when>
+                        <c:when test="${o.getOrderStatus() == 4}">
+                            Đã giao
+                        </c:when>
+                        <c:when test="${o.getOrderStatus() == 5}">
+                            Đã nhận hàng
+                        </c:when>
+                        <c:when test="${o.getOrderStatus() == 6}">
+                            Đã hoàn trả
+                        </c:when>
+                        <c:otherwise>
+                            Chưa xác định
+                        </c:otherwise>
+                    </c:choose></td>
                 </tr>
                 </c:forEach>
                 </tbody>

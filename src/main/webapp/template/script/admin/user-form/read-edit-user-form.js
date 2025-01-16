@@ -58,6 +58,7 @@ $('#editBtn').click(function () {
     $('#password').prop('disabled', false);
     $('.read').addClass('d-none');
     $('#name').prop('disabled', false);
+    $('#role').prop('disabled', false);
     $('#email').prop('disabled', false);
     $('#phone').prop('disabled', false);
     $('.gender').prop('disabled', false);
@@ -74,6 +75,7 @@ $('#cancelEditBtn').click(function () {
     $('#password').prop('disabled', true);
     $('#title').text('Xem thông tin người dùng');
     $('#name').prop('disabled', true);
+    $('#role').prop('disabled', true);
     $('#email').prop('disabled', true);
     $('.read').removeClass('d-none');
     $('#phone').prop('disabled', true);

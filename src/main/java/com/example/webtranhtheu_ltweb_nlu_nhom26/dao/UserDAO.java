@@ -52,7 +52,7 @@ public interface UserDAO {
     String getPassword(@Bind("username") String username);
 
 
-    @SqlQuery("select a.id, a.fullname as fullName, a.username, a.gender, x.numOrderBought, a.createdAt, a.statusAccount from accounts a LEFT JOIN (select accountId, count(id) as numOrderBought from orders GROUP BY accountId) x on a.id = x.accountId where a.role = 0")
+    @SqlQuery("select a.id, a.fullname as fullName, a.username, a.gender, x.numOrderBought, a.createdAt, a.statusAccount from accounts a LEFT JOIN (select accountId, count(id) as numOrderBought from orders GROUP BY accountId) x on a.id = x.accountId")
     @RegisterBeanMapper(UserDTO.class)
     List<UserDTO> getUsersDTO();
 
@@ -61,7 +61,7 @@ public interface UserDAO {
     @RegisterBeanMapper(User.class)
     boolean insertUser(@BindBean User user);
 
-    @SqlQuery("select id, avatar_url as avatarUrl, username, fullname as fullName, pass as password, email, phone, gender, description, statusAccount, createdAt, updatedAt from accounts where id = :accountId and role = 0")
+    @SqlQuery("select id, avatar_url as avatarUrl, username, fullname as fullName, pass as password, email, phone, gender, description, statusAccount, role, createdAt, updatedAt from accounts where id = :accountId")
     @RegisterBeanMapper(User.class)
     User getUser(@Bind("accountId") int accountId);
 
@@ -74,7 +74,7 @@ public interface UserDAO {
     List<WishProduct> getWishProducts(@Bind("accountId") int accountId);
 
     @SqlUpdate("UPDATE accounts\n" +
-            "SET avatar_url = :avatarUrl, fullname = :fullName, pass = :password, email = :email, phone = :phone, gender = :gender, description = :description, statusAccount = :statusAccount, updatedAt = :updatedAt " +
+            "SET avatar_url = :avatarUrl, fullname = :fullName, pass = :password, email = :email, phone = :phone, gender = :gender, description = :description, statusAccount = :statusAccount, updatedAt = :updatedAt, role = :role " +
             "where id = :id")
     @RegisterBeanMapper(User.class)
     boolean updateUser(@BindBean User user);
