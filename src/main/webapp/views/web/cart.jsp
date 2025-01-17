@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../../layout/common.jsp"/>
 <html>
@@ -8,12 +9,6 @@
 </head>
 <body>
 <jsp:include page="../../layout/public/header.jsp"/>
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
-    <ol class="breadcrumb pt-2">
-        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
-    </ol>
-</nav>
 <div class="container">
     <div class="row">
         <div class="col-8 cart">
@@ -30,7 +25,11 @@
                 <div class="col-2">Giá tiền</div>
             </div>
             <hr/>
+            <c:if test="${empty cart.products}">
+                <h4>Chưa có sản phẩm</h4>
+            </c:if>
             <div class="cart-item-list">
+                <c:forEach items="${cart.products}" var="entry">
                 <div class=" row py-3 cart-item">
                     <div class="col-1 text-center">
                         <div class="row pb-4"></div>
@@ -40,26 +39,29 @@
                             </div>
                         </div>
                     </div>
-                    <img class="col-2" src="../asset/image/product_image.png">
+                    <img class="col-2" src="<c:url value="${entry.value.getThumbnail()}"/>">
                     <div class="col-3 ps-5 pe-0">
-                        <div class="row">Tranh thêu thám tử lừng danh Conan</div>
+                        <div class="row">${entry.value.getTitle()}</div>
                         <div class="row pb-2"></div>
-                        <div class="row">NXB Kim Đồng</div>
+                        <div class="row">
+                            <div class="col-5">${entry.value.price.width} X </div>
+                            <div class="col-5">${entry.value.price.height}</div>
+                        </div>
                     </div>
                     <div class="col-3 text-center">
                         <div class="row pb-4"></div>
                         <div class="row">
                             <div class="row">
                                 <div class="col-4 text-center">
-                                    <button class="rounded product-detail__remove-amount" disabled>
+                                    <button class="rounded" id="product-detail__remove-amount" onclick="updateSubByQuantity(${entry.value.product.id},${entry.value.price.width},${entry.value.price.height})" >
                                         <i class="fa-solid fa-minus"></i>
                                     </button>
                                 </div>
-                                <div class="col-4 text-center product-detail__amount">
-                                    1
+                                <div class="col-4 text-center" id="quantity_${entry.value.product.id}_${entry.value.price.width}_${entry.value.price.height}">
+                                    ${entry.value.quantity}
                                 </div>
                                 <div class="col-4 text-center">
-                                    <button class="rounded product-detail__add-amount">
+                                    <button class="rounded product-detail__add-amount" onclick="updatePlusByQuantity(${entry.value.product.id},${entry.value.price.width},${entry.value.price.height})">
                                         <i class="fa-solid fa-plus"></i>
                                     </button>
                                 </div>
@@ -68,233 +70,14 @@
                     </div>
                     <div class="col p-0">
                         <div class="row pb-4 "></div>
-                        <div class="row ps-3 product-detail__price">15000000</div>
+                        <div class="row ps-3 product-detail__price">${entry.value.price.price}</div>
                     </div>
                     <div class="col-1 p-0">
                         <div class="row pb-4"></div>
                         <i class="bi bi-trash"></i>
                     </div>
                 </div>
-                <div class=" row py-3 cart-item">
-                    <div class="col-1 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row ps-4">
-                            <div class="form-check">
-                                <input class="product-checkbox form-check-input" type="checkbox">
-                            </div>
-                        </div>
-                    </div>
-                    <img class="col-2" src="../asset/image/product_image.png">
-                    <div class="col-3 ps-5 pe-0">
-                        <div class="row">Tranh thêu thám tử lừng danh Conan</div>
-                        <div class="row pb-2"></div>
-                        <div class="row">NXB Kim Đồng</div>
-                    </div>
-                    <div class="col-3 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row">
-                            <div class="row">
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__remove-amount" disabled>
-                                        <i class="fa-solid fa-minus"></i>
-                                    </button>
-                                </div>
-                                <div class="col-4 text-center product-detail__amount">
-                                    1
-                                </div>
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__add-amount">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col p-0">
-                        <div class="row pb-4 "></div>
-                        <div class="row ps-3 product-detail__price">15000000</div>
-                    </div>
-                    <div class="col-1 p-0">
-                        <div class="row pb-4"></div>
-                        <i class="bi bi-trash"></i>
-                    </div>
-                </div>
-                <div class=" row py-3 cart-item">
-                    <div class="col-1 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row ps-4">
-                            <div class="form-check">
-                                <input class="product-checkbox form-check-input" type="checkbox">
-                            </div>
-                        </div>
-                    </div>
-                    <img class="col-2" src="../asset/image/product_image.png">
-                    <div class="col-3 ps-5 pe-0">
-                        <div class="row">Tranh thêu thám tử lừng danh Conan</div>
-                        <div class="row pb-2"></div>
-                        <div class="row">NXB Kim Đồng</div>
-                    </div>
-                    <div class="col-3 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row">
-                            <div class="row">
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__remove-amount" disabled>
-                                        <i class="fa-solid fa-minus"></i>
-                                    </button>
-                                </div>
-                                <div class="col-4 text-center product-detail__amount">
-                                    1
-                                </div>
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__add-amount">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col p-0">
-                        <div class="row pb-4 "></div>
-                        <div class="row ps-3 product-detail__price">15000000</div>
-                    </div>
-                    <div class="col-1 p-0">
-                        <div class="row pb-4"></div>
-                        <i class="bi bi-trash"></i>
-                    </div>
-                </div>
-                <div class=" row py-3 cart-item">
-                    <div class="col-1 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row ps-4">
-                            <div class="form-check">
-                                <input class="product-checkbox form-check-input" type="checkbox">
-                            </div>
-                        </div>
-                    </div>
-                    <img class="col-2" src="../asset/image/product_image.png">
-                    <div class="col-3 ps-5 pe-0">
-                        <div class="row">Tranh thêu thám tử lừng danh Conan</div>
-                        <div class="row pb-2"></div>
-                        <div class="row">NXB Kim Đồng</div>
-                    </div>
-                    <div class="col-3 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row">
-                            <div class="row">
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__remove-amount" disabled>
-                                        <i class="fa-solid fa-minus"></i>
-                                    </button>
-                                </div>
-                                <div class="col-4 text-center product-detail__amount">
-                                    1
-                                </div>
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__add-amount">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col p-0">
-                        <div class="row pb-4 "></div>
-                        <div class="row ps-3 product-detail__price">15000000</div>
-                    </div>
-                    <div class="col-1 p-0">
-                        <div class="row pb-4"></div>
-                        <i class="bi bi-trash"></i>
-                    </div>
-                </div>
-                <div class=" row py-3 cart-item">
-                    <div class="col-1 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row ps-4">
-                            <div class="form-check">
-                                <input class="product-checkbox form-check-input" type="checkbox">
-                            </div>
-                        </div>
-                    </div>
-                    <img class="col-2" src="../asset/image/product_image.png">
-                    <div class="col-3 ps-5 pe-0">
-                        <div class="row">Tranh thêu thám tử lừng danh Conan</div>
-                        <div class="row pb-2"></div>
-                        <div class="row">NXB Kim Đồng</div>
-                    </div>
-                    <div class="col-3 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row">
-                            <div class="row">
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__remove-amount" disabled>
-                                        <i class="fa-solid fa-minus"></i>
-                                    </button>
-                                </div>
-                                <div class="col-4 text-center product-detail__amount">
-                                    1
-                                </div>
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__add-amount">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col p-0">
-                        <div class="row pb-4 "></div>
-                        <div class="row ps-3 product-detail__price">15000000</div>
-                    </div>
-                    <div class="col-1 p-0">
-                        <div class="row pb-4"></div>
-                        <i class="bi bi-trash"></i>
-                    </div>
-                </div>
-                <div class=" row py-3 cart-item">
-                    <div class="col-1 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row ps-4">
-                            <div class="form-check">
-                                <input class="product-checkbox form-check-input" type="checkbox">
-                            </div>
-                        </div>
-                    </div>
-                    <img class="col-2" src="../asset/image/product_image.png">
-                    <div class="col-3 ps-5 pe-0">
-                        <div class="row">Tranh thêu thám tử lừng danh Conan</div>
-                        <div class="row pb-2"></div>
-                        <div class="row">NXB Kim Đồng</div>
-                    </div>
-                    <div class="col-3 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row">
-                            <div class="row">
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__remove-amount" disabled>
-                                        <i class="fa-solid fa-minus"></i>
-                                    </button>
-                                </div>
-                                <div class="col-4 text-center product-detail__amount">
-                                    1
-                                </div>
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__add-amount">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col p-0">
-                        <div class="row pb-4 "></div>
-                        <div class="row ps-3 product-detail__price">15000000</div>
-                    </div>
-                    <div class="col-1 p-0">
-                        <div class="row pb-4"></div>
-                        <i class="bi bi-trash"></i>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
         </div>
         <div class="col-1"></div>
@@ -353,7 +136,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-8 h6">Tổng số tiền (đã tính VAT):</div>
-                    <div class="col-4" id="total-price">0</div>
+                    <div class="col-4" id="total-price" >${cart.getTotalPrice()}</div>
                 </div>
                 <div class="row ps-5 py-4 ">
                     <button class="payable rounded"><a href="../page/purchase.html" style="text-decoration: none;color: var(--web-background-color)">Thanh toán</a></button>
@@ -362,5 +145,62 @@
         </div>
     </div>
 </div>
+<jsp:include page="../../layout/public/footer.jsp"/>
+<script src="../../template/script/header.js"></script>
+<script src="../../template/script/cart.js"></script>
+<script src="template/script/header.js"></script>
+
+<script>
+    const formatter_1= new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
+    function updatePlusByQuantity(q,w,h){
+        console.log(q+'_'+w+'_'+h)
+        productCode=q+'_'+w+'_'+h
+        let quantityInput = $("div#quantity_" + productCode);
+        let newQuantity= Number.parseInt(quantityInput.text(),10) + 1
+        console.log(newQuantity)
+        $.ajax({
+            url:"/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
+            type:"GET",
+            success:function(){
+                console.log(newQuantity)
+                quantityInput.text(newQuantity)
+            } ,
+            error:function (){
+
+            }
+        })
+    }
+    function updateSubByQuantity(q,w,h){
+        console.log(q+'_'+w+'_'+h)
+        productCode=q+'_'+w+'_'+h
+        let quantityInput = $("div#quantity_" + productCode);
+        let newQuantity= Number.parseInt(quantityInput.text(),10) - 1
+        if(newQuantity<2){
+            $("#product-detail__remove-amount").attr("disabled",true)
+        }
+        else{
+            $("#product-detail__remove-amount").attr("disabled",false)
+        }
+        console.log(newQuantity)
+        $.ajax({
+            url:"/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
+            type:"GET",
+            success:function(){
+                console.log(newQuantity)
+                quantityInput.text(newQuantity)
+            } ,
+            error:function (){
+
+            }
+        })
+    }
+    function format(){
+        let totalPrice= ${cart.getTotalPrice()};
+        $("#total-price").text(formatter_1.format(totalPrice + ""))
+    }
+</script>
 </body>
 </html>

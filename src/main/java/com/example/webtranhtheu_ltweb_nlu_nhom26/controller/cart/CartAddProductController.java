@@ -4,6 +4,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.Cart;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
+import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "CartAddProductController", value = "/session/add-product")
+@WebServlet(name = "CartAddProductController", value = "/add-product")
 public class CartAddProductController extends HttpServlet {
     ProductService productService;
 
@@ -21,21 +22,22 @@ public class CartAddProductController extends HttpServlet {
         productService =ProductService.getInstance();
     }
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        String productId = request.getParameter("productId");
+        String productId = request.getParameter("id");
         String widthParam= request.getParameter("width");
         String heightParam= request.getParameter("height");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        Cart cart = (Cart) session.getAttribute("Cart");
+        Cart cart = (Cart) session.getAttribute("cart");
         if(cart == null) {
             cart = Cart.getInstance();
         }
        try{
            int id = Integer.parseInt(productId);
            Product product = productService.getProduct(id);
+           product.setListPrices(productService.getProductPrices(product.getId()));
            if(product == null) {
                response.sendError(HttpServletResponse.SC_NOT_FOUND);
            }
@@ -51,12 +53,16 @@ public class CartAddProductController extends HttpServlet {
            }
            //
            if(selectedPrice == null) {
-               request.setAttribute("error","Vui lòng chọn kích thước!");
-               request.getRequestDispatcher("/layout/product.jsp").forward(request,response);
+               response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//               JsonObject res = new JsonObject();
+//               res.addProperty("status", 401);
+//               res.addProperty("message", "Bạn chưa đăng nhập");
+//               res.addProperty("redirect", "/login");
+               response.getWriter().println("Vui lòng chọn kích thước!");
+               response.getWriter().flush();
            }else{
-               cart.addProduct(Integer.parseInt(productId),selectedPrice,quantity);
-               session.setAttribute("Cart",cart);
-               request.getRequestDispatcher("/layout/product.jsp").forward(request,response);
+               cart.addProduct(id,selectedPrice,quantity);
+               session.setAttribute("cart",cart );
            }
 
        }catch (NumberFormatException e){
@@ -64,8 +70,8 @@ public class CartAddProductController extends HttpServlet {
        }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        doGet(request, response);
+//    }
 }

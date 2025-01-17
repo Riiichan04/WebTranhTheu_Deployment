@@ -4,6 +4,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Discount;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -17,7 +18,6 @@ public class Cart implements Serializable {
     public static final int MAX_CART_PRODUCTS = 10;
     private static Cart instance;
     private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart
-
     private Cart() {
         products = new HashMap<>();
     }
@@ -41,21 +41,25 @@ public class Cart implements Serializable {
         } else {
             CartProduct cartProduct = covertToCart(productId);
             cartProduct.setQuantity(quantity);
-            if (!productCode.equals("no price")) {
-                return cartProduct.updateBySize(price.getWidth(), price.getHeight());
+            cartProduct.setPrices(ProductService.getInstance().getProductPrices(productId));
+            if (productCode.equals("no price")) {
+            return false;
             }
+            cartProduct.updateBySize(price.getWidth(), price.getHeight());
             cartProduct.setPrice(price);
             // Có xử lý cái total Price ko??
             cartProduct.getTotalPrice();
-            this.getTotalPrice();
             products.put(productCode, cartProduct);
+            this.getTotalPrice();
             return true;
         }
     }
 
     private CartProduct covertToCart(int productId) {
         CartProduct cartProduct = new CartProduct();
-        cartProduct.setProductId(productId);
+        Product product = ProductService.getInstance().getProduct(productId);
+        product.setListImageUrls(ProductService.getInstance().getListImageUrls(productId));
+        cartProduct.setProduct(product);
         return cartProduct;
     }
 
@@ -104,7 +108,7 @@ public class Cart implements Serializable {
         for (CartProduct cartProduct : products.values()) {
             totalPrice += cartProduct.getTotalPrice();
         }
-        totalPrice-= getSale()*totalPrice;
+//        totalPrice-= getSale()*totalPrice;
         setTotalPrice(totalPrice);
         return totalPrice;
     }
@@ -129,5 +133,9 @@ public class Cart implements Serializable {
 
     public void setDiscount(Discount discount) {
         this.discount = discount;
+    }
+
+    public Map<String, CartProduct> getProducts() {
+        return products;
     }
 }

@@ -2,6 +2,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart;
 
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 
 
 public class CartProduct implements Serializable {
-    private int productId; // lấy thông tin cố định của 1 product
+    private Product product; // lấy thông tin cố định của 1 product
     private List<Price> prices;
     private int quantity; // số lượng đã cho vào giỏ hàng
     public static final int MAX_PER_PRODUCT = 5; // số lượng tối đa có thể thêm 1 loại sản phẩm
@@ -17,12 +18,12 @@ public class CartProduct implements Serializable {
     public double totalPrice; // tính tổng tiền.
 
 
-    public CartProduct(int productId, int quantity, Price price) {
-        this.productId = productId;
-        this.prices= new ArrayList<>();
+    public CartProduct(Product product, int quantity, Price price) {
+        this.product = product;
+        this.prices = new ArrayList<>();
         this.quantity = quantity;
         this.price = price;
-        this.totalPrice= getTotalPrice();
+        this.totalPrice = getTotalPrice();
     }
 
     public CartProduct() {
@@ -34,12 +35,12 @@ public class CartProduct implements Serializable {
         return price.getPrice() * quantity;
     }
 
-    public int getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {
@@ -60,12 +61,41 @@ public class CartProduct implements Serializable {
 
 
     public boolean updateBySize(int width, int height) {
-        for(Price price : prices) {
-            if(price.getWidth() == width && price.getHeight() == height) {
+        for (Price price : prices) {
+            if (price.getWidth() == width && price.getHeight() == height) {
                 this.price = price;
                 return true;
             }
         }
         return false;
+    }
+
+    public String getThumbnail() {
+        return product.getThumbnail();
+    }
+
+    public String getTitle() {
+        return product.getTitle();
+    }
+
+    public String getProviderName() {
+        return product.getProvider().getProdiverName();
+    }
+
+    public Product getProductById(int id) {
+        if (this.product.getId() == id) return this.product;
+        return null;
+    }
+
+    public int getProductId() {
+        return this.product.getId();
+    }
+
+    public List<Price> getPrices() {
+        return prices;
+    }
+
+    public void setPrices(List<Price> prices) {
+        this.prices = prices;
     }
 }

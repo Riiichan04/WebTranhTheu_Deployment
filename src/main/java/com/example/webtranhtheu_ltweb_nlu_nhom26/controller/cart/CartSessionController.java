@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "CartSessionController", value = "/session/cart")
+@WebServlet(name = "CartSessionController", value = "/cart")
 public class CartSessionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,9 +19,9 @@ public class CartSessionController extends HttpServlet {
             cart= Cart.getInstance();
         }
         session.setAttribute("cart", cart);
-        request.setAttribute("cart", cart);
+//        request.setAttribute("cart", cart);
 
-        request.getRequestDispatcher("/web/cart.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/web/cart.jsp").forward(request, response);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
@@ -57,5 +58,11 @@ public class ProductService {
     public Product getProduct(int productId) {
         //TODO
         return productDAO.getProductInfo(productId);
+    }
+    public List<Price> getProductPrices(int productId) {
+        return productDAO.getProductPrices(productId);
+    }
+    public List<String> getListImageUrls(int productId) {
+        return productDAO.getListImageUrls(productId);
     }
 }
