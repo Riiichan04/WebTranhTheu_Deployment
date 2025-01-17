@@ -88,14 +88,17 @@ $("#purchase-btn").click(function () {
 })
 
 // Nút thêm vào giỏ
-$("#add-to-cart-btn").click(function () {
-    const cartBadge = $("#cart-badge")
-    cartBadge.removeClass("d-none")
-    let cartValue = parseInt(cartBadge.prop("innerText"))
-    cartValue += parseInt($("#product-detail__amount").prop("innerText"))
-    cartBadge.text(cartValue)
-    cartBadge.css("display", "flex");
-})
+// function addToCart(productId){
+//     const urlParams = new URLSearchParams(window.location.search);
+//     let currentWidth = urlParams.get("width")
+//     let currentHeight = urlParams.get("height")
+//     let quantity= parseInt($("#product-detail__amount").prop("innerText"))
+//     $.ajax({
+//         url: '/add-product?id=' + productId + '&width=' + currentWidth +'&height=' + currentHeight+ '&quantity=' + quantity,
+//         type:'GET',
+//         success: alert("Success"),
+//     })
+// }
 
 // Click vào số sao ở mục đánh giá để bình luận số sao
 $("#product-review__star .product-info__star-container").click(function () {

@@ -146,7 +146,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-6">
-                        <button id="add-to-cart-btn" class="sub-cta-button py-2 px-3 rounded">
+                        <button id="add-to-cart-btn" class="sub-cta-button py-2 px-3 rounded" onclick="addToCart('${product.id}')">
                             <i class="fa-solid fa-cart-shopping" style="color: var(--sub-cta-button);"></i>
                             Thêm vào giỏ
                         </button>
@@ -330,6 +330,27 @@
 <script src="template/script/product.js"></script>
 <script>
     displayRating(${avgRating}, $(".product-info__star-container").width())
+    function addToCart(){
+        let id='${product.id}'
+        const urlParams = new URLSearchParams(window.location.search);
+        let width = urlParams.get("width")
+        let height = urlParams.get("height")
+        let quantity= parseInt($("#product-detail__amount").prop("innerText"))
+        $.ajax({
+            url: '/add-product?id=' + id + '&width=' + width +'&height=' + height+ '&quantity=' + quantity,
+            type:'POST',
+            success: function (data) {
+                console.log("data")
+                console.log(data)
+                alert("Success")
+            },
+            error: function (error){
+                var errText= error.responseText
+                console.log(errText)
+                alert(errText)
+            }
+        })
+    }
 </script>
 </body>
 </html>

@@ -7,12 +7,12 @@
 <!-- FontAwesome -->
 <script src="https://kit.fontawesome.com/2643e782c1.js" crossorigin="anonymous"></script>
 <!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<%-- Tạm thời --%>
-<link rel="stylesheet" href="../../template/style/index.css">
-<link rel="stylesheet" href="../../template/style/user/header.css">
-<link rel="stylesheet" href="../../template/style/user/footer.css">
-<link rel="stylesheet" href="../../template/style/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <%-- Tạm thời --%>
+    <link rel="stylesheet" href="../../template/style/index.css">
+    <link rel="stylesheet" href="../../template/style/user/header.css">
+    <link rel="stylesheet" href="../../template/style/user/footer.css">
+    <link rel="stylesheet" href="../../template/style/style.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <!-- DataTable -->

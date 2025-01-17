@@ -12,6 +12,7 @@ import org.jdbi.v3.sqlobject.customizer.BindList;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
+import java.awt.*;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -174,5 +175,28 @@ public interface ProductDAO {
     @SqlUpdate("insert into product_images(productId, imgUrl)\n" +
             "values(:productId, :imgUrl)")
     void insertProductImage(@Bind("productId") int productId, @Bind("imgUrl") String imgUrl);
+
+    @SqlQuery("select id, codeProduct as code, title, description, status, typeOfProduct as type, createdAt, updatedAt from products where id = :id")
+    @RegisterBeanMapper(Product.class)
+    Product getProductById(@Bind("id") int id);
+
+    @SqlQuery("select c.id, c.title from category_products_details cd join categories c on cd.categoryId = c.id where cd.productId = :productId limit 1")
+    @RegisterBeanMapper(Category.class)
+    Category getCategoryById(@Bind("productId") int productId);
+
+    @SqlQuery("select t.id, t.title from topic_products_details tp join topics t on tp.topicId = t.id where tp.productId = :productId")
+    @RegisterBeanMapper(Topic.class)
+    List<Topic> getTopicById(@Bind("productId") int productId);
+
+    @SqlQuery("select id, price, available, width, height from product_prices where productId = :productId")
+    @RegisterBeanMapper(Price.class)
+    List<Price> getPriceById(@Bind("productId") int productId);
+
+    @SqlQuery("select id, accountId, rating, content, createdAt from product_reviews WHERE productId = :productId")
+    @RegisterBeanMapper(Review.class)
+    List<Review> getReviewById(@Bind("productId") int productId);
+
+    @SqlQuery("select imgUrl from product_images WHERE productId = :productId")
+    List<String> getImgUrlById(@Bind("productId") int productId);
 
 }

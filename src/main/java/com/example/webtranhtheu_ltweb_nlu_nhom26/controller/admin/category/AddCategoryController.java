@@ -24,7 +24,8 @@ public class AddCategoryController extends HttpServlet {
         int active = Integer.parseInt(request.getParameter("status"));
 
         CategoryService categoryService = new CategoryService();
-        Category category = new Category(title,  active, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()));
+        String patternName = categoryService.removeDiacritics(title);
+        Category category = new Category(title, patternName, active, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()));
         response.setContentType("application/json");
         if(categoryService.addCategory(category)){
             response.getWriter().write("{\"success\": true}");
