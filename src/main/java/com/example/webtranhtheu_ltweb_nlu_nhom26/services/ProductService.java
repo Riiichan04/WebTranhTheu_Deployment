@@ -3,20 +3,16 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.ProductDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
 import java.util.List;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
 import java.util.ArrayList;
-import java.util.List;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
@@ -51,8 +47,6 @@ public class ProductService {
     public static double getProductRating(int productId) {
         return new ConcreteProductDetail().getProductRating(productId);
     }
-
-    ProductDAO productDAO;
 
     public ProductService() {
         productDAO = JDBIConnector.getInstance().onDemand(ProductDAO.class);

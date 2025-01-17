@@ -79,7 +79,7 @@ public class CartProduct implements Serializable {
     }
 
     public String getProviderName() {
-        return product.getProvider().getProdiverName();
+        return product.getProvider().getProviderName();
     }
 
     public Product getProductById(int id) {

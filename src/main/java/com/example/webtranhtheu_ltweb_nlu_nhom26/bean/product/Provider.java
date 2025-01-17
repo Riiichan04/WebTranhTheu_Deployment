@@ -33,7 +33,6 @@ public class Provider implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-
     public void setProviderName(String providerName) {
         this.providerName = providerName;
     }

@@ -93,7 +93,7 @@ $(".product-detail__remove-amount").click(function () {
 })
 // xóa sản phẩm khỏi giỏ hàng.
 $(".bi-trash").click(function (){
-    $(this).parents(".cart-item").remove()
+    removeProduct($(this).parents(".cart-item"))
 })
 // chi tiết giảm giá
 $(".discount-detail").click(function (){

@@ -28,9 +28,9 @@
             <c:if test="${empty cart.products}">
                 <h4>Chưa có sản phẩm</h4>
             </c:if>
-            <div class="cart-item-list">
+            <div class="cart-item-list" id="cart-container">
                 <c:forEach items="${cart.products}" var="entry">
-                <div class=" row py-3 cart-item">
+                <div class=" row py-3 cart-item" data-width="${entry.value.price.width}" data-height="${entry.value.price.height}" data-id="${entry.value.product.id}">
                     <div class="col-1 text-center">
                         <div class="row pb-4"></div>
                         <div class="row ps-4">
@@ -192,6 +192,25 @@
                 console.log(newQuantity)
                 quantityInput.text(newQuantity)
             } ,
+            error:function (){
+
+            }
+        })
+    }
+    function removeProduct(element){
+        let g = element.attr("data-id")
+        let w = element.attr("data-width")
+        let h= element.attr("data-height")
+        productCode=g+'_'+w+'_'+h;
+        $.ajax({
+            url:"/remove-product?productCode=" + productCode,
+            type:"POST",
+            success: function (){
+                element.remove()
+                if ($(".cart-item").length === 0) {
+                    $("#cart-container").html(`<p>Chưa có sản phẩm</p>`)
+                }
+            },
             error:function (){
 
             }
