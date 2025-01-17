@@ -71,16 +71,18 @@
 </section>
 <section class="container background-container p-4_5 rounded my-4_5" id="category-section">
     <div class="row">
-        <h5 class="main-color mb-3">Tranh thêu theo chủ đề</h5>
+        <h5 class="main-color mb-3">Danh mục tranh thêu</h5>
         <hr/>
         <div class="row">
-            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu phong cảnh</div>
-            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu động vật</div>
-            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu hoa</div>
-            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu tứ quý</div>
-            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu chân dung</div>
-            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu phong thủy</div>
-            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu VIP</div>
+            <c:forEach var="category" items="${listCategory}">
+                <div onclick="window.location = '/category/${category.getPatternName()}'" class="col text-center open-category-button" style="cursor: pointer">${category.getTitle()}</div>
+            </c:forEach>
+<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu động vật</div>--%>
+<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu hoa</div>--%>
+<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu tứ quý</div>--%>
+<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu chân dung</div>--%>
+<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu phong thủy</div>--%>
+<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu VIP</div>--%>
         </div>
     </div>
 </section>
