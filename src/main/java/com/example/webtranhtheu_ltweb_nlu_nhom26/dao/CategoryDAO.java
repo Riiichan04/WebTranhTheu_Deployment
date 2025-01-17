@@ -67,4 +67,28 @@ public interface CategoryDAO {
         limit :offset, :limit
     """)
     List<Integer> filterProductIdWithNameAndCategory(@Bind("categoryName") String categoryName, @Bind("offset") int offset, @Bind("limit") int limit, @BindList("listId") List<Integer> listId);
+
+    @SqlQuery("""
+        select products.id
+        from products
+        join category_products_details
+            on products.id = category_products_details.productId
+        join categories
+            on category_products_details.categoryId = categories.id
+        join topic_products_details
+            on products.id = topic_products_details.productId
+        join product_prices
+            on products.id = product_prices.productId
+        join product_reviews
+            on products.id = product_reviews.productId
+        where (categories.title like :categoryName or :categoryName is null)
+            and (product_reviews.rating >= :rating or :rating is null)
+            and ((:fromPrice is null and :toPrice is null) or product_prices.price between :fromPrice and :toPrice)
+            and (topic_products_details.topicId in (<topicId>) or topicId is null)
+        limit :offset, :limit
+    """)
+    List<Product> filterProduct(@Bind("categoryName") String categoryName, @BindList("topicId") List<Integer> topicId,
+                                @Bind("rating") int rating,
+                                @Bind("fromPrice") double fromPice, @Bind("toPrice") double toPrice,
+                                @Bind("offset") int offset, @Bind("limit") int limit);
 }
