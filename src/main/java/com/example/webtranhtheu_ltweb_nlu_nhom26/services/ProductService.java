@@ -1,17 +1,37 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.ProductDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
 import java.util.List;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
 import java.util.ArrayList;
+import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
 public class ProductService {
+    private static ProductService instance;
+    private static ProductDAO productDAO;
+    public ProductService(ProductDAO productDAO) {
+        this.productDAO = productDAO;
+    }
+    public static ProductService getInstance() {
+        if (instance == null) {
+            Jdbi jdbi= JDBIConnector.getInstance();
+            jdbi.installPlugin(new SqlObjectPlugin());
+            productDAO = jdbi.onDemand(ProductDAO.class);
+            instance = new ProductService(productDAO);
+            return instance;
+        }
+        return instance;
+    }
 
     //Cần lấy phần discount ra class này
 
@@ -27,8 +47,6 @@ public class ProductService {
     public static double getProductRating(int productId) {
         return new ConcreteProductDetail().getProductRating(productId);
     }
-
-    ProductDAO productDAO;
 
     public ProductService() {
         productDAO = JDBIConnector.getInstance().onDemand(ProductDAO.class);
@@ -46,6 +64,17 @@ public class ProductService {
             products.add(product);
         }
         return products;
+    }
+
+    public Product getProduct(int productId) {
+        //TODO
+        return productDAO.getProductInfo(productId);
+    }
+    public List<Price> getProductPrices(int productId) {
+        return productDAO.getProductPrices(productId);
+    }
+    public List<String> getListImageUrls(int productId) {
+        return productDAO.getListImageUrls(productId);
     }
 
     public List<ProductDTO> listProductsDTO() {

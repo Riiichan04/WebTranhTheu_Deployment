@@ -93,6 +93,4 @@ public class Discount implements Serializable {
     public void setEndedAt(Timestamp endedAt) {
         this.endedAt = endedAt;
     }
-
-
 }
