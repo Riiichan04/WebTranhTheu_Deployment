@@ -15,13 +15,19 @@ public class CartSessionController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
-        if(cart == null) {
-            cart= Cart.getInstance();
+        Object accountIdObject = session.getAttribute("accountId");
+        if (accountIdObject == null) {
+            response.sendRedirect("/");
         }
-        session.setAttribute("cart", cart);
-//        request.setAttribute("cart", cart);
+        else {
+            if(cart == null) {
+                cart= Cart.getInstance();
+            }
+            session.setAttribute("cart", cart);
 
-        request.getRequestDispatcher("/views/web/cart.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/web/cart.jsp").forward(request, response);
+        }
+
     }
 
     @Override
