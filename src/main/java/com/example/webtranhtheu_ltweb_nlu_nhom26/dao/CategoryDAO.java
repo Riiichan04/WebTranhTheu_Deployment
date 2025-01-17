@@ -3,7 +3,9 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.CategoryDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.CategoryNameMapper;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
+import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
@@ -13,6 +15,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public interface CategoryDAO {
+    //Dùng cho admin
     @SqlQuery("select x.id, x.title, x.createdAt, x.active, x.totalProduct as quantity, COALESCE(y.totalProductBuy, 0) as numProductBought from (select c.id, c.title, c.active, c.createdAt, count(cd.productId) as totalProduct from categories c LEFT JOIN category_products_details cd on c.id = cd.categoryId\n" +
             "group by c.id, c.title, c.createdAt) as x LEFT JOIN (\n" +
             "select c.id, sum(o.amount) as totalProductBuy from order_products_details o join category_products_details cd on o.productId = cd.productId join categories c on c.id = cd.categoryId \n" +
@@ -48,4 +51,43 @@ public interface CategoryDAO {
                                 @Bind("productId") int productId,
                                 @Bind("updatedAt") Timestamp updatedAt);
 
+    //Dùng cho trang danh mục
+    @SqlQuery("""
+        select patternName
+        from categories
+        where patternName = :categoryName
+    """)
+    String getCategoryPatternName(@Bind("categoryName") String categoryName);
+
+    @SqlQuery("""
+        select products.id
+        from products
+            join category_products_details
+            on products.id = category_products_details.productId
+            join categories
+            on category_products_details.categoryId = categories.id
+        where categories.patternName like :categoryName
+        limit :offset, :limit
+    """)
+    List<Integer> getListIdInCategory(@Bind("categoryName") String categoryName, @Bind("offset") int offset, @Bind("limit") int limit);
+
+    @SqlQuery("""
+        select count(products.id)
+        from products
+            join category_products_details
+            on products.id = category_products_details.productId
+            join categories
+            on category_products_details.categoryId = categories.id
+        where categories.patternName like :categoryName
+    """)
+    int countProductByCategory(@Bind("categoryName") String categoryName);
+
+
+    @SqlQuery("""
+        select title, patternName
+        from categories
+        where active = 1
+    """)
+    @RegisterRowMapper(CategoryNameMapper.class)
+    List<Category> getAllCategoriesName();
 }

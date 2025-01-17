@@ -12,7 +12,7 @@
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">
         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">${product.category.title}</a>
+        <li class="breadcrumb-item" aria-current="page"><a href="/category/${product.category.patternName}">${product.category.title}</a>
         </li>
         <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>--%>
         <%--        Phần topic xử lý sau        --%>

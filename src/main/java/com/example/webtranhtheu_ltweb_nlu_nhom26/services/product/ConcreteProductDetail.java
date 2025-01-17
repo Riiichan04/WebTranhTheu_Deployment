@@ -5,12 +5,10 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
-import java.util.Arrays;
-
-public class ConcreateProductDetail implements ProductDetailService {
+public class ConcreteProductDetail implements ProductDetailService {
     ProductDAO productDAO;
 
-    public ConcreateProductDetail() {
+    public ConcreteProductDetail() {
         this.productDAO = JDBIConnector.getInstance().onDemand(ProductDAO.class);
     }
 
@@ -19,7 +17,6 @@ public class ConcreateProductDetail implements ProductDetailService {
     public Product getProductInfo(int productId) {
         return productDAO.getProductInfo(productId);
     }
-
 
     //Đây là method tạm
     public int countProducts() {

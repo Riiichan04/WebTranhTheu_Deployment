@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services.product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class DisplayFullProduct extends DecorationProductDetail {
         product.setCategory(this.getCategory(productId));
         product.setDiscount(this.getDiscount());
         product.getListTopics().addAll(this.getListTopics(productId));
-        product.getListPrices().addAll(this.getListPrices(productId));
+        product.getListPrices().addAll(this.getListPrices(productId).stream().sorted(Comparator.comparingDouble(Price::getPrice)).toList());
         product.getListMaterials().addAll(this.getListMaterials(productId));
         product.getListImageUrls().addAll(this.getListImageUrls(productId));
         product.getListReviews().addAll(this.getListReviews(productId, 0, 3)); //Mặc định offset = 0

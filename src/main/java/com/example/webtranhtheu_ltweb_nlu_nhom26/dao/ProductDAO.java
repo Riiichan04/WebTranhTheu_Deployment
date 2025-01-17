@@ -17,26 +17,51 @@ import java.util.List;
 
 public interface ProductDAO {
 
-    @SqlQuery("select products.id, products.title, products.codeProduct, products.description, products.typeOfProduct, products.createdAt, products.updatedAt from products join category_products_details on products.id = category_products_details.productId where products.id = :id")
+    @SqlQuery("""
+        select products.id, products.title, products.codeProduct, products.description,
+                   products.typeOfProduct, products.createdAt, products.updatedAt 
+        from products 
+        join category_products_details on products.id = category_products_details.productId 
+        where products.id = :id and products.status = 1
+    """)
     @RegisterRowMapper(BaseProductMapper.class)
     Product getProductInfo(@Bind("id") int id);
 
-    @SqlQuery("select categories.* from categories join category_products_details on categories.id = category_products_details.categoryId where category_products_details.productId = :id")
+    @SqlQuery("""
+        select categories.*
+        from categories
+        join category_products_details on categories.id = category_products_details.categoryId
+        where category_products_details.productId = :id and categories.active = 1
+    """)
     @RegisterBeanMapper(Category.class)
     Category getCategory(@Bind("id") int id);
 
     @SqlQuery("select imgUrl from product_images where productId = :id limit 1")
     String getThumbnail(@Bind("id") int id);
 
-    @SqlQuery("select providers.id, providers.providerName, addresses.location, providers.createdAt, providers.updatedAt from providers join products on providers.id = products.providerId join addresses on providers.addressId = addresses.id where products.id = :id")
+    @SqlQuery("""
+        select providers.id, providers.providerName, addresses.location, providers.createdAt, providers.updatedAt
+            from providers
+                join products on providers.id = products.providerId
+                join addresses on providers.addressId = addresses.id
+            where products.id = :id
+    """)
     @RegisterBeanMapper(Provider.class)
     Provider getProductProvider(@Bind("id") int id);
 
-    @SqlQuery("select policies.title, policies.description, policies.createdAt, policies.updatedAt from policies join products on policies.id = products.policyId where products.id = :id")
+    @SqlQuery("""
+        select policies.title, policies.description, policies.createdAt, policies.updatedAt
+        from policies join products on policies.id = products.policyId
+        where products.id = :id
+    """)
     @RegisterBeanMapper(Policy.class)
     Policy getProductPolicy(@Bind("id") int id);
 
-    @SqlQuery("select topics.id, topics.title, topics.active, topics.createdAt, topics.updatedAt from topics join topic_products_details on topic_products_details.topicId = topics.id where topic_products_details.productId = :id")
+    @SqlQuery("""
+        select topics.id, topics.title, topics.active, topics.createdAt, topics.updatedAt
+        from topics join topic_products_details on topic_products_details.topicId = topics.id
+        where topic_products_details.productId = :id and topics.active = 1
+    """)
     @RegisterBeanMapper(Topic.class)
     List<Topic> getTopics(@Bind("id") int id);
 
@@ -82,18 +107,18 @@ public interface ProductDAO {
     int insertReview(@Bind("accountId") int accountId, @Bind("productId") int productId, @Bind("rating") int rating, @Bind("content") String content, @Bind("createdAt") Timestamp createdAt, @Bind("updatedAt") Timestamp updatedAt);
 
     @SqlQuery("""
-                select ifnull(count(orders.accountId) > reviews.count_review, 1) as result
-                from orders
-                join order_products_details
-                on orders.id = order_products_details.orderId
-                join (
-                    select count(accountId) as count_review, accountId
-                    from product_reviews
-                    where accountId = :accountId and productId = :productId
-                    group by accountId
-                ) as reviews
-                on reviews.accountId = orders.accountId
-                where orders.accountId = :accountId and order_products_details.productId = :productId
+        select ifnull(count(orders.accountId) > reviews.count_review, 1) as result
+        from orders
+            join order_products_details
+            on orders.id = order_products_details.orderId
+            join (
+                select count(accountId) as count_review, accountId
+                from product_reviews
+                where accountId = :accountId and productId = :productId
+                group by accountId
+            ) as reviews
+            on reviews.accountId = orders.accountId
+        where orders.accountId = :accountId and order_products_details.productId = :productId
     """)
     boolean isUserCanReview(@Bind("accountId") int accountId, @Bind("productId") int productId);
 
