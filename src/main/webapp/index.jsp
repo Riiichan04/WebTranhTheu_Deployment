@@ -31,9 +31,9 @@
         </div>
     </div>
 </section>
-<section class="container background-container p-4_5 rounded my-4_5" id="hot-product-section">
+<section class="container  p-4_5 rounded my-4_5" id="hot-product-section">
     <div class="row">
-        <h5 class="main-color mb-3"> Sản phẩm HOT</h5>
+        <h4 class="main-color mb-3"> Sản phẩm HOT</h4>
         <hr/>
         <c:forEach var="product" items="${hotProduct}">
             <div class="col">
@@ -41,8 +41,9 @@
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
                             <%-- Tạm --%>
-                        <h6 class="card-title text-center pb-2">${product.category} ${product.title}</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
+                        <h5 class="card-title text-center pb-2 fw-semibold">${product.category} ${product.title}</h5>
+                        <p class="card-text text-center mt-2">Nhà cung cấp: ${product.getProvider().getProviderName()}</p>
+                        <p class="card-text text-center fw-semibold h4 mt-2"
                            style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
                     </div>
                 </div>
@@ -50,9 +51,9 @@
         </c:forEach>
     </div>
 </section>
-<section class="container background-container p-4_5 rounded my-4_5" id="most-rated-product-section">
+<section class="container  p-4_5 rounded my-4_5" id="most-rated-product-section">
     <div class="row">
-        <h5 class="main-color mb-3"> Sản phẩm được đánh giá cao nhất</h5>
+        <h4 class="main-color mb-3"> Sản phẩm được đánh giá cao nhất</h4>
         <hr/>
         <c:forEach var="product" items="${mostRatedProduct}">
             <div class="col">
@@ -60,35 +61,39 @@
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
                             <%-- Tạm --%>
-                        <h6 class="card-title text-center pb-2">${product.title}</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2"
-                           style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                        <h5 class="card-title text-center pb-2 fw-semibold">${product.title}</h5>
+                        <p class="card-text text-center mt-2">Nhà cung
+                            cấp: ${product.getProvider().getProviderName()}</p>
+                        <p class="card-text text-center fw-semibold h4 mt-2"
+                           style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                        </p>
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
 </section>
-<section class="container background-container p-4_5 rounded my-4_5" id="category-section">
+<section class="container  p-4_5 rounded my-4_5" id="category-section">
     <div class="row">
-        <h5 class="main-color mb-3">Danh mục tranh thêu</h5>
+        <h4 class="main-color mb-3">Danh mục tranh thêu</h4>
         <hr/>
         <div class="row">
             <c:forEach var="category" items="${listCategory}">
-                <div onclick="window.location = '/category/${category.getPatternName()}'" class="col text-center open-category-button" style="cursor: pointer">${category.getTitle()}</div>
+                <div onclick="window.location = '/category/${category.getPatternName()}'"
+                     class="col text-center open-category-button" style="cursor: pointer">${category.getTitle()}</div>
             </c:forEach>
-<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu động vật</div>--%>
-<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu hoa</div>--%>
-<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu tứ quý</div>--%>
-<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu chân dung</div>--%>
-<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu phong thủy</div>--%>
-<%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu VIP</div>--%>
+            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu động vật</div>--%>
+            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu hoa</div>--%>
+            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu tứ quý</div>--%>
+            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu chân dung</div>--%>
+            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu phong thủy</div>--%>
+            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu VIP</div>--%>
         </div>
     </div>
 </section>
-<section class="container background-container p-4_5 rounded my-4_5" id="full-product-section">
+<section class="container  p-4_5 rounded my-4_5" id="full-product-section">
     <div class="row">
-        <h5 class="main-color mb-3">Tất cả sản phẩm </h5>
+        <h4 class="main-color mb-3">Tất cả sản phẩm </h4>
         <hr/>
         <div id="full-product__product-list">
         </div>

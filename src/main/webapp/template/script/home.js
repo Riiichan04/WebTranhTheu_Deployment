@@ -10,8 +10,8 @@ function getOneProductsRow(listProducts) {
                 <div onclick="window.location='/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.thumbnail}" class="card-img" alt="">
                     <div class="card-body px-1">
-                        <h6 class="card-title text-center pb-2">${product.title}</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.price}</p>
+                        <h5 class="card-title text-center pb-2 fw-semibold">${product.title}</h5>
+                        <p class="card-text text-center fw-semibold h4 mt-2" style="color: var(--sub-cta-button)">${product.price}</p>
                     </div>
                 </div>
             </div>
