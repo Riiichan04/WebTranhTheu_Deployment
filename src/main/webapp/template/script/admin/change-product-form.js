@@ -127,12 +127,13 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-read-edit').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/product-management/update-product";
+    $('#myTable').on('click', '.btn-read-edit', function () {
+        const productId = $(this).data('id');
+        const url = "/admin/product-management/read-edit-product-form";
         $.ajax({
             url: url,
             type: "GET",
+            data: {productId: productId},
             success: function (data) {
                 openOverlay();
                 $('#formWrapper').html(data);
@@ -154,7 +155,7 @@ $(document).ready(function () {
                 // Xử lý nút hủy
                 $('#cancelBtn').on('click', function () {
                     hiddenOverlay();
-                })
+                });
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");

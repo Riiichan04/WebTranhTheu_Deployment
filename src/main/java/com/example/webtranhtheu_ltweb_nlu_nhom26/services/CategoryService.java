@@ -9,7 +9,9 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProduc
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
 import java.sql.Timestamp;
+import java.text.Normalizer;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.ArrayList;
 
 public class CategoryService {
@@ -50,6 +52,14 @@ public class CategoryService {
         }
     }
 
+    public String removeDiacritics(String input) {
+        String normalized = Normalizer.normalize(input.toLowerCase(), Normalizer.Form.NFD);
+        // Loại bỏ các ký tự không phải ASCII
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        String result = pattern.matcher(normalized).replaceAll("").replace("đ", "d").replace("Đ", "D");
+        result = result.replace("\s", "-");
+        return result;
+    }
 
     //Dùng cho trang danh mục
     //Lấy amount sản phẩm tính từ offset

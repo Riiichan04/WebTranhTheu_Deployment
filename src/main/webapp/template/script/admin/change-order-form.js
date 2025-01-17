@@ -76,7 +76,7 @@ $(document).ready(function () {
                 render: function (data, type, row) {
                     return `
                         <button class="btn-read-edit" data-id="${row.id}">Xem và Chỉnh Sửa</button>
-                        <button class="btn-delete" data-id="${row.id}">Tắt</button>
+                        <!--<button class="btn-delete" data-id="${row.id}">Tắt</button>-->
                     `;
                 }
             }

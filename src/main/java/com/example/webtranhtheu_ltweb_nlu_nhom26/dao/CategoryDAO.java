@@ -23,7 +23,7 @@ public interface CategoryDAO {
     @RegisterBeanMapper(CategoryDTO.class)
     List<CategoryDTO> getListCategoryDTO();
 
-    @SqlUpdate("insert into categories(title, active, createdAt, updatedAt) values (:title, :active, :createdAt, :updatedAt)")
+    @SqlUpdate("insert into categories(title, patternName,active, createdAt, updatedAt) values (:title, :patternName, :active, :createdAt, :updatedAt)")
     @RegisterBeanMapper(Category.class)
     boolean insertCategory(@BindBean Category category);
 
@@ -39,7 +39,7 @@ public interface CategoryDAO {
     @RegisterBeanMapper(Product.class)
     List<Product> getProductsNotInCategory(@Bind("categoryId") int categoryId);
 
-    @SqlUpdate("update categories set title = :title, active = :active, updatedAt = :updatedAt where id = :id")
+    @SqlUpdate("update categories set title = :title, patternName = :patternName, active = :active, updatedAt = :updatedAt where id = :id")
     boolean updateCategory(@BindBean Category category);
 
     @SqlUpdate("DELETE FROM category_products_details WHERE productId = :productId AND categoryId = :categoryId")

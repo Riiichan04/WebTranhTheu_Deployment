@@ -15,16 +15,18 @@ public class Category implements Serializable {
 
     }
 
-    public Category(int id, String title, int active, Timestamp createdAt, Timestamp updatedAt) {
+    public Category(int id, String title, String patternName, int active, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.title = title;
+        this.patternName = patternName;
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Category(String title, int active, Timestamp createdAt, Timestamp updatedAt) {
+    public Category(String title, String patternName, int active, Timestamp createdAt, Timestamp updatedAt) {
         this.title = title;
+        this.patternName = patternName;
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;

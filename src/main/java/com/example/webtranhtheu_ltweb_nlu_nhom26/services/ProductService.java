@@ -77,4 +77,19 @@ public class ProductService {
             productDAO.insertProductImage(id, img);
         }
     }
+
+    public Product getProductById(int id) {
+        Product product = productDAO.getProductById(id);
+        Category c = productDAO.getCategoryById(product.getId());
+        product.setCategory(c);
+        List<Topic> topics = productDAO.getTopicById(product.getId());
+        product.setListTopics(topics);
+        List<Price> prices = productDAO.getPriceById(product.getId());
+        product.setListPrices(prices);
+        List<Review> reviews = productDAO.getReviewById(id);
+        product.setListReviews(reviews);
+        List<String> img = productDAO.getImgUrlById(id);
+        product.setListImageUrls(img);
+        return product;
+    }
 }
