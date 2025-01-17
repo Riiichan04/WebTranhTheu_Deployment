@@ -71,7 +71,7 @@
                         <i class="fa-solid fa-lightbulb me-2"></i>
                         Quản lý chủ đề
                     </a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin/topic-management" class="select-nav px-4 ajax-link" id="provider">
+                    <li><a href="#" class="select-nav px-4 ajax-link" id="provider">
                         <i class="fa-solid fa-lightbulb me-2"></i>
                         Quản lý nhà cung cấp
                     </a></li>
