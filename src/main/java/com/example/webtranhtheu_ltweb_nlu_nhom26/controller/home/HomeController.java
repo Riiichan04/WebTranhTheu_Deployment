@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.home;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.HomeService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,6 +24,7 @@ public class HomeController extends HttpServlet {
         List<Product> listMostRatedProduct = service.getMostRatedProduct();
         request.setAttribute("hotProduct", listHotProduct);
         request.setAttribute("mostRatedProduct", listMostRatedProduct);
+        request.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
