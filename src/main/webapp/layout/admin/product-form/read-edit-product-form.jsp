@@ -1,16 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINH THU
-  Date: 12/23/2024
-  Time: 1:48 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Xem và Sửa thông tin sản phẩm</title>
-    <%@include file="../../public/library.jsp"%>
+    <%@include file="../../public/library.jsp" %>
     <!-- css property -->
     <link rel="stylesheet" href="../../../template/style/admin/style-form/general-form.css">
     <link rel="stylesheet" href="../../../template/style/admin/style-form/style-read-edit-product-form.css">
@@ -28,7 +23,9 @@
             <div class="col"><span class="style-title">Mã sản phẩm</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" id="code_product" class="w-100 style-input" value="SP01" placeholder="Nhập mã sản phẩm" disabled required>
+            <div class="col p-0"><input type="text" id="code_product" class="w-100 style-input"
+                                        value="${product.getCode()}" name="code" placeholder="Nhập mã sản phẩm" disabled
+                                        required>
             </div>
         </div>
         <!-- tên sản phẩm -->
@@ -36,8 +33,8 @@
             <div class="col"><span class="style-title">Tên sản phẩm</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" id="nameProduct"
-                                        value="Tranh thêu sông nước" required disabled>
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="nameProduct" name="title"
+                                        value="${product.getTitle()}" required disabled>
             </div>
         </div>
         <!-- hình ảnh -->
@@ -45,14 +42,18 @@
             <div class="col"><span class="style-title" id="title-img">Hình ảnh</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0 text-center">
-                <div class="img-product-container w-100">
-                    <img src="https://tranhvietcaocap.com/timthumb.php?src=upload/images/tranh-theu-tang-co-giao-%E2%80%93-mon-qua-tri-an-chan-thanh-nhan-ngay-nha-giao-viet-nam-20-11.jpg&w=390&h=0&zc=1&a=tc">
+            <c:forEach items="${product.getListImageUrls()}" var="img">
+                <div class="row">
+                    <div class="col p-0 text-center">
+                        <div class="img-product-container w-100">
+                            <img src="${img}">
+                        </div>
+                    </div>
+                    <div class="col-1 d-none edit-hidden">
+                        <input type="checkbox" class="checkbox-del">
+                    </div>
                 </div>
-            </div>
-            <div class="col-1 d-none edit-hidden">
-                <input type="checkbox" class="checkbox-del">
-            </div>
+            </c:forEach>
         </div>
 
         <div class="row pt-3 d-none edit-hidden">
@@ -67,60 +68,70 @@
             <div class="col"><span class="style-title">Mô tả</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><textarea class="w-100 style-area" id="descriptionProduct" required disabled>Mô tả sản phẩm này</textarea>
+            <div class="col p-0"><textarea class="w-100 style-area" id="descriptionProduct" name="description" required
+                                           disabled>${product.getDescription()}</textarea>
             </div>
         </div>
 
         <!-- loại tranh: kích thước khác nhau giá khác nhau -->
         <div class="row pt-2">
-            <div class="col"><p class="style-title m-0">Loại tranh<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addProductPrice()"></i></p></div>
+            <div class="col"><p class="style-title m-0">Loại tranh<i
+                    class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addProductPrice()"></i>
+            </p></div>
         </div>
         <div class="row pt-2">
             <div class="col">
                 <div id="product_price">
-                    <div class="row form-group product-price-row mb-2">
-                        <div class="row ps-5">
-                            <span class="style-label">Loại tranh 1</span>
-                        </div>
-                        <div class="col">
-                            <!-- giá bán và số lượng -->
-                            <div class="row pt-2">
-                                <div class="col p-0 pe-1 text-center">
-                                    <label class="style-label pb-2">Giá bán (VNĐ)</label>
-                                    <input type="number" id="price" class="w-100 style-input"
-                                           placeholder="Nhập giá bán sản phẩm" value="8000000" required disabled>
+                    <c:forEach items="${product.getListPrices()}" var="p">
+                        <div class="row form-group product-price-row mb-2">
+                            <div class="row ps-5">
+                                <span class="style-label">Loại tranh</span>
+                            </div>
+                            <div class="col">
+                                <!-- giá bán và số lượng -->
+                                <div class="row pt-2">
+                                    <div class="col p-0 pe-1 text-center">
+                                        <label class="style-label pb-2">Giá bán (VNĐ)</label>
+                                        <input type="number" id="price" class="w-100 style-input"
+                                               placeholder="Nhập giá bán sản phẩm" value="${p.getPrice()}" required
+                                               disabled>
+                                    </div>
+                                    <div class="col p-0 ps-1 text-center">
+                                        <label class="style-label pb-2">Số lượng</label>
+                                        <input type="number" id="quantityProduct" class="w-100 style-input"
+                                               placeholder="Nhập số lượng sản phẩm" value="${p.getAvailable()}" required
+                                               disabled>
+                                    </div>
                                 </div>
-                                <div class="col p-0 ps-1 text-center">
-                                    <label class="style-label pb-2">Số lượng</label>
-                                    <input type="number" id="quantityProduct" class="w-100 style-input"
-                                           placeholder="Nhập số lượng sản phẩm" value="100" required disabled>
+                                <!-- kích thước -->
+                                <div class="row pt-2">
+                                    <div class="col p-0 pe-1 text-center">
+                                        <label class="style-label pb-2">Chiều rộng</label>
+                                        <input type="number" class="w-100 style-input" id="widthProduct"
+                                               placeholder="Chiều rộng (cm)"
+                                               value="${p.getWidth()}" disabled>
+                                    </div>
+                                    <div class="col p-0 ps-1 text-center">
+                                        <label class="style-label pb-2">Chiều cao</label>
+                                        <input type="number" class="w-100 style-input" id="heightProduct"
+                                               placeholder="Chiều cao (cm)"
+                                               value="${p.getHeight()}" disabled>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- kích thước -->
-                            <div class="row pt-2">
-                                <div class="col p-0 pe-1 text-center">
-                                    <label class="style-label pb-2">Chiều rộng</label>
-                                    <input type="number" class="w-100 style-input" id="widthProduct" placeholder="Chiều rộng (cm)"
-                                           value="40" disabled>
-                                </div>
-                                <div class="col p-0 ps-1 text-center">
-                                    <label class="style-label pb-2">Chiều cao</label>
-                                    <input type="number" class="w-100 style-input" id="heightProduct" placeholder="Chiều cao (cm)"
-                                           value="60" disabled>
-                                </div>
+                            <div class="col-1 d-none edit-hidden">
+                                <i class="fa-solid fa-trash icon-del" onclick="removeProductPrice(this)"></i>
                             </div>
                         </div>
-                        <div class="col-1 d-none edit-hidden">
-                            <i class="fa-solid fa-trash icon-del" onclick="removeProductPrice(this)"></i>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
 
         <!-- chất liệu -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Chất liệu<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden"></i></span></div>
+            <div class="col"><span class="style-title">Chất liệu<i
+                    class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden"></i></span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
@@ -205,44 +216,29 @@
                 <table id="myProductEditTable" class="w-100">
                     <thead>
                     <tr>
-                        <th class="text-center">STT</th>
-                        <th class="text-center">Tên đăng nhập</th>
+                        <th class="text-center">ID người dùng</th>
                         <th class="text-center">Đánh giá (<span
                                 style="color: #e9f1ec">★</span>)
                         </th>
                         <th class="text-center">Bình luận</th>
                         <th class="text-center">Ngày tạo</th>
-                        <th class="text-center">Ngày cập nhật</th>
                         <th class="text-center d-none edit-hidden">Xóa</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>hoa123</td>
-                        <td><input type="number" class="reviewByStar" min="1" max="5" value="4" style="width: 50px"
-                                   required disabled></td>
-                        <td><textarea class="style-textarea-cmt comment"
-                                      disabled>Tranh thêu đẹp, chất liệu tốt</textarea></td>
-                        <td>1/2/2024</td>
-                        <td>1/2/2024</td>
-                        <td class="d-none edit-hidden">
-                            <input type="checkbox" style="width: 15px; height: 15px">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>hoa123</td>
-                        <td><input type="number" class="reviewByStar" min="1" max="5" value="5" style="width: 50px"
-                                   required disabled></td>
-                        <td><textarea class="style-textarea-cmt comment"
-                                      disabled>Tranh thêu đẹp, chất liệu tốt</textarea></td>
-                        <td>1/2/2024</td>
-                        <td>1/2/2024</td>
-                        <td class="d-none edit-hidden">
-                            <input type="checkbox" style="width: 15px; height: 15px">
-                        </td>
-                    </tr>
+                    <c:forEach items="${product.getListReviews()}" var="r">
+                        <tr>
+                            <td>${r.getAccountId()}</td>
+                            <td><input type="number" class="reviewByStar" min="1" max="5" value="${r.getRating()}" style="width: 50px"
+                                       required disabled></td>
+                            <td><textarea class="style-textarea-cmt comment"
+                                          disabled>${r.getContent()}</textarea></td>
+                            <td><fmt:formatDate value="${r.getCreatedAt()}" pattern="dd/MM/yyyy" /></td>
+                            <td class="d-none edit-hidden">
+                                <input type="checkbox" style="width: 15px; height: 15px">
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -253,9 +249,9 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select" id="status" required disabled>
-                    <option selected>Đang hoạt động</option>
-                    <option>Vô hiệu hóa</option>
+                <select class="style-select" id="status" name="status" required disabled>
+                    <option value="1" ${product.getStatus() == 1 ? 'selected' : ''}>Đang hoạt động</option>
+                    <option value="0" ${product.getStatus() == 0 ? 'selected' : ''}>Vô hiệu hóa</option>
                 </select>
             </div>
         </div>
@@ -264,7 +260,7 @@
             <div class="col"><span class="style-title">Ngày thêm sản phẩm</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-30" required disabled>
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="${createAt}" disabled>
             </div>
         </div>
         <!-- ngày cập nhật -->
@@ -272,15 +268,23 @@
             <div class="col"><span class="style-title">Ngày cập nhật sản phẩm</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input" disabled></div>
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="${updateAt}" disabled></div>
         </div>
 
         <div class="row pt-4 pb-4">
-            <div class="col" id="containerCancelBtn">
+            <div class="col read">
                 <button type="button" id="cancelBtn" class="style-cancel-btn">Hủy</button>
             </div>
-            <div class="col" id="containerEditBtn">
+            <div class="col read">
                 <button type="button" class="style-button" id="editBtn">Chỉnh sửa</button>
+            </div>
+            <div class="col d-none edit-hidden">
+                <button type="button" id="cancelEditBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col d-none edit-hidden">
+                <button class="style-update-btn" value="<c:out value="${product.getId()}"/>" type="submit"
+                        id="submitBtn">Cập nhật
+                </button>
             </div>
         </div>
     </form>

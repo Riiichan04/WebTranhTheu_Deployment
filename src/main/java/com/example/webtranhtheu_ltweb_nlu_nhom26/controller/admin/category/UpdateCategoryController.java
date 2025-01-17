@@ -22,13 +22,14 @@ public class UpdateCategoryController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Lấy dữ liệu từ form
+        CategoryService categoryService = new CategoryService();
         String categoryId = request.getParameter("categoryId");
         String name = request.getParameter("name");
+        String patternName = categoryService.removeDiacritics(name);
         String[] selectedProductIdsDelete = request.getParameterValues("selectedProductIdsDelete")==null?new String[0]:request.getParameterValues("selectedProductIdsDelete");
         String[] selectedProductIdsAdd = request.getParameterValues("selectedProductIdsAdd")==null?new String[0]:request.getParameterValues("selectedProductIdsAdd");
         int active = Integer.parseInt(request.getParameter("statusCategory"));
-        Category category = new Category(Integer.parseInt(categoryId), name, active, null, new Timestamp(System.currentTimeMillis()));
-        CategoryService categoryService = new CategoryService();
+        Category category = new Category(Integer.parseInt(categoryId), name, patternName, active, null, new Timestamp(System.currentTimeMillis()));
         categoryService.updateCategory(category, selectedProductIdsDelete, selectedProductIdsAdd);
     }
 }

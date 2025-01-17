@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class Review implements Serializable {
+    private int id;
     private int productId;
     private int accountId;
     private int rating;
@@ -21,6 +22,14 @@ public class Review implements Serializable {
         this.content = content;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getProductId() {

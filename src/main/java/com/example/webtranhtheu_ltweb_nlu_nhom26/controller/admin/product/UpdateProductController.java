@@ -12,11 +12,7 @@ import java.io.IOException;
 public class UpdateProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
 
-
-        request.getRequestDispatcher("/layout/admin/product-form/read-edit-product-form.jsp").forward(request, response);
     }
 
     @Override
