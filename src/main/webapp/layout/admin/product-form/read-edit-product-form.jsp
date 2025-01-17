@@ -1,0 +1,291 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: MINH THU
+  Date: 12/23/2024
+  Time: 1:48 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Xem và Sửa thông tin sản phẩm</title>
+    <%@include file="../../public/library.jsp"%>
+    <!-- css property -->
+    <link rel="stylesheet" href="../../../template/style/admin/style-form/general-form.css">
+    <link rel="stylesheet" href="../../../template/style/admin/style-form/style-read-edit-product-form.css">
+</head>
+<body>
+<!-- Form container -->
+<div id="formContainer">
+    <!-- enter code -->
+    <form class="form-container">
+        <div class="row pt-3">
+            <div class="col"><h2 class="style-big-title" id="title">Xem sản phẩm</h2></div>
+        </div>
+        <!-- mã sản phẩm -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Mã sản phẩm</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" id="code_product" class="w-100 style-input" value="SP01" placeholder="Nhập mã sản phẩm" disabled required>
+            </div>
+        </div>
+        <!-- tên sản phẩm -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Tên sản phẩm</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="nameProduct"
+                                        value="Tranh thêu sông nước" required disabled>
+            </div>
+        </div>
+        <!-- hình ảnh -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title" id="title-img">Hình ảnh</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0 text-center">
+                <div class="img-product-container w-100">
+                    <img src="https://tranhvietcaocap.com/timthumb.php?src=upload/images/tranh-theu-tang-co-giao-%E2%80%93-mon-qua-tri-an-chan-thanh-nhan-ngay-nha-giao-viet-nam-20-11.jpg&w=390&h=0&zc=1&a=tc">
+                </div>
+            </div>
+            <div class="col-1 d-none edit-hidden">
+                <input type="checkbox" class="checkbox-del">
+            </div>
+        </div>
+
+        <div class="row pt-3 d-none edit-hidden">
+            <div class="col"><span class="style-title">Tải ảnh sản phẩm lên</span></div>
+        </div>
+        <div class="row pt-2 d-none edit-hidden">
+            <div class="col p-0"><input type="file" class="w-100 style-input" multiple>
+            </div>
+        </div>
+        <!-- mô tả -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Mô tả</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><textarea class="w-100 style-area" id="descriptionProduct" required disabled>Mô tả sản phẩm này</textarea>
+            </div>
+        </div>
+
+        <!-- loại tranh: kích thước khác nhau giá khác nhau -->
+        <div class="row pt-2">
+            <div class="col"><p class="style-title m-0">Loại tranh<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addProductPrice()"></i></p></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col">
+                <div id="product_price">
+                    <div class="row form-group product-price-row mb-2">
+                        <div class="row ps-5">
+                            <span class="style-label">Loại tranh 1</span>
+                        </div>
+                        <div class="col">
+                            <!-- giá bán và số lượng -->
+                            <div class="row pt-2">
+                                <div class="col p-0 pe-1 text-center">
+                                    <label class="style-label pb-2">Giá bán (VNĐ)</label>
+                                    <input type="number" id="price" class="w-100 style-input"
+                                           placeholder="Nhập giá bán sản phẩm" value="8000000" required disabled>
+                                </div>
+                                <div class="col p-0 ps-1 text-center">
+                                    <label class="style-label pb-2">Số lượng</label>
+                                    <input type="number" id="quantityProduct" class="w-100 style-input"
+                                           placeholder="Nhập số lượng sản phẩm" value="100" required disabled>
+                                </div>
+                            </div>
+                            <!-- kích thước -->
+                            <div class="row pt-2">
+                                <div class="col p-0 pe-1 text-center">
+                                    <label class="style-label pb-2">Chiều rộng</label>
+                                    <input type="number" class="w-100 style-input" id="widthProduct" placeholder="Chiều rộng (cm)"
+                                           value="40" disabled>
+                                </div>
+                                <div class="col p-0 ps-1 text-center">
+                                    <label class="style-label pb-2">Chiều cao</label>
+                                    <input type="number" class="w-100 style-input" id="heightProduct" placeholder="Chiều cao (cm)"
+                                           value="60" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1 d-none edit-hidden">
+                            <i class="fa-solid fa-trash icon-del" onclick="removeProductPrice(this)"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- chất liệu -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Chất liệu<i class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden"></i></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select material" disabled>
+                    <option>Vải</option>
+                    <option>Chỉ</option>
+                    <option>Gỗ</option>
+                </select>
+            </div>
+            <div class="col-1 pe-0 edit-hidden d-none">
+                <i class="fa-solid fa-trash icon-del"></i>
+            </div>
+        </div>
+        <!-- nhà phân phối -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Nhà phân phối</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" id="provider" required disabled>
+                    <option selected>Nhà phân phối 1</option>
+                    <option>Nhà phân phối 2</option>
+                    <option>Nhà phân phối 3</option>
+                    <option>Nhà phân phối 4</option>
+                    <option>Nhà phân phối 5</option>
+                    <option>Nhà phân phối 6</option>
+                    <option>Nhà phân phối 7</option>
+                    <option>Nhà phân phối 8</option>
+                    <option>Nhà phân phối 9</option>
+                </select>
+            </div>
+        </div>
+        <!-- chính sách -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Chính sách</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" id="policy" disabled>
+                    <option selected>Chính sách 1</option>
+                    <option>Chính sách 2</option>
+                    <option>Chính sách 3</option>
+                    <option>Chính sách 4</option>
+                    <option>Chính sách 5</option>
+                    <option>Chính sách 6</option>
+                    <option>Chính sách 7</option>
+                    <option>Chính sách 8</option>
+                </select>
+            </div>
+        </div>
+        <!-- chủ đề -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title" id="title-topic-product">Chủ đề (Chọn nhiều)</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select-many" id="topic-product" multiple disabled>
+                    <option>Chủ để 1</option>
+                    <option>Chủ để 2</option>
+                    <option>Chủ để 3</option>
+                </select>
+            </div>
+        </div>
+        <!-- danh mục -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title" id="titleCategory">Danh mục</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" id="category" disabled>
+                    <option>Danh mục 4</option>
+                    <option>Danh mục 5</option>
+                </select>
+            </div>
+        </div>
+        <!-- table đánh giá sản phẩm -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Đánh giá của người dùng</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <table id="myProductEditTable" class="w-100">
+                    <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Tên đăng nhập</th>
+                        <th class="text-center">Đánh giá (<span
+                                style="color: #e9f1ec">★</span>)
+                        </th>
+                        <th class="text-center">Bình luận</th>
+                        <th class="text-center">Ngày tạo</th>
+                        <th class="text-center">Ngày cập nhật</th>
+                        <th class="text-center d-none edit-hidden">Xóa</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>hoa123</td>
+                        <td><input type="number" class="reviewByStar" min="1" max="5" value="4" style="width: 50px"
+                                   required disabled></td>
+                        <td><textarea class="style-textarea-cmt comment"
+                                      disabled>Tranh thêu đẹp, chất liệu tốt</textarea></td>
+                        <td>1/2/2024</td>
+                        <td>1/2/2024</td>
+                        <td class="d-none edit-hidden">
+                            <input type="checkbox" style="width: 15px; height: 15px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>hoa123</td>
+                        <td><input type="number" class="reviewByStar" min="1" max="5" value="5" style="width: 50px"
+                                   required disabled></td>
+                        <td><textarea class="style-textarea-cmt comment"
+                                      disabled>Tranh thêu đẹp, chất liệu tốt</textarea></td>
+                        <td>1/2/2024</td>
+                        <td>1/2/2024</td>
+                        <td class="d-none edit-hidden">
+                            <input type="checkbox" style="width: 15px; height: 15px">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- trạng thái -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Trạng thái</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" id="status" required disabled>
+                    <option selected>Đang hoạt động</option>
+                    <option>Vô hiệu hóa</option>
+                </select>
+            </div>
+        </div>
+        <!-- ngày tạo -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày thêm sản phẩm</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" value="2024-10-30" required disabled>
+            </div>
+        </div>
+        <!-- ngày cập nhật -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Ngày cập nhật sản phẩm</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="date" class="w-100 style-input" disabled></div>
+        </div>
+
+        <div class="row pt-4 pb-4">
+            <div class="col" id="containerCancelBtn">
+                <button type="button" id="cancelBtn" class="style-cancel-btn">Hủy</button>
+            </div>
+            <div class="col" id="containerEditBtn">
+                <button type="button" class="style-button" id="editBtn">Chỉnh sửa</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="../../../template/script/admin/product-form/read-edit-product-form.js"></script>
+</body>
+</html>

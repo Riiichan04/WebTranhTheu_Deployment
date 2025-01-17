@@ -2,8 +2,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Discount;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreateProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
@@ -28,7 +27,7 @@ public class GetProductPrice extends HttpServlet {
             String discountValue = request.getParameter("discount");
 
             int id = Integer.parseInt(productId);
-            DisplayFullProduct service = new DisplayFullProduct(new ConcreateProductDetail());
+            DisplayFullProduct service = new DisplayFullProduct(new ConcreteProductDetail());
             List<Price> listPrices = service.getListPrices(id);
 
             if (listPrices == null || listPrices.isEmpty()) {  //Không tìm thấy product với id đã nhập
@@ -36,7 +35,7 @@ public class GetProductPrice extends HttpServlet {
             }
             Discount currentDiscount = null;
             if (discountValue == null || discountValue.isEmpty()) {
-                currentDiscount = new DisplayFullProduct(new ConcreateProductDetail()).getDiscount();
+                currentDiscount = new DisplayFullProduct(new ConcreteProductDetail()).getDiscount();
                 jsonResult.addProperty("discountValue", currentDiscount.getValue());
             }
 

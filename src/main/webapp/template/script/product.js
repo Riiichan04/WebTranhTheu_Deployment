@@ -312,3 +312,4 @@ $(".switch-size-btn").click(function () {
 
 getReviewList(reviewAmount)
 getPrice(currentWidth, currentHeight)
+

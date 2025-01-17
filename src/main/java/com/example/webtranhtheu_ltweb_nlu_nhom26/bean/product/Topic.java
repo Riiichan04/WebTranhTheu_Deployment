@@ -13,6 +13,21 @@ public class Topic implements Serializable {
     public Topic() {
     }
 
+    public Topic(int id, String title, int active, Timestamp createdAt, Timestamp updatedAt) {
+        this.id = id;
+        this.title = title;
+        this.active = active;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Topic(String title, int active, Timestamp createdAt, Timestamp updatedAt) {
+        this.title = title;
+        this.active = active;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public int getId() {
         return id;
     }

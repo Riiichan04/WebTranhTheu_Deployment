@@ -10,14 +10,14 @@ import java.sql.Timestamp;
 
 public class Provider implements Serializable {
     private int id;
-    private String prodiverName;
+    private String providerName;
     private String address;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public Provider(int id, String prodiverName, String address, Timestamp createdAt, Timestamp updatedAt) {
+    public Provider(int id, String providerName, String address, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
-        this.prodiverName = prodiverName;
+        this.providerName = providerName;
         this.address = address;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -34,12 +34,12 @@ public class Provider implements Serializable {
         this.id = id;
     }
 
-    public String getProdiverName() {
-        return prodiverName;
+    public void setProviderName(String providerName) {
+        this.providerName = providerName;
     }
 
-    public void setProdiverName(String prodiverName) {
-        this.prodiverName = prodiverName;
+    public String getProviderName() {
+        return providerName;
     }
 
     public String getAddress() {
