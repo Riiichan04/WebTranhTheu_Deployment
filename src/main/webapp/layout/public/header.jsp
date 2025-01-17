@@ -131,7 +131,7 @@
                         </div>
                     </li>
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">
-                        <div id="header-cart">
+                        <div id="header-cart" onclick="window.location = '/cart'">
                             <i class="fa-solid fa-cart-shopping my-1"></i>
                             <p class="header-feature__label">Giỏ hàng</p>
                         </div>
@@ -145,78 +145,78 @@
                                         aria-label="Close"></button>
                             </div>
                             <h5 class="header-popup__title main-color text-start pb-2 mb-4">Giỏ hàng của bạn</h5>
-                            <div class="header-popup__content py-1">
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+<%--                            <div class="header-popup__content py-1">--%>
+<%--                                <div class="product-item row my-2 cursor-pointer">--%>
+<%--                                    <div class="col-4">--%>
+<%--                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"--%>
+<%--                                             alt="...">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="col-8 row">--%>
+<%--                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>--%>
+<%--                                        <p class="product-price text-start">--%>
+<%--                                            4.850.000 VNĐ</p>--%>
+<%--                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>--%>
 
-                                    </div>
-                                </div>
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="product-item row my-2 cursor-pointer">--%>
+<%--                                    <div class="col-4">--%>
+<%--                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"--%>
+<%--                                             alt="...">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="col-8 row">--%>
+<%--                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>--%>
+<%--                                        <p class="product-price text-start">--%>
+<%--                                            4.850.000 VNĐ</p>--%>
+<%--                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>--%>
 
-                                    </div>
-                                </div>
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="product-item row my-2 cursor-pointer">--%>
+<%--                                    <div class="col-4">--%>
+<%--                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"--%>
+<%--                                             alt="...">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="col-8 row">--%>
+<%--                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>--%>
+<%--                                        <p class="product-price text-start">--%>
+<%--                                            4.850.000 VNĐ</p>--%>
+<%--                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>--%>
 
-                                    </div>
-                                </div>
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="product-item row my-2 cursor-pointer">--%>
+<%--                                    <div class="col-4">--%>
+<%--                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"--%>
+<%--                                             alt="...">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="col-8 row">--%>
+<%--                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>--%>
+<%--                                        <p class="product-price text-start">--%>
+<%--                                            4.850.000 VNĐ</p>--%>
+<%--                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>--%>
 
-                                    </div>
-                                </div>
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="product-item row my-2 cursor-pointer">--%>
+<%--                                    <div class="col-4">--%>
+<%--                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"--%>
+<%--                                             alt="...">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="col-8 row">--%>
+<%--                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>--%>
+<%--                                        <p class="product-price text-start">--%>
+<%--                                            4.850.000 VNĐ</p>--%>
+<%--                                        <p style="font-size: 14px" class="product-price text-end">Số lượng: 1</p>--%>
 
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="/cart" class="">
-                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
-                                    Xem tất cả >
-                                </p>
-                            </a>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <a href="/cart" class="">--%>
+<%--                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">--%>
+<%--                                    Xem tất cả >--%>
+<%--                                </p>--%>
+<%--                            </a>--%>
                         </div>
                     </li>
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
