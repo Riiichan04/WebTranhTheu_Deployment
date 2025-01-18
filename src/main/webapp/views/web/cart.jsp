@@ -217,7 +217,7 @@
         })
     }
     function format(){
-        let totalPrice= ${cart.getTotalPrice()};
+        let totalPrice= "${cart.getTotalPrice()}";
         $("#total-price").text(formatter_1.format(totalPrice + ""))
     }
 </script>
