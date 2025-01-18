@@ -71,29 +71,29 @@
                     <div class="col-4">
                         <div class=" d-flex justify-content-around" id="product-info__rating">
                             <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
                             <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
                             <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
                             <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                                <i class="fa-solid fa-star product-info__star sample_half" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
                             <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                                <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
 
                         </div>
@@ -247,29 +247,29 @@
                     </div>
                     <div id="product-review__star" class="mt-2 d-flex justify-content-center">
                         <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                         <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                         <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                         <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
+                            <i class="fa-solid fa-star product-info__star sample_half" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                         <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+                            <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                     </div>
                     <div class="text-center">
