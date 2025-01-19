@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.provider;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.CategoryDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Provider;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProviderService;
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,8 +22,7 @@ public class GetProviderDataController extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        // chưa xử lý service
-        List<Provider> providers = new ArrayList<>();
+        List<Provider> providers = ProviderService.getAllProviders();
 
         Gson gson = new Gson();
         response.getWriter().print(gson.toJson(providers));

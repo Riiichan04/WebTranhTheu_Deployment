@@ -22,10 +22,10 @@
             <thead>
             <tr class="head-table">
                 <th>STT</th>
-                <th>Mã nhà cung cấp</th>
                 <th>Tên nhà cung cấp</th>
-                <th>Số lượng sản phẩm đã cung cấp</th>
+<%--                <th>Số lượng sản phẩm đã cung cấp</th>--%>
                 <th>Ngày tạo</th>
+                <th>Địa chỉ</th>
                 <th>Tiện ích</th>
             </tr>
             </thead>
@@ -37,5 +37,6 @@
 
 <div id="formWrapper" class="hidden"></div>
 
+<script src="../../template/script/admin/change-provider-form.js"></script>
 </body>
 </html>

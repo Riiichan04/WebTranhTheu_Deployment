@@ -24,6 +24,7 @@
                 <th>STT</th>
                 <th>Tên vật liệu</th>
                 <th>Ngày thêm vật liệu</th>
+                <th>Trạng thái</th>
                 <th>Tiện ích</th>
             </tr>
             </thead>
@@ -35,5 +36,6 @@
 
 <div id="formWrapper" class="hidden"></div>
 
+<script src="../../template/script/admin/change-material-form.js"></script>
 </body>
 </html>

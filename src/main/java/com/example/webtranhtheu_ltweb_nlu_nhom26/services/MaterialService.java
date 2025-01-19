@@ -1,0 +1,15 @@
+package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
+
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Material;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.MaterialDAO;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
+
+import java.util.List;
+
+public class MaterialService {
+    private static MaterialDAO materialDAO = JDBIConnector.getInstance().onDemand(MaterialDAO.class);
+
+    public static List<Material> getAllMaterial() {
+        return materialDAO.getAllMaterial();
+    }
+}
