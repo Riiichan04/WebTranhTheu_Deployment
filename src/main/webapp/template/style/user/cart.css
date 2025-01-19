@@ -10,6 +10,9 @@
     background-color: var(--light-component-background-color);
     border-radius: 5px;
 }
+.cart{
+    height: 750px;
+}
 .cart-title{
     color: var(--sub-cta-button);
     font-weight: bold;

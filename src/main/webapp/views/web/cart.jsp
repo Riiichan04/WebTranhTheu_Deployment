@@ -30,53 +30,57 @@
             </c:if>
             <div class="cart-item-list" id="cart-container">
                 <c:forEach items="${cart.products}" var="entry">
-                <div class=" row py-3 cart-item" data-width="${entry.value.price.width}" data-height="${entry.value.price.height}" data-id="${entry.value.product.id}">
-                    <div class="col-1 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row ps-4">
-                            <div class="form-check">
-                                <input class="product-checkbox form-check-input" type="checkbox">
+                    <div class=" row py-3 cart-item" data-width="${entry.value.price.width}"
+                         data-height="${entry.value.price.height}" data-id="${entry.value.product.id}">
+                        <div class="col-1 text-center">
+                            <div class="row pb-4"></div>
+                            <div class="row ps-4">
+                                <div class="form-check">
+                                    <input class="product-checkbox form-check-input" type="checkbox">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <img class="col-2" src="<c:url value="${entry.value.getThumbnail()}"/>">
-                    <div class="col-3 ps-5 pe-0">
-                        <div class="row">${entry.value.getTitle()}</div>
-                        <div class="row pb-2"></div>
-                        <div class="row">
-                            <div class="col-5">${entry.value.price.width} X </div>
-                            <div class="col-5">${entry.value.price.height}</div>
-                        </div>
-                    </div>
-                    <div class="col-3 text-center">
-                        <div class="row pb-4"></div>
-                        <div class="row">
+                        <img class="col-2" src="<c:url value="${entry.value.getThumbnail()}"/>">
+                        <div class="col-3 ps-5 pe-0">
+                            <div class="row">${entry.value.getTitle()}</div>
+                            <div class="row pb-2"></div>
                             <div class="row">
-                                <div class="col-4 text-center">
-                                    <button class="rounded" id="product-detail__remove-amount" onclick="updateSubByQuantity(${entry.value.product.id},${entry.value.price.width},${entry.value.price.height})" >
-                                        <i class="fa-solid fa-minus"></i>
-                                    </button>
-                                </div>
-                                <div class="col-4 text-center" id="quantity_${entry.value.product.id}_${entry.value.price.width}_${entry.value.price.height}">
-                                    ${entry.value.quantity}
-                                </div>
-                                <div class="col-4 text-center">
-                                    <button class="rounded product-detail__add-amount" onclick="updatePlusByQuantity(${entry.value.product.id},${entry.value.price.width},${entry.value.price.height})">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </button>
+                                <div class="col-5">${entry.value.price.width} X</div>
+                                <div class="col-5">${entry.value.price.height}</div>
+                            </div>
+                        </div>
+                        <div class="col-3 text-center">
+                            <div class="row pb-4"></div>
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-4 text-center">
+                                        <button class="rounded" id="product-detail__remove-amount"
+                                                onclick="updateSubByQuantity(${entry.value.product.id},${entry.value.price.width},${entry.value.price.height})">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 text-center"
+                                         id="quantity_${entry.value.product.id}_${entry.value.price.width}_${entry.value.price.height}">
+                                            ${entry.value.quantity}
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <button class="rounded" id="product-detail__add-amount"
+                                                onclick="updatePlusByQuantity(${entry.value.product.id},${entry.value.price.width},${entry.value.price.height})">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col p-0">
+                            <div class="row pb-4 "></div>
+                            <div class="row ps-3 product-detail__price">${entry.value.price.price}</div>
+                        </div>
+                        <div class="col-1 p-0">
+                            <div class="row pb-4"></div>
+                            <i class="bi bi-trash"></i>
+                        </div>
                     </div>
-                    <div class="col p-0">
-                        <div class="row pb-4 "></div>
-                        <div class="row ps-3 product-detail__price">${entry.value.price.price}</div>
-                    </div>
-                    <div class="col-1 p-0">
-                        <div class="row pb-4"></div>
-                        <i class="bi bi-trash"></i>
-                    </div>
-                </div>
                 </c:forEach>
             </div>
         </div>
@@ -136,10 +140,12 @@
                 <hr>
                 <div class="row">
                     <div class="col-8 h6">Tổng số tiền (đã tính VAT):</div>
-                    <div class="col-4" id="total-price" >${cart.getTotalPrice()}</div>
+                    <div class="col-4" id="total-price">${cart.getTotalPrice()}</div>
                 </div>
                 <div class="row ps-5 py-4 ">
-                    <button class="payable rounded"><a href="../page/purchase.html" style="text-decoration: none;color: var(--web-background-color)">Thanh toán</a></button>
+                    <button class="payable rounded"><a href="../page/purchase.html"
+                                                       style="text-decoration: none;color: var(--web-background-color)">Thanh
+                        toán</a></button>
                 </div>
             </div>
         </div>
@@ -151,75 +157,85 @@
 <script src="template/script/header.js"></script>
 
 <script>
-    const formatter_1= new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND',
-    });
-    function updatePlusByQuantity(q,w,h){
-        console.log(q+'_'+w+'_'+h)
-        productCode=q+'_'+w+'_'+h
+    // const formatter_1= new Intl.NumberFormat('vi-VN', {
+    //     style: 'currency',
+    //     currency: 'VND',
+    // });
+    // Xử lý khi thêm vào mà SL =1 or =5 thì disable cả 2 nút.
+    function updatePlusByQuantity(q, w, h) {
+        console.log(q + '_' + w + '_' + h)
+        productCode = q + '_' + w + '_' + h
         let quantityInput = $("div#quantity_" + productCode);
-        let newQuantity= Number.parseInt(quantityInput.text(),10) + 1
+        let newQuantity = Number.parseInt(quantityInput.text(), 10) + 1
+        if (newQuantity === 5) {
+            $("#product-detail__add-amount").attr("disabled", true)
+        } else {
+            $("#product-detail__add-amount").attr("disabled", false)
+        }
+        $("#product-detail__remove-amount").attr("disabled", false)
         console.log(newQuantity)
         $.ajax({
-            url:"/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
-            type:"GET",
-            success:function(){
+            url: "/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
+            type: "GET",
+            success: function () {
                 console.log(newQuantity)
                 quantityInput.text(newQuantity)
-            } ,
-            error:function (){
+            },
+            error: function () {
 
             }
         })
     }
-    function updateSubByQuantity(q,w,h){
-        console.log(q+'_'+w+'_'+h)
-        productCode=q+'_'+w+'_'+h
+
+    function updateSubByQuantity(q, w, h) {
+        console.log(q + '_' + w + '_' + h)
+        productCode = q + '_' + w + '_' + h
         let quantityInput = $("div#quantity_" + productCode);
-        let newQuantity= Number.parseInt(quantityInput.text(),10) - 1
-        if(newQuantity<2){
-            $("#product-detail__remove-amount").attr("disabled",true)
+        let newQuantity = Number.parseInt(quantityInput.text(), 10) - 1
+        if (newQuantity === 1) {
+            $("#product-detail__remove-amount").attr("disabled", true)
+        } else {
+            $("#product-detail__remove-amount").attr("disabled", false)
         }
-        else{
-            $("#product-detail__remove-amount").attr("disabled",false)
-        }
+        $("#product-detail__add-amount").attr("disabled", false)
         console.log(newQuantity)
         $.ajax({
-            url:"/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
-            type:"GET",
-            success:function(){
+            url: "/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
+            type: "GET",
+            success: function () {
                 console.log(newQuantity)
                 quantityInput.text(newQuantity)
-            } ,
-            error:function (){
+            },
+            error: function () {
 
             }
         })
     }
-    function removeProduct(element){
+
+    function removeProduct(element) {
         let g = element.attr("data-id")
         let w = element.attr("data-width")
-        let h= element.attr("data-height")
-        productCode=g+'_'+w+'_'+h;
+        let h = element.attr("data-height")
+        productCode = g + '_' + w + '_' + h;
         $.ajax({
-            url:"/remove-product?productCode=" + productCode,
-            type:"POST",
-            success: function (){
+            url: "/remove-product?productCode=" + productCode,
+            type: "POST",
+            success: function () {
                 element.remove()
+                // xử lý trong controller = JsonObject
                 if ($(".cart-item").length === 0) {
                     $("#cart-container").html(`<p>Chưa có sản phẩm</p>`)
                 }
             },
-            error:function (){
+            error: function () {
 
             }
         })
     }
-    function format(){
-        let totalPrice= "${cart.getTotalPrice()}";
-        $("#total-price").text(formatter_1.format(totalPrice + ""))
-    }
+
+    // xem lại hàm tính tổng tiền
+    const price = formatter.format($("#total-price").prop("innerText"))
+    $("#total-price").text(price + "")
 </script>
 </body>
 </html>

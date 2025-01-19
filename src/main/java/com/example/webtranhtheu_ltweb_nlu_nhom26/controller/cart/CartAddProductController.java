@@ -27,47 +27,50 @@ public class CartAddProductController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String productId = request.getParameter("id");
-        String widthParam= request.getParameter("width");
-        String heightParam= request.getParameter("height");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        Cart cart = (Cart) session.getAttribute("cart");
-        if(cart == null) {
-            cart = Cart.getInstance();
-        }
-       try{
-           int id = Integer.parseInt(productId);
-           Product product = productService.getProduct(id);
-           product.setListPrices(productService.getProductPrices(product.getId()));
-           if(product == null) {
-               response.sendError(HttpServletResponse.SC_NOT_FOUND);
-           }
-           Price selectedPrice = null;
-           if(widthParam==null && heightParam==null) {
-               selectedPrice= product.getMinPrice();
-           }else if(widthParam== null||heightParam==null) {
-               response.sendError(HttpServletResponse.SC_NOT_FOUND);
-           }else{
-               int width = Integer.parseInt(widthParam);
-               int height = Integer.parseInt(heightParam);
-               selectedPrice= product.getSelectedPrice(width, height);
-           }
-           //
-           if(selectedPrice == null) {
-               response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//               JsonObject res = new JsonObject();
-//               res.addProperty("status", 401);
-//               res.addProperty("message", "Bạn chưa đăng nhập");
-//               res.addProperty("redirect", "/login");
-               response.getWriter().println("Vui lòng chọn kích thước!");
-               response.getWriter().flush();
-           }else{
-               cart.addProduct(id,selectedPrice,quantity);
-               session.setAttribute("cart",cart );
-           }
+        String widthParam = request.getParameter("width");
+        String heightParam = request.getParameter("height");
+        Object accountIdObject = session.getAttribute("accountId");
+        if (accountIdObject == null) {
+            // Xử lý khúc này
+            response.sendRedirect("/");
+        } else {
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            Cart cart = (Cart) session.getAttribute("cart");
+            if (cart == null) {
+                cart = Cart.getInstance();
+            }
+            try {
+                int id = Integer.parseInt(productId);
+                Product product = productService.getProduct(id);
+                product.setListPrices(productService.getProductPrices(product.getId()));
+                if (product == null) {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                }
+                Price selectedPrice = null;
+                if (widthParam == null && heightParam == null) {
+                    selectedPrice = product.getMinPrice();
+                } else if (widthParam == null || heightParam == null) {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                } else {
+                    int width = Integer.parseInt(widthParam);
+                    int height = Integer.parseInt(heightParam);
+                    selectedPrice = product.getSelectedPrice(width, height);
+                }
+                //
+                if (selectedPrice == null) {
+//                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//                    response.getWriter().println("Vui lòng chọn kích thước!");
+//                    response.getWriter().flush();
+                    // Xử lý
+                } else {
+                    cart.addProduct(id, selectedPrice, quantity);
+                    session.setAttribute("cart", cart);
+                }
 
-       }catch (NumberFormatException e){
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
-       }
+            } catch (NumberFormatException e) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            }
+        }
     }
 
 //    @Override
