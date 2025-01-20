@@ -12,4 +12,9 @@ public class ProviderService {
     public static List<Provider> getAllProviders() {
         return providerDAO.getProviders();
     }
+
+    public static boolean addProvider(String name, String location) {
+        int addressId = providerDAO.addAddress(location);
+        return providerDAO.insertProvider(name, addressId);
+    }
 }

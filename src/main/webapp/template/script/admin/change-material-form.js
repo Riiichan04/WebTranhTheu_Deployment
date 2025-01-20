@@ -73,9 +73,9 @@ $(document).ready(function () {
         hiddenOverlay() // Tắt overlay
     });
 
-    $('#addCategoryBtn').on("click", function (event) {
+    $('#addMaterialBtn').on("click", function (event) {
         event.preventDefault();
-        const url = "/admin/category-management/add-category-form";
+        const url = "/admin/material-management/add-material-form";
         $.ajax({
             url: url,
             type: "GET",
@@ -98,30 +98,30 @@ $(document).ready(function () {
                     hiddenOverlay();
                 });
 
-                // Gửi dữ liệu từ form thêm danh mục
-                $('#add-category-form').on('submit', function (event) {
+                // Gửi dữ liệu từ form thêm
+                $('#add-material-form').on('submit', function (event) {
                     event.preventDefault(); // Ngăn chặn reload trang
 
                     // Gửi dữ liệu qua AJAX
                     $.ajax({
-                        url: '/admin/category-management/add-category',
+                        url: '/admin/material-management/add-material',
                         type: 'POST',
                         data: {
-                            name: $('#name-category').val(),
-                            status: $('#status-category').val()
+                            name: $('#name-material').val(),
+                            status: $('#status-material').val()
                         },
                         success: function (response) {
                             if (response.success) {
-                                alert('Thêm danh mục thành công!');
-                                $('#add-category-form')[0].reset(); // Reset form
+                                alert('Thêm vật liệu thành công!');
+                                $('#add-material-form')[0].reset(); // Reset form
                                 table.ajax.reload();
                                 hiddenOverlay();
                             } else {
-                                alert('Lỗi khi thêm danh mục!');
+                                alert('Lỗi khi thêm vật liệu!');
                             }
                         },
                         error: function () {
-                            alert('Lỗi khi thêm danh mục!');
+                            alert('Lỗi khi thêm vật liệu!');
                         }
                     });
                 });

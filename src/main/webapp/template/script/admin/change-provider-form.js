@@ -56,9 +56,9 @@ $(document).ready(function () {
         hiddenOverlay() // Tắt overlay
     });
 
-    $('#addCategoryBtn').on("click", function (event) {
+    $('#addProviderBtn').on("click", function (event) {
         event.preventDefault();
-        const url = "/admin/category-management/add-category-form";
+        const url = "/admin/provider-management/add-provider-form";
         $.ajax({
             url: url,
             type: "GET",
@@ -82,29 +82,29 @@ $(document).ready(function () {
                 });
 
                 // Gửi dữ liệu từ form thêm danh mục
-                $('#add-category-form').on('submit', function (event) {
+                $('#add-provider-form').on('submit', function (event) {
                     event.preventDefault(); // Ngăn chặn reload trang
 
                     // Gửi dữ liệu qua AJAX
                     $.ajax({
-                        url: '/admin/category-management/add-category',
+                        url: '/admin/provider-management/add-provider',
                         type: 'POST',
                         data: {
-                            name: $('#name-category').val(),
-                            status: $('#status-category').val()
+                            name: $('#name-provider').val(),
+                            address: $('#address').val()
                         },
                         success: function (response) {
                             if (response.success) {
-                                alert('Thêm danh mục thành công!');
-                                $('#add-category-form')[0].reset(); // Reset form
+                                alert('Thêm nhà cung cấp thành công!');
+                                $('#add-provider-form')[0].reset(); // Reset form
                                 table.ajax.reload();
                                 hiddenOverlay();
                             } else {
-                                alert('Lỗi khi thêm danh mục!');
+                                alert('Lỗi khi thêm nhà cung cấp!');
                             }
                         },
                         error: function () {
-                            alert('Lỗi khi thêm danh mục!');
+                            alert('Lỗi khi thêm nhà cung cấp!');
                         }
                     });
                 });

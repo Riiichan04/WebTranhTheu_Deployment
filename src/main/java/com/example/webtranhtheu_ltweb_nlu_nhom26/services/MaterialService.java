@@ -12,4 +12,8 @@ public class MaterialService {
     public static List<Material> getAllMaterial() {
         return materialDAO.getAllMaterial();
     }
+
+    public static boolean addMaterial(String title, int status) {
+        return materialDAO.addMaterial(title, status);
+    }
 }
