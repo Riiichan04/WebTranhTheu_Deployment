@@ -1,0 +1,34 @@
+/*User's order list*/
+.order-details{
+    height: 600px;
+    overflow-y: auto;
+}
+#user-ordered-list .card button{
+    width: 90%;
+    padding: 5px;
+    border-radius: 5px;
+}
+#user-ordered-list .card .cancel-btn{
+    background-color: var(--main-cta-button);
+    color:var(--web-background-color);
+}
+#user-ordered-list .shipped{
+    color:var(--sub-cta-button);
+}
+/*User's order shipping*/
+#user-ordered-list #shippinglist .card .received{
+    background-color: var(--main-cta-button);
+    color: var(--web-background-color);
+    opacity: 0.5;
+}
+/*User's shipped list*/
+#user-ordered-list #shippedlist .card .received,.rebuy_btn{
+    background-color: var(--main-cta-button);
+    color: var(--web-background-color);
+}
+/*User's turnedback orders*/
+#user-ordered-list #turnedback .card .turnback_details,.submit-cancel-reason{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+}
+/*User's canceled Orders*/

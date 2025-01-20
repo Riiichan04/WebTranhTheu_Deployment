@@ -3,7 +3,9 @@ html, body, p, a {
     padding: 0;
 
 }
-
+a{
+    text-decoration: none;
+}
 hr{
     margin: 0;
 }
@@ -68,10 +70,6 @@ input{
     height: 750px;
     padding: 0 30px;
 }
-/*Navigation Bar*/
-.breadcrumb {
-    padding: 20px 0;
-}
 /*User properties list*/
 .user-props-list {
     width: 30%;
@@ -79,7 +77,7 @@ input{
     margin: 0;
     background-color: var(--light-component-background-color);
     border-radius: 5px;
-    height: 600px;
+    height: 700px;
 }
 /*User frame image*/
 .user-props-list .user-img-frame {
@@ -90,7 +88,7 @@ input{
     border-radius: 5px 5px 0 0;
 }
 /*list_props*/
-.user-props-list .list_props button {
+.user-props-list .list_props a {
     border: none;
     padding: 10px;
     background-color: var(--light-component-background-color);
@@ -108,20 +106,16 @@ input{
     padding: 10px 0;
 }
 /*Log out*/
-.user-props-list .user_setting_help button, .user-props-list .user-logout button {
+.user-props-list .user_setting_help a, .user-props-list .user-logout a {
     background-color: var(--light-component-background-color);
     border: none;
 }
-/*User Info Page*/
 .content > div{
     border-radius: 5px;
     /*text-align: center;*/
     background-color: var(--light-component-background-color);
 }
-.order-details{
-    height: 600px;
-    overflow-y: auto;
-}
+/*User Info Page*/
 .container #user-info{
     height: 500px;
 }
@@ -172,6 +166,10 @@ input{
     padding-top:30px;
 }
 /*User's order list*/
+.order-details{
+    height: 600px;
+    overflow-y: auto;
+}
 #user-ordered-list .card button{
     width: 90%;
     padding: 5px;

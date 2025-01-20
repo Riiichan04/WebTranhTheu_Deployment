@@ -2,15 +2,30 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.WishProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.UserDTO;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.UserDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
+import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
 import java.util.List;
 
 public class UserService {
-    UserDAO userDAO;
-
+    private static UserDAO userDAO;
+    private static UserService instance;
+    public static UserService getInstance() {
+        if(instance == null) {
+            Jdbi jdbi= JDBIConnector.getInstance();
+            jdbi.installPlugin(new SqlObjectPlugin());
+            userDAO = jdbi.onDemand(UserDAO.class);
+            instance = new UserService(userDAO);
+            return instance;
+        }
+        return instance;
+    }
+    public UserService(UserDAO userDAO) {this.userDAO = userDAO;}
     public UserService() {
         this.userDAO = JDBIConnector.getInstance().onDemand(UserDAO.class);
     }
@@ -69,5 +84,13 @@ public class UserService {
 
     public void updateInfoAdmin(User user) {
         userDAO.updateInfoAdmin(user);
+    }
+
+    // Danh sách sản phẩm yêu thích
+    public List<WishProduct> getWishProducts(int userId) {
+        return userDAO.getWishProducts(userId);
+    }
+    public List<Address> getLocation(int userId) {
+        return userDAO.getLocation(userId);
     }
 }

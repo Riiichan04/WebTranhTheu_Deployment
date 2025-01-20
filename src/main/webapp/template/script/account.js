@@ -1,25 +1,34 @@
-$(document).ready(function () {
     //Each properties show
     $(".list-group-item").click(function () {
         $(".list-group-item").removeClass("active");
         $(this).addClass("active");
-        //Get content each item
-        var contents = $(this).data('target');
-        $(".content-details").css("display", "none")
-        $("#" + contents).css("display", "block");
     })
-
+    $(".list-group-item").on("click", function (event){
+        event.preventDefault();
+        const url = $(this).attr("href")
+        $('#content').empty();
+        $.ajax({
+            url: url,
+            type: "GET",
+            success: function (data) {
+                $("#content").html(data); // Cập nhật nội dung vào phần #content
+            },
+            error: function () {
+                alert("Lỗi");
+            }
+        });
+    })
     // Change password
     $("#change-password").click(function () {
-        return $(".sub-change-pass").css("display", "block");
+        $("#sub-change-pass").removeClass("d-none");
     })
 
     //Change name
-    $("#save-info").click(function () {
-        const fname = $("#fname").val();
-        const lname = $("#lname").val();
-        return $("#nickname").text(fname + " " + lname);
-    })
+    // $("#save-info").click(function () {
+    //     const fname = $("#fname").val();
+    //     const lname = $("#lname").val();
+    //     return $("#nickname").text(fname + " " + lname);
+    // })
     //Thêm địa chỉ mới
     $(".add-new-address").click(function () {
         $(this).parents("#user-address").css("display", "none");
@@ -191,4 +200,3 @@ $(document).ready(function () {
         $(".content-details").css("display", "none")
         $("#user-feedback-histories").css("display", "block")
     })
-})

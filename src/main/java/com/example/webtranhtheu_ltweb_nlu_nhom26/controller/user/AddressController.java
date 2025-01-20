@@ -1,8 +1,8 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.user;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.WishProduct;
-import com.google.gson.Gson;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,20 +13,25 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "WishListController", value = "/user/user-wishlist")
-public class WishListController extends HttpServlet {
+@WebServlet(name = "AddressController", value = "/user/user-addresses")
+public class AddressController extends HttpServlet {
+    public static UserService userService= UserService.getInstance();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json");
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         User account = (User) session.getAttribute("account");
         if(account == null){
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            response.sendRedirect("/login");
         }else{
-            List<WishProduct> wishlist = account.getWishProducts();
-            session.setAttribute("wishlist", wishlist);
-            request.getRequestDispatcher("/layout/user/user-wishlist.jsp").forward(request, response);
+            List<Address> userAddresses= userService.getLocation(account.getId());
+            if(userAddresses == null){
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            }else {
+                session.setAttribute("userAddresses", userAddresses);
+                request.getRequestDispatcher("/layout/user/user-addresses.jsp").forward(request, response);
+            }
         }
     }
 

@@ -1,8 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.user;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.WishProduct;
-import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,23 +9,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "WishListController", value = "/user/user-wishlist")
-public class WishListController extends HttpServlet {
+@WebServlet(name = "ViewedHistoryController", value = "/user/user-viewed-history")
+public class ViewedHistoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json");
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         User account = (User) session.getAttribute("account");
-        if(account == null){
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        }else{
-            List<WishProduct> wishlist = account.getWishProducts();
-            session.setAttribute("wishlist", wishlist);
-            request.getRequestDispatcher("/layout/user/user-wishlist.jsp").forward(request, response);
-        }
+        // làm chức năng lưu lịch sử xem
+        request.getRequestDispatcher("/layout/user/user-viewed-info.jsp").forward(request, response);
     }
 
     @Override

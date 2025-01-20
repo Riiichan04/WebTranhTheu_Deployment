@@ -180,4 +180,7 @@ public class User implements Serializable {
     public void setWishProducts(List<WishProduct> wishProducts) {
         this.wishProducts = wishProducts;
     }
+    public Address getDefaultLocation() {
+        return location.get(0);
+    }
 }
