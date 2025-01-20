@@ -42,6 +42,7 @@ public interface ControllerUtil {
         jsonProduct.addProperty("title", product.getTitle());
         jsonProduct.addProperty("type", product.getType()); //Xem có cần thêm không
         jsonProduct.addProperty("thumbnail", product.getThumbnail());
+        jsonProduct.addProperty("providerName", product.getProvider().getProviderName());
         jsonProduct.addProperty("size", productPrice.getWidth() + "x" + productPrice.getHeight() + " cm");
         jsonProduct.addProperty("price", productPrice.getDisplayPriceToString());
         jsonArray.add(jsonProduct);

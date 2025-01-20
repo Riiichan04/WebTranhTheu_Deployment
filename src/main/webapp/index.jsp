@@ -42,9 +42,12 @@
                     <div class="card-body px-1">
                             <%-- Tạm --%>
                         <h5 class="card-title text-center pb-2 fw-semibold">${product.category} ${product.title}</h5>
-                        <p class="card-text text-center mt-2">Nhà cung cấp: ${product.getProvider().getProviderName()}</p>
+                        <p class="card-text text-center mt-2">Nhà cung
+                            cấp: ${product.getProvider().getProviderName()}</p>
+                        <p class="card-text text-center mt-2">Kích
+                            thước: ${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</p>
                         <p class="card-text text-center fw-semibold h4 mt-2"
-                           style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                           style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
                     </div>
                 </div>
             </div>
@@ -64,8 +67,10 @@
                         <h5 class="card-title text-center pb-2 fw-semibold">${product.title}</h5>
                         <p class="card-text text-center mt-2">Nhà cung
                             cấp: ${product.getProvider().getProviderName()}</p>
+                        <p class="card-text text-center mt-2">Kích
+                            thước: ${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</p>
                         <p class="card-text text-center fw-semibold h4 mt-2"
-                           style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                           style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
                         </p>
                     </div>
                 </div>

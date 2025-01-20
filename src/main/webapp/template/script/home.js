@@ -11,7 +11,12 @@ function getOneProductsRow(listProducts) {
                     <img src="${product.thumbnail}" class="card-img" alt="">
                     <div class="card-body px-1">
                         <h5 class="card-title text-center pb-2 fw-semibold">${product.title}</h5>
-                        <p class="card-text text-center fw-semibold h4 mt-2" style="color: var(--sub-cta-button)">${product.price}</p>
+                        <p class="card-text text-center mt-2">Nhà cung
+                            cấp: ${product.providerName}</p>
+                        <p class="card-text text-center mt-2">Kích
+                            thước: ${product.size}</p>
+                        <p class="card-text text-center fw-semibold h4 mt-2"
+                        <p class="card-text text-center fw-semibold h4 mt-2" style="color: var(--main-cta-button)">${product.price}</p>
                     </div>
                 </div>
             </div>
