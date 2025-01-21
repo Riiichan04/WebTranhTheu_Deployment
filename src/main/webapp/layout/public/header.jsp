@@ -202,16 +202,18 @@
                 </ul>
             </div>
         </div>
-        <hr class="mb-0" style="color: var(--label-color); height: 2px"/>
-        <div class="container">
-            <div class="row">
-                <c:forEach var="category" items="${listCategory}">
-                    <div onclick="window.location = '/category/${category.getPatternName()}'"
-                         class="text-center cursor-pointer" style="width: 15%">
-                        <p class="my-1 header-category-element">${category.getTitle()}</p>
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
+<%--        <hr class="mb-0" style="color: var(--label-color); height: 2px"/>--%>
     </div>
 </header>
+<nav style="background-color: var(--dark-component-background-color-hover)" class="py-2 mb-2">
+    <div class="container">
+        <div class="row">
+            <c:forEach var="category" items="${sessionScope.listCategory}">
+                <div onclick="window.location = '/category/${category.getPatternName()}'"
+                     class="text-center cursor-pointer" style="width: 15%">
+                    <p style="color: var(--label-color)" class="my-1 header-category-element">${category.getTitle()}</p>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</nav>

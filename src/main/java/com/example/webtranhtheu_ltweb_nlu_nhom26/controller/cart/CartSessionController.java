@@ -24,6 +24,9 @@ public class CartSessionController extends HttpServlet {
             if(cart == null) {
                 cart= Cart.getInstance();
             }
+            if (session.getAttribute("listCategory") == null) {
+                session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
+            }
             session.setAttribute("cart", cart);
 
             request.getRequestDispatcher("/views/web/cart.jsp").forward(request, response);

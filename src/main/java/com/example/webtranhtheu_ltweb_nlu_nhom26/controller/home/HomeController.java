@@ -20,12 +20,16 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
+        if (session.getAttribute("listCategory") == null) {
+            session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
+        }
         HomeService service = new HomeService();
         List<Product> listHotProduct = service.getHotProduct();
         List<Product> listMostRatedProduct = service.getMostRatedProduct();
         request.setAttribute("hotProduct", listHotProduct);
         request.setAttribute("mostRatedProduct", listMostRatedProduct);
-        request.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
+//        request.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

@@ -40,6 +40,12 @@ public class ProductController extends HttpServlet {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 return;
             }
+
+            HttpSession session = request.getSession();
+            if (session.getAttribute("listCategory") == null) {
+                session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
+            }
+
             request.setAttribute("product", product);
             request.setAttribute("countReview", ProductService.countReviews(product.getId()));
             request.setAttribute("avgRating", ProductService.getProductRating(product.getId()));

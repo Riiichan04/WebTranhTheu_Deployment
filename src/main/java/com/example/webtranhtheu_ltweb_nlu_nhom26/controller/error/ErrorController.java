@@ -11,10 +11,10 @@ public class ErrorController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-//        HttpSession session = request.getSession();
-//        if (session.getAttribute("listCategory") == null) {
-//            session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
-//        }
+        HttpSession session = request.getSession();
+        if (session.getAttribute("listCategory") == null) {
+            session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
+        }
         request.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
         request.getRequestDispatcher("layout/error.jsp").forward(request, response);
     }
