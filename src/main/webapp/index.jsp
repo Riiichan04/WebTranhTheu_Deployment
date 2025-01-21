@@ -36,18 +36,28 @@
         <h4 class="main-color mb-3"> Sản phẩm HOT</h4>
         <hr/>
         <c:forEach var="product" items="${hotProduct}">
-            <div class="col">
+            <div style="width: 20%">
                 <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
-                            <%-- Tạm --%>
-                        <h5 class="card-title text-center pb-2 fw-semibold">${product.category} ${product.title}</h5>
-                        <p class="card-text text-center mt-2">Nhà cung
-                            cấp: ${product.getProvider().getProviderName()}</p>
-                        <p class="card-text text-center mt-2">Kích
-                            thước: ${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</p>
+                        <h5 class="card-title text-center pb-2 fw-semibold text-truncate"
+                            title="${product.category} ${product.title}">
+                                ${product.category} ${product.title}
+                        </h5>
+                        <p class="card-text my-1 text-center text-truncate"
+                           title="Nhà cung cấp: ${product.getProvider().getProviderName()}">
+                            Nhà cung cấp: ${product.getProvider().getProviderName()}
+                        </p>
+                        <p class="card-text text-center text-truncate my-1"
+                           title="Nguyên liệu: ${product.getStringDisplayMaterials()}">
+                            Nguyên liệu: ${product.getStringDisplayMaterials()}
+                        </p>
+                        <p class="card-text text-center mt-1">
+                            Kích thước: từ ${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm
+                        </p>
                         <p class="card-text text-center fw-semibold h4 mt-2"
-                           style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                           style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -59,16 +69,25 @@
         <h4 class="main-color mb-3"> Sản phẩm được đánh giá cao nhất</h4>
         <hr/>
         <c:forEach var="product" items="${mostRatedProduct}">
-            <div class="col">
+            <div class="" style="width: 20%">
                 <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
-                            <%-- Tạm --%>
-                        <h5 class="card-title text-center pb-2 fw-semibold">${product.title}</h5>
-                        <p class="card-text text-center mt-2">Nhà cung
-                            cấp: ${product.getProvider().getProviderName()}</p>
-                        <p class="card-text text-center mt-2">Kích
-                            thước: ${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</p>
+                        <h5 class="card-title text-center pb-2 fw-semibold text-truncate"
+                            title="${product.category} ${product.title}">
+                                ${product.category} ${product.title}
+                        </h5>
+                        <p class="card-text my-1 text-center text-truncate"
+                           title="Nhà cung cấp: ${product.getProvider().getProviderName()}">
+                            Nhà cung cấp: ${product.getProvider().getProviderName()}
+                        </p>
+                        <p class="card-text text-center text-truncate my-1"
+                           title="Nguyên liệu: ${product.getStringDisplayMaterials()}">
+                            Nguyên liệu: ${product.getStringDisplayMaterials()}
+                        </p>
+                        <p class="card-text text-center mt-1">
+                            Kích thước: từ ${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm
+                        </p>
                         <p class="card-text text-center fw-semibold h4 mt-2"
                            style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
                         </p>
@@ -87,12 +106,6 @@
                 <div onclick="window.location = '/category/${category.getPatternName()}'"
                      class="col text-center open-category-button" style="cursor: pointer">${category.getTitle()}</div>
             </c:forEach>
-            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu động vật</div>--%>
-            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu hoa</div>--%>
-            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu tứ quý</div>--%>
-            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu chân dung</div>--%>
-            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu phong thủy</div>--%>
-            <%--            <div class="col text-center open-category-button" style="cursor: pointer">Tranh thêu VIP</div>--%>
         </div>
     </div>
 </section>

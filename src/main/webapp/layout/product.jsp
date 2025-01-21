@@ -50,10 +50,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">Nguyên liệu: <span class="fw-semibold">
-                        <c:forEach var="material" items="${product.listMaterials}" varStatus="status">
-                            ${material.title}
-                            <c:if test="${!status.last}">, </c:if>
-                        </c:forEach>
+                        ${product.getStringDisplayMaterials()}
                     </span></div>
                     <div class="col-6">Chủ đề: <span class="fw-semibold">
                         <c:forEach var="topic" items="${product.listTopics}" varStatus="status">

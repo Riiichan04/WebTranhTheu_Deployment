@@ -20,6 +20,7 @@ public class DisplayCardProduct extends DecorationProductDetail {
         Product product = super.getProductInfo(productId);
         product.getListPrices().addAll(this.productDAO.getProductPrices(productId).stream().sorted(Comparator.comparingDouble(Price::getPrice)).toList());
         product.getListImageUrls().add(this.productDAO.getThumbnail(productId));
+        product.getListMaterials().addAll(this.productDAO.getMaterials(productId));
         product.setProvider(this.productDAO.getProductProvider(productId));
         return product;
     }
