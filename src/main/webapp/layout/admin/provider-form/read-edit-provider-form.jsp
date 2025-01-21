@@ -24,23 +24,31 @@
             <div class="col"><span class="style-title">Tên nhà cung cấp</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" id="name-category" placeholder="Nhập tên nhà cung cấp" value= "<c:out value="${provider.getTitle()}"/>" required disabled>
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="name-provider" placeholder="Nhập tên nhà cung cấp" value= "<c:out value="${provider.getProviderName()}"/>" required disabled>
+            </div>
+        </div>
+        <!-- Địa chỉ -->
+        <div class="row pt-2">
+            <div class="col"><span class="style-title">Địa chỉ</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="address" placeholder="Nhập địa chỉ" value= "<c:out value="${provider.getAddress()}"/>" required disabled>
             </div>
         </div>
         <!-- ds sản phẩm thuộc nhà cung cấp -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Sản phẩm thuộc danh mục</span></div>
+            <div class="col"><span class="style-title">Sản phẩm thuộc nhà cung cấp</span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <table id="myCategoryEditTable" class="w-100">
+                <table id="myProviderEditTable" class="w-100">
                     <thead>
                     <tr>
                         <th class="text-center">STT</th>
                         <th class="text-center">Mã sản phẩm</th>
                         <th class="text-center">Tên sản phẩm</th>
                         <th class="text-center">Loại</th>
-                        <th class="text-center d-none edit-hidden">Xóa</th>
+                        <th class="text-center">Trạng thái</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,10 +57,28 @@
                         <td>${status.index + 1}</td>
                         <td>${p.getCode()}</td>
                         <td>${p.getTitle()}</td>
-                        <td>${p.getType()}</td>
-                        <td class="d-none edit-hidden">
-                            <input type="checkbox" name="selectedProductIdsDelete" class="delete-product-of-category" style="width: 15px; height: 15px" data-id="${p.getId()}">
-                        </td>
+                        <td><c:choose>
+                            <c:when test="${p.getType() == 1}">
+                                Thành phẩm
+                            </c:when>
+                            <c:when test="${p.getType() == 0}">
+                                Bán nguyên liệu
+                            </c:when>
+                            <c:otherwise>
+                                Chưa xác định
+                            </c:otherwise>
+                        </c:choose></td>
+                        <td><c:choose>
+                            <c:when test="${p.getStatus() == 1}">
+                                Đang hoạt động
+                            </c:when>
+                            <c:when test="${p.getStatus() == 0}">
+                                Vô hiệu hóa
+                            </c:when>
+                            <c:otherwise>
+                                Chưa xác định
+                            </c:otherwise>
+                        </c:choose></td>
                     </tr>
                     </c:forEach>
                     </tbody>
@@ -62,14 +88,14 @@
 
         <!-- ngày tạo -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Ngày tạo danh mục</span></div>
+            <div class="col"><span class="style-title">Ngày tạo nhà cung cấp</span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0"><input type="date" class="w-100 style-input" value="${createAt}" required disabled></div>
         </div>
         <!-- ngày chỉnh sửa -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Ngày cập nhật danh mục</span></div>
+            <div class="col"><span class="style-title">Ngày cập nhật nhà cung cấp</span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0"><input type="date" class="w-100 style-input" value="${updateAt}" required disabled></div>
@@ -91,8 +117,8 @@
 
         </div>
     </form>
-
 </div>
 
+<script src="../../../template/script/admin/provider-form/read-edit-provider-form.js"></script>
 </body>
 </html>

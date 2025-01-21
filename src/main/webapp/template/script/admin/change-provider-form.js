@@ -116,12 +116,12 @@ $(document).ready(function () {
     });
 
     $('#myTable').on('click', '.btn-read-edit', function () {
-        const categoryId = $(this).data("id");
-        const url = "/admin/category-management/read-edit-category-form";
+        const providerId = $(this).data("id");
+        const url = "/admin/provider-management/read-edit-provider-form";
         $.ajax({
             url: url,
             type: "GET",
-            data: {categoryId: categoryId},
+            data: {providerId: providerId},
             success: function (data) {
                 openOverlay();
                 $('#formWrapper').html(data);
@@ -144,46 +144,29 @@ $(document).ready(function () {
                 });
 
                 // Gửi dữ liệu từ form chỉnh sửa danh mục
-                $('#read-edit-category-form').on('submit', function (event) {
+                $('#read-edit-provider-form').on('submit', function (event) {
                     event.preventDefault(); // Ngăn chặn reload trang
-
-                    // Mảng để lưu các ID sản phẩm được chọn
-                    var selectedProductIdsDelete = [];
-
-                    // Lặp qua tất cả các checkbox có class .delete-product-of-category
-                    $('.delete-product-of-category:checked').each(function () {
-                        // Lấy giá trị data-id của mỗi checkbox đã chọn và thêm vào mảng
-                        selectedProductIdsDelete.push($(this).data('id'));
-                    });
-
-                    // Mảng để lưu các ID sản phẩm được chọn
-                    var selectedProductIdsAdd = [];
-
-                    // Lấy tất cả các option được chọn trong select
-                    $('#addProduct option:selected').each(function () {
-                        // Lấy giá trị của mỗi option đã chọn và thêm vào mảng
-                        selectedProductIdsAdd.push($(this).val());
-                    });
 
                     // Gửi dữ liệu qua AJAX
                     $.ajax({
-                        url: '/admin/category-management/update-category',
+                        url: '/admin/provider-management/update-provider',
                         type: 'POST',
-                        traditional: true, //đảm bảo mảng có thể gửi qua servlet có thể lấy được dữ liệu
                         data: {
-                            categoryId: $('#submitBtn').val(),
-                            name: $('#name-category').val(),
-                            selectedProductIdsDelete: selectedProductIdsDelete,
-                            selectedProductIdsAdd: selectedProductIdsAdd,
-                            statusCategory: $('#status-category').val(),
+                            providerId: $('#submitBtn').val(),
+                            name: $('#name-provider').val(),
+                            address: $('#address').val(),
                         },
-                        success: function () {
-                            alert('Cập nhật danh mục thành công!');
-                            table.ajax.reload();
-                            hiddenOverlay();
+                        success: function (response) {
+                            if(response.success) {
+                                alert('Cập nhật nhà cung cấp thành công!');
+                                table.ajax.reload();
+                                hiddenOverlay();
+                            } else {
+                                alert('Lỗi khi cập nhật nhà cung cấp!');
+                            }
                         },
                         error: function () {
-                            alert('Lỗi khi cập nhật danh mục!');
+                            alert('Lỗi khi cập nhật nhà cung cấp!');
                         }
                     });
                 });

@@ -133,12 +133,12 @@ $(document).ready(function () {
     });
 
     $('#myTable').on('click', '.btn-read-edit', function () {
-        const categoryId = $(this).data("id");
-        const url = "/admin/category-management/read-edit-category-form";
+        const materialId = $(this).data("id");
+        const url = "/admin/material-management/read-edit-material-form";
         $.ajax({
             url: url,
             type: "GET",
-            data: {categoryId: categoryId},
+            data: {materialId: materialId},
             success: function (data) {
                 openOverlay();
                 $('#formWrapper').html(data);
