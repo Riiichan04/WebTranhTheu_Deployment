@@ -76,3 +76,12 @@
     visibility: visible;
     opacity: 1;
 }
+.select-area .select-option{
+    border: solid 1px var(--sub-cta-button);
+    color: var(--sub-cta-button);
+    text-align: center;
+}
+.select-area .selected{
+    background-color: var(--sub-cta-button);
+    color: var(--web-background-color);
+}

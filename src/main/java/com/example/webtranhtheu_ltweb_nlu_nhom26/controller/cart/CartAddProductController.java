@@ -43,6 +43,7 @@ public class CartAddProductController extends HttpServlet {
                 int id = Integer.parseInt(productId);
                 Product product = productService.getProduct(id);
                 product.setListPrices(productService.getProductPrices(product.getId()));
+                product.setListImageUrls(productService.getListImageUrls(product.getId()));
                 if (product == null) {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
@@ -63,7 +64,7 @@ public class CartAddProductController extends HttpServlet {
 //                    response.getWriter().flush();
                     // Xử lý
                 } else {
-                    cart.addProduct(id, selectedPrice, quantity);
+                    cart.addProduct(product, selectedPrice, quantity);
                     session.setAttribute("cart", cart);
                 }
 

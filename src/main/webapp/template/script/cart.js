@@ -41,7 +41,6 @@ $(".product-detail__price").each(function () {
     $(this).text(price + "")
 })
 
-
 //Choose all
 $("#checkAll").change(function () {
     if ($(this).is(':checked')) {
@@ -65,7 +64,20 @@ $("#checkAll").change(function () {
         $("#total-price").text(formatter.format(total_price+ ""))
     }
 })
-
+$(".price-change").click(function (){
+    $(".select-area").addClass("d-none")
+    let priceSelected= $(this).parents(".price-selected")
+    priceSelected.children(".select-area").removeClass("d-none")
+})
+$(".select-option").click(function (){
+    $(".select-option").removeClass("selected")
+    $(this).addClass("selected")
+    let size= $(this).text().trim()
+    let selectArea= $(this).closest(".price-selected")
+    $(this).parents(".select-area").addClass("d-none")
+    selectArea.find("input.current-size").val(size)
+    selectArea.find("input.current-size").trigger("onchange")
+})
 // xóa sản phẩm khỏi giỏ hàng.
 $(".bi-trash").click(function (){
     removeProduct($(this).parents(".cart-item"))

@@ -146,7 +146,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-6">
-                        <button id="add-to-cart-btn" class="sub-cta-button py-2 px-3 rounded" onclick="addToCart('${product.id}')">
+                        <button id="add-to-cart-btn" class="sub-cta-button py-2 px-3 rounded" onclick="addToCart()">
                             <i class="fa-solid fa-cart-shopping" style="color: var(--sub-cta-button);"></i>
                             Thêm vào giỏ
                         </button>
