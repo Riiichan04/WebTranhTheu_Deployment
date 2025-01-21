@@ -46,14 +46,14 @@
                         </h5>
                         <p class="card-text my-1 text-center text-truncate"
                            title="Nhà cung cấp: ${product.getProvider().getProviderName()}">
-                            Nhà cung cấp: ${product.getProvider().getProviderName()}
+                            Nhà cung cấp: <span class="fw-semibold">${product.getProvider().getProviderName()}</span>
                         </p>
                         <p class="card-text text-center text-truncate my-1"
                            title="Nguyên liệu: ${product.getStringDisplayMaterials()}">
-                            Nguyên liệu: ${product.getStringDisplayMaterials()}
+                            Nguyên liệu: <span class="fw-semibold">${product.getStringDisplayMaterials()}</span>
                         </p>
                         <p class="card-text text-center mt-1">
-                            Kích thước: từ ${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm
+                            Kích thước: từ <span class="fw-semibold">${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</span>
                         </p>
                         <p class="card-text text-center fw-semibold h4 mt-2"
                            style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
@@ -79,14 +79,14 @@
                         </h5>
                         <p class="card-text my-1 text-center text-truncate"
                            title="Nhà cung cấp: ${product.getProvider().getProviderName()}">
-                            Nhà cung cấp: ${product.getProvider().getProviderName()}
+                            Nhà cung cấp: <span class="fw-semibold">${product.getProvider().getProviderName()}</span>
                         </p>
                         <p class="card-text text-center text-truncate my-1"
                            title="Nguyên liệu: ${product.getStringDisplayMaterials()}">
-                            Nguyên liệu: ${product.getStringDisplayMaterials()}
+                            Nguyên liệu: <span class="fw-semibold">${product.getStringDisplayMaterials()}</span>
                         </p>
                         <p class="card-text text-center mt-1">
-                            Kích thước: từ ${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm
+                            Kích thước: từ <span class="fw-semibold">${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</span>
                         </p>
                         <p class="card-text text-center fw-semibold h4 mt-2"
                            style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
