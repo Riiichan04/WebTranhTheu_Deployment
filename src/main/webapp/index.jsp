@@ -97,18 +97,18 @@
         </c:forEach>
     </div>
 </section>
-<section class="container  p-4_5 rounded my-4_5" id="category-section">
-    <div class="row">
-        <h4 class="main-color mb-3">Danh mục tranh thêu</h4>
-        <hr/>
-        <div class="row">
-            <c:forEach var="category" items="${listCategory}">
-                <div onclick="window.location = '/category/${category.getPatternName()}'"
-                     class="col text-center open-category-button" style="cursor: pointer">${category.getTitle()}</div>
-            </c:forEach>
-        </div>
-    </div>
-</section>
+<%--<section class="container  p-4_5 rounded my-4_5" id="category-section">--%>
+<%--    <div class="row">--%>
+<%--        <h4 class="main-color mb-3">Danh mục tranh thêu</h4>--%>
+<%--        <hr/>--%>
+<%--        <div class="row">--%>
+<%--            <c:forEach var="category" items="${listCategory}">--%>
+<%--                <div onclick="window.location = '/category/${category.getPatternName()}'"--%>
+<%--                     class="col text-center open-category-button" style="cursor: pointer">${category.getTitle()}</div>--%>
+<%--            </c:forEach>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</section>--%>
 <section class="container  p-4_5 rounded my-4_5" id="full-product-section">
     <div class="row">
         <h4 class="main-color mb-3">Tất cả sản phẩm </h4>

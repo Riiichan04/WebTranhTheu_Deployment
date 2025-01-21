@@ -1,13 +1,12 @@
 <%@include file="/layout/common.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header>
-    <div class="px-3 py-2">
+    <div class="py-2">
         <div class="container">
             <div class="row">
                 <div class="col-1 text-white d-flex text-center">
                     <a href="/"><img src="../../template/asset/favicon/web_logo.png" alt="" id="header-logo"></a>
                 </div>
-
                 <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
                     <span id="input-icon" class="fas ps-2" style="position: absolute; color: #56595C">&#xf002 </span>
                     <input type="search" name="" id="search-product-btn" class="form-control"
@@ -67,61 +66,17 @@
                             </div>
                             <h5 class="header-popup__title main-color text-start pb-2 mb-4">Danh sách yêu thích</h5>
                             <div class="header-popup__content py-1">
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                    </div>
-                                </div>
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                    </div>
-                                </div>
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                    </div>
-                                </div>
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                    </div>
-                                </div>
-                                <div class="product-item row my-2 cursor-pointer">
-                                    <div class="col-4">
-                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"
-                                             alt="...">
-                                    </div>
-                                    <div class="col-8 row">
-                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>
-                                        <p class="product-price text-start">
-                                            4.850.000 VNĐ</p>
-                                    </div>
-                                </div>
+<%--                                <div class="product-item row my-2 cursor-pointer">--%>
+<%--                                    <div class="col-4">--%>
+<%--                                        <img src="../../template/asset/image/product_image.png" class="card-img-top"--%>
+<%--                                             alt="...">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="col-8 row">--%>
+<%--                                        <h5 class="main-color text-start">Tranh thêu tay Đào hạc</h5>--%>
+<%--                                        <p class="product-price text-start">--%>
+<%--                                            4.850.000 VNĐ</p>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
                             </div>
                             <a href="/user" class="">
                                 <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">
@@ -245,6 +200,17 @@
                         </c:if>
                     </li>
                 </ul>
+            </div>
+        </div>
+        <hr class="mb-0" style="color: var(--label-color); height: 2px"/>
+        <div class="container">
+            <div class="row">
+                <c:forEach var="category" items="${listCategory}">
+                    <div onclick="window.location = '/category/${category.getPatternName()}'"
+                         class="text-center cursor-pointer" style="width: 15%">
+                        <p class="my-1 header-category-element">${category.getTitle()}</p>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
