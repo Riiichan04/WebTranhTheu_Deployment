@@ -17,7 +17,7 @@ header p {
     color: var(--label-color) !important;
 }
 
-header ul>li:hover *:not(.header-popup *) {
+header ul>li:hover *:not(.header-popup *), .header-category-element:hover {
     color: var(--label-hover-color) !important;
 }
 
