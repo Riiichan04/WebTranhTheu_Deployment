@@ -96,4 +96,16 @@ public class CartProduct implements Serializable {
     public void setPrices(List<Price> prices) {
         this.prices = prices;
     }
+
+    @Override
+    public String toString() {
+        return "CartProduct{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", thumbnailUrl='" + thumbnailUrl + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", totalPrice=" + totalPrice +
+                '}';
+    }
 }

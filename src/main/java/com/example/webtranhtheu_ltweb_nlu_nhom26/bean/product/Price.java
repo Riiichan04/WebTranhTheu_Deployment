@@ -82,6 +82,17 @@ public class Price implements Serializable {
         }
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Price{" +
+                "productId=" + productId +
+                ", width=" + width +
+                ", height=" + height +
+                ", price=" + price +
+                ", available=" + available +
+                '}';
+    }
 }
 
 

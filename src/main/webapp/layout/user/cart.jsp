@@ -45,25 +45,23 @@
                             <div class="row">${entry.value.title}</div>
                             <div class="row pb-2"></div>
                             <div class="row price-selected">
-                                <input class="col-7 rounded me-2 current-size" type="text"
-                                       id="size_${entry.value.id}_${entry.value.price.width}_${entry.value.price.height}"
-                                       value="${entry.value.price.width} x ${entry.value.price.height}"
-                                       onchange="updateProductBySize(${entry.value.id},${entry.value.price.width},${entry.value.price.height})" disabled>
-                                <button class="col-3 rounded price-change">Đổi</button>
-                                <div class="row mt-2 select-area d-none">
+                                <label class="col-3 p-0 me-2 price-label">Loại: </label>
+                                <select class=" col-7 row select-area rounded" name="select"
+                                        id="size_${entry.value.id}_${entry.value.price.width}_${entry.value.price.height}"
+                                        onchange="updateProductBySize(${entry.value.id},${entry.value.price.width},${entry.value.price.height})">
                                     <c:forEach var="price" items="${entry.value.prices}">
-                                        <c:if test="${price.width == entry.value.price.width && price.height==entry.value.price.height}">
-                                            <div class="col text-center me-2 rounded select-option selected">
+                                        <c:if test="${price.width == entry.value.price.width && price.height == entry.value.price.height}">
+                                            <option class="text-center me-2 rounded select-option" data-width="${price.width}" data-height="${price.height}" selected>
                                                     ${price.width} x ${price.height}
-                                            </div>
+                                            </option>
                                         </c:if>
                                         <c:if test="${price.width != entry.value.price.width && price.height!=entry.value.price.height}">
-                                            <div class="col text-center me-2 rounded select-option">
+                                            <option class="text-center me-2 rounded select-option" data-width="${price.width}" data-height="${price.height}">
                                                     ${price.width} x ${price.height}
-                                            </div>
+                                            </option>
                                         </c:if>
                                     </c:forEach>
-                                </div>
+                                </select>
                             </div>
                         </div>
                         <div class="col-3 text-center">
@@ -151,7 +149,6 @@
             <div class="row py-2"></div>
             <div class="row pay_area p-3">
                 <div class="row pt-2">
-                    <!--                    <div class="col-2 ps-4"></div>-->
                     <div class="col-10 h5"><i class="bi bi-cash-stack me-2"></i><span>Thành tiền</span></div>
                 </div>
                 <hr>
@@ -191,6 +188,7 @@
             url: "/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
             type: "POST",
             success: function () {
+                quantityInput.text(newQuantity)
                 console.log(newQuantity)
             },
             error: function () {
@@ -218,7 +216,9 @@
             url: "/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
             type: "POST",
             success: function () {
+                quantityInput.text(newQuantity)
                 console.log(newQuantity)
+                window.location.reload()
             },
             error: function () {
 
@@ -227,13 +227,24 @@
     }
 
     function updateProductBySize(productId, width, height) {
-        productCode = productId+'_'+ width + '_' +height
-        let sizeInput= $("input#size_"+ productCode)
-        const [newWidth,newHeight] = sizeInput.text().trim().split("x")
+        productCode = productId + '_' + width + '_' + height
+        const sizeInput = document.querySelector("select#size_" + productCode)
+        const selectedOption = sizeInput.querySelector("option:checked");
+        let newWidth= selectedOption.getAttribute("data-width")
+        let newHeight = selectedOption.getAttribute("data-height")
         console.log(newWidth)
         console.log(newHeight)
+        $.ajax({
+            url:"/update-price?productCode=" +productCode +"&width=" +newWidth +"&height=" +newHeight,
+            type:"POST",
+            success: function (){
+                alert("Update productId: " +productId+ "success with width: "+ newWidth +" and height: " + newHeight)
+                window.location.reload()
+            },
+            error: function (){
 
-
+            }
+        })
     }
 
     function removeProduct(element) {
@@ -250,6 +261,7 @@
                 if ($(".cart-item").length === 0) {
                     $("#cart-container").html(`<p>Chưa có sản phẩm</p>`)
                 }
+                window.location.reload()
             },
             error: function () {
 

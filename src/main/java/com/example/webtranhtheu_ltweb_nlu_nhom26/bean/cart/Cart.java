@@ -146,4 +146,11 @@ public class Cart implements Serializable {
     public Map<String, CartProduct> getProducts() {
         return products;
     }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "products=" + products +
+                '}';
+    }
 }
