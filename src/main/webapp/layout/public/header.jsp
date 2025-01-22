@@ -202,7 +202,6 @@
                 </ul>
             </div>
         </div>
-<%--        <hr class="mb-0" style="color: var(--label-color); height: 2px"/>--%>
     </div>
 </header>
 <nav style="background-color: var(--dark-component-background-color-hover)" class="py-2 mb-2">
