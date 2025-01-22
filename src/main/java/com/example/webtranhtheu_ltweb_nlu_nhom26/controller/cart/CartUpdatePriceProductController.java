@@ -28,7 +28,7 @@ public class CartUpdatePriceProductController extends HttpServlet {
                 session.setAttribute("cart",cart);
             }
             response.sendRedirect("/cart");
-            System.out.println(cart);
+//            System.out.println(cart);
         }catch(NumberFormatException e){
 
         }

@@ -36,7 +36,9 @@
                             <div class="row pb-4"></div>
                             <div class="row ps-4">
                                 <div class="form-check">
-                                    <input class="product-checkbox form-check-input" type="checkbox">
+                                    <input value="${entry.value.id}_${entry.value.price.width}_${entry.value.price.height}"
+                                           class="product-checkbox form-check-input" type="checkbox"
+                                           onclick="updateTotalPrice()">
                                 </div>
                             </div>
                         </div>
@@ -51,12 +53,14 @@
                                         onchange="updateProductBySize(${entry.value.id},${entry.value.price.width},${entry.value.price.height})">
                                     <c:forEach var="price" items="${entry.value.prices}">
                                         <c:if test="${price.width == entry.value.price.width && price.height == entry.value.price.height}">
-                                            <option class="text-center me-2 rounded select-option" data-width="${price.width}" data-height="${price.height}" selected>
+                                            <option class="text-center me-2 rounded select-option"
+                                                    data-width="${price.width}" data-height="${price.height}" selected>
                                                     ${price.width} x ${price.height}
                                             </option>
                                         </c:if>
                                         <c:if test="${price.width != entry.value.price.width && price.height!=entry.value.price.height}">
-                                            <option class="text-center me-2 rounded select-option" data-width="${price.width}" data-height="${price.height}">
+                                            <option class="text-center me-2 rounded select-option"
+                                                    data-width="${price.width}" data-height="${price.height}">
                                                     ${price.width} x ${price.height}
                                             </option>
                                         </c:if>
@@ -74,7 +78,7 @@
                                             <i class="fa-solid fa-minus"></i>
                                         </button>
                                     </div>
-                                    <div class="col-4 text-center"
+                                    <div class="col-4 text-center product-quantity"
                                          id="quantity_${entry.value.id}_${entry.value.price.width}_${entry.value.price.height}">
                                             ${entry.value.quantity}
                                     </div>
@@ -89,7 +93,7 @@
                         </div>
                         <div class="col p-0">
                             <div class="row pb-4 "></div>
-                            <div class="row ps-3 product-detail__price">${entry.value.price.price}</div>
+                            <div class="row ps-3" id="product-detail__price">${entry.value.price.price}</div>
                         </div>
                         <div class="col-1 p-0">
                             <div class="row pb-4"></div>
@@ -154,12 +158,10 @@
                 <hr>
                 <div class="row">
                     <div class="col-8 h6">Tổng số tiền (đã tính VAT):</div>
-                    <div class="col-4" id="total-price">${cart.getTotalPrice()}</div>
+                    <div class="col-4" id="total-price"></div>
                 </div>
                 <div class="row ps-5 py-4 ">
-                    <button class="payable rounded"><a href="../page/purchase.html"
-                                                       style="text-decoration: none;color: var(--web-background-color)">Thanh
-                        toán</a></button>
+                    <button class="payable rounded" onclick="sendSelectedProduct()">Thanh toán</button>
                 </div>
             </div>
         </div>
@@ -169,6 +171,57 @@
 <script src="../../template/script/header.js"></script>
 <script src="../../template/script/cart.js"></script>
 <script>
+    const priceProduct = formatter.format($("#product-detail__price").prop("innerText"))
+    $("#product-detail__price").text(priceProduct + "")
+
+    // chuyển đơn vị tiền qua số
+    function parseCurrencyToFloat(currency) {
+        // Loại bỏ các ký tự không phải số hoặc dấu thập phân
+        const cleanedString = currency.replace(/[^\d,-]/g, '').replace(',', '.');
+        return parseFloat(cleanedString);
+    }
+
+    // tính tổng tiền dựa vào checkbox
+    function updateTotalPrice() {
+        let total = 0.0;
+        let checkboxes = document.querySelectorAll(".product-checkbox:checked")
+        checkboxes.forEach(function (checkbox) {
+            let row = checkbox.closest('div.cart-item');  // Tìm dòng chứa checkbox
+            let price = parseCurrencyToFloat(row.querySelector('#product-detail__price').textContent);  // Lấy giá sản phẩm
+            console.log(price)
+            let quantity = Number.parseInt(row.querySelector('div.product-quantity').textContent);  // Lấy số lượng
+            console.log(quantity)
+            total += price * quantity;  // Cộng tổng tiền
+        });
+        console.log(total)
+        document.getElementById('total-price').textContent = total
+        const totalPrice = formatter.format($("#total-price").prop("innerText"))
+        $("#total-price").text(totalPrice + "")
+    }
+
+    // gửi sản phẩm đã chọn qua trang thanh toán (Xử lý trong thanh toán)
+    function sendSelectedProduct() {
+        let selectedProductId = [];
+        let checkboxes = document.querySelectorAll('.product-checkbox:checked');
+
+        checkboxes.forEach(function (checkbox) {
+            selectedProductId.push(checkbox.value);
+        });
+        if (selectedProductId.length > 0) {
+            $.ajax({
+                url: "/user/purchase?selectedItems=" + selectedProductId,
+                type: "GET",
+                success: function () {
+
+                },
+                error: function () {
+
+                }
+            })
+        }
+    }
+
+    //Servlet
     function updatePlusByQuantity(productId, width, height) {
         productCode = productId + '_' + width + '_' + height
         let quantityInput = $("div#quantity_" + productCode);
@@ -230,18 +283,18 @@
         productCode = productId + '_' + width + '_' + height
         const sizeInput = document.querySelector("select#size_" + productCode)
         const selectedOption = sizeInput.querySelector("option:checked");
-        let newWidth= selectedOption.getAttribute("data-width")
+        let newWidth = selectedOption.getAttribute("data-width")
         let newHeight = selectedOption.getAttribute("data-height")
         console.log(newWidth)
         console.log(newHeight)
         $.ajax({
-            url:"/update-price?productCode=" +productCode +"&width=" +newWidth +"&height=" +newHeight,
-            type:"POST",
-            success: function (){
-                alert("Update productId: " +productId+ "success with width: "+ newWidth +" and height: " + newHeight)
+            url: "/update-price?productCode=" + productCode + "&width=" + newWidth + "&height=" + newHeight,
+            type: "POST",
+            success: function () {
+                alert("Update productId: " + productId + "success with width: " + newWidth + " and height: " + newHeight)
                 window.location.reload()
             },
-            error: function (){
+            error: function () {
 
             }
         })
