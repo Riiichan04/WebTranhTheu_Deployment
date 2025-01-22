@@ -15,7 +15,7 @@ let pathName = window.location.href.split("/")
 let patternName = pathName[pathName.length - 1] //Lấy pattern name ra. Nếu không có phần này thì servlet bắt lỗi
 let currentPage = 1 //Trang hiện tại
 let maxPage
-const amount = 25 //Số lượng sp/trang cần display
+const amount = 15 //Số lượng sp/trang cần display
 
 function getProductsByCategory(page) {
     console.log(page)
@@ -71,12 +71,25 @@ function getOneProductsRow(listProducts) {
     let productHtml = `<div class='row'>`
     for (let product of listProducts) {
         productHtml += `
-            <div class="" style="width: 20%">
+            <div style="width: calc(100%/3)" class="mb-3">
                 <div onclick="window.location='/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.thumbnail}" class="card-img" alt="">
                     <div class="card-body px-1">
-                        <h6 class="card-title text-center pb-2">${product.title}</h6>
-                        <p class="card-text text-center fw-semibold h5 mt-2" style="color: var(--sub-cta-button)">${product.price}</p>
+                        <h5 class="card-title text-truncate text-center pb-2 fw-semibold" title="${product.title}">
+                            ${product.title}
+                        </h5>
+                        <p class="card-text text-center my-1 text-truncate" 
+                            title="${product.providerName}">
+                            Nhà cung cấp: <span class="fw-semibold">${product.providerName}</span>
+                        </p>
+                        <p class="card-text text-center text-truncate my-1"
+                           title="Nguyên liệu: ${product.materials}">
+                            Nguyên liệu: <span class="fw-semibold">${product.materials}</span>
+                        </p>
+                        <p class="card-text text-center mt-1">
+                            Kích thước: từ <span class="fw-semibold">${product.size}</span>
+                        </p>
+                        <p class="card-text text-center text-truncate fw-semibold h4 mt-2" style="color: var(--main-cta-button)">${product.price}</p>
                     </div>
                 </div>
             </div>

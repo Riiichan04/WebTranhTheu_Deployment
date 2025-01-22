@@ -16,6 +16,11 @@ public class CategoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
+        if (session.getAttribute("listCategory") == null) {
+            session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
+        }
+
         String pathName = request.getPathInfo();
         StringTokenizer tokenizer = new StringTokenizer(pathName, "/");
         String categoryName = tokenizer.nextToken();
@@ -26,6 +31,7 @@ public class CategoryController extends HttpServlet {
             //Cần tối ưu
             request.setAttribute("categoryTitle", CategoryService.getCategoryTitleByPatternName(listCategory, categoryName));
             request.setAttribute("categoryName", categoryName);
+            request.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
             request.getRequestDispatcher("/layout/category.jsp").forward(request, response);
         }
         else {
