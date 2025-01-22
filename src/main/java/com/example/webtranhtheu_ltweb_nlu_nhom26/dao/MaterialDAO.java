@@ -18,6 +18,13 @@ public interface MaterialDAO {
     @SqlUpdate("insert into materials(title, active, createdAt, updatedAt) VALUES(:title, :active, NOW(), NOW())")
     boolean addMaterial(@Bind("title") String title, @Bind("active") int active);
 
+    @SqlQuery("SELECT id, title, active, createdAt, updatedAt FROM materials where id = :materialId")
+    @RegisterBeanMapper(Material.class)
+    Material getMaterialById(@Bind("materialId") int materialId);
+
+    @SqlUpdate("update materials set title = :title, active = :active, updatedAt = NOW() where id = :materialId")
+    boolean updateMaterial(@Bind("title") String title, @Bind("active") int active, @Bind("materialId") int materialId);
+
     public static void main(String[] args) {
         MaterialDAO dao = JDBIConnector.getInstance().onDemand(MaterialDAO.class);
         for(Material m : dao.getAllMaterial()) {

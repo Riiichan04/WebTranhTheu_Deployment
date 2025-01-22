@@ -149,7 +149,7 @@ $(document).ready(function () {
                 });
 
                 $('#formContainer').css({
-                    'width': '600px',
+                    'width': '500px',
                     'max-height': '90vh',
                     'z-index': '2',
                     'overflow': 'auto',
@@ -161,46 +161,29 @@ $(document).ready(function () {
                 });
 
                 // Gửi dữ liệu từ form chỉnh sửa danh mục
-                $('#read-edit-category-form').on('submit', function (event) {
+                $('#read-edit-material-form').on('submit', function (event) {
                     event.preventDefault(); // Ngăn chặn reload trang
-
-                    // Mảng để lưu các ID sản phẩm được chọn
-                    var selectedProductIdsDelete = [];
-
-                    // Lặp qua tất cả các checkbox có class .delete-product-of-category
-                    $('.delete-product-of-category:checked').each(function () {
-                        // Lấy giá trị data-id của mỗi checkbox đã chọn và thêm vào mảng
-                        selectedProductIdsDelete.push($(this).data('id'));
-                    });
-
-                    // Mảng để lưu các ID sản phẩm được chọn
-                    var selectedProductIdsAdd = [];
-
-                    // Lấy tất cả các option được chọn trong select
-                    $('#addProduct option:selected').each(function () {
-                        // Lấy giá trị của mỗi option đã chọn và thêm vào mảng
-                        selectedProductIdsAdd.push($(this).val());
-                    });
 
                     // Gửi dữ liệu qua AJAX
                     $.ajax({
-                        url: '/admin/category-management/update-category',
+                        url: '/admin/material-management/update-material',
                         type: 'POST',
-                        traditional: true, //đảm bảo mảng có thể gửi qua servlet có thể lấy được dữ liệu
                         data: {
-                            categoryId: $('#submitBtn').val(),
-                            name: $('#name-category').val(),
-                            selectedProductIdsDelete: selectedProductIdsDelete,
-                            selectedProductIdsAdd: selectedProductIdsAdd,
-                            statusCategory: $('#status-category').val(),
+                            materialId: $('#submitBtn').val(),
+                            name: $('#name-material').val(),
+                            status: $('#status-material').val(),
                         },
-                        success: function () {
-                            alert('Cập nhật danh mục thành công!');
-                            table.ajax.reload();
-                            hiddenOverlay();
+                        success: function (response) {
+                            if(response.success) {
+                                alert('Cập nhật vật liệu thành công!');
+                                table.ajax.reload();
+                                hiddenOverlay();
+                            } else {
+                                alert('Lỗi khi cập nhật vật liệu!');
+                            }
                         },
                         error: function () {
-                            alert('Lỗi khi cập nhật danh mục!');
+                            alert('Lỗi khi cập nhật vật liệu!');
                         }
                     });
                 });

@@ -16,4 +16,12 @@ public class MaterialService {
     public static boolean addMaterial(String title, int status) {
         return materialDAO.addMaterial(title, status);
     }
+
+    public static Material getMaterialById(int id) {
+        return materialDAO.getMaterialById(id);
+    }
+
+    public static boolean updateMaterial(int id, String title, int status) {
+        return materialDAO.updateMaterial(title, status, id);
+    }
 }
