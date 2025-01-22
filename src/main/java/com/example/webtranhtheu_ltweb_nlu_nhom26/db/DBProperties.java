@@ -33,8 +33,8 @@ public class DBProperties {
 
     private void createConnection() throws SQLException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + DBProperties.getHost() + ":" + DBProperties.getPort() + "/" + DBProperties.getDbName(),
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://" + DBProperties.getHost() + ":" + DBProperties.getPort() + "/" + DBProperties.getDbName() + "?" + DBProperties.getOption(),
                     DBProperties.getUsername(), DBProperties.getPassword());
         } catch (ClassNotFoundException e) {
             return;

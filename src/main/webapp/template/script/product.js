@@ -16,7 +16,7 @@ function displayRating(rating, starWidth) {
         }
     });
 }
-displayRating(4.0, $(".product-info__star-container").width())
+
 
 // Nút chia sẻ (copy vào clipboard)
 $("#product-detail__share-btn i").click(function () {
@@ -84,18 +84,21 @@ $("#product-detail__remove-amount").click(function () {
 
 // Nút mua ngay -> Mở trang thanh toán
 $("#purchase-btn").click(function () {
-    window.location = "../page/purchase.html"
+    // window.location = "../page/purchase.html"
 })
 
 // Nút thêm vào giỏ
-$("#add-to-cart-btn").click(function () {
-    const cartBadge = $("#cart-badge")
-    cartBadge.removeClass("d-none")
-    let cartValue = parseInt(cartBadge.prop("innerText"))
-    cartValue += parseInt($("#product-detail__amount").prop("innerText"))
-    cartBadge.text(cartValue)
-    cartBadge.css("display", "flex");
-})
+// function addToCart(productId){
+//     const urlParams = new URLSearchParams(window.location.search);
+//     let currentWidth = urlParams.get("width")
+//     let currentHeight = urlParams.get("height")
+//     let quantity= parseInt($("#product-detail__amount").prop("innerText"))
+//     $.ajax({
+//         url: '/add-product?id=' + productId + '&width=' + currentWidth +'&height=' + currentHeight+ '&quantity=' + quantity,
+//         type:'GET',
+//         success: alert("Success"),
+//     })
+// }
 
 // Click vào số sao ở mục đánh giá để bình luận số sao
 $("#product-review__star .product-info__star-container").click(function () {
@@ -118,82 +121,195 @@ $("#product-review__star .product-info__star-container").click(function () {
     }
 })
 
-// Nút gửi bình luận
-$("#send-comment").click(function () {
-    const commentText = $("#product-review--comment").val()
-    const countComment = $("#count-comment")
-    const totalStar = $("#current-star-rating")
+$("#send-comment").click(function (e) {
+    e.preventDefault()
+    if ($("#product-review--comment").val() === "" && currentRating === 0) {
+        //Thông báo nhập chưa đủ nội dung
+    } else {
+        $.ajax({
+            url: '/upload-review',
+            type: 'POST',
+            data: {
+                // account: $("#session-account").val(), //Cần một trường input:hidden để chứa trên jsp
+                productId: new URL(window.location.href).searchParams.get('id'),
+                rating: currentRating,
+                content: $("#product-review--comment").val()
+            },
+            success: (response) => {
+                $("#post-review-result").removeClass("d-none")
+                response = $.parseJSON(response)
+                console.log(response)
+                if (response.result) {
+                    const currentRating = response.currentAvgRating
+                    $("#post-review-result").text("Đã gửi bình luận của bạn thành công")
+                    $("#current-star-rating").text(`${currentRating.toFixed(1)}`)
+                    $(".current-review").text(parseInt($(".current-review").text()) + 1 + " bình luận")
+                    $("#comment-container").append(createReviewElement(response.reviewData))
+                } else {
+                    //Thông báo thất bại
+                    $("#post-review-result").text("Không gửi bình luận được. Xin hãy gửi lại")
+                }
+            },
+            error: (response) => {
+                //Thông báo lỗi server
+            }
+        })
+    }
+})
 
-    //Tính toán tổng đánh giá mới cho sản phẩm và tăng ố lượng bình luận của sản phẩm
-    const countTotalComment = parseInt(countComment.text()) + 1
-    let newCurrentStarRating = (parseInt(totalStar.text()) * (countTotalComment - 1) + currentRating) / countTotalComment
-    newCurrentStarRating = `${newCurrentStarRating}`.length === 1 ? newCurrentStarRating + ".0" : newCurrentStarRating
-    if (currentRating === 0 || commentText === "") return
+let reviewAmount = 3
+let currentReviewOffset = 0
+let reviewLimit
 
-    //Tạo element sản phẩm (Sẽ chuyển vào DAO)
-    const commentElement = document.createElement("div")
-    commentElement.className = "row product-review__comment-component mt-4_5"
-    commentElement.innerHTML =
-        `
+function getReviewList(amount) {
+    if (currentReviewOffset !== -1) {
+        $.ajax({
+            url: '/get-product-review',
+            type: 'GET',
+            data: {
+                id: new URL(window.location.href).searchParams.get('id'),
+                offset: currentReviewOffset,
+                amount: amount,
+                limit: reviewLimit
+            },
+            success: (response) => {
+                response = $.parseJSON(response)
+                //Hiển thị bình luận
+                if (response.result) {
+                    reviewLimit = response.limit ? response.limit : reviewLimit
+                    for (let review of response.reviewData) {
+                        $("#comment-container").append(createReviewElement(review))
+                    }
+                    currentReviewOffset = response.currentOffset
+                } else offset = -1
+                if (currentReviewOffset >= reviewLimit || currentReviewOffset === -1 || response.limit === response.currentOffset) {
+                    // $("#comment-container").append(`<p class="d-flex justify-content-center row text-center">Đã tải hết bình luận</p>`)
+                    $("#load-more-review").attr("disabled", true)
+                    $("#load-more-review").addClass("d-none")
+                }
+            },
+            error: (response) => {
+                $("#comment-container").append(`<p class="d-flex justify-content-center row text-center">Có lỗi khi tải bình luận của bạn</p>`)
+            }
+        })
+    }
+}
+
+function createReviewElement(review) {
+    const date = new Date(review.reviewTime)
+    const formattedDate = new Intl.DateTimeFormat('en-GB').format(date)
+
+    return `
+        <div class="row product-review__comment-component mt-4_5">
             <div class="col-3 text-center">
-                <h5>Admin</h5>
-                <p>22/11/2024</p>
+                <h5>${review.username}</h5>
+                <p>${formattedDate}</p>
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col d-flex justify-content-center comment-rating">
-                        <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                            <div class="product-info__star-mask"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                        </div>
-                        <div class="col-2 product-info__star-container   px-0">
-                        <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                            <div class="product-info__star-mask"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                        </div>
-                        <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                            <div class="product-info__star-mask"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                        </div>
-                        <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star sample_half" style="color: #4d6a55;"></i>
-                            <div class="product-info__star-mask"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                        </div>
-                        <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
-                            <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
-                        </div>
+                        ${createReviewStar(review.rating)}
                     </div>
                     <div class="col-2"></div>
                 </div>
             </div>
             <div class="col-8">
                 <p class="" style="white-space: pre-line">
-                    ${commentText}
+                    ${review.content}
                 </p>
             </div>
+        </div>
         `
-    //Cập nhật số sao của bình luận
-    const listMask = commentElement.querySelectorAll(".product-info__star-mask")
-    for (let i = 0; i < currentRating; i++) {
-        listMask[i].style.width = "0";
-    }
-    for (let i = currentRating; i < listMask.length; i++) {
-        listMask[i].style.width = "100%";
-    }
+}
 
-    //Thêm nội dung, hiển thị elememt bình luận và cập nhật các giá trị cần thiết
-    countComment.text(countTotalComment)
-    totalStar.text(newCurrentStarRating)
-    $("#comment-container").prepend(commentElement)
-    $(this).attr("disabled", true)
+//Xử lý sau
+function createReviewStar(rating) {
+    rating = Math.trunc(rating) //Lấy phần nguyên nếu như rating có dạng x.0
+    if (rating > 5) return
+    const filledStar = `
+    <div class="col-2 product-info__star-container   px-0">
+         <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color);"></i>
+         <div class="product-info__star-mask" ></div>
+         <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color);"></i>
+    </div>
+    `
+    const unfilledStar = `
+     <div class="col-2 product-info__star-container   px-0">
+         <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color);"></i>
+         <div class="product-info__star-mask" style="width: 100%"></div>
+         <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color);"></i>
+    </div>
+    `
+
+    let result = ""
+    for (let i = 0; i < rating; i++) {
+        result += filledStar
+    }
+    for (let i = rating; i < 5; i++) {
+        result += unfilledStar
+    }
+    return result
+}
+
+
+$("#load-more-review").click(function () {
+    if (currentReviewOffset !== -1) getReviewList(reviewAmount)
 })
 
-// Click vào sản phẩm khác sẽ mở cửa sổ sản phẩm khác
-$(".other-product__card").click(function () {
-    window.open("product.html").focus();
+
+//Ajax cho phần chuyển đổi thông tin sản phẩm
+const urlParams = new URLSearchParams(window.location.search);
+let currentWidth = urlParams.get("width")
+let currentHeight = urlParams.get("height")
+let currentPrice = 0.0
+let currentDiscountValue
+
+function getPrice(width, height) {
+    const productId = urlParams.get("id")
+    $.ajax({
+        url: '/get-product-price',
+        method: 'GET',
+        data: {
+            width: width,
+            height: height,
+            id: productId,
+            discountValue: currentDiscountValue
+        },
+        success: function (response) {
+            response = $.parseJSON(response)
+            if (response.result) {
+                if (currentWidth !== response.width && currentHeight !== response.height) {
+                    const url = new URL(window.location.href)
+                    url.searchParams.set("width", response.width)
+                    url.searchParams.set("height", response.height)
+                    window.history.pushState({}, '', url)
+                }
+                $("#product-detail__available--value").text(response.available)
+                $("#product-details__price").text(response.price)
+                $("#current-size-notice").html(`<p>Kích thước hiện tại bạn đang chọn là: <span class="h5">${response.width}x${response.height} cm</span></p>`)
+                currentPrice = response.price
+                currentWidth = response.width
+                currentHeight = response.height
+                if (currentDiscountValue == null) currentDiscountValue = response.discountValue
+                if (currentDiscountValue !== 0 && response.discountedPrice !== null) {
+                    $("#product-details__old-price").removeClass("d-none")
+                    $("#product-details__old-price s").text(response.price)
+                    $("#product-details__price").text(response.discountedPrice)
+                    $("#product-details__old-price span").text((currentDiscountValue * 100).toFixed(0) + " %")
+                }
+                $("#product-detail").data("width", currentWidth)
+                $("#product-detail").data("height", currentHeight)
+            }
+        },
+    })
+}
+
+
+$(".switch-size-btn").click(function () {
+    let inputWidth = $(this).data("width")
+    let inputHeight = $(this).data("height")
+    getPrice(inputWidth, inputHeight)
 })
+
+getReviewList(reviewAmount)
+getPrice(currentWidth, currentHeight)
 

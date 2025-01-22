@@ -54,6 +54,7 @@ textarea {
     cursor: pointer;
 }
 
+
 .sub-info-title {
     font-size: 14px;
 }
@@ -68,4 +69,9 @@ textarea {
     color: var(--label-color);
     width: fit-content;
     left: -100%;
+}
+
+.card-img {
+    object-fit: contain;
+    aspect-ratio: 3/2;
 }
