@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-
 public class Cart implements Serializable {
     private double totalPrice; // tổng tiền của các sản phẩm trong cart.
     private Map<String, CartProduct> products; // key là Code của Product, Value là 1 CartProduct
     public static final int MAX_CART_PRODUCTS = 10;
     private static Cart instance;
     private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart
+
     private Cart() {
         products = new HashMap<>();
     }
@@ -29,21 +29,21 @@ public class Cart implements Serializable {
         return instance;
     }
 
-    public boolean addProduct(int productId, Price price, int quantity) {
+    public boolean addProduct(Product product, Price price, int quantity) {
         if (quantity > price.getAvailable() && quantity > CartProduct.MAX_PER_PRODUCT) return false;
         String productCode;
         if (price == null) {
             productCode = "no price";
         }
-        productCode = generateProductCode(productId, price.getWidth(),price.getHeight());
+        productCode = generateProductCode(product.getId(), price.getWidth(), price.getHeight());
         if (products.containsKey(productCode)) {
-            return updateProductByQuantity(productCode, quantity); // kiểm tra
+            CartProduct cartProduct = products.get(productCode);
+            return updateProductByQuantity(productCode, cartProduct.getQuantity() + quantity); // kiểm tra
         } else {
-            CartProduct cartProduct = covertToCart(productId);
+            CartProduct cartProduct = covertToCart(product);
             cartProduct.setQuantity(quantity);
-            cartProduct.setPrices(ProductService.getInstance().getProductPrices(productId));
             if (productCode.equals("no price")) {
-            return false;
+                return false;
             }
             cartProduct.updateBySize(price.getWidth(), price.getHeight());
             cartProduct.setPrice(price);
@@ -55,11 +55,13 @@ public class Cart implements Serializable {
         }
     }
 
-    private CartProduct covertToCart(int productId) {
+
+    private CartProduct covertToCart(Product product) {
         CartProduct cartProduct = new CartProduct();
-        Product product = ProductService.getInstance().getProduct(productId);
-        product.setListImageUrls(ProductService.getInstance().getListImageUrls(productId));
-        cartProduct.setProduct(product);
+        cartProduct.setId(product.getId());
+        cartProduct.setTitle(product.getTitle());
+        cartProduct.setThumbnailUrl(product.getThumbnail());
+        cartProduct.setPrices(product.getListPrices());
         return cartProduct;
     }
 
@@ -67,9 +69,12 @@ public class Cart implements Serializable {
         CartProduct cartProduct = products.get(productCode);
         if (cartProduct != null) {
             if (cartProduct.getPrice().getAvailable() > quantity) {
-                cartProduct.setQuantity(quantity);
-                cartProduct.getTotalPrice();
-                this.getTotalPrice();
+                if (quantity>0 && quantity <= CartProduct.MAX_PER_PRODUCT) {
+                    cartProduct.setQuantity(quantity);
+                    cartProduct.getTotalPrice();
+                    this.getTotalPrice();
+                    return true;
+                }
             } else return false;
         }
         return false;
@@ -79,15 +84,15 @@ public class Cart implements Serializable {
         StringTokenizer tokenizer = new StringTokenizer(productCode, "_");
         String oldWidth = tokenizer.nextToken();
         String oldHeight = tokenizer.nextToken();
-        if(products.containsKey(productCode)) {
+        if (products.containsKey(productCode)) {
             CartProduct existingProduct = products.get(productCode);
             products.remove(productCode);
 
-            String newProductCode= generateProductCode(existingProduct.getProductId(), width, height);
-            if(products.containsKey(newProductCode)) {
+            String newProductCode = generateProductCode(existingProduct.getId(), width, height);
+            if (products.containsKey(newProductCode)) {
                 CartProduct newProduct = products.get(newProductCode);
-                newProduct.setQuantity(newProduct.getQuantity()+existingProduct.getQuantity());
-            }else{
+                newProduct.setQuantity(newProduct.getQuantity() + existingProduct.getQuantity());
+            } else {
                 existingProduct.updateBySize(width, height);
                 products.put(newProductCode, existingProduct);
             }
@@ -97,12 +102,14 @@ public class Cart implements Serializable {
         return false;
     }
 
-    public String generateProductCode(int productId, int width,int height) {
+    public String generateProductCode(int productId, int width, int height) {
         return productId + "_" + width + "_" + height;
     }
-    public double getSale(){
+
+    public double getSale() {
         return this.discount.getValue();
     }
+
     public double getTotalPrice() {
         double totalPrice = 0;
         for (CartProduct cartProduct : products.values()) {
@@ -120,10 +127,10 @@ public class Cart implements Serializable {
     public boolean removeProduct(String productCode) {
         if (products.containsKey(productCode)) {
             products.remove(productCode);
-            this.getTotalPrice();
+            this.totalPrice= getTotalPrice();
             return true;
         }
-        return false;
+        else return false;
     }
 
 
@@ -137,5 +144,20 @@ public class Cart implements Serializable {
 
     public Map<String, CartProduct> getProducts() {
         return products;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "products=" + products +
+                '}';
+    }
+
+    //Nên tách các method utilities như này sang CartService hoặc CartUtil
+    public int getCartSize() {
+        return this.products.values().stream().mapToInt(CartProduct::getQuantity).sum();
+    }
+    public int getSize(){
+        return products.size();
     }
 }

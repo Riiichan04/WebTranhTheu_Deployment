@@ -10,6 +10,9 @@
     background-color: var(--light-component-background-color);
     border-radius: 5px;
 }
+.cart{
+    min-height: 750px;
+}
 .cart-title{
     color: var(--sub-cta-button);
     font-weight: bold;
@@ -72,4 +75,12 @@
 .popup.show {
     visibility: visible;
     opacity: 1;
+}
+.select-area{
+    color: var(--sub-cta-button);
+    background-color: var(--web-background-color);
+    text-align: center;
+}
+.select-area .select-option{
+    color: var(--sub-cta-button);
 }

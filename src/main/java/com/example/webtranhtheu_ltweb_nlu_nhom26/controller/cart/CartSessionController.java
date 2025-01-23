@@ -14,6 +14,9 @@ import java.io.IOException;
 public class CartSessionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
         Object accountIdObject = session.getAttribute("accountId");
@@ -28,8 +31,7 @@ public class CartSessionController extends HttpServlet {
                 session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
             }
             session.setAttribute("cart", cart);
-
-            request.getRequestDispatcher("/views/web/cart.jsp").forward(request, response);
+            request.getRequestDispatcher("/layout/user/cart.jsp").forward(request, response);
         }
 
     }
