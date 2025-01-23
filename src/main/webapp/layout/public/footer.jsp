@@ -56,3 +56,12 @@
         </div>
     </div>
 </footer>
+
+<script>
+    let cartSize = '${sessionScope.cart.getCartSize()}'
+    if (cartSize !== '') {
+        const badge = $("#cart-badge")
+        badge.removeClass("d-none")
+        badge.text(parseInt(cartSize))
+    }
+</script>

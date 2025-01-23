@@ -4,6 +4,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.Cart;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
 import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -30,6 +31,8 @@ public class CartAddProductController extends HttpServlet {
         String widthParam = request.getParameter("width");
         String heightParam = request.getParameter("height");
         Object accountIdObject = session.getAttribute("accountId");
+        JsonObject jsonResult = new JsonObject();
+
         if (accountIdObject == null) {
             // Xử lý khúc này
             response.sendRedirect("/");
@@ -66,6 +69,8 @@ public class CartAddProductController extends HttpServlet {
                 } else {
                     cart.addProduct(product, selectedPrice, quantity);
                     session.setAttribute("cart", cart);
+                    jsonResult.addProperty("currentCartLength", cart.getCartSize());
+                    ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
                 }
 
             } catch (NumberFormatException e) {

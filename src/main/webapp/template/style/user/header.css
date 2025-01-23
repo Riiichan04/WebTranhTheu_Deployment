@@ -77,3 +77,12 @@ header a:hover {
 #category-popup i {
     color: var(--text-color);
 }
+
+#cart-badge {
+    top: -0.5rem;
+    right: 0;
+    background-color: var(--main-cta-button);
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0.15rem;
+}

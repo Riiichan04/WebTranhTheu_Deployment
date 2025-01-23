@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-
 public class Cart implements Serializable {
     private double totalPrice; // tổng tiền của các sản phẩm trong cart.
     private Map<String, CartProduct> products; // key là Code của Product, Value là 1 CartProduct
@@ -152,5 +151,10 @@ public class Cart implements Serializable {
         return "Cart{" +
                 "products=" + products +
                 '}';
+    }
+
+    //Nên tách các method utilities như này sang CartService hoặc CartUtil
+    public int getCartSize() {
+        return this.products.values().stream().mapToInt(CartProduct::getQuantity).sum();
     }
 }
