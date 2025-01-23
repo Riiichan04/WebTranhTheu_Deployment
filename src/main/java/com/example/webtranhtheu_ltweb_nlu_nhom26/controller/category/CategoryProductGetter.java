@@ -33,8 +33,9 @@ public class CategoryProductGetter extends HttpServlet {
             if (maxPage == null || maxPage.isEmpty()) {
                 jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(categoryPatternName, amount));
             }
-            //Không tìm thấy sp nào
+
             List<Product> listProductByCategory = CategoryService.getDisplayProductByCategory(categoryPatternName, page, amount);
+            //Không tìm thấy sp nào
             if (listProductByCategory.isEmpty()) {
                 jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);

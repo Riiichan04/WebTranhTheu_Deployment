@@ -1,7 +1,10 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.category;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -19,16 +22,44 @@ public class CategoryProductFilter extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         JsonObject jsonResult = new JsonObject();
         try {
-            String categoryName = request.getParameter("categoryName");
-            String[] listTopic = request.getParameterValues("listTopic");
-            List<Integer> listTopicId = Arrays.stream(listTopic).map(Integer::parseInt).toList();
-            int rating = Integer.parseInt(request.getParameter("rating"));
-            double fromPrice = Double.parseDouble(request.getParameter("fromPrice"));
-            double toPrice = Double.parseDouble(request.getParameter("toPrice"));
-            int offset = Integer.parseInt(request.getParameter("offset"));
-            int limit = Integer.parseInt(request.getParameter("limit"));
+            String requestPatternName = request.getParameter("patternName");
+            String[] requestListTopicId = request.getParameterValues("listTopic");
+            String requestRating = request.getParameter("rating");
+            String requestFromPrice = request.getParameter("fromPrice");
+            String requestToPrice = request.getParameter("toPrice");
+            String requestAmount = request.getParameter("amount");
+            String requestPage = request.getParameter("page");
+            String maxPage = request.getParameter("maxPage");
 
-            ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
+            List<Integer> listTopicId = Arrays.stream(requestListTopicId).map(Integer::parseInt).toList();
+            int rating = requestRating == null || requestRating.isEmpty() ? 0 : Integer.parseInt(requestRating);
+            double fromPrice = requestFromPrice == null || requestFromPrice.isEmpty() ? 0 : Double.parseDouble(requestFromPrice);
+            double toPrice = requestToPrice == null || requestToPrice.isEmpty() ? 0 : Double.parseDouble(requestToPrice);
+            int amount = Integer.parseInt(requestAmount);
+            int page = Integer.parseInt(requestPage);
+
+            if (page <= 0 || amount <= 0) {
+                ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
+                return;
+            }
+            if (maxPage == null || maxPage.isEmpty()) {
+                jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(requestPatternName, amount));
+            }
+
+            List<Product> listProducts = ProductService.filterProduct(requestPatternName, listTopicId, rating, fromPrice, toPrice, amount, page);
+            if (listProducts.isEmpty()) {
+                jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
+                ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
+            }
+            else {
+                JsonArray listResult = new JsonArray();
+                for (Product product : listProducts) {
+                    ControllerUtil.addProductToJson(listResult, product, product.getMinPrice());
+                }
+                jsonResult.addProperty("currentPage", page);
+                jsonResult.add("listProducts", listResult);
+                ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
+            }
         }
         catch (Exception e) {
             ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);

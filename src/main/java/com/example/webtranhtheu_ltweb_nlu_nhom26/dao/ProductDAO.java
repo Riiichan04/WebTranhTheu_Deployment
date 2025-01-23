@@ -159,12 +159,12 @@ public interface ProductDAO {
             and (product_reviews.rating >= :rating or :rating = 0)
             and ((:fromPrice = 0 and :toPrice = 0) or product_prices.price between :fromPrice and :toPrice)
             and (topic_products_details.topicId in (<topicId>) or topicId is null)
-        limit :offset, :limit
+        limit :offset, :amount
     """)
     List<Integer> filterProduct(@Bind("categoryName") String categoryName, @BindList("topicId") List<Integer> topicId,
                                 @Bind("rating") int rating,
                                 @Bind("fromPrice") double fromPrice, @Bind("toPrice") double toPrice,
-                                @Bind("offset") int offset, @Bind("limit") int limit);
+                                @Bind("offset") int offset, @Bind("amount") int amount);
 
 
     //Phần admin

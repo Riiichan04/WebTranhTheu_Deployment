@@ -129,8 +129,8 @@ public class ProductService {
     }
 
 
-    public List<Product> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, int offset, int limit) {
-        List<Integer> listId = productDAO.filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, offset, limit);
+    public static List<Product> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, int offset, int amount) {
+        List<Integer> listId = productDAO.filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, (offset - 1) * amount, amount);
         List<Product> products = new ArrayList<>();
         for (Integer id : listId) {
             products.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(id));
