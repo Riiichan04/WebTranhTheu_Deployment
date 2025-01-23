@@ -138,7 +138,7 @@ public interface ProductDAO {
     """)
     List<Integer> findAllSimilarProducts(@BindList("topicIds") List<Integer> topicIds, @Bind("productId") int productId);
 
-    @SqlQuery("select id, codeProduct as code, title from products")
+    @SqlQuery("select id, codeProduct as code, title from products where status = 1")
     @RegisterBeanMapper(Product.class)
     List<Product> getProductsCodeAndTitle();
 

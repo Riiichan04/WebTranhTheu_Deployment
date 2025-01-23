@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINH THU
-  Date: 12/23/2024
-  Time: 1:44 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -43,10 +38,9 @@
                     <div class="form-group product-row row mb-2">
                         <div class="col-6 pe-0">
                             <select class="w-100 style-select product-select" required>
-                                <option value="" disabled selected>Chọn sản phẩm</option>
-                                <option value="product1">Sản phẩm 1</option>
-                                <option value="product2">Sản phẩm 2</option>
-                                <option value="product3">Sản phẩm 3</option>
+                                <c:forEach items="${listProducts}" var="p">
+                                <option value="${p.getId()}">${p.getCode()} - ${p.getTitle()}</option>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="col-5 pe-0">
@@ -59,59 +53,27 @@
                 </div>
             </div>
         </div>
+        <!-- mã giảm giá -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Mã giảm giá<span class="text-danger"> * </span></span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="w-100 style-select product-select" required>
+                    <option value="" selected>---Chọn mã giảm giá---</option>
+                    <c:forEach items="${discountValid}" var="d">
+                    <option value="${d.getId()}">${d.getTitle()}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
         <!-- Địa chỉ giao hàng -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Địa chỉ giao hàng<span class="text-danger"> * </span></span>
             </div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0">
-                <div class="row">
-                    <div class="col"><select class="style-select" disabled>
-                        <option selected>Việt Nam</option>
-                    </select></div>
-                    <div class="col">
-                        <select class="style-select location">
-                            <option disabled>--Chọn thành phố--</option>
-                            <option>Tp. Hồ Chí Minh</option>
-                            <option>Tp 2</option>
-                            <option>Tp 3</option>
-                            <option>Tp 4</option>
-                            <option>Tp 5</option>
-                            <option>Tp 6</option>
-                            <option>Tp 7</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row pt-2">
-                    <div class="col">
-                        <select class="style-select location">
-                            <option disabled>--Chọn quận/huyện--</option>
-                            <option selected>Tp. Thủ Đức</option>
-                            <option>Quận Bình Thạnh</option>
-                            <option>Quận 1</option>
-                            <option>Quận 3</option>
-                            <option>Quận 4</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select class="style-select location">
-                            <option disabled>--Chọn xã/phường--</option>
-                            <option selected>Phường Linh Trung</option>
-                            <option>Phường 2</option>
-                            <option>Phường 3</option>
-                            <option>Phường 4</option>
-                            <option>Phường 5</option>
-                            <option>Phường 6</option>
-                            <option>Phường 7</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row pt-2" style="padding-left: 12px; padding-right: 12px">
-                    <input type="text" class="style-input location" placeholder="Nhập tên đường, tòa nhà, số nhà,..."
-                           value="Khu phố 6">
-                </div>
-            </div>
+            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập địa chỉ giao hàng" required></div>
         </div>
 
         <!-- ngày giao hàng -->
@@ -130,23 +92,12 @@
         <div class="row pt-2">
             <div class="col p-0">
                 <select class="style-select" id="statusOrder" onclick="reasonCancelOrder()" required>
-                    <option>Đang xử lý</option>
-                    <option>Đang giao</option>
-                    <option>Đã hoàn thành</option>
-                    <option>Đã hủy</option>
-                </select>
-            </div>
-        </div>
-        <!-- trạng thái thanh toán -->
-        <div class="row pt-3">
-            <div class="col"><span class="style-title">Trạng thái thanh toán<span class="text-danger"> * </span></span>
-            </div>
-        </div>
-        <div class="row pt-2">
-            <div class="col p-0">
-                <select class="style-select" required>
-                    <option>Chưa thanh toán</option>
-                    <option>Đã thanh toán</option>
+                    <option value="1">Chờ xác nhận</option>
+                    <option value="2">Chờ lấy hàng</option>
+                    <option value="3">Chờ giao hàng</option>
+                    <option value="4">Đã giao</option>
+                    <option value="5">Đã nhận hàng</option>
+                    <option value="6">Đơn yêu cầu hoàn trả</option>
                 </select>
             </div>
         </div>
@@ -158,14 +109,27 @@
         <div class="row pt-2 d-none select-reason-cancel-order">
             <div class="col p-0">
                 <select class="style-select" required>
-                    <option>Lí do 1</option>
-                    <option>Lí do 2</option>
-                    <option>Lí do 3</option>
-                    <option>Lí do 4</option>
-                    <option>Lí do 5</option>
-                    <option>Lí do 6</option>
-                    <option>Lí do 7</option>
-                    <option>Lí do 8</option>
+                    <option value="1">Lí do 1</option>
+                    <option value="2">Lí do 2</option>
+                    <option value="3">Lí do 3</option>
+                    <option value="4">Lí do 4</option>
+                    <option value="5">Lí do 5</option>
+                    <option value="6">Lí do 6</option>
+                    <option value="7">Lí do 7</option>
+                    <option value="8">Lí do 8</option>
+                </select>
+            </div>
+        </div>
+        <!-- trạng thái thanh toán -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Trạng thái thanh toán<span class="text-danger"> * </span></span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" required>
+                    <option value="0">Chưa thanh toán</option>
+                    <option value="1">Đã thanh toán</option>
                 </select>
             </div>
         </div>

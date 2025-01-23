@@ -16,9 +16,8 @@ function removeProduct(button) {
 }
 
 $('#statusOrder').click(function () {
-    const selectedText = $("#statusOrder option:selected").text();
-    console.log("here")
-    if(selectedText === 'Đã hủy') {
+    const selectedText = $("#statusOrder option:selected").val();
+    if(selectedText === "6") {
         $('.label-reason-cancel-order').removeClass('d-none');
         $('.select-reason-cancel-order').removeClass('d-none');
     } else {

@@ -1,7 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.material;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Material;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.services.MailService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.MaterialService;
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
@@ -11,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "GetMaterialDataController", value = "/admin/material-management/get-material")

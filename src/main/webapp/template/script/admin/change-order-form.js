@@ -103,9 +103,9 @@ $(document).ready(function () {
         hiddenOverlay() // Tắt overlay
     });
 
-    $('#addOrderBtn').on('click', function(event) {
+    $('#addOrderBtn').on("click", function (event) {
         event.preventDefault();
-        const url = "/admin/order-management/add-order";
+        const url = "/admin/order-management/add-order-form";
         $.ajax({
             url: url,
             type: "GET",
@@ -124,6 +124,7 @@ $(document).ready(function () {
                     'z-index': '2',
                     'overflow': 'auto',
                 });
+
                 $('#cancelBtn').click(function () {
                     hiddenOverlay();
                 });
