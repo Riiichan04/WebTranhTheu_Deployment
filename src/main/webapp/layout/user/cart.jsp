@@ -26,7 +26,7 @@
             </div>
             <hr/>
             <c:if test="${empty cart.products}">
-                <h4>Chưa có sản phẩm</h4>
+                <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">Giỏ hàng trống</div>
             </c:if>
             <div class="cart-item-list" id="cart-container">
                 <c:forEach items="${cart.products}" var="entry">
@@ -320,7 +320,6 @@
                     // xử lý trong controller = JsonObject
                     if ($(".cart-item").length === 0) {
                         $("#cart-badge").addClass("d-none")
-                        $("#cart-container").innerHTML(`<div class="h3 ms-4">Chưa có sản phẩm</div>`)
                     }
                 } else {
                     alert("Có lỗi khi xóa sản phẩm khỏi giỏ hàng")
