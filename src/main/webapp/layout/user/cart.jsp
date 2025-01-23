@@ -171,8 +171,8 @@
 <script src="../../template/script/header.js"></script>
 <script src="../../template/script/cart.js"></script>
 <script>
-    const priceProduct = formatter.format($("#product-detail__price").prop("innerText"))
-    $("#product-detail__price").text(priceProduct + "")
+    // const priceProduct = formatter.format($("#product-detail__price").prop("innerText"))
+    // $("#product-detail__price").text(priceProduct + "")
 
     // chuyển đơn vị tiền qua số
     function parseCurrencyToFloat(currency) {
@@ -315,8 +315,8 @@
                     console.log(data)
                     const badge = $("#cart-badge")
                     const currentCartLength = data.currentCartLength
-                        badge.removeClass("d-none")
-                        badge.text(currentCartLength)
+                    badge.removeClass("d-none")
+                    badge.text(currentCartLength)
                     // xử lý trong controller = JsonObject
                     if ($(".cart-item").length === 0) {
                         $("#cart-badge").addClass("d-none")
@@ -352,9 +352,21 @@
             console.log("empty")
         }
     }
+    function formatProductPrice(productId,width,height){
+        let divInput;
+        let price;
+        let priceText;
+        let cartItem;
+        divInput= $("div#quantity_" + productId + '_' + width + '_' + height)
+        cartItem= divInput.closest(".cart-item")
+        price= cartItem.find("#product-detail__price")
+        priceText= formatter.format(price.prop("innerText"))
+        price.text(priceText+"")
+    }
 
     <c:forEach var="entry" items="${cart.products}">
     update(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})
+    formatProductPrice(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})
     </c:forEach>
 </script>
 </body>

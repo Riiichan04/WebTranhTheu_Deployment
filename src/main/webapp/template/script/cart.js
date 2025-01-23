@@ -40,7 +40,6 @@ const formatter = new Intl.NumberFormat('vi-VN', {
 //     $(this).text(price + "")
 // })
 
-
 //Choose all
 $("#checkAll").change(function () {
     if ($(this).is(':checked')) {
