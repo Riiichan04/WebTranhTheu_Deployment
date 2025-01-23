@@ -19,19 +19,6 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 public class ProductService {
     private static ProductService instance;
     private static ProductDAO productDAO;
-    public ProductService(ProductDAO productDAO) {
-        this.productDAO = productDAO;
-    }
-    public static ProductService getInstance() {
-        if (instance == null) {
-            Jdbi jdbi= JDBIConnector.getInstance();
-            jdbi.installPlugin(new SqlObjectPlugin());
-            productDAO = jdbi.onDemand(ProductDAO.class);
-            instance = new ProductService(productDAO);
-            return instance;
-        }
-        return instance;
-    }
 
     //Cần lấy phần discount ra class này
 

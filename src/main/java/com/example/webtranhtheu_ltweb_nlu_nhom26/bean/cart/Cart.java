@@ -157,4 +157,7 @@ public class Cart implements Serializable {
     public int getCartSize() {
         return this.products.values().stream().mapToInt(CartProduct::getQuantity).sum();
     }
+    public int getSize(){
+        return products.size();
+    }
 }

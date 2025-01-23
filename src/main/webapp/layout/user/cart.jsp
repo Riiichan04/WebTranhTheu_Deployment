@@ -291,7 +291,6 @@
             url: "/update-price?productCode=" + productCode + "&width=" + newWidth + "&height=" + newHeight,
             type: "POST",
             success: function () {
-                alert("Update productId: " + productId + "success with width: " + newWidth + " and height: " + newHeight)
                 window.location.reload()
             },
             error: function () {
@@ -308,13 +307,24 @@
         $.ajax({
             url: "/remove-product?productCode=" + productCode,
             type: "POST",
-            success: function () {
+            success: function (data) {
                 element.remove()
-                // xử lý trong controller = JsonObject
-                if ($(".cart-item").length === 0) {
-                    $("#cart-container").html(`<p>Chưa có sản phẩm</p>`)
-                }
                 window.location.reload()
+                data = $.parseJSON(data)
+                if (data.result) {
+                    console.log(data)
+                    const badge = $("#cart-badge")
+                    const currentCartLength = data.currentCartLength
+                        badge.removeClass("d-none")
+                        badge.text(currentCartLength)
+                    // xử lý trong controller = JsonObject
+                    if ($(".cart-item").length === 0) {
+                        $("#cart-badge").addClass("d-none")
+                        $("#cart-container").innerHTML(`<div class="h3 ms-4">Chưa có sản phẩm</div>`)
+                    }
+                } else {
+                    alert("Có lỗi khi xóa sản phẩm khỏi giỏ hàng")
+                }
             },
             error: function () {
 

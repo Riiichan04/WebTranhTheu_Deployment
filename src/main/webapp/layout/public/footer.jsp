@@ -59,7 +59,7 @@
 
 <script>
     let cartSize = '${sessionScope.cart.getCartSize()}'
-    if (cartSize !== '') {
+    if (cartSize !== '' && parseInt(cartSize)!==0) {
         const badge = $("#cart-badge")
         badge.removeClass("d-none")
         badge.text(parseInt(cartSize))

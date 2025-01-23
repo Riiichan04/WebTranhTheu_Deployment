@@ -20,7 +20,7 @@ public class CartAddProductController extends HttpServlet {
     ProductService productService;
 
     public CartAddProductController() {
-        productService =ProductService.getInstance();
+        productService =new ProductService();
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

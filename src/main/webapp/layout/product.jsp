@@ -356,7 +356,7 @@
                     else alert("Có lỗi khi thêm sản phẩm vào giỏ hàng")
                 },
                 error: function (error) {
-                    var errText = error.responseText
+                    let errText = error.responseText
                     console.log(errText)
                     alert(errText)
                 }
