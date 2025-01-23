@@ -7,16 +7,14 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Cart implements Serializable {
-    private double totalPrice; // tổng tiền của các sản phẩm trong cart.
     private Map<String, CartProduct> products; // key là Code của Product, Value là 1 CartProduct
     public static final int MAX_CART_PRODUCTS = 10;
     private static Cart instance;
-    private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart
+    private List<Discount> discountList;
+    private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart, lưu lại discount đã chọn
 
     private Cart() {
         products = new HashMap<>();
@@ -50,7 +48,6 @@ public class Cart implements Serializable {
             // Có xử lý cái total Price ko??
             cartProduct.getTotalPrice();
             products.put(productCode, cartProduct);
-            this.getTotalPrice();
             return true;
         }
     }
@@ -72,7 +69,6 @@ public class Cart implements Serializable {
                 if (quantity>0 && quantity <= CartProduct.MAX_PER_PRODUCT) {
                     cartProduct.setQuantity(quantity);
                     cartProduct.getTotalPrice();
-                    this.getTotalPrice();
                     return true;
                 }
             } else return false;
@@ -116,30 +112,31 @@ public class Cart implements Serializable {
             totalPrice += cartProduct.getTotalPrice();
         }
 //        totalPrice-= getSale()*totalPrice;
-        setTotalPrice(totalPrice);
         return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public boolean removeProduct(String productCode) {
         if (products.containsKey(productCode)) {
             products.remove(productCode);
-            this.totalPrice= getTotalPrice();
             return true;
         }
         else return false;
     }
 
 
-    public Discount getDiscount() {
-        return discount;
+    public Discount getMaxDiscount(){
+        return this.discountList.stream().max(Comparator.comparingDouble(Discount::getValue)).orElse(discountList.get(0));
+    }
+     public Discount getSelectedDiscount(int discountId){
+        return this.discountList.get(discountId);
+     }
+
+    public List<Discount> getDiscountList() {
+        return discountList;
     }
 
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
+    public void setDiscountList(List<Discount> discountList) {
+        this.discountList = discountList;
     }
 
     public Map<String, CartProduct> getProducts() {

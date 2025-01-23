@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.cart;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.Cart;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.DiscountService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,12 +13,14 @@ import java.io.IOException;
 
 @WebServlet(name = "CartSessionController", value = "/cart")
 public class CartSessionController extends HttpServlet {
+    private static DiscountService discountService = new DiscountService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
+        // XỬ lÝ vụ discount ở đây rồi cho vào sesion
         Cart cart = (Cart) session.getAttribute("cart");
         Object accountIdObject = session.getAttribute("accountId");
         if (accountIdObject == null) {
@@ -26,6 +29,7 @@ public class CartSessionController extends HttpServlet {
         else {
             if(cart == null) {
                 cart= Cart.getInstance();
+                cart.setDiscountList(discountService.getListDiscountAvailable());
             }
             if (session.getAttribute("listCategory") == null) {
                 session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());

@@ -171,9 +171,6 @@
 <script src="../../template/script/header.js"></script>
 <script src="../../template/script/cart.js"></script>
 <script>
-    // const priceProduct = formatter.format($("#product-detail__price").prop("innerText"))
-    // $("#product-detail__price").text(priceProduct + "")
-
     // chuyển đơn vị tiền qua số
     function parseCurrencyToFloat(currency) {
         // Loại bỏ các ký tự không phải số hoặc dấu thập phân
@@ -188,12 +185,9 @@
         checkboxes.forEach(function (checkbox) {
             let row = checkbox.closest('div.cart-item');  // Tìm dòng chứa checkbox
             let price = parseCurrencyToFloat(row.querySelector('#product-detail__price').textContent);  // Lấy giá sản phẩm
-            console.log(price)
             let quantity = Number.parseInt(row.querySelector('div.product-quantity').textContent);  // Lấy số lượng
-            console.log(quantity)
             total += price * quantity;  // Cộng tổng tiền
         });
-        console.log(total)
         document.getElementById('total-price').textContent = total
         const totalPrice = formatter.format($("#total-price").prop("innerText"))
         $("#total-price").text(totalPrice + "")
@@ -201,16 +195,22 @@
 
     // gửi sản phẩm đã chọn qua trang thanh toán (Xử lý trong thanh toán)
     function sendSelectedProduct() {
-        let selectedProductId = [];
+        let selectedProductCode = [];
         let checkboxes = document.querySelectorAll('.product-checkbox:checked');
 
         checkboxes.forEach(function (checkbox) {
-            selectedProductId.push(checkbox.value);
+            selectedProductCode.push(checkbox.value);
         });
-        if (selectedProductId.length > 0) {
+        if (selectedProductCode.length > 0) {
             $.ajax({
-                url: "/user/purchase?selectedItems=" + selectedProductId,
-                type: "GET",
+                // sửa thêm phần discount nè
+                url: "/user/purchase?selectedItems=" + selectedProductCode +"&discountId=" + discountId,
+                type: "POST",
+                contentType:"application/json",
+                data: {
+                    selectedProductCode: selectedProductCode, // Gửi danh sách ID sản phẩm
+                    discountId: discountId
+                },
                 success: function () {
 
                 },
@@ -242,7 +242,6 @@
             type: "POST",
             success: function () {
                 quantityInput.text(newQuantity)
-                console.log(newQuantity)
             },
             error: function () {
 
@@ -270,7 +269,6 @@
             type: "POST",
             success: function () {
                 quantityInput.text(newQuantity)
-                console.log(newQuantity)
                 window.location.reload()
             },
             error: function () {
@@ -285,8 +283,6 @@
         const selectedOption = sizeInput.querySelector("option:checked");
         let newWidth = selectedOption.getAttribute("data-width")
         let newHeight = selectedOption.getAttribute("data-height")
-        console.log(newWidth)
-        console.log(newHeight)
         $.ajax({
             url: "/update-price?productCode=" + productCode + "&width=" + newWidth + "&height=" + newHeight,
             type: "POST",
@@ -312,7 +308,7 @@
                 window.location.reload()
                 data = $.parseJSON(data)
                 if (data.result) {
-                    console.log(data)
+                    // console.log(data)
                     const badge = $("#cart-badge")
                     const currentCartLength = data.currentCartLength
                     badge.removeClass("d-none")
@@ -325,8 +321,11 @@
                     alert("Có lỗi khi xóa sản phẩm khỏi giỏ hàng")
                 }
             },
-            error: function () {
-
+            error: function (error) {
+            //     error = $.parseJSON(error)
+            //     if(error.result){
+            //         console.log(error.error)
+            //     }
             }
         })
     }
