@@ -227,16 +227,16 @@ function createReviewStar(rating) {
     if (rating > 5) return
     const filledStar = `
     <div class="col-2 product-info__star-container   px-0">
-         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+         <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color);"></i>
          <div class="product-info__star-mask" ></div>
-         <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+         <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color);"></i>
     </div>
     `
     const unfilledStar = `
      <div class="col-2 product-info__star-container   px-0">
-         <i class="fa-solid fa-star product-info__star" style="color: #4d6a55;"></i>
+         <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color);"></i>
          <div class="product-info__star-mask" style="width: 100%"></div>
-         <i class="fa-regular fa-star product-info__star-outline" style="color: #4d6a55;"></i>
+         <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color);"></i>
     </div>
     `
 

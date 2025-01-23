@@ -1,5 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ProductUtil;
 import org.jdbi.v3.core.mapper.RowMapper;
 import org.jdbi.v3.core.statement.StatementContext;
 
@@ -174,24 +175,6 @@ public class Product implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    //Sẽ bỏ phần này
-    public Price getMinPrice() {
-        return listPrices.stream().min(Comparator.comparingDouble(Price::getPrice)).orElse(null);
-    }
-
-    public Price getSelectedPrice(int width, int height) {
-        for (int i = 0; i < this.listPrices.size(); i++) {
-            Price price = this.getListPrices().get(i);
-            if (price.getWidth() == width && price.getHeight() == height) return price;
-        }
-        return null;
-    }
-
-    public String getThumbnail() {
-        //Mặc định lấy hình đầu tiên
-        return this.listImageUrls.get(0);
-    }
-
     public void setStatus(int status) {
         this.status = status;
     }
@@ -219,6 +202,23 @@ public class Product implements Serializable {
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
+    }
+
+    public Price getMinPrice() {
+        return ProductUtil.getMinPrice(this);
+    }
+
+    public Price getSelectedPrice(int width, int height) {
+        return ProductUtil.getSelectedPrice(this, width, height);
+    }
+
+    public String getThumbnail() {
+        return ProductUtil.getThumbnailUrl(this);
+    }
+
+    public String getStringDisplayMaterials() {
+        if (this.getListMaterials() == null || this.getListMaterials().isEmpty()) return "";
+        return ProductUtil.getStringDisplayMaterials(this);
     }
 }
 
