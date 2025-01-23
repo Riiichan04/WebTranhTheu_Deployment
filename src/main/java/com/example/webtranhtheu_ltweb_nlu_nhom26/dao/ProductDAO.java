@@ -142,6 +142,32 @@ public interface ProductDAO {
     @RegisterBeanMapper(Product.class)
     List<Product> getProductsCodeAndTitle();
 
+    @SqlQuery("""
+        select products.id
+        from products
+        join category_products_details
+            on products.id = category_products_details.productId
+        join categories
+            on category_products_details.categoryId = categories.id
+        join topic_products_details
+            on products.id = topic_products_details.productId
+        join product_prices
+            on products.id = product_prices.productId
+        join product_reviews
+            on products.id = product_reviews.productId
+        where (categories.title like :categoryName or :categoryName is null)
+            and (product_reviews.rating >= :rating or :rating = 0)
+            and ((:fromPrice = 0 and :toPrice = 0) or product_prices.price between :fromPrice and :toPrice)
+            and (topic_products_details.topicId in (<topicId>) or topicId is null)
+        limit :offset, :limit
+    """)
+    List<Integer> filterProduct(@Bind("categoryName") String categoryName, @BindList("topicId") List<Integer> topicId,
+                                @Bind("rating") int rating,
+                                @Bind("fromPrice") double fromPrice, @Bind("toPrice") double toPrice,
+                                @Bind("offset") int offset, @Bind("limit") int limit);
+
+
+    //Phần admin
     @SqlQuery("select p.id, p.codeProduct as code,  p.title, x.available, y.imgUrl, ifnull(z.countEvaluate, 0) as countEvaluate, ifnull(z.totalStar, 0) as totalStar, p.status as status from products p " +
             "LEFT JOIN (select productId, sum(available) as available  from product_prices GROUP BY productId) x on p.id = x.productId LEFT JOIN (select productId, min(imgUrl) as imgUrl from product_images GROUP BY productId) y on p.id = y.productId " +
             "LEFT JOIN (select productId, count(productId) as countEvaluate, avg(rating) as totalStar from product_reviews GROUP BY productId) z on p.id = z.productId")

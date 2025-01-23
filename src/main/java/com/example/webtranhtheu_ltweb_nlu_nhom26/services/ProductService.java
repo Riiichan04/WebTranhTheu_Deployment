@@ -10,21 +10,25 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
 import java.util.List;
+
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
 import java.util.ArrayList;
+
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
 public class ProductService {
     private static ProductService instance;
     private static ProductDAO productDAO;
+
     public ProductService(ProductDAO productDAO) {
         this.productDAO = productDAO;
     }
+
     public static ProductService getInstance() {
         if (instance == null) {
-            Jdbi jdbi= JDBIConnector.getInstance();
+            Jdbi jdbi = JDBIConnector.getInstance();
             jdbi.installPlugin(new SqlObjectPlugin());
             productDAO = jdbi.onDemand(ProductDAO.class);
             instance = new ProductService(productDAO);
@@ -70,9 +74,11 @@ public class ProductService {
         //TODO
         return productDAO.getProductInfo(productId);
     }
+
     public List<Price> getProductPrices(int productId) {
         return productDAO.getProductPrices(productId);
     }
+
     public List<String> getListImageUrls(int productId) {
         return productDAO.getListImageUrls(productId);
     }
@@ -93,16 +99,16 @@ public class ProductService {
         int id = productDAO.insertProduct(product);
         productDAO.updateProvider(providerId, id);
 
-        for(int i = 0; i < materials.length; i++) {
+        for (int i = 0; i < materials.length; i++) {
             productDAO.updateMaterial(Integer.parseInt(materials[i]), id);
         }
 
-        for(Price price : prices) {
+        for (Price price : prices) {
             price.setProductId(id);
             productDAO.insertProductPrice(price);
         }
 
-        for(String img : listImg) {
+        for (String img : listImg) {
             productDAO.insertProductImage(id, img);
         }
     }
@@ -120,5 +126,15 @@ public class ProductService {
         List<String> img = productDAO.getImgUrlById(id);
         product.setListImageUrls(img);
         return product;
+    }
+
+
+    public List<Product> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, int offset, int limit) {
+        List<Integer> listId = productDAO.filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, offset, limit);
+        List<Product> products = new ArrayList<>();
+        for (Integer id : listId) {
+            products.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(id));
+        }
+        return products;
     }
 }
