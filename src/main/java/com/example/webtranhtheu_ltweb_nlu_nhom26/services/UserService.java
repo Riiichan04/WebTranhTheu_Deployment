@@ -70,4 +70,8 @@ public class UserService {
     public void updateInfoAdmin(User user) {
         userDAO.updateInfoAdmin(user);
     }
+
+    public List<User> getAllUserEmailValid() {
+        return userDAO.getAllUsersEmailValid();
+    }
 }

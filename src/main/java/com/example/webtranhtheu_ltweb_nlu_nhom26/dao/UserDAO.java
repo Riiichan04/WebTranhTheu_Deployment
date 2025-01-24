@@ -1,5 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
+import com.cloudinary.provisioning.Account;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.WishProduct;
@@ -106,5 +107,10 @@ public interface UserDAO {
 
     @SqlUpdate("DELETE FROM wishlist_products where accountId = :accountId and productId = :productId")
     void deleteWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
+
+    @SqlQuery("select id, email from accounts where statusAccount = 2")
+    @RegisterBeanMapper(User.class)
+    List<User> getAllUsersEmailValid();
+
 
 }

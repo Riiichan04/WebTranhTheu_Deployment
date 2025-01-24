@@ -15,16 +15,21 @@
 <!-- Form container -->
 <div id="formContainer">
     <!--enter code -->
-    <form class="form-container">
+    <form class="form-container" id="add-order-form">
         <div class="row pt-3">
             <div class="col"><h2 class="style-big-title">Thêm đơn hàng</h2></div>
         </div>
         <!-- tên đăng nhập của người dùng -->
         <div class="row pt-2">
-            <div class="col"><span class="style-title">Tên đăng nhập người dùng<span class="text-danger"> * </span></span></div>
+            <div class="col"><span class="style-title">Email người dùng<span class="text-danger"> * </span></span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập tên đăng nhập người dùng" required>
+            <div class="col p-0">
+                <select class="w-100 style-select" id="user" required>
+                    <c:forEach items="${listUsers}" var="u">
+                        <option value="${u.getId()}">${u.getEmail()}</option>
+                    </c:forEach>
+                </select>
             </div>
         </div>
         <!-- sản phẩm mua -->
@@ -36,14 +41,17 @@
                 <!-- Sản phẩm -->
                 <div id="products">
                     <div class="form-group product-row row mb-2">
-                        <div class="col-6 pe-0">
+                        <div class="col-4 pe-0">
                             <select class="w-100 style-select product-select" required>
+                                <option value="" selected disabled>Chọn sản phẩm</option>
                                 <c:forEach items="${listProducts}" var="p">
                                 <option value="${p.getId()}">${p.getCode()} - ${p.getTitle()}</option>
                                 </c:forEach>
                             </select>
                         </div>
-                        <div class="col-5 pe-0">
+                        <div class="col product-price">
+                        </div>
+                        <div class="col-3 pe-0">
                             <input type="number" class="w-100 style-input amount-product-input" min="1" placeholder="Nhập số lượng" required>
                         </div>
                         <div class="col-1 p-0">
@@ -55,11 +63,11 @@
         </div>
         <!-- mã giảm giá -->
         <div class="row pt-3">
-            <div class="col"><span class="style-title">Mã giảm giá<span class="text-danger"> * </span></span></div>
+            <div class="col"><span class="style-title">Mã giảm giá</span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="w-100 style-select product-select" required>
+                <select class="w-100 style-select" id="discount" required>
                     <option value="" selected>---Chọn mã giảm giá---</option>
                     <c:forEach items="${discountValid}" var="d">
                     <option value="${d.getId()}">${d.getTitle()}</option>
@@ -73,7 +81,7 @@
             </div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" placeholder="Nhập địa chỉ giao hàng" required></div>
+            <div class="col p-0"><input type="text" id="address-shipping" class="w-100 style-input" placeholder="Nhập địa chỉ giao hàng" required></div>
         </div>
 
         <!-- ngày giao hàng -->
@@ -82,7 +90,7 @@
             </div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="date" class="w-100 style-input"></div>
+            <div class="col p-0"><input type="date" id="deliver-date" class="w-100 style-input"></div>
         </div>
         <!-- trạng thái đơn hàng -->
         <div class="row pt-3">
@@ -91,7 +99,7 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select" id="statusOrder" onclick="reasonCancelOrder()" required>
+                <select class="style-select" id="status-order" onclick="reasonCancelOrder()" required>
                     <option value="1">Chờ xác nhận</option>
                     <option value="2">Chờ lấy hàng</option>
                     <option value="3">Chờ giao hàng</option>
@@ -108,7 +116,7 @@
         </div>
         <div class="row pt-2 d-none select-reason-cancel-order">
             <div class="col p-0">
-                <select class="style-select" required>
+                <select class="style-select" id="reason-cancel-order" required>
                     <option value="1">Lí do 1</option>
                     <option value="2">Lí do 2</option>
                     <option value="3">Lí do 3</option>
@@ -122,12 +130,25 @@
         </div>
         <!-- trạng thái thanh toán -->
         <div class="row pt-3">
+            <div class="col"><span class="style-title">Hình thức thanh toán<span class="text-danger"> * </span></span>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select" id="method" required>
+                    <option value="0">Chuyển khoản</option>
+                    <option value="1">Thanh toán tiền mặt</option>
+                </select>
+            </div>
+        </div>
+        <!-- trạng thái thanh toán -->
+        <div class="row pt-3">
             <div class="col"><span class="style-title">Trạng thái thanh toán<span class="text-danger"> * </span></span>
             </div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <select class="style-select" required>
+                <select class="style-select" id="status-payment" required>
                     <option value="0">Chưa thanh toán</option>
                     <option value="1">Đã thanh toán</option>
                 </select>

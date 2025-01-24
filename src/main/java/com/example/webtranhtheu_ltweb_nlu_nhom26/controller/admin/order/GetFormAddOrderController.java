@@ -1,9 +1,11 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.order;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Discount;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.DiscountService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.*;
@@ -20,6 +22,8 @@ public class GetFormAddOrderController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
+        List<User> listUsers = new UserService().getAllUserEmailValid();
+        request.setAttribute("listUsers", listUsers);
         List<Product> listProducts = new ProductService().getAllListProductsCodeAndTitle();
         request.setAttribute("listProducts", listProducts);
         List<Discount> discountValid = new DiscountService().getDiscountValid();

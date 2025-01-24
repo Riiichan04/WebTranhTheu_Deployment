@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#myTable').DataTable( {
+    const table = $('#myTable').DataTable({
         destroy: true,
         scrollY: "470px",
         ajax: {
@@ -19,7 +19,7 @@ $(document).ready(function () {
 
                     // xử lý tình trạng đơn hàng
                     var statusOrder = json[i].orderStatus;
-                    if(statusOrder) {
+                    if (statusOrder) {
                         switch (statusOrder) {
                             case 1:
                                 json[i].orderStatus = "Chờ xác nhận";
@@ -39,7 +39,8 @@ $(document).ready(function () {
                             case 6:
                                 json[i].orderStatus = "Đơn yêu cầu hoàn trả";
                                 break;
-                            default: json[i].orderStatus = "";
+                            default:
+                                json[i].orderStatus = "";
                         }
                     } else {
                         json[i].orderStatus = "";
@@ -47,7 +48,7 @@ $(document).ready(function () {
 
                     // xử lý tình trạng thanh toán
                     var statusPayment = json[i].paymentStatus;
-                    if(statusPayment) {
+                    if (statusPayment) {
                         switch (statusPayment) {
                             case 0:
                                 json[i].paymentStatus = "Chưa trả tiền";
@@ -55,7 +56,8 @@ $(document).ready(function () {
                             case 1:
                                 json[i].paymentStatus = "Đã trả tiền";
                                 break;
-                            default: json[i].paymentStatus = "";
+                            default:
+                                json[i].paymentStatus = "";
                         }
                     } else {
                         json[i].paymentStatus = "";
@@ -103,39 +105,105 @@ $(document).ready(function () {
         hiddenOverlay() // Tắt overlay
     });
 
-    $('#addOrderBtn').on("click", function (event) {
-        event.preventDefault();
-        const url = "/admin/order-management/add-order-form";
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                openOverlay();
-                $("#formWrapper").html(data);
+    // $('#addOrderBtn').on("click", function (event) {
+    //     event.preventDefault();
+    //     const url = "/admin/order-management/add-order-form";
+    //     $.ajax({
+    //         url: url,
+    //         type: "GET",
+    //         success: function (data) {
+    //             openOverlay();
+    //             $("#formWrapper").html(data);
+    //
+    //             // Ngăn sự kiện click trong form không lan lên formWrapper
+    //             $('form').on('click', function (event) {
+    //                 event.stopPropagation();
+    //             });
+    //
+    //             $('#formContainer').css({
+    //                 'width': '700px',
+    //                 'max-height': '90vh',
+    //                 'z-index': '2',
+    //                 'overflow': 'auto',
+    //             });
+    //
+    //             $(document).on('change', '.product-select', function() {
+    //                 event.preventDefault();
+    //                 const productId = $(this).val();
+    //
+    //                 // Lưu giá trị của 'this' vào một biến để sử dụng trong callback
+    //                 var $selectElement = $(this);
+    //
+    //                 $.ajax({
+    //                     url: "/admin/order-management/add-order-form/get-product-price",
+    //                     type: "GET",
+    //                     data: {productId: productId},
+    //                     success: function (data) {
+    //                         var selectHtml = '<select class="style-select product-price-select">';
+    //
+    //                         // Lặp qua mảng data và tạo các <option>
+    //                         data.forEach(function(item) {
+    //                             selectHtml += `<option value="${item.id}" ${item.available>0 ? '' : 'disabled'}>${item.width}x${item.height} - Tồn kho: ${item.available}</option>`;
+    //                         });
+    //
+    //                         selectHtml += '</select>'; // Đóng thẻ select
+    //
+    //                         // Chèn HTML vào phần tử .product-price của phần tử cha
+    //                         $selectElement.parent().parent().find('.product-price').html(selectHtml);
+    //                     },
+    //                     error: function () {
+    //                         alert("Tải nội dung thất bại");
+    //                         hiddenOverlay();
+    //                     }
+    //                 });
+    //             });
+    //
+    //             $('#cancelBtn').click(function () {
+    //                 hiddenOverlay();
+    //             });
+    //
+    //             $('#add-order-form').on('submit', function (event) {
+    //                 event.preventDefault(); // Ngăn chặn reload trang
+    //
+    //                 // Gửi dữ liệu qua AJAX
+    //                 $.ajax({
+    //                     url: '/admin/order-management/add-order',
+    //                     type: 'POST',
+    //                     data: {
+    //                         userId: $('#user').val(),
+    //                         productSelected: $('.product-price-select').val(),
+    //                         amountProduct: $('.amount-product-input').val(),
+    //                         discountId: $('#discount').val(),
+    //                         addressShipping: $("#address-shipping").val(),
+    //                         deliveredAt: $("#deliver-date").val(),
+    //                         statusOrder: $("#status-order").val(),
+    //                         reasonCancelOrder: $("#reason-cancel-order").val(),
+    //                         method: $("#method").val(),
+    //                         statusPay: $("#status-payment").val(),
+    //                     },
+    //                     success: function (response) {
+    //                         if (response.success) {
+    //                             alert('Thêm danh mục thành công!');
+    //                             $('#add-order-form')[0].reset(); // Reset form
+    //                             table.ajax.reload();
+    //                             hiddenOverlay();
+    //                         } else {
+    //                             alert('Lỗi khi thêm danh mục!');
+    //                         }
+    //                     },
+    //                     error: function () {
+    //                         alert('Lỗi khi thêm danh mục!');
+    //                     }
+    //                 });
+    //             });
+    //         },
+    //         error: function () {
+    //             alert("Có lỗi xảy ra khi tải nội dung.");
+    //         }
+    //     });
+    // });
 
-                // Ngăn sự kiện click trong form không lan lên formWrapper
-                $('form').on('click', function (event) {
-                    event.stopPropagation();
-                });
-
-                $('#formContainer').css({
-                    'width': '600px',
-                    'max-height': '90vh',
-                    'z-index': '2',
-                    'overflow': 'auto',
-                });
-
-                $('#cancelBtn').click(function () {
-                    hiddenOverlay();
-                });
-            },
-            error: function () {
-                alert("Có lỗi xảy ra khi tải nội dung.");
-            }
-        });
-    });
-
-    $('.btn-read-edit').on("click", function(event) {
+    $('.btn-read-edit').on("click", function (event) {
         event.preventDefault();
         const url = "/admin/order-management/update-order";
         $.ajax({
@@ -168,7 +236,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-delete').on("click", function(event) {
+    $('.btn-delete').on("click", function (event) {
         event.preventDefault();
         const url = "/admin/order-management/delete-order";
         $.ajax({

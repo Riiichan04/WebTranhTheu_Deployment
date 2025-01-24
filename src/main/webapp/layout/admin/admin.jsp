@@ -102,8 +102,7 @@
                 </div>
             </nav>
         </div>
-        <div class="col-10 p-0" id="content">
-        </div>
+        <div class="col-10 p-0" id="content"></div>
     </div>
 </div>
 

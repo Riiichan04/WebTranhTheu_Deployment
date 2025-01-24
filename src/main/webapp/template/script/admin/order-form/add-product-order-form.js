@@ -1,6 +1,11 @@
 function addProduct() {
     const productRow = document.querySelector('.product-row');
     const newRow = productRow.cloneNode(true);
+    // Xóa nội dung HTML trong .product-price
+    const productPriceElement = newRow.querySelector(".product-price");
+    if (productPriceElement) {
+        productPriceElement.innerHTML = ''; // Xóa nội dung HTML
+    }
     newRow.querySelectorAll('input').forEach(input => input.value = '');
     newRow.querySelectorAll('select').forEach(select => select.disabled = false);
     document.getElementById('products').appendChild(newRow);
