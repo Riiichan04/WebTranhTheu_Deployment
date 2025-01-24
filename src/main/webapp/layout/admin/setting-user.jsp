@@ -68,9 +68,14 @@
                 <div class="row mt-4">
                     <div class="mb-3">Giới tính</div>
                     <div>
-                        Nam<input type="radio" name="gender" value="1" ${user.getGender() == 1 ? 'selected' : ''} class="ms-1 me-3" id="gender-man" disabled>
-                        Nữ<input type="radio" name="gender" value="2" ${user.getGender() == 2 ? 'selected' : ''} class="ms-1" id="gender-woman" disabled
-                                 checked>
+                        <div class="d-inline">
+                            <label>Nam</label>
+                            <input type="radio" name="gender" value="1" ${user.getGender() == 1 ? 'checked' : ''} class="ms-1 me-3" id="gender-man" disabled>
+                        </div>
+                        <div class="d-inline">
+                            <label>Nữ</label>
+                            <input type="radio" name="gender" value="2" ${user.getGender() == 2 ? 'checked' : ''} class="ms-1" id="gender-woman" disabled>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -79,7 +79,7 @@ public interface UserDAO {
     List<WishProduct> getWishProducts(@Bind("accountId") int accountId);
 
     @SqlUpdate("UPDATE accounts\n" +
-            "SET avatar_url = :avatarUrl, fullname = :fullName, pass = :password, email = :email, phone = :phone, gender = :gender, description = :description, statusAccount = :statusAccount, updatedAt = :updatedAt, role = :role " +
+            "SET avatar_url = :avatarUrl, fullname = :fullName, email = :email, phone = :phone, gender = :gender, description = :description, statusAccount = :statusAccount, updatedAt = :updatedAt, role = :role " +
             "where id = :id")
     @RegisterBeanMapper(User.class)
     boolean updateUser(@BindBean User user);

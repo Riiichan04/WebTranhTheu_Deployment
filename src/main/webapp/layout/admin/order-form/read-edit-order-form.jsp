@@ -50,7 +50,7 @@
                             <td>${o.getProduct().getTitle()}</td>
                             <td>${o.getWidth()}x${o.getHeight()}</td>
                             <td>${o.getAmount()}</td>
-                            <td>${o.getPrice()}</td>
+                            <td><fmt:formatNumber value="${o.getPrice()}" type="number" maxFractionDigits="0" /></td>
                         </tr>
                     </c:forEach>
                     </tbody>

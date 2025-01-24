@@ -55,7 +55,6 @@ document.getElementById("fileInput").addEventListener("change", () => {
 $('#editBtn').click(function () {
     window.scrollTo({top: 0, behavior: 'smooth'});
     $('#title').text('Chỉnh sửa thông tin người dùng')
-    $('#password').prop('disabled', false);
     $('.read').addClass('d-none');
     $('#name').prop('disabled', false);
     $('#role').prop('disabled', false);
@@ -72,7 +71,6 @@ $('#editBtn').click(function () {
 
 $('#cancelEditBtn').click(function () {
     $('#read-edit-user-form')[0].reset();
-    $('#password').prop('disabled', true);
     $('#title').text('Xem thông tin người dùng');
     $('#name').prop('disabled', true);
     $('#role').prop('disabled', true);
