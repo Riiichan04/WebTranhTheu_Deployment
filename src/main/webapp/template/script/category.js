@@ -7,18 +7,93 @@ $("#remove-filter").click(function () {
     $("input[type=radio]").prop('checked', false);
 })
 
-$("#filter-btn").click(function () {
-    location.reload();
-})
-
 let pathName = window.location.href.split("/")
 let patternName = pathName[pathName.length - 1] //Lấy pattern name ra. Nếu không có phần này thì servlet bắt lỗi
 let currentPage = 1 //Trang hiện tại
 let maxPage
 const amount = 15 //Số lượng sp/trang cần display
+let isFilterUsed = false
+
+$("#filter-btn").click(() => {
+    if (!isFilterUsed) {
+        currentPage = 1
+        isFilterUsed = true
+    }
+    console.log(getListChoosenTopic())
+    filterProduct(currentPage)
+})
+
+//Sẽ gộp
+function filterProduct(page) {
+    $.ajax({
+        url: '/category-filter',
+        method: 'GET',
+        data: {
+            patternName: patternName,
+            listTopic: getListChoosenTopic(),
+            rating: getChoosenRating(),
+            fromPrice: $("#filter-price-from").val(),
+            toPrice: $("#filter-price-to").val(),
+            amount: amount,
+            page: page,
+            maxPage: maxPage,
+            providerName: $("#provider-filter").val()
+        },
+        success: function (response) {
+            response = $.parseJSON(response)
+            if (response.result) {
+                if (maxPage == null) maxPage = response.maxPage
+                //Thêm product vào category
+                getOneProductsRow(response.listProducts)
+                currentPage = response.currentPage
+
+                $("#current-page").text((currentPage) + "")
+                //Disable và enable các button chuyển trang
+                if (currentPage === 1) {
+                    $("#prev-page").addClass("disabled")
+                    $("#next-page").removeClass("disabled")
+                }
+                if (currentPage === maxPage && maxPage !== 1) {
+                    $("#next-page").addClass("disabled")
+                    $("#prev-page").removeClass("disabled")
+                }
+                if (maxPage === 1) {
+                    $("#next-page").addClass("disabled")
+                    $("#prev-page").addClass("disabled")
+                }
+                //Set active cho button category đang chọn
+                $(".category-element").each(function () {
+                    if ($(this).data("categoryName") === patternName) {
+                        $(this).addClass("active")
+                    }
+                })
+            } else {
+                $("#category-displayed-product").html(`<p class="d-flex justify-content-center align-items-center">${response.notice}</p>`)
+            }
+        },
+        error: function (response) {
+
+        }
+    })
+}
+
+function getListChoosenTopic() {
+    const listTopic = $("input[type=checkbox][name=topic-filter]:checked")
+    if (listTopic.length === 0) return ''
+    const result = []
+    listTopic.each(function() {
+        result.push(parseInt($(this).val()))
+    })
+    return result + ""
+
+}
+
+function getChoosenRating() {
+    return $("input[type=radio][name=rating-star]:checked").first().val()
+}
 
 function getProductsByCategory(page) {
-    console.log(page)
+    isFilterUsed = false
     $.ajax({
         url: '/category-product-getter',
         method: 'GET',
@@ -56,8 +131,7 @@ function getProductsByCategory(page) {
                         $(this).addClass("active")
                     }
                 })
-            }
-            else {
+            } else {
                 $("#category-displayed-product").html(`<p class="d-flex justify-content-center align-items-center">${response.notice}</p>`)
             }
         },
@@ -101,11 +175,15 @@ function getOneProductsRow(listProducts) {
 
 
 $("#prev-page").click(function () {
-    getProductsByCategory(--currentPage)
+    //Tạm, sẽ gộp 2 hàm lại làm một
+    if (isFilterUsed) filterProduct(--currentPage)
+    else getProductsByCategory(--currentPage)
 })
 
 $("#next-page").click(function () {
-    getProductsByCategory(++currentPage)
+    //Tạm, sẽ gộp
+    if (isFilterUsed) filterProduct(++currentPage)
+    else getProductsByCategory(++currentPage)
 })
 
 getProductsByCategory(currentPage)
@@ -113,7 +191,7 @@ getProductsByCategory(currentPage)
 
 function changeCategoryName(pattern) {
     let url = window.location.href
-    url = url.substring(0, url.lastIndexOf("/")+1) + pattern
+    url = url.substring(0, url.lastIndexOf("/") + 1) + pattern
     if (patternName !== pattern) {
         window.history.pushState({}, '', url)
         patternName = pattern
@@ -124,7 +202,7 @@ function changeCategoryName(pattern) {
 
 }
 
-$(".category-element").click(function() {
+$(".category-element").click(function () {
     $(".category-element").removeClass("category-active");
     $(this).addClass("category-active");
     $("#category-title").text($(this).text());

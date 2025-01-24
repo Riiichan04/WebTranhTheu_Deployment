@@ -143,7 +143,7 @@ public interface ProductDAO {
     List<Product> getProductsCodeAndTitle();
 
     @SqlQuery("""
-        select products.id
+        select distinct products.id
         from products
         join category_products_details
             on products.id = category_products_details.productId
@@ -153,17 +153,23 @@ public interface ProductDAO {
             on products.id = topic_products_details.productId
         join product_prices
             on products.id = product_prices.productId
-        join product_reviews
+        left join product_reviews
             on products.id = product_reviews.productId
-        where (categories.title like :categoryName or :categoryName is null)
-            and (product_reviews.rating >= :rating or :rating = 0)
-            and ((:fromPrice = 0 and :toPrice = 0) or product_prices.price between :fromPrice and :toPrice)
-            and (topic_products_details.topicId in (<topicId>) or topicId is null)
+        join providers
+            on products.providerId = providers.id
+        where (:patternName is null or categories.patternName like :patternName)
+            and (json_array(<topicId>) = '[null]' or topic_products_details.topicId in (<topicId>))
+            and (:providerName is null or providers.providerName like :providerName)
+            and ((:fromPrice = 0 and :toPrice = 0) or :fromPrice <= :toPrice and product_prices.price between :fromPrice and :toPrice)
+        group by products.id
+        having (:rating = 0 or coalesce(avg(product_reviews.rating), 0) >= :rating)
+        order by products.id
         limit :offset, :amount
     """)
-    List<Integer> filterProduct(@Bind("categoryName") String categoryName, @BindList("topicId") List<Integer> topicId,
+    List<Integer> filterProduct(@Bind("patternName") String patternName, @BindList(value = "topicId", onEmpty = BindList.EmptyHandling.NULL_STRING) List<Integer> topicId,
                                 @Bind("rating") int rating,
                                 @Bind("fromPrice") double fromPrice, @Bind("toPrice") double toPrice,
+                                @Bind("providerName") String providerName,
                                 @Bind("offset") int offset, @Bind("amount") int amount);
 
 

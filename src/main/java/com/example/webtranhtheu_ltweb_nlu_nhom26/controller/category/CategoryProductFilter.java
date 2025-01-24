@@ -1,4 +1,5 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.category;
+
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
@@ -9,6 +10,7 @@ import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -23,20 +25,32 @@ public class CategoryProductFilter extends HttpServlet {
         JsonObject jsonResult = new JsonObject();
         try {
             String requestPatternName = request.getParameter("patternName");
-            String[] requestListTopicId = request.getParameterValues("listTopic");
+            String requestListTopicId = request.getParameter("listTopic");
             String requestRating = request.getParameter("rating");
             String requestFromPrice = request.getParameter("fromPrice");
             String requestToPrice = request.getParameter("toPrice");
             String requestAmount = request.getParameter("amount");
             String requestPage = request.getParameter("page");
             String maxPage = request.getParameter("maxPage");
+            String requestProviderName = request.getParameter("providerName");
 
-            List<Integer> listTopicId = Arrays.stream(requestListTopicId).map(Integer::parseInt).toList();
+            String patternName = requestPatternName.isEmpty() ? null : requestPatternName;
+            String providerName = requestProviderName.isEmpty() ? null : requestProviderName;
+            List<Integer> listTopicId = requestListTopicId == null || requestListTopicId.isEmpty() ? null : Arrays.stream(requestListTopicId.split(",")).map(Integer::parseInt).toList();
             int rating = requestRating == null || requestRating.isEmpty() ? 0 : Integer.parseInt(requestRating);
             double fromPrice = requestFromPrice == null || requestFromPrice.isEmpty() ? 0 : Double.parseDouble(requestFromPrice);
             double toPrice = requestToPrice == null || requestToPrice.isEmpty() ? 0 : Double.parseDouble(requestToPrice);
             int amount = Integer.parseInt(requestAmount);
             int page = Integer.parseInt(requestPage);
+
+            System.out.println(patternName);
+            System.out.println(providerName);
+            System.out.println(listTopicId);
+            System.out.println(rating);
+            System.out.println(fromPrice);
+            System.out.println(toPrice);
+            System.out.println(amount);
+            System.out.println(page);
 
             if (page <= 0 || amount <= 0) {
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
@@ -46,12 +60,11 @@ public class CategoryProductFilter extends HttpServlet {
                 jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(requestPatternName, amount));
             }
 
-            List<Product> listProducts = ProductService.filterProduct(requestPatternName, listTopicId, rating, fromPrice, toPrice, amount, page);
+            List<Product> listProducts = ProductService.filterProduct(patternName, listTopicId, rating, fromPrice, toPrice, providerName, page, amount);
             if (listProducts.isEmpty()) {
                 jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
-            }
-            else {
+            } else {
                 JsonArray listResult = new JsonArray();
                 for (Product product : listProducts) {
                     ControllerUtil.addProductToJson(listResult, product, product.getMinPrice());
@@ -60,8 +73,8 @@ public class CategoryProductFilter extends HttpServlet {
                 jsonResult.add("listProducts", listResult);
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
         }
     }
