@@ -5,6 +5,8 @@ $(".card").click(function () {
 $("#remove-filter").click(function () {
     $("input[type=text]").val("");
     $("input[type=radio]").prop('checked', false);
+    $("input[type=checkbox]").prop('checked', false);
+    $("#provider-filter").prop('selectedIndex',0);
 })
 
 let pathName = window.location.href.split("/")
@@ -42,7 +44,7 @@ function filterProduct(page) {
         success: function (response) {
             response = $.parseJSON(response)
             if (response.result) {
-                if (maxPage == null) maxPage = response.maxPage
+                maxPage = response.maxPage
                 //Thêm product vào category
                 getOneProductsRow(response.listProducts)
                 currentPage = response.currentPage
@@ -106,7 +108,7 @@ function getProductsByCategory(page) {
         success: function (response) {
             response = $.parseJSON(response)
             if (response.result) {
-                if (maxPage == null) maxPage = response.maxPage
+                maxPage = response.maxPage
                 //Thêm product vào category
                 getOneProductsRow(response.listProducts)
                 currentPage = response.currentPage
@@ -176,17 +178,21 @@ function getOneProductsRow(listProducts) {
 
 $("#prev-page").click(function () {
     //Tạm, sẽ gộp 2 hàm lại làm một
-    if (isFilterUsed) filterProduct(--currentPage)
-    else getProductsByCategory(--currentPage)
+    // if (isFilterUsed) filterProduct(--currentPage)
+    // else getProductsByCategory(--currentPage)
+    filterProduct(--currentPage)
 })
 
 $("#next-page").click(function () {
     //Tạm, sẽ gộp
-    if (isFilterUsed) filterProduct(++currentPage)
-    else getProductsByCategory(++currentPage)
+    // if (isFilterUsed) filterProduct(++currentPage)
+    // else getProductsByCategory(++currentPage)
+    filterProduct(++currentPage)
 })
 
-getProductsByCategory(currentPage)
+filterProduct(currentPage)
+
+// getProductsByCategory(currentPage)
 
 
 function changeCategoryName(pattern) {
@@ -197,7 +203,7 @@ function changeCategoryName(pattern) {
         patternName = pattern
         currentPage = 1
         maxPage = null
-        getProductsByCategory(currentPage)
+        filterProduct(currentPage)
     }
 
 }

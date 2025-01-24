@@ -54,9 +54,15 @@
                             </c:forEach>
                         </div>
                         <p class="fw-semibold">Theo nhà cung cấp:</p>
-                        <div class="mt-1 mb-4">
-                            <input id="provider-filter" type="text" class="rounded border-0 col"
-                                   placeholder="Nhập tên nhà cung cấp">
+                        <div class="mt-1 mb-4 mx-1">
+                            <select name="" id="provider-filter" class="py-1 rounded border-0 col text-truncate w-100">
+                                <option value="" selected disabled>Hãy chọn nhà cung cấp</option>
+                                <c:forEach var="provider" items="${listProvider}">
+                                    <option value="${provider.getProviderName()}">${provider.getProviderName()}</option>
+                                </c:forEach>
+                            </select>
+<%--                            <input id="provider-filter" type="text" class="rounded border-0 col"--%>
+<%--                                   placeholder="Nhập tên nhà cung cấp">--%>
                         </div>
                         <p class="mt-3 fw-semibold">Theo giá tiền (VNĐ):</p>
                         <div class="d-flex mt-1 mb-4">

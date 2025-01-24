@@ -173,6 +173,13 @@ public interface ProductDAO {
                                 @Bind("offset") int offset, @Bind("amount") int amount);
 
 
+    @SqlQuery("""
+        select providers.id, providers.providerName, addresses.location, providers.createdAt, providers.updatedAt
+        from providers
+            join addresses on providers.addressId = addresses.id
+    """)
+    @RegisterBeanMapper(Provider.class)
+    List<Provider> getListProvider();
     //Phần admin
     @SqlQuery("select p.id, p.codeProduct as code,  p.title, x.available, y.imgUrl, ifnull(z.countEvaluate, 0) as countEvaluate, ifnull(z.totalStar, 0) as totalStar, p.status as status from products p " +
             "LEFT JOIN (select productId, sum(available) as available  from product_prices GROUP BY productId) x on p.id = x.productId LEFT JOIN (select productId, min(imgUrl) as imgUrl from product_images GROUP BY productId) y on p.id = y.productId " +

@@ -13,6 +13,11 @@ import java.io.IOException;
 import java.util.List;
 
 //Mặc định lấy 25 product
+
+/**
+ * @deprecated
+ * Hiển tại không dùng servlet này nữa. Sẽ bị xóa trước khi merge
+ */
 @WebServlet(name = "ProductGetter", value = "/category-product-getter")
 public class CategoryProductGetter extends HttpServlet {
     @Override
@@ -31,7 +36,7 @@ public class CategoryProductGetter extends HttpServlet {
                 return;
             }
             if (maxPage == null || maxPage.isEmpty()) {
-                jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(categoryPatternName, amount));
+//                jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(categoryPatternName, amount));
             }
 
             List<Product> listProductByCategory = CategoryService.getDisplayProductByCategory(categoryPatternName, page, amount);

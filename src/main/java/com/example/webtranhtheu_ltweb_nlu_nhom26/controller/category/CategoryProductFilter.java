@@ -43,22 +43,12 @@ public class CategoryProductFilter extends HttpServlet {
             int amount = Integer.parseInt(requestAmount);
             int page = Integer.parseInt(requestPage);
 
-            System.out.println(patternName);
-            System.out.println(providerName);
-            System.out.println(listTopicId);
-            System.out.println(rating);
-            System.out.println(fromPrice);
-            System.out.println(toPrice);
-            System.out.println(amount);
-            System.out.println(page);
-
             if (page <= 0 || amount <= 0) {
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
                 return;
             }
-            if (maxPage == null || maxPage.isEmpty()) {
-                jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(requestPatternName, amount));
-            }
+
+            jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(patternName, listTopicId, rating, fromPrice, toPrice, providerName, amount));
 
             List<Product> listProducts = ProductService.filterProduct(patternName, listTopicId, rating, fromPrice, toPrice, providerName, page, amount);
             if (listProducts.isEmpty()) {
