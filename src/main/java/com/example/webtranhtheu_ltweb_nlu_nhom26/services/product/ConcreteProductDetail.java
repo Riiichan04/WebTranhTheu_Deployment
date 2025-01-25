@@ -43,7 +43,11 @@ public class ConcreteProductDetail implements ProductDetailService {
         return productDAO.getProductRating(productId);
     }
 
-    public List<Integer> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, int offset, int amount) {
-        return productDAO.filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, (offset - 1) * amount, amount);
+    public List<Integer> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, String productName, int offset, int amount) {
+        return productDAO.filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, productName, (offset - 1) * amount, amount);
+    }
+
+    public List<Integer> findProductsIdByName(String productName, int page, int amount) {
+        return productDAO.findProductsIdByName("%" + productName + "%", (page - 1) * amount, amount);
     }
 }

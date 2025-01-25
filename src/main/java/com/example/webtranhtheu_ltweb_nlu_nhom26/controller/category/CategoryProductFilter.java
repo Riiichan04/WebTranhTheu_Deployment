@@ -30,8 +30,10 @@ public class CategoryProductFilter extends HttpServlet {
             String requestAmount = request.getParameter("amount");
             String requestPage = request.getParameter("page");
             String requestProviderName = request.getParameter("providerName");
+            String requestProductName = request.getParameter("productName");
 
             //Cần xem lại và tối ưu code này
+            String productName = requestProductName == null || requestProductName.isEmpty() ? null : "%" + requestProductName + "%";
             String patternName = requestPatternName.isEmpty() ? null : requestPatternName;
             String providerName = requestProviderName.isEmpty() ? null : requestProviderName;
             List<Integer> listTopicId = requestListTopicId == null || requestListTopicId.isEmpty() ? null : Arrays.stream(requestListTopicId.split(",")).map(Integer::parseInt).toList();
@@ -46,7 +48,9 @@ public class CategoryProductFilter extends HttpServlet {
                 return;
             }
 
-            List<Product> listProducts = ProductService.filterProduct(patternName, listTopicId, rating, fromPrice, toPrice, providerName, page, amount);
+            List<Product> listProducts = ProductService.filterProduct(patternName, listTopicId, rating, fromPrice, toPrice, providerName, productName, page, amount);
+            System.out.println(listProducts);
+            System.out.println(CategoryService.calculateCategoryPage(patternName, listTopicId, rating, fromPrice, toPrice, providerName, productName, amount));
             if (listProducts.isEmpty()) {
                 jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
@@ -56,7 +60,7 @@ public class CategoryProductFilter extends HttpServlet {
                 for (Product product : listProducts) {
                     ControllerUtil.addProductToJson(listResult, product, product.getMinPrice());
                 }
-                jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(patternName, listTopicId, rating, fromPrice, toPrice, providerName, amount));
+                jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(patternName, listTopicId, rating, fromPrice, toPrice, providerName, productName, amount));
                 jsonResult.addProperty("currentPage", page);
                 jsonResult.add("listProducts", listResult);
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);

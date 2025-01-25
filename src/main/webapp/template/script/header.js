@@ -16,7 +16,7 @@
 
 $("#search-product-btn").on("keyup", function (e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
-        window.location = "../page/search-result.html"
+        window.location = `/search?keyword=${$("#search-product-btn").val()}`
     }
 })
 
