@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet(name = "CartUpdateProductController", value = "/update-product")
 public class CartUpdateQuantityProductController extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //TODO
         String productCode=request.getParameter("productCode");
         int quantity=Integer.parseInt(request.getParameter("quantity"));
@@ -28,8 +28,8 @@ public class CartUpdateQuantityProductController extends HttpServlet {
 //            response.sendRedirect("/cart");
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//    }
 }

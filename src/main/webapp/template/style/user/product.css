@@ -6,15 +6,6 @@ textarea {
     resize: none;
 }
 
-#cart-badge {
-    top: -0.5rem;
-    right: 0;
-    background-color: var(--main-cta-button);
-    width: 1.75rem;
-    height: 1.75rem;
-    padding: 0.15rem;
-    display: none;
-}
 
 #product-detail__remove-amount i, #product-detail__add-amount i {
     color: var(--text-color);

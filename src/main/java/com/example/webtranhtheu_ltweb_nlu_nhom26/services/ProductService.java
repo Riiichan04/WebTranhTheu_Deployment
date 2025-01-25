@@ -8,35 +8,18 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.ProductDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
-
-import java.util.List;
-
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
+import java.util.List;
 import java.util.ArrayList;
-
-import org.jdbi.v3.core.Jdbi;
-import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
 public class ProductService {
     private static ProductService instance;
     private static ProductDAO productDAO;
 
-    public ProductService(ProductDAO productDAO) {
-        this.productDAO = productDAO;
+    public ProductService() {
+        productDAO = JDBIConnector.getInstance().onDemand(ProductDAO.class);
     }
-
-    public static ProductService getInstance() {
-        if (instance == null) {
-            Jdbi jdbi = JDBIConnector.getInstance();
-            jdbi.installPlugin(new SqlObjectPlugin());
-            productDAO = jdbi.onDemand(ProductDAO.class);
-            instance = new ProductService(productDAO);
-            return instance;
-        }
-        return instance;
-    }
-
     //Cần lấy phần discount ra class này
 
     public static int countReviews(int id) {
@@ -52,9 +35,7 @@ public class ProductService {
         return new ConcreteProductDetail().getProductRating(productId);
     }
 
-    public ProductService() {
-        productDAO = JDBIConnector.getInstance().onDemand(ProductDAO.class);
-    }
+
 
     public List<Product> getAllListProductsCodeAndTitle() {
         return productDAO.getProductsCodeAndTitle();
@@ -99,8 +80,8 @@ public class ProductService {
         int id = productDAO.insertProduct(product);
         productDAO.updateProvider(providerId, id);
 
-        for (int i = 0; i < materials.length; i++) {
-            productDAO.updateMaterial(Integer.parseInt(materials[i]), id);
+        for (String material : materials) {
+            productDAO.updateMaterial(Integer.parseInt(material), id);
         }
 
         for (Price price : prices) {
@@ -127,7 +108,6 @@ public class ProductService {
         product.setListImageUrls(img);
         return product;
     }
-
 
     public static List<Product> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, int offset, int amount) {
         List<Integer> listId = new ConcreteProductDetail().filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, offset, amount);
