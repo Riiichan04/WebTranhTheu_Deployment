@@ -36,9 +36,6 @@
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
-                    <%--                    <p class="category-active p-2 category-element">Tranh thêu tay</p>--%>
-                    <%--                    <p class=" p-2 category-element">Tranh thêu chữ thập</p>--%>
-                    <%--                    <p class=" p-2 category-element">Tranh thêu máy tính</p>--%>
                 </div>
                 <div class="category-filter mt-4_5">
                     <h5 class="ms-2 mb-2 main-color p-1 ps-2">Bộ lọc </h5>
@@ -46,65 +43,45 @@
                     <div class="mt-3 ps-2">
                         <p class="mb-2 fw-semibold">Theo chủ đề tranh:</p>
                         <div class="mb-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="sceneryTopic">
-                                <label class="form-check-label" for="sceneryTopic">
-                                    Tranh thêu Phong cảnh
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="portraitTopic">
-                                <label class="form-check-label" for="portraitTopic">
-                                    Tranh thêu Chân dung
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="animalTopic">
-                                <label class="form-check-label" for="animalTopic">
-                                    Tranh thêu Động vật
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="fourSeasonTopic">
-                                <label class="form-check-label" for="fourSeasonTopic">
-                                    Tranh thêu Tứ quý
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flowerTopic">
-                                <label class="form-check-label" for="flowerTopic">
-                                    Tranh thêu Hoa
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="vipTopic">
-                                <label class="form-check-label" for="vipTopic">
-                                    Tranh thêu VIP
-                                </label>
-                            </div>
+                            <c:forEach var="topic" items="${listTopic}">
+                                <div class="form-check my-1">
+                                    <input name="topic-filter" class="form-check-input topic-filter" type="checkbox"
+                                           value="${topic.getId()}" id="topic-${topic.getId()}">
+                                    <label class="form-check-label" for="topic-${topic.getId()}">
+                                            ${topic.getTitle()}
+                                    </label>
+                                </div>
+                            </c:forEach>
                         </div>
                         <p class="fw-semibold">Theo nhà cung cấp:</p>
-                        <div class="mt-1 mb-4">
-                            <input type="text" class="rounded border-0 col" placeholder="Nhập tên nhà cung cấp">
+                        <div class="mt-1 mb-4 mx-1">
+                            <select name="" id="provider-filter" class="py-1 rounded border-0 col text-truncate w-100">
+                                <option value="" selected disabled>Hãy chọn nhà cung cấp</option>
+                                <c:forEach var="provider" items="${listProvider}">
+                                    <option value="${provider.getProviderName()}">${provider.getProviderName()}</option>
+                                </c:forEach>
+                            </select>
+<%--                            <input id="provider-filter" type="text" class="rounded border-0 col"--%>
+<%--                                   placeholder="Nhập tên nhà cung cấp">--%>
                         </div>
                         <p class="mt-3 fw-semibold">Theo giá tiền (VNĐ):</p>
                         <div class="d-flex mt-1 mb-4">
-                            <input type="text" class="rounded border-0 col-5" placeholder="Từ">
+                            <input id="filter-price-from" type="text" class="rounded border-0 col-5" placeholder="Từ">
                             <div class=" mb-1 col-1 text-center">-</div>
-                            <input type="text" class="rounded border-0 col-5" placeholder="Đến">
+                            <input id="filter-price-to" type="text" class="rounded border-0 col-5" placeholder="Đến">
                         </div>
                         <p class="mt-3 fw-semibold">Theo đánh giá:</p>
                         <div class="d-flex mb-4">
                             <div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                    <div class="radio-container pt-2"><input value="5" class="form-check-input" type="radio"
                                                                              name="rating-star"></div>
                                     <div class="style-label"><span
                                             class="style-star ms-2">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                    <div class="radio-container pt-2"><input value="4" class="form-check-input" type="radio"
                                                                              name="rating-star"></div>
                                     <div class="style-label"><span
                                             class="style-star mx-2">&#9733; &#9733; &#9733; &#9733; &#x2729;</span>trở
@@ -112,7 +89,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                    <div class="radio-container pt-2"><input value="3" class="form-check-input" type="radio"
                                                                              name="rating-star"></div>
                                     <div class="style-label"><span
                                             class="style-star mx-2">&#9733; &#9733; &#9733; &#x2729; &#x2729;</span>trở
@@ -120,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                    <div class="radio-container pt-2"><input value="2" class="form-check-input" type="radio"
                                                                              name="rating-star"></div>
                                     <div class="style-label"><span
                                             class="style-star mx-2">&#9733; &#9733; &#x2729; &#x2729; &#x2729;</span>trở
@@ -128,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input class="form-check-input" type="radio"
+                                    <div class="radio-container pt-2"><input value="1" class="form-check-input" type="radio"
                                                                              name="rating-star"></div>
                                     <div class="style-label"><span
                                             class="style-star mx-2">&#9733; &#x2729; &#x2729; &#x2729; &#x2729;</span>trở
@@ -157,7 +134,8 @@
                 <li class="page-item cursor-pointer">
                     <p class="page-link text-button" id="prev-page"><span aria-hidden="true">&laquo;</span></p>
                 </li>
-                <li class="page-item" style="user-select: none"><p class="page-link text-button" id="current-page">1</p></li>
+                <li class="page-item" style="user-select: none"><p class="page-link text-button" id="current-page">1</p>
+                </li>
                 <li class="page-item cursor-pointer">
                     <p class="page-link text-button" id="next-page"><span aria-hidden="true">&raquo;</span></p>
                 </li>

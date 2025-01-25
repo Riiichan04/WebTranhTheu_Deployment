@@ -142,6 +142,45 @@ public interface ProductDAO {
     @RegisterBeanMapper(Product.class)
     List<Product> getProductsCodeAndTitle();
 
+    @SqlQuery("""
+        select distinct products.id
+        from products
+        join category_products_details
+            on products.id = category_products_details.productId
+        join categories
+            on category_products_details.categoryId = categories.id
+        join topic_products_details
+            on products.id = topic_products_details.productId
+        join product_prices
+            on products.id = product_prices.productId
+        left join product_reviews
+            on products.id = product_reviews.productId
+        join providers
+            on products.providerId = providers.id
+        where (:patternName is null or categories.patternName like :patternName)
+            and (json_array(<topicId>) = '[null]' or topic_products_details.topicId in (<topicId>))
+            and (:providerName is null or providers.providerName like :providerName)
+            and ((:fromPrice = 0 and :toPrice = 0) or :fromPrice <= :toPrice and product_prices.price between :fromPrice and :toPrice)
+        group by products.id
+        having (:rating = 0 or coalesce(avg(product_reviews.rating), 0) >= :rating)
+        order by products.id
+        limit :offset, :amount
+    """)
+    List<Integer> filterProduct(@Bind("patternName") String patternName, @BindList(value = "topicId", onEmpty = BindList.EmptyHandling.NULL_STRING) List<Integer> topicId,
+                                @Bind("rating") int rating,
+                                @Bind("fromPrice") double fromPrice, @Bind("toPrice") double toPrice,
+                                @Bind("providerName") String providerName,
+                                @Bind("offset") int offset, @Bind("amount") int amount);
+
+
+    @SqlQuery("""
+        select providers.id, providers.providerName, addresses.location, providers.createdAt, providers.updatedAt
+        from providers
+            join addresses on providers.addressId = addresses.id
+    """)
+    @RegisterBeanMapper(Provider.class)
+    List<Provider> getListProvider();
+    //Phần admin
     @SqlQuery("select p.id, p.codeProduct as code,  p.title, x.available, y.imgUrl, ifnull(z.countEvaluate, 0) as countEvaluate, ifnull(z.totalStar, 0) as totalStar, p.status as status from products p " +
             "LEFT JOIN (select productId, sum(available) as available  from product_prices GROUP BY productId) x on p.id = x.productId LEFT JOIN (select productId, min(imgUrl) as imgUrl from product_images GROUP BY productId) y on p.id = y.productId " +
             "LEFT JOIN (select productId, count(productId) as countEvaluate, avg(rating) as totalStar from product_reviews GROUP BY productId) z on p.id = z.productId")

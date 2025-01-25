@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.CategoryDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Provider;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.CategoryDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
@@ -80,9 +81,11 @@ public class CategoryService {
         return categoryName.equals(categoryDAO.getCategoryPatternName(categoryName));
     }
 
-    public static int calculateCategoryPage(String categoryName, int amount) {
-        int baseVal = categoryDAO.countProductByCategory(categoryName) / amount;
-        return categoryDAO.countProductByCategory(categoryName) % amount == 0 ? baseVal : baseVal + 1;
+    public static int calculateCategoryPage(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, int amount) {
+        Integer countProduct = categoryDAO.countProductByCategory(categoryName, listTopicId, rating, fromPrice, toPrice, providerName);
+        if (countProduct == null) countProduct = 0;
+        int baseVal = countProduct / amount;
+        return countProduct % amount == 0 ? baseVal : baseVal + 1;
     }
 
     public static List<Category> getNameAndPatternCategory() {

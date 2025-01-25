@@ -1,37 +1,56 @@
-$(".card").click(function () {
-    window.location = "../page/product.html"
-})
-
-$("#remove-filter").click(function () {
-    $("input[type=text]").val("");
-    $("input[type=radio]").prop('checked', false);
-})
-
-$("#filter-btn").click(function () {
-    location.reload();
-})
-
 let pathName = window.location.href.split("/")
 let patternName = pathName[pathName.length - 1] //Lấy pattern name ra. Nếu không có phần này thì servlet bắt lỗi
 let currentPage = 1 //Trang hiện tại
 let maxPage
 const amount = 15 //Số lượng sp/trang cần display
 
-function getProductsByCategory(page) {
-    console.log(page)
+$("#remove-filter").click(function () {
+    $("input[type=text]").val("");
+    $("input[type=radio]").prop('checked', false);
+    $("input[type=checkbox]").prop('checked', false);
+    $("#provider-filter").prop('selectedIndex',0);
+})
+
+$("#filter-btn").click(() => {
+    currentPage = 1
+    filterProduct(currentPage)
+})
+
+$("#prev-page").click(function () {
+    filterProduct(--currentPage)
+})
+
+$("#next-page").click(function () {
+    filterProduct(++currentPage)
+})
+
+$(".category-element").click(function () {
+    $(".category-element").removeClass("category-active");
+    $(this).addClass("category-active");
+    $("#category-title").text($(this).text());
+    $("#breadcrumb-current").text($(this).text())
+    document.title = $(this).text() + " - Nét Việt"
+    changeCategoryName($(this).attr("data-categoryName"))
+})
+
+function filterProduct(page) {
     $.ajax({
-        url: '/category-product-getter',
+        url: '/category-filter',
         method: 'GET',
         data: {
-            page: page,
+            patternName: patternName,
+            listTopic: getListChooseTopic(),
+            rating: getChoseRating(),
+            fromPrice: $("#filter-price-from").val(),
+            toPrice: $("#filter-price-to").val(),
             amount: amount,
-            maxPage: maxPage,
-            patternName: patternName
+            page: page,
+            providerName: $("#provider-filter").val()
         },
         success: function (response) {
             response = $.parseJSON(response)
             if (response.result) {
-                if (maxPage == null) maxPage = response.maxPage
+                maxPage = response.maxPage
                 //Thêm product vào category
                 getOneProductsRow(response.listProducts)
                 currentPage = response.currentPage
@@ -56,15 +75,29 @@ function getProductsByCategory(page) {
                         $(this).addClass("active")
                     }
                 })
-            }
-            else {
+            } else {
                 $("#category-displayed-product").html(`<p class="d-flex justify-content-center align-items-center">${response.notice}</p>`)
             }
         },
         error: function (response) {
-
+            $("#category-displayed-product").html(`<p class="d-flex justify-content-center align-items-center">${response.notice}</p>`)
         }
     })
+}
+
+function getListChooseTopic() {
+    const listTopic = $("input[type=checkbox][name=topic-filter]:checked")
+    if (listTopic.length === 0) return ''
+    const result = []
+    listTopic.each(function() {
+        result.push(parseInt($(this).val()))
+    })
+    return result + ""
+
+}
+
+function getChoseRating() {
+    return $("input[type=radio][name=rating-star]:checked").first().val()
 }
 
 function getOneProductsRow(listProducts) {
@@ -99,36 +132,16 @@ function getOneProductsRow(listProducts) {
     $("#category-displayed-product").html(productHtml)
 }
 
-
-$("#prev-page").click(function () {
-    getProductsByCategory(--currentPage)
-})
-
-$("#next-page").click(function () {
-    getProductsByCategory(++currentPage)
-})
-
-getProductsByCategory(currentPage)
-
-
 function changeCategoryName(pattern) {
     let url = window.location.href
-    url = url.substring(0, url.lastIndexOf("/")+1) + pattern
+    url = url.substring(0, url.lastIndexOf("/") + 1) + pattern
     if (patternName !== pattern) {
         window.history.pushState({}, '', url)
         patternName = pattern
         currentPage = 1
         maxPage = null
-        getProductsByCategory(currentPage)
+        filterProduct(currentPage)
     }
-
 }
 
-$(".category-element").click(function() {
-    $(".category-element").removeClass("category-active");
-    $(this).addClass("category-active");
-    $("#category-title").text($(this).text());
-    $("#breadcrumb-current").text($(this).text())
-    document.title = $(this).text() + " - Nét Việt"
-    changeCategoryName($(this).attr("data-categoryName"))
-})
+filterProduct(currentPage)
