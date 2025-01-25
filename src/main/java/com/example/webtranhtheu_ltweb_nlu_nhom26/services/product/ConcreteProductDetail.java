@@ -44,7 +44,6 @@ public class ConcreteProductDetail implements ProductDetailService {
     }
 
     public List<Integer> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, int offset, int amount) {
-        System.out.println("AMOUNT OF PRODUCT: " + (offset - 1) * amount);
         return productDAO.filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, (offset - 1) * amount, amount);
     }
 }

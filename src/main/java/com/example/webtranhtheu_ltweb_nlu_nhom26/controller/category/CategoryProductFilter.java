@@ -31,7 +31,6 @@ public class CategoryProductFilter extends HttpServlet {
             String requestToPrice = request.getParameter("toPrice");
             String requestAmount = request.getParameter("amount");
             String requestPage = request.getParameter("page");
-            String maxPage = request.getParameter("maxPage");
             String requestProviderName = request.getParameter("providerName");
 
             String patternName = requestPatternName.isEmpty() ? null : requestPatternName;
@@ -64,7 +63,6 @@ public class CategoryProductFilter extends HttpServlet {
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
         }
     }

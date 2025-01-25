@@ -1,6 +1,9 @@
-$(".card").click(function () {
-    window.location = "../page/product.html"
-})
+let pathName = window.location.href.split("/")
+let patternName = pathName[pathName.length - 1] //Lấy pattern name ra. Nếu không có phần này thì servlet bắt lỗi
+let currentPage = 1 //Trang hiện tại
+let maxPage
+const amount = 15 //Số lượng sp/trang cần display
+let isFilterUsed = false
 
 $("#remove-filter").click(function () {
     $("input[type=text]").val("");
@@ -9,19 +12,11 @@ $("#remove-filter").click(function () {
     $("#provider-filter").prop('selectedIndex',0);
 })
 
-let pathName = window.location.href.split("/")
-let patternName = pathName[pathName.length - 1] //Lấy pattern name ra. Nếu không có phần này thì servlet bắt lỗi
-let currentPage = 1 //Trang hiện tại
-let maxPage
-const amount = 15 //Số lượng sp/trang cần display
-let isFilterUsed = false
-
 $("#filter-btn").click(() => {
     if (!isFilterUsed) {
         currentPage = 1
         isFilterUsed = true
     }
-    console.log(getListChoosenTopic())
     filterProduct(currentPage)
 })
 
@@ -94,55 +89,6 @@ function getChoosenRating() {
     return $("input[type=radio][name=rating-star]:checked").first().val()
 }
 
-function getProductsByCategory(page) {
-    isFilterUsed = false
-    $.ajax({
-        url: '/category-product-getter',
-        method: 'GET',
-        data: {
-            page: page,
-            amount: amount,
-            maxPage: maxPage,
-            patternName: patternName
-        },
-        success: function (response) {
-            response = $.parseJSON(response)
-            if (response.result) {
-                maxPage = response.maxPage
-                //Thêm product vào category
-                getOneProductsRow(response.listProducts)
-                currentPage = response.currentPage
-
-                $("#current-page").text((currentPage) + "")
-                //Disable và enable các button chuyển trang
-                if (currentPage === 1) {
-                    $("#prev-page").addClass("disabled")
-                    $("#next-page").removeClass("disabled")
-                }
-                if (currentPage === maxPage && maxPage !== 1) {
-                    $("#next-page").addClass("disabled")
-                    $("#prev-page").removeClass("disabled")
-                }
-                if (maxPage === 1) {
-                    $("#next-page").addClass("disabled")
-                    $("#prev-page").addClass("disabled")
-                }
-                //Set active cho button category đang chọn
-                $(".category-element").each(function () {
-                    if ($(this).data("categoryName") === patternName) {
-                        $(this).addClass("active")
-                    }
-                })
-            } else {
-                $("#category-displayed-product").html(`<p class="d-flex justify-content-center align-items-center">${response.notice}</p>`)
-            }
-        },
-        error: function (response) {
-
-        }
-    })
-}
-
 function getOneProductsRow(listProducts) {
     let productHtml = `<div class='row'>`
     for (let product of listProducts) {
@@ -177,23 +123,14 @@ function getOneProductsRow(listProducts) {
 
 
 $("#prev-page").click(function () {
-    //Tạm, sẽ gộp 2 hàm lại làm một
-    // if (isFilterUsed) filterProduct(--currentPage)
-    // else getProductsByCategory(--currentPage)
     filterProduct(--currentPage)
 })
 
 $("#next-page").click(function () {
-    //Tạm, sẽ gộp
-    // if (isFilterUsed) filterProduct(++currentPage)
-    // else getProductsByCategory(++currentPage)
     filterProduct(++currentPage)
 })
 
 filterProduct(currentPage)
-
-// getProductsByCategory(currentPage)
-
 
 function changeCategoryName(pattern) {
     let url = window.location.href
@@ -205,7 +142,6 @@ function changeCategoryName(pattern) {
         maxPage = null
         filterProduct(currentPage)
     }
-
 }
 
 $(".category-element").click(function () {
