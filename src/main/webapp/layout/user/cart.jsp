@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row mt-4 mb-4">
         <div class="col-8 cart">
-            <div class="h3 pt-4 text-center">Giỏ hàng</div>
+            <div class="h3 sub-color pt-4 text-center" style="color:var(--sub-cta-button)">Giỏ hàng</div>
             <div class="row cart-title px-4">
                 <div class="col-3 form-check">
                     <input class="form-check-input" type="checkbox" id="checkAll">
@@ -26,7 +26,9 @@
             </div>
             <hr/>
             <c:if test="${empty cart.products}">
-                <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">Giỏ hàng trống</div>
+                <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">
+                    Giỏ hàng trống
+                </div>
             </c:if>
             <div class="cart-item-list" id="cart-container">
                 <c:forEach items="${cart.products}" var="entry">
@@ -119,35 +121,22 @@
                 <hr>
                 <div class="discounts-list">
                     <div class="row ps-3 py-2 discount-item">
-                        <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
+                        <c:if test="${empty cart.top3DiscountList}">
+                            <div class="h6 text-center justify-content-center align-items-center"
+                                 style="color: var(--text-hover-color)">Không có khuyến mãi
+                            </div>
+                        </c:if>
+                        <c:forEach var="topDiscount" items="${cart.top3DiscountList}">
+                        <div class="row discount-title h6">${topDiscount.title}</div>
                         <div class="row p-0">
-                            <div class=" col-8 discount-description">Đơn từ 10.000.000.</div>
+                            <div class=" col-8 discount-description">${topDiscount.description}</div>
                             <div class="col-4 discount-detail">Chi tiết</div>
                         </div>
                         <div class="row mt-2">
                             <button class="apply_discount">Áp dụng</button>
                         </div>
                     </div>
-                    <div class="row ps-3 py-2 discount-item">
-                        <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
-                        <div class="row p-0">
-                            <div class=" col-8 discount-description">Đơn từ 10.000.000.</div>
-                            <div class="col-4 discount-detail">Chi tiết</div>
-                        </div>
-                        <div class="row mt-2">
-                            <button class="apply_discount">Áp dụng</button>
-                        </div>
-                    </div>
-                    <div class="row ps-3 py-2 discount-item">
-                        <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
-                        <div class="row p-0">
-                            <div class=" col-8 discount-description">Đơn từ 10.000.000.</div>
-                            <div class="col-4 discount-detail">Chi tiết</div>
-                        </div>
-                        <div class="row mt-2">
-                            <button class="apply_discount">Áp dụng</button>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
             <div class="row py-2"></div>
@@ -165,6 +154,45 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="p-4 discount-detail-info">
+        <div class="row">
+            <div class=" col-11 text-center h5">Điều kiện áp dụng</div>
+            <i class="col-1 bi bi-x-lg cancel-discount"></i>
+        </div>
+        <hr/>
+        <div class="row ps-3">- Áp dụng cho đơn hàng KHÔNG bao gồm giá trị của các sản phẩm Ngoại Văn, Manga, Phiếu Quà
+            Tặng, Sách Giáo Khoa, Máy Tính và Giấy Photo và Một Số Loại Giấy và Bảng Khác
+        </div>
+        <div class="row ps-3">- Khách hàng có thể áp dụng cùng lúc với mã giảm phí vận chuyển</div>
+        <div class="py-4"></div>
+        <div class="row text-center">
+            <button class="apply_discount">Áp dụng</button>
+        </div>
+    </div>
+    <div class="discount-more-info">
+        <div class="row">
+            <div class=" col-11 text-center h5">Khuyến mãi</div>
+            <i class="col-1 bi bi-x-lg cancel-more"></i>
+        </div>
+        <hr/>
+        <c:if test="${empty cart.discountList}">
+            <div class="h5 text-center justify-content-center align-items-center"
+                 style="color: var(--text-hover-color)">Không có khuyến mãi
+            </div>
+        </c:if>
+        <c:forEach var="discount" items="${cart.discountList}">
+            <div class="row ps-3 py-2 discount-item">
+                <div class="row discount-title h6">${discount.title}</div>
+                <div class="row p-0">
+                    <div class=" col-9 discount-description">${discount.description}</div>
+                    <div class="col-3 discount-detail">Chi tiết</div>
+                </div>
+                <div class="row">
+                    <button class="apply_discount">Áp dụng</button>
+                </div>
+            </div>
+        </c:forEach>
     </div>
 </div>
 <jsp:include page="../public/footer.jsp"/>
@@ -204,9 +232,9 @@
         if (selectedProductCode.length > 0) {
             $.ajax({
                 // sửa thêm phần discount nè
-                url: "/user/purchase?selectedItems=" + selectedProductCode +"&discountId=" + discountId,
+                url: "/user/purchase?selectedItems=" + selectedProductCode + "&discountId=" + discountId,
                 type: "POST",
-                contentType:"application/json",
+                contentType: "application/json",
                 data: {
                     selectedProductCode: selectedProductCode, // Gửi danh sách ID sản phẩm
                     discountId: discountId
@@ -322,10 +350,10 @@
                 }
             },
             error: function (error) {
-            //     error = $.parseJSON(error)
-            //     if(error.result){
-            //         console.log(error.error)
-            //     }
+                //     error = $.parseJSON(error)
+                //     if(error.result){
+                //         console.log(error.error)
+                //     }
             }
         })
     }
@@ -350,16 +378,17 @@
             console.log("empty")
         }
     }
-    function formatProductPrice(productId,width,height){
+
+    function formatProductPrice(productId, width, height) {
         let divInput;
         let price;
         let priceText;
         let cartItem;
-        divInput= $("div#quantity_" + productId + '_' + width + '_' + height)
-        cartItem= divInput.closest(".cart-item")
-        price= cartItem.find("#product-detail__price")
-        priceText= formatter.format(price.prop("innerText"))
-        price.text(priceText+"")
+        divInput = $("div#quantity_" + productId + '_' + width + '_' + height)
+        cartItem = divInput.closest(".cart-item")
+        price = cartItem.find("#product-detail__price")
+        priceText = formatter.format(price.prop("innerText"))
+        price.text(priceText + "")
     }
 
     <c:forEach var="entry" items="${cart.products}">

@@ -48,33 +48,37 @@
 }
 /* discount detail*/
 .discount-detail-info,.discount-more-info{
-    width: 40%;
-    height: 35%;
+    position: absolute;
+    width: 600px;
+    min-height: 200px;
     border-radius: 5px;
     border: solid 1px var(--big-text-color);
-    top:20%;
-    left: 30%;
+    top:45%;
+    left: 45%;
     background: var(--web-background-color);
     justify-content: center;
     align-items: center;
-    opacity: 0;
+    display: none;
     transition: visibility 0.3s, opacity 0.3s;
 }
 .discount-more-info{
-    height: 450px;
+    min-height: 200px;
 }
 
-.popup{
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    overflow: hidden !important;
-    display: none;
-}
-.popup.show {
+/*.popup{*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100vw;*/
+/*    height: 100%;*/
+/*    overflow: hidden !important;*/
+/*}*/
+/*.popup .show {*/
+/*    visibility: visible;*/
+/*    opacity: 1;*/
+/*}*/
+.show{
     visibility: visible;
-    opacity: 1;
+    display: block;
 }
 .select-area{
     color: var(--sub-cta-button);

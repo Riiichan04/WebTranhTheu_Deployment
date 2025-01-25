@@ -15,7 +15,7 @@ public class Cart implements Serializable {
     private static Cart instance;
     private List<Discount> discountList;
     private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart, lưu lại discount đã chọn
-
+    private List<Discount> top3DiscountList;
     private Cart() {
         products = new HashMap<>();
     }
@@ -66,7 +66,7 @@ public class Cart implements Serializable {
         CartProduct cartProduct = products.get(productCode);
         if (cartProduct != null) {
             if (cartProduct.getPrice().getAvailable() > quantity) {
-                if (quantity>0 && quantity <= CartProduct.MAX_PER_PRODUCT) {
+                if (quantity > 0 && quantity <= CartProduct.MAX_PER_PRODUCT) {
                     cartProduct.setQuantity(quantity);
                     cartProduct.getTotalPrice();
                     return true;
@@ -119,17 +119,26 @@ public class Cart implements Serializable {
         if (products.containsKey(productCode)) {
             products.remove(productCode);
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
 
-    public Discount getMaxDiscount(){
+    public Discount getMaxDiscount() {
         return this.discountList.stream().max(Comparator.comparingDouble(Discount::getValue)).orElse(discountList.get(0));
     }
-     public Discount getSelectedDiscount(int discountId){
+
+    public Discount getSelectedDiscount(int discountId) {
         return this.discountList.get(discountId);
-     }
+    }
+
+
+    public List<Discount> getTop3DiscountList() {
+        return top3DiscountList;
+    }
+
+    public void setTop3DiscountList(List<Discount> top3DiscountList) {
+        this.top3DiscountList = top3DiscountList;
+    }
 
     public List<Discount> getDiscountList() {
         return discountList;
@@ -137,6 +146,14 @@ public class Cart implements Serializable {
 
     public void setDiscountList(List<Discount> discountList) {
         this.discountList = discountList;
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
     }
 
     public Map<String, CartProduct> getProducts() {
@@ -154,7 +171,8 @@ public class Cart implements Serializable {
     public int getCartSize() {
         return this.products.values().stream().mapToInt(CartProduct::getQuantity).sum();
     }
-    public int getSize(){
+
+    public int getSize() {
         return products.size();
     }
 }
