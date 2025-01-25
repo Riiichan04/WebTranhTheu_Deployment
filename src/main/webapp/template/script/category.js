@@ -3,7 +3,6 @@ let patternName = pathName[pathName.length - 1] //Lấy pattern name ra. Nếu k
 let currentPage = 1 //Trang hiện tại
 let maxPage
 const amount = 15 //Số lượng sp/trang cần display
-let isFilterUsed = false
 
 $("#remove-filter").click(function () {
     $("input[type=text]").val("");
@@ -13,27 +12,39 @@ $("#remove-filter").click(function () {
 })
 
 $("#filter-btn").click(() => {
-    if (!isFilterUsed) {
-        currentPage = 1
-        isFilterUsed = true
-    }
+    currentPage = 1
     filterProduct(currentPage)
 })
 
-//Sẽ gộp
+$("#prev-page").click(function () {
+    filterProduct(--currentPage)
+})
+
+$("#next-page").click(function () {
+    filterProduct(++currentPage)
+})
+
+$(".category-element").click(function () {
+    $(".category-element").removeClass("category-active");
+    $(this).addClass("category-active");
+    $("#category-title").text($(this).text());
+    $("#breadcrumb-current").text($(this).text())
+    document.title = $(this).text() + " - Nét Việt"
+    changeCategoryName($(this).attr("data-categoryName"))
+})
+
 function filterProduct(page) {
     $.ajax({
         url: '/category-filter',
         method: 'GET',
         data: {
             patternName: patternName,
-            listTopic: getListChoosenTopic(),
-            rating: getChoosenRating(),
+            listTopic: getListChooseTopic(),
+            rating: getChoseRating(),
             fromPrice: $("#filter-price-from").val(),
             toPrice: $("#filter-price-to").val(),
             amount: amount,
             page: page,
-            maxPage: maxPage,
             providerName: $("#provider-filter").val()
         },
         success: function (response) {
@@ -69,12 +80,12 @@ function filterProduct(page) {
             }
         },
         error: function (response) {
-
+            $("#category-displayed-product").html(`<p class="d-flex justify-content-center align-items-center">${response.notice}</p>`)
         }
     })
 }
 
-function getListChoosenTopic() {
+function getListChooseTopic() {
     const listTopic = $("input[type=checkbox][name=topic-filter]:checked")
     if (listTopic.length === 0) return ''
     const result = []
@@ -85,7 +96,7 @@ function getListChoosenTopic() {
 
 }
 
-function getChoosenRating() {
+function getChoseRating() {
     return $("input[type=radio][name=rating-star]:checked").first().val()
 }
 
@@ -121,17 +132,6 @@ function getOneProductsRow(listProducts) {
     $("#category-displayed-product").html(productHtml)
 }
 
-
-$("#prev-page").click(function () {
-    filterProduct(--currentPage)
-})
-
-$("#next-page").click(function () {
-    filterProduct(++currentPage)
-})
-
-filterProduct(currentPage)
-
 function changeCategoryName(pattern) {
     let url = window.location.href
     url = url.substring(0, url.lastIndexOf("/") + 1) + pattern
@@ -144,11 +144,4 @@ function changeCategoryName(pattern) {
     }
 }
 
-$(".category-element").click(function () {
-    $(".category-element").removeClass("category-active");
-    $(this).addClass("category-active");
-    $("#category-title").text($(this).text());
-    $("#breadcrumb-current").text($(this).text())
-    document.title = $(this).text() + " - Nét Việt"
-    changeCategoryName($(this).attr("data-categoryName"))
-})
+filterProduct(currentPage)

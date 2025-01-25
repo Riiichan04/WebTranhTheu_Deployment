@@ -1,6 +1,5 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.category;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
@@ -14,7 +13,6 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @WebServlet(name = "CategoryProductFilter", value = "/category-filter")
 public class CategoryProductFilter extends HttpServlet {
@@ -33,6 +31,7 @@ public class CategoryProductFilter extends HttpServlet {
             String requestPage = request.getParameter("page");
             String requestProviderName = request.getParameter("providerName");
 
+            //Cần xem lại và tối ưu code này
             String patternName = requestPatternName.isEmpty() ? null : requestPatternName;
             String providerName = requestProviderName.isEmpty() ? null : requestProviderName;
             List<Integer> listTopicId = requestListTopicId == null || requestListTopicId.isEmpty() ? null : Arrays.stream(requestListTopicId.split(",")).map(Integer::parseInt).toList();
@@ -42,27 +41,29 @@ public class CategoryProductFilter extends HttpServlet {
             int amount = Integer.parseInt(requestAmount);
             int page = Integer.parseInt(requestPage);
 
-            if (page <= 0 || amount <= 0) {
+            if (page <= 0 || amount <= 0 || fromPrice > toPrice || rating < 0 || rating > 5) {
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
                 return;
             }
-
-            jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(patternName, listTopicId, rating, fromPrice, toPrice, providerName, amount));
 
             List<Product> listProducts = ProductService.filterProduct(patternName, listTopicId, rating, fromPrice, toPrice, providerName, page, amount);
             if (listProducts.isEmpty()) {
                 jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
-            } else {
+            }
+            else {
                 JsonArray listResult = new JsonArray();
                 for (Product product : listProducts) {
                     ControllerUtil.addProductToJson(listResult, product, product.getMinPrice());
                 }
+                jsonResult.addProperty("maxPage", CategoryService.calculateCategoryPage(patternName, listTopicId, rating, fromPrice, toPrice, providerName, amount));
                 jsonResult.addProperty("currentPage", page);
                 jsonResult.add("listProducts", listResult);
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
             }
+
         } catch (Exception e) {
+            jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
             ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
         }
     }
