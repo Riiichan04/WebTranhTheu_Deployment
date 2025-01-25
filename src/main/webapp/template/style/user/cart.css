@@ -49,7 +49,7 @@
 /* discount detail*/
 .discount-detail-info,.discount-more-info{
     position: absolute;
-    width: 600px;
+    min-width: 600px;
     min-height: 200px;
     border-radius: 5px;
     border: solid 1px var(--big-text-color);
