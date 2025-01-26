@@ -85,7 +85,7 @@
                     <c:forEach items="${product.getListPrices()}" var="p">
                         <div class="row form-group product-price-row mb-2">
                             <div class="row ps-5">
-                                <span class="style-label">Loại tranh</span>
+                                <span class="style-label">Kích cỡ tranh</span>
                             </div>
                             <div class="col">
                                 <!-- giá bán và số lượng -->
@@ -120,7 +120,7 @@
                                 </div>
                             </div>
                             <div class="col-1 d-none edit-hidden">
-                                <i class="fa-solid fa-trash icon-del" onclick="removeProductPrice(this)"></i>
+                                <i class="fa-solid fa-trash icon-del" onclick="hiddenProduct(this)"></i>
                             </div>
                         </div>
                     </c:forEach>
@@ -131,20 +131,51 @@
         <!-- chất liệu -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Chất liệu<i
-                    class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden"></i></span></div>
+                    class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addMaterial()"></i></span></div>
         </div>
         <div class="row pt-2">
             <div class="col p-0">
-                <c:forEach items="${product.getListMaterials()}" var="material">
-                    <select class="style-select material mb-2" disabled>
-                        <c:forEach items="${materials}" var="m">
-                            <option value="${m.getId()}" ${material.getId() == m.getId() ? 'selected' : ''}>${m.getTitle()}</option>
-                        </c:forEach>
-                    </select>
-                </c:forEach>
+                <div id="materials">
+                    <div class="row mb-2 d-none sample-material d-none">
+                        <div class="col">
+                            <select class="style-select material mb-2" disabled>
+                                <c:forEach items="${materials}" var="m">
+                                    <option value="${m.getId()}">${m.getTitle()}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="col-1 pe-0 edit-hidden d-none">
+                            <i class="fa-solid fa-trash icon-del" onclick="remove(this)"></i>
+                        </div>
+                    </div>
+                    <c:forEach items="${product.getListMaterials()}" var="material">
+                        <div class="row mb-2">
+                            <div class="col">
+                                <select class="style-select material mb-2" disabled>
+                                    <c:forEach items="${materials}" var="m">
+                                        <option value="${m.getId()}" ${material.getId() == m.getId() ? 'selected' : ''}>${m.getTitle()}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="col-1 pe-0 edit-hidden d-none">
+                                <i class="fa-solid fa-trash icon-del" onclick="hiddenProduct(this)"></i>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
-            <div class="col-1 pe-0 edit-hidden d-none">
-                <i class="fa-solid fa-trash icon-del"></i>
+        </div>
+        <!-- nhà phân phối -->
+        <div class="row pt-3">
+            <div class="col"><span class="style-title">Nhà phân phối</span></div>
+        </div>
+        <div class="row pt-2">
+            <div class="col p-0">
+                <select class="style-select provider" name="provider" disabled required>
+                    <c:forEach items="${providers}" var="p">
+                        <option value="${p.getId()}" ${product.getProvider().getId() == p.getId() ? 'selected' : ''}>${p.getProviderName()}</option>
+                    </c:forEach>
+                </select>
             </div>
         </div>
 
@@ -209,19 +240,7 @@
                 </select>
             </div>
         </div>
-        <!-- nhà phân phối -->
-        <div class="row pt-3">
-            <div class="col"><span class="style-title">Nhà phân phối</span></div>
-        </div>
-        <div class="row pt-2">
-            <div class="col p-0">
-                <select class="style-select" id="provider" name="provider" required disabled>
-                    <c:forEach items="${providers}" var="p">
-                    <option value="${p.getId()}" ${product.getProvider().getId() == p.getId() ? 'selected' : ''}>${p.getProviderName()}</option>
-                    </c:forEach>
-                </select>
-            </div>
-        </div>
+
         <!-- chính sách -->
         <div class="row pt-3">
             <div class="col"><span class="style-title">Chính sách</span></div>

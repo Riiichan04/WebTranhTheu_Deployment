@@ -34,7 +34,7 @@ $(document).ready(function () {
         $('.heightProduct').prop('disabled', false);
         $('.material').prop('disabled', false);
         $('#status').prop('disabled', false);
-        $('#provider').prop('disabled', false);
+        $('.provider').prop('disabled', false);
         $('#type').prop('disabled', false);
         $('.edit-hidden').removeClass('d-none');
         // Lặp qua tất cả các hàng của DataTable và hiển thị phần tử 'edit-hidden'
@@ -48,22 +48,24 @@ $(document).ready(function () {
 
     // Sự kiện cho nút Cancel
     $('#cancelEditBtn').click(function () {
-        $('#read-edit-category-form')[0].reset(); // Reset form
+        $('#read-edit-product-form')[0].reset(); // Reset form
         $('#title').text('Xem sản phẩm');
         $('.read').removeClass('d-none');
         $('#title-img').text('Hình ảnh');
         $('#code_product').prop('disabled', true);
         $('#nameProduct').prop('disabled', true);
         $('#descriptionProduct').prop('disabled', true);
-        $('#price').prop('disabled', true);
-        $('#quantityProduct').prop('disabled', true);
-        $('#widthProduct').prop('disabled', true);
-        $('#heightProduct').prop('disabled', true);
+        $('.price').prop('disabled', true);
+        $('.quantityProduct').prop('disabled', true);
+        $('.widthProduct').prop('disabled', true);
+        $('.heightProduct').prop('disabled', true);
         $('.material').prop('disabled', true);
         $('#status').prop('disabled', true);
-        $('#provider').prop('disabled', true);
+        $('.provider').prop('disabled', true);
         $('#type').prop('disabled', true);
         $('.edit-hidden').addClass('d-none');
+        $('.temp-hidden').removeClass('d-none');
+        $('.add-row').remove();
         // Lặp qua tất cả các hàng của DataTable và hiển thị phần tử 'edit-hidden'
         table.rows().every(function () {
             var row = this.node();
@@ -73,22 +75,64 @@ $(document).ready(function () {
         table.columns.adjust().draw();
     });
 
-    function addProductPrice() {
-        const productRow = document.querySelector('.product-price-row');
-        const newRow = productRow.cloneNode(true);
-        newRow.querySelectorAll('input').forEach(input => input.value = '');
-        document.getElementById('product_price').appendChild(newRow);
-    }
-
-    function removeProductPrice(button) {
-        const row = button.parentElement.parentElement;
-        if (document.querySelectorAll('.product-price-row').length > 1) {
-            row.remove();
-        } else {
-            alert("Phải có ít nhất một loại sản phẩm!");
-        }
-    }
-
 });
+
+function addProductPrice() {
+    const newNode = document.createElement('div');
+    newNode.className = 'row form-group product-price-row mb-2 add-row';
+    newNode.innerHTML = `<div class="row ps-4">
+                            <span class="style-label">Kích cỡ tranh</span>
+                        </div>
+                        <div class="col pe-0">
+                            <!-- giá bán và số lượng -->
+                            <div class="row pt-2">
+                                <div class="col p-0 pe-1 text-center">
+                                    <label class="style-label pb-2">Giá bán (VNĐ)</label>
+                                    <input type="number" id="price" class="w-100 style-input" name="price"
+                                           placeholder="Nhập giá bán sản phẩm" required>
+                                </div>
+                                <div class="col p-0 ps-1 text-center">
+                                    <label class="style-label pb-2">Số lượng</label>
+                                    <input type="number" id="quantityProduct" class="w-100 style-input" name="quantity"
+                                           placeholder="Nhập số lượng sản phẩm" required>
+                                </div>
+                            </div>
+                            <!-- kích thước -->
+                            <div class="row pt-2">
+                                <div class="col p-0 pe-1 text-center">
+                                    <label class="style-label pb-2">Chiều rộng (cm)</label>
+                                    <input type="number" class="w-100 style-input" id="widthProduct" name="width"
+                                           placeholder="Chiều rộng (cm)">
+                                </div>
+                                <div class="col p-0 ps-1 text-center">
+                                    <label class="style-label pb-2">Chiều cao (cm)</label>
+                                    <input type="number" class="w-100 style-input" id="heightProduct" name="height"
+                                           placeholder="Chiều cao (cm)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <i class="fa-solid fa-trash icon-del" onclick="remove(this)"></i>
+                        </div>`;
+    document.getElementById('product_price').appendChild(newNode);
+}
+
+function addMaterial() {
+    const sampleNode = document.querySelector('.sample-material');
+    const newNode = sampleNode.cloneNode(true);
+    newNode.className = 'row add-row mb-2';
+    document.getElementById('materials').appendChild(newNode);
+
+}
+
+function remove(button) {
+    const row = button.parentElement.parentElement;
+    row.remove();
+}
+
+function hiddenProduct(button) {
+    const row = button.parentElement.parentElement;
+    $(row).addClass('temp-hidden d-none');
+}
 
 
