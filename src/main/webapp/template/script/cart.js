@@ -60,9 +60,10 @@ $(".bi-trash").click(function (){
 })
 // chi tiết giảm giá
 $(".discount-detail").click(function (){
-    $(".discount-detail-info").addClass("show")
+    $("#discount-detail-info").removeClass("d-none")
 })
-$(".cancel-more").click(function (){
-    $(".discount-more-info").removeClass("show")
+$(".cancel-discount").click(function (){
+    $("#discount-detail-info").addClass("d-none")
 })
+
 

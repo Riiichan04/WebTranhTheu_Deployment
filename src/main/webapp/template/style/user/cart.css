@@ -48,23 +48,19 @@
     background-color: var(--sub-cta-button);
 }
 /* discount detail*/
-.discount-detail-info,.discount-more-info{
+#discount-detail-info{
     position: absolute;
-    width: 400px;
     min-height: 200px;
     border-radius: 5px;
     border: solid 1px var(--big-text-color);
     top:45%;
-    left: 45%;
+    left: 30%;
     background: var(--web-background-color);
     justify-content: center;
     align-items: center;
     display: none;
     transition: visibility 0.3s, opacity 0.3s;
-}
-.discount-detail-info{
     min-width: 600px;
-    left: 30%;
 }
 .disabled{
     pointer-events: none; /* Vô hiệu hóa sự kiện */
@@ -76,21 +72,7 @@
     border: solid 1px var(--text-hover-color);
     border-radius: 5px;
 }
-/*.popup{*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 100vw;*/
-/*    height: 100%;*/
-/*    overflow: hidden !important;*/
-/*}*/
-/*.popup .show {*/
-/*    visibility: visible;*/
-/*    opacity: 1;*/
-/*}*/
-.show{
-    visibility: visible;
-    display: block;
-}
+
 .select-area{
     color: var(--sub-cta-button);
     background-color: var(--web-background-color);

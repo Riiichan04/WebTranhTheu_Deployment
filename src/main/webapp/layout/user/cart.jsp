@@ -166,20 +166,8 @@
             </div>
         </div>
     </div>
-    <div class="discount-detail-info p-2">
-        <div class="row">
-            <div class=" col-11 text-center h5">Điều kiện áp dụng</div>
-            <i class="col-1 bi bi-x-lg cancel-discount"></i>
-        </div>
-        <hr/>
-        <div class="row ps-3">- Áp dụng cho đơn hàng KHÔNG bao gồm giá trị của các sản phẩm Ngoại Văn, Manga, Phiếu Quà
-            Tặng, Sách Giáo Khoa, Máy Tính và Giấy Photo và Một Số Loại Giấy và Bảng Khác
-        </div>
-        <div class="row ps-3">- Khách hàng có thể áp dụng cùng lúc với mã giảm phí vận chuyển</div>
-        <div class="py-4"></div>
-        <div class="row text-center">
-            <button class="apply_discount">Áp dụng</button>
-        </div>
+    <div id="discount-detail-info" class="p-2 d-none">
+
     </div>
 </div>
 <jsp:include page="../public/footer.jsp"/>
