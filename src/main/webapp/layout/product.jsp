@@ -309,14 +309,28 @@
         <h4 class="main-color">Sản phẩm khác</h4>
         <div class="row mt-2">
             <c:forEach var="product" items="${similarProduct}">
-                <div class="col-3 other-product__card">
-                    <div onclick="window.location = '/product?id=${product.id}'" class="card p-2"
-                         style="cursor: pointer">
+                <div style="width: 20%">
+                    <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                         <img src="${product.getThumbnail()}" class="card-img" alt="...">
                         <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">${product.title}</h6>
-                            <p class="card-text text-center fw-semibold h5 mt-2"
-                               style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                            <h5 class="card-title text-center pb-2 fw-semibold text-truncate"
+                                title="${product.category} ${product.title}">
+                                    ${product.category} ${product.title}
+                            </h5>
+                            <p class="card-text my-1 text-center text-truncate"
+                               title="Nhà cung cấp: ${product.getProvider().getProviderName()}">
+                                Nhà cung cấp: <span class="fw-semibold">${product.getProvider().getProviderName()}</span>
+                            </p>
+                            <p class="card-text text-center text-truncate my-1"
+                               title="Nguyên liệu: ${product.getStringDisplayMaterials()}">
+                                Nguyên liệu: <span class="fw-semibold">${product.getStringDisplayMaterials()}</span>
+                            </p>
+                            <p class="card-text text-center mt-1">
+                                Kích thước: từ <span class="fw-semibold">${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</span>
+                            </p>
+                            <p class="card-text text-center fw-semibold h4 mt-2"
+                               style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                            </p>
                         </div>
                     </div>
                 </div>
