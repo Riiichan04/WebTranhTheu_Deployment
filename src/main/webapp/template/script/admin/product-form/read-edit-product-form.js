@@ -28,15 +28,14 @@ $(document).ready(function () {
         $('#code_product').prop('disabled', false);
         $('#nameProduct').prop('disabled', false);
         $('#descriptionProduct').prop('disabled', false);
-        $('#price').prop('disabled', false);
-        $('#quantityProduct').prop('disabled', false);
-        $('#widthProduct').prop('disabled', false);
-        $('#heightProduct').prop('disabled', false);
+        $('.price').prop('disabled', false);
+        $('.quantityProduct').prop('disabled', false);
+        $('.widthProduct').prop('disabled', false);
+        $('.heightProduct').prop('disabled', false);
         $('.material').prop('disabled', false);
-        $('#provider').prop('disabled', false);
         $('#status').prop('disabled', false);
-        $('.reviewByStar').prop('disabled', false);
-        $('.comment').prop('disabled', false);
+        $('#provider').prop('disabled', false);
+        $('#type').prop('disabled', false);
         $('.edit-hidden').removeClass('d-none');
         // Lặp qua tất cả các hàng của DataTable và hiển thị phần tử 'edit-hidden'
         table.rows().every(function () {
@@ -61,10 +60,9 @@ $(document).ready(function () {
         $('#widthProduct').prop('disabled', true);
         $('#heightProduct').prop('disabled', true);
         $('.material').prop('disabled', true);
-        $('#provider').prop('disabled', true);
         $('#status').prop('disabled', true);
-        $('.reviewByStar').prop('disabled', true);
-        $('.comment').prop('disabled', true);
+        $('#provider').prop('disabled', true);
+        $('#type').prop('disabled', true);
         $('.edit-hidden').addClass('d-none');
         // Lặp qua tất cả các hàng của DataTable và hiển thị phần tử 'edit-hidden'
         table.rows().every(function () {

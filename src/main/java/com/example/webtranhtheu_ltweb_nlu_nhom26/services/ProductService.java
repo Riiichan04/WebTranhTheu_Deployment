@@ -119,6 +119,12 @@ public class ProductService {
         product.setListReviews(reviews);
         List<String> img = productDAO.getImgUrlById(id);
         product.setListImageUrls(img);
+        Policy policy = productDAO.getPolicyByProductId(id);
+        product.setPolicy(policy);
+        List<Material> listMaterial = productDAO.getListMaterialByProductId(id);
+        product.setListMaterials(listMaterial);
+        Provider provider = productDAO.getProviderByProductId(id);
+        product.setProvider(provider);
         return product;
     }
 }

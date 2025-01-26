@@ -199,4 +199,15 @@ public interface ProductDAO {
     @SqlQuery("select imgUrl from product_images WHERE productId = :productId")
     List<String> getImgUrlById(@Bind("productId") int productId);
 
+    @SqlQuery("select m.id, m.title from material_products_details mp join materials m on mp.materialId = m.id where mp.productId = :productId and m.active = 1")
+    @RegisterBeanMapper(Material.class)
+    List<Material> getListMaterialByProductId(@Bind("productId") int productId);
+
+    @SqlQuery("select pro.id, pro.providerName from products p join providers pro on p.providerId = pro.id where p.id = :productId")
+    @RegisterBeanMapper(Provider.class)
+    Provider getProviderByProductId(@Bind("productId") int productId);
+
+    @SqlQuery("select po.id, po.title from products p join policies po on p.policyId = po.id where p.id = :productId")
+    @RegisterBeanMapper(Policy.class)
+    Policy getPolicyByProductId(@Bind("productId") int productId);
 }
