@@ -15,7 +15,6 @@ public class Cart implements Serializable {
     private static Cart instance;
     private List<Discount> discountList;
     private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart, lưu lại discount đã chọn
-    private List<Discount> top3DiscountList;
     private Cart() {
         products = new HashMap<>();
     }
@@ -124,7 +123,7 @@ public class Cart implements Serializable {
 
 
     public Discount getMaxDiscount() {
-        return this.discountList.stream().max(Comparator.comparingDouble(Discount::getValue)).orElse(discountList.get(0));
+        return this.discountList.stream().max(Comparator.comparingDouble(Discount::getValue)).get();
     }
 
     public Discount getSelectedDiscount(int discountId) {
@@ -132,13 +131,6 @@ public class Cart implements Serializable {
     }
 
 
-    public List<Discount> getTop3DiscountList() {
-        return top3DiscountList;
-    }
-
-    public void setTop3DiscountList(List<Discount> top3DiscountList) {
-        this.top3DiscountList = top3DiscountList;
-    }
 
     public List<Discount> getDiscountList() {
         return discountList;

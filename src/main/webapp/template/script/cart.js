@@ -1,5 +1,4 @@
-const MAX_VALUE = 5;
-const MIN_VALUE = 1;
+
 const formatter = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
     currency: 'VND',
@@ -63,15 +62,6 @@ $(".bi-trash").click(function (){
 $(".discount-detail").click(function (){
     $(".discount-detail-info").addClass("show")
 })
-// bỏ xem giảm giá
-$(".cancel-discount").click(function (){
-    $(".discount-detail-info").removeClass("show")
-})
-// Thêm giảm giá.
-$('.discount-more').click(function (){
-    $(".discount-more-info").addClass("show")
-})
-
 $(".cancel-more").click(function (){
     $(".discount-more-info").removeClass("show")
 })

@@ -64,7 +64,17 @@
 }
 .discount-detail-info{
     min-width: 600px;
-    left: 10%;
+    left: 30%;
+}
+.disabled{
+    pointer-events: none; /* Vô hiệu hóa sự kiện */
+    cursor: not-allowed;
+    opacity: 0.5;
+
+}
+.selected-discount{
+    border: solid 1px var(--text-hover-color);
+    border-radius: 5px;
 }
 /*.popup{*/
 /*    top: 0;*/

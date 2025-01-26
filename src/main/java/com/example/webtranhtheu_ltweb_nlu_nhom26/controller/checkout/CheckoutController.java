@@ -31,8 +31,9 @@ public class CheckoutController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         // chưa biết đúng không
         String[] selectedProductCode = request.getParameterValues("selectedProductCode");
+        String discountId= request.getParameter("discountId");
+        Discount discount= discountService.getDiscount(Integer.parseInt(discountId));
         Cart cart = (Cart) session.getAttribute("cart");
-        Discount discount= (Discount) session.getAttribute("discount");
         if(discount==null) {
             discount = cart.getMaxDiscount();
         }
