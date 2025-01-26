@@ -151,7 +151,7 @@
             </div>
         </div>
     </div>
-    <div class="discount-detail-info">
+    <div class="discount-detail-info p-2">
         <div class="row">
             <div class=" col-11 text-center h5">Điều kiện áp dụng</div>
             <i class="col-1 bi bi-x-lg cancel-discount"></i>
@@ -162,17 +162,17 @@
         <div class="py-4"></div>
         <div class="row text-center"><button class="apply_discount">Áp dụng</button></div>
     </div>
-    <div class="discount-more-info">
+    <div class="discount-more-info px-4 py-2">
         <div class="row mt-2">
             <div class=" col-11 text-center h5">Khuyến mãi</div>
-            <i class="col-1 bi bi-x-lg cancel-more"></i>
+            <i class="col-1 pe-2 bi bi-x-lg cancel-more"></i>
         </div>
         <hr/>
         <c:if test="${empty cart.discountList}">
             <div class="h5 text-center fw-semibold " style="color: var(--text-hover-color)">Không có khuyến mãi</div>
         </c:if>
         <c:forEach var="discount" items="${cart.discountList}">
-        <div class="row ps-3 py-2 discount-item">
+        <div class="row px-3 py-2 discount-item">
             <div class="row discount-title h6">${discount.title}</div>
             <div class="row p-0">
                 <div class=" col-9 discount-description">${discount.description}</div>

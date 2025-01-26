@@ -33,23 +33,20 @@ public class CartSessionController extends HttpServlet {
         else {
             if(cart == null) {
                 cart= Cart.getInstance();
-                List<Discount> discountsAvailable= discountService.getListDiscountAvailable();
-                discountsAvailable.sort(Comparator.comparingDouble(Discount::getValue));
-                System.out.println("discountsAvailable: " + discountsAvailable);
-                List<Discount> top3Discount= new ArrayList<>();
-                top3Discount.add(discountsAvailable.get(0));
-                top3Discount.add(discountsAvailable.get(1));
-                top3Discount.add(discountsAvailable.get(2));
-                cart.setTop3DiscountList(top3Discount);
-                System.out.println("top3Discount: " + top3Discount);
-                System.out.println("la chay chua");
-                cart.setDiscountList(discountsAvailable);
-                cart.setDiscount(cart.getMaxDiscount());
             }
             if (session.getAttribute("listCategory") == null) {
                 session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
             }
             session.setAttribute("cart", cart);
+            List<Discount> discountsAvailable= discountService.getListDiscountAvailable();
+            discountsAvailable.sort(Comparator.comparingDouble(Discount::getValue).reversed());
+            List<Discount> top3Discount= new ArrayList<>();
+            top3Discount.add(discountsAvailable.get(0));
+            top3Discount.add(discountsAvailable.get(1));
+            top3Discount.add(discountsAvailable.get(2));
+            cart.setTop3DiscountList(top3Discount);
+            cart.setDiscountList(discountsAvailable);
+            cart.setDiscount(cart.getMaxDiscount());
             request.getRequestDispatcher("/layout/user/cart.jsp").forward(request, response);
         }
 

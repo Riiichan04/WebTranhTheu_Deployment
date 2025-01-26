@@ -6,6 +6,7 @@
     color: var(--sub-cta-button);
     font-weight: 500;
 }
+
 .cart,.discount_area,.pay_area{
     background-color: var(--light-component-background-color);
     border-radius: 5px;
@@ -21,7 +22,7 @@
     background-color: var(--web-background-color);
 }
 .discount_pay{
-    height: 700px;
+    min-height: 700px;
 }
 .discount-item{
     border-bottom: solid 1px var(--label-hover-color);
@@ -49,7 +50,7 @@
 /* discount detail*/
 .discount-detail-info,.discount-more-info{
     position: absolute;
-    min-width: 600px;
+    width: 400px;
     min-height: 200px;
     border-radius: 5px;
     border: solid 1px var(--big-text-color);
@@ -61,10 +62,10 @@
     display: none;
     transition: visibility 0.3s, opacity 0.3s;
 }
-.discount-more-info{
-    min-height: 200px;
+.discount-detail-info{
+    min-width: 600px;
+    left: 10%;
 }
-
 /*.popup{*/
 /*    top: 0;*/
 /*    left: 0;*/
