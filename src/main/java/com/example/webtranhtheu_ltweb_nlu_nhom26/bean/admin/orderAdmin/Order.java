@@ -1,6 +1,6 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.order;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 
 import java.sql.Timestamp;
 import java.util.List;

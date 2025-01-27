@@ -1,12 +1,10 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.OrderDTO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.order.Order;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.order.OrderDetails;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.Order;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.OrderDetails;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseOrderDetailMapper;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseProductMapper;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;

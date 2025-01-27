@@ -1,6 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.order;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.order.Order;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.Order;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.OrderService;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

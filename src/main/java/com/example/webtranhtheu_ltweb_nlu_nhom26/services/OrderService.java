@@ -1,9 +1,9 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.OrderDTO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.order.Order;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.order.OrderDetails;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.Order;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.OrderDetails;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.OrderDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
