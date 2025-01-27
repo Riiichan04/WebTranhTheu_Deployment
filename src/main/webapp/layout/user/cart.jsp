@@ -26,7 +26,9 @@
             </div>
             <hr/>
             <c:if test="${empty cart.products}">
-                <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">Giỏ hàng trống</div>
+                <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">
+                    Giỏ hàng trống
+                </div>
             </c:if>
             <div class="cart-item-list" id="cart-container">
                 <c:forEach items="${cart.products}" var="entry">
@@ -112,42 +114,50 @@
                         <span>Khuyến mãi</span>
                     </div>
                     <div class="col"></div>
-                    <div class="col-2 row">
-                        <i class="bi bi-arrow-right-short discount-more h4 my-0"></i>
-                    </div>
                 </div>
                 <hr>
                 <div class="discounts-list">
-                    <div class="row ps-3 py-2 discount-item">
-                        <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
-                        <div class="row p-0">
-                            <div class=" col-8 discount-description">Đơn từ 10.000.000.</div>
-                            <div class="col-4 discount-detail">Chi tiết</div>
+                    <c:if test="${empty cart.discountList}">
+                        <div class="h6 justify-content-center align-items-center fw-semibold"
+                             style="color: var(--text-hover-color)">Không có khuyến mãi
                         </div>
-                        <div class="row mt-2">
-                            <button class="apply_discount">Áp dụng</button>
-                        </div>
-                    </div>
-                    <div class="row ps-3 py-2 discount-item">
-                        <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
-                        <div class="row p-0">
-                            <div class=" col-8 discount-description">Đơn từ 10.000.000.</div>
-                            <div class="col-4 discount-detail">Chi tiết</div>
-                        </div>
-                        <div class="row mt-2">
-                            <button class="apply_discount">Áp dụng</button>
-                        </div>
-                    </div>
-                    <div class="row ps-3 py-2 discount-item">
-                        <div class="row discount-title h6">Mã giảm giá 10K - Áp dụng cho toàn sàn</div>
-                        <div class="row p-0">
-                            <div class=" col-8 discount-description">Đơn từ 10.000.000.</div>
-                            <div class="col-4 discount-detail">Chi tiết</div>
-                        </div>
-                        <div class="row mt-2">
-                            <button class="apply_discount">Áp dụng</button>
-                        </div>
-                    </div>
+                    </c:if>
+                    <c:forEach var="discount" items="${cart.discountList}">
+                        <c:if test="${discount.id == cart.discount.id}">
+                            <div class="row ps-3 py-2 discount-item selected-discount" data-id="${discount.id}"
+                                 data-value="${discount.value}">
+                                <div class="row discount-title h6">${discount.title}</div>
+                                <div class="row p-0">
+                                    <div class=" col-8 discount-description">${discount.description}</div>
+                                    <div class="col-4 discount-detail"
+                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">
+                                        Chi tiết
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <button class="apply_discount opacity-50" onclick="selectDiscount(this)" disabled>Đã
+                                        áp dụng
+                                    </button>
+                                </div>
+                            </div>
+                        </c:if>
+                        <c:if test="${discount.id != cart.discount.id}">
+                            <div class="row ps-3 py-2 discount-item" data-id="${discount.id}"
+                                 data-value="${discount.value}">
+                                <div class="row discount-title h6">${discount.title}</div>
+                                <div class="row p-0">
+                                    <div class=" col-8 discount-description">${discount.description}</div>
+                                    <div class="col-4 discount-detail"
+                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">
+                                        Chi tiết
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <button class="apply_discount" onclick="selectDiscount(this)">Áp dụng</button>
+                                </div>
+                            </div>
+                        </c:if>
+                    </c:forEach>
                 </div>
             </div>
             <div class="row py-2"></div>
@@ -166,19 +176,52 @@
             </div>
         </div>
     </div>
+    <div id="popup-overlay"></div>
+    <div id="discount-detail-info" class="p-2">
+        <div class="row">
+            <div class=" col-11 pt-2 text-center h5">Chi tiết giảm giá</div>
+            <i class="col-1 py-2 pe-2 text-center bi bi-x-lg cancel-discount" onclick="closeDetails()"></i>
+        </div>
+        <hr/>
+        <div id="discount-title" class="h5 text-center fw-bold"></div>
+        <div class="row ps-3 ms-2" id="discount-description"></div>
+        <div class="row ps-3 m-2" id="discount-expiredAt"></div>
+        <div class="py-4"></div>
+    </div>
+</div>
+<div id="popup" class="p-3">
+    <div class="row  text-center fw-bold h5 border-bottom">
+        <div class="col-11 h4 text-center">Lỗi</div>
+        <i class="col-1 p-2 text-center bi bi-x-lg" onclick="closeError()"></i>
+    </div>
+    <div class="row mt-2 ms-2 text-center">Số lượng sản phẩm vượt mức quy định.</div>
 </div>
 <jsp:include page="../public/footer.jsp"/>
 <script src="../../template/script/header.js"></script>
 <script src="../../template/script/cart.js"></script>
 <script>
-    // const priceProduct = formatter.format($("#product-detail__price").prop("innerText"))
-    // $("#product-detail__price").text(priceProduct + "")
-
     // chuyển đơn vị tiền qua số
     function parseCurrencyToFloat(currency) {
         // Loại bỏ các ký tự không phải số hoặc dấu thập phân
         const cleanedString = currency.replace(/[^\d,-]/g, '').replace(',', '.');
         return parseFloat(cleanedString);
+    }
+
+    // chọn mã giảm giá
+    function selectDiscount(button) {
+        const apply_discount = document.querySelectorAll("button.apply_discount")
+        apply_discount.forEach(function (btn) {
+            btn.disabled = false;
+            btn.innerText = "Áp dụng";
+            btn.classList.remove("opacity-50")
+        })
+        button.disabled = true;
+        button.classList.add("opacity-50")
+        button.innerText = "Đã áp dụng"
+        const discount_item = document.querySelectorAll("div.discount-item")
+        discount_item.forEach(row => row.classList.remove("selected-discount"))
+        button.closest(".discount-item").classList.add("selected-discount")
+        updateTotalPrice()
     }
 
     // tính tổng tiền dựa vào checkbox
@@ -188,12 +231,18 @@
         checkboxes.forEach(function (checkbox) {
             let row = checkbox.closest('div.cart-item');  // Tìm dòng chứa checkbox
             let price = parseCurrencyToFloat(row.querySelector('#product-detail__price').textContent);  // Lấy giá sản phẩm
-            console.log(price)
             let quantity = Number.parseInt(row.querySelector('div.product-quantity').textContent);  // Lấy số lượng
-            console.log(quantity)
-            total += price * quantity;  // Cộng tổng tiền
+            total += (price * quantity);// Cộng tổng tiền
         });
-        console.log(total)
+        const discount_item = document.querySelectorAll("div.discount-item")
+        let discountValue;
+        discount_item.forEach(function (discount) {
+            if (discount.classList.contains("selected-discount")) {
+                discountValue = discount.getAttribute("data-value")
+                console.log(discountValue)
+            }
+        })
+        total -= total * discountValue;
         document.getElementById('total-price').textContent = total
         const totalPrice = formatter.format($("#total-price").prop("innerText"))
         $("#total-price").text(totalPrice + "")
@@ -201,16 +250,29 @@
 
     // gửi sản phẩm đã chọn qua trang thanh toán (Xử lý trong thanh toán)
     function sendSelectedProduct() {
-        let selectedProductId = [];
+        let selectedProductCode = [];
         let checkboxes = document.querySelectorAll('.product-checkbox:checked');
 
         checkboxes.forEach(function (checkbox) {
-            selectedProductId.push(checkbox.value);
+            selectedProductCode.push(checkbox.value);
         });
-        if (selectedProductId.length > 0) {
+        if (selectedProductCode.length > 0) {
+            const discount_item = document.querySelectorAll("div.discount-item")
+            let discountId;
+            discount_item.forEach(function (discount) {
+                if (discount.classList.contains("selected-discount")) {
+                    discountId = discount.getAttribute("data-id")
+                }
+            })
             $.ajax({
-                url: "/user/purchase?selectedItems=" + selectedProductId,
-                type: "GET",
+                // sửa thêm phần discount nè
+                url: "/user/purchase?selectedItems=" + selectedProductCode + "&discountId=" + discountId,
+                type: "POST", //xem lại nha
+                contentType: "application/json",
+                data: {
+                    selectedProductCode: selectedProductCode, // Gửi danh sách ID sản phẩm
+                    discountId: discountId
+                },
                 success: function () {
 
                 },
@@ -227,27 +289,34 @@
         let quantityInput = $("div#quantity_" + productCode);
         let cartItem = quantityInput.closest(".cart-item")
         let newQuantity = Number.parseInt(quantityInput.text(), 10) + 1
-        if (newQuantity === 5) {
-            cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
-            cartItem.find("button#product-detail__add-amount").attr("disabled", true)
-        } else if (newQuantity === 1) {
-            cartItem.find("button#product-detail__remove-amount").attr("disabled", true)
-            cartItem.find("button#product-detail__add-amount").attr("disabled", false)
-        } else {
-            cartItem.find("button#product-detail__add-amount").attr("disabled", false)
-            cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
-        }
-        $.ajax({
-            url: "/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
-            type: "POST",
-            success: function () {
-                quantityInput.text(newQuantity)
-                console.log(newQuantity)
-            },
-            error: function () {
-
+        const newTotal = parseInt($("#cart-badge").text())+1
+        console.log(newTotal)
+        if(newTotal<=10) {
+            if (newQuantity === 5) {
+                cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
+                cartItem.find("button#product-detail__add-amount").attr("disabled", true)
+            } else if (newQuantity === 1) {
+                cartItem.find("button#product-detail__remove-amount").attr("disabled", true)
+                cartItem.find("button#product-detail__add-amount").attr("disabled", false)
+            } else {
+                cartItem.find("button#product-detail__add-amount").attr("disabled", false)
+                cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
             }
-        })
+            $.ajax({
+                url: "/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
+                type: "POST",
+                success: function () {
+                    quantityInput.text(newQuantity)
+                    window.location.reload()
+                },
+                error: function () {
+
+                }
+            })
+        }else {
+            document.getElementById("popup").style.display="block";
+            document.getElementById("popup-overlay").style.display = "block";
+        }
     }
 
     function updateSubByQuantity(productId, width, height) {
@@ -270,7 +339,6 @@
             type: "POST",
             success: function () {
                 quantityInput.text(newQuantity)
-                console.log(newQuantity)
                 window.location.reload()
             },
             error: function () {
@@ -285,8 +353,6 @@
         const selectedOption = sizeInput.querySelector("option:checked");
         let newWidth = selectedOption.getAttribute("data-width")
         let newHeight = selectedOption.getAttribute("data-height")
-        console.log(newWidth)
-        console.log(newHeight)
         $.ajax({
             url: "/update-price?productCode=" + productCode + "&width=" + newWidth + "&height=" + newHeight,
             type: "POST",
@@ -312,7 +378,7 @@
                 window.location.reload()
                 data = $.parseJSON(data)
                 if (data.result) {
-                    console.log(data)
+                    // console.log(data)
                     const badge = $("#cart-badge")
                     const currentCartLength = data.currentCartLength
                     badge.removeClass("d-none")
@@ -325,8 +391,11 @@
                     alert("Có lỗi khi xóa sản phẩm khỏi giỏ hàng")
                 }
             },
-            error: function () {
-
+            error: function (error) {
+                //     error = $.parseJSON(error)
+                //     if(error.result){
+                //         console.log(error.error)
+                //     }
             }
         })
     }
@@ -351,16 +420,17 @@
             console.log("empty")
         }
     }
-    function formatProductPrice(productId,width,height){
+
+    function formatProductPrice(productId, width, height) {
         let divInput;
         let price;
         let priceText;
         let cartItem;
-        divInput= $("div#quantity_" + productId + '_' + width + '_' + height)
-        cartItem= divInput.closest(".cart-item")
-        price= cartItem.find("#product-detail__price")
-        priceText= formatter.format(price.prop("innerText"))
-        price.text(priceText+"")
+        divInput = $("div#quantity_" + productId + '_' + width + '_' + height)
+        cartItem = divInput.closest(".cart-item")
+        price = cartItem.find("#product-detail__price")
+        priceText = formatter.format(price.prop("innerText"))
+        price.text(priceText + "")
     }
 
     <c:forEach var="entry" items="${cart.products}">

@@ -28,4 +28,6 @@ public class DiscountService {
     public void updateDiscount(Discount discount) {
         discountDAO.updateDiscount(discount);
     }
+
+    public List<Discount> getListDiscountAvailable(){return discountDAO.getDiscountAvailable();}
 }

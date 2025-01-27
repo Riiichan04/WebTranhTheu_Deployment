@@ -313,3 +313,7 @@ $(".switch-size-btn").click(function () {
 getReviewList(reviewAmount)
 getPrice(currentWidth, currentHeight)
 
+function closeError(){
+    document.getElementById("popup-overlay").style.display="none"
+    document.getElementById("popup").style.display="none"
+}

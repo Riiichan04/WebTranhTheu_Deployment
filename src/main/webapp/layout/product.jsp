@@ -320,6 +320,14 @@
         </div>
     </div>
 </section>
+<div id="popup-overlay"></div>
+<div id="popup" class="p-3">
+    <div class="row  text-center fw-bold h5 border-bottom">
+        <div class="col-11 h4 text-center">Lỗi</div>
+        <i class="col-1 p-2 text-center bi bi-x-lg" onclick="closeError()"></i>
+    </div>
+    <div class="row mt-2 ms-2 text-center">Số lượng sản phẩm vượt mức quy định.</div>
+</div>
 <jsp:include page="public/footer.jsp"/>
 <script src="template/script/header.js"></script>
 <script src="template/script/product.js"></script>
@@ -334,26 +342,31 @@
         let quantity = parseInt($("#product-detail__amount").prop("innerText"))
         let accountId = '${sessionScope.accountId}'
         if (accountId !== '' || accountId !== null) {
-            $.ajax({
-                url: '/add-product?id=' + id + '&width=' + width + '&height=' + height + '&quantity=' + quantity,
-                type: 'POST',
-                success: function (data) {
-                    data = $.parseJSON(data)
-                    if (data.result) {
-                        console.log(data)
-                        const badge = $("#cart-badge")
-                        const currentCartLength = data.currentCartLength
-                        badge.removeClass("d-none")
-                        badge.text(currentCartLength)
+            const totalQuantity= parseInt($("#cart-badge").text())
+            if(totalQuantity + quantity <=10) {
+                $.ajax({
+                    url: '/add-product?id=' + id + '&width=' + width + '&height=' + height + '&quantity=' + quantity,
+                    type: 'POST',
+                    success: function (data) {
+                        data = $.parseJSON(data)
+                        if (data.result) {
+                            console.log(data)
+                            const badge = $("#cart-badge")
+                            const currentCartLength = data.currentCartLength
+                            badge.removeClass("d-none")
+                            badge.text(currentCartLength)
+                        } else alert("Có lỗi khi thêm sản phẩm vào giỏ hàng")
+                    },
+                    error: function () {
+
                     }
-                    else alert("Có lỗi khi thêm sản phẩm vào giỏ hàng")
-                },
-                error: function (error) {
-                    let errText = error.responseText
-                    console.log(errText)
-                    alert(errText)
-                }
-            })
+                })
+            }
+            //Viết 1 đoạn html ở đây (popup)
+            else {
+                document.getElementById("popup").style.display="block";
+                document.getElementById("popup-overlay").style.display = "block";
+            }
         }
         else alert("Bạn cần đăng nhập")
     }
