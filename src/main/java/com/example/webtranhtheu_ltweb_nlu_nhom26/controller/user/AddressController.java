@@ -1,7 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.user;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

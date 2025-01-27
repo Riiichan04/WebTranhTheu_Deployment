@@ -1,8 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.user;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.WishProduct;
-import com.google.gson.Gson;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.WishProduct;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

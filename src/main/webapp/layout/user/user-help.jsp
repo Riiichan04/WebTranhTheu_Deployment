@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: loan
-  Date: 20/01/2025
-  Time: 12:43
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="../common.jsp"/>
 <html>
 <head>
     <title>Trợ giúp</title>
@@ -14,9 +9,8 @@
   <link rel="stylesheet" href="../../template/style/user/account-page.css">
   <link rel="stylesheet" href="../../template/style/user/style-forms/user-setting.css">
 </head>
-</head>
 <body>
-<div id="user_support" class="  content-details col" style="display: none">
+<div id="user_support" class="  content-details col">
   <div class="h3 pt-3 ps-3">Hỗ trợ</div>
   <hr>
   <div class="container p-4">
@@ -72,5 +66,7 @@
     </div>
   </div>
 </div>
+<script src="template/script/header.js"></script>
+<script src="template/script/account.js"></script>
 </body>
 </html>

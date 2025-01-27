@@ -55,7 +55,7 @@
                     <i class="bi bi-gear"></i>
                     Cài đặt
                 </a>
-                <a class="list-group-item list-group-item-action" href="${pageContext.request.contextPath}/user/user-support">
+                <a class="list-group-item list-group-item-action" href="/layout/user/user-help.jsp">
                     <i class="bi bi-question-circle"></i>
                     Hỗ trợ
                 </a>
