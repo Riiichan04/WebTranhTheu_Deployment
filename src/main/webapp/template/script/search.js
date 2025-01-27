@@ -34,11 +34,14 @@ $(".category-element").click(function () {
 })
 
 function filterProduct(page) {
+    const currentCategory =  $("input[type=radio][name=category-filter]:checked").first().val()
+    const productName = new URLSearchParams(window.location.search).get("keyword")
     $.ajax({
         url: '/category-filter',
         method: 'GET',
         data: {
-            patternName: patternName,
+            productName: productName,
+            patternName: currentCategory ? currentCategory : null,
             listTopic: getListChooseTopic(),
             rating: getChoseRating(),
             fromPrice: $("#filter-price-from").val(),
@@ -49,6 +52,8 @@ function filterProduct(page) {
         },
         success: function (response) {
             response = $.parseJSON(response)
+            document.title = "Kết quả tìm kiếm - Nét Việt"
+            $("#search-title").html(`Đang hiển thị kết quả tìm kiếm của từ khóa: <span class="main-color h5">${productName}</span>`)
             if (response.result) {
                 maxPage = response.maxPage
                 //Thêm product vào category
@@ -123,6 +128,7 @@ function getOneProductsRow(listProducts) {
                             Kích thước: từ <span class="fw-semibold">${product.size}</span>
                         </p>
                         <p class="card-text text-center text-truncate fw-semibold h4 mt-2" style="color: var(--main-cta-button)">${product.price}</p>
+                        <p class="text-secondary text-decoration-line-through card-text text-center text-truncate h4 mt-2" style="font-size: 14px">${product.originalPrice ? product.originalPrice : ""}</p>
                     </div>
                 </div>
             </div>
@@ -136,7 +142,6 @@ function changeCategoryName(pattern) {
     let url = window.location.href
     url = url.substring(0, url.lastIndexOf("/") + 1) + pattern
     if (patternName !== pattern) {
-        window.history.pushState({}, '', url)
         patternName = pattern
         currentPage = 1
         maxPage = null

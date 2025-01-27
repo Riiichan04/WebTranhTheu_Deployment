@@ -3,6 +3,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.WishProduct;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.UserDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.UserDAO;

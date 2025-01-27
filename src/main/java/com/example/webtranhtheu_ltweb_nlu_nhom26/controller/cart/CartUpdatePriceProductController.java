@@ -14,7 +14,7 @@ import java.io.IOException;
 @WebServlet(name = "CartUpdatePriceProductController", value = "/update-price")
 public class CartUpdatePriceProductController extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productCode=request.getParameter("productCode");
         String widthParam=request.getParameter("width");
         String heightParam=request.getParameter("height");
@@ -28,13 +28,14 @@ public class CartUpdatePriceProductController extends HttpServlet {
                 session.setAttribute("cart",cart);
             }
             response.sendRedirect("/cart");
+//            System.out.println(cart);
         }catch(NumberFormatException e){
 
         }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//    }
 }

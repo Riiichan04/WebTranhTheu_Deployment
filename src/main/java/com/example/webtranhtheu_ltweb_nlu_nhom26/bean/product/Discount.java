@@ -93,4 +93,14 @@ public class Discount implements Serializable {
     public void setEndedAt(Timestamp endedAt) {
         this.endedAt = endedAt;
     }
+
+    @Override
+    public String toString() {
+        return "Discount{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }

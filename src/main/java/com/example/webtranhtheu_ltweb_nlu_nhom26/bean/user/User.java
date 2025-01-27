@@ -1,4 +1,6 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.bean;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user;
+
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

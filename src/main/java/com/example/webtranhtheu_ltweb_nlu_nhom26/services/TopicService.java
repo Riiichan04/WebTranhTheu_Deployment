@@ -44,4 +44,8 @@ public class TopicService {
             topicDAO.insertTopicProducts(topic.getId(), Integer.parseInt(productId), new Timestamp(System.currentTimeMillis()));
         }
     }
+
+    public List<Topic> getListTopics() {
+        return topicDAO.getListTopics();
+    }
 }

@@ -4,7 +4,7 @@ header {
 
 header input {
     background-color: var(--label-color) !important;
-    padding-left: 1.75rem !important;
+    padding-left: 1rem !important;
 }
 
 header i {
@@ -17,7 +17,7 @@ header p {
     color: var(--label-color) !important;
 }
 
-header ul>li:hover *:not(.header-popup *) {
+header ul>li:hover *:not(.header-popup *), .header-category-element:hover {
     color: var(--label-hover-color) !important;
 }
 
@@ -76,4 +76,13 @@ header a:hover {
 
 #category-popup i {
     color: var(--text-color);
+}
+
+#cart-badge {
+    top: -0.5rem;
+    right: 0;
+    background-color: var(--main-cta-button);
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0.15rem;
 }

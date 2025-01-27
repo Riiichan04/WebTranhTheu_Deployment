@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayFullProduct;
@@ -39,10 +40,17 @@ public class ProductController extends HttpServlet {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 return;
             }
+
+            HttpSession session = request.getSession();
+            if (session.getAttribute("listCategory") == null) {
+                session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
+            }
+
             request.setAttribute("product", product);
             request.setAttribute("countReview", ProductService.countReviews(product.getId()));
             request.setAttribute("avgRating", ProductService.getProductRating(product.getId()));
             request.setAttribute("similarProduct", service.getSimilarProduct(product));
+            request.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
             request.getRequestDispatcher("/layout/product.jsp").forward(request, response);
 
         } catch (NumberFormatException e) {
