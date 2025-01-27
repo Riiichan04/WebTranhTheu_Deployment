@@ -15,9 +15,6 @@
         <li class="breadcrumb-item" aria-current="page"><a
                 href="/category/${product.category.patternName}">${product.category.title}</a>
         </li>
-        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>--%>
-        <%--        Phần topic xử lý sau        --%>
-        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay/tranh-phong-canh">Tranh thêu Phong cảnh</a></li>--%>
         <li class="breadcrumb-item active" aria-current="page">${product.title}</li>
     </ol>
 </nav>
@@ -26,7 +23,6 @@
     <div class="background-container rounded">
         <div class="row">
             <div class="col-3 p-4_5">
-                <%--                <img id="product-image" src="../template/asset/image/product_image.png" alt="">--%>
                 <img id="product-image" src="${product.getThumbnail()}" alt="">
                 <p class="mt-4 mb-1">Kích thước: </p>
                 <div class="w-100">

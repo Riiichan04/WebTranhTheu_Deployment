@@ -49,8 +49,6 @@ public class CategoryProductFilter extends HttpServlet {
             }
 
             List<Product> listProducts = ProductService.filterProduct(patternName, listTopicId, rating, fromPrice, toPrice, providerName, productName, page, amount);
-            System.out.println(listProducts);
-            System.out.println(CategoryService.calculateCategoryPage(patternName, listTopicId, rating, fromPrice, toPrice, providerName, productName, amount));
             if (listProducts.isEmpty()) {
                 jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);

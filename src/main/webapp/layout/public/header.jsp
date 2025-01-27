@@ -8,9 +8,12 @@
                     <a href="/"><img src="../../template/asset/favicon/web_logo.png" alt="" id="header-logo"></a>
                 </div>
                 <div class="col-7 text-white d-flex text-center align-items-center" style="position: relative">
-                    <span id="input-icon" class="fas ps-2" style="position: absolute; color: #56595C">&#xf002 </span>
-                    <input type="search" name="" id="search-product-btn" class="form-control"
-                           placeholder="Tìm kiếm sản phẩm">
+                    <div class="input-group">
+                        <input type="search" name="" id="search-product-btn" class="rounded-start form-control"
+                               placeholder="Tìm kiếm sản phẩm">
+<%--                        <span id="input-icon" class="fas ps-2" style="margin-top: 0.75rem; position: absolute; color: #56595C">&#xf002 </span>--%>
+                        <button class="border-0 px-2 rounded-end main-cta-button" type="button" id="search-btn">Tìm kiếm</button>
+                    </div>
                 </div>
                 <ul class="col-4 m-0 d-flex justify-content-end align-items-center">
                     <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
