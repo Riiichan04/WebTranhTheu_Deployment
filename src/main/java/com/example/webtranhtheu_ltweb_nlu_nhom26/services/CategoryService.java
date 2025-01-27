@@ -81,8 +81,8 @@ public class CategoryService {
         return categoryName.equals(categoryDAO.getCategoryPatternName(categoryName));
     }
 
-    public static int calculateCategoryPage(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, int amount) {
-        Integer countProduct = categoryDAO.countProductByCategory(categoryName, listTopicId, rating, fromPrice, toPrice, providerName);
+    public static int calculateCategoryPage(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, String productName, int amount) {
+        Integer countProduct = categoryDAO.countProductByCategory(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, productName);
         if (countProduct == null) countProduct = 0;
         int baseVal = countProduct / amount;
         return countProduct % amount == 0 ? baseVal : baseVal + 1;

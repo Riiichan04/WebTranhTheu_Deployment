@@ -161,6 +161,7 @@ public interface ProductDAO {
             and (json_array(<topicId>) = '[null]' or topic_products_details.topicId in (<topicId>))
             and (:providerName is null or providers.providerName like :providerName)
             and ((:fromPrice = 0 and :toPrice = 0) or :fromPrice <= :toPrice and product_prices.price between :fromPrice and :toPrice)
+            and (:productName is null or products.title like :productName)
         group by products.id
         having (:rating = 0 or coalesce(avg(product_reviews.rating), 0) >= :rating)
         order by products.id
@@ -169,7 +170,7 @@ public interface ProductDAO {
     List<Integer> filterProduct(@Bind("patternName") String patternName, @BindList(value = "topicId", onEmpty = BindList.EmptyHandling.NULL_STRING) List<Integer> topicId,
                                 @Bind("rating") int rating,
                                 @Bind("fromPrice") double fromPrice, @Bind("toPrice") double toPrice,
-                                @Bind("providerName") String providerName,
+                                @Bind("providerName") String providerName, @Bind("productName") String productName,
                                 @Bind("offset") int offset, @Bind("amount") int amount);
 
 
@@ -180,6 +181,16 @@ public interface ProductDAO {
     """)
     @RegisterBeanMapper(Provider.class)
     List<Provider> getListProvider();
+
+    //Tìm id sản phẩm theo tên
+    @SqlQuery("""
+        select products.id
+        from products
+        where title like :productName
+        limit :offset, :amount
+    """)
+    List<Integer> findProductsIdByName(@Bind("productName") String productName, @Bind("offset") int offset, @Bind("amount") int amount);
+
     //Phần admin
     @SqlQuery("select p.id, p.codeProduct as code,  p.title, x.available, y.imgUrl, ifnull(z.countEvaluate, 0) as countEvaluate, ifnull(z.totalStar, 0) as totalStar, p.status as status from products p " +
             "LEFT JOIN (select productId, sum(available) as available  from product_prices GROUP BY productId) x on p.id = x.productId LEFT JOIN (select productId, min(imgUrl) as imgUrl from product_images GROUP BY productId) y on p.id = y.productId " +

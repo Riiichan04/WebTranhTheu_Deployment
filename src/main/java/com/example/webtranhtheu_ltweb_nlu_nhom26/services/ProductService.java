@@ -109,11 +109,20 @@ public class ProductService {
         return product;
     }
 
-    public static List<Product> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, int offset, int amount) {
-        List<Integer> listId = new ConcreteProductDetail().filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, offset, amount);
+    public static List<Product> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, String productName, int offset, int amount) {
+        List<Integer> listId = new ConcreteProductDetail().filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, productName, offset, amount);
         List<Product> products = new ArrayList<>();
         for (Integer id : listId) {
             products.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(id));
+        }
+        return products;
+    }
+
+    public static List<Product> findProductsByName(String name, int page, int amount) {
+        List<Integer> listProductId = new ConcreteProductDetail().findProductsIdByName(name, page, amount);
+        List<Product> products = new ArrayList<>();
+        for (int productId : listProductId) {
+            products.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(productId));
         }
         return products;
     }
