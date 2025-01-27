@@ -24,7 +24,7 @@
         </div>
         <div class="row pt-2">
             <div class="col p-0"><input type="text" id="code_product" class="w-100 style-input"
-                                        value="${product.getCode()}" name="code" placeholder="Nhập mã sản phẩm" disabled
+                                        value="${product.getCode()}" name="product-code" placeholder="Nhập mã sản phẩm" disabled
                                         required>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="col"><span class="style-title">Tên sản phẩm</span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="text" class="w-100 style-input" id="nameProduct" name="title"
+            <div class="col p-0"><input type="text" class="w-100 style-input" id="nameProduct" name="name-product"
                                         value="${product.getTitle()}" required disabled>
             </div>
         </div>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="col-1 d-none edit-hidden">
-                        <input type="checkbox" class="checkbox-del">
+                        <input type="checkbox" class="checkbox-del" name="del-img-product" value="${img}">
                     </div>
                 </div>
             </c:forEach>
@@ -60,7 +60,7 @@
             <div class="col"><span class="style-title">Tải ảnh sản phẩm lên</span></div>
         </div>
         <div class="row pt-2 d-none edit-hidden">
-            <div class="col p-0"><input type="file" class="w-100 style-input" multiple>
+            <div class="col p-0"><input type="file" class="w-100 style-input" name="add-img-product" multiple>
             </div>
         </div>
         <!-- mô tả -->
@@ -83,7 +83,7 @@
             <div class="col">
                 <div id="product_price">
                     <c:forEach items="${product.getListPrices()}" var="p">
-                        <div class="row form-group product-price-row mb-2">
+                        <div class="row form-group product-price-row mb-2" data-id="${p.getId()}">
                             <div class="row ps-5">
                                 <span class="style-label">Kích cỡ tranh</span>
                             </div>
@@ -93,13 +93,13 @@
                                     <div class="col p-0 pe-1 text-center">
                                         <label class="style-label pb-2">Giá bán (VNĐ)</label>
                                         <input type="number" class="w-100 style-input price"
-                                               placeholder="Nhập giá bán sản phẩm" value="${p.getPrice()}" required
+                                               placeholder="Nhập giá bán sản phẩm" name="price-product-price" value="${p.getPrice()}" required
                                                disabled>
                                     </div>
                                     <div class="col p-0 ps-1 text-center">
                                         <label class="style-label pb-2">Số lượng</label>
                                         <input type="number" class="w-100 style-input quantityProduct"
-                                               placeholder="Nhập số lượng sản phẩm" value="${p.getAvailable()}" required
+                                               placeholder="Nhập số lượng sản phẩm" name="available-product-price" value="${p.getAvailable()}" required
                                                disabled>
                                     </div>
                                 </div>
@@ -109,13 +109,13 @@
                                         <label class="style-label pb-2">Chiều rộng (cm)</label>
                                         <input type="number" class="w-100 style-input widthProduct"
                                                placeholder="Chiều rộng (cm)"
-                                               value="${p.getWidth()}" disabled>
+                                               value="${p.getWidth()}" name="width-product-price" disabled>
                                     </div>
                                     <div class="col p-0 ps-1 text-center">
                                         <label class="style-label pb-2">Chiều cao (cm)</label>
                                         <input type="number" class="w-100 style-input heightProduct"
                                                placeholder="Chiều cao (cm)"
-                                               value="${p.getHeight()}" disabled>
+                                               value="${p.getHeight()}" name="height-product-price" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -149,16 +149,16 @@
                         </div>
                     </div>
                     <c:forEach items="${product.getListMaterials()}" var="material">
-                        <div class="row mb-2">
+                        <div class="row mb-2 material-row">
                             <div class="col">
-                                <select class="style-select material mb-2" disabled>
+                                <select class="style-select material mb-2" name="material-product" disabled>
                                     <c:forEach items="${materials}" var="m">
                                         <option value="${m.getId()}" ${material.getId() == m.getId() ? 'selected' : ''}>${m.getTitle()}</option>
                                     </c:forEach>
                                 </select>
                             </div>
                             <div class="col-1 pe-0 edit-hidden d-none">
-                                <i class="fa-solid fa-trash icon-del" onclick="hiddenProduct(this)"></i>
+                                <i class="fa-solid fa-trash icon-del" onclick="hiddenMaterial(this)"></i>
                             </div>
                         </div>
                     </c:forEach>
@@ -208,7 +208,7 @@
                                           disabled>${r.getContent()}</textarea></td>
                             <td><fmt:formatDate value="${r.getCreatedAt()}" pattern="dd/MM/yyyy"/></td>
                             <td class="d-none edit-hidden">
-                                <input type="checkbox" style="width: 15px; height: 15px">
+                                <input type="checkbox" name="del-review-product" style="width: 15px; height: 15px" value="${r.getId()}">
                             </td>
                         </tr>
                     </c:forEach>

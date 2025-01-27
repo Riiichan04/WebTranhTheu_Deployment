@@ -210,4 +210,28 @@ public interface ProductDAO {
     @SqlQuery("select po.id, po.title from products p join policies po on p.policyId = po.id where p.id = :productId")
     @RegisterBeanMapper(Policy.class)
     Policy getPolicyByProductId(@Bind("productId") int productId);
+
+    @SqlUpdate("update products set codeProduct = :code, title = :title, description = :description, providerId = :provider.id, typeOfProduct = :type, status = :status, updatedAt = NOW() where id = :id")
+    void updateProduct(@BindBean Product product);
+
+    @SqlUpdate("delete from product_images where productId = :productId and imgUrl = :imgUrl")
+    void deleteProductImage(@Bind("productId") int productId, @Bind("imgUrl") String imgUrl);
+
+    @SqlUpdate("delete from product_reviews where id = :id")
+    void deleteProductReview(@Bind("id") int id);
+
+    @SqlUpdate("delete from material_products_details where productId = :productId")
+    void deleteMaterialProductDetails(@Bind("productId") int productId);
+
+    @SqlUpdate("insert into material_products_details(materialId, productId, updatedAt) values(:materialId, :productId, NOW())")
+    boolean insertMaterialProductDetails(@Bind("materialId") int materialId, @Bind("productId") int productId);
+
+    @SqlUpdate("delete from product_prices where id = :id")
+    void deleteProductPrice(@Bind("id") int id);
+
+    @SqlUpdate("update product_prices set width = :width, height = :height, price = :price, available = :available where id = :id")
+    void updateProductPrice(@Bind("width") int width, @Bind("height") int height, @Bind("price") double price, @Bind("available") int available, @Bind("id") int id);
+
+    @SqlUpdate("insert into product_prices(productId, width, height, price, available) values(:productId, :width, :height, :price, :available)")
+    boolean insertProductPrice(@Bind("productId") int productId, @Bind("width") int width, @Bind("height") int height, @Bind("price") double price, @Bind("available") int available);
 }

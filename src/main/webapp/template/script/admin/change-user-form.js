@@ -194,9 +194,6 @@ $(document).ready(function () {
 
                     var formData = new FormData(this);
                     formData.append("userId", $('#submitBtn').val())
-                    formData.forEach((value, key) => {
-                        console.log(key, value);  // In ra key và value trong FormData
-                    });
                     $.ajax({
                         url: "/admin/user-management/update-user",
                         type: "POST",
@@ -209,7 +206,6 @@ $(document).ready(function () {
                             hiddenOverlay();
                         },
                         error: function () {
-                            console.log("herree")
                             alert('Lỗi khi chỉnh sửa người dùng!');
                         }
                     });

@@ -65,6 +65,7 @@ $(document).ready(function () {
         $('#type').prop('disabled', true);
         $('.edit-hidden').addClass('d-none');
         $('.temp-hidden').removeClass('d-none');
+        $('.temp-hidden.material-row').find('select').attr('name', 'material-product');
         $('.add-row').remove();
         // Lặp qua tất cả các hàng của DataTable và hiển thị phần tử 'edit-hidden'
         table.rows().every(function () {
@@ -88,12 +89,12 @@ function addProductPrice() {
                             <div class="row pt-2">
                                 <div class="col p-0 pe-1 text-center">
                                     <label class="style-label pb-2">Giá bán (VNĐ)</label>
-                                    <input type="number" id="price" class="w-100 style-input" name="price"
+                                    <input type="number" name="add-price-product-price" class="w-100 style-input"
                                            placeholder="Nhập giá bán sản phẩm" required>
                                 </div>
                                 <div class="col p-0 ps-1 text-center">
                                     <label class="style-label pb-2">Số lượng</label>
-                                    <input type="number" id="quantityProduct" class="w-100 style-input" name="quantity"
+                                    <input type="number" name="add-available-product-price" class="w-100 style-input"
                                            placeholder="Nhập số lượng sản phẩm" required>
                                 </div>
                             </div>
@@ -101,12 +102,12 @@ function addProductPrice() {
                             <div class="row pt-2">
                                 <div class="col p-0 pe-1 text-center">
                                     <label class="style-label pb-2">Chiều rộng (cm)</label>
-                                    <input type="number" class="w-100 style-input" id="widthProduct" name="width"
+                                    <input type="number" class="w-100 style-input" name="add-width-product-price"
                                            placeholder="Chiều rộng (cm)">
                                 </div>
                                 <div class="col p-0 ps-1 text-center">
                                     <label class="style-label pb-2">Chiều cao (cm)</label>
-                                    <input type="number" class="w-100 style-input" id="heightProduct" name="height"
+                                    <input type="number" class="w-100 style-input" name="add-height-product-price"
                                            placeholder="Chiều cao (cm)">
                                 </div>
                             </div>
@@ -121,8 +122,8 @@ function addMaterial() {
     const sampleNode = document.querySelector('.sample-material');
     const newNode = sampleNode.cloneNode(true);
     newNode.className = 'row add-row mb-2';
+    $(newNode).find('select').attr('name', 'material-product');
     document.getElementById('materials').appendChild(newNode);
-
 }
 
 function remove(button) {
@@ -133,6 +134,12 @@ function remove(button) {
 function hiddenProduct(button) {
     const row = button.parentElement.parentElement;
     $(row).addClass('temp-hidden d-none');
+}
+
+function hiddenMaterial(button) {
+    const row = button.parentElement.parentElement;
+    $(row).addClass('temp-hidden d-none');
+    $(row).find('select').removeAttr('name');
 }
 
 

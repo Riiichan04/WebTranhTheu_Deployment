@@ -155,6 +155,38 @@ $(document).ready(function () {
                     hiddenOverlay();
                 });
 
+                $('#read-edit-product-form').on('submit', function (event) {
+                    event.preventDefault();
+
+                    var formData = new FormData(this);
+                    formData.append("productId", $('#submitBtn').val());
+                    $('.temp-hidden.product-price-row').each(function () {
+                        formData.append("delProductPrice[]", $(this).data('id'));
+                    });
+                    $('.product-price-row').each(function () {
+                        formData.append("listProductPrice[]", $(this).data('id'));
+                    });
+                    formData.forEach((value, key) => {
+                        console.log(key, value);  // In ra key và value trong FormData
+                    });
+                    $.ajax({
+                        url: "/admin/product-management/update-product",
+                        type: "POST",
+                        data: formData,
+                        processData: false,  // Không chuyển đổi dữ liệu thành chuỗi
+                        contentType: false,
+                        success: function (response) {
+                            alert('Chỉnh sửa sản phẩm thành công!');
+                            table.ajax.reload();
+                            hiddenOverlay();
+                        },
+                        error: function () {
+                            console.log("herree")
+                            alert('Lỗi khi chỉnh sửa sản phẩm!');
+                        }
+                    });
+                });
+
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
