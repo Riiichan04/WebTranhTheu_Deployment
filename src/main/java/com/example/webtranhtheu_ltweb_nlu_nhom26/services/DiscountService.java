@@ -35,4 +35,6 @@ public class DiscountService {
     public List<Discount> getDiscountValid() {
         return discountDAO.getDiscountValid();
     }
+
+    public List<Discount> getListDiscountAvailable(){return discountDAO.getDiscountAvailable();}
 }

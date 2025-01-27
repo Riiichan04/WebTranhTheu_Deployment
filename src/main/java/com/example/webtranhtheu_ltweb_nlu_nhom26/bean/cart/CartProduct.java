@@ -2,7 +2,6 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart;
 
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,16 +9,21 @@ import java.util.List;
 
 
 public class CartProduct implements Serializable {
-    private Product product; // lấy thông tin cố định của 1 product
+    private int id;
+    private String title;
+    private String thumbnailUrl;
     private List<Price> prices;
+    // lấy thông tin cố định của 1 product
     private int quantity; // số lượng đã cho vào giỏ hàng
     public static final int MAX_PER_PRODUCT = 5; // số lượng tối đa có thể thêm 1 loại sản phẩm
     public Price price; // lưu giá tiền đã chọn.
     public double totalPrice; // tính tổng tiền.
 
 
-    public CartProduct(Product product, int quantity, Price price) {
-        this.product = product;
+    public CartProduct(int id,String title,String thumbnailUrl, int quantity, Price price) {
+        this.id = id;
+        this.title = title;
+        this.thumbnailUrl = thumbnailUrl;
         this.prices = new ArrayList<>();
         this.quantity = quantity;
         this.price = price;
@@ -35,12 +39,25 @@ public class CartProduct implements Serializable {
         return price.getPrice() * quantity;
     }
 
-    public Product getProduct() {
-        return product;
+    public int getId() {
+        return id;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     public int getQuantity() {
@@ -70,26 +87,6 @@ public class CartProduct implements Serializable {
         return false;
     }
 
-    public String getThumbnail() {
-        return product.getThumbnail();
-    }
-
-    public String getTitle() {
-        return product.getTitle();
-    }
-
-    public String getProviderName() {
-        return product.getProvider().getProviderName();
-    }
-
-    public Product getProductById(int id) {
-        if (this.product.getId() == id) return this.product;
-        return null;
-    }
-
-    public int getProductId() {
-        return this.product.getId();
-    }
 
     public List<Price> getPrices() {
         return prices;
@@ -97,5 +94,17 @@ public class CartProduct implements Serializable {
 
     public void setPrices(List<Price> prices) {
         this.prices = prices;
+    }
+
+    @Override
+    public String toString() {
+        return "CartProduct{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", thumbnailUrl='" + thumbnailUrl + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 }

@@ -28,6 +28,10 @@ public interface DiscountDAO {
     @RegisterBeanMapper(Discount.class)
     boolean updateDiscount(@BindBean Discount discount);
 
+    @SqlQuery("select id, title, description, value, createdAt, updatedAt, startedAt, endedAt from discounts where NOW()>=startedAt and NOW()<=endedAt")
+    @RegisterBeanMapper(Discount.class)
+    List<Discount> getDiscountAvailable();
+
     @SqlQuery("select id, title from discounts where startedAt <= NOW() and NOW() <= endedAt")
     @RegisterBeanMapper(Discount.class)
     List<Discount> getDiscountValid();

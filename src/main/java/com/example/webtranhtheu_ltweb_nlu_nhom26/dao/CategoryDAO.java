@@ -8,6 +8,7 @@ import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
+import org.jdbi.v3.sqlobject.customizer.BindList;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
@@ -53,41 +54,69 @@ public interface CategoryDAO {
 
     //Dùng cho trang danh mục
     @SqlQuery("""
-        select patternName
-        from categories
-        where patternName = :categoryName
-    """)
+                select patternName
+                from categories
+                where patternName = :categoryName
+            """)
     String getCategoryPatternName(@Bind("categoryName") String categoryName);
 
     @SqlQuery("""
-        select products.id
-        from products
-            join category_products_details
-            on products.id = category_products_details.productId
-            join categories
-            on category_products_details.categoryId = categories.id
-        where categories.patternName like :categoryName
-        limit :offset, :limit
-    """)
+                select products.id
+                from products
+                    join category_products_details
+                    on products.id = category_products_details.productId
+                    join categories
+                    on category_products_details.categoryId = categories.id
+                where categories.patternName like :categoryName
+                limit :offset, :limit
+            """)
     List<Integer> getListIdInCategory(@Bind("categoryName") String categoryName, @Bind("offset") int offset, @Bind("limit") int limit);
 
+//    @SqlQuery("""
+//        select count(products.id)
+//        from products
+//            join category_products_details
+//            on products.id = category_products_details.productId
+//            join categories
+//            on category_products_details.categoryId = categories.id
+//        where categories.patternName like :categoryName
+//    """)
+//    int countProductByCategory(@Bind("categoryName") String categoryName);
+
     @SqlQuery("""
-        select count(products.id)
-        from products
-            join category_products_details
-            on products.id = category_products_details.productId
-            join categories
-            on category_products_details.categoryId = categories.id
-        where categories.patternName like :categoryName
-    """)
-    int countProductByCategory(@Bind("categoryName") String categoryName);
+                select distinct count( products.id) over ()
+                from products
+                join category_products_details
+                    on products.id = category_products_details.productId
+                join categories
+                    on category_products_details.categoryId = categories.id
+                join topic_products_details
+                    on products.id = topic_products_details.productId
+                join product_prices
+                    on products.id = product_prices.productId
+                left join product_reviews
+                    on products.id = product_reviews.productId
+                join providers
+                    on products.providerId = providers.id
+                where (:patternName is null or categories.patternName like :patternName)
+                    and (json_array(<topicId>) = '[null]' or topic_products_details.topicId in (<topicId>))
+                    and (:providerName is null or providers.providerName like :providerName)
+                    and ((:fromPrice = 0 and :toPrice = 0) or :fromPrice <= :toPrice and product_prices.price between :fromPrice and :toPrice)
+                    and (:productName is null or products.title like :productName)
+                group by products.id
+                having (:rating = 0 or coalesce(avg(product_reviews.rating), 0) >= :rating)
+            """)
+    Integer countProductByCategory(@Bind("patternName") String patternName, @BindList(value = "topicId", onEmpty = BindList.EmptyHandling.NULL_STRING) List<Integer> topicId,
+                               @Bind("rating") int rating,
+                               @Bind("fromPrice") double fromPrice, @Bind("toPrice") double toPrice,
+                               @Bind("providerName") String providerName, @Bind("productName") String productName);
 
 
     @SqlQuery("""
-        select title, patternName
-        from categories
-        where active = 1
-    """)
+                select title, patternName
+                from categories
+                where active = 1
+            """)
     @RegisterRowMapper(CategoryNameMapper.class)
     List<Category> getAllCategoriesName();
 }

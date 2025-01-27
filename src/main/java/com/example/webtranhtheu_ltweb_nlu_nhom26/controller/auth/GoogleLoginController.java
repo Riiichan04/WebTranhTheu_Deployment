@@ -1,6 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.auth;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.User;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.AuthService;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

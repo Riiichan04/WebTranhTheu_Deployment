@@ -13,7 +13,7 @@
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">
         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-        <li id="breadcrumb-current" class="breadcrumb-item active" aria-current="page">${categoryTitle}</li>
+        <li id="breadcrumb-current" class="breadcrumb-item active" aria-current="page">Tìm kiếm</li>
     </ol>
 </nav>
 
@@ -21,26 +21,22 @@
     <div class="row">
         <div class="col-2 pe-3 ps-0">
             <div class="rounded py-4_5 background-container">
-                <div class="category-list">
-                    <h5 class="ms-2 mb-2 main-color p-1 ps-2">Danh mục </h5>
-                    <hr/>
-                    <c:forEach var="category" items="${listCategoryName}" varStatus="status">
-                        <c:choose>
-                            <c:when test="${category.getPatternName() eq categoryName}">
-                                <p class="p-2 category-element category-active"
-                                   data-categoryName='${category.getPatternName()}'>${category.getTitle()}</p>
-                            </c:when>
-                            <c:otherwise>
-                                <p class="p-2 category-element"
-                                   data-categoryName='${category.getPatternName()}'>${category.getTitle()}</p>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                </div>
-                <div class="category-filter mt-4_5">
-                    <h5 class="ms-2 mb-2 main-color p-1 ps-2">Bộ lọc </h5>
+                <div class="category-filter">
+                    <h5 class="ms-2 mb-0 main-color p-1 ps-2">Bộ lọc </h5>
                     <hr/>
                     <div class="mt-3 ps-2">
+                        <p class="mb-2 fw-semibold">Theo danh mục tranh:</p>
+                        <div class="mb-4">
+                            <c:forEach var="category" items="${listCategoryName}" varStatus="status">
+                                <div class="radio-container pt-2">
+                                    <input value="${category.getPatternName()}" class="form-check-input category-radio" type="radio"
+                                           name="category-filter" id="${category.getPatternName()}">
+                                    <label class="form-check-label" for="${category.getPatternName()}">
+                                            ${category.getTitle()}
+                                    </label>
+                                </div>
+                            </c:forEach>
+                        </div>
                         <p class="mb-2 fw-semibold">Theo chủ đề tranh:</p>
                         <div class="mb-4">
                             <c:forEach var="topic" items="${listTopic}">
@@ -72,14 +68,16 @@
                         <div class="d-flex mb-4">
                             <div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input value="5" class="form-check-input" type="radio"
-                                                                             name="rating-star"></div>
+                                    <div class="radio-container pt-2">
+                                        <input value="5" class="form-check-input" type="radio" name="rating-star">
+                                    </div>
                                     <div class="style-label"><span
                                             class="style-star ms-2">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input value="4" class="form-check-input" type="radio"
+                                    <div class="radio-container pt-2"><input value="4" class="form-check-input"
+                                                                             type="radio"
                                                                              name="rating-star"></div>
                                     <div class="style-label"><span
                                             class="style-star mx-2">&#9733; &#9733; &#9733; &#9733; &#x2729;</span>trở
@@ -87,7 +85,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input value="3" class="form-check-input" type="radio"
+                                    <div class="radio-container pt-2"><input value="3" class="form-check-input"
+                                                                             type="radio"
                                                                              name="rating-star"></div>
                                     <div class="style-label"><span
                                             class="style-star mx-2">&#9733; &#9733; &#9733; &#x2729; &#x2729;</span>trở
@@ -95,7 +94,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input value="2" class="form-check-input" type="radio"
+                                    <div class="radio-container pt-2"><input value="2" class="form-check-input"
+                                                                             type="radio"
                                                                              name="rating-star"></div>
                                     <div class="style-label"><span
                                             class="style-star mx-2">&#9733; &#9733; &#x2729; &#x2729; &#x2729;</span>trở
@@ -103,7 +103,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="radio-container pt-2"><input value="1" class="form-check-input" type="radio"
+                                    <div class="radio-container pt-2"><input value="1" class="form-check-input"
+                                                                             type="radio"
                                                                              name="rating-star"></div>
                                     <div class="style-label"><span
                                             class="style-star mx-2">&#9733; &#x2729; &#x2729; &#x2729; &#x2729;</span>trở
@@ -123,9 +124,47 @@
             </div>
         </div>
         <div class="col-10 background-container rounded p-4_5">
-            <h4 id="category-title" class="main-color">${categoryTitle}</h4>
+            <p id="search-title" class="text-truncate"></p>
             <hr class="mb-5"/>
-            <div id="category-displayed-product"></div>
+            <div id="category-displayed-product">
+                <c:choose>
+                    <c:when test="${errorMessage != null}">
+                        ${errorMessage}
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="product" items="${listProduct}">
+                            <div style="width: calc(100%/3)" class="mb-3">
+                                <div onclick="window.location = '/product?id=${product.id}'" class="card p-2"
+                                     style="cursor: pointer">
+                                    <img src="${product.getThumbnail()}" class="card-img" alt="...">
+                                    <div class="card-body px-1">
+                                        <h5 class="card-title text-center pb-2 fw-semibold text-truncate"
+                                            title="${product.category} ${product.title}">
+                                                ${product.category} ${product.title}
+                                        </h5>
+                                        <p class="card-text my-1 text-center text-truncate"
+                                           title="Nhà cung cấp: ${product.getProvider().getProviderName()}">
+                                            Nhà cung cấp: <span
+                                                class="fw-semibold">${product.getProvider().getProviderName()}</span>
+                                        </p>
+                                        <p class="card-text text-center text-truncate my-1"
+                                           title="Nguyên liệu: ${product.getStringDisplayMaterials()}">
+                                            Nguyên liệu: <span
+                                                class="fw-semibold">${product.getStringDisplayMaterials()}</span>
+                                        </p>
+                                        <p class="card-text text-center mt-1">
+                                            Kích thước: từ <span class="fw-semibold">${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</span>
+                                        </p>
+                                        <p class="card-text text-center fw-semibold h4 mt-2"
+                                           style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </div>
         <nav>
             <ul class="pagination d-flex justify-content-center">
@@ -145,6 +184,6 @@
 
 <jsp:include page="public/footer.jsp"/>
 <script src="/template/script/header.js"></script>
-<script src="/template/script/category.js"></script>
+<script src="/template/script/search.js"></script>
 </body>
 </html>
