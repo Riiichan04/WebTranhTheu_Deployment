@@ -65,7 +65,7 @@ public class Cart implements Serializable {
         CartProduct cartProduct = products.get(productCode);
         if (cartProduct != null) {
             if (cartProduct.getPrice().getAvailable() > quantity) {
-                if (quantity > 0 && quantity <= CartProduct.MAX_PER_PRODUCT) {
+                if (quantity > 0 && quantity <= CartProduct.MAX_PER_PRODUCT && getCartSize() + (quantity-cartProduct.getQuantity())<=MAX_CART_PRODUCTS) {
                     cartProduct.setQuantity(quantity);
                     cartProduct.getTotalPrice();
                     return true;

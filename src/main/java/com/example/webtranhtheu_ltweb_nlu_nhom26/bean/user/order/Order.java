@@ -18,6 +18,7 @@ public class Order implements Serializable {
     private int method;
     private List<OrderProduct> products;
     private Discount discount;
+    private double totalPrice;
     public Order() {
     }
 
@@ -111,5 +112,13 @@ public class Order implements Serializable {
 
     public void setDiscount(Discount discount) {
         this.discount = discount;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

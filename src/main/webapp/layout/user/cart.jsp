@@ -124,23 +124,33 @@
                     </c:if>
                     <c:forEach var="discount" items="${cart.discountList}">
                         <c:if test="${discount.id == cart.discount.id}">
-                            <div class="row ps-3 py-2 discount-item selected-discount" data-id="${discount.id}" data-value="${discount.value}">
+                            <div class="row ps-3 py-2 discount-item selected-discount" data-id="${discount.id}"
+                                 data-value="${discount.value}">
                                 <div class="row discount-title h6">${discount.title}</div>
                                 <div class="row p-0">
                                     <div class=" col-8 discount-description">${discount.description}</div>
-                                    <div class="col-4 discount-detail">Chi tiết</div>
+                                    <div class="col-4 discount-detail"
+                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">
+                                        Chi tiết
+                                    </div>
                                 </div>
                                 <div class="row mt-2">
-                                    <button class="apply_discount opacity-50" onclick="selectDiscount(this)" disabled>Đã áp dụng</button>
+                                    <button class="apply_discount opacity-50" onclick="selectDiscount(this)" disabled>Đã
+                                        áp dụng
+                                    </button>
                                 </div>
                             </div>
                         </c:if>
                         <c:if test="${discount.id != cart.discount.id}">
-                            <div class="row ps-3 py-2 discount-item" data-id="${discount.id}" data-value="${discount.value}">
+                            <div class="row ps-3 py-2 discount-item" data-id="${discount.id}"
+                                 data-value="${discount.value}">
                                 <div class="row discount-title h6">${discount.title}</div>
                                 <div class="row p-0">
                                     <div class=" col-8 discount-description">${discount.description}</div>
-                                    <div class="col-4 discount-detail">Chi tiết</div>
+                                    <div class="col-4 discount-detail"
+                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">
+                                        Chi tiết
+                                    </div>
                                 </div>
                                 <div class="row mt-2">
                                     <button class="apply_discount" onclick="selectDiscount(this)">Áp dụng</button>
@@ -166,9 +176,25 @@
             </div>
         </div>
     </div>
-    <div id="discount-detail-info" class="p-2 d-none">
-
+    <div id="popup-overlay"></div>
+    <div id="discount-detail-info" class="p-2">
+        <div class="row">
+            <div class=" col-11 pt-2 text-center h5">Chi tiết giảm giá</div>
+            <i class="col-1 py-2 pe-2 text-center bi bi-x-lg cancel-discount" onclick="closeDetails()"></i>
+        </div>
+        <hr/>
+        <div id="discount-title" class="h5 text-center fw-bold"></div>
+        <div class="row ps-3 ms-2" id="discount-description"></div>
+        <div class="row ps-3 m-2" id="discount-expiredAt"></div>
+        <div class="py-4"></div>
     </div>
+</div>
+<div id="popup" class="p-3">
+    <div class="row  text-center fw-bold h5 border-bottom">
+        <div class="col-11 h4 text-center">Lỗi</div>
+        <i class="col-1 p-2 text-center bi bi-x-lg" onclick="closeError()"></i>
+    </div>
+    <div class="row mt-2 ms-2 text-center">Số lượng sản phẩm vượt mức quy định.</div>
 </div>
 <jsp:include page="../public/footer.jsp"/>
 <script src="../../template/script/header.js"></script>
@@ -197,6 +223,7 @@
         button.closest(".discount-item").classList.add("selected-discount")
         updateTotalPrice()
     }
+
     // tính tổng tiền dựa vào checkbox
     function updateTotalPrice() {
         let total = 0.0;
@@ -205,21 +232,22 @@
             let row = checkbox.closest('div.cart-item');  // Tìm dòng chứa checkbox
             let price = parseCurrencyToFloat(row.querySelector('#product-detail__price').textContent);  // Lấy giá sản phẩm
             let quantity = Number.parseInt(row.querySelector('div.product-quantity').textContent);  // Lấy số lượng
-            total += (price * quantity) ;// Cộng tổng tiền
+            total += (price * quantity);// Cộng tổng tiền
         });
-        const discount_item= document.querySelectorAll("div.discount-item")
+        const discount_item = document.querySelectorAll("div.discount-item")
         let discountValue;
-        discount_item.forEach(function (discount){
-            if(discount.classList.contains("selected-discount")){
-                discountValue= discount.getAttribute("data-value")
+        discount_item.forEach(function (discount) {
+            if (discount.classList.contains("selected-discount")) {
+                discountValue = discount.getAttribute("data-value")
                 console.log(discountValue)
             }
         })
-        total-= total*discountValue;
+        total -= total * discountValue;
         document.getElementById('total-price').textContent = total
         const totalPrice = formatter.format($("#total-price").prop("innerText"))
         $("#total-price").text(totalPrice + "")
     }
+
     // gửi sản phẩm đã chọn qua trang thanh toán (Xử lý trong thanh toán)
     function sendSelectedProduct() {
         let selectedProductCode = [];
@@ -229,11 +257,11 @@
             selectedProductCode.push(checkbox.value);
         });
         if (selectedProductCode.length > 0) {
-            const discount_item= document.querySelectorAll("div.discount-item")
+            const discount_item = document.querySelectorAll("div.discount-item")
             let discountId;
-            discount_item.forEach(function (discount){
-                if(discount.classList.contains("selected-discount")){
-                    discountId= discount.getAttribute("data-id")
+            discount_item.forEach(function (discount) {
+                if (discount.classList.contains("selected-discount")) {
+                    discountId = discount.getAttribute("data-id")
                 }
             })
             $.ajax({
@@ -261,26 +289,34 @@
         let quantityInput = $("div#quantity_" + productCode);
         let cartItem = quantityInput.closest(".cart-item")
         let newQuantity = Number.parseInt(quantityInput.text(), 10) + 1
-        if (newQuantity === 5) {
-            cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
-            cartItem.find("button#product-detail__add-amount").attr("disabled", true)
-        } else if (newQuantity === 1) {
-            cartItem.find("button#product-detail__remove-amount").attr("disabled", true)
-            cartItem.find("button#product-detail__add-amount").attr("disabled", false)
-        } else {
-            cartItem.find("button#product-detail__add-amount").attr("disabled", false)
-            cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
-        }
-        $.ajax({
-            url: "/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
-            type: "POST",
-            success: function () {
-                quantityInput.text(newQuantity)
-            },
-            error: function () {
-
+        const newTotal = parseInt($("#cart-badge").text())+1
+        console.log(newTotal)
+        if(newTotal<=10) {
+            if (newQuantity === 5) {
+                cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
+                cartItem.find("button#product-detail__add-amount").attr("disabled", true)
+            } else if (newQuantity === 1) {
+                cartItem.find("button#product-detail__remove-amount").attr("disabled", true)
+                cartItem.find("button#product-detail__add-amount").attr("disabled", false)
+            } else {
+                cartItem.find("button#product-detail__add-amount").attr("disabled", false)
+                cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
             }
-        })
+            $.ajax({
+                url: "/update-product?productCode=" + productCode + "&quantity=" + newQuantity,
+                type: "POST",
+                success: function () {
+                    quantityInput.text(newQuantity)
+                    window.location.reload()
+                },
+                error: function () {
+
+                }
+            })
+        }else {
+            document.getElementById("popup").style.display="block";
+            document.getElementById("popup-overlay").style.display = "block";
+        }
     }
 
     function updateSubByQuantity(productId, width, height) {

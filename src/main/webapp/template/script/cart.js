@@ -1,4 +1,3 @@
-
 const formatter = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
     currency: 'VND',
@@ -55,15 +54,33 @@ $("#checkAll").change(function () {
 //     priceSelected.children(".select-area").removeClass("d-none")
 // })
 // xóa sản phẩm khỏi giỏ hàng.
-$(".bi-trash").click(function (){
+$(".bi-trash").click(function () {
     removeProduct($(this).parents(".cart-item"))
 })
-// chi tiết giảm giá
-$(".discount-detail").click(function (){
-    $("#discount-detail-info").removeClass("d-none")
-})
-$(".cancel-discount").click(function (){
-    $("#discount-detail-info").addClass("d-none")
-})
 
 
+function showDetails(title, description, endedAt) {
+    document.getElementById("discount-title").innerText = title;
+    document.getElementById("discount-description").innerText = description;
+    const date = new Date(endedAt.replace(" ", "T")); // Đổi " " thành "T" để tuân theo chuẩn ISO
+
+// Bước 2: Lấy ngày, tháng, năm
+    const day = String(date.getDate()).padStart(2, "0"); // Đảm bảo 2 chữ số (28)
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Tháng (01) (lưu ý: getMonth() trả từ 0-11)
+    const year = date.getFullYear(); // Năm (2025)
+
+// Bước 3: Định dạng ngày-tháng-năm
+    const formattedDate = `${day}-${month}-${year}`;
+    document.getElementById("discount-expiredAt").innerText = "Ngày hết hạn: "+ formattedDate;
+    document.getElementById("discount-detail-info").style.display = "block";
+    document.getElementById("popup-overlay").style.display = "block";
+}
+
+function closeDetails() {
+    document.getElementById("discount-detail-info").style.display = "none";
+    document.getElementById("popup-overlay").style.display = "none";
+}
+function closeError(){
+    document.getElementById("popup-overlay").style.display="none"
+    document.getElementById("popup").style.display="none"
+}
