@@ -48,4 +48,11 @@ public interface TopicDAO {
                                 @Bind("productId") int productId,
                                 @Bind("updatedAt") Timestamp updatedAt);
 
+    @SqlQuery("""
+        select topics.id, topics.title, topics.active, topics.createdAt, topics.updatedAt
+        from topics
+        where topics.active = 1
+    """)
+    @RegisterBeanMapper(Topic.class)
+    List<Topic> getListTopics();
 }

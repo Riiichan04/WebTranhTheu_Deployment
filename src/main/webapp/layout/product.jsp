@@ -12,11 +12,9 @@
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="container">
     <ol class="breadcrumb pt-2">
         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="/category/${product.category.patternName}">${product.category.title}</a>
+        <li class="breadcrumb-item" aria-current="page"><a
+                href="/category/${product.category.patternName}">${product.category.title}</a>
         </li>
-        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>--%>
-        <%--        Phần topic xử lý sau        --%>
-        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay/tranh-phong-canh">Tranh thêu Phong cảnh</a></li>--%>
         <li class="breadcrumb-item active" aria-current="page">${product.title}</li>
     </ol>
 </nav>
@@ -25,7 +23,6 @@
     <div class="background-container rounded">
         <div class="row">
             <div class="col-3 p-4_5">
-                <%--                <img id="product-image" src="../template/asset/image/product_image.png" alt="">--%>
                 <img id="product-image" src="${product.getThumbnail()}" alt="">
                 <p class="mt-4 mb-1">Kích thước: </p>
                 <div class="w-100">
@@ -138,12 +135,13 @@
                     </div>
                     <div class="col-6 text-center" style="position: relative">
                         <h2 id="product-details__price" style="color: var(--main-cta-button)"></h2>
-                        <p class="d-none" id="product-details__old-price"><s class="text-secondary"></s><span class="ms-2 main-cta-button h6 p-1 rounded" id="discount-value"></span></p>
+                        <p class="d-none" id="product-details__old-price"><s class="text-secondary"></s><span
+                                class="ms-2 main-cta-button h6 p-1 rounded" id="discount-value"></span></p>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-6">
-                        <button id="add-to-cart-btn" class="sub-cta-button py-2 px-3 rounded" onclick="addToCart('${product.id}')">
+                        <button id="add-to-cart-btn" class="sub-cta-button py-2 px-3 rounded" onclick="addToCart()">
                             <i class="fa-solid fa-cart-shopping" style="color: var(--sub-cta-button);"></i>
                             Thêm vào giỏ
                         </button>
@@ -322,31 +320,55 @@
         </div>
     </div>
 </section>
+<div id="popup-overlay"></div>
+<div id="popup" class="p-3">
+    <div class="row  text-center fw-bold h5 border-bottom">
+        <div class="col-11 h4 text-center">Lỗi</div>
+        <i class="col-1 p-2 text-center bi bi-x-lg" onclick="closeError()"></i>
+    </div>
+    <div class="row mt-2 ms-2 text-center">Số lượng sản phẩm vượt mức quy định.</div>
+</div>
 <jsp:include page="public/footer.jsp"/>
 <script src="template/script/header.js"></script>
 <script src="template/script/product.js"></script>
 <script>
     displayRating(${avgRating}, $(".product-info__star-container").width())
-    function addToCart(){
-        let id='${product.id}'
+
+    function addToCart() {
+        let id = '${product.id}'
         const urlParams = new URLSearchParams(window.location.search);
         let width = urlParams.get("width")
         let height = urlParams.get("height")
-        let quantity= parseInt($("#product-detail__amount").prop("innerText"))
-        $.ajax({
-            url: '/add-product?id=' + id + '&width=' + width +'&height=' + height+ '&quantity=' + quantity,
-            type:'POST',
-            success: function (data) {
-                console.log("data")
-                console.log(data)
-                alert("Success")
-            },
-            error: function (error){
-                var errText= error.responseText
-                console.log(errText)
-                alert(errText)
+        let quantity = parseInt($("#product-detail__amount").prop("innerText"))
+        let accountId = '${sessionScope.accountId}'
+        if (accountId !== '' || accountId !== null) {
+            const totalQuantity= parseInt($("#cart-badge").text())
+            if(totalQuantity + quantity <=10) {
+                $.ajax({
+                    url: '/add-product?id=' + id + '&width=' + width + '&height=' + height + '&quantity=' + quantity,
+                    type: 'POST',
+                    success: function (data) {
+                        data = $.parseJSON(data)
+                        if (data.result) {
+                            console.log(data)
+                            const badge = $("#cart-badge")
+                            const currentCartLength = data.currentCartLength
+                            badge.removeClass("d-none")
+                            badge.text(currentCartLength)
+                        } else alert("Có lỗi khi thêm sản phẩm vào giỏ hàng")
+                    },
+                    error: function () {
+
+                    }
+                })
             }
-        })
+            //Viết 1 đoạn html ở đây (popup)
+            else {
+                document.getElementById("popup").style.display="block";
+                document.getElementById("popup-overlay").style.display = "block";
+            }
+        }
+        else alert("Bạn cần đăng nhập")
     }
 </script>
 </body>

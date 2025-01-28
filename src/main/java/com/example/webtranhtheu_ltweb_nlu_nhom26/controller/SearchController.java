@@ -1,7 +1,9 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.category;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.controller;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Category;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProviderService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.TopicService;
 import jakarta.servlet.*;
@@ -12,8 +14,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.StringTokenizer;
 
-@WebServlet(name = "category", value = "/category/*")
-public class CategoryController extends HttpServlet {
+@WebServlet(name = "SearchController", value = "/search")
+public class SearchController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
@@ -23,24 +25,28 @@ public class CategoryController extends HttpServlet {
             session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
         }
 
-        String pathName = request.getPathInfo();
-        StringTokenizer tokenizer = new StringTokenizer(pathName, "/");
-        String categoryName = tokenizer.nextToken();
+        //Hiển thị lần đầu
+        int page = 1;
+        int amount = 15;
 
-        if (CategoryService.isCategoryNameExist(categoryName)) {
+        String keyword = request.getParameter("keyword");
+//        List<Product> productResult = ProductService.findProductsByName(keyword, page, amount);
+//        System.out.println(productResult);
+//        if (productResult.isEmpty()) {
+//            request.setAttribute("errorMessage", "<p class=\"d-flex justify-content-center align-items-center\">Không tìm thấy kết quả nào</p>");
+//        }
+//        else {
             List<Category> listCategory = CategoryService.getNameAndPatternCategory();
             request.setAttribute("listCategoryName", listCategory);
             //Cần tối ưu
-            request.setAttribute("categoryTitle", CategoryService.getCategoryTitleByPatternName(listCategory, categoryName));
-            request.setAttribute("categoryName", categoryName);
             request.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
             request.setAttribute("listTopic", new TopicService().getListTopics());
             request.setAttribute("listProvider", ProviderService.getListProviders());
-            request.getRequestDispatcher("/layout/category.jsp").forward(request, response);
-        }
-        else {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
-        }
+//            request.setAttribute("listProduct", productResult);
+            request.getRequestDispatcher("/layout/search.jsp").forward(request, response);
+//        }
+
+
     }
 
     @Override
