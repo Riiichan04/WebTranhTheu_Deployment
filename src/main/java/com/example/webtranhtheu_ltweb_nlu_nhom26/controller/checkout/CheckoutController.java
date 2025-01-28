@@ -29,8 +29,7 @@ public class CheckoutController extends HttpServlet {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-        // chưa biết đúng không
-        String[] selectedProductCode = request.getParameterValues("selectedProductCode");
+        String[] selectedProductCodes= request.getParameterValues("selectedProductCode[]");
         String discountId= request.getParameter("discountId");
         Discount discount= discountService.getDiscount(Integer.parseInt(discountId));
         Cart cart = (Cart) session.getAttribute("cart");
@@ -42,8 +41,8 @@ public class CheckoutController extends HttpServlet {
         }else{
             Map<String,CartProduct> cartProducts= cart.getProducts();
             Map<String,CartProduct> selectedProducts= new HashMap<>();
-            if(selectedProductCode!=null){
-                for(String productCode:selectedProductCode){
+            if(selectedProductCodes!=null){
+                for(String productCode:selectedProductCodes){
                     if(cartProducts.containsKey(productCode)){
                         CartProduct cartProduct = cartProducts.get(productCode);
                         selectedProducts.put(productCode,cartProduct);

@@ -266,15 +266,15 @@
             })
             $.ajax({
                 // sửa thêm phần discount nè
-                url: "/user/purchase?selectedItems=" + selectedProductCode + "&discountId=" + discountId,
+                url: "/user/purchase",
                 type: "POST", //xem lại nha
                 contentType: "application/json",
                 data: {
                     selectedProductCode: selectedProductCode, // Gửi danh sách ID sản phẩm
                     discountId: discountId
                 },
-                success: function () {
-
+                success: function (response) {
+                    window.location.href= "/user/purchase"
                 },
                 error: function () {
 
