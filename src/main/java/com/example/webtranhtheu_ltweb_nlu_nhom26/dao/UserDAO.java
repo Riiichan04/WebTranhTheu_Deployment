@@ -107,4 +107,11 @@ public interface UserDAO {
     @SqlUpdate("DELETE FROM wishlist_products where accountId = :accountId and productId = :productId")
     void deleteWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
 
+    @SqlQuery("""
+            select addresses.location
+            from addresses
+                join account_addresses_details on addresses.id = account_addresses_details.addressId
+            where account_addresses_details.accountId = :accountId and addresses.id = :addressId
+            """)
+    String getAddressLocationById(@Bind("accountId") int accountId, @Bind("addressId") int addressId);
 }

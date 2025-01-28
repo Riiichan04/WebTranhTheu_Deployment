@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="common.jsp"/>
 <html>
@@ -14,11 +15,12 @@
             <div>
                 <h4 class="main-color mb-4">Thông tin thanh toán</h4>
                 <div class="row">
-                    <p class="col-6">Họ và tên: <span class="fw-semibold">Admin</span></p>
+                    <p class="col-6">Họ và tên: <span class="fw-semibold">${userInfo.getFullName()}</span></p>
                     <p class="col-6"></p>
                 </div>
                 <div class="row">
-                    <p class="col-6">Địa chỉ nhận hàng: <span class="fw-semibold">Chưa chọn</span></p>
+                    <p class="col-6">Địa chỉ nhận hàng: <span
+                            class="fw-semibold">${address}</span></p>
                     <p class="col-4"></p>
                     <p class="col-2 text-end"><a class="text-decoration-none main-color fw-semibold"
                                                  href="/user">THAY ĐỔI</a></p>
@@ -57,44 +59,68 @@
                 <p><span class="main-color my-4 h4">Giỏ hàng</span> <span id="remain-item">(2 sản phẩm)</span></p>
             </div>
             <div id="cart-display">
-                <div class="product-item row my-2">
-                    <div class="col-4">
-                        <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    </div>
-                    <div class="col-7">
-                        <h5 class="main-color">Tranh thêu tay Đào hạc</h5>
-                        <p class="mb-1">Số lượng: 1</p>
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <h6 class="product-price text-end">4.850.000 VNĐ</h6>
+                <c:forEach items="product" var="${listPurchased}">
+                    <div class="product-item row my-2">
+                        <div class="col-4">
+                            <img src="${product.getThumbnail()}" class="card-img-top" alt="...">
+                        </div>
+                        <div class="col-7">
+                            <h5 class="main-color text-truncate"
+                                title="${product.category} ${product.title}">
+                                    ${product.category} ${product.title}
+                            </h5>
+                            <p class="mb-1">Số lượng: ${product.amount}</p>
+                            <div class="row">
+                                <div class="col-6">
+                                </div>
+                                <div class="col-6">
+                                    <h6 class="product-price text-end">${product.getPrice()}</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-1 d-flex align-items-center">
-                        <i class="fa-solid fa-trash-can delete-product"></i>
-                    </div>
-                </div>
-                <div class="product-item row my-2">
-                    <div class="col-4">
-                        <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
-                    </div>
-                    <div class="col-7">
-                        <h5 class="main-color">Tranh thêu tay Sen cá</h5>
-                        <p class="mb-1">Số lượng: 1</p>
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <h6 class="product-price text-end">3.450.000 VNĐ</h6>
-                            </div>
+                        <div class="col-1 d-flex align-items-center">
+                            <i class="fa-solid fa-trash-can delete-product"></i>
                         </div>
                     </div>
-                    <div class="col-1 d-flex align-items-center">
-                        <i class="fa-solid fa-trash-can delete-product"></i>
-                    </div>
-                </div>
+                </c:forEach>
+<%--                <div class="product-item row my-2">--%>
+<%--                    <div class="col-4">--%>
+<%--                        <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
+<%--                    </div>--%>
+<%--                    <div class="col-7">--%>
+<%--                        <h5 class="main-color">Tranh thêu tay Đào hạc</h5>--%>
+<%--                        <p class="mb-1">Số lượng: 1</p>--%>
+<%--                        <div class="row">--%>
+<%--                            <div class="col-6">--%>
+<%--                            </div>--%>
+<%--                            <div class="col-6">--%>
+<%--                                <h6 class="product-price text-end">4.850.000 VNĐ</h6>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-1 d-flex align-items-center">--%>
+<%--                        <i class="fa-solid fa-trash-can delete-product"></i>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="product-item row my-2">--%>
+<%--                    <div class="col-4">--%>
+<%--                        <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
+<%--                    </div>--%>
+<%--                    <div class="col-7">--%>
+<%--                        <h5 class="main-color">Tranh thêu tay Sen cá</h5>--%>
+<%--                        <p class="mb-1">Số lượng: 1</p>--%>
+<%--                        <div class="row">--%>
+<%--                            <div class="col-6">--%>
+<%--                            </div>--%>
+<%--                            <div class="col-6">--%>
+<%--                                <h6 class="product-price text-end">3.450.000 VNĐ</h6>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-1 d-flex align-items-center">--%>
+<%--                        <i class="fa-solid fa-trash-can delete-product"></i>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
             </div>
             <hr/>
             <div id="count-price">

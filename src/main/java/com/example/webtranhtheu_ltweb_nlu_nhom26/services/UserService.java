@@ -70,4 +70,12 @@ public class UserService {
     public void updateInfoAdmin(User user) {
         userDAO.updateInfoAdmin(user);
     }
+
+    //Lấy thông tin địa chỉ theo id
+    public String getLocationById(int accountId, int id) {
+        if (id == 0) return "Chưa chọn";
+        else {
+            return userDAO.getAddressLocationById(accountId, id);
+        }
+    }
 }

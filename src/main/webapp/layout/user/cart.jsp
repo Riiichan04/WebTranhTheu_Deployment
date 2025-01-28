@@ -264,6 +264,8 @@
                     discountId = discount.getAttribute("data-id")
                 }
             })
+            window.location = "/user/purchase?selectedItems=" + selectedProductCode + "&discountId=" + discountId ? discountId : ""
+
             $.ajax({
                 // sửa thêm phần discount nè
                 url: "/user/purchase?selectedItems=" + selectedProductCode + "&discountId=" + discountId,
