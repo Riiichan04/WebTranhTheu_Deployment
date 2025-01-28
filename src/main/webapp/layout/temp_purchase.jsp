@@ -83,44 +83,44 @@
                         </div>
                     </div>
                 </c:forEach>
-<%--                <div class="product-item row my-2">--%>
-<%--                    <div class="col-4">--%>
-<%--                        <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
-<%--                    </div>--%>
-<%--                    <div class="col-7">--%>
-<%--                        <h5 class="main-color">Tranh thêu tay Đào hạc</h5>--%>
-<%--                        <p class="mb-1">Số lượng: 1</p>--%>
-<%--                        <div class="row">--%>
-<%--                            <div class="col-6">--%>
-<%--                            </div>--%>
-<%--                            <div class="col-6">--%>
-<%--                                <h6 class="product-price text-end">4.850.000 VNĐ</h6>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-1 d-flex align-items-center">--%>
-<%--                        <i class="fa-solid fa-trash-can delete-product"></i>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="product-item row my-2">--%>
-<%--                    <div class="col-4">--%>
-<%--                        <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
-<%--                    </div>--%>
-<%--                    <div class="col-7">--%>
-<%--                        <h5 class="main-color">Tranh thêu tay Sen cá</h5>--%>
-<%--                        <p class="mb-1">Số lượng: 1</p>--%>
-<%--                        <div class="row">--%>
-<%--                            <div class="col-6">--%>
-<%--                            </div>--%>
-<%--                            <div class="col-6">--%>
-<%--                                <h6 class="product-price text-end">3.450.000 VNĐ</h6>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-1 d-flex align-items-center">--%>
-<%--                        <i class="fa-solid fa-trash-can delete-product"></i>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+                <%--                <div class="product-item row my-2">--%>
+                <%--                    <div class="col-4">--%>
+                <%--                        <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
+                <%--                    </div>--%>
+                <%--                    <div class="col-7">--%>
+                <%--                        <h5 class="main-color">Tranh thêu tay Đào hạc</h5>--%>
+                <%--                        <p class="mb-1">Số lượng: 1</p>--%>
+                <%--                        <div class="row">--%>
+                <%--                            <div class="col-6">--%>
+                <%--                            </div>--%>
+                <%--                            <div class="col-6">--%>
+                <%--                                <h6 class="product-price text-end">4.850.000 VNĐ</h6>--%>
+                <%--                            </div>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                    <div class="col-1 d-flex align-items-center">--%>
+                <%--                        <i class="fa-solid fa-trash-can delete-product"></i>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <%--                <div class="product-item row my-2">--%>
+                <%--                    <div class="col-4">--%>
+                <%--                        <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">--%>
+                <%--                    </div>--%>
+                <%--                    <div class="col-7">--%>
+                <%--                        <h5 class="main-color">Tranh thêu tay Sen cá</h5>--%>
+                <%--                        <p class="mb-1">Số lượng: 1</p>--%>
+                <%--                        <div class="row">--%>
+                <%--                            <div class="col-6">--%>
+                <%--                            </div>--%>
+                <%--                            <div class="col-6">--%>
+                <%--                                <h6 class="product-price text-end">3.450.000 VNĐ</h6>--%>
+                <%--                            </div>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                    <div class="col-1 d-flex align-items-center">--%>
+                <%--                        <i class="fa-solid fa-trash-can delete-product"></i>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
             </div>
             <hr/>
             <div id="count-price">
@@ -174,18 +174,19 @@
         </div>
     </div>
 </section>
-<div id="popup" class="d-none position-fixed z-2 bg-black bg-opacity-50">
-    <div id="popup-content" class="p-4 pt-3 rounded ">
-        <div class="row d-flex justify-content-end mb-3">
-            <button id="close-popup" type="button" class="btn-close" aria-label="Close"></button>
-        </div>
-        <h5 class="text-center main-color">Bạn hãy hoàn thành thanh toán bằng ngân hàng trước khi quay lại trang
-            nhé!</h5>
-        <div class="text-center display-2 mt-4 ">
-            <i class="fa-solid fa-stopwatch main-color"></i>
-        </div>
-    </div>
-</div>
+<%--Tạm bỏ popup này--%>
+<%--<div id="popup" class="d-none position-fixed z-2 bg-black bg-opacity-50">--%>
+<%--    <div id="popup-content" class="p-4 pt-3 rounded ">--%>
+<%--        <div class="row d-flex justify-content-end mb-3">--%>
+<%--            <button id="close-popup" type="button" class="btn-close" aria-label="Close"></button>--%>
+<%--        </div>--%>
+<%--        <h5 class="text-center main-color">Bạn hãy hoàn thành thanh toán bằng ngân hàng trước khi quay lại trang--%>
+<%--            nhé!</h5>--%>
+<%--        <div class="text-center display-2 mt-4 ">--%>
+<%--            <i class="fa-solid fa-stopwatch main-color"></i>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <script src="../template/script/purchase.js"></script>
 <jsp:include page="public/footer.jsp"/>
 </body>

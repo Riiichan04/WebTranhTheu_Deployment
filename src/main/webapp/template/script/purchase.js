@@ -43,3 +43,22 @@ function modifyPriceValue(price) {
     }
 }
 
+function requestPurchase() {
+    $.ajax({
+        url: '/perform-purchase',
+        method: 'POST',
+        data: {},
+        success: function(response) {
+            response = $.parseJSON(response)
+            if (response.result) {
+                //Hiển thị popup
+            }
+            else {
+
+            }
+        },
+        error: function (response) {
+
+        }
+    })
+}

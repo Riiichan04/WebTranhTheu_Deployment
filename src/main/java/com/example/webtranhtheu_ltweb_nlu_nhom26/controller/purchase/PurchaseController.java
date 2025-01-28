@@ -36,11 +36,6 @@ public class PurchaseController extends HttpServlet {
                 else addressId = (int) session.getAttribute("selectedAddressId");
 
                 //Xử lý thông tin
-//                String listSelectedItems = request.getParameter("selectedItems");
-//                String discountId = request.getParameter("discountId");
-//                System.out.println(listSelectedItems);
-//                System.out.println(discountId);
-
                 Cart sessionCart = (Cart) session.getAttribute("cart");
                 List<String> listSelectedProductCode = ((List<?>) session.getAttribute("selectedItems"))
                         .stream()

@@ -148,15 +148,46 @@
         </div>
     </div>
 </section>
-<div id="popup" class="d-none position-fixed z-2 bg-black bg-opacity-50">
+<%--<div id="popup" class="d-none position-fixed z-2 bg-black bg-opacity-50">--%>
+<%--    <div id="popup-content" class="p-4 pt-3 rounded ">--%>
+<%--        <div class="row d-flex justify-content-end mb-3">--%>
+<%--            <button id="close-popup" type="button" class="btn-close" aria-label="Close"></button>--%>
+<%--        </div>--%>
+<%--        <h5 class="text-center main-color">Bạn hãy hoàn thành thanh toán bằng ngân hàng trước khi quay lại trang--%>
+<%--            nhé!</h5>--%>
+<%--        <div class="text-center display-2 mt-4 ">--%>
+<%--            <i class="fa-solid fa-stopwatch main-color"></i>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<div id="popup" class="position-fixed z-2 bg-black bg-opacity-50">
     <div id="popup-content" class="p-4 pt-3 rounded ">
         <div class="row d-flex justify-content-end mb-3">
             <button id="close-popup" type="button" class="btn-close" aria-label="Close"></button>
         </div>
-        <h5 class="text-center main-color">Bạn hãy hoàn thành thanh toán bằng ngân hàng trước khi quay lại trang
-            nhé!</h5>
+        <h5 class="text-center sub-color">Thanh toán thành công!</h5>
+        <p class="text-center my-2">Bạn đã thanh toán thành công 5 sản phẩm</p>
+        <h3 class="text-center main-color mt-4">3.000.000 VNĐ</h3>
+        <%--   Phần hiển thị thông tin đơn hàng     --%>
         <div class="text-center display-2 mt-4 ">
-            <i class="fa-solid fa-stopwatch main-color"></i>
+            <div class="product-item row my-2">
+                <div class="col-4">
+                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                </div>
+                <div class="col-7">
+                    <h5 class="text-start main-color">Tranh thêu tay Sen cá</h5>
+                    <p class="text-start mb-1 h6 fw-normal">Số lượng: 1</p>
+                    <div class="row">
+                        <div class="col-4">
+                        </div>
+                        <div class="col-8">
+                            <h6 class="product-price text-end">3.450.000 VNĐ</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                </div>
+            </div>
         </div>
     </div>
 </div>
