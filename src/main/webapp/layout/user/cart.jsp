@@ -276,8 +276,12 @@
                 success: function (response) {
                     window.location.href= "/user/purchase"
                 },
-                error: function () {
-
+                error: function (data) {
+                    data = $.parseJSON(data);
+                    if(data.result){
+                        const message= data.message;
+                        alert(message);
+                    }
                 }
             })
         }

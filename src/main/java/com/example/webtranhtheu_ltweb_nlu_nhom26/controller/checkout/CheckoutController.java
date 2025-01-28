@@ -4,6 +4,8 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.Cart;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.CartProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Discount;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.DiscountService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
+import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,26 +35,31 @@ public class CheckoutController extends HttpServlet {
         String discountId= request.getParameter("discountId");
         Discount discount= discountService.getDiscount(Integer.parseInt(discountId));
         Cart cart = (Cart) session.getAttribute("cart");
-        if(discount==null) {
-            discount = cart.getMaxDiscount();
-        }
-        if(cart.getCartSize()==0){
-            response.sendRedirect("/cart");
-        }else{
-            Map<String,CartProduct> cartProducts= cart.getProducts();
-            Map<String,CartProduct> selectedProducts= new HashMap<>();
-            if(selectedProductCodes!=null){
-                for(String productCode:selectedProductCodes){
-                    if(cartProducts.containsKey(productCode)){
-                        CartProduct cartProduct = cartProducts.get(productCode);
-                        selectedProducts.put(productCode,cartProduct);
-                        break;
+        if(selectedProductCodes!=null) {
+            if (discount == null) {
+                discount = cart.getMaxDiscount();
+            }
+            if (cart.getCartSize() == 0) {
+                response.sendRedirect("/cart");
+            } else {
+                Map<String, CartProduct> cartProducts = cart.getProducts();
+                Map<String, CartProduct> selectedProducts = new HashMap<>();
+                if (selectedProductCodes != null) {
+                    for (String productCode : selectedProductCodes) {
+                        if (cartProducts.containsKey(productCode)) {
+                            CartProduct cartProduct = cartProducts.get(productCode);
+                            selectedProducts.put(productCode, cartProduct);
+                            break;
+                        }
                     }
                 }
+                session.setAttribute("selectedProducts", selectedProducts);
+                session.setAttribute("discount", discount);
+                request.getRequestDispatcher("/layout/user/purchase.jsp").forward(request, response);
             }
-            session.setAttribute("selectedProducts",selectedProducts);
-            session.setAttribute("discount",discount);
-            request.getRequestDispatcher("/layout/user/purchase.jsp").forward(request, response);
+        }else{
+            JsonObject jsonResult = new JsonObject();
+            ControllerUtil.sendAjaxResultFalse(response,jsonResult,"Không tìm thấy sản phẩm được chọn!");
         }
     }
 }
