@@ -242,7 +242,7 @@
                 console.log(discountValue)
             }
         })
-        total -= total * discountValue;
+        total -= discountValue ? total * discountValue : 0
         document.getElementById('total-price').textContent = total
         const totalPrice = formatter.format($("#total-price").prop("innerText"))
         $("#total-price").text(totalPrice + "")
