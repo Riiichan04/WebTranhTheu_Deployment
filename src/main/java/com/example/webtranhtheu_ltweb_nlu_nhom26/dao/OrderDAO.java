@@ -27,7 +27,7 @@ public interface OrderDAO {
     @RegisterBeanMapper(OrderDTO.class)
     List<OrderDTO> getListOrderDTO();
 
-    @SqlQuery("SELECT o.id, o.statusOrder, o.createdAt, CASE WHEN o.deliveredAt = '0000-00-00 00:00:00' THEN NULL ELSE o.deliveredAt END AS deliveredAt, o.shippingAddress, o.statusPay, o.method, ifnull(c.reason, 0) as cancelReason FROM orders o LEFT JOIN cancel_orders c on o.id = c.orderId WHERE o.id = :orderId")
+    @SqlQuery("SELECT o.id, o.statusOrder, o.createdAt, CASE WHEN o.deliveredAt = '0000-00-00 00:00:00' THEN NULL ELSE o.deliveredAt END AS deliveredAt, o.shippingAddress, o.statusPay, o.method, ifnull(c.reason, -1) as cancelReason FROM orders o LEFT JOIN cancel_orders c on o.id = c.orderId WHERE o.id = :orderId")
     @RegisterBeanMapper(Order.class)
     Order getOrderById(@Bind("orderId") int orderId);
 

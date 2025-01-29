@@ -46,11 +46,7 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("accountId", authDTO.getId());
             session.setAttribute("role", authDTO.getRole());
-            if (authDTO.getRole() == 0) {
-                response.sendRedirect("/");
-            } else if (authDTO.getRole() == 1) {
-                response.sendRedirect("/admin");
-            }
+            response.sendRedirect("/");
         }
 
     }

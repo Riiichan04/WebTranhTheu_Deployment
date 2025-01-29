@@ -39,6 +39,10 @@ public class DashboardAdminService {
         return dashBoardAminDAO.countOrders();
     }
 
+    public int getTotalOrderStatus0() {
+        return dashBoardAminDAO.countOrdersStatus0();
+    }
+
     public int getTotalOrderStatus1() {
         return dashBoardAminDAO.countOrdersStatus1();
     }
@@ -61,6 +65,10 @@ public class DashboardAdminService {
 
     public int getTotalOrderStatus6() {
         return dashBoardAminDAO.countOrdersStatus6();
+    }
+
+    public int getTotalOrderStatus7() {
+        return dashBoardAminDAO.countOrdersStatus7();
     }
 
     public int getTotalOrderPayStatus0() {

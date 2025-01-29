@@ -91,26 +91,31 @@
             <div class="col p-0">
                 <select class="style-select" id="status-order" disabled required>
                     <option value="1" ${order.getStatusOrder() == 1 ? 'selected' : ''}>Chờ xác nhận</option>
+                    <option value="7" ${order.getStatusOrder() == 7 ? 'selected' : ''}>Đã cọc</option>
                     <option value="2" ${order.getStatusOrder() == 2 ? 'selected' : ''}>Chờ lấy hàng</option>
                     <option value="3" ${order.getStatusOrder() == 3 ? 'selected' : ''}>Chờ giao hàng</option>
                     <option value="4" ${order.getStatusOrder() == 4 ? 'selected' : ''}>Đã giao</option>
                     <option value="5" ${order.getStatusOrder() == 5 ? 'selected' : ''}>Đã nhận hàng</option>
                     <option value="6" ${order.getStatusOrder() == 6 ? 'selected' : ''}>Đơn yêu cầu hoàn trả</option>
+                    <option value="1" ${order.getStatusOrder() == 0 ? 'selected' : ''}>Đã hủy</option>
                 </select>
             </div>
         </div>
         <!-- lí do hủy (nếu trạng thái là hủy) -->
-        <div class="row pt-3 label-reason-cancel-order ${order.getCancelReason() == 0 ? 'd-none' : ''}">
+        <div class="row pt-3 label-reason-cancel-order ${order.getCancelReason() == -1 ? 'd-none' : ''}">
             <div class="col"><span class="style-title">Lí do hủy</span>
             </div>
         </div>
-        <div class="row pt-2 select-reason-cancel-order ${order.getCancelReason() == 0 ? 'd-none' : ''}">
+        <div class="row pt-2 select-reason-cancel-order ${order.getCancelReason() == -1 ? 'd-none' : ''}">
             <div class="col p-0">
                 <select class="style-select" id="reason-cancel-order" required disabled>
-                    <option value="1" ${order.getCancelReason() == 1 ? 'selected' : ''}>Lí do 1</option>
-                    <option value="2" ${order.getCancelReason() == 2 ? 'selected' : ''}>Lí do 2</option>
-                    <option value="3" ${order.getCancelReason() == 3 ? 'selected' : ''}>Lí do 3</option>
-                    <option value="4" ${order.getCancelReason() == 4 ? 'selected' : ''}>Lí do 4</option>
+                    <option value="1" ${order.getCancelReason() == 1 ? 'selected' : ''}>Tôi muốn đổi hình thức thanh toán</option>
+                    <option value="2" ${order.getCancelReason() == 2 ? 'selected' : ''}>Tôi muốn đổi địa chỉ nhận hàng</option>
+                    <option value="3" ${order.getCancelReason() == 3 ? 'selected' : ''}>Tôi muốn đổi sản phẩm</option>
+                    <option value="4" ${order.getCancelReason() == 4 ? 'selected' : ''}>Tôi không có nhu cầu mua nữa</option>
+                    <option value="4" ${order.getCancelReason() == 5 ? 'selected' : ''}>Thời gian giao hàng quá lâu</option>
+                    <option value="4" ${order.getCancelReason() == 6 ? 'selected' : ''}>Tôi không có nhu cầu mua nữa</option>
+                    <option value="4" ${order.getCancelReason() == 7 ? 'selected' : ''}>Tôi tìm thấy nội dung phù hợp hơn</option>
                 </select>
             </div>
         </div>

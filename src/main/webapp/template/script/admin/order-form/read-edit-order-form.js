@@ -41,9 +41,9 @@ $(document).ready(function () {
         $('.edit-hidden').addClass('d-none'); // Ẩn các phần tử chỉnh sửa
     });
 
-    $('#status-order').click(function () {
+    $('#status-order').change(function () {
         const selectedText = $("#status-order option:selected").val();
-        if(selectedText === "6") {
+        if(selectedText === "0") {
             $('.label-reason-cancel-order').removeClass('d-none');
             $('.select-reason-cancel-order').removeClass('d-none');
         } else {

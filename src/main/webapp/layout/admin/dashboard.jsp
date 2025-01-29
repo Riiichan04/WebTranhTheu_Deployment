@@ -161,6 +161,9 @@
                         <c:when test="${o.getOrderStatus() == 1}">
                             Chờ xác nhận
                         </c:when>
+                        <c:when test="${o.getOrderStatus() == 7}">
+                            Đã cọc
+                        </c:when>
                         <c:when test="${o.getOrderStatus() == 2}">
                             Chờ lấy hàng
                         </c:when>
@@ -174,6 +177,9 @@
                             Đã nhận hàng
                         </c:when>
                         <c:when test="${o.getOrderStatus() == 6}">
+                            Đã hoàn trả
+                        </c:when>
+                        <c:when test="${o.getOrderStatus() == 0}">
                             Đã hoàn trả
                         </c:when>
                         <c:otherwise>
@@ -196,11 +202,13 @@
                         <div class="col choose-radio-order" id="choose-order-3">
                             <h5 class="card-title widget-card-title mb-3">Tổng số lượng đơn hàng</h5>
                             <h6 class="card-subtitle text-body-order m-0 mb-1">Chờ xác nhận: ${totalOn1StatusOrder}</h6>
+                            <h6 class="card-subtitle text-body-order m-0 mb-1">Đã cọc: ${totalOn7StatusOrder}</h6>
                             <h6 class="card-subtitle text-body-order m-0 mb-1">Chờ lấy hàng: ${totalOn2StatusOrder}</h6>
                             <h6 class="card-subtitle text-body-order m-0 mb-1">Chờ giao hàng: ${totalOn3StatusOrder}</h6>
                             <h6 class="card-subtitle text-body-order m-0 mb-1">Đã giao: ${totalOn4StatusOrder}</h6>
                             <h6 class="card-subtitle text-body-order m-0 mb-1">Đã nhận hàng: ${totalOn5StatusOrder}</h6>
                             <h6 class="card-subtitle text-body-order m-0">Đơn yêu cầu hoàn trả: ${totalOn6StatusOrder}</h6>
+                            <h6 class="card-subtitle text-body-order m-0">Đơn hủy: ${totalOn0StatusOrder}</h6>
                         </div>
                         <div class="col choose-radio-order" id="choose-order-4">
                             <h5 class="card-title widget-card-title mb-3">Tổng số lượng đơn hàng</h5>

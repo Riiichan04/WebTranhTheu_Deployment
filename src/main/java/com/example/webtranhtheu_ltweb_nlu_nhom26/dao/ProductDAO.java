@@ -198,7 +198,7 @@ public interface ProductDAO {
     @RegisterBeanMapper(ProductDTO.class)
     List<ProductDTO> getProductsDTO();
 
-    @SqlQuery("select id, title from materials")
+    @SqlQuery("select id, title from materials where active = 1")
     @RegisterBeanMapper(Material.class)
     List<Material> getMaterials();
 

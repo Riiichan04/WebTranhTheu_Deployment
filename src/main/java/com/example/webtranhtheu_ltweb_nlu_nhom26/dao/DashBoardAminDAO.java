@@ -26,6 +26,9 @@ public interface DashBoardAminDAO {
     @SqlQuery("select count(id) from orders")
     int countOrders();
 
+    @SqlQuery("select count(id) from orders where statusOrder = 0")
+    int countOrdersStatus0();
+
     @SqlQuery("select count(id) from orders where statusOrder = 1")
     int countOrdersStatus1();
 
@@ -43,6 +46,9 @@ public interface DashBoardAminDAO {
 
     @SqlQuery("select count(id) from orders where statusOrder = 6")
     int countOrdersStatus6();
+
+    @SqlQuery("select count(id) from orders where statusOrder = 7")
+    int countOrdersStatus7();
 
     @SqlQuery("select count(id) from orders where statusPay = 1")
     int countPaymentStatus1();
