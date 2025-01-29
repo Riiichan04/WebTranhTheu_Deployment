@@ -163,7 +163,8 @@
 <div id="popup" class="position-fixed z-2 bg-black bg-opacity-50">
     <div id="popup-content" class="p-4 pt-3 rounded ">
         <div class="row d-flex justify-content-end mb-3">
-            <button id="close-popup" type="button" class="btn-close" aria-label="Close"></button>
+<%--            <button id="close-popup" type="button" class="btn-close" aria-label="Close"></button>--%>
+            <a class="p-0 mb-4 text-decoration-none text-button" href="/">< Quay lại trang chủ</a>
         </div>
         <h5 class="text-center sub-color">Thanh toán thành công!</h5>
         <p class="text-center my-2">Bạn đã thanh toán thành công 5 sản phẩm</p>

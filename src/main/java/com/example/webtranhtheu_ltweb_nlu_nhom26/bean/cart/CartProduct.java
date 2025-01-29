@@ -20,7 +20,7 @@ public class CartProduct implements Serializable {
     public double totalPrice; // tính tổng tiền.
 
 
-    public CartProduct(int id,String title,String thumbnailUrl, int quantity, Price price) {
+    public CartProduct(int id, String title, String thumbnailUrl, int quantity, Price price) {
         this.id = id;
         this.title = title;
         this.thumbnailUrl = thumbnailUrl;
@@ -31,8 +31,6 @@ public class CartProduct implements Serializable {
     }
 
     public CartProduct() {
-
-
     }
 
     public double getTotalPrice() {
@@ -46,12 +44,15 @@ public class CartProduct implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public String getThumbnailUrl() {
         return thumbnailUrl;
     }
@@ -75,7 +76,6 @@ public class CartProduct implements Serializable {
     public void setPrice(Price price) {
         this.price = price;
     }
-
 
     public boolean updateBySize(int width, int height) {
         for (Price price : prices) {

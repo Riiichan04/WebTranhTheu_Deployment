@@ -167,4 +167,8 @@ public class Cart implements Serializable {
     public int getSize() {
         return products.size();
     }
+
+    public double calculateTotalPrice(List<String> productCode) {
+        return 0;
+    }
 }
