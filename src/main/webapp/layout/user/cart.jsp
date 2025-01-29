@@ -274,12 +274,14 @@
                     discountId: discountId
                 },
                 success: function (response) {
-                    window.location.href = "/user/purchase"
+                    window.location.href= "/user/purchase"
                 },
                 error: function (data) {
                     data = $.parseJSON(data);
-                    const message = data.message;
-                    alert(message);
+                    if(data.result){
+                        const message= data.message;
+                        alert(message);
+                    }
                 }
             })
         }
@@ -291,9 +293,9 @@
         let quantityInput = $("div#quantity_" + productCode);
         let cartItem = quantityInput.closest(".cart-item")
         let newQuantity = Number.parseInt(quantityInput.text(), 10) + 1
-        const newTotal = parseInt($("#cart-badge").text()) + 1
+        const newTotal = parseInt($("#cart-badge").text())+1
         console.log(newTotal)
-        if (newTotal <= 10) {
+        if(newTotal<=10) {
             if (newQuantity === 5) {
                 cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
                 cartItem.find("button#product-detail__add-amount").attr("disabled", true)
@@ -315,8 +317,8 @@
 
                 }
             })
-        } else {
-            document.getElementById("popup").style.display = "block";
+        }else {
+            document.getElementById("popup").style.display="block";
             document.getElementById("popup-overlay").style.display = "block";
         }
     }

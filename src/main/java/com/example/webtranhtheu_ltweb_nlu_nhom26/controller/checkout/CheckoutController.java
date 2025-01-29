@@ -31,7 +31,7 @@ public class CheckoutController extends HttpServlet {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-        String[] selectedProductCodes= request.getParameterValues("selectedProductCode[]");
+        String[] selectedProductCodes= request.getParameter("selectedProductCode").split(",");
         String discountId= request.getParameter("discountId");
         Discount discount= discountService.getDiscount(Integer.parseInt(discountId));
         Cart cart = (Cart) session.getAttribute("cart");
@@ -55,7 +55,6 @@ public class CheckoutController extends HttpServlet {
                 }
                 session.setAttribute("selectedProducts", selectedProducts);
                 session.setAttribute("discount", discount);
-                request.getRequestDispatcher("/layout/user/purchase.jsp").forward(request, response);
             }
         }else{
             JsonObject jsonResult = new JsonObject();
