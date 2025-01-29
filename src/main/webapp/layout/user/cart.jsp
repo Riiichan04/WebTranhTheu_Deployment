@@ -278,11 +278,9 @@
                 },
                 error: function (data) {
                     data = $.parseJSON(data);
-                    if(data.result){
                         const message= data.message;
                         alert(message);
                     }
-                }
             })
         }
     }
