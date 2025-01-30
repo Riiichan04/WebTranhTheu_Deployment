@@ -39,7 +39,8 @@ hr{
     text-align: center;
 }
 .resized-image{
-    width: 148px;height: 97px;
+    object-fit: contain;
+    aspect-ratio: 3/2;
 }
 .resized-image-his{
     width: 98px;
@@ -67,7 +68,7 @@ input{
 
 /*Content*/
 .content {
-    height: 750px;
+    min-height: 750px;
     padding: 0 30px;
 }
 /*User properties list*/
