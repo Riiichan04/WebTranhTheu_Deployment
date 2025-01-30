@@ -47,12 +47,6 @@ textarea {
 
 }
 
-
-.delete-product {
-    color: var(--text-hover-color);
-    cursor: pointer;
-}
-
-.delete-product:hover {
-    color: var(--sub-text-color);
+.product-item {
+    height: 20vh;
 }

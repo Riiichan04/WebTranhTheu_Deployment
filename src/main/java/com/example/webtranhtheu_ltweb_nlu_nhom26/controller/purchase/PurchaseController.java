@@ -48,22 +48,15 @@ public class PurchaseController extends HttpServlet {
                 }
 
                 User userInfo = new UserService().getUserById(userId);
-//                List<CartProduct> listPurchased = new ArrayList<>();
-//                if (!listSelectedProductCode.isEmpty()) {
-//                    listPurchased = listSelectedProductCode.values().stream().toList();
-//                }
-//                for (String code: listSelectedProductCode) {
-//                    listPurchased.add(sessionCart.getProducts().get(code));
-//                }
                 double totalPrice = sessionCart.getTotalPrice(listSelectedProductCode.keySet().stream().toList());
                 request.setAttribute("userInfo", new UserService().getUserById(userId));
                 request.setAttribute("address", new UserService().getLocationById(userId, addressId));
-//                request.setAttribute("listPurchased", listPurchased);
                 request.setAttribute("listPurchased", listSelectedProductCode.values());
                 request.setAttribute("userInfo", userInfo);
                 request.setAttribute("totalPrice", ProductService.getDisplayPriceToString(totalPrice));
                 request.setAttribute("finalPrice", ProductService.getDisplayPriceToString(sessionCart.getFinalPrice(totalPrice, 130000, null)));
                 request.setAttribute("discount", sessionCart.getDiscount());
+                request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice * sessionCart.getDiscount().getValue()));
 
                 //FIXME: Xử lý phần chọn số lượng sp
                 System.out.println("ATTR Data");

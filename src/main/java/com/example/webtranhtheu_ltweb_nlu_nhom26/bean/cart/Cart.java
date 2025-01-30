@@ -44,8 +44,7 @@ public class Cart implements Serializable {
             }
             cartProduct.updateBySize(price.getWidth(), price.getHeight());
             cartProduct.setPrice(price);
-            // Có xử lý cái total Price ko??
-            cartProduct.getTotalPrice();
+            cartProduct.setTotalPrice(cartProduct.getTotalPrice());
             products.put(productCode, cartProduct);
             return true;
         }
@@ -58,6 +57,7 @@ public class Cart implements Serializable {
         cartProduct.setTitle(product.getTitle());
         cartProduct.setThumbnailUrl(product.getThumbnail());
         cartProduct.setPrices(product.getListPrices());
+        cartProduct.setTotalPrice(cartProduct.getTotalPrice());
         return cartProduct;
     }
 

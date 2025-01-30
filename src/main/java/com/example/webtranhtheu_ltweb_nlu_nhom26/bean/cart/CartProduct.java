@@ -2,6 +2,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart;
 
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,6 +21,15 @@ public class CartProduct implements Serializable {
     public double totalPrice; // tính tổng tiền.
 
 
+    public CartProduct(int id, String title, String thumbnailUrl, List<Price> prices) {
+        this.id = id;
+        this.title = title;
+        this.thumbnailUrl = thumbnailUrl;
+        this.prices = new ArrayList<>();
+        this.prices.addAll(prices);
+        this.totalPrice = getTotalPrice();
+    }
+
     public CartProduct(int id, String title, String thumbnailUrl, int quantity, Price price) {
         this.id = id;
         this.title = title;
@@ -31,6 +41,10 @@ public class CartProduct implements Serializable {
     }
 
     public CartProduct() {
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public double getTotalPrice() {
@@ -106,5 +120,9 @@ public class CartProduct implements Serializable {
                 ", price=" + price +
                 ", totalPrice=" + totalPrice +
                 '}';
+    }
+
+    public String displayTotalPrice() {
+        return ProductService.getDisplayPriceToString(this.totalPrice);
     }
 }

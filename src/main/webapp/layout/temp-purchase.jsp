@@ -56,10 +56,11 @@
         <div class="col-1"></div>
         <div class="col-5">
             <div class="row mb-2 ">
-                <p><span class="main-color my-4 h4">Giỏ hàng</span> <span id="remain-item">(${listPurchased.size()} sản phẩm)</span></p>
+                <p><span class="main-color my-4 h4">Giỏ hàng</span> <span id="remain-item">(${listPurchased.size()} sản phẩm)</span>
+                </p>
             </div>
             <div id="cart-display">
-                <c:forEach items="${listPurchased}" var="product">
+                <c:forEach var="product" items="${listPurchased}">
                     <div class="product-item row my-2">
                         <div class="col-4">
                             <img src="${product.getThumbnailUrl()}" class="card-img-top" alt="...">
@@ -70,12 +71,9 @@
                                     ${product.title}
                             </h5>
                             <p class="mb-1">Số lượng: ${product.quantity}</p>
-                            <div class="row">
-                                <div class="col-6">
-                                </div>
-                                <div class="col-6">
-                                    <h6 class="product-price text-end">${totalPrice}</h6>
-                                </div>
+                            <p class="mb-1">Kích thước: ${product.price.width}x${product.price.height} cm</p>
+                            <div class="row mt-4">
+                                <h5 class="product-price text-end text-truncate">${product.displayTotalPrice()}</h5>
                             </div>
                         </div>
                     </div>
@@ -105,9 +103,8 @@
                     <div class="col-6">
                         <span>Giảm giá: </span>
                     </div>
-                    <div class="col-6  text-end">
-                        <%--Tạm--%>
-<%--                        <h5 class="fw-semibold">${discount.getValue()}</h5>--%>
+                    <div class="col-6 text-end">
+                        <h5 class="fw-semibold">- ${discountValue}</h5>
                     </div>
                 </div>
                 <div class="row my-2">
@@ -136,19 +133,40 @@
         </div>
     </div>
 </section>
-<%--Tạm bỏ popup này--%>
-<%--<div id="popup" class="d-none position-fixed z-2 bg-black bg-opacity-50">--%>
-<%--    <div id="popup-content" class="p-4 pt-3 rounded ">--%>
-<%--        <div class="row d-flex justify-content-end mb-3">--%>
-<%--            <button id="close-popup" type="button" class="btn-close" aria-label="Close"></button>--%>
-<%--        </div>--%>
-<%--        <h5 class="text-center main-color">Bạn hãy hoàn thành thanh toán bằng ngân hàng trước khi quay lại trang--%>
-<%--            nhé!</h5>--%>
-<%--        <div class="text-center display-2 mt-4 ">--%>
-<%--            <i class="fa-solid fa-stopwatch main-color"></i>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+<%-- Dùng popup này thay thế --%>
+<div id="popup" class="d-none position-fixed z-2 bg-black bg-opacity-50">
+    <div id="popup-content" class="p-4 pt-3 rounded ">
+        <div class="row d-flex justify-content-end mb-3">
+            <%--            <button id="close-popup" type="button" class="btn-close" aria-label="Close"></button>--%>
+            <a class="p-0 mb-4 text-decoration-none text-button" href="/">< Quay lại trang chủ</a>
+        </div>
+        <h5 class="text-center sub-color">Thanh toán thành công!</h5>
+        <p class="text-center my-2">Bạn đã thanh toán thành công 5 sản phẩm</p>
+        <h3 class="text-center main-color mt-4">3.000.000 VNĐ</h3>
+        <%--   Phần hiển thị thông tin đơn hàng     --%>
+        <div class="text-center display-2 mt-4 ">
+            <div class="product-item row my-2">
+                <div class="col-4">
+                    <img src="../template/asset/image/product_image.png" class="card-img-top" alt="...">
+                </div>
+                <div class="col-7">
+                    <h5 class="text-start main-color">Tranh thêu tay Sen cá</h5>
+                    <p class="text-start mb-1 h6 fw-normal">Số lượng: 1</p>
+                    <div class="row">
+                        <div class="col-4">
+                        </div>
+                        <div class="col-8">
+                            <h6 class="product-price text-end">3.450.000 VNĐ</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 d-flex align-items-center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="../template/script/purchase.js"></script>
 <jsp:include page="public/footer.jsp"/>
 </body>

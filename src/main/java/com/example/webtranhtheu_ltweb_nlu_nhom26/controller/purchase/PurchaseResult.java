@@ -1,4 +1,5 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.purchase;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.PurchaseOperator;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
@@ -15,8 +16,7 @@ public class PurchaseResult extends HttpServlet {
         JsonObject jsonResult = new JsonObject();
         if (reqPath.equals("/perform-purchase")) {
             try {
-                //Nhận các thông tin ở servlet trước
-                //Trả về dưới dạng json để hiển thị
+                boolean result = PurchaseOperator.performPurchase();
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
             }
             catch (Exception e) {
