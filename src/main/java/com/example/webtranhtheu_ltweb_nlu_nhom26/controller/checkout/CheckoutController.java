@@ -68,15 +68,15 @@ public class CheckoutController extends HttpServlet {
             } else {
                 Map<String, CartProduct> cartProducts = cart.getProducts();
                 Map<String, CartProduct> selectedProducts = new HashMap<>();
-                if (selectedProductCodes != null) {
+//                if (selectedProductCodes != null) {
                     for (String productCode : selectedProductCodes) {
                         if (cartProducts.containsKey(productCode)) {
                             CartProduct cartProduct = cartProducts.get(productCode);
                             selectedProducts.put(productCode, cartProduct);
-                            break;
+//                            break;
                         }
                     }
-                }
+//                }
                 session.setAttribute("selectedProducts", selectedProducts);
                 session.setAttribute("discount", discount);
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);

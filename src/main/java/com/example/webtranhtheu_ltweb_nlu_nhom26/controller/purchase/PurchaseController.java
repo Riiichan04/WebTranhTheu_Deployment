@@ -11,9 +11,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @WebServlet(name = "PurchaseController", value = "/purchase")
 public class PurchaseController extends HttpServlet {
@@ -40,23 +38,28 @@ public class PurchaseController extends HttpServlet {
                 //Xử lý thông tin
                 //FIXME: Xử lý phần login thêm attr cart
                 Cart sessionCart = (Cart) session.getAttribute("cart");
-                List<String> listSelectedProductCode = new ArrayList<>();
+                Map<String, CartProduct> listSelectedProductCode = new HashMap<>();
                 if (session.getAttribute("selectedProducts") != null) {
-                    listSelectedProductCode = ((List<?>) session.getAttribute("selectedProducts"))
-                            .stream()
-                            .filter(String.class::isInstance)
-                            .map(obj -> (String) obj).toList();
+                    Map<?, ?> tempMap = (Map<?, ?>) session.getAttribute("selectedProducts");
+                    if (tempMap.keySet().stream().allMatch(k -> k instanceof String) &&
+                        tempMap.values().stream().allMatch(v -> v instanceof CartProduct)) {
+                        listSelectedProductCode = (Map<String, CartProduct>) tempMap;
+                    }
                 }
 
                 User userInfo = new UserService().getUserById(userId);
-                List<CartProduct> listPurchased = new ArrayList<>();
-                for (String code: listSelectedProductCode) {
-                    listPurchased.add(sessionCart.getProducts().get(code));
-                }
-                double totalPrice = sessionCart.getTotalPrice(listSelectedProductCode);
+//                List<CartProduct> listPurchased = new ArrayList<>();
+//                if (!listSelectedProductCode.isEmpty()) {
+//                    listPurchased = listSelectedProductCode.values().stream().toList();
+//                }
+//                for (String code: listSelectedProductCode) {
+//                    listPurchased.add(sessionCart.getProducts().get(code));
+//                }
+                double totalPrice = sessionCart.getTotalPrice(listSelectedProductCode.keySet().stream().toList());
                 request.setAttribute("userInfo", new UserService().getUserById(userId));
                 request.setAttribute("address", new UserService().getLocationById(userId, addressId));
-                request.setAttribute("listPurchased", listPurchased);
+//                request.setAttribute("listPurchased", listPurchased);
+                request.setAttribute("listPurchased", listSelectedProductCode.values());
                 request.setAttribute("userInfo", userInfo);
                 request.setAttribute("totalPrice", ProductService.getDisplayPriceToString(totalPrice));
                 request.setAttribute("finalPrice", ProductService.getDisplayPriceToString(sessionCart.getFinalPrice(totalPrice, 130000, null)));
@@ -67,7 +70,7 @@ public class PurchaseController extends HttpServlet {
                 System.out.println(listSelectedProductCode);
                 System.out.println(new UserService().getUserById(userId));
                 System.out.println(new UserService().getLocationById(userId, addressId));
-                System.out.println(listPurchased);
+//                System.out.println(listPurchased);
                 System.out.println(sessionCart.getDiscount());
                 request.getRequestDispatcher("layout/temp-purchase.jsp").forward(request, response);
             }

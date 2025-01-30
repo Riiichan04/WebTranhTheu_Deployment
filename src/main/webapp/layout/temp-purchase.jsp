@@ -56,7 +56,7 @@
         <div class="col-1"></div>
         <div class="col-5">
             <div class="row mb-2 ">
-                <p><span class="main-color my-4 h4">Giỏ hàng</span> <span id="remain-item">(2 sản phẩm)</span></p>
+                <p><span class="main-color my-4 h4">Giỏ hàng</span> <span id="remain-item">(${listPurchased.size()} sản phẩm)</span></p>
             </div>
             <div id="cart-display">
                 <c:forEach items="${listPurchased}" var="product">
