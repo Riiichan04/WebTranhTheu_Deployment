@@ -204,7 +204,7 @@
                             <i class="bi bi-tag"></i>
                         </div>
                         <div class="col">
-                            <span>${product.getDiscount().getDescription()}</span>
+                            <span>${product.getDiscount().displayDiscountDetail()}</span>
                         </div>
                     </div>
                 </div>
@@ -348,9 +348,9 @@
                     url: '/add-product?id=' + id + '&width=' + width + '&height=' + height + '&quantity=' + quantity,
                     type: 'POST',
                     success: function (data) {
+                        console.log(data)
                         data = $.parseJSON(data)
                         if (data.result) {
-                            console.log(data)
                             const badge = $("#cart-badge")
                             const currentCartLength = data.currentCartLength
                             badge.removeClass("d-none")

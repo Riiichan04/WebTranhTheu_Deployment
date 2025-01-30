@@ -168,7 +168,20 @@ public class Cart implements Serializable {
         return products.size();
     }
 
-    public double calculateTotalPrice(List<String> productCode) {
-        return 0;
+    public double getTotalPrice(List<String> listCode) {
+        double result = 0;
+        for (String code : listCode) {
+            result += this.products.get(code).getTotalPrice();
+        }
+        return result;
+    }
+
+    public double getFinalPrice(double basePrice, int deliveryPrice, Discount discount) {
+        if (discount == null ) return basePrice + deliveryPrice;
+        else return basePrice - (basePrice * discount.getValue() + deliveryPrice);
+    }
+
+    public String getDisplayPriceToString(double price) {
+        return ProductService.getDisplayPriceToString(price);
     }
 }

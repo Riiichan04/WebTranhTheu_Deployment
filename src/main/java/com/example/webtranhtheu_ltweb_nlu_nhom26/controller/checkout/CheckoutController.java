@@ -14,13 +14,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "CheckoutController", value = "/user/purchase")
+@WebServlet(name = "CheckoutController", value = "/prepare-purchase")
 public class CheckoutController extends HttpServlet {
     DiscountService discountService = new DiscountService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -29,13 +31,35 @@ public class CheckoutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-        String[] selectedProductCodes= request.getParameter("selectedProductCode").split(",");
-        String discountId= request.getParameter("discountId");
-        Discount discount= discountService.getDiscount(Integer.parseInt(discountId));
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+//        try {
+//
+//        }
+//        catch (Exception e) {
+//
+//        }
+        String requestProductCode = request.getParameter("selectedProductCode");
+        System.out.println(requestProductCode);
+        String[] selectedProductCodes = new String[0];
+        if (requestProductCode != null) {
+            selectedProductCodes = request.getParameter("selectedProductCode").split(",");
+        }
+        String discountId = request.getParameter("discountId");
+
+        Discount discount = new Discount();
+        if (Integer.parseInt(discountId) != 0) {
+            discountService.getDiscount(Integer.parseInt(discountId));
+        }
+
         Cart cart = (Cart) session.getAttribute("cart");
-        if(selectedProductCodes!=null) {
+        JsonObject jsonResult = new JsonObject();
+
+        System.out.println("CHECKOUT");
+        System.out.println(Arrays.toString(selectedProductCodes));
+        System.out.println(discountId);
+
+        if (selectedProductCodes != null) {
             if (discount == null) {
                 discount = cart.getMaxDiscount();
             }
@@ -55,10 +79,11 @@ public class CheckoutController extends HttpServlet {
                 }
                 session.setAttribute("selectedProducts", selectedProducts);
                 session.setAttribute("discount", discount);
+                ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
+//                request.getRequestDispatcher("/purchase").forward(request, response);
             }
-        }else{
-            JsonObject jsonResult = new JsonObject();
-            ControllerUtil.sendAjaxResultFalse(response,jsonResult,"Không tìm thấy sản phẩm được chọn!");
+        } else {
+            ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
         }
     }
 }

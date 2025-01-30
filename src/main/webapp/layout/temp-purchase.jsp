@@ -59,7 +59,7 @@
                 <p><span class="main-color my-4 h4">Giỏ hàng</span> <span id="remain-item">(2 sản phẩm)</span></p>
             </div>
             <div id="cart-display">
-                <c:forEach items="product" var="${listPurchased}">
+                <c:forEach items="${listPurchased}" var="product">
                     <div class="product-item row my-2">
                         <div class="col-4">
                             <img src="${product.getThumbnailUrl()}" class="card-img-top" alt="...">
@@ -74,7 +74,7 @@
                                 <div class="col-6">
                                 </div>
                                 <div class="col-6">
-                                    <h6 class="product-price text-end">${product.getTotalPrice()}</h6>
+                                    <h6 class="product-price text-end">${totalPrice}</h6>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,9 @@
                         <span>Thành tiền: </span>
                     </div>
                     <div class="col-6 text-end">
-                        <h5 id="product-sum-price" class="fw-semibold ">8.300.000 VNĐ</h5>
+                        <h5 id="product-sum-price" class="fw-semibold ">
+                            ${finalPrice}
+                        </h5>
                     </div>
                 </div>
                 <div class="row">
@@ -104,7 +106,8 @@
                         <span>Giảm giá: </span>
                     </div>
                     <div class="col-6  text-end">
-                        <h5 class="fw-semibold">0 VNĐ</h5>
+                        <%--Tạm--%>
+<%--                        <h5 class="fw-semibold">${discount.getValue()}</h5>--%>
                     </div>
                 </div>
                 <div class="row my-2">
@@ -112,7 +115,7 @@
                         <h5>Tổng giá tiền: </h5>
                     </div>
                     <div class="col-6  text-end">
-                        <h3 id="total-price" style="color: var(--main-cta-button)">8.430.000 VNĐ</h3>
+                        <h3 id="total-price" style="color: var(--main-cta-button)">${finalPrice}</h3>
                     </div>
                 </div>
             </div>

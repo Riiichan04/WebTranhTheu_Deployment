@@ -45,7 +45,6 @@ public class ProductController extends HttpServlet {
             if (session.getAttribute("listCategory") == null) {
                 session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
             }
-
             request.setAttribute("product", product);
             request.setAttribute("countReview", ProductService.countReviews(product.getId()));
             request.setAttribute("avgRating", ProductService.getProductRating(product.getId()));
