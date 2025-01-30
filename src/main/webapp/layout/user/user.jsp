@@ -85,6 +85,7 @@
         <button id="noBtn" class="col-5 text-center">Không</button>
     </div>
 </div>
+<div id="popup-overlay"></div>
 <div class="p-4"></div>
 <jsp:include page="../public/footer.jsp"/>
 <script src="template/script/header.js"></script>

@@ -1,7 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.ViewedHistory;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.history.ViewedHistory;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;

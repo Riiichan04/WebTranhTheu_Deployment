@@ -1,8 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.user;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.ViewedHistory;
-import com.sun.jdi.NativeMethodException;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.history.ViewedHistory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

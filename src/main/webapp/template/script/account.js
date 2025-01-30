@@ -1,7 +1,4 @@
-const formatterPrice = new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
-});
+
 //Each properties show
 $(".list-group-item").click(function () {
     $(".list-group-item").removeClass("active");
@@ -82,57 +79,14 @@ $(".confirm-change-address").click(function () {
 })
 
 //Thay đổi lịch sử xem sản phẩm
-$('.add-to-cart').click(function () {
-    const cartBadge = $("#cart-badge")
-    let cartValue = parseInt(cartBadge.prop("innerText"))
-    if ($(this).parents(".shop").find(".product-item").length <= 1) {
-        cartValue++
-        console.log(cartValue)
-        cartBadge.text(cartValue)
-        cartBadge.css("display", "flex");
-        $(this).parents(".shop").remove();
-    } else {
-        cartValue++
-        console.log(cartValue)
-        cartBadge.text(cartValue)
-        cartBadge.css("display", "flex");
-        $(this).closest('.product-item').remove();
-    }
-
-})
-
-
-//Thêm hết vào giỏ hàng.
-$(".addAll-btn").click(function () {
-    const shop = $(this).parents(".container").children(".shop");
-    const cartBadge = $("#cart-badge")
-    let cartValue = parseInt(cartBadge.prop("innerText"))
-    shop.each(function () {
-        console.log(parseInt(shop.find('.product-item').length))
-        if (parseInt(shop.find('.product-item').length) <= 1) {
-            cartValue += parseInt(shop.find('.product-item').length)
-            // console.log(cartValue)
-            $(this).remove();
-        } else {
-            cartValue += parseInt(shop.find('.product-item').length)
-            shop.find('.product-item').remove();
-            $(this).remove();
-        }
-    })
-    cartBadge.text(cartValue)
-    cartBadge.css("display", "flex");
-    $(this).css("display", "none")
+$(".add-to-cart").click(function () {
+    addToCart($(this).parents(".product-item"))
 })
 
 
 // xoa san pham
 $('.delete-btn').click(function () {
-    $(this).parents(".shop");
-    if ($(this).parents(".shop").find(".product-item").length <= 1) {
-        $(this).parents(".shop").remove();
-    } else {
-        $(this).closest('.product-item').remove();
-    }
+    removeHistory($(this).parents(".product-item"))
 })
 
 

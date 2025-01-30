@@ -1,4 +1,4 @@
-package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user;
+package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.history;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 

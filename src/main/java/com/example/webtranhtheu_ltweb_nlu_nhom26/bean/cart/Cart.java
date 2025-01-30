@@ -123,7 +123,7 @@ public class Cart implements Serializable {
 
 
     public Discount getMaxDiscount() {
-        return this.discountList.stream().max(Comparator.comparingDouble(Discount::getValue)).get();
+        return this.discountList.stream().max(Comparator.comparingDouble(Discount::getValue)).orElse(this.discountList.get(0));
     }
 
     public Discount getSelectedDiscount(int discountId) {
