@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="../common.jsp"/>
+<%--<jsp:include page="../common.jsp"/>--%>
 <html>
 <head>
     <title>Cài đặt</title>
-    <%@include file="../public/library.jsp" %>
-    <!-- css property -->
-    <link rel="stylesheet" href="../../template/style/user/account-page.css">
+<%--    <%@include file="../public/library.jsp" %>--%>
+<%--    <!-- css property -->--%>
+<%--    <link rel="stylesheet" href="../../template/style/user/account-page.css">--%>
     <link rel="stylesheet" href="../../template/style/user/style-forms/user-setting.css">
 </head>
 <body>
@@ -68,7 +68,7 @@
         </div>
     </div>
 </div>
-<script src="template/script/header.js"></script>
-<script src="template/script/account.js"></script>
+<%--<script src="template/script/header.js"></script>--%>
+<%--<script src="template/script/account.js"></script>--%>
 </body>
 </html>

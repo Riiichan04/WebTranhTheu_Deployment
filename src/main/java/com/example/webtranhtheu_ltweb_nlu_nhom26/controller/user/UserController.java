@@ -23,7 +23,7 @@ public class UserController extends HttpServlet {
             Object accountId = session.getAttribute("accountId");
             Integer id= (Integer) accountId;
             if(id == null){
-                request.getRequestDispatcher("/login").forward(request, response);
+                response.sendRedirect("/login");
             }
             else{
                 User account = userService.getUserById(id);

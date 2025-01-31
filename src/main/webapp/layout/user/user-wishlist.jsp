@@ -1,20 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: loan
-  Date: 20/01/2025
-  Time: 12:37
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="../common.jsp"/>
+<%--<jsp:include page="../common.jsp"/>--%>
 <html>
 <head>
-    <title>Danh sách yêu thích</title>
-    <%@include file="../public/library.jsp" %>
-    <!-- css property -->
-    <link rel="stylesheet" href="../../template/style/user/account-page.css">
-</head>
+<%--    <title>Danh sách yêu thích</title>--%>
+<%--    <%@include file="../public/library.jsp" %>--%>
+<%--    <!-- css property -->--%>
+<%--    <link rel="stylesheet" href="../../template/style/user/account-page.css">--%>
 </head>
 <body>
 <div id="user-wishlist" class=" content-details col">
@@ -48,7 +41,7 @@
         </div>
     </div>
 </div>
-<script src="template/script/header.js"></script>
-<script src="template/script/account.js"></script>
+<%--<script src="template/script/header.js"></script>--%>
+<%--<script src="template/script/account.js"></script>--%>
 </body>
 </html>

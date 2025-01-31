@@ -92,4 +92,8 @@ public class UserService {
     public List<Address> getLocation(int userId) {
         return userDAO.getLocation(userId);
     }
+
+    public boolean updateInfo(User user) {
+        return userDAO.updateUser(user);
+    }
 }

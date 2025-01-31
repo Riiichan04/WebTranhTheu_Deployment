@@ -85,8 +85,14 @@
         <button id="noBtn" class="col-5 text-center">Không</button>
     </div>
 </div>
-<div id="popup-overlay"></div>
 <div class="p-4"></div>
+<%--<div id="custom-popup-overlay" class="d-none"></div>--%>
+<%--<div id="custom-popup" class="d-none">--%>
+<%--    <div class="popup-content">--%>
+<%--        <p id="message"></p>--%>
+<%--        <button class="popup-close">Đóng</button>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <jsp:include page="../public/footer.jsp"/>
 <script src="template/script/header.js"></script>
 <script src="template/script/account.js"></script>
