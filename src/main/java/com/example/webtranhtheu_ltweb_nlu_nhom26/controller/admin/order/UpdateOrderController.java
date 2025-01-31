@@ -39,7 +39,7 @@ public class UpdateOrderController extends HttpServlet {
             response.setContentType("application/json");
             if(OrderService.updateOrder(orderId, statusOrder, deliveredTimestamp)){
                 OrderService.deleteCancelReasonOrder(orderId);
-                if(statusOrder==6){
+                if(statusOrder==0){
                     OrderService.insertCancelReasonOrder(orderId, cancelReason);
                 }
                 response.getWriter().write("{\"success\": true}");

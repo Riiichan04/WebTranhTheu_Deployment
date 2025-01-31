@@ -97,7 +97,7 @@
                     <option value="4" ${order.getStatusOrder() == 4 ? 'selected' : ''}>Đã giao</option>
                     <option value="5" ${order.getStatusOrder() == 5 ? 'selected' : ''}>Đã nhận hàng</option>
                     <option value="6" ${order.getStatusOrder() == 6 ? 'selected' : ''}>Đơn yêu cầu hoàn trả</option>
-                    <option value="1" ${order.getStatusOrder() == 0 ? 'selected' : ''}>Đã hủy</option>
+                    <option value="0" ${order.getStatusOrder() == 0 ? 'selected' : ''}>Đã hủy</option>
                 </select>
             </div>
         </div>

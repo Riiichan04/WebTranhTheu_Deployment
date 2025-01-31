@@ -19,8 +19,11 @@ $(document).ready(function () {
 
                     // xử lý tình trạng đơn hàng
                     var statusOrder = json[i].orderStatus;
-                    if (statusOrder) {
+                    if (statusOrder!=null) {
                         switch (statusOrder) {
+                            case 0:
+                                json[i].orderStatus = "Đã hủy";
+                                break;
                             case 1:
                                 json[i].orderStatus = "Chờ xác nhận";
                                 break;
@@ -38,6 +41,9 @@ $(document).ready(function () {
                                 break;
                             case 6:
                                 json[i].orderStatus = "Đơn yêu cầu hoàn trả";
+                                break;
+                            case 7:
+                                json[i].orderStatus = "Đã cọc";
                                 break;
                             default:
                                 json[i].orderStatus = "";

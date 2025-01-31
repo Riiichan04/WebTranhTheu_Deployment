@@ -48,12 +48,14 @@ public class DashBoardController extends HttpServlet {
         request.setAttribute("totalPolicy", totalPolicy);
         request.setAttribute("totalUser", totalUser);
         request.setAttribute("totalOrder", totalOrder);
+        request.setAttribute("totalOn0StatusOrder", totalOn0StatusOrder);
         request.setAttribute("totalOn1StatusOrder", totalOn1StatusOrder);
         request.setAttribute("totalOn2StatusOrder", totalOn2StatusOrder);
         request.setAttribute("totalOn3StatusOrder", totalOn3StatusOrder);
         request.setAttribute("totalOn4StatusOrder", totalOn4StatusOrder);
         request.setAttribute("totalOn5StatusOrder", totalOn5StatusOrder);
         request.setAttribute("totalOn6StatusOrder", totalOn6StatusOrder);
+        request.setAttribute("totalOn7StatusOrder", totalOn7StatusOrder);
         request.setAttribute("listOrder", listOrder);
         request.setAttribute("totalOn1StatusPayment", totalOn1StatusPayment);
         request.setAttribute("totalOn0StatusPayment", totalOn0StatusPayment);

@@ -41,7 +41,7 @@ $(document).ready(function () {
         $('.edit-hidden').addClass('d-none'); // Ẩn các phần tử chỉnh sửa
     });
 
-    $('#status-order').change(function () {
+    $('#status-order').click(function () {
         const selectedText = $("#status-order option:selected").val();
         if(selectedText === "0") {
             $('.label-reason-cancel-order').removeClass('d-none');
