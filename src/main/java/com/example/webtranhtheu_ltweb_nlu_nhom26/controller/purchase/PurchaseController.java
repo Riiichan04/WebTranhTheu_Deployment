@@ -58,13 +58,12 @@ public class PurchaseController extends HttpServlet {
                 request.setAttribute("discount", sessionCart.getDiscount());
                 request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice * sessionCart.getDiscount().getValue()));
 
-                //FIXME: Xử lý phần chọn số lượng sp
-                System.out.println("ATTR Data");
-                System.out.println(listSelectedProductCode);
-                System.out.println(new UserService().getUserById(userId));
-                System.out.println(new UserService().getLocationById(userId, addressId));
+//                System.out.println("ATTR Data");
+//                System.out.println(listSelectedProductCode);
+//                System.out.println(new UserService().getUserById(userId));
+//                System.out.println(new UserService().getLocationById(userId, addressId));
 //                System.out.println(listPurchased);
-                System.out.println(sessionCart.getDiscount());
+//                System.out.println(sessionCart.getDiscount());
                 request.getRequestDispatcher("layout/temp-purchase.jsp").forward(request, response);
             }
 //        }

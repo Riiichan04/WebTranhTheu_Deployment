@@ -29,21 +29,19 @@ public class OrderService {
     }
 
     //Thêm hằng số cho class Order
-    //Dùng tsql ????
-    public static boolean createOrder(int accountId, String address, int orderId, int method, List<CartProduct> listProduct) {
-        if (createNewOrder(accountId, 1, address, 1, 1)) {
-            for (CartProduct cartProduct : listProduct) {
-                if (!addProductToOrder(orderId, cartProduct.getId(),
-                        cartProduct.getQuantity(), cartProduct.getPrice().getPrice(),
-                        cartProduct.getPrice().getWidth(), cartProduct.getPrice().getHeight())) return false;
-            }
-            return true;
+    public static boolean createOrder(int accountId, String address, int method, List<CartProduct> listProduct) {
+        int orderId = createNewOrder(accountId, 1, address, 1, 1);
+        if (orderId < 0) return false;
+        for (CartProduct cartProduct : listProduct) {
+            if (!addProductToOrder(orderId, cartProduct.getId(),
+                    cartProduct.getQuantity(), cartProduct.getPrice().getPrice(),
+                    cartProduct.getPrice().getWidth(), cartProduct.getPrice().getHeight())) return false;
         }
-        else return false;
+        return true;
     }
 
-    private static boolean createNewOrder(int accountId, int statusOrder, String shippingAddress, int statusPay, int method) {
-        return orderDAO.createNewOrder(accountId, statusOrder, shippingAddress, statusPay, method) > 0;
+    private static int createNewOrder(int accountId, int statusOrder, String shippingAddress, int statusPay, int method) {
+        return orderDAO.createNewOrder(accountId, statusOrder, shippingAddress, statusPay, method);
     }
 
     private static boolean addProductToOrder(int orderId, int productId, int amount, double price, int width, int height) {
