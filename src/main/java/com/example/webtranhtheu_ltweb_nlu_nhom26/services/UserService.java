@@ -101,4 +101,20 @@ public class UserService {
         userDAO.updateUserAddress(address.getId());
         return true;
     }
+
+    public boolean insertAddress(String location){
+        return userDAO.insertAddress(location);
+    }
+
+    public Integer getIdByLocation(String newAddress) {
+        return userDAO.getIdByLocation(newAddress);
+    }
+
+    public void insertUserAddress(int id, Integer addressId) {
+        userDAO.insertUserAddress(id, addressId);
+    }
+    public void deleteUserAddress(int accountId, int addressId) {
+        userDAO.deleteUserAddress(accountId, addressId);
+        userDAO.deleteAddress(addressId);
+    }
 }

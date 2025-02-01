@@ -4,8 +4,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-<%--    <title>Thông tin người dùng </title>--%>
-<%--    <%@include file="../public/library.jsp" %>--%>
+    <%--    <title>Thông tin người dùng </title>--%>
+    <%--    <%@include file="../public/library.jsp" %>--%>
     <!-- css property -->
     <link rel="stylesheet" href="../../template/style/user/style-forms/user-info.css">
 </head>
@@ -73,32 +73,34 @@
     </div>
 </div>
 <%--<script src="template/script/header.js"></script>--%>
-<%--<script src="template/script/account.js"></script>--%>
+<script src="../../template/script/account/user-info.js"></script>
 <script>
     function updateInfo() {
         let accountId = '${sessionScope.accountId}'
         if (accountId !== '' || accountId !== null) {
-            let fullname= $("input[name='fullname']").val();
-            let email=$("input[name='email']").val();
-            let phone= $("input[name='phone']").val();
-            let gender=$("select[name='gender']").val();
+            let fullname = $("input[name='fullname']").val();
+            let email = $("input[name='email']").val();
+            let phone = $("input[name='phone']").val();
+            let gender = $("select[name='gender']").val();
             $.ajax({
                 url: "user/user-info/edit-info",
                 type: "POST",
                 data: {
                     "fullname": fullname,
-                    "email" : email,
+                    "email": email,
                     "phone": phone,
                     "gender": gender
                 },
-                dataType: "json",
+                // dataType: "json",
                 success: function () {
-                    // sửa thử
-                    console.log("ủa chạy r mà sao ko thông báo")
-                    let content= $("#message")
-                    content.val("Cập nhật thành công")
                     $("#custom-popup-overlay").removeClass("d-none")
                     $("#custom-popup").removeClass("d-none")
+                    $("#custom-popup").children("#message").prop("innerText", "Cập nhật thành công")
+
+                    $("#custom-popup").children(".popup-content").children(".popup-close").click(function () {
+                        $("#custom-popup").addClass("d-none")
+                        $("#custom-popup-overlay").addClass("d-none")
+                    })
                 },
                 error: function () {
 

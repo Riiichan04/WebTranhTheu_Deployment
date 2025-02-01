@@ -1055,6 +1055,6 @@
     </div>
 </div>
 <%--<script src="template/script/header.js"></script>--%>
-<%--<script src="template/script/account.js"></script>--%>
+<script src="../../template/script/account/user-order.js"></script>
 </body>
 </html>

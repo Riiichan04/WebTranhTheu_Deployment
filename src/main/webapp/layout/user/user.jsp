@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../common.jsp"/>
@@ -11,11 +10,12 @@
 <body>
 <jsp:include page="../public/header.jsp"/>
 <div id="custom-popup-overlay" class="d-none"></div>
-<div id="custom-popup" class="d-none">
-    <div class="popup-content">
-        <p id="message"></p>
-        <button class="popup-close">Đóng</button>
+<div id="custom-popup" class="container d-none">
+    <div class="row p-0 popup-content">
+            <div class="h4 col-10 text-center justify-content-center align-items-center">Thông báo</div>
+            <button class="col-1 popup-close"><i class="bi bi-x-lg" style="color: var(--sub-cta-button)"></i></button>
     </div>
+    <p class="m-4 main-color row text-center justify-content-center align-items-center" id="message"></p>
 </div>
 <div class="container p-0 ms-6 mt-4">
     <div class="content row">
@@ -25,34 +25,41 @@
                 <p id="nickname" class="p-4 title">${account.username} </p>
             </div>
             <div class="list-group list_props">
-                <a class="list-group-item list-group-item-action" href="${pageContext.request.contextPath}/user/user-info">
+                <a class="list-group-item list-group-item-action"
+                   href="${pageContext.request.contextPath}/user/user-info">
                     <i class="bi bi-person"></i>
                     Thông tin người dùng
                 </a>
-                <a class="list-group-item list-group-item-action _info" href="${pageContext.request.contextPath}/user/user-addresses">
+                <a class="list-group-item list-group-item-action _info"
+                   href="${pageContext.request.contextPath}/user/user-addresses">
                     <i class="bi bi-geo-alt"></i>
                     Sổ địa chỉ
                 </a>
-                <a class="list-group-item list-group-item-action" href="${pageContext.request.contextPath}/user/user-viewed-history">
+                <a class="list-group-item list-group-item-action"
+                   href="${pageContext.request.contextPath}/user/user-viewed-history">
                     <i class="bi bi-eye"></i>
                     Lịch sử đã xem
                 </a>
-                <a class="list-group-item list-group-item-action" href="${pageContext.request.contextPath}/user/user-wishlist">
+                <a class="list-group-item list-group-item-action"
+                   href="${pageContext.request.contextPath}/user/user-wishlist">
                     <i class="bi bi-heart"></i>
                     Danh sách yêu thích
                 </a>
-                <a class="list-group-item list-group-item-action" href="${pageContext.request.contextPath}/user/user-orders">
+                <a class="list-group-item list-group-item-action"
+                   href="${pageContext.request.contextPath}/user/user-orders">
                     <i class="bi bi-box-seam"></i>
                     Đơn hàng của tôi
                 </a>
-                <a class="list-group-item list-group-item-action" href="${pageContext.request.contextPath}/user/user-feedbacks">
+                <a class="list-group-item list-group-item-action"
+                   href="${pageContext.request.contextPath}/user/user-feedbacks">
                     <i class="bi bi-pencil"></i>
                     Lịch sử đánh giá
                 </a>
             </div>
             <hr>
             <div class="list-group user_setting_help">
-                <a class="list-group-item list-group-item-action" href="${pageContext.request.contextPath}/user/user-setting">
+                <a class="list-group-item list-group-item-action"
+                   href="${pageContext.request.contextPath}/user/user-setting">
                     <i class="bi bi-gear"></i>
                     Cài đặt
                 </a>
@@ -88,7 +95,7 @@
 </div>
 <div class="p-4"></div>
 <jsp:include page="../public/footer.jsp"/>
-<script src="template/script/header.js"></script>
-<script src="template/script/account.js"></script>
+<script src="../../template/script/header.js"></script>
+<script src="../../template/script/account/account.js"></script>
 </body>
 </html>

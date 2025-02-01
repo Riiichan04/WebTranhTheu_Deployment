@@ -134,6 +134,6 @@
         }
     }
 </script>
-<%--<script src="template/script/account.js"></script>--%>
+<script src="../../template/script/account/user-history.js"></script>
 </body>
 </html>

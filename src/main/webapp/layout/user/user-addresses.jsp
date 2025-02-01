@@ -30,17 +30,18 @@
             </div>
             <div class="col-6" id="extended-addresses">
                 <c:forEach var="address" items="${account.location}">
-                <div class="row address ps-4" data-id="${address.id}">
+                <div id="address_${address.id}" class="row address ps-4" data-id="${address.id}">
                     <div class="card row">
                         <div class="card-body">
                             <h5 class="card-title">Địa chỉ</h5>
                             <p class="card-text">${address.location}</p>
-                            <button id="change-address" style="width: 50%" onclick="showSubChange(this.id)">Sửa</button>
+                            <button id="change-address" style="width: 50%" onclick="showSubChange(${address.id})">Sửa</button>
+                            <i class="bi bi-trash m-4"></i>
                         </div>
                     </div>
                     <div id="sub-change-address" class="row ms-1 my-2 d-none">
                         <input id="change-address-input" class="col-9 me-2" value="${address.location}">
-                        <button id="confirm-change-address" class="col-2" onclick="updateAddress(this.id)">Ok</button>
+                        <button id="confirm-change-address" class="col-2" onclick="updateAddress(${address.id})">Ok</button>
                     </div>
                 </div>
                 </c:forEach>
@@ -54,34 +55,33 @@
         </div>
     </div>
 </div>
+<div id="formWrapper" class="d-none"></div>
 <%--<script src="template/script/header.js"></script>--%>
-<%--<script src="template/script/account.js"></script>--%>
+<script src="../../template/script/account/user-addresses.js"></script>
 <script>
-    function showSubChange(buttonId){
-        let element= $("#"+ buttonId)
-        // console.log(element)
-        let parent;
+    function showSubChange(addressId){
+        let element= $("div#address_"+ addressId)
+        console.log(element)
         let changeField;
-        let subChange= $("sub-change-address")
+        let subChange= $("#sub-change-address")
         subChange.addClass("d-none")
-        parent= element.parents(".address")
-        console.log(parent)
-        changeField= parent.children("#sub-change-address")
-        console.log(changeField)
+        changeField= element.children("#sub-change-address")
         changeField.removeClass("d-none")
     }
-    function updateAddress(buttonId){
-        let element= $("#"+ buttonId)
+    function updateAddress(addressId){
+        let element= $("#address_"+ addressId)
         console.log(element)
-        let parent;
+        let changeFiled;
         let fixedAddress;
         let card_text;
         let id;
-        parent= element.parents("#sub-change-address")
-        console.log(parent)
-        card_text= parent.children(".cart-text")
-        id= parent.parents(".address").attr("data-id")
-        fixedAddress= parent.children("#change-address-input").val()
+        changeFiled= element.children("#sub-change-address")
+        card_text= element.children(".card").children(".card-body").children(".card-text")
+        // console.log(element.children(".card").children(".card-body"))
+        // console.log(card_text)
+        id= element.attr("data-id")
+        fixedAddress= changeFiled.children("#change-address-input").val()
+        console.log(fixedAddress)
         $.ajax({
             url: "/user/user-addresses/update-address",
             type:"POST",
@@ -89,17 +89,52 @@
                 "addressId": id,
                 "fixedAddress": fixedAddress
             },
-            dataType: "json",
+            // dataType: "json",
             success: function (){
-                card_text.val(fixedAddress)
-                parent.addClass("d-none")
+                card_text.prop("innerText",fixedAddress)
+                changeFiled.addClass("d-none")
+                $("#custom-popup-overlay").removeClass("d-none")
+                $("#custom-popup").removeClass("d-none")
+                $("#custom-popup").children("#message").prop("innerText", "Cập nhật thành công")
+
+                $("#custom-popup").children(".popup-content").children(".popup-close").click(function () {
+                    $("#custom-popup").addClass("d-none")
+                    $("#custom-popup-overlay").addClass("d-none")
+                })
+            },
+            error: function (){
+
+            }
+        })
+        card_text.prop("innerText",fixedAddress)
+        // console.log(card_text.val())
+        // changeFiled.addClass("d-none")
+    }
+    function removeUserAddress(element){
+        let addressId= element.attr("data-id")
+        console.log(addressId)
+        $.ajax({
+            url: "user/user-addresses/remove-address",
+            type:"POST",
+            data:{
+                "addressId": addressId
+            },
+            success: function (){
+                element.remove()
+                $("#custom-popup-overlay").removeClass("d-none")
+                $("#custom-popup").removeClass("d-none")
+                $("#custom-popup").children("#message").prop("innerText", "Xóa thành công")
+
+                $("#custom-popup").children(".popup-content").children(".popup-close").click(function () {
+                    $("#custom-popup").addClass("d-none")
+                    $("#custom-popup-overlay").addClass("d-none")
+                })
             },
             error: function (){
 
             }
         })
     }
-
 </script>
 </body>
 </html>

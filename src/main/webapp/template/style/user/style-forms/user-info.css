@@ -9,7 +9,7 @@
     font-size: 15px;
     height: 30px;
 }
-.container #user-info .save-info button{
+.container #user-info #save-info ,#save-password{
     background-color: var(--sub-cta-button);
     color: var(--web-background-color);
     border:none;

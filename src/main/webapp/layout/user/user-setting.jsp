@@ -69,6 +69,6 @@
     </div>
 </div>
 <%--<script src="template/script/header.js"></script>--%>
-<%--<script src="template/script/account.js"></script>--%>
+<script src="../../template/script/account/user-setting.js"></script>
 </body>
 </html>

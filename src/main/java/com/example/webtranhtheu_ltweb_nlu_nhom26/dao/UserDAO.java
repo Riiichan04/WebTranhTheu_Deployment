@@ -88,6 +88,9 @@ public interface UserDAO {
     @RegisterBeanMapper(User.class)
     boolean updateInfoAdmin(@BindBean User user);
 
+    @SqlUpdate("DELETE from addresses where id=:id")
+    void deleteAddress(@Bind("id") int id);
+
     @SqlUpdate("DELETE from account_addresses_details\n" +
             "WHERE accountId = :accountId and addressId = :addressId")
     void deleteUserAddress(@Bind("accountId") int accountId, @Bind("addressId") int addressId);
