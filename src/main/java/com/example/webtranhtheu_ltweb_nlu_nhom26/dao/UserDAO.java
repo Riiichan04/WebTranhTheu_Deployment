@@ -107,4 +107,10 @@ public interface UserDAO {
     @SqlUpdate("DELETE FROM wishlist_products where accountId = :accountId and productId = :productId")
     void deleteWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
 
+    @SqlUpdate("UPDATE addresses SET location = :location where id= :id ")
+    @RegisterBeanMapper(Address.class)
+    boolean updateAddress(@BindBean Address address);
+
+    @SqlUpdate("UPDATE account_addresses_details SET updatedAt = NOW() where addressId= :addressId")
+    boolean updateUserAddress(@Bind("addressId") int addressId);
 }

@@ -11,12 +11,9 @@
     font-size: 15px;
     height: 40px;
 }
-#user-address .change-address{
+#user-address #change-address{
     height: 30px;
 }
-#user-address .sub-change-address{
-    display: none;
-}
-#user-address .sub-change-address input{
+#user-address #sub-change-address input{
     height: 40px;
 }

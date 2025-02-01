@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: loan
-  Date: 20/01/2025
-  Time: 09:01
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../common.jsp"/>
@@ -16,6 +10,13 @@
 </head>
 <body>
 <jsp:include page="../public/header.jsp"/>
+<div id="custom-popup-overlay" class="d-none"></div>
+<div id="custom-popup" class="d-none">
+    <div class="popup-content">
+        <p id="message"></p>
+        <button class="popup-close">Đóng</button>
+    </div>
+</div>
 <div class="container p-0 ms-6 mt-4">
     <div class="content row">
         <div class="user-props-list col-4 me-4">
@@ -86,13 +87,6 @@
     </div>
 </div>
 <div class="p-4"></div>
-<%--<div id="custom-popup-overlay" class="d-none"></div>--%>
-<%--<div id="custom-popup" class="d-none">--%>
-<%--    <div class="popup-content">--%>
-<%--        <p id="message"></p>--%>
-<%--        <button class="popup-close">Đóng</button>--%>
-<%--    </div>--%>
-<%--</div>--%>
 <jsp:include page="../public/footer.jsp"/>
 <script src="template/script/header.js"></script>
 <script src="template/script/account.js"></script>

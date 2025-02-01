@@ -96,4 +96,9 @@ public class UserService {
     public boolean updateInfo(User user) {
         return userDAO.updateUser(user);
     }
+    public boolean updateAddress(Address address) {
+        userDAO.updateAddress(address);
+        userDAO.updateUserAddress(address.getId());
+        return true;
+    }
 }

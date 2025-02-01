@@ -96,7 +96,7 @@
                     // sửa thử
                     console.log("ủa chạy r mà sao ko thông báo")
                     let content= $("#message")
-                    content.text("Cập nhật thành công")
+                    content.val("Cập nhật thành công")
                     $("#custom-popup-overlay").removeClass("d-none")
                     $("#custom-popup").removeClass("d-none")
                 },

@@ -29,7 +29,8 @@ public class AddressController extends HttpServlet {
             if(userAddresses == null){
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
             }else {
-                session.setAttribute("userAddresses", userAddresses);
+                account.setLocation(userAddresses);
+                session.setAttribute("account", account);
                 request.getRequestDispatcher("/layout/user/user-addresses.jsp").forward(request, response);
             }
         }

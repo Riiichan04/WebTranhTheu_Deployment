@@ -51,10 +51,6 @@ public class EditInfoController extends HttpServlet {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String gender = request.getParameter("gender");
-        System.out.println(fullName);
-        System.out.println(email);
-        System.out.println(phone);
-        System.out.println(gender);
         if(fullName!=null && email!=null && gender!=null){
             account.setFullName(fullName);
             account.setEmail(email);

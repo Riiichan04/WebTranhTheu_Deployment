@@ -24,12 +24,6 @@ $("#change-password").click(function () {
     $("#sub-change-pass").removeClass("d-none");
 })
 
-//Change name
-// $("#save-info").click(function () {
-//     const fname = $("#fname").val();
-//     const lname = $("#lname").val();
-//     return $("#nickname").text(fname + " " + lname);
-// })
 //Thêm địa chỉ mới
 $(".add-new-address").click(function () {
     $(this).parents("#user-address").css("display", "none");
@@ -59,16 +53,17 @@ $(".add-address").click(function () {
 })
 
 // Sửa địa chỉ mới
-$(".change-address").click(function () {
-    $(".sub-change-address").css("display", "none")
-    const parent = $(this).parents(".address")
-    const card_content = parent.find(".card").find(".card-text")
-    console.log(card_content.text())
-    const change_field = parent.find(".sub-change-address")
-    const field = change_field.find(".change-address-input")
-    field.val(card_content.text())
-    change_field.css("display", "block")
-})
+// $("#change-address").click(function () {
+    // $("#sub-change-address").css("display", "none")
+    // const parent = $(this).parents(".address")
+    // const card_content = parent.find(".card").find(".card-text")
+    // console.log(card_content.text())
+    // const change_field = parent.find("#sub-change-address")
+    // const field = change_field.find(".change-address-input")
+    // field.val(card_content.text())
+    // change_field.css("display", "block")
+
+// })
 // Sửa
 $(".confirm-change-address").click(function () {
     const parent = $(this).parents(".sub-change-address")
