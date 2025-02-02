@@ -32,23 +32,22 @@ public class PurchaseController extends HttpServlet {
                 //Nếu session không có thông tin liên quan đến địa chỉ người dùng
                 if (session.getAttribute("selectedAddressId") == null) {
                     session.setAttribute("selectedAddressId", 0);
-                }
-                else addressId = (int) session.getAttribute("selectedAddressId");
+                } else addressId = (int) session.getAttribute("selectedAddressId");
                 //Xử lý thông tin
                 Cart sessionCart = (Cart) session.getAttribute("cart");
                 Map<String, CartProduct> listSelectedProductCode = new HashMap<>();
                 //Nếu gửi từ trang product -> Chọn tất cả product
-                if (request.getServletPath().equals("/product")) {
-                    listSelectedProductCode = sessionCart.getProducts();
-                }
 
-                if (session.getAttribute("selectedProducts") != null) {
+                if (request.getParameter("quick-buy") != null) {
+                    listSelectedProductCode = sessionCart.getProducts();
+                } else if (session.getAttribute("selectedProducts") != null) {
                     Map<?, ?> tempMap = (Map<?, ?>) session.getAttribute("selectedProducts");
                     if (tempMap.keySet().stream().allMatch(k -> k instanceof String) &&
-                        tempMap.values().stream().allMatch(v -> v instanceof CartProduct)) {
+                            tempMap.values().stream().allMatch(v -> v instanceof CartProduct)) {
                         listSelectedProductCode = (Map<String, CartProduct>) tempMap;
+
                     }
-                } 
+                }
 
                 User userInfo = new UserService().getUserById(userId);
                 double totalPrice = sessionCart.getTotalPrice(listSelectedProductCode.keySet().stream().toList());
@@ -61,10 +60,9 @@ public class PurchaseController extends HttpServlet {
                 request.setAttribute("discount", sessionCart.getDiscount());
                 request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice * sessionCart.getDiscount().getValue()));
 
-                request.getRequestDispatcher("layout/temp-purchase.jsp").forward(request, response);
+                request.getRequestDispatcher("layout/purchase.jsp").forward(request, response);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND); //Ném trang 404
         }
     }

@@ -66,5 +66,11 @@ function requestPurchase() {
 }
 
 $("#payment-button").click(function () {
-    requestPurchase()
+    if ($("#address-info").attr("data-address") === "0") {
+        $("#address-notice").text("Bạn chưa chọn địa chỉ thanh toán")
+    }
+    else {
+        requestPurchase()
+        $("#address-notice").text()
+    }
 })
