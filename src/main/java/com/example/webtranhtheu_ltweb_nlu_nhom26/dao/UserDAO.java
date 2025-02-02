@@ -1,14 +1,10 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
-import com.cloudinary.provisioning.Account;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.WishProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.UserDTO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseWishProductMapper;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.AuthDTO;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
-import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
@@ -74,20 +70,23 @@ public interface UserDAO {
     @RegisterBeanMapper(Address.class)
     List<Address> getLocation(@Bind("accountId") int accountId);
 
-    @SqlQuery("select p.id, p.codeProduct, p.title, w.createdAt from wishlist_products w join products p on w.productId = p.id where w.accountId = :accountId")
-    @RegisterRowMapper(BaseWishProductMapper.class)
-    List<WishProduct> getWishProducts(@Bind("accountId") int accountId);
+//    @SqlQuery("select p.id, p.codeProduct, p.title, w.createdAt from wishlist_products w join products p on w.productId = p.id where w.accountId = :accountId")
+//    @RegisterRowMapper(BaseWishProductMapper.class)
+//    List<WishProduct> getWishProducts(@Bind("accountId") int accountId);
 
     @SqlUpdate("UPDATE accounts\n" +
-            "SET avatar_url = :avatarUrl, fullname = :fullName, email = :email, phone = :phone, gender = :gender, description = :description, statusAccount = :statusAccount, updatedAt = :updatedAt, role = :role " +
+            "SET fullname = :fullName, email = :email, phone = :phone, gender = :gender, description = :description, statusAccount = :statusAccount, updatedAt = :updatedAt, role = :role " +
             "where id = :id")
     @RegisterBeanMapper(User.class)
     boolean updateUser(@BindBean User user);
 
     @SqlUpdate("UPDATE accounts\n" +
-            "SET avatar_url = :avatarUrl, fullname = :fullName, pass = :password, email = :email, phone = :phone, gender = :gender, updatedAt = :updatedAt where id = :id")
+            "SET fullname = :fullName, pass = :password, email = :email, phone = :phone, gender = :gender, updatedAt = :updatedAt where id = :id")
     @RegisterBeanMapper(User.class)
     boolean updateInfoAdmin(@BindBean User user);
+
+    @SqlUpdate("UPDATE accounts set avatar_url = :avatarUrl where id = :id")
+    boolean updateAvatar(@Bind("id") int id, @Bind("avatarUrl") String avatarUrl);
 
     @SqlUpdate("DELETE from account_addresses_details\n" +
             "WHERE accountId = :accountId and addressId = :addressId")
@@ -102,11 +101,11 @@ public interface UserDAO {
     @SqlQuery("select id from addresses where location = :location limit 1")
     Integer getIdByLocation(@Bind("location") String location);
 
-    @SqlUpdate("insert into wishlist_products(accountId, productId, createdAt) values(:accountId, :productId, NOW())")
-    boolean insertWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
-
-    @SqlUpdate("DELETE FROM wishlist_products where accountId = :accountId and productId = :productId")
-    void deleteWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
+//    @SqlUpdate("insert into wishlist_products(accountId, productId, createdAt) values(:accountId, :productId, NOW())")
+//    boolean insertWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
+//
+//    @SqlUpdate("DELETE FROM wishlist_products where accountId = :accountId and productId = :productId")
+//    void deleteWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
 
     @SqlQuery("select id, email from accounts where statusAccount = 2")
     @RegisterBeanMapper(User.class)

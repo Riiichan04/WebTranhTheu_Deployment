@@ -61,8 +61,7 @@
             </div>
             <div class="col-1 d-none edit-hidden">
                 <i class="fa-solid fa-pen-to-square icon-edit-avt" id="editAvatar"></i>
-                <input type="file" accept="image/*" class="d-none"
-                       value="<c:out value="${user.getAvatarUrl()}"/>" name="avatar" id="fileInput">
+                <input type="file" accept="image/*" class="d-none" name="avatar" id="fileInput">
             </div>
         </div>
         <!-- email -->
@@ -131,40 +130,40 @@
         </div>
 
         <!-- ds sản phẩm yêu thích -->
-        <div class="row pt-2">
-            <div class="col"><span class="style-title" id="titleFavourProduct">Danh sách sản phẩm yêu thích</span></div>
-        </div>
-        <div class="row pt-2">
-            <div class="col p-0">
-                <select class="style-select-many" name="delete-wish-product" id="favourProduct" multiple disabled>
-                    <c:forEach items="${user.getWishProducts()}" var="wp">
-                        <option value="${wp.getProduct().getId()}">${wp.getProduct().getCode()}
-                            - ${wp.getProduct().getTitle()} - <fmt:formatDate value="${wp.getCreatedAt()}"
-                                                                              pattern="dd/MM/yyyy"/></option>
-                    </c:forEach>
-                </select>
-            </div>
-        </div>
+<%--        <div class="row pt-2">--%>
+<%--            <div class="col"><span class="style-title" id="titleFavourProduct">Danh sách sản phẩm yêu thích</span></div>--%>
+<%--        </div>--%>
+<%--        <div class="row pt-2">--%>
+<%--            <div class="col p-0">--%>
+<%--                <select class="style-select-many" name="delete-wish-product" id="favourProduct" multiple disabled>--%>
+<%--                    <c:forEach items="${user.getWishProducts()}" var="wp">--%>
+<%--                        <option value="${wp.getProduct().getId()}">${wp.getProduct().getCode()}--%>
+<%--                            - ${wp.getProduct().getTitle()} - <fmt:formatDate value="${wp.getCreatedAt()}"--%>
+<%--                                                                              pattern="dd/MM/yyyy"/></option>--%>
+<%--                    </c:forEach>--%>
+<%--                </select>--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
         <!-- thêm sản phẩm yêu thích -->
-        <div class="row pt-2 d-none edit-hidden">
-            <div class="col"><span class="style-title">Thêm sản phẩm yêu thích <i
-                    class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addWishProducts()"></i></span></div>
-        </div>
-        <div class="row pt-2 d-none edit-hidden" id="addWishProducts">
-            <div class="row d-none" id="sampleAddWishProduct">
-                <div class="col">
-                    <select class="style-select" name="add-wish-product">
-                        <c:forEach items="${listProducts}" var="p">
-                            <option value="${p.getId()}">${p.getCode()} - ${p.getTitle()}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-                <div class="col-1">
-                    <i class="fa-solid fa-trash icon-del"></i>
-                </div>
-            </div>
-        </div>
+<%--        <div class="row pt-2 d-none edit-hidden">--%>
+<%--            <div class="col"><span class="style-title">Thêm sản phẩm yêu thích <i--%>
+<%--                    class="fas fa-plus-circle ms-2 style-add-btn d-none edit-hidden" onclick="addWishProducts()"></i></span></div>--%>
+<%--        </div>--%>
+<%--        <div class="row pt-2 d-none edit-hidden" id="addWishProducts">--%>
+<%--            <div class="row d-none" id="sampleAddWishProduct">--%>
+<%--                <div class="col">--%>
+<%--                    <select class="style-select" name="add-wish-product">--%>
+<%--                        <c:forEach items="${listProducts}" var="p">--%>
+<%--                            <option value="${p.getId()}">${p.getCode()} - ${p.getTitle()}</option>--%>
+<%--                        </c:forEach>--%>
+<%--                    </select>--%>
+<%--                </div>--%>
+<%--                <div class="col-1">--%>
+<%--                    <i class="fa-solid fa-trash icon-del"></i>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
         <!-- trạng thái -->
         <div class="row pt-2">

@@ -25,39 +25,42 @@ public class UpdateUserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String fullName = request.getParameter("fullName");
+            String fullName = request.getParameter("fullName");
 
-        Part avatar = request.getPart("avatar");
-        String avatarUrl = CloudinaryConfig.getUrl(avatar);
+            Part avatar = request.getPart("avatar");
 
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        int gender = request.getParameter("gender") == null ? 0 : Integer.parseInt(request.getParameter("gender"));
-        String description = request.getParameter("description");
-        String[] location = request.getParameterValues("location") == null ? new String[0] : request.getParameterValues("location");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+            int gender = request.getParameter("gender") == null ? 0 : Integer.parseInt(request.getParameter("gender"));
+            String description = request.getParameter("description");
+            String[] location = request.getParameterValues("location") == null ? new String[0] : request.getParameterValues("location");
 
-        String[] deleteLocation = request.getParameterValues("delete-location") == null ? new String[0] : request.getParameterValues("delete-location");
+            String[] deleteLocation = request.getParameterValues("delete-location") == null ? new String[0] : request.getParameterValues("delete-location");
 
-        String[] deleteWishProduct =request.getParameterValues("delete-wish-product") == null ? new String[0] : request.getParameterValues("delete-wish-product");
+            //String[] deleteWishProduct =request.getParameterValues("delete-wish-product") == null ? new String[0] : request.getParameterValues("delete-wish-product");
 
-        String[] addWishProduct = request.getParameterValues("add-wish-product") == null ? new String[0] : request.getParameterValues("add-wish-product");
-        if(addWishProduct.length > 0){
-            String[] realWishProduct = new String[addWishProduct.length - 1];
-            for (int i = 1; i < addWishProduct.length; i++) {
-                realWishProduct[i-1] = addWishProduct[i];
+            //String[] addWishProduct = request.getParameterValues("add-wish-product") == null ? new String[0] : request.getParameterValues("add-wish-product");
+//        if(addWishProduct.length > 0){
+//            String[] realWishProduct = new String[addWishProduct.length - 1];
+//            for (int i = 1; i < addWishProduct.length; i++) {
+//                realWishProduct[i-1] = addWishProduct[i];
+//            }
+//            addWishProduct = realWishProduct;
+//        }
+
+            int statusAccount = Integer.parseInt(request.getParameter("status-account"));
+            String userId = request.getParameter("userId");
+
+            String role = request.getParameter("role");
+
+            User user = new User(null, null, fullName, null, email, phone, gender, description, statusAccount, null, new Timestamp(System.currentTimeMillis()), Integer.parseInt(role));
+            user.setId(Integer.parseInt(userId));
+
+            UserService userService = new UserService();
+            if(avatar.getSize() > 0) {
+                String avatarUrl = CloudinaryConfig.getUrl(avatar);
+                userService.updateAvatar(Integer.parseInt(userId), avatarUrl);
             }
-            addWishProduct = realWishProduct;
-        }
-
-        int statusAccount = Integer.parseInt(request.getParameter("status-account"));
-        String userId = request.getParameter("userId");
-
-        String role = request.getParameter("role");
-
-        User user = new User(avatarUrl, null, fullName, null, email, phone, gender, description, statusAccount, null, new Timestamp(System.currentTimeMillis()), Integer.parseInt(role));
-        user.setId(Integer.parseInt(userId));
-
-        UserService userService = new UserService();
-        userService.updateUser(user, location, deleteLocation, addWishProduct, deleteWishProduct);
+            userService.updateUser(user, location, deleteLocation);
     }
 }

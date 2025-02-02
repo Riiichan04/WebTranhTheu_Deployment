@@ -28,16 +28,16 @@ public class DashBoardController extends HttpServlet {
         int totalPolicy = dashboardAdminService.getTotalPolicy();
         int totalUser = dashboardAdminService.getTotalUser();
         int totalOrder = dashboardAdminService.getTotalOrder();
-        int totalOn0StatusOrder = dashboardAdminService.getTotalOrderStatus0(); //Đã hủy
-        int totalOn1StatusOrder = dashboardAdminService.getTotalOrderStatus1(); //Chờ xác nhận
-        int totalOn2StatusOrder = dashboardAdminService.getTotalOrderStatus2(); //Chờ lấy hàng
-        int totalOn3StatusOrder = dashboardAdminService.getTotalOrderStatus3(); //Chờ giao hàng
-        int totalOn4StatusOrder = dashboardAdminService.getTotalOrderStatus4(); //Đã giao
-        int totalOn5StatusOrder = dashboardAdminService.getTotalOrderStatus5(); //Đã nhận hàng
-        int totalOn6StatusOrder = dashboardAdminService.getTotalOrderStatus6(); //Đơn yêu cầu hoàn trả
-        int totalOn7StatusOrder = dashboardAdminService.getTotalOrderStatus7(); //Đã cọc
-        int totalOn1StatusPayment = dashboardAdminService.getTotalOrderPayStatus0(); //Đã thanh toán
-        int totalOn0StatusPayment = dashboardAdminService.getTotalOrderPayStatus1(); //Chưa thanh toán
+        int totalOn0StatusOrder = dashboardAdminService.getTotalOrderStatus(0); //Đã hủy
+        int totalOn1StatusOrder = dashboardAdminService.getTotalOrderStatus(1); //Chờ xác nhận
+        int totalOn2StatusOrder = dashboardAdminService.getTotalOrderStatus(2); //Chờ lấy hàng
+        int totalOn3StatusOrder = dashboardAdminService.getTotalOrderStatus(3); //Chờ giao hàng
+        int totalOn4StatusOrder = dashboardAdminService.getTotalOrderStatus(4); //Đã giao
+        int totalOn5StatusOrder = dashboardAdminService.getTotalOrderStatus(5); //Đã nhận hàng
+        int totalOn6StatusOrder = dashboardAdminService.getTotalOrderStatus(6); //Đơn yêu cầu hoàn trả
+        int totalOn7StatusOrder = dashboardAdminService.getTotalOrderStatus(7); //Đã cọc
+        int totalOn1StatusPayment = dashboardAdminService.getTotalOrderPayStatus(0); //Đã thanh toán
+        int totalOn0StatusPayment = dashboardAdminService.getTotalOrderPayStatus(1); //Chưa thanh toán
 
         List<OrderDTO> listOrder = dashboardAdminService.getLastListOrder();
 

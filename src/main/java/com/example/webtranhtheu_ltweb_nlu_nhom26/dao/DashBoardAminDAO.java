@@ -1,8 +1,8 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.OrderDTO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
+import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
 import java.util.List;
@@ -26,35 +26,11 @@ public interface DashBoardAminDAO {
     @SqlQuery("select count(id) from orders")
     int countOrders();
 
-    @SqlQuery("select count(id) from orders where statusOrder = 0")
-    int countOrdersStatus0();
+    @SqlQuery("select count(id) from orders where statusOrder = :statusOrder")
+    int countOrdersStatus(@Bind("statusOrder") int statusOrder);
 
-    @SqlQuery("select count(id) from orders where statusOrder = 1")
-    int countOrdersStatus1();
-
-    @SqlQuery("select count(id) from orders where statusOrder = 2")
-    int countOrdersStatus2();
-
-    @SqlQuery("select count(id) from orders where statusOrder = 3")
-    int countOrdersStatus3();
-
-    @SqlQuery("select count(id) from orders where statusOrder = 4")
-    int countOrdersStatus4();
-
-    @SqlQuery("select count(id) from orders where statusOrder = 5")
-    int countOrdersStatus5();
-
-    @SqlQuery("select count(id) from orders where statusOrder = 6")
-    int countOrdersStatus6();
-
-    @SqlQuery("select count(id) from orders where statusOrder = 7")
-    int countOrdersStatus7();
-
-    @SqlQuery("select count(id) from orders where statusPay = 1")
-    int countPaymentStatus1();
-
-    @SqlQuery("select count(id) from orders where statusPay = 0")
-    int countPaymentStatus0();
+    @SqlQuery("select count(id) from orders where statusPay = :statusPay")
+    int countPaymentStatus(@Bind("statusPay") int statusPay);
 
     @SqlQuery("select sum(price*amount) from order_products_details op join orders o on op.orderId = o.id where o.statusPay = 1")
     double sumOrderValue();

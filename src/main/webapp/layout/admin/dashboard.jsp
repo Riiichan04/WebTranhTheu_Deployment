@@ -180,7 +180,7 @@
                             Đã hoàn trả
                         </c:when>
                         <c:when test="${o.getOrderStatus() == 0}">
-                            Đã hoàn trả
+                            Đã hủy
                         </c:when>
                         <c:otherwise>
                             Chưa xác định
