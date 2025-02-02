@@ -43,3 +43,34 @@ function modifyPriceValue(price) {
     }
 }
 
+function requestPurchase() {
+    $.ajax({
+        url: '/perform-purchase',
+        method: 'POST',
+        data: {},
+        success: function(response) {
+            response = $.parseJSON(response)
+            if (response.result) {
+                //Hiển thị popup
+                $("#popup").removeClass("d-none")
+                $("#payment-button").attr("disabled", true)
+            }
+            else {
+                alert("Có lỗi khi thanh toán, xin hãy thử lại")
+            }
+        },
+        error: function (response) {
+            alert("Có lỗi khi thanh toán, xin hãy thử lại")
+        }
+    })
+}
+
+$("#payment-button").click(function () {
+    if ($("#address-info").attr("data-address") === "0") {
+        $("#address-notice").text("Bạn chưa chọn địa chỉ thanh toán")
+    }
+    else {
+        requestPurchase()
+        $("#address-notice").text()
+    }
+})
