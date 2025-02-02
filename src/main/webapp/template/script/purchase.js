@@ -52,13 +52,19 @@ function requestPurchase() {
             response = $.parseJSON(response)
             if (response.result) {
                 //Hiển thị popup
+                $("#popup").removeClass("d-none")
+                $("#payment-button").attr("disabled", true)
             }
             else {
-
+                alert("Có lỗi khi thanh toán, xin hãy thử lại")
             }
         },
         error: function (response) {
-
+            alert("Có lỗi khi thanh toán, xin hãy thử lại")
         }
     })
 }
+
+$("#payment-button").click(function () {
+    requestPurchase()
+})

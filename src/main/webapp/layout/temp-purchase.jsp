@@ -155,8 +155,8 @@
                             title="${product.title}">
                                 ${product.title}
                         </h5>
-                        <p class="mb-1">Số lượng: ${product.quantity}</p>
-                        <p class="mb-1">Kích thước: ${product.price.width}x${product.price.height} cm</p>
+                        <p class="mb-1 h6 fw-normal">Số lượng: ${product.quantity}</p>
+                        <p class="mb-1 h6 fw-normal">Kích thước: ${product.price.width}x${product.price.height} cm</p>
                         <div class="row mt-4">
                             <h5 class="product-price text-end text-truncate">${product.displayTotalPrice()}</h5>
                         </div>

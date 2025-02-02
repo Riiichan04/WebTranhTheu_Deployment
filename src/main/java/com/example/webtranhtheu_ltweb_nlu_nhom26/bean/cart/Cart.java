@@ -37,7 +37,7 @@ public class Cart implements Serializable {
             CartProduct cartProduct = products.get(productCode);
             return updateProductByQuantity(productCode, cartProduct.getQuantity() + quantity); // kiểm tra
         } else {
-            CartProduct cartProduct = covertToCart(product);
+            CartProduct cartProduct = covertToCart(product, price);
             cartProduct.setQuantity(quantity);
             if (productCode.equals("no price")) {
                 return false;
@@ -51,12 +51,13 @@ public class Cart implements Serializable {
     }
 
 
-    private CartProduct covertToCart(Product product) {
+    private CartProduct covertToCart(Product product, Price price) {
         CartProduct cartProduct = new CartProduct();
         cartProduct.setId(product.getId());
         cartProduct.setTitle(product.getTitle());
         cartProduct.setThumbnailUrl(product.getThumbnail());
         cartProduct.setPrices(product.getListPrices());
+        cartProduct.setPrice(price);
         cartProduct.setTotalPrice(cartProduct.getTotalPrice());
         return cartProduct;
     }

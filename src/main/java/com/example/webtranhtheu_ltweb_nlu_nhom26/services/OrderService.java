@@ -11,6 +11,8 @@ import java.util.List;
 
 public class OrderService {
     private static OrderDAO orderDAO = JDBIConnector.getInstance().onDemand(OrderDAO.class);
+    public static final int PAYMENT_BY_COD = 0;
+    public static final int PAYMENT_BY_BANK = 1;
 
     public static List<OrderDTO> getListOrderDTO() {
         return orderDAO.getListOrderDTO();

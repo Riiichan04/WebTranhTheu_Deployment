@@ -48,13 +48,13 @@ public class CartAddProductController extends HttpServlet {
                 product.setListPrices(productService.getProductPrices(product.getId()));
                 product.setListImageUrls(productService.getListImageUrls(product.getId()));
                 if (product == null) {
-                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+//                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
                 Price selectedPrice = null;
                 if (widthParam == null && heightParam == null) {
                     selectedPrice = product.getMinPrice();
                 } else if (widthParam == null || heightParam == null) {
-                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+//                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 } else {
                     int width = Integer.parseInt(widthParam);
                     int height = Integer.parseInt(heightParam);

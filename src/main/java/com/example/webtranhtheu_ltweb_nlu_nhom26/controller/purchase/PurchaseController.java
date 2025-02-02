@@ -20,12 +20,11 @@ public class PurchaseController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession(); //Kiểm tra session
-//        try {
+        try {
             if (session.getAttribute("accountId") == null) {
                 response.sendRedirect("/login"); //Cần phải đăng nhập
             } else {
                 int userId = (int) session.getAttribute("accountId");
-                System.out.println(userId);
                 if (session.getAttribute("listCategory") == null) {
                     session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
                 }
@@ -36,16 +35,20 @@ public class PurchaseController extends HttpServlet {
                 }
                 else addressId = (int) session.getAttribute("selectedAddressId");
                 //Xử lý thông tin
-                //FIXME: Xử lý phần login thêm attr cart
                 Cart sessionCart = (Cart) session.getAttribute("cart");
                 Map<String, CartProduct> listSelectedProductCode = new HashMap<>();
+                //Nếu gửi từ trang product -> Chọn tất cả product
+                if (request.getServletPath().equals("/product")) {
+                    listSelectedProductCode = sessionCart.getProducts();
+                }
+
                 if (session.getAttribute("selectedProducts") != null) {
                     Map<?, ?> tempMap = (Map<?, ?>) session.getAttribute("selectedProducts");
                     if (tempMap.keySet().stream().allMatch(k -> k instanceof String) &&
                         tempMap.values().stream().allMatch(v -> v instanceof CartProduct)) {
                         listSelectedProductCode = (Map<String, CartProduct>) tempMap;
                     }
-                }
+                } 
 
                 User userInfo = new UserService().getUserById(userId);
                 double totalPrice = sessionCart.getTotalPrice(listSelectedProductCode.keySet().stream().toList());
@@ -58,18 +61,12 @@ public class PurchaseController extends HttpServlet {
                 request.setAttribute("discount", sessionCart.getDiscount());
                 request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice * sessionCart.getDiscount().getValue()));
 
-//                System.out.println("ATTR Data");
-//                System.out.println(listSelectedProductCode);
-//                System.out.println(new UserService().getUserById(userId));
-//                System.out.println(new UserService().getLocationById(userId, addressId));
-//                System.out.println(listPurchased);
-//                System.out.println(sessionCart.getDiscount());
                 request.getRequestDispatcher("layout/temp-purchase.jsp").forward(request, response);
             }
-//        }
-//        catch (Exception e) {
-//            response.sendError(HttpServletResponse.SC_NOT_FOUND); //Ném trang 404
-//        }
+        }
+        catch (Exception e) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND); //Ném trang 404
+        }
     }
 
     @Override
