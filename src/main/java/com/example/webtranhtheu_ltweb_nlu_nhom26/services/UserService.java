@@ -9,6 +9,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class UserService {
@@ -116,5 +117,17 @@ public class UserService {
     public void deleteUserAddress(int accountId, int addressId) {
         userDAO.deleteUserAddress(accountId, addressId);
         userDAO.deleteAddress(addressId);
+    }
+    public boolean insertWishProduct(int userId, int productId) {
+        return userDAO.insertWishProduct(userId, productId);
+    }
+    public boolean deleteWishProduct(int userId, int productId) {
+        return userDAO.deleteWishProduct(userId, productId);
+    }
+//    public Timestamp getCreatedWishProductTime(int accountId, int productId) {
+//        return userDAO.getCreatedAt(accountId, productId);
+//    }
+    public WishProduct getWishProductByUser(int accountId, int productId) {
+        return userDAO.getWishProduct(accountId, productId);
     }
 }

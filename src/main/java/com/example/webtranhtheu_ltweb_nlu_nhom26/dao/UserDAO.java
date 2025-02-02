@@ -13,6 +13,7 @@ import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface UserDAO {
@@ -77,6 +78,7 @@ public interface UserDAO {
     @RegisterRowMapper(BaseWishProductMapper.class)
     List<WishProduct> getWishProducts(@Bind("accountId") int accountId);
 
+
     @SqlUpdate("UPDATE accounts\n" +
             "SET avatar_url = :avatarUrl, fullname = :fullName, pass = :password, email = :email, phone = :phone, gender = :gender, description = :description, statusAccount = :statusAccount, updatedAt = :updatedAt, role = :role " +
             "where id = :id")
@@ -108,8 +110,11 @@ public interface UserDAO {
     boolean insertWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
 
     @SqlUpdate("DELETE FROM wishlist_products where accountId = :accountId and productId = :productId")
-    void deleteWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
+    boolean deleteWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
 
+    @SqlQuery("SELECT p.id, p.codeProduct, p.title, w.createdAt from wishlist_products w join products p on w.productId = p.id where w.accountId= :accountId and w.productId= :productId limit 1")
+    @RegisterBeanMapper(BaseWishProductMapper.class)
+    WishProduct getWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
     @SqlUpdate("UPDATE addresses SET location = :location where id= :id ")
     @RegisterBeanMapper(Address.class)
     boolean updateAddress(@BindBean Address address);
