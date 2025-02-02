@@ -37,27 +37,28 @@ public class Cart implements Serializable {
             CartProduct cartProduct = products.get(productCode);
             return updateProductByQuantity(productCode, cartProduct.getQuantity() + quantity); // kiểm tra
         } else {
-            CartProduct cartProduct = covertToCart(product);
+            CartProduct cartProduct = covertToCart(product, price);
             cartProduct.setQuantity(quantity);
             if (productCode.equals("no price")) {
                 return false;
             }
             cartProduct.updateBySize(price.getWidth(), price.getHeight());
             cartProduct.setPrice(price);
-            // Có xử lý cái total Price ko??
-            cartProduct.getTotalPrice();
+            cartProduct.setTotalPrice(cartProduct.getTotalPrice());
             products.put(productCode, cartProduct);
             return true;
         }
     }
 
 
-    private CartProduct covertToCart(Product product) {
+    private CartProduct covertToCart(Product product, Price price) {
         CartProduct cartProduct = new CartProduct();
         cartProduct.setId(product.getId());
         cartProduct.setTitle(product.getTitle());
         cartProduct.setThumbnailUrl(product.getThumbnail());
         cartProduct.setPrices(product.getListPrices());
+        cartProduct.setPrice(price);
+        cartProduct.setTotalPrice(cartProduct.getTotalPrice());
         return cartProduct;
     }
 
@@ -123,7 +124,7 @@ public class Cart implements Serializable {
 
 
     public Discount getMaxDiscount() {
-        return this.discountList.stream().max(Comparator.comparingDouble(Discount::getValue)).get();
+        return this.discountList.stream().max(Comparator.comparingDouble(Discount::getValue)).orElse(null);
     }
 
     public Discount getSelectedDiscount(int discountId) {
@@ -166,5 +167,22 @@ public class Cart implements Serializable {
 
     public int getSize() {
         return products.size();
+    }
+
+    public double getTotalPrice(List<String> listCode) {
+        double result = 0;
+        for (String code : listCode) {
+            result += this.products.get(code).getTotalPrice();
+        }
+        return result;
+    }
+
+    public double getFinalPrice(double basePrice, int deliveryPrice, Discount discount) {
+        if (discount == null ) return basePrice + deliveryPrice;
+        else return basePrice - (basePrice * discount.getValue() + deliveryPrice);
+    }
+
+    public String getDisplayPriceToString(double price) {
+        return ProductService.getDisplayPriceToString(price);
     }
 }

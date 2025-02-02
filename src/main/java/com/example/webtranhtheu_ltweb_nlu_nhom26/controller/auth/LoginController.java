@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
 
 @WebServlet(name = "LoginController", value = "/login")
 public class LoginController extends HttpServlet {
@@ -46,7 +48,24 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("accountId", authDTO.getId());
             session.setAttribute("role", authDTO.getRole());
-            response.sendRedirect("/");
+
+            //Thêm thông tin cho cart
+            Cart cart= Cart.getInstance();
+            session.setAttribute("cart", cart);
+            List<Discount> discountsAvailable = new DiscountService().getListDiscountAvailable();
+            discountsAvailable.sort(Comparator.comparingDouble(Discount::getValue).reversed());
+            cart.setDiscountList(discountsAvailable);
+            cart.setDiscount(cart.getMaxDiscount());
+
+            //Nếu không có discount nào
+            if (discountsAvailable.isEmpty()) {
+                cart.setDiscount(new Discount());
+            }
+            if (authDTO.getRole() == 0) {
+                response.sendRedirect("/");
+            } else if (authDTO.getRole() == 1) {
+                response.sendRedirect("/admin");
+            }
         }
 
     }

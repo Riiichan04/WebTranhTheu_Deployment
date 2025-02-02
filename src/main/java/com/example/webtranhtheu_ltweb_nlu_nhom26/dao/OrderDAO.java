@@ -8,6 +8,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseOrderDetailMappe
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
@@ -26,6 +27,18 @@ public interface OrderDAO {
     )
     @RegisterBeanMapper(OrderDTO.class)
     List<OrderDTO> getListOrderDTO();
+
+    //    Cần add @Bind vào
+    @SqlUpdate("""
+            insert into orders(accountId, statusOrder, shippingAddress, statusPay, method) values (:accountId, :statusOrder, :shippingAddress, :statusPay, :method);
+            """)
+    @GetGeneratedKeys
+    int createNewOrder(@Bind("accountId") int accountId, @Bind("statusOrder") int statusOrder, @Bind("shippingAddress") String shippingAddress, @Bind("statusPay") int statusPay, @Bind("method") int method);
+
+    @SqlUpdate("""
+            insert into order_products_details values(:orderId, :productId, :amount, :price, :width, :height)
+            """)
+    int addDetailToOrder(@Bind("orderId") int orderId, @Bind("productId") int productId, @Bind("amount") int amount, @Bind("price") double price, @Bind("width") int width, @Bind("height") int height);
 
     @SqlQuery("SELECT o.id, o.statusOrder, o.createdAt, CASE WHEN o.deliveredAt = '0000-00-00 00:00:00' THEN NULL ELSE o.deliveredAt END AS deliveredAt, o.shippingAddress, o.statusPay, o.method, ifnull(c.reason, -1) as cancelReason FROM orders o LEFT JOIN cancel_orders c on o.id = c.orderId WHERE o.id = :orderId")
     @RegisterBeanMapper(Order.class)

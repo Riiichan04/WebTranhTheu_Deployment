@@ -20,7 +20,7 @@ public class DisplayFullProduct extends DecorationProductDetail {
         product.setPolicy(this.getPolicy(productId));
         product.setProvider(this.getProvider(productId));
         product.setCategory(this.getCategory(productId));
-        product.setDiscount(this.getDiscount());
+        if (this.getDiscount() != null) product.setDiscount(this.getDiscount());
         product.getListTopics().addAll(this.getListTopics(productId));
         product.getListPrices().addAll(this.getListPrices(productId).stream().sorted(Comparator.comparingDouble(Price::getPrice)).toList());
         product.getListMaterials().addAll(this.getListMaterials(productId));

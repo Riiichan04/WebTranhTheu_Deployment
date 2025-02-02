@@ -9,6 +9,8 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
@@ -179,5 +181,13 @@ public class ProductService {
             products.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(productId));
         }
         return products;
+    }
+
+    //Xử lý hiển thị giá
+    public static String getDisplayPriceToString(double price) {
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setGroupingSeparator('.');
+        symbols.setDecimalSeparator(',');
+        return new DecimalFormat("#,###", symbols).format(price) + " VNĐ";
     }
 }

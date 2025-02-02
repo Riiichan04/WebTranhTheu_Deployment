@@ -249,6 +249,11 @@ public interface ProductDAO {
     @SqlQuery("select imgUrl from product_images WHERE productId = :productId")
     List<String> getImgUrlById(@Bind("productId") int productId);
 
+
+    @SqlUpdate("""
+        update product_prices set available = :amount where productId = : productId and width = :width and height = :height and price = :price
+    """)
+    int updateProductAvailable(@Bind("productId") int productId, @Bind("width") int width, @Bind("height") int height, @Bind("price") double price, @Bind("amount") int amount);
     @SqlQuery("select m.id, m.title from material_products_details mp join materials m on mp.materialId = m.id where mp.productId = :productId and m.active = 1")
     @RegisterBeanMapper(Material.class)
     List<Material> getListMaterialByProductId(@Bind("productId") int productId);

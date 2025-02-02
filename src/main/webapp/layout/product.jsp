@@ -147,7 +147,7 @@
                         </button>
                     </div>
                     <div class="col-6 d-flex justify-content-center">
-                        <button id="purchase-btn" class="main-cta-button h4 py-3 px-4_5 rounded border-0">Mua ngay
+                        <button id="purchase-btn" class="main-cta-button h4 py-3 px-4_5 rounded border-0">Thanh toán
                         </button>
                     </div>
                 </div>
@@ -165,13 +165,12 @@
                             <span> Chưa chọn</span>
                         </div>
                         <div class="col-5 text-end position-relative ">
-                            <a class="text-decoration-none main-color" id="show-popup" href="account-page.html">THAY
-                                ĐỔI</a>
+                            <a class="text-decoration-none main-color" id="show-popup" href="/user">
+                                THAY ĐỔI</a>
                         </div>
                     </div>
                     <div class="row my-2">
                         <div class="col-1">
-                            <!--                            <i class="fa-solid fa-truck"></i>-->
                             <i class="bi bi-truck"></i>
                         </div>
                         <div class="col-6">
@@ -183,7 +182,6 @@
                     </div>
                     <div class="row my-2">
                         <div class="col-1">
-                            <!--                            <i class="fa-solid fa-money-bill"></i>-->
                             <i class="bi bi-cash"></i>
                         </div>
                         <div class="col">
@@ -204,7 +202,7 @@
                             <i class="bi bi-tag"></i>
                         </div>
                         <div class="col">
-                            <span>${product.getDiscount().getDescription()}</span>
+                            <span>${product.getDiscount().displayDiscountDetail()}</span>
                         </div>
                     </div>
                 </div>
@@ -348,9 +346,9 @@
                     url: '/add-product?id=' + id + '&width=' + width + '&height=' + height + '&quantity=' + quantity,
                     type: 'POST',
                     success: function (data) {
+                        console.log(data)
                         data = $.parseJSON(data)
                         if (data.result) {
-                            console.log(data)
                             const badge = $("#cart-badge")
                             const currentCartLength = data.currentCartLength
                             badge.removeClass("d-none")

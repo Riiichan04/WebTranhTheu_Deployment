@@ -1,5 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.DiscountService;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -47,7 +49,7 @@ public class Discount implements Serializable {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -102,5 +104,9 @@ public class Discount implements Serializable {
                 ", description='" + description + '\'' +
                 ", value=" + value +
                 '}';
+    }
+
+    public String displayDiscountDetail() {
+        return DiscountService.displayDiscount(this);
     }
 }

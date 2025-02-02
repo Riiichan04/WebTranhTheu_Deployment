@@ -37,4 +37,9 @@ public class DiscountService {
     }
 
     public List<Discount> getListDiscountAvailable(){return discountDAO.getDiscountAvailable();}
+
+    public static String displayDiscount(Discount discount) {
+        if (discount == null || discount.getTitle() == null) return "Hiện tại chưa có chương trình giảm giá nào.";
+        else return discount.getDescription();
+    }
 }
