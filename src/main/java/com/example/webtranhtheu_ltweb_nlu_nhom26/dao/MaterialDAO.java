@@ -1,10 +1,8 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Material;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
-import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
@@ -24,12 +22,4 @@ public interface MaterialDAO {
 
     @SqlUpdate("update materials set title = :title, active = :active, updatedAt = NOW() where id = :materialId")
     boolean updateMaterial(@Bind("title") String title, @Bind("active") int active, @Bind("materialId") int materialId);
-
-    public static void main(String[] args) {
-        MaterialDAO dao = JDBIConnector.getInstance().onDemand(MaterialDAO.class);
-        for(Material m : dao.getAllMaterial()) {
-            System.out.println(m);
-        }
-
-    }
 }

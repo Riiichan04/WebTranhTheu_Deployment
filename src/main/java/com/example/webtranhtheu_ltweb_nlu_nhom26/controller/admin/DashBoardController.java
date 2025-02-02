@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.OrderDTO;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.Order;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.DashboardAdminService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,8 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "DashBoardController", value = "/admin/dashboard")
@@ -28,16 +27,16 @@ public class DashBoardController extends HttpServlet {
         int totalPolicy = dashboardAdminService.getTotalPolicy();
         int totalUser = dashboardAdminService.getTotalUser();
         int totalOrder = dashboardAdminService.getTotalOrder();
-        int totalOn0StatusOrder = dashboardAdminService.getTotalOrderStatus(0); //Đã hủy
-        int totalOn1StatusOrder = dashboardAdminService.getTotalOrderStatus(1); //Chờ xác nhận
-        int totalOn2StatusOrder = dashboardAdminService.getTotalOrderStatus(2); //Chờ lấy hàng
-        int totalOn3StatusOrder = dashboardAdminService.getTotalOrderStatus(3); //Chờ giao hàng
-        int totalOn4StatusOrder = dashboardAdminService.getTotalOrderStatus(4); //Đã giao
-        int totalOn5StatusOrder = dashboardAdminService.getTotalOrderStatus(5); //Đã nhận hàng
-        int totalOn6StatusOrder = dashboardAdminService.getTotalOrderStatus(6); //Đơn yêu cầu hoàn trả
-        int totalOn7StatusOrder = dashboardAdminService.getTotalOrderStatus(7); //Đã cọc
-        int totalOn1StatusPayment = dashboardAdminService.getTotalOrderPayStatus(0); //Đã thanh toán
-        int totalOn0StatusPayment = dashboardAdminService.getTotalOrderPayStatus(1); //Chưa thanh toán
+        int totalOn0StatusOrder = dashboardAdminService.getTotalOrderStatus(Order.STATUS_ORDER_CANCELED); //Đã hủy
+        int totalOn1StatusOrder = dashboardAdminService.getTotalOrderStatus(Order.STATUS_ORDER_PENDING_CONFIRMATION); //Chờ xác nhận
+        int totalOn2StatusOrder = dashboardAdminService.getTotalOrderStatus(Order.STATUS_ORDER_WAITING_FOR_PICKUP); //Chờ lấy hàng
+        int totalOn3StatusOrder = dashboardAdminService.getTotalOrderStatus(Order.STATUS_ORDER_WAITING_FOR_DELIVERY); //Chờ giao hàng
+        int totalOn4StatusOrder = dashboardAdminService.getTotalOrderStatus(Order.STATUS_ORDER_DELIVERED); //Đã giao
+        int totalOn5StatusOrder = dashboardAdminService.getTotalOrderStatus(Order.STATUS_ORDER_RECEIVED); //Đã nhận hàng
+        int totalOn6StatusOrder = dashboardAdminService.getTotalOrderStatus(Order.STATUS_ORDER_RETURN_REQUESTED); //Đơn yêu cầu hoàn trả
+        int totalOn7StatusOrder = dashboardAdminService.getTotalOrderStatus(Order.STATUS_ORDER_DEPOSITED); //Đã cọc
+        int totalOn1StatusPayment = dashboardAdminService.getTotalOrderPayStatus(Order.STATUS_PAYMENT_PAID); //Đã thanh toán
+        int totalOn0StatusPayment = dashboardAdminService.getTotalOrderPayStatus(Order.STATUS_PAYMENT_UNPAID); //Chưa thanh toán
 
         List<OrderDTO> listOrder = dashboardAdminService.getLastListOrder();
 

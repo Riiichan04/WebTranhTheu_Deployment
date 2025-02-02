@@ -6,6 +6,19 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class Order {
+    //để tạm, sẽ tối ưu sau
+    public static final int STATUS_ORDER_CANCELED = 0; // Đã hủy
+    public static final int STATUS_ORDER_PENDING_CONFIRMATION = 1; // Chờ xác nhận
+    public static final int STATUS_ORDER_WAITING_FOR_PICKUP = 2; // Chờ lấy hàng
+    public static final int STATUS_ORDER_WAITING_FOR_DELIVERY = 3; // Chờ giao hàng
+    public static final int STATUS_ORDER_DELIVERED = 4; // Đã giao
+    public static final int STATUS_ORDER_RECEIVED = 5; // Đã nhận hàng
+    public static final int STATUS_ORDER_RETURN_REQUESTED = 6; // Đơn yêu cầu hoàn trả
+    public static final int STATUS_ORDER_DEPOSITED = 7; // Đã cọc
+
+    public static final int STATUS_PAYMENT_PAID = 1; // Đã thanh toán
+    public static final int STATUS_PAYMENT_UNPAID = 0; // Chưa thanh toán
+
     private int id;
     private User user;
     private int statusOrder;
