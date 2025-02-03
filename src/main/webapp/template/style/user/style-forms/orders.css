@@ -1,7 +1,13 @@
 /*User's order list*/
 .order-details{
-    height: 600px;
-    overflow-y: auto;
+    min-height: 600px;
+}
+.order-categories .order-details{
+    cursor: pointer;
+}
+.order-categories .on{
+    color: var(--sub-cta-button);
+    font-weight: 500;
 }
 #user-ordered-list .card button{
     width: 90%;
@@ -32,3 +38,7 @@
     color: var(--web-background-color);
 }
 /*User's canceled Orders*/
+.rebuy-area .rebuy_btn{
+    width: 200px;
+    height: 40px;
+}

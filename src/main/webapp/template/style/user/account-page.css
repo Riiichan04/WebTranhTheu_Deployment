@@ -99,10 +99,7 @@ input{
     background-color: var(--sub-cta-button);
     color: var(--web-background-color);
 }
-.order-categories .on{
-    color: var(--sub-cta-button);
-    font-weight: 500;
-}
+
 /*Setting and Help*/
 .user-props-list .user_setting_help {
     padding: 10px 0;
@@ -300,10 +297,7 @@ input{
     height: 2px;
     background-color: var(--sub-cta-button);
 }
-.rebuy-area .rebuy_btn{
-    width: 200px;
-    height: 40px;
-}
+
 /*Chi tiết vận chuyển*/
 .timeline {
     position: relative;

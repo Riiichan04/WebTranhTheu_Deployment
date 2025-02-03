@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Order implements Serializable {
     private int id;
-    private int accountId;
     private int status;
     private Timestamp createdAt;
     private Timestamp deliveredAt;
@@ -22,14 +21,13 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(int method, int statusPay, String shippingAddress, Timestamp deliveredAt, Timestamp createdAt, int status, int accountId, int id) {
+    public Order(int method, int statusPay, String shippingAddress, Timestamp deliveredAt, Timestamp createdAt, int status, int id) {
         this.method = method;
         this.statusPay = statusPay;
         this.shippingAddress = shippingAddress;
         this.deliveredAt = deliveredAt;
         this.createdAt = createdAt;
         this.status = status;
-        this.accountId = accountId;
         this.id = id;
         this.products = new ArrayList<>();
     }
@@ -40,14 +38,6 @@ public class Order implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
     }
 
     public int getStatus() {

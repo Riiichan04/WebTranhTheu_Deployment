@@ -18,14 +18,13 @@
         <!--Từng sản phẩm-->
             <div class="row p-4 border shop">
                 <c:forEach items="${account.wishProducts}" var="product">
-                    <div class="row product-item p-2">
+                    <div id="${product.product.id}" class="row product-item p-2">
                         <!--Hình tỉ lệ 4:1-->
-                        <div class="col-3"><img src="<c:url value="${product.product.getThumbnail()}"/>" alt="Artwork"
-                                                class="resized-image"
-                                                style="width: 148px;height: 97px"></div>
+                        <img src="<c:url value="${product.product.getThumbnail()}"/>" alt="Artwork"
+                                                class="resized-image col-3">
                         <div class="col-4 container">
                             <div class="row product-title">${product.product.title}</div>
-                            <div class="row pt-4">${product.product.getMinPrice().price}</div>
+                            <div class="row pt-4" id="minPrice">${product.product.getMinPrice().price}</div>
                         </div>
                         <div class="col-2">
                             <button class="add-to-cart"><i class="bi bi-cart-plus"></i></button>
@@ -42,4 +41,22 @@
 <%--<script src="template/script/header.js"></script>--%>
 <%--<script src="template/script/account.js"></script>--%>
 </body>
+<script>
+    const formatterPrice = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
+    function formatPrice(productId){
+        let card;
+        let product_price;
+        let priceFormat;
+        card= $("div#"+ productId)
+        product_price= card.find("#minPrice")
+        priceFormat= formatterPrice.format(product_price.prop("innerText"))
+        product_price.text(priceFormat+"")
+    }
+    <c:forEach var="product" items="${account.wishProducts}">
+    formatPrice(${product.product.id})
+    </c:forEach>
+</script>
 </html>

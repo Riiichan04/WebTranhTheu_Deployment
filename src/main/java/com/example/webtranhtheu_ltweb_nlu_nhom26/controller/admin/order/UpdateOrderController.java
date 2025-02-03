@@ -14,8 +14,6 @@ public class UpdateOrderController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-
-
         request.getRequestDispatcher("/layout/admin/order-form/read-edit-order-form.jsp").forward(request, response);
     }
 
