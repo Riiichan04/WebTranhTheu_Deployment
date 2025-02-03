@@ -138,7 +138,7 @@ public interface ProductDAO {
     """)
     List<Integer> findAllSimilarProducts(@BindList("topicIds") List<Integer> topicIds, @Bind("productId") int productId);
 
-    @SqlQuery("select id, codeProduct as code, title from products")
+    @SqlQuery("select id, codeProduct as code, title from products where status = 1")
     @RegisterBeanMapper(Product.class)
     List<Product> getProductsCodeAndTitle();
 
@@ -198,7 +198,7 @@ public interface ProductDAO {
     @RegisterBeanMapper(ProductDTO.class)
     List<ProductDTO> getProductsDTO();
 
-    @SqlQuery("select id, title from materials")
+    @SqlQuery("select id, title from materials where active = 1")
     @RegisterBeanMapper(Material.class)
     List<Material> getMaterials();
 
@@ -254,4 +254,39 @@ public interface ProductDAO {
         update product_prices set available = :amount where productId = : productId and width = :width and height = :height and price = :price
     """)
     int updateProductAvailable(@Bind("productId") int productId, @Bind("width") int width, @Bind("height") int height, @Bind("price") double price, @Bind("amount") int amount);
+    @SqlQuery("select m.id, m.title from material_products_details mp join materials m on mp.materialId = m.id where mp.productId = :productId and m.active = 1")
+    @RegisterBeanMapper(Material.class)
+    List<Material> getListMaterialByProductId(@Bind("productId") int productId);
+
+    @SqlQuery("select pro.id, pro.providerName from products p join providers pro on p.providerId = pro.id where p.id = :productId")
+    @RegisterBeanMapper(Provider.class)
+    Provider getProviderByProductId(@Bind("productId") int productId);
+
+    @SqlQuery("select po.id, po.title from products p join policies po on p.policyId = po.id where p.id = :productId")
+    @RegisterBeanMapper(Policy.class)
+    Policy getPolicyByProductId(@Bind("productId") int productId);
+
+    @SqlUpdate("update products set codeProduct = :code, title = :title, description = :description, providerId = :provider.id, typeOfProduct = :type, status = :status, updatedAt = NOW() where id = :id")
+    void updateProduct(@BindBean Product product);
+
+    @SqlUpdate("delete from product_images where productId = :productId and imgUrl = :imgUrl")
+    void deleteProductImage(@Bind("productId") int productId, @Bind("imgUrl") String imgUrl);
+
+    @SqlUpdate("delete from product_reviews where id = :id")
+    void deleteProductReview(@Bind("id") int id);
+
+    @SqlUpdate("delete from material_products_details where productId = :productId")
+    void deleteMaterialProductDetails(@Bind("productId") int productId);
+
+    @SqlUpdate("insert into material_products_details(materialId, productId, updatedAt) values(:materialId, :productId, NOW())")
+    boolean insertMaterialProductDetails(@Bind("materialId") int materialId, @Bind("productId") int productId);
+
+    @SqlUpdate("delete from product_prices where id = :id")
+    void deleteProductPrice(@Bind("id") int id);
+
+    @SqlUpdate("update product_prices set width = :width, height = :height, price = :price, available = :available where id = :id")
+    void updateProductPrice(@Bind("width") int width, @Bind("height") int height, @Bind("price") double price, @Bind("available") int available, @Bind("id") int id);
+
+    @SqlUpdate("insert into product_prices(productId, width, height, price, available) values(:productId, :width, :height, :price, :available)")
+    boolean insertProductPrice(@Bind("productId") int productId, @Bind("width") int width, @Bind("height") int height, @Bind("price") double price, @Bind("available") int available);
 }

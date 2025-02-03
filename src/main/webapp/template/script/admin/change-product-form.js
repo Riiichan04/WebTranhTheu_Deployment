@@ -150,48 +150,49 @@ $(document).ready(function () {
                     'overflow': 'auto',
                 });
 
-                $('#myProductEditTable').DataTable().columns.adjust();
-
                 // Xử lý nút hủy
                 $('#cancelBtn').on('click', function () {
                     hiddenOverlay();
                 });
+
+                $('#read-edit-product-form').on('submit', function (event) {
+                    event.preventDefault();
+
+                    var formData = new FormData(this);
+                    formData.append("productId", $('#submitBtn').val());
+                    $('.temp-hidden.product-price-row').each(function () {
+                        formData.append("delProductPrice[]", $(this).data('id'));
+                    });
+                    $('.product-price-row').each(function () {
+                        formData.append("listProductPrice[]", $(this).data('id'));
+                    });
+                    formData.forEach((value, key) => {
+                        console.log(key, value);  // In ra key và value trong FormData
+                    });
+                    $.ajax({
+                        url: "/admin/product-management/update-product",
+                        type: "POST",
+                        data: formData,
+                        processData: false,  // Không chuyển đổi dữ liệu thành chuỗi
+                        contentType: false,
+                        success: function (response) {
+                            alert('Chỉnh sửa sản phẩm thành công!');
+                            table.ajax.reload();
+                            hiddenOverlay();
+                        },
+                        error: function () {
+                            console.log("herree")
+                            alert('Lỗi khi chỉnh sửa sản phẩm!');
+                        }
+                    });
+                });
+
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
             }
         });
     });
-
-    $('.btn-delete').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/product-management/delete-product";
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                openOverlay();
-                $('#formWrapper').html(data);
-
-                // Ngăn sự kiện click trong form không lan lên formWrapper
-                $('form').on('click', function (event) {
-                    event.stopPropagation();
-                });
-
-                $('#formContainer').css({
-                    'width': '500px',
-                    'max-height': '90vh',
-                    'z-index': '2',
-                })
-                $('#cancelBtn').click(function () {
-                    hiddenOverlay();
-                });
-            },
-            error: function () {
-                alert("Có lỗi xảy ra khi tải nội dung.");
-            }
-        });
-    })
 
     function hiddenOverlay() {
         $('#formWrapper').css({

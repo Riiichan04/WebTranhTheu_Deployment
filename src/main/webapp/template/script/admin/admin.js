@@ -15,23 +15,11 @@ $(".ajax-link").on("click", function (event) {
             alert("Có lỗi xảy ra khi tải nội dung.");
         }
     });
-});
 
-// Xử lý hiển thị trang hiện tại trong menu
-$(".ajax-link").click(function () {
     $('.ajax-link.active').removeClass('active');
     $(this).addClass('active'); // Đánh dấu menu đang chọn
 });
 
 // Lần đầu khởi tạo trang
-$.ajax({
-    url: $('#dashboard').attr("href"),
-    type: "GET",
-    success: function (data) {
-        $("#content").html(data); // Cập nhật nội dung vào phần #content
-    },
-    error: function () {
-        alert("Có lỗi xảy ra khi tải nội dung.");
-    }
-});
+$('#dashboard').click();
 

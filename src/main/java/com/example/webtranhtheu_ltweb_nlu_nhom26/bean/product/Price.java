@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
 public class Price implements Serializable {
+    private int id;
     private int productId;  //Id sản phẩm
     private int width;  //Chiều dài của sản phẩm
     private int height; //Chiều cao của sản phẩm
@@ -27,6 +28,14 @@ public class Price implements Serializable {
         this.height = height;
         this.price = price;
         this.available = available;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getProductId() {

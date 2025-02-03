@@ -39,36 +39,12 @@ public class DashboardAdminService {
         return dashBoardAminDAO.countOrders();
     }
 
-    public int getTotalOrderStatus1() {
-        return dashBoardAminDAO.countOrdersStatus1();
+    public int getTotalOrderStatus(int status) {
+        return dashBoardAminDAO.countOrdersStatus(status);
     }
 
-    public int getTotalOrderStatus2() {
-        return dashBoardAminDAO.countOrdersStatus2();
-    }
-
-    public int getTotalOrderStatus3() {
-        return dashBoardAminDAO.countOrdersStatus3();
-    }
-
-    public int getTotalOrderStatus4() {
-        return dashBoardAminDAO.countOrdersStatus4();
-    }
-
-    public int getTotalOrderStatus5() {
-        return dashBoardAminDAO.countOrdersStatus5();
-    }
-
-    public int getTotalOrderStatus6() {
-        return dashBoardAminDAO.countOrdersStatus6();
-    }
-
-    public int getTotalOrderPayStatus0() {
-        return dashBoardAminDAO.countPaymentStatus0();
-    }
-
-    public int getTotalOrderPayStatus1() {
-        return dashBoardAminDAO.countPaymentStatus1();
+    public int getTotalOrderPayStatus(int status) {
+        return dashBoardAminDAO.countPaymentStatus(status);
     }
 
     public String getSumAllOrderPrice() {
