@@ -1,5 +1,4 @@
 
-
 // Xem từng mục đơn hàng
 $(".order-item").click(function () {
     // $(".order-item").removeClass("on");
@@ -26,10 +25,23 @@ $(".order-item").click(function () {
 
 
 //Nút hủy hàng
-$(".cancel-btn").click(function () {
-    $(".content-details").css("display", "none")
-    $("#user-cancel-order").css("display", "block")
-})
 
+function getCancelForm(orderId){
+    $("#user-ordered-list").addClass("d-none")
+    $("#cancel-form").removeClass("d-none")
+    $.ajax({
+        url:"/user/get-cancel-form",
+        type: "GET",
+        data:{
+            "orderId": orderId
+        },
+        success: function (data){
+            $("#cancel-form").html(data)
+        },
+        error: function (){
+            alert("Không tìm thấy order")
+        }
+    })
+}
 // Chi tiết hủy hàng.
 

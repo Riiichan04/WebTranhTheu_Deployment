@@ -53,21 +53,17 @@
 </div>
 <script src="template/script/header.js"></script>
 <script>
-    const formatterPrice = new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND',
-    });
-    function formatPrice(productId){
+    function formatPriceViewed(productId){
         let card;
         let product_price;
         let priceFormat;
         card= $("div#"+ productId)
         product_price= card.find("#minPrice")
-        priceFormat= formatterPrice.format(product_price.prop("innerText"))
+        priceFormat= formatter.format(product_price.prop("innerText"))
         product_price.text(priceFormat+"")
     }
     <c:forEach var="product" items="${viewedHistory.viewedProducts}">
-    formatPrice(${product.id})
+    formatPriceViewed(${product.id})
     </c:forEach>
 
     function addToCart(element){

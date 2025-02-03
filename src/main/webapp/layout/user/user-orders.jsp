@@ -10,7 +10,25 @@
     <link rel="stylesheet" href="../../template/style/user/style-forms/orders.css">
 </head>
 <body>
-<div id="user-ordered-list" class=" content-details col">
+<script>
+    function formatDate(element) {
+        let dateInput;
+        dateInput= element.prop("innerText")
+        console.log(dateInput)
+        const date = new Date(dateInput.replace(" ", "T")); // Đổi " " thành "T" để tuân theo chuẩn ISO
+
+        // Bước 2: Lấy ngày, tháng, năm
+        const day = String(date.getDate()).padStart(2, "0"); // Đảm bảo 2 chữ số (28)
+        const month = String(date.getMonth() + 1).padStart(2, "0"); // Tháng (01) (lưu ý: getMonth() trả từ 0-11)
+        const year = date.getFullYear(); // Năm (2025)
+
+        // Bước 3: Định dạng ngày-tháng-năm
+        const formattedDate = day+'-'+month+'-'+year;
+        element.prop("innerText",formattedDate)
+
+    }
+</script>
+<div id="user-ordered-list" class="content-details">
     <div class="h3 p-4">Đơn hàng của tôi</div>
     <hr>
     <div class="container px-3">
@@ -31,7 +49,7 @@
             </c:if>
             <c:if test="${not empty account.orders}">
                 <c:forEach var="order" items="${account.orders}">
-                    <div class="row card border px-2 py-4">
+                    <div id="${order.id}" class="row card border px-2 py-4">
                         <div class="row">
                             <div class="col-9"></div>
                             <div class="col-3">
@@ -47,22 +65,22 @@
                                 </c:choose></div>
                         </div>
                         <c:forEach var="orderProduct" items="${order.products}">
-                            <div class="row py-3">
+                            <div id="${orderProduct.id}" class="row py-3">
                                 <img src="${orderProduct.thumbnail}"
-                                                        class="resized-image col-3">
+                                     class="resized-image col-3">
                                 <div class="col container">
                                     <div class="row title">${orderProduct.title}</div>
                                     <div class="row">${orderProduct.quantity}</div>
                                 </div>
-                                <div class="col-3 p-4">${orderProduct.price}</div>
+                                <div id="productPrice" class="col-3 p-4">${orderProduct.price}</div>
                             </div>
                         </c:forEach>
-                        <div class="row py-3">
+                        <div class=" total row py-3">
                             <div class="col"></div>
                             <div class="col-3 title">
                                 Thành tiền:
                             </div>
-                            <div class="col-3">
+                            <div id="totalPrice" class="col-3">
                                     ${order.totalPrice}
                             </div>
                         </div>
@@ -72,7 +90,17 @@
         </div>
     </div>
 </div>
+<div id="order-detail" class="d-none"></div>
+<div id="cancel-form" class="d-none"></div>
 <%--<script src="template/script/header.js"></script>--%>
 <script src="../../template/script/account/user-order.js"></script>
+<script>
+    <c:forEach var="order" items="${account.orders}">
+    <c:forEach var="orderProduct" items="${order.products}">
+    formatPrice($("div#" +${orderProduct.id}).find("#productPrice"))
+    </c:forEach>
+    formatPrice($("div#" +${order.id}).find(".total").find("#totalPrice"))
+    </c:forEach>
+</script>
 </body>
 </html>

@@ -23,4 +23,13 @@ public class OrderService {
     public static List<Order> getListOrderByUserAndStatus(int accountId, int status){
         return orderDAO.getListOrderByUserAndStatus(accountId, status);
     }
+    public Order getOrderById(int accountId,int orderId){
+        return orderDAO.getOrderById(accountId, orderId);
+    }
+    public boolean updateStatus(int orderId, int status){
+        return orderDAO.updateOrderStatus(orderId, status);
+    }
+    public boolean insertCancelOrder(int orderId, int cancelReason){
+        return orderDAO.insertCancelOrder(orderId, cancelReason);
+    }
 }

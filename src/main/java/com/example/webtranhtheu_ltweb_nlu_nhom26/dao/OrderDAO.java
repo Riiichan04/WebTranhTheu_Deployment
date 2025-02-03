@@ -6,6 +6,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.order.OrderProduct;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
+import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
@@ -51,4 +52,26 @@ public interface OrderDAO {
                     " GROUP BY o.id,o.createdAt, o.statusOrder, o.statusPay")
     @RegisterBeanMapper(Order.class)
     List<Order> getListOrderByUserAndStatus(@Bind("accountId") int accountId, @Bind("statusOrder") int statusOrder);
+
+    @SqlQuery(
+            "SELECT o.id," +
+                    "SUM(op.price * op.amount) AS totalPrice, " +
+                    "o.createdAt,o.deliveredAt,o.method,o.shippingAddress,o.statusOrder AS status, o.statusPay AS statusPay " +
+                    "FROM orders o " +
+                    "JOIN order_products_details op ON o.id = op.orderId "
+                    + "where o.accountId = :accountId and o.id =:orderId "+
+                    " GROUP BY o.id,o.createdAt,o.deliveredAt,o.method,o.shippingAddress,o.statusOrder,o.statusPay"
+    )
+    @RegisterBeanMapper(Order.class)
+    Order getOrderById(@Bind("accountId") int accountId,@Bind("orderId") int orderId);
+
+    @SqlUpdate(
+            "UPDATE orders SET statusOrder = :statusOrder where id = :orderId "
+    )
+    boolean updateOrderStatus(@Bind("orderId") int orderId, @Bind("statusOrder") int statusOrder);
+
+    @SqlUpdate(
+        "INSERT INTO cancel_orders (orderId,reason) VALUES (:orderId, :cancelReason)"
+    )
+    boolean insertCancelOrder(@Bind("orderId") int orderId,@Bind("cancelReason") int cancelReason);
 }

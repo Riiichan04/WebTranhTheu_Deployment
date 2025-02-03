@@ -8,6 +8,14 @@
     <jsp:include page="../public/library.jsp"/>
 </head>
 <body>
+<script>
+    const formatter = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' })
+    function formatPrice(element){
+        let formatPrice;
+        formatPrice= formatter.format(element.prop("innerText"))
+        element.text(formatPrice+"")
+    }
+</script>
 <jsp:include page="../public/header.jsp"/>
 <div id="custom-popup-overlay" class="d-none"></div>
 <div id="custom-popup" class="container d-none">

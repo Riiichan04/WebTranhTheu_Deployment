@@ -38,25 +38,22 @@
         </c:if>
     </div>
 </div>
+
 <%--<script src="template/script/header.js"></script>--%>
 <%--<script src="template/script/account.js"></script>--%>
 </body>
 <script>
-    const formatterPrice = new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND',
-    });
-    function formatPrice(productId){
+    function formatPriceWishlist(productId){
         let card;
         let product_price;
         let priceFormat;
         card= $("div#"+ productId)
         product_price= card.find("#minPrice")
-        priceFormat= formatterPrice.format(product_price.prop("innerText"))
+        priceFormat= formatter.format(product_price.prop("innerText"))
         product_price.text(priceFormat+"")
     }
     <c:forEach var="product" items="${account.wishProducts}">
-    formatPrice(${product.product.id})
+    formatPriceWishlist(${product.product.id})
     </c:forEach>
 </script>
 </html>
