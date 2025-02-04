@@ -44,7 +44,7 @@ function getCancelForm(orderId){
 }
 
 // Chi tiết đơn hàng
-function getDetailsForm(orderId,canceled){
+function getDetailsForm(orderId){
     $("#user-ordered-list").addClass("d-none")
     $("#order-detail").removeClass("d-none")
     $.ajax({
@@ -60,5 +60,54 @@ function getDetailsForm(orderId,canceled){
             alert("Không tìm thấy chi tiết đơn hàng")
         }
 
+    })
+}
+
+function updateOrderStatus(orderId,status){
+    $.ajax({
+        url:"/user/update-order-status",
+        type:"POST",
+        data:{
+            "orderId": orderId,
+            "status": status
+        },
+        success:function (){
+            $("div#"+orderId).remove();
+            let message=""
+            if(status===5){
+                message="Đã nhận đơn hàng"
+            }
+            if(status===6) {
+                message="Đã gửi yêu cầu hoàn trả"
+            }
+            showMessageUpdate(message)
+        },
+        error: function (){
+            alert("Lỗi")
+        }
+    })
+}
+
+function rebuyOrder(orderId){
+    $.ajax({
+        url:"/add-order-to-cart",
+        type:"POST",
+        data:{
+            "orderId": orderId
+        },
+        success: function (data) {
+            data = $.parseJSON(data)
+            if (data.result) {
+                console.log(data)
+                const badge = $("#cart-badge")
+                const currentCartLength = data.currentCartLength
+                badge.removeClass("d-none")
+                badge.text(currentCartLength)
+                showMessageUpdate("Thêm vào giỏ hàng thành công")
+            } else alert("Có lỗi khi thêm đơn hàng vào giỏ hàng")
+        },
+        error: function (){
+            // alert("Lỗi khi thêm vào giỏ hàng")
+        }
     })
 }

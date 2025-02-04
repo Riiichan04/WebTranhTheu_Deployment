@@ -17,8 +17,8 @@
 <div id="order-detail-info" class=" content-details col">
     <div class="row"><i class="backpage pt-4 bi bi-chevron-left">Trở lại</i></div>
     <div class="row">
-        <div class="col-7 h3 px-4 pt-2 pb-2 ">Chi tiết đơn hàng</div>
-        <div class="col-5">
+        <div class="col-8 h3 px-4 pt-2 pb-2 ">Chi tiết đơn hàng</div>
+        <div class="col-4 justify-content-center align-items-center text-center">
             <c:choose>
                 <c:when test="${order.status == 1}">Chờ xác nhận</c:when>
                 <c:when test="${order.status == 2}">Chờ lấy hàng </c:when>
@@ -35,7 +35,7 @@
     <c:if test="${order.status==5}">
         <div class="m-2 row rebuy-area">
             <div class="col-8">Cảm ơn quý khách đã tham gia mua sắm!</div>
-            <button class="col-4 rebuy_btn">Mua lại</button>
+            <button class="col-4 rebuy_btn" onclick="rebuyOrder(${order.id})">Mua lại</button>
         </div>
     <hr/>
     </c:if>
@@ -84,9 +84,9 @@
                     <img src="${orderProduct.thumbnail}" class="resized-image col-3">
                     <div class="col container">
                         <div class="row title">${orderProduct.title}</div>
-                        <div class="row">${orderProduct.title}</div>
+                        <div class="row">${orderProduct.quantity}</div>
                     </div>
-                    <div id="orderProductPrice" class="col-3 p-4">${orderProduct.price}</div>
+                    <div class="price col-3 p-4">${orderProduct.price}</div>
                 </div>
             </c:forEach>
         </div>
@@ -140,18 +140,18 @@
                     </c:choose>
                 </div>
             </div>
+            <hr/>
         </c:if>
     </div>
 </div>
 <script>
     <c:forEach var="orderProduct" items="${order.products}">
     <%--console.log($("div#product_"+ ${orderProduct.id}).children("#orderProductPrice"))--%>
-    formatPrice($("div#product_"+ ${orderProduct.id}).children("#orderProductPrice"))
+    formatPrice($("div#product_"+ ${orderProduct.id}).children(".price"))
     </c:forEach>
     function formatTotalPrice(){
         let formatPrice;
         formatPrice= formatter.format($("div#totalPrice_"+${order.id}).prop("innerText"))
-        console.log(formatPrice)
         $("div#totalPrice_"+${order.id}).text(formatPrice+"")
     }
     formatTotalPrice()

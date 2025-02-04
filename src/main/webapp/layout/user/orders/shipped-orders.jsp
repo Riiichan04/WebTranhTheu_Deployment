@@ -14,8 +14,7 @@
     <c:if test="${not empty shipped}">
         <c:forEach var="order" items="${shipped}">
             <!-- Card-->
-            <div class="card container">
-                <!--NSX-->
+            <div id="${order.id}" class="card container">
                 <div class="row">
                     <div class="col-5"></div>
                     <div class="col-4 shipped">Giao hàng thành công</div>
@@ -35,27 +34,26 @@
                 <hr>
                 <!--Danh sach sp trong 1 orrder-->
                 <div class="row py-4 list-products">
-                        <!-- Sản phẩm 1-->
                     <c:forEach var="orderProduct" items="${order.products}">
-                        <div class="row py-3">
+                        <div id="product_${orderProduct.id}" class="row py-3">
                             <img src="${orderProduct.thumbnail}"
                                                     class="resized-image col-3">
                             <div class="col container">
                                 <div class="row title">${orderProduct.title}</div>
                                 <div class="row">${orderProduct.quantity}</div>
                             </div>
-                            <div class="col-3 p-4">${orderProduct.price}</div>
+                            <div id="productPrice" class="col-3 p-4">${orderProduct.price}</div>
                         </div>
                     </c:forEach>
                 </div>
                 <hr>
                 <!-- Tổng tiền-->
-                <div class="row py-3">
+                <div class="total row py-3">
                     <div class="col"></div>
                     <div class="col-3 title">
                         Thành tiền:
                     </div>
-                    <div class="col-3">
+                    <div id="totalPrice" class="col-3">
                         ${order.totalPrice}
                     </div>
                 </div>
@@ -63,13 +61,20 @@
                 <div class="row py-2">
                     <div class="col"></div>
                     <div class="col-3">
-                        <button type="button" class="received">Đã nhận hàng</button>
+                        <button type="button" class="received" onclick="updateOrderStatus(${order.id},5)">Đã nhận hàng</button>
                     </div>
                 </div>
             </div>
-            <div class="p-2"></div>
         </c:forEach>
     </c:if>
 </div>
+<script>
+    <c:forEach var="order" items="${shipped}">
+    formatPrice($("div#" +${order.id}).find(".total").find("#totalPrice"))
+    <c:forEach var="orderProduct" items="${order.products}">
+    formatPrice($("div#product_" +${orderProduct.id}).find("#productPrice"))
+    </c:forEach>
+    </c:forEach>
+</script>
 </body>
 </html>

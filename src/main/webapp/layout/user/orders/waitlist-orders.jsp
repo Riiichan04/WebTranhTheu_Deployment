@@ -35,7 +35,7 @@
                 <!--Danh sach sp trong 1 order-->
                 <div class="row py-4 list-products">
                     <c:forEach var="orderProduct" items="${order.products}">
-                        <div id="${orderProduct.id}" class="row py-3">
+                        <div id="product_${orderProduct.id}" class="row py-3">
                             <img src="${orderProduct.thumbnail}"
                                  class="resized-image col-3">
                             <div class="col container">
@@ -61,7 +61,7 @@
                 <div class="row my-2">
                     <div class="col-5"></div>
                     <button type="button" class="cancel-btn col-3 me-2" onclick="getCancelForm(${order.id})">Hủy hàng</button>
-                    <button type="button" class="details-btn col-3" onclick="getDetailsForm(${order.id},false)">Chi tiết</button>
+                    <button type="button" class="details-btn col-3" onclick="getDetailsForm(${order.id})">Chi tiết</button>
                 </div>
             </div>
         </c:forEach>
@@ -71,7 +71,7 @@
     <c:forEach var="order" items="${waitlist}">
     formatPrice($("div#" +${order.id}).find(".total").find("#totalPrice"))
     <c:forEach var="orderProduct" items="${order.products}">
-    formatPrice($("div#" +${orderProduct.id}).find("#productPrice"))
+    formatPrice($("div#product_" +${orderProduct.id}).find("#productPrice"))
     </c:forEach>
     </c:forEach>
 </script>

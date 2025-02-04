@@ -36,7 +36,7 @@
                             <div class="row title">${orderProduct.title}</div>
                             <div class="row">${orderProduct.quantity}</div>
                         </div>
-                        <div id="orderProductPrice" class="col-3 p-4">${orderProduct.price}</div>
+                        <div class="price col-3 p-4">${orderProduct.price}</div>
                     </div>
                 </c:forEach>
         </div>
@@ -73,7 +73,7 @@
 <script>
     <c:forEach var="orderProduct" items="${order.products}">
     <%--console.log($("div#product_"+ ${orderProduct.id}).children("#orderProductPrice"))--%>
-    formatPrice($("div#product_"+ ${orderProduct.id}).children("#orderProductPrice"))
+    formatPrice($("div#product_"+ ${orderProduct.id}).children(".price"))
     </c:forEach>
     $(".date").each(function (){
         formatDate($(this))
