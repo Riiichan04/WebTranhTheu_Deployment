@@ -29,19 +29,16 @@
         </div>
         <!--Danh sach sp trong 1 order-->
         <div class="row py-4 list-products">
-            <div class="container">
                 <c:forEach var="orderProduct" items="${order.products}">
-                    <!-- Sản phẩm 1-->
-                    <div class="row py-3">
+                    <div id="product_${orderProduct.id}" class="row py-3">
                         <img src="${orderProduct.thumbnail}" class="resized-image col-3">
                         <div class="col container">
                             <div class="row title">${orderProduct.title}</div>
                             <div class="row">${orderProduct.quantity}</div>
                         </div>
-                        <div class="col-3 p-4">${orderProduct.price}</div>
+                        <div id="orderProductPrice" class="col-3 p-4">${orderProduct.price}</div>
                     </div>
                 </c:forEach>
-            </div>
         </div>
     </div>
     <div class="reason">
@@ -74,6 +71,10 @@
     </div>
 </div>
 <script>
+    <c:forEach var="orderProduct" items="${order.products}">
+    <%--console.log($("div#product_"+ ${orderProduct.id}).children("#orderProductPrice"))--%>
+    formatPrice($("div#product_"+ ${orderProduct.id}).children("#orderProductPrice"))
+    </c:forEach>
     $(".date").each(function (){
         formatDate($(this))
     })
@@ -83,8 +84,6 @@
     })
     function cancelOrder(orderId){
         let cancelReason= $("input[name='cancelReason']:checked").val()
-        console.log(orderId)
-        console.log(cancelReason)
         if(!cancelReason){
             alert("Chọn lý do hủy đơn")
         }
@@ -98,14 +97,7 @@
             success: function (){
                 $("#cancel-form").addClass("d-none")
                 $("#user-ordered-list").removeClass("d-none")
-                $("#custom-popup-overlay").removeClass("d-none")
-                $("#custom-popup").removeClass("d-none")
-                $("#custom-popup").children("#message").prop("innerText", "Hủy đơn thành công")
-
-                $("#custom-popup").children(".popup-content").children(".popup-close").click(function () {
-                    $("#custom-popup").addClass("d-none")
-                    $("#custom-popup-overlay").addClass("d-none")
-                })
+                showMessageUpdate("Hủy đơn thành công")
             },
             error: function(xhr, status, error) {
                 console.log("Lỗi:", status, error);

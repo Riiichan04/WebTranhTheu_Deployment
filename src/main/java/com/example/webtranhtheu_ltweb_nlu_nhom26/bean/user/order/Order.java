@@ -18,9 +18,21 @@ public class Order implements Serializable {
     private List<OrderProduct> products;
     private Discount discount;
     private double totalPrice;
+    private int cancelReason;
     public Order() {
     }
 
+    public Order(int method, int statusPay, String shippingAddress, Timestamp deliveredAt, Timestamp createdAt, int status, int id,int cancelReason) {
+        this.method = method;
+        this.statusPay = statusPay;
+        this.shippingAddress = shippingAddress;
+        this.deliveredAt = deliveredAt;
+        this.createdAt = createdAt;
+        this.status = status;
+        this.id = id;
+        this.products = new ArrayList<>();
+        this.cancelReason= cancelReason;
+    }
     public Order(int method, int statusPay, String shippingAddress, Timestamp deliveredAt, Timestamp createdAt, int status, int id) {
         this.method = method;
         this.statusPay = statusPay;
@@ -31,7 +43,6 @@ public class Order implements Serializable {
         this.id = id;
         this.products = new ArrayList<>();
     }
-
     public int getId() {
         return id;
     }
@@ -110,5 +121,13 @@ public class Order implements Serializable {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public int getCancelReason() {
+        return cancelReason;
+    }
+
+    public void setCancelReason(int cancelReason) {
+        this.cancelReason = cancelReason;
     }
 }

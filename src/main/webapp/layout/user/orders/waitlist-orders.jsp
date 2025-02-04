@@ -61,7 +61,7 @@
                 <div class="row my-2">
                     <div class="col-5"></div>
                     <button type="button" class="cancel-btn col-3 me-2" onclick="getCancelForm(${order.id})">Hủy hàng</button>
-                    <button type="button" class="details-btn col-3" onclick="getDetailsForm(${order.id})">Chi tiết</button>
+                    <button type="button" class="details-btn col-3" onclick="getDetailsForm(${order.id},false)">Chi tiết</button>
                 </div>
             </div>
         </c:forEach>

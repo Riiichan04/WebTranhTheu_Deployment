@@ -15,6 +15,16 @@
         formatPrice= formatter.format(element.prop("innerText"))
         element.text(formatPrice+"")
     }
+    function showMessageUpdate(message){
+        $("#custom-popup-overlay").removeClass("d-none")
+        $("#custom-popup").removeClass("d-none")
+        $("#custom-popup").children("#message").prop("innerText", message)
+
+        $("#custom-popup").children(".popup-content").children(".popup-close").click(function () {
+            $("#custom-popup").addClass("d-none")
+            $("#custom-popup-overlay").addClass("d-none")
+        })
+    }
 </script>
 <jsp:include page="../public/header.jsp"/>
 <div id="custom-popup-overlay" class="d-none"></div>

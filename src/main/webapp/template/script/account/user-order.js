@@ -24,8 +24,7 @@ $(".order-item").click(function () {
 })
 
 
-//Nút hủy hàng
-
+// Chi tiết hủy hàng
 function getCancelForm(orderId){
     $("#user-ordered-list").addClass("d-none")
     $("#cancel-form").removeClass("d-none")
@@ -43,5 +42,23 @@ function getCancelForm(orderId){
         }
     })
 }
-// Chi tiết hủy hàng.
 
+// Chi tiết đơn hàng
+function getDetailsForm(orderId,canceled){
+    $("#user-ordered-list").addClass("d-none")
+    $("#order-detail").removeClass("d-none")
+    $.ajax({
+        url:"/user/get-order-detail",
+        type:"GET",
+        data:{
+            "orderId": orderId
+        },
+        success: function (data){
+            $("#order-detail").html(data)
+        },
+        error: function () {
+            alert("Không tìm thấy chi tiết đơn hàng")
+        }
+
+    })
+}

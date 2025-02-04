@@ -93,14 +93,7 @@
             success: function (){
                 card_text.prop("innerText",fixedAddress)
                 changeFiled.addClass("d-none")
-                $("#custom-popup-overlay").removeClass("d-none")
-                $("#custom-popup").removeClass("d-none")
-                $("#custom-popup").children("#message").prop("innerText", "Cập nhật thành công")
-
-                $("#custom-popup").children(".popup-content").children(".popup-close").click(function () {
-                    $("#custom-popup").addClass("d-none")
-                    $("#custom-popup-overlay").addClass("d-none")
-                })
+               showMessageUpdate("Cập nhật thành công")
             },
             error: function (){
 
@@ -121,14 +114,7 @@
             },
             success: function (){
                 element.remove()
-                $("#custom-popup-overlay").removeClass("d-none")
-                $("#custom-popup").removeClass("d-none")
-                $("#custom-popup").children("#message").prop("innerText", "Xóa thành công")
-
-                $("#custom-popup").children(".popup-content").children(".popup-close").click(function () {
-                    $("#custom-popup").addClass("d-none")
-                    $("#custom-popup-overlay").addClass("d-none")
-                })
+                showMessageUpdate("Xóa thành công")
             },
             error: function (){
 

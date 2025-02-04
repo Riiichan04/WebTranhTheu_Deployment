@@ -45,14 +45,7 @@ $(".add-new-address").click(function (event) {
                                         '                </div>')
                                 }
                             }
-                            $("#custom-popup-overlay").removeClass("d-none")
-                            $("#custom-popup").removeClass("d-none")
-                            $("#custom-popup").children("#message").prop("innerText", "Thêm địa chỉ thành công")
-
-                            $("#custom-popup").children(".popup-content").children(".popup-close").click(function () {
-                                $("#custom-popup").addClass("d-none")
-                                $("#custom-popup-overlay").addClass("d-none")
-                            })
+                            showMessageUpdate("Thêm địa chỉ thành công")
                         },
                         error: function () {
 

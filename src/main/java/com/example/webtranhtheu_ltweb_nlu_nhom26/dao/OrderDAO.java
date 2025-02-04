@@ -56,11 +56,12 @@ public interface OrderDAO {
     @SqlQuery(
             "SELECT o.id," +
                     "SUM(op.price * op.amount) AS totalPrice, " +
-                    "o.createdAt,o.deliveredAt,o.method,o.shippingAddress,o.statusOrder AS status, o.statusPay AS statusPay " +
+                    "o.createdAt,o.deliveredAt,o.method,o.shippingAddress,o.statusOrder AS status, o.statusPay AS statusPay,co.reason AS cancelReason " +
                     "FROM orders o " +
+                    "LEFT JOIN cancel_orders co on co.orderId=o.id "+
                     "JOIN order_products_details op ON o.id = op.orderId "
                     + "where o.accountId = :accountId and o.id =:orderId "+
-                    " GROUP BY o.id,o.createdAt,o.deliveredAt,o.method,o.shippingAddress,o.statusOrder,o.statusPay"
+                    " GROUP BY o.id,o.createdAt,o.deliveredAt,o.method,o.shippingAddress,o.statusOrder,o.statusPay,co.reason"
     )
     @RegisterBeanMapper(Order.class)
     Order getOrderById(@Bind("accountId") int accountId,@Bind("orderId") int orderId);
@@ -74,4 +75,5 @@ public interface OrderDAO {
         "INSERT INTO cancel_orders (orderId,reason) VALUES (:orderId, :cancelReason)"
     )
     boolean insertCancelOrder(@Bind("orderId") int orderId,@Bind("cancelReason") int cancelReason);
+
 }

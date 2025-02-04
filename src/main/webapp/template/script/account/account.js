@@ -45,8 +45,4 @@ $("#noBtn").click(function () {
     $(".empty-prop").show();
 })
 
-function closePopup(){
-    $("#custom-popup").addClass("d-none")
-    $("#custom-popup-overlay").addClass("d-none")
-}
 

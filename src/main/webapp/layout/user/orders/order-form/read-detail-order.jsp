@@ -1,229 +1,160 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: loan
-  Date: 03/02/2025
-  Time: 18:15
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 </head>
 <body>
 <!--Order details info-->
+<script>
+    $(".bi-chevron-left").click(function () {
+        $("#order-detail").addClass("d-none")
+        $("#user-ordered-list").removeClass("d-none")
+    })
+    $(".date").each(function () {
+        formatDate($(this))
+    })
+</script>
 <div id="order-detail-info" class=" content-details col">
-  <div class="row"><i class="backpage pt-4 bi bi-chevron-left">Trở lại</i></div>
-  <div class="row">
-    <div class="col-7 h3 px-4 pt-2 pb-2 ">Chi tiết đơn hàng</div>
-    <div class="col-3 p">Mã đơn: 24091778WTHEHEHE</div>
-    <div class="col-2 p"><br/>Hoàn thành</div>
-  </div>
-  <hr/>
-  <div class=" my-4 row align-items-center timeline-container">
-    <div class="col timeline-step">
-      <div class="timeline-circle">
-        <i class="bi bi-receipt"></i>
-      </div>
-      <div class="timeline-text">Đơn Hàng Đã Đặt</div>
-      <div class="timeline-date">12:16 <br/> 17/09/2024</div>
-    </div>
-    <div class="col timeline-connector"></div>
-    <div class="col timeline-step">
-      <div class="timeline-circle">
-        <i class="bi bi-cash-stack"></i>
-      </div>
-      <div class="timeline-text">Đã Xác Nhận Thông Tin</div>
-      <div class="timeline-date">12:46 <br/> 17/09/2024</div>
-    </div>
-    <div class="col timeline-connector"></div>
-    <div class="col timeline-step">
-      <div class="timeline-circle">
-        <i class="bi bi-truck"></i>
-      </div>
-      <div class="timeline-text">Đã Giao Cho ĐVVC</div>
-      <div class="timeline-date">18:04 <br/> 17/09/2024</div>
-    </div>
-    <div class="col timeline-connector"></div>
-    <div class="col timeline-step">
-      <div class="timeline-circle">
-        <i class="bi bi-box-seam"></i>
-      </div>
-      <div class="timeline-text">Đã Nhận Được Hàng</div>
-      <div class="timeline-date">08:04 <br/> 24/09/2024</div>
-    </div>
-    <div class="col timeline-connector"></div>
-    <div class="col timeline-step">
-      <div class="timeline-circle">
-        <i class="bi bi-star-fill"></i>
-      </div>
-      <div class="timeline-text">Đơn Hàng Đã Hoàn Thành</div>
-      <div class="timeline-date">23:59 <br/> 24/09/2024</div>
-    </div>
-  </div>
-  <hr/>
-  <div class="m-2 row rebuy-area">
-    <div class="col-8">Cảm ơn quý khách đã tham gia mua sắm!</div>
-    <button class="col-4 rebuy_btn">Mua lại</button>
-  </div>
-  <hr/>
-  <div class="p-4 row">
+    <div class="row"><i class="backpage pt-4 bi bi-chevron-left">Trở lại</i></div>
     <div class="row">
-      <div class="col-10 h5">Địa chỉ nhận hàng</div>
-      <div class="col-2 text-end">Ninja Van</div>
-
-    </div>
-    <div class="col-5 border-end">
-      <div class="row h6">Bích Loan</div>
-      <div class="row">
-        +(84)357676762
-        <br/>
-        Khu phố 6, phường Linh Trung, Thành phố Thủ Đức, TP HCM
-      </div>
-    </div>
-    <div class="col-7">
-      <div class="timeline container ">
-        <!-- Reusable Timeline Item -->
-        <div class="timeline-item">
-          <div class="timeline-icon completed">
-            <i class="bi bi-check-lg"></i>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-time">16:35 20-09-2024</div>
-            <div class="timeline-title text-success">Đã giao</div>
-            <div class="timeline-description">
-              Giao hàng thành công<br>
-              Người nhận hàng: <strong>Bích Loan</strong> - <a href="#" class="timeline-link">Xem
-              hình ảnh giao hàng</a>
-            </div>
-          </div>
+        <div class="col-7 h3 px-4 pt-2 pb-2 ">Chi tiết đơn hàng</div>
+        <div class="col-5">
+            <c:choose>
+                <c:when test="${order.status == 1}">Chờ xác nhận</c:when>
+                <c:when test="${order.status == 2}">Chờ lấy hàng </c:when>
+                <c:when test="${order.status == 3}">Chờ giao hàng</c:when>
+                <c:when test="${order.status == 4}">Đã giao hàng</c:when>
+                <c:when test="${order.status == 5}">Đã nhận được hàng</c:when>
+                <c:when test="${order.status == 6}">Yêu cầu hoàn đơn - đổi trả</c:when>
+                <c:when test="${order.status == 0}">Đã hủy</c:when>
+                <c:otherwise> Trạng thái không xác định</c:otherwise>
+            </c:choose>
         </div>
-
-        <div class="timeline-item">
-          <div class="timeline-icon">
-            <i class="bi bi-truck"></i>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-time">16:35 20-09-2024</div>
-            <div class="timeline-title">Đang vận chuyển</div>
-            <div class="timeline-description">
-              Đơn hàng sẽ sớm được giao, vui lòng chú ý điện thoại
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-icon">
-            <i class="bi bi-clock"></i>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-time">09:06 20-09-2024</div>
-            <div class="timeline-title">Đang vận chuyển</div>
-            <div class="timeline-description">
-              Đơn hàng đã đến trạm giao hàng tại khu vực của bạn và sẽ được giao trong vòng 24 giờ
-              tiếp theo.
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-icon">
-            <i class="bi bi-box"></i>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-time">12:07 19-09-2024</div>
-            <div class="timeline-title">Rời khỏi phân loại</div>
-            <div class="timeline-description">
-              Đơn hàng đã đến kho phân loại tại TP. Hồ Chí Minh.
-            </div>
-          </div>
-        </div>
-
-        <div class="text-center mt-3">
-          <a href="#" class="timeline-link">Xem thêm</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr/>
-  <div class="mt-4 container">
-    <!--NSX-->
-    <div class="row shop-info">
-      <div class="col-1"><i class="bi bi-shop-window"></i></div>
-      <div class="col">provider</div>
-    </div>
-    <hr>
-    <!--Danh sach sp trong 1 order-->
-    <div class="row py-4 list-products">
-      <div class="container">
-        <!-- Sản phẩm 1-->
-        <div class="row py-3">
-          <div class="col-3"><img src="../asset/image/product_image.png" class="resized-image">
-          </div>
-          <div class="col container">
-            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
-            <div class="row">x1</div>
-          </div>
-          <div class="col-3 p-4">15.000.000 đ</div>
-        </div>
-        <!--Sản phẩm 2-->
-        <div class="row py-3 ">
-          <div class="col-3"><img src="../asset/image/product_image.png" class="resized-image">
-          </div>
-          <div class="col container">
-            <div class="row title">Tranh thêu thám tử lừng danh Conan</div>
-            <div class="row">x1</div>
-          </div>
-          <div class="col-3 p-4">15.000.000 đ</div>
-        </div>
-      </div>
     </div>
     <hr/>
-    <div class="row px-4 py-4 ">
-      <div class="col-7 border-end">
-        <div class="row">
-          <div class="col"></div>
-          <div class="col-5">Tổng tiền hàng:</div>
+    <c:if test="${order.status==5}">
+        <div class="m-2 row rebuy-area">
+            <div class="col-8">Cảm ơn quý khách đã tham gia mua sắm!</div>
+            <button class="col-4 rebuy_btn">Mua lại</button>
         </div>
-        <hr/>
+    <hr/>
+    </c:if>
+    <div class="p-4 row">
         <div class="row">
-          <div class="col"></div>
-          <div class="col-5">Phí vận chuyển:</div>
+            <div class="col-6 h5">Địa chỉ nhận hàng</div>
+            <div class="col-6 text-end">Thông tin vận chuyển</div>
+
         </div>
-        <hr/>
-        <div class="row">
-          <div class="col"></div>
-          <div class="col-5">Giảm giá:</div>
+        <div class="col-5 border-end">
+            <div class="row h6">${account.fullName}</div>
+            <div class="row">
+                ${account.phone}
+                <br/>
+                ${order.shippingAddress}
+            </div>
         </div>
-        <hr/>
-        <div class="row">
-          <div class="col"></div>
-          <div class="col-5">Thành tiền:</div>
+        <div class="col-7">
+            <div class="row">
+                <div class="col">Ngày tạo đơn hàng:</div>
+                <div class="col date">${order.createdAt}</div>
+            </div>
+            <div class="row">
+                <div class="col">Ngày giao:</div>
+                <div class="col date">${order.deliveredAt}</div>
+            </div>
+            <div class="row">
+                <div class="col">Phương thức thanh toán:</div>
+                <div class="col">
+                    <c:choose>
+                        <c:when test="${order.method==1}">COD (Tiền mặt)</c:when>
+                        <c:when test="${order.method==0}">Chuyển khoản</c:when>
+                        <c:otherwise>Phương thức thanh toán không xác định</c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
         </div>
-        <hr/>
-      </div>
-      <div class="col-5 ps-3">
-        <p class="row ps-5 ">30.000.000đ</p>
-        <hr/>
-        <p class="row ps-5">32.000đ</p>
-        <hr/>
-        <p class="row ps-5">- 32.000đ</p>
-        <hr/>
-        <p class="row ps-5">30.000.000đ</p>
-        <hr/>
-      </div>
     </div>
     <hr/>
-    <div class="row p-0 my-3">
-      <div class="col-3"></div>
-      <div class="col-4 border-end">Phương thức thanh toán</div>
-      <div class="col-5">Thanh toán khi nhận hàng</div>
+    <div class="mt-4 container">
+        <hr>
+        <!--Danh sach sp trong 1 order-->
+        <div class="row py-4 list-products">
+            <c:forEach var="orderProduct" items="${order.products}">
+                <div id="product_${orderProduct.id}" class="row py-3 ">
+                    <img src="${orderProduct.thumbnail}" class="resized-image col-3">
+                    <div class="col container">
+                        <div class="row title">${orderProduct.title}</div>
+                        <div class="row">${orderProduct.title}</div>
+                    </div>
+                    <div id="orderProductPrice" class="col-3 p-4">${orderProduct.price}</div>
+                </div>
+            </c:forEach>
+        </div>
+        <hr/>
+        <div class="row px-4 py-4 ">
+            <div class="col-7 border-end">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-5">Tổng tiền hàng:</div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-5">Phí vận chuyển:</div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-5">Giảm giá:</div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-5">Thành tiền:</div>
+                </div>
+                <hr/>
+            </div>
+            <div class="col-5 ps-3">
+                <div id="totalPrice_${order.id}" class="row ps-5">${order.totalPrice}</div>
+                <hr/>
+                <p class="row ps-5">300000.0</p>
+                <hr/>
+                <p class="row ps-5">Chưa làm</p>
+                <hr/>
+            </div>
+        </div>
+        <hr/>
+        <c:if test="${order.status==0}">
+            <div class="row p-0 my-3">
+                <div class="col-3"></div>
+                <div class="col-4 border-end">Lý do hủy:</div>
+                <div class="col-5">
+                    <c:choose>
+                        <c:when test="${order.cancelReason == 1}">Tôi muốn đổi hình thức thanh toán</c:when>
+                        <c:when test="${order.cancelReason == 2}">Tôi muốn đổi địa chỉ nhận hàng </c:when>
+                        <c:when test="${order.cancelReason == 3}">Tôi muốn đổi sản phẩm</c:when>
+                        <c:when test="${order.cancelReason == 4}">Tôi không có nhu cầu mua nữa</c:when>
+                        <c:when test="${order.cancelReason == 5}">Thời gian giao hàng quá lâu</c:when>
+                        <c:when test="${order.cancelReason == 6}">Tôi tìm thấy nội dung phù hợp hơn</c:when>
+                        <c:otherwise> Không xác định</c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
+        </c:if>
     </div>
-    <div class="row p-0 my-3">
-      <div class="col-3"></div>
-      <div class="col-4 border-end">Lý do hủy:</div>
-      <div class="col-5">Không muốn mua hàng nữa.</div>
-    </div>
-  </div>
 </div>
+<script>
+    <c:forEach var="orderProduct" items="${order.products}">
+    <%--console.log($("div#product_"+ ${orderProduct.id}).children("#orderProductPrice"))--%>
+    formatPrice($("div#product_"+ ${orderProduct.id}).children("#orderProductPrice"))
+    </c:forEach>
+    function formatTotalPrice(){
+        let formatPrice;
+        formatPrice= formatter.format($("div#totalPrice_"+${order.id}).prop("innerText"))
+        console.log(formatPrice)
+        $("div#totalPrice_"+${order.id}).text(formatPrice+"")
+    }
+    formatTotalPrice()
+</script>
 </body>
 </html>

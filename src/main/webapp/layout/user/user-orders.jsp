@@ -14,7 +14,6 @@
     function formatDate(element) {
         let dateInput;
         dateInput= element.prop("innerText")
-        console.log(dateInput)
         const date = new Date(dateInput.replace(" ", "T")); // Đổi " " thành "T" để tuân theo chuẩn ISO
 
         // Bước 2: Lấy ngày, tháng, năm

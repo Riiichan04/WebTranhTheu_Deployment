@@ -24,8 +24,6 @@ public class ConfirmCancelOrderController extends HttpServlet {
         String cancelReason = request.getParameter("cancelReason");
         System.out.println(orderId);
         System.out.println(cancelReason);
-        System.out.println(orderService.updateStatus(Integer.parseInt(orderId), 0));
-        System.out.println(orderService.insertCancelOrder(Integer.parseInt(orderId), Integer.parseInt(cancelReason)));
         orderService.updateStatus(Integer.parseInt(orderId), 0);
         orderService.insertCancelOrder(Integer.parseInt(orderId), Integer.parseInt(cancelReason));
     }
