@@ -121,4 +121,6 @@ public interface UserDAO {
 
     @SqlUpdate("UPDATE account_addresses_details SET updatedAt = NOW() where addressId= :addressId")
     boolean updateUserAddress(@Bind("addressId") int addressId);
+
+
 }

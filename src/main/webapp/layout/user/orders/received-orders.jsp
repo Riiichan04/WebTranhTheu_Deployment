@@ -44,7 +44,7 @@
                                 <div class="row">${orderProduct.quantity}</div>
                             </div>
                             <div id="productPrice" class="col-3 p-4">${orderProduct.price}</div>
-                            <button type="button" class="write_review col-2" style="height: 30%">Viết đánh giá</button>
+                            <button type="button" class="write_review col-2" style="height: 30%" onclick="window.location.href='/product?id=${orderProduct.id}'">Viết đánh giá</button>
                         </div>
                     </c:forEach>
                 </div>
@@ -77,7 +77,6 @@
     formatPrice($("div#product_" +${orderProduct.id}).find("#productPrice"))
     </c:forEach>
     </c:forEach>
-</script>
 </script>
 </body>
 </html>
