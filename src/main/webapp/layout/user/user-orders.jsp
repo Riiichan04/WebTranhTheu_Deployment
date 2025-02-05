@@ -10,23 +10,6 @@
     <link rel="stylesheet" href="../../template/style/user/style-forms/orders.css">
 </head>
 <body>
-<script>
-    function formatDate(element) {
-        let dateInput;
-        dateInput= element.prop("innerText")
-        const date = new Date(dateInput.replace(" ", "T")); // Đổi " " thành "T" để tuân theo chuẩn ISO
-
-        // Bước 2: Lấy ngày, tháng, năm
-        const day = String(date.getDate()).padStart(2, "0"); // Đảm bảo 2 chữ số (28)
-        const month = String(date.getMonth() + 1).padStart(2, "0"); // Tháng (01) (lưu ý: getMonth() trả từ 0-11)
-        const year = date.getFullYear(); // Năm (2025)
-
-        // Bước 3: Định dạng ngày-tháng-năm
-        const formattedDate = day+'-'+month+'-'+year;
-        element.prop("innerText",formattedDate)
-
-    }
-</script>
 <div id="user-ordered-list" class="content-details">
     <div class="h3 p-4">Đơn hàng của tôi</div>
     <hr>

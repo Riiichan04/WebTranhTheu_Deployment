@@ -77,6 +77,5 @@
     </c:forEach>
     </c:forEach>
 </script>
-</script>
 </body>
 </html>

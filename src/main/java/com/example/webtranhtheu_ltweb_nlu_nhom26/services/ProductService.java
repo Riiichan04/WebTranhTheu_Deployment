@@ -126,4 +126,7 @@ public class ProductService {
         }
         return products;
     }
+    public Provider getProviderByProductId(int productId){
+        return productDAO.getProductProvider(productId);
+    }
 }

@@ -1,190 +1,111 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<jsp:include page="../common.jsp"/>--%>
 <html>
 <head>
-<%--    <title>Lịch sử đánh giá</title>--%>
-<%--    <%@include file="../public/library.jsp" %>--%>
-<%--    <!-- css property -->--%>
-<%--    <link rel="stylesheet" href="../../template/style/user/account-page.css">--%>
+
 </head>
 <body>
-<div id="user-feedback-histories" class=" content-details col">
+<script>
+    function displayRating(rating, starWidth) {
+        const starPosition = Math.trunc(rating)
+        const starPositionWidthRating = rating - Math.floor(rating)
+        const starMaskWidth = starWidth * (1 - starPositionWidthRating) * 0.8 //Do phần star chiếm 80% element
+        const starPadding = starWidth / 10
+        $("#product-info__rating .product-info__star-mask").each(function (index) {
+            if (index === starPosition) {
+                $(this).css("width", starMaskWidth + starPadding + "px")
+            }
+            if (index > starPosition) {
+                $(this).css("width", "100%")
+            }
+        });
+    }
+
+    <c:forEach var="review" items="${reviews}">
+    displayRating(${review.rating}, $("div#review_" +${review.id}).find(".product-info__star-container").width())
+    </c:forEach>
+    $(".date").each(function () {
+        formatDate($(this))
+    })
+</script>
+<div id="user-feedback-histories" class="content-details">
     <div class="h3 p-4">Lịch sử đánh giá</div>
     <hr>
-    <div class="container">
-        <div class="row title p-2">
-            <div class="col-2">Ngày</div>
-            <div class="col-6 p-0 ">Sản phẩm</div>
-            <div class="col-3 p-0">Đánh giá</div>
-            <div class="col-1"></div>
+    <c:if test="${empty reviews}">
+        <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">
+            Bạn chưa đánh giá sản phẩm nào
         </div>
-        <div class="row ">
-            <div class="row py-2">
-                <div class="col-2">09/11/2024</div>
-                <!--Hình tỉ lệ 4:1-->
-                <div class="col-6 ">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="../asset/image/product_image.png" alt="Artwork" class="resized-image-his">
-                        </div>
-                        <div class="col-1"></div>
-                        <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
-                    </div>
-                </div>
-                <div class="col-1 p-0 feedback-details">Chi tiết</div>
+    </c:if>
+    <c:if test="${not empty reviews}">
+        <div class="container">
+            <div class="row title p-2">
+                <div class="col-2">Ngày</div>
+                <div class="col-6 p-0 ">Sản phẩm</div>
+                <div class="col-3 p-0">Đánh giá</div>
+                <div class="col-1"></div>
             </div>
-            <div class="row py-2">
-                <div class="col-2">09/11/2024</div>
-                <!--Hình tỉ lệ 4:1-->
-                <div class="col-6 ">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="../asset/image/product_image.png" alt="Artwork" class="resized-image-his">
+            <div class="row">
+                <c:forEach var="review" items="${reviews}">
+                    <div id="review_${review.id}" class="row py-2">
+                        <div class="date col-2">${review.createdAt}</div>
+                        <!--Hình tỉ lệ 4:1-->
+                        <div class="col-5">
+                            <div class="row">
+                                <img src="${review.product.getThumbnail()}" alt="Artwork" class="resized-image col-3">
+                                <div class="col-1"></div>
+                                <div class="col-8">${review.product.title}</div>
+                            </div>
                         </div>
-                        <div class="col-1"></div>
-                        <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
-                    </div>
-                </div>
-                <div class="col-1 p-0 feedback-details">Chi tiết</div>
-            </div>
-            <div class="row py-2">
-                <div class="col-2">09/11/2024</div>
-                <!--Hình tỉ lệ 4:1-->
-                <div class="col-6 ">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="../asset/image/product_image.png" alt="Artwork" class="resized-image-his">
+                        <div class="col-3 p-0">
+                            <div class=" d-flex justify-content-around" id="${review.id}_product-info__rating">
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star"
+                                       style="color: var(--big-text-color)"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: var(--big-text-color)"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star"
+                                       style="color: var(--big-text-color)"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: var(--big-text-color)"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star"
+                                       style="color: var(--big-text-color)"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: var(--big-text-color)"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star sample_half"
+                                       style="color: var(--big-text-color)"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: var(--big-text-color)"></i>
+                                </div>
+                                <div class="col-2 product-info__star-container   px-0">
+                                    <i class="fa-solid fa-star product-info__star"
+                                       style="color: var(--big-text-color)"></i>
+                                    <div class="product-info__star-mask"></div>
+                                    <i class="fa-regular fa-star product-info__star-outline"
+                                       style="color: var(--big-text-color)"></i>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="col-1"></div>
-                        <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
-                    </div>
-                </div>
-                <div class="col-1 p-0 feedback-details">Chi tiết</div>
-            </div>
-            <div class="row py-2">
-                <div class="col-2">09/11/2024</div>
-                <!--Hình tỉ lệ 4:1-->
-                <div class="col-6 ">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="../asset/image/product_image.png" alt="Artwork" class="resized-image-his">
+                        <div class="col-2 text-center justify-content-center align-items-center  p-0 feedback-details"
+                             onclick="getReviewDetails(${review.id})">Chi tiết
                         </div>
-                        <div class="col-1"></div>
-                        <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
                     </div>
-                </div>
-                <div class="col-3">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
-                    </div>
-                </div>
-                <div class="col-1 p-0 feedback-details">Chi tiết</div>
-            </div>
-            <div class="row py-2">
-                <div class="col-2">09/11/2024</div>
-                <!--Hình tỉ lệ 4:1-->
-                <div class="col-6 ">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="../asset/image/product_image.png" alt="Artwork" class="resized-image-his">
-                        </div>
-                        <div class="col-1"></div>
-                        <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
-                    </div>
-                </div>
-                <div class="col-1 p-0 feedback-details">Chi tiết</div>
-            </div>
-            <div class="row py-2">
-                <div class="col-2">09/11/2024</div>
-                <!--Hình tỉ lệ 4:1-->
-                <div class="col-6 ">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="../asset/image/product_image.png" alt="Artwork" class="resized-image-his">
-                        </div>
-                        <div class="col-1"></div>
-                        <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
-                    </div>
-                </div>
-                <div class="col-1 p-0 feedback-details">Chi tiết</div>
-            </div>
-            <div class="row py-2">
-                <div class="col-2">09/11/2024</div>
-                <!--Hình tỉ lệ 4:1-->
-                <div class="col-6 ">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="../asset/image/product_image.png" alt="Artwork" class="resized-image-his">
-                        </div>
-                        <div class="col-1"></div>
-                        <div class="col-8">Tranh thêu thám tử lừng dang Conan</div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i> <!-- 4 sao đầy, 1 sao trống -->
-                    </div>
-                </div>
-                <div class="col-1 p-0 feedback-details">Chi tiết</div>
+                </c:forEach>
             </div>
         </div>
-    </div>
+    </c:if>
 </div>
-<%--<script src="template/script/header.js"></script>--%>
+<div id="review_detail" class="d-none"></div>
 <script src="../../template/script/account/user-feedback.js"></script>
 </body>
 </html>

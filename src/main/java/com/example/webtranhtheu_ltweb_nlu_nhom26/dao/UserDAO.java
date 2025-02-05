@@ -1,6 +1,8 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.WishProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.UserDTO;
@@ -122,5 +124,17 @@ public interface UserDAO {
     @SqlUpdate("UPDATE account_addresses_details SET updatedAt = NOW() where addressId= :addressId")
     boolean updateUserAddress(@Bind("addressId") int addressId);
 
+    @SqlQuery(
+        "SELECT id,createdAt,rating,productId,content,updatedAt,accountId "+
+                "FROM product_reviews where accountId= :accountId "
+    )
+    @RegisterBeanMapper(Review.class)
+    List<Review> getReviewByUser(@Bind("accountId") int accountId);
 
+    @SqlQuery(
+            "SELECT id,createdAt,rating,productId,content,updatedAt,accountId "+
+                    "FROM product_reviews where id=:reviewId"
+    )
+    @RegisterBeanMapper(Review.class)
+    Review getReviewById(@Bind("reviewId") int reviewId);
 }

@@ -1,19 +1,18 @@
-// Turned back detail
-$(".turnback_details").click(function () {
-    $(".content-details").css("display", "none")
-    $("#order-detail-info").css("display", "block")
-})
-$(".backpage").click(function () {
-    $(".content-details").css("display", "none")
-    $("#user-ordered-list").css("display", "block")
-})
 
-// feedback details
-$(".feedback-details").click(function () {
-    $(".content-details").css("display", "none")
-    $("#user-feedback-info").css("display", "block")
-})
-$(".backpage-feedback").click(function () {
-    $(".content-details").css("display", "none")
-    $("#user-feedback-histories").css("display", "block")
-})
+function getReviewDetails(reviewId){
+    $("#user-feedback-histories").addClass("d-none")
+    $("#review_detail").removeClass("d-none")
+    $.ajax({
+        url:"/get-review-detail",
+        type: "GET",
+        data:{
+            "reviewId": reviewId
+        },
+        success: function (data){
+            $("#review_detail").html(data)
+        },
+        error: function (){
+            alert("Không tìm được thông tin review")
+        }
+    })
+}

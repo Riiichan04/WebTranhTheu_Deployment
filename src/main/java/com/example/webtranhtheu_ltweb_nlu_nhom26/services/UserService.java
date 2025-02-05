@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.WishProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.UserDTO;
@@ -129,5 +130,11 @@ public class UserService {
 //    }
     public WishProduct getWishProductByUser(int accountId, int productId) {
         return userDAO.getWishProduct(accountId, productId);
+    }
+    public List<Review> getReviewByUser(int accountId){
+        return userDAO.getReviewByUser(accountId);
+    }
+    public Review getReviewById(int reviewId) {
+        return userDAO.getReviewById(reviewId);
     }
 }
