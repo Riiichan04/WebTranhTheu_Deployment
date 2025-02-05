@@ -137,4 +137,7 @@ public class UserService {
     public Review getReviewById(int reviewId) {
         return userDAO.getReviewById(reviewId);
     }
+    public boolean updateAvatarUser(int accountId, String avatarUrl) {
+        return userDAO.updateAvatarUser(accountId, avatarUrl);
+    }
 }

@@ -137,4 +137,11 @@ public interface UserDAO {
     )
     @RegisterBeanMapper(Review.class)
     Review getReviewById(@Bind("reviewId") int reviewId);
+
+
+    @SqlUpdate(
+            "UPDATE users\n"+
+                    "SET avatar_url = :avatarUrl where id=:accountId"
+    )
+    boolean updateAvatarUser(@Bind("accountId") int accountId, @Bind("avatarUrl") String avatarUrl);
 }

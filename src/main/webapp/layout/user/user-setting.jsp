@@ -4,9 +4,9 @@
 <html>
 <head>
     <title>Cài đặt</title>
-<%--    <%@include file="../public/library.jsp" %>--%>
-<%--    <!-- css property -->--%>
-<%--    <link rel="stylesheet" href="../../template/style/user/account-page.css">--%>
+    <%--    <%@include file="../public/library.jsp" %>--%>
+    <%--    <!-- css property -->--%>
+    <%--    <link rel="stylesheet" href="../../template/style/user/account-page.css">--%>
     <link rel="stylesheet" href="../../template/style/user/style-forms/user-setting.css">
 </head>
 <body>
@@ -16,26 +16,18 @@
     <div class="container py-3">
         <div class="row avatar">
             <div class="col-3 py-5 ps-3">Ảnh đại diện:</div>
-            <div class="col-3"><img src="../asset/image/user_img.png" style="width: 100px;height: 100px;"></div>
-            <div class="col-3 pt-5">
-                <button type="button" class="change-img">Thay đổi</button>
-                <div class="change_avatar mt-1 ms-3 container border" style="display: none">
-                    <div class="row ps-2 border-bottom">Lấy từ thiết bị</div>
-                    <div class="row ps-2">Link url</div>
+            <div class="col-3"><img id="avatar-container resized-image" src="${account.avatarUrl}"
+                                    style="width: 100px;height: 100px;"></div>
+            <button type="button" class="mt-5 change-img col-3 justify-content-center align-items-center text-center"
+                    style="height: 40px" onclick="changeAvatar()">Thay đổi
+            </button>
+            <form style="padding-left: 150px; padding-right: 150px" id="info-admin-form" enctype="multipart/form-data">
+                <input type="file" accept="image/*" id="file-avatar" class="d-none" name="avatar">
+                <div class="row update-hidden d-none">
+                    <div class="col-9"></div>
+                    <button id="btn-update" class="col-3" type="submit">Cập nhật</button>
                 </div>
-            </div>
-        </div>
-        <div class="row fullname">
-            <div class="col-2 py-5 ps-3">Tên:</div>
-            <div class="col-4 pt-5"><input id="fullname" type="text" value="Nguyễn Bích Loan"></div>
-            <div class="col-5 pt-5">
-                <button type="reset" class="change-name"> Thay đổi</button>
-                <div class="row change-detail ps-4 pt-3" style="display: none">
-                    <p class="col-4">Tên mới:</p>
-                    <input class="fullname_edit col-5" placeholder="Enter new name...">
-                    <button class="col-2 edit_name">Change</button>
-                </div>
-            </div>
+            </form>
         </div>
         <div class="row feedback-form">
             <form class="poll-form">
@@ -53,9 +45,7 @@
                     </div>
                     <div class="row p-4">
                         <div class="col-8"></div>
-                        <div class="col-4">
-                            <button type="submit" class="submit-btn" style="width: 100%">Gửi đánh giá</button>
-                        </div>
+                        <button type="submit" class="submit-btn col-4">Gửi đánh giá</button>
                     </div>
                 </div>
             </form>
@@ -69,6 +59,44 @@
     </div>
 </div>
 <%--<script src="template/script/header.js"></script>--%>
-<script src="../../template/script/account/user-setting.js"></script>
+<script>
+    function changeAvatar() {
+        document.getElementById("file-avatar").click();
+    }
+
+    $("#file-avatar").change(function () {
+        if (this.files && this.files[0]) {
+            // Tạo URL tạm thời cho ảnh đã chọn
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                // Cập nhật src của avatar-container với URL ảnh đã chọn
+                $('#avatar-container').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(this.files[0]);  // Đọc file ảnh dưới dạng URL
+        }
+        $('.update-hidden').removeClass('d-none');
+    })
+    $("#info-admin-form").on("submit", function (event){
+        event.preventDefault();
+        let avatar= $("input[name='avatar']").val()
+        console.log(avatar)
+        $.ajax({
+            url: "/update-avatar",
+            type: "POST",
+            data: {
+                avatar : avatar
+            },
+            contentType: false,
+            processData: false,
+            success: function () {
+                showMessageUpdate("Cập nhật ảnh đại diện thành công")
+                window.location.reload()
+            },
+            error: function () {
+                alert("Lỗi khi thay đổi avatar")
+            }
+        })
+    })
+</script>
 </body>
 </html>
