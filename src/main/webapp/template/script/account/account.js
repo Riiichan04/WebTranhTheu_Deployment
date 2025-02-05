@@ -20,16 +20,14 @@ $(".list-group-item").on("click", function (event) {
     });
 })
 
-
 //Log out
 $(".logout-btn").click(function () {
     $("#logout_alert").css("display", "block");
-    window.location = index.html
+    $("#content").addClass("d-none")
 })
 $("#noBtn").click(function () {
     $("#logout_alert").css("display", "none");
-    $(".list-group-item").removeClass("active");
-    $(".empty-prop").show();
+    window.location= "/user"
 })
 
 

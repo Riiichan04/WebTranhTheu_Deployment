@@ -121,7 +121,7 @@
 <div id="logout_alert" class="m-10 container">
     <div class="row ps-2"><p>Bạn chắc chắn muốn đăng xuất?</p></div>
     <div class="row pt-5 ps-4 text-center">
-        <button id="yesBtn" class="col-5 text-center">Có</button>
+        <button id="yesBtn" class="col-5 text-center" onclick="window.location.href = '/logout-user';">Có</button>
         <div class="col-2"></div>
         <button id="noBtn" class="col-5 text-center">Không</button>
     </div>
