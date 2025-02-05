@@ -80,7 +80,12 @@
 
     $("#info-user-form").on("submit", function (event){
         event.preventDefault();
-        let formData= new FormData(this)
+        // let formData= new FormData(this)
+        let avatar= $("#file-avatar").val()
+        console.log(avatar)
+        let formData = new FormData()
+        formData.append("avatar", avatar)
+        console.log(formData)
         $.ajax({
             url: "/update-avatar",
             type: "POST",
