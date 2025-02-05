@@ -64,6 +64,46 @@
         </c:forEach>
     </div>
 </section>
+<section class="container  p-4_5 rounded my-4_5" id="discount-product-section">
+    <div class="row">
+        <h4 class="main-color mb-3">Đang khuyến mãi</h4>
+        <hr/>
+        <c:choose>
+            <c:when test="${discountProduct.size() == 0}">
+                <p class="text-center">Hiện tại chưa có sản phẩm nào có khuyến mãi</p>
+            </c:when>
+            <c:otherwise>
+                <c:forEach var="product" items="${discountProduct}">
+                    <div style="width: 20%">
+                        <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
+                            <img src="${product.getThumbnail()}" class="card-img" alt="...">
+                            <div class="card-body px-1">
+                                <h5 class="card-title text-center pb-2 fw-semibold text-truncate"
+                                    title="${product.category} ${product.title}">
+                                        ${product.category} ${product.title}
+                                </h5>
+                                <p class="card-text my-1 text-center text-truncate"
+                                   title="Nhà cung cấp: ${product.getProvider().getProviderName()}">
+                                    Nhà cung cấp: <span class="fw-semibold">${product.getProvider().getProviderName()}</span>
+                                </p>
+                                <p class="card-text text-center text-truncate my-1"
+                                   title="Nguyên liệu: ${product.getStringDisplayMaterials()}">
+                                    Nguyên liệu: <span class="fw-semibold">${product.getStringDisplayMaterials()}</span>
+                                </p>
+                                <p class="card-text text-center mt-1">
+                                    Kích thước: từ <span class="fw-semibold">${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</span>
+                                </p>
+                                <p class="card-text text-center fw-semibold h4 mt-2"
+                                   style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:otherwise>
+        </c:choose>
+    </div>
+</section>
 <section class="container  p-4_5 rounded my-4_5" id="most-rated-product-section">
     <div class="row">
         <h4 class="main-color mb-3"> Sản phẩm được đánh giá cao nhất</h4>

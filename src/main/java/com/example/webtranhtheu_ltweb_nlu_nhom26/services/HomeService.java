@@ -33,4 +33,10 @@ public class HomeService {
         }
         return listProduct;
     }
+
+    public List<Product> getCurrentProductsDiscount() {
+        return productDAO.getDiscountedProduct().stream()
+                .map(id -> new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(id))
+                .toList();
+    }
 }
