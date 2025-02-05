@@ -16,12 +16,12 @@
     <div class="container py-3">
         <div class="row avatar">
             <div class="col-3 py-5 ps-3">Ảnh đại diện:</div>
-            <div class="col-3"><img id="avatar-container resized-image" src="${account.avatarUrl}"
+            <div class="col-3"><img id="avatar-container" class="resized-image" src="${account.avatarUrl}"
                                     style="width: 100px;height: 100px;"></div>
             <button type="button" class="mt-5 change-img col-3 justify-content-center align-items-center text-center"
                     style="height: 40px" onclick="changeAvatar()">Thay đổi
             </button>
-            <form style="padding-left: 150px; padding-right: 150px" id="info-admin-form" enctype="multipart/form-data">
+            <form style="padding-left: 150px; padding-right: 150px" id="info-user-form" enctype="multipart/form-data">
                 <input type="file" accept="image/*" id="file-avatar" class="d-none" name="avatar">
                 <div class="row update-hidden d-none">
                     <div class="col-9"></div>
@@ -75,17 +75,16 @@
             reader.readAsDataURL(this.files[0]);  // Đọc file ảnh dưới dạng URL
         }
         $('.update-hidden').removeClass('d-none');
+        console.log(this.files[0])
     })
-    $("#info-admin-form").on("submit", function (event){
+
+    $("#info-user-form").on("submit", function (event){
         event.preventDefault();
-        let avatar= $("input[name='avatar']").val()
-        console.log(avatar)
+        let formData= new FormData(this)
         $.ajax({
             url: "/update-avatar",
             type: "POST",
-            data: {
-                avatar : avatar
-            },
+            data:formData,
             contentType: false,
             processData: false,
             success: function () {
