@@ -51,6 +51,7 @@ public class CloudinaryConfig {
 
                 return fileUrl;
             } catch (Exception e) {
+                System.out.println("Cloudinary Exception:" + e.getMessage());   //Xóa dòng này
                 return "https://res.cloudinary.com/dh90ponfw/image/upload/v1736864014/defaultavatar.jpg";
             } finally {
                 // Xóa tệp tạm sau khi sử dụng
