@@ -1,6 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.order;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.Order;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.OrderAdmin;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.OrderService;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,8 +21,6 @@ public class GetFormReadEditOrderController extends HttpServlet {
 
         String orderId = request.getParameter("orderId");
         OrderAdmin order = OrderService.getOrderById(Integer.parseInt(orderId));
-        System.out.println(order.getCancelReason());
-        Order order = OrderService.getOrderById(Integer.parseInt(orderId));
         request.setAttribute("order", order);
         Timestamp timestamp = order.getCreatedAt();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
