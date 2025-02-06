@@ -4,6 +4,7 @@ i, p {
 
 textarea {
     resize: none;
+    border: solid black 1px !important;
 }
 
 

@@ -127,7 +127,7 @@
             <hr class="mb-5"/>
             <div id="category-displayed-product"></div>
         </div>
-        <nav>
+        <nav class="mt-3">
             <ul class="pagination d-flex justify-content-center">
                 <li class="page-item cursor-pointer">
                     <p class="page-link text-button" id="prev-page"><span aria-hidden="true">&laquo;</span></p>

@@ -11,7 +11,7 @@
 </head>
 <body>
 <jsp:include page="layout/public/header.jsp"/>
-<section id="landing-section" class="container mt-5">
+<section id="landing-section" class="container mt-5 background-container">
     <div class="row p-4">
         <div class="col-6 d-flex justify-content-center flex-column">
             <div class="text-center my-3">
