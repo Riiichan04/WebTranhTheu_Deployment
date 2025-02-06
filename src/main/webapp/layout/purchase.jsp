@@ -53,7 +53,7 @@
             <%--            </div>--%>
             <%--            <hr/>--%>
             <div>
-                <h5 class="main-color mb-4">Chương trình khuyến mãi</h5>
+                <h5 class="main-color mb-4">Khuyến mãi đang áp dụng</h5>
                 <c:if test="${discount.size() eq 0}">
                     <p>Hiện tại không có chương trình khuyến mãi</p>
                 </c:if>

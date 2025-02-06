@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row mt-4 mb-4">
         <div class="col-8 cart">
-            <div class="h3 pt-4 text-center">Giỏ hàng</div>
+            <div class="h3 pt-4 mb-3 text-center">Giỏ hàng</div>
             <div class="row cart-title px-4">
                 <div class="col-3 form-check">
                     <input class="form-check-input" type="checkbox" id="checkAll">
@@ -95,7 +95,10 @@
                         </div>
                         <div class="col p-0">
                             <div class="row pb-4 "></div>
-                            <div class="row ps-3" id="product-detail__price">${entry.value.price.price}</div>
+                            <div class="row ps-3" id="product-detail__price">${entry.value.displayElementDiscountPrice()}</div>
+                            <c:if test="${entry.value.getDiscount().getId() != 0}">
+                                <div class="row ps-3"><s class="p-0">${entry.value.displayElementPrice()}</s></div>
+                            </c:if>
                         </div>
                         <div class="col-1 p-0">
                             <div class="row pb-4"></div>
@@ -117,43 +120,24 @@
                 </div>
                 <hr>
                 <div class="discounts-list">
-<%--                    <c:if test="${empty cart.discountList}">--%>
-<%--                        <div class="h6 justify-content-center align-items-center fw-semibold"--%>
-<%--                             style="color: var(--text-hover-color)">Không có khuyến mãi--%>
-<%--                        </div>--%>
-<%--                    </c:if>--%>
-                    <c:forEach var="discount" items="${cart.discountList}">
-                        <c:if test="${discount.id == cart.discount.id}">
+                    <%--                    <c:if test="${empty cart.discountList}">--%>
+                    <%--                        <div class="h6 justify-content-center align-items-center fw-semibold"--%>
+                    <%--                             style="color: var(--text-hover-color)">Không có khuyến mãi--%>
+                    <%--                        </div>--%>
+                    <%--                    </c:if>--%>
+                    <c:forEach var="discount" items="${discountsAvailable}">
+                        <c:if test="${discount.getId() != 0}">
                             <div class="row ps-3 py-2 discount-item selected-discount" data-id="${discount.id}"
                                  data-value="${discount.value}">
                                 <div class="row discount-title h6">${discount.title}</div>
                                 <div class="row p-0">
-                                    <div class=" col-8 discount-description">${discount.description}</div>
-                                    <div class="col-4 discount-detail"
-                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">
-                                        Chi tiết
-                                    </div>
+                                    <div class="discount-description">${discount.description}</div>
                                 </div>
-                                <div class="row mt-2">
-                                    <button class="apply_discount opacity-50" onclick="selectDiscount(this)" disabled>Đã
-                                        áp dụng
+                                <div class="row discount-detail d-flex justify-content-center">
+                                    <button class="sub-cta-button-background py-2 my-2"
+                                            onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">
+                                        Xem chi tiết
                                     </button>
-                                </div>
-                            </div>
-                        </c:if>
-                        <c:if test="${discount.id != cart.discount.id}">
-                            <div class="row ps-3 py-2 discount-item" data-id="${discount.id}"
-                                 data-value="${discount.value}">
-                                <div class="row discount-title h6">${discount.title}</div>
-                                <div class="row p-0">
-                                    <div class=" col-8 discount-description">${discount.description}</div>
-                                    <div class="col-4 discount-detail"
-                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">
-                                        Chi tiết
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <button class="apply_discount" onclick="selectDiscount(this)">Áp dụng</button>
                                 </div>
                             </div>
                         </c:if>
@@ -230,22 +214,22 @@
         let checkboxes = document.querySelectorAll(".product-checkbox:checked")
         checkboxes.forEach(function (checkbox) {
             let row = checkbox.closest('div.cart-item');  // Tìm dòng chứa checkbox
-            let price = parseCurrencyToFloat(row.querySelector('#product-detail__price').textContent);  // Lấy giá sản phẩm
-            let quantity = Number.parseInt(row.querySelector('div.product-quantity').textContent);  // Lấy số lượng
+            let price = parseFloat(row.querySelector('#product-detail__price').textContent.replaceAll("VNĐ", "").replaceAll(" ", "").replaceAll(".", ""));  // Lấy giá sản phẩm
+            let quantity = parseInt(row.querySelector('div.product-quantity').textContent);  // Lấy số lượng
             total += (price * quantity);// Cộng tổng tiền
         });
-        const discount_item = document.querySelectorAll("div.discount-item")
-        let discountValue;
-        discount_item.forEach(function (discount) {
-            if (discount.classList.contains("selected-discount")) {
-                discountValue = discount.getAttribute("data-value")
-                console.log(discountValue)
-            }
-        })
-        total -= discountValue ? total * discountValue : 0
+        // const discount_item = document.querySelectorAll("div.discount-item")
+        // let discountValue;
+        // discount_item.forEach(function (discount) {
+        //     if (discount.classList.contains("selected-discount")) {
+        //         discountValue = discount.getAttribute("data-value")
+        //         console.log(discountValue)
+        //     }
+        // })
+        // total -= discountValue ? total * discountValue : 0
         document.getElementById('total-price').textContent = total
         const totalPrice = formatter.format($("#total-price").prop("innerText"))
-        $("#total-price").text(totalPrice + "")
+        $("#total-price").text(totalPrice.replaceAll("₫", "VNĐ") + "")
     }
 
     // gửi sản phẩm đã chọn qua trang thanh toán (Xử lý trong thanh toán)
@@ -273,7 +257,7 @@
                 url: "/prepare-purchase",
                 type: "POST", //xem lại nha
                 data: {
-                    selectedProductCode: selectedProductCode+"", // Gửi danh sách ID sản phẩm
+                    selectedProductCode: selectedProductCode + "", // Gửi danh sách ID sản phẩm
                     discountId: discountId ? discountId : 0
                 },
                 success: function (response) {
@@ -407,7 +391,7 @@
 
     // xem lại hàm tính tổng tiền
     const price = formatter.format($("#total-price").prop("innerText"))
-    $("#total-price").text(price + "")
+    $("#total-price").text(price.replaceAll("₫", "VNĐ" + ""))
 </script>
 <script>
     function update(productId, width, height) {
@@ -426,21 +410,21 @@
         }
     }
 
-    function formatProductPrice(productId, width, height) {
-        let divInput;
-        let price;
-        let priceText;
-        let cartItem;
-        divInput = $("div#quantity_" + productId + '_' + width + '_' + height)
-        cartItem = divInput.closest(".cart-item")
-        price = cartItem.find("#product-detail__price")
-        priceText = formatter.format(price.prop("innerText"))
-        price.text(priceText + "")
-    }
+    // function formatProductPrice(productId, width, height) {
+    //     let divInput;
+    //     let price;
+    //     let priceText;
+    //     let cartItem;
+    //     divInput = $("div#quantity_" + productId + '_' + width + '_' + height)
+    //     cartItem = divInput.closest(".cart-item")
+    //     price = cartItem.find("#product-detail__price")
+    //     priceText = formatter.format(price.prop("innerText"))
+    //     price.text(priceText + "")
+    // }
 
     <c:forEach var="entry" items="${cart.products}">
-    update(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})
-    formatProductPrice(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})
+        update(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})
+        <%--formatProductPrice(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})--%>
     </c:forEach>
 </script>
 </body>

@@ -147,4 +147,13 @@ public class CartProduct implements Serializable {
             return ProductService.getDisplayPriceToString(this.getTotalPrice());
         }
     }
+
+    public String displayElementPrice() {
+        return this.price.getDisplayPriceToString();
+    }
+
+    public String displayElementDiscountPrice() {
+        if (this.discount == null || this.discount.getId() == 0) return displayElementPrice();
+        else return this.price.displayDiscountedPriceToString(this.discount);
+    }
 }
