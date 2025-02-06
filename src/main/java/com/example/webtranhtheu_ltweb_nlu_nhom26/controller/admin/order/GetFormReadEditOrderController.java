@@ -1,6 +1,6 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.admin.order;
 
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.Order;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.OrderAdmin;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.OrderService;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,7 +20,7 @@ public class GetFormReadEditOrderController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         String orderId = request.getParameter("orderId");
-        Order order = OrderService.getOrderById(Integer.parseInt(orderId));
+        OrderAdmin order = OrderService.getOrderById(Integer.parseInt(orderId));
         System.out.println(order.getCancelReason());
         request.setAttribute("order", order);
         Timestamp timestamp = order.getCreatedAt();

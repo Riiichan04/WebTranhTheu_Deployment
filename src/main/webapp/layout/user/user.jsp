@@ -13,7 +13,7 @@
     function formatPrice(element){
         let formatPrice;
         formatPrice= formatter.format(element.prop("innerText"))
-        element.text(formatPrice+"")
+        element.text(formatPrice.replaceAll("₫", "VNĐ") + "")
     }
     function showMessageUpdate(message){
         $("#custom-popup-overlay").removeClass("d-none")

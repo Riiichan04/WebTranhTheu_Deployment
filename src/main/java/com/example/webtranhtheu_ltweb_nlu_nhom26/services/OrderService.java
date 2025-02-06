@@ -2,9 +2,8 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.OrderDTO;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.OrderAdmin;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.order.Order;
-
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.Order;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.OrderDetails;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.CartProduct;
@@ -24,27 +23,34 @@ public class OrderService {
     public static List<OrderDTO> getListOrderDTO() {
         return orderDAO.getListOrderDTO();
     }
-    public static List<Order> getListOrderByUser(int accountId){
+
+    public static List<Order> getListOrderByUser(int accountId) {
         return orderDAO.getListOrderByUser(accountId);
     }
-    public static List<OrderProduct> getListOrderProductByOrderId(int orderId){
+
+    public static List<OrderProduct> getListOrderProductByOrderId(int orderId) {
         return orderDAO.getListOrderProductByOrderId(orderId);
     }
-    public static List<Order> getListOrderByUserAndStatus(int accountId, int status){
+
+    public static List<Order> getListOrderByUserAndStatus(int accountId, int status) {
         return orderDAO.getListOrderByUserAndStatus(accountId, status);
     }
-    public Order getOrderById(int accountId,int orderId){
-        return orderDAO.getOrderById(accountId, orderId);
+
+    public Order getOrderById(int accountId, int orderId) {
+        return orderDAO.getOrderByIdAndUser(accountId, orderId);
     }
-    public boolean updateStatus(int orderId, int status){
-        return orderDAO.updateOrderStatus(orderId, status);
+
+    public boolean updateStatus(int orderId, int status) {
+        return orderDAO.updateUserOrderStatus(orderId, status);
     }
-    public boolean insertCancelOrder(int orderId, int cancelReason){
+
+    public boolean insertCancelOrder(int orderId, int cancelReason) {
         return orderDAO.insertCancelOrder(orderId, cancelReason);
+    }
 
 
-    public static Order getOrderById(int orderId) {
-        Order order = orderDAO.getOrderById(orderId);
+    public static OrderAdmin getOrderById(int orderId) {
+        OrderAdmin order = orderDAO.getOrderById(orderId);
         User user = orderDAO.getUserByOrderId(orderId);
         order.setUser(user);
         List<OrderDetails> listOrderDetails = orderDAO.getOrderDetailByOrderId(orderId);

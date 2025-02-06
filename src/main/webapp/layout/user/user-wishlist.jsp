@@ -50,7 +50,7 @@
         card= $("div#"+ productId)
         product_price= card.find("#minPrice")
         priceFormat= formatter.format(product_price.prop("innerText"))
-        product_price.text(priceFormat+"")
+        product_price.text(priceFormat.replaceAll("₫", "VNĐ") + "")
     }
     <c:forEach var="product" items="${account.wishProducts}">
     formatPriceWishlist(${product.product.id})

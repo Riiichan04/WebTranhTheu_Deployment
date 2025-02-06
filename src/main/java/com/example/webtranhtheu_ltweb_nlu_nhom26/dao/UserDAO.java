@@ -6,7 +6,10 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.UserDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.AuthDTO;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.WishProduct;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.mapper.BaseWishProductMapper;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
+import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
@@ -73,9 +76,9 @@ public interface UserDAO {
     @RegisterBeanMapper(Address.class)
     List<Address> getLocation(@Bind("accountId") int accountId);
 
-//    @SqlQuery("select p.id, p.codeProduct, p.title, w.createdAt from wishlist_products w join products p on w.productId = p.id where w.accountId = :accountId")
-//    @RegisterRowMapper(BaseWishProductMapper.class)
-//    List<WishProduct> getWishProducts(@Bind("accountId") int accountId);
+    @SqlQuery("select p.id, p.codeProduct, p.title, w.createdAt from wishlist_products w join products p on w.productId = p.id where w.accountId = :accountId")
+    @RegisterRowMapper(BaseWishProductMapper.class)
+    List<WishProduct> getWishProducts(@Bind("accountId") int accountId);
 
 
     @SqlUpdate("UPDATE accounts\n" +
@@ -109,9 +112,9 @@ public interface UserDAO {
     @SqlQuery("select id from addresses where location = :location limit 1")
     Integer getIdByLocation(@Bind("location") String location);
 
-//    @SqlUpdate("insert into wishlist_products(accountId, productId, createdAt) values(:accountId, :productId, NOW())")
-//    boolean insertWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
-//
+    @SqlUpdate("insert into wishlist_products(accountId, productId, createdAt) values(:accountId, :productId, NOW())")
+    boolean insertWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
+
 //    @SqlUpdate("DELETE FROM wishlist_products where accountId = :accountId and productId = :productId")
 //    void deleteWishProduct(@Bind("accountId") int accountId, @Bind("productId") int productId);
 

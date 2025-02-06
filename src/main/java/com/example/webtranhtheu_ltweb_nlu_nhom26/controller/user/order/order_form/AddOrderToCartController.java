@@ -39,7 +39,7 @@ public class AddOrderToCartController extends HttpServlet {
             cart= Cart.getInstance();
         }
         cart.setDiscountList(discountService.getListDiscountAvailable());
-        cart.setDiscount(cart.getDiscountList().get(0));
+//        cart.setDiscount(cart.getDiscountList().get(0));
         String orderId = request.getParameter("orderId");
         List<OrderProduct> orderProducts= orderService.getListOrderProductByOrderId(Integer.parseInt(orderId));
         for (OrderProduct orderProduct : orderProducts) {
