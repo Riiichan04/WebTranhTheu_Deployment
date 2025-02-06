@@ -58,11 +58,11 @@ public class LoginController extends HttpServlet {
             List<Discount> discountsAvailable = new DiscountService().getListDiscountAvailable();
             discountsAvailable.sort(Comparator.comparingDouble(Discount::getValue).reversed());
             cart.setDiscountList(discountsAvailable);
-            cart.setDiscount(cart.getMaxDiscount());
+//            cart.setDiscount(cart.getMaxDiscount());
 
             //Nếu không có discount nào
             if (discountsAvailable.isEmpty()) {
-                cart.setDiscount(new Discount());
+//                cart.setDiscount(new Discount());
             }
             if (authDTO.getRole() == 0) {
                 response.sendRedirect("/");

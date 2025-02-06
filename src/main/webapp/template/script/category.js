@@ -123,9 +123,13 @@ function getOneProductsRow(listProducts) {
                             Kích thước: từ <span class="fw-semibold">${product.size}</span>
                         </p>
                         <p class="card-text text-center text-truncate fw-semibold h4 mt-2" style="color: var(--main-cta-button)">${product.price}</p>
-                    </div>
-                </div>
-            </div>
+        `
+        productHtml += (product.discountValue.replaceAll(" ", "") === "0%") ? `</div></div></div>` : `
+                <p class="text-center mt-3" id="product-details__old-price">
+                    <s class="text-secondary">${product.price}</s>
+                    <span class="ms-2 badge-color h6 p-1 rounded" id="discount-value">${product.discountValue}</span>
+                </p>
+            </div></div></div>
         `
     }
     productHtml += `</div>`
