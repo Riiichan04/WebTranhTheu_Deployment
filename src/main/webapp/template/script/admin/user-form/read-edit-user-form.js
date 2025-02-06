@@ -11,17 +11,17 @@ function addAddress() {
     addressed.appendChild(addressRow);
 }
 
-function addWishProducts() {
-    const addWishProducts = document.getElementById('addWishProducts');
-    const sampleNode = document.getElementById('sampleAddWishProduct');
-    const newRow = sampleNode.cloneNode(true);
-    newRow.className = 'row mb-2';
-    const iconElement = newRow.querySelector('.icon-del');
-    iconElement.addEventListener('click', function () {
-        remove(this);
-    });
-    addWishProducts.appendChild(newRow);
-}
+// function addWishProducts() {
+//     const addWishProducts = document.getElementById('addWishProducts');
+//     const sampleNode = document.getElementById('sampleAddWishProduct');
+//     const newRow = sampleNode.cloneNode(true);
+//     newRow.className = 'row mb-2';
+//     const iconElement = newRow.querySelector('.icon-del');
+//     iconElement.addEventListener('click', function () {
+//         remove(this);
+//     });
+//     addWishProducts.appendChild(newRow);
+// }
 
 function remove(button) {
     button.parentElement.parentElement.remove();
@@ -55,7 +55,6 @@ document.getElementById("fileInput").addEventListener("change", () => {
 $('#editBtn').click(function () {
     window.scrollTo({top: 0, behavior: 'smooth'});
     $('#title').text('Chỉnh sửa thông tin người dùng')
-    $('#password').prop('disabled', false);
     $('.read').addClass('d-none');
     $('#name').prop('disabled', false);
     $('#role').prop('disabled', false);
@@ -64,7 +63,7 @@ $('#editBtn').click(function () {
     $('.gender').prop('disabled', false);
     $('#description').prop('disabled', false);
     $('#titleFavourProduct').text('Xóa sản phẩm yêu thích (Chọn nhiều)');
-    $('#favourProduct').prop('disabled', false);
+    //$('#favourProduct').prop('disabled', false);
     $('#status').prop('disabled', false);
     $('.quantity-product').prop('disabled', false);
     $('.edit-hidden').removeClass('d-none');
@@ -72,7 +71,6 @@ $('#editBtn').click(function () {
 
 $('#cancelEditBtn').click(function () {
     $('#read-edit-user-form')[0].reset();
-    $('#password').prop('disabled', true);
     $('#title').text('Xem thông tin người dùng');
     $('#name').prop('disabled', true);
     $('#role').prop('disabled', true);
@@ -82,7 +80,7 @@ $('#cancelEditBtn').click(function () {
     $('.gender').prop('disabled', true);
     $('#description').prop('disabled', true);
     $('#titleFavourProduct').text('Xóa sản phẩm yêu thích (Chọn nhiều)');
-    $('#favourProduct').prop('disabled', true);
+    //$('#favourProduct').prop('disabled', true);
     $('#status').prop('disabled', true);
     $('.quantity-product').prop('disabled', true);
     $('.edit-hidden').addClass('d-none');

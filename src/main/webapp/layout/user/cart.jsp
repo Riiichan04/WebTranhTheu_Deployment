@@ -242,7 +242,7 @@
                 console.log(discountValue)
             }
         })
-        total -= total * discountValue;
+        total -= discountValue ? total * discountValue : 0
         document.getElementById('total-price').textContent = total
         const totalPrice = formatter.format($("#total-price").prop("innerText"))
         $("#total-price").text(totalPrice + "")
@@ -257,30 +257,33 @@
             selectedProductCode.push(checkbox.value);
         });
         if (selectedProductCode.length > 0) {
-            const discount_item = document.querySelectorAll("div.discount-item")
+            const discountItem = document.querySelectorAll("div.discount-item")
             let discountId;
-            discount_item.forEach(function (discount) {
+            discountItem.forEach(function (discount) {
                 if (discount.classList.contains("selected-discount")) {
                     discountId = discount.getAttribute("data-id")
                 }
             })
+
+            console.log(selectedProductCode)
+            console.log(discountId)
+
             $.ajax({
                 // sửa thêm phần discount nè
-                url: "/user/purchase",
+                url: "/prepare-purchase",
                 type: "POST", //xem lại nha
-                contentType: "application/json",
                 data: {
-                    selectedProductCode: selectedProductCode, // Gửi danh sách ID sản phẩm
-                    discountId: discountId
+                    selectedProductCode: selectedProductCode+"", // Gửi danh sách ID sản phẩm
+                    discountId: discountId ? discountId : 0
                 },
                 success: function (response) {
-                    window.location.href= "/user/purchase"
+                    window.location = "/purchase"
                 },
                 error: function (data) {
-                    data = $.parseJSON(data);
-                        const message= data.message;
-                        alert(message);
-                    }
+                    // data = $.parseJSON(data);
+                    // const message = data.message;
+                    // alert(message);
+                }
             })
         }
     }
@@ -291,9 +294,9 @@
         let quantityInput = $("div#quantity_" + productCode);
         let cartItem = quantityInput.closest(".cart-item")
         let newQuantity = Number.parseInt(quantityInput.text(), 10) + 1
-        const newTotal = parseInt($("#cart-badge").text())+1
+        const newTotal = parseInt($("#cart-badge").text()) + 1
         console.log(newTotal)
-        if(newTotal<=10) {
+        if (newTotal <= 10) {
             if (newQuantity === 5) {
                 cartItem.find("button#product-detail__remove-amount").attr("disabled", false)
                 cartItem.find("button#product-detail__add-amount").attr("disabled", true)
@@ -315,8 +318,8 @@
 
                 }
             })
-        }else {
-            document.getElementById("popup").style.display="block";
+        } else {
+            document.getElementById("popup").style.display = "block";
             document.getElementById("popup-overlay").style.display = "block";
         }
     }

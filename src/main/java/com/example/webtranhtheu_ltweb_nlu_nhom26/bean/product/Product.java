@@ -33,6 +33,7 @@ public class Product implements Serializable {
     private Timestamp updatedAt;
 
     public Product() {
+        this.discount = new Discount();
         this.listTopics = new ArrayList<>();
         this.listMaterials = new ArrayList<>();
         this.listReviews = new ArrayList<>();
@@ -44,6 +45,16 @@ public class Product implements Serializable {
         this.code = code;
         this.title = title;
         this.description = description;
+        this.status = status;
+        this.type = type;
+    }
+
+    public Product(int id, String code, String title, String description, Provider provider, int status, int type) {
+        this.id = id;
+        this.code = code;
+        this.title = title;
+        this.description = description;
+        this.provider = provider;
         this.status = status;
         this.type = type;
     }

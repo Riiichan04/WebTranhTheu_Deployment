@@ -55,10 +55,10 @@
         </div>
         <!-- email -->
         <div class="row">
-            <div class="col"><span class="style-title">Email</span></div>
+            <div class="col"><span class="style-title">Email<span class="text-danger"> * </span></span></div>
         </div>
         <div class="row pt-2">
-            <div class="col p-0"><input type="email" name="email" class="w-100 style-input" placeholder="Nhập email">
+            <div class="col p-0"><input type="email" name="email" class="w-100 style-input" placeholder="Nhập email" required>
             </div>
         </div>
         <!-- số điện thoại -->

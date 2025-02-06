@@ -13,9 +13,6 @@
 <div class="container-fluid">
     <div class="row mt-3 mb-2">
         <div class="col"><h3 class="style-title">Quản lý đơn hàng</h3></div>
-        <div class="col text-end mt-3 me-4">
-            <button class="btn-add" id="addOrderBtn"><i class="fa-solid fa-plus me-2"></i>Thêm đơn hàng</button>
-        </div>
     </div>
     <div class="row">
         <table id="myTable" class="display custom-table w-100">

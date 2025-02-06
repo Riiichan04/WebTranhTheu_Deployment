@@ -52,6 +52,7 @@ public class ProductController extends HttpServlet {
             ViewedHistory viewedHistory = (ViewedHistory) session.getAttribute("viewedHistory");
             viewedHistory.addProduct(product);
             session.setAttribute("viewedHistory", viewedHistory);
+
             request.setAttribute("product", product);
             request.setAttribute("countReview", ProductService.countReviews(product.getId()));
             request.setAttribute("avgRating", ProductService.getProductRating(product.getId()));

@@ -32,7 +32,6 @@ textarea {
     width: 100vw;
     height: 100%;
     overflow: hidden !important;
-    display: none;
 }
 
 #popup-content {
@@ -48,12 +47,11 @@ textarea {
 
 }
 
-
-.delete-product {
-    color: var(--text-hover-color);
-    cursor: pointer;
+.product-item {
+    height: 20vh;
 }
 
-.delete-product:hover {
-    color: var(--sub-text-color);
+.card-img-top {
+    aspect-ratio: 1/1;
+    object-fit: contain;
 }

@@ -8,9 +8,12 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.ProductDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.*;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.List;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
-import java.util.List;
 import java.util.ArrayList;
 
 public class ProductService {
@@ -106,7 +109,60 @@ public class ProductService {
         product.setListReviews(reviews);
         List<String> img = productDAO.getImgUrlById(id);
         product.setListImageUrls(img);
+        Policy policy = productDAO.getPolicyByProductId(id);
+        product.setPolicy(policy);
+        List<Material> listMaterial = productDAO.getListMaterialByProductId(id);
+        product.setListMaterials(listMaterial);
+        Provider provider = productDAO.getProviderByProductId(id);
+        product.setProvider(provider);
         return product;
+    }
+
+    public void updateProduct(Product product, String[] delImg, List<String> addImg, String[] materials) {
+        productDAO.updateProduct(product);
+        for (int i = 0; i < delImg.length; i++) {
+            productDAO.deleteProductImage(product.getId(), delImg[i]);
+        }
+        for(String img : addImg) {
+            productDAO.insertProductImage(product.getId(), img);
+        }
+        productDAO.deleteProductReview(product.getId());
+        productDAO.deleteMaterialProductDetails(product.getId());
+        for (int i = 0; i < materials.length; i++) {
+            productDAO.insertMaterialProductDetails(Integer.parseInt(materials[i]), product.getId());
+        }
+    }
+
+    public void deleteProductReview(String[] delId) {
+        for (int i = 0; i < delId.length; i++) {
+            productDAO.deleteProductReview(Integer.parseInt(delId[i]));
+        }
+    }
+
+    public void updateProductPrice(String[] listProductPrice, String[] priceProductPrice, String[] availableProductPrice, String[] widthProductPrice, String[] heightProductPrice, String[] delProductPrice) {
+        for (int i = 0; i < priceProductPrice.length; i++) {
+            if(containsDelProductPriceId(delProductPrice, listProductPrice[i])) {
+                productDAO.deleteProductPrice(Integer.parseInt(listProductPrice[i]));
+            } else {
+                productDAO.updateProductPrice(Integer.parseInt(widthProductPrice[i]), Integer.parseInt(heightProductPrice[i]), Double.parseDouble(priceProductPrice[i]),
+                        Integer.parseInt(availableProductPrice[i]), Integer.parseInt(listProductPrice[i]));
+            }
+        }
+    }
+
+    private boolean containsDelProductPriceId(String[] delProductPrice, String id) {
+        for (int i = 0; i < delProductPrice.length; i++) {
+            if (delProductPrice[i].equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addProductPrice(int productId, String[] addPriceProductPrice, String[] addAvailableProductPrice, String[] addWidthProductPrice, String[] addHeightProductPrice) {
+        for (int i = 0; i < addPriceProductPrice.length; i++) {
+            productDAO.insertProductPrice(productId, Integer.parseInt(addWidthProductPrice[i]), Integer.parseInt(addHeightProductPrice[i]), Double.parseDouble(addPriceProductPrice[i]), Integer.parseInt(addAvailableProductPrice[i]));
+        }
     }
 
     public static List<Product> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, String productName, int offset, int amount) {
@@ -126,7 +182,16 @@ public class ProductService {
         }
         return products;
     }
+  
     public Provider getProviderByProductId(int productId){
         return productDAO.getProductProvider(productId);
+
+    //Xử lý hiển thị giá
+    public static String getDisplayPriceToString(double price) {
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setGroupingSeparator('.');
+        symbols.setDecimalSeparator(',');
+        return new DecimalFormat("#,###", symbols).format(price) + " VNĐ";
+
     }
 }

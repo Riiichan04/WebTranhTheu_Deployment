@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#myTable').DataTable( {
+    const table = $('#myTable').DataTable({
         destroy: true,
         scrollY: "470px",
         ajax: {
@@ -19,8 +19,11 @@ $(document).ready(function () {
 
                     // xử lý tình trạng đơn hàng
                     var statusOrder = json[i].orderStatus;
-                    if(statusOrder) {
+                    if (statusOrder!=null) {
                         switch (statusOrder) {
+                            case 0:
+                                json[i].orderStatus = "Đã hủy";
+                                break;
                             case 1:
                                 json[i].orderStatus = "Chờ xác nhận";
                                 break;
@@ -39,7 +42,11 @@ $(document).ready(function () {
                             case 6:
                                 json[i].orderStatus = "Đơn yêu cầu hoàn trả";
                                 break;
-                            default: json[i].orderStatus = "";
+                            case 7:
+                                json[i].orderStatus = "Đã cọc";
+                                break;
+                            default:
+                                json[i].orderStatus = "";
                         }
                     } else {
                         json[i].orderStatus = "";
@@ -47,7 +54,7 @@ $(document).ready(function () {
 
                     // xử lý tình trạng thanh toán
                     var statusPayment = json[i].paymentStatus;
-                    if(statusPayment) {
+                    if (statusPayment) {
                         switch (statusPayment) {
                             case 0:
                                 json[i].paymentStatus = "Chưa trả tiền";
@@ -55,7 +62,8 @@ $(document).ready(function () {
                             case 1:
                                 json[i].paymentStatus = "Đã trả tiền";
                                 break;
-                            default: json[i].paymentStatus = "";
+                            default:
+                                json[i].paymentStatus = "";
                         }
                     } else {
                         json[i].paymentStatus = "";
@@ -103,43 +111,13 @@ $(document).ready(function () {
         hiddenOverlay() // Tắt overlay
     });
 
-    $('#addOrderBtn').on('click', function(event) {
-        event.preventDefault();
-        const url = "/admin/order-management/add-order";
+    $('#myTable').on('click', '.btn-read-edit', function () {
+        const orderId = $(this).data("id");
+        const url = "/admin/order-management/read-edit-order-form";
         $.ajax({
             url: url,
             type: "GET",
-            success: function (data) {
-                openOverlay();
-                $("#formWrapper").html(data);
-
-                // Ngăn sự kiện click trong form không lan lên formWrapper
-                $('form').on('click', function (event) {
-                    event.stopPropagation();
-                });
-
-                $('#formContainer').css({
-                    'width': '600px',
-                    'max-height': '90vh',
-                    'z-index': '2',
-                    'overflow': 'auto',
-                });
-                $('#cancelBtn').click(function () {
-                    hiddenOverlay();
-                });
-            },
-            error: function () {
-                alert("Có lỗi xảy ra khi tải nội dung.");
-            }
-        });
-    });
-
-    $('.btn-read-edit').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/order-management/update-order";
-        $.ajax({
-            url: url,
-            type: "GET",
+            data: {orderId: orderId},
             success: function (data) {
                 openOverlay();
                 $('#formWrapper').html(data);
@@ -159,43 +137,43 @@ $(document).ready(function () {
                 // Xử lý nút hủy
                 $('#cancelBtn').on('click', function () {
                     hiddenOverlay();
-                })
+                });
+
+                // Gửi dữ liệu từ form chỉnh sửa danh mục
+                $('#read-edit-order-form').on('submit', function (event) {
+                    event.preventDefault(); // Ngăn chặn reload trang
+
+                    // Gửi dữ liệu qua AJAX
+                    $.ajax({
+                        url: '/admin/order-management/update-order',
+                        type: 'POST',
+                        traditional: true, //đảm bảo mảng có thể gửi qua servlet có thể lấy được dữ liệu
+                        data: {
+                            orderId: $('#submitBtn').val(),
+                            statusOrder: $('#status-order').val(),
+                            cancelReason: $('#reason-cancel-order').val(),
+                            deliveredAt: $('#date-delivery').val(),
+                        },
+                        success: function (response) {
+                            if(response.success) {
+                                alert('Cập nhật đơn hàng thành công!');
+                                table.ajax.reload();
+                                hiddenOverlay();
+                            } else {
+                                alert('Lỗi khi cập nhật đơn hàng!');
+                            }
+                        },
+                        error: function () {
+                            alert('Lỗi khi cập nhật đơn hàng!');
+                        }
+                    });
+                });
             },
             error: function () {
                 alert("Có lỗi xảy ra khi tải nội dung.");
             }
         });
     });
-
-    $('.btn-delete').on("click", function(event) {
-        event.preventDefault();
-        const url = "/admin/order-management/delete-order";
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                openOverlay();
-                $('#formWrapper').html(data);
-
-                // Ngăn sự kiện click trong form không lan lên formWrapper
-                $('form').on('click', function (event) {
-                    event.stopPropagation();
-                });
-
-                $('#formContainer').css({
-                    'width': '500px',
-                    'max-height': '90vh',
-                    'z-index': '2',
-                })
-                $('#cancelBtn').click(function () {
-                    hiddenOverlay();
-                });
-            },
-            error: function () {
-                alert("Có lỗi xảy ra khi tải nội dung.");
-            }
-        });
-    })
 
     function hiddenOverlay() {
         $('#formWrapper').css({
