@@ -360,10 +360,11 @@
                     }
                 })
             }
-            //Viết 1 đoạn html ở đây (popup)
             else {
-                document.getElementById("popup").style.display="block";
-                document.getElementById("popup-overlay").style.display = "block";
+                $("#popup").css("display", "block")
+                $("#popup-overlay").css("display", "block")
+                // document.getElementById("popup").style.display="block";
+                // document.getElementById("popup-overlay").style.display = "block";
             }
         }
         else alert("Bạn cần đăng nhập")

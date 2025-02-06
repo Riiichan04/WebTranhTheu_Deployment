@@ -44,6 +44,8 @@ public interface ControllerUtil {
         jsonProduct.addProperty("thumbnail", product.getThumbnail());
         jsonProduct.addProperty("providerName", product.getProvider().getProviderName());
         jsonProduct.addProperty("size", productPrice.getWidth() + "x" + productPrice.getHeight() + " cm");
+        jsonProduct.addProperty("discountedPrice", productPrice.displayDiscountedPriceToString(product.getDiscount()));
+        jsonProduct.addProperty("discountValue", product.getDiscount().displayDiscountValue());
         jsonProduct.addProperty("price", productPrice.getDisplayPriceToString());
         jsonProduct.addProperty("materials", product.getStringDisplayMaterials());
         jsonArray.add(jsonProduct);

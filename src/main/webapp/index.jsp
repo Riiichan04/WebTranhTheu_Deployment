@@ -31,7 +31,7 @@
         </div>
     </div>
 </section>
-<section class="container  p-4_5 rounded my-4_5" id="hot-product-section">
+<section class="container p-4_5 rounded " id="hot-product-section">
     <div class="row">
         <h4 class="main-color mb-3"> Sản phẩm HOT</h4>
         <hr/>
@@ -56,15 +56,21 @@
                             Kích thước: từ <span class="fw-semibold">${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</span>
                         </p>
                         <p class="card-text text-center fw-semibold h4 mt-2"
-                           style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                           style="color: var(--main-cta-button)">${product.getMinPrice().displayDiscountedPriceToString(product.getDiscount())}
                         </p>
+                        <c:if test="${product.getDiscount().getId() != 0}">
+                            <p class="text-center mt-3">
+                                <s class="text-secondary">${product.getMinPrice().getDisplayPriceToString()}</s>
+                                <span class="ms-2 badge-color h6 p-1 rounded">${product.getDiscount().displayDiscountValue()}</span>
+                            </p>
+                        </c:if>
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
 </section>
-<section class="container  p-4_5 rounded my-4_5" id="discount-product-section">
+<section class="container p-4_5 rounded " id="discount-product-section">
     <div class="row">
         <h4 class="main-color mb-3">Đang khuyến mãi</h4>
         <hr/>
@@ -94,8 +100,14 @@
                                     Kích thước: từ <span class="fw-semibold">${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</span>
                                 </p>
                                 <p class="card-text text-center fw-semibold h4 mt-2"
-                                   style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                                   style="color: var(--main-cta-button)">${product.getMinPrice().displayDiscountedPriceToString(product.getDiscount())}
                                 </p>
+                                <c:if test="${product.getDiscount().getId() != 0}">
+                                    <p class="text-center mt-3">
+                                        <s class="text-secondary">${product.getMinPrice().getDisplayPriceToString()}</s>
+                                        <span class="ms-2 badge-color h6 p-1 rounded">${product.getDiscount().displayDiscountValue()}</span>
+                                    </p>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -104,7 +116,7 @@
         </c:choose>
     </div>
 </section>
-<section class="container  p-4_5 rounded my-4_5" id="most-rated-product-section">
+<section class="container p-4_5 rounded " id="most-rated-product-section">
     <div class="row">
         <h4 class="main-color mb-3"> Sản phẩm được đánh giá cao nhất</h4>
         <hr/>
@@ -129,27 +141,21 @@
                             Kích thước: từ <span class="fw-semibold">${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</span>
                         </p>
                         <p class="card-text text-center fw-semibold h4 mt-2"
-                           style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                           style="color: var(--main-cta-button)">${product.getMinPrice().displayDiscountedPriceToString(product.getDiscount())}
                         </p>
+                        <c:if test="${product.getDiscount().getId() != 0}">
+                            <p class="text-center mt-3">
+                                <s class="text-secondary">${product.getMinPrice().getDisplayPriceToString()}</s>
+                                <span class="ms-2 badge-color h6 p-1 rounded">${product.getDiscount().displayDiscountValue()}</span>
+                            </p>
+                        </c:if>
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
 </section>
-<%--<section class="container  p-4_5 rounded my-4_5" id="category-section">--%>
-<%--    <div class="row">--%>
-<%--        <h4 class="main-color mb-3">Danh mục tranh thêu</h4>--%>
-<%--        <hr/>--%>
-<%--        <div class="row">--%>
-<%--            <c:forEach var="category" items="${listCategory}">--%>
-<%--                <div onclick="window.location = '/category/${category.getPatternName()}'"--%>
-<%--                     class="col text-center open-category-button" style="cursor: pointer">${category.getTitle()}</div>--%>
-<%--            </c:forEach>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</section>--%>
-<section class="container  p-4_5 rounded my-4_5" id="full-product-section">
+<section class="container p-4_5 rounded" id="full-product-section">
     <div class="row">
         <h4 class="main-color mb-3">Tất cả sản phẩm </h4>
         <hr/>

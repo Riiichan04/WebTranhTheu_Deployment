@@ -208,7 +208,6 @@ function createReviewElement(review) {
         `
 }
 
-//Xử lý sau
 function createReviewStar(rating) {
     rating = Math.trunc(rating) //Lấy phần nguyên nếu như rating có dạng x.0
     if (rating > 5) return
@@ -264,18 +263,21 @@ function getPrice(width, height) {
         success: function (response) {
             response = $.parseJSON(response)
             if (response.result) {
+                //Nếu như giá đổi thì thay url
                 if (currentWidth !== response.width && currentHeight !== response.height) {
                     const url = new URL(window.location.href)
                     url.searchParams.set("width", response.width)
                     url.searchParams.set("height", response.height)
                     window.history.pushState({}, '', url)
                 }
-                $("#product-detail__available--value").text(response.available)
-                $("#product-details__price").text(response.price)
-                $("#current-size-notice").html(`<p>Kích thước hiện tại bạn đang chọn là: <span class="h5">${response.width}x${response.height} cm</span></p>`)
+                $("#product-detail__available--value").text(response.available) //Số lượng tồn kho
+                $("#product-details__price").text(response.price)   //Giá tiền
+                $("#current-size-notice").html(`<p>Kích thước hiện tại bạn đang chọn là: <span class="h5">${response.width}x${response.height} cm</span></p>`)  //Thông tin kích thước
+                //Cập nhật các thông tin lên js
                 currentPrice = response.price
                 currentWidth = response.width
                 currentHeight = response.height
+                //Hiển thị thông tin giảm giá
                 if (currentDiscountValue == null) currentDiscountValue = response.discountValue
                 if (currentDiscountValue !== 0 && response.discountedPrice !== null) {
                     $("#product-details__old-price").removeClass("d-none")
@@ -301,6 +303,8 @@ getReviewList(reviewAmount)
 getPrice(currentWidth, currentHeight)
 
 function closeError(){
-    document.getElementById("popup-overlay").style.display="none"
-    document.getElementById("popup").style.display="none"
+    $("#popup-overlay").css("display", "none")
+    $("#popup").css("display", "none")
+    // document.getElementById("popup-overlay").style.display="none"
+    // document.getElementById("popup").style.display="none"
 }

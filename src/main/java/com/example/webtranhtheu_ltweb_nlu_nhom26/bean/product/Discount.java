@@ -109,4 +109,8 @@ public class Discount implements Serializable {
     public String displayDiscountDetail() {
         return DiscountService.displayDiscount(this);
     }
+
+    public String displayDiscountValue() {
+        return (int) (this.value * 100) + " %";
+    }
 }

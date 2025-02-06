@@ -1,5 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
+
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -87,9 +89,16 @@ public class Price implements Serializable {
 
     public Price getDiscountedPrice(double value) {
         if (value != 0.0) {
-            return new Price(productId, width, height, (1 - value)*price, available);
+            return new Price(productId, width, height, (1 - value) * price, available);
         }
         return this;
+    }
+
+    public String displayDiscountedPriceToString(Discount discount) {
+        if (discount == null) return getDisplayPriceToString();
+        else {
+            return ProductService.getDisplayPriceToString(price * (1 - discount.getValue()));
+        }
     }
 
     @Override

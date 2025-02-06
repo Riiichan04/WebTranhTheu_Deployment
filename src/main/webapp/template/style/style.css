@@ -26,6 +26,11 @@ footer i, footer p {
     background-color: var(--light-component-background-color);
 }
 
+.badge-color {
+    background-color: var(--main-cta-button);
+    color: var(--label-color);
+}
+
 /* Phần button */
 .main-cta-button {
     background-color: var(--main-cta-button);

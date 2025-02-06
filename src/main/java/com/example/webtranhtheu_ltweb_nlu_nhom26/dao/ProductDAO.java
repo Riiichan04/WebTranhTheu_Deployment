@@ -92,13 +92,19 @@ public interface ProductDAO {
     List<Review> getProductReviews(@Bind("id") int id, @Bind("offset") int offset, @Bind("amount") int amount);
 
     //Lấy thông tin giảm giá của sản phẩm
-    @SqlQuery("select id, title, description, value, createdAt, updatedAt, startedAt, endedAt from discounts where discounts.startedAt <= now() and discounts.endedAt >= now() order by value desc")
+    @SqlQuery("""
+        select id, title, description, value, createdAt, updatedAt, startedAt, endedAt
+        from discounts
+            join discount_products_details on discounts.id = discount_products_details.discountId
+        where discounts.startedAt <= now() and discounts.endedAt >= now() and discount_products_details.productId = :id
+        order by value desc
+    """)
     @RegisterBeanMapper(Discount.class)
-    Discount getProductDiscounts();
+    Discount getProductDiscounts(@Bind("id") int id);
 
     //Lấy id của các sản phẩm hot (là các sản phẩm được order nhiều nhất trong 3 tháng gần đây)
     @SqlQuery("""
-        select products.id
+        select distinct products.id
         from products
         join (
             select order_products_details.productId
