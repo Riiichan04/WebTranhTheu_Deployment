@@ -84,8 +84,14 @@
                                 Kích thước: <span class="fw-semibold">${product.price.width}x${product.price.height} cm</span>
                             </p>
                             <div class="row mt-4">
-                                <h5 class="product-price text-end text-truncate">${product.displayTotalPrice()}</h5>
+                                <h5 class="product-price text-end text-truncate">${product.displayDiscountedPriceToString()}</h5>
                             </div>
+                            <c:if test="${product.getDiscount().getId() != 0}">
+                                <p class="text-end mt-1">
+                                    <s class="text-secondary">${product.displayTotalPrice()}</s>
+                                    <span class="ms-2 badge-color h6 p-1 rounded">${product.getDiscount().displayDiscountValue()}</span>
+                                </p>
+                            </c:if>
                         </div>
                     </div>
                 </c:forEach>
@@ -98,7 +104,7 @@
                     </div>
                     <div class="col-6 text-end">
                         <h5 id="product-sum-price" class="fw-semibold ">
-                            ${finalPrice}
+                            ${totalPrice}
                         </h5>
                     </div>
                 </div>
@@ -112,7 +118,7 @@
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <span>Giảm giá: </span>
+                        <span>Khuyến mãi: </span>
                     </div>
                     <div class="col-6 text-end">
                         <h5 class="fw-semibold">- ${discountValue}</h5>

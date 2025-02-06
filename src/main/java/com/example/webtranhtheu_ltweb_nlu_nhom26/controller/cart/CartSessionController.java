@@ -41,10 +41,10 @@ public class CartSessionController extends HttpServlet {
             List<Discount> discountsAvailable = discountService.getListDiscountAvailable();
             discountsAvailable.sort(Comparator.comparingDouble(Discount::getValue).reversed());
             cart.setDiscountList(discountsAvailable);
-            cart.setDiscount(cart.getMaxDiscount());
+//            cart.setDiscount(cart.getMaxDiscount());
             //Nếu không có discount nào
             if (discountsAvailable.isEmpty()) {
-                cart.setDiscount(new Discount());
+//                cart.setDiscount(new Discount());
             }
             request.getRequestDispatcher("/layout/user/cart.jsp").forward(request, response);
         }

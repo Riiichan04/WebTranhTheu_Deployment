@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart;
 
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Discount;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 
@@ -14,6 +15,7 @@ public class CartProduct implements Serializable {
     private String title;
     private String thumbnailUrl;
     private List<Price> prices;
+    private Discount discount;
     // lấy thông tin cố định của 1 product
     private int quantity; // số lượng đã cho vào giỏ hàng
     public static final int MAX_PER_PRODUCT = 5; // số lượng tối đa có thể thêm 1 loại sản phẩm
@@ -27,7 +29,7 @@ public class CartProduct implements Serializable {
         this.thumbnailUrl = thumbnailUrl;
         this.prices = new ArrayList<>();
         this.prices.addAll(prices);
-        this.totalPrice = getTotalPrice();
+        this.totalPrice = getOriginalPrice();
     }
 
     public CartProduct(int id, String title, String thumbnailUrl, int quantity, Price price) {
@@ -37,7 +39,7 @@ public class CartProduct implements Serializable {
         this.prices = new ArrayList<>();
         this.quantity = quantity;
         this.price = price;
-        this.totalPrice = getTotalPrice();
+        this.totalPrice = getOriginalPrice();
     }
 
     public CartProduct() {
@@ -48,6 +50,11 @@ public class CartProduct implements Serializable {
     }
 
     public double getTotalPrice() {
+        if (this.discount == null) return price.getPrice() * quantity;
+        else return (price.getPrice() * quantity) * (1 - discount.getValue());
+    }
+
+    public double getOriginalPrice() {
         return price.getPrice() * quantity;
     }
 
@@ -91,6 +98,14 @@ public class CartProduct implements Serializable {
         this.price = price;
     }
 
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
+    }
+
     public boolean updateBySize(int width, int height) {
         for (Price price : prices) {
             if (price.getWidth() == width && price.getHeight() == height) {
@@ -123,6 +138,13 @@ public class CartProduct implements Serializable {
     }
 
     public String displayTotalPrice() {
-        return ProductService.getDisplayPriceToString(this.totalPrice);
+        return ProductService.getDisplayPriceToString(this.getOriginalPrice());
+    }
+
+    public String displayDiscountedPriceToString() {
+        if (discount == null) return displayTotalPrice();
+        else {
+            return ProductService.getDisplayPriceToString(this.getTotalPrice());
+        }
     }
 }

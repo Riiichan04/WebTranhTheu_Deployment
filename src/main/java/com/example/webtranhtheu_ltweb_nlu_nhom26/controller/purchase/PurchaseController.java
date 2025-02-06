@@ -50,15 +50,20 @@ public class PurchaseController extends HttpServlet {
                 }
 
                 User userInfo = new UserService().getUserById(userId);
-                double totalPrice = sessionCart.getTotalPrice(listSelectedProductCode.keySet().stream().toList());
+                List<String> listCartCode = listSelectedProductCode.keySet().stream().toList();
+                double totalPrice = sessionCart.getTotalPrice(listCartCode);
+                double finalPrice = sessionCart.getFinalPrice(listCartCode, 130000);
+
                 request.setAttribute("userInfo", new UserService().getUserById(userId));
                 request.setAttribute("address", new UserService().getLocationById(userId, addressId));
                 request.setAttribute("listPurchased", listSelectedProductCode.values());
                 request.setAttribute("userInfo", userInfo);
                 request.setAttribute("totalPrice", ProductService.getDisplayPriceToString(totalPrice));
-                request.setAttribute("finalPrice", ProductService.getDisplayPriceToString(sessionCart.getFinalPrice(totalPrice, 130000, null)));
-                request.setAttribute("discount", sessionCart.getDiscount());
-                request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice * sessionCart.getDiscount().getValue()));
+                request.setAttribute("finalPrice", ProductService.getDisplayPriceToString(finalPrice));
+//                request.setAttribute("discount", sessionCart.getDiscount());
+                //Sửa sau
+                request.setAttribute("discount", null);
+                request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice - finalPrice));
 
                 request.getRequestDispatcher("layout/purchase.jsp").forward(request, response);
             }
