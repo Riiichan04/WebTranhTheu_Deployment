@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="user-ordered-list" class="content-details">
-    <div class="h3 p-4">Đơn hàng của tôi</div>
+    <div class="h3 fw-semibold p-4">Đơn hàng của tôi</div>
     <hr>
     <div class="container px-3">
         <div class="row order-categories">

@@ -6,10 +6,10 @@
 </head>
 <body>
 <div id="user-address-add" class="content-details col" >
-  <div class="h3 p-3">Thêm địa chỉ</div>
+  <div class="h3 fw-semibold p-3">Thêm địa chỉ</div>
   <hr>
   <div class="container pt-4 ps-4">
-    <div class="row h6">Địa chỉ:</div>
+    <div class="row h6 fw-semibold">Địa chỉ:</div>
     <div class="row"><input type="text" class="change_address_input"></div>
     <div class="row pt-5">
       <div class="col-3"></div>

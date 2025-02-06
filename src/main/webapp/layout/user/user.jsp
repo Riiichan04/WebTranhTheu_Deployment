@@ -45,7 +45,7 @@
 <div id="custom-popup-overlay" class="d-none"></div>
 <div id="custom-popup" class="container d-none">
     <div class="row p-0 popup-content">
-            <div class="h4 col-10 text-center justify-content-center align-items-center">Thông báo</div>
+            <div class="h4 fw-semibold col-10 text-center justify-content-center align-items-center">Thông báo</div>
             <button class="col-1 popup-close"><i class="bi bi-x-lg" style="color: var(--sub-cta-button)"></i></button>
     </div>
     <p class="m-4 main-color row text-center justify-content-center align-items-center" id="message"></p>

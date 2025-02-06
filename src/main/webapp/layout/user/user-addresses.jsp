@@ -11,18 +11,18 @@
 </head>
 <body>
 <div id="user-address" class="content-details col" >
-    <div class="h3 p-3">Sổ địa chỉ</div>
+    <div class="h3 fw-semibold p-3">Sổ địa chỉ</div>
     <hr>
     <div class="container">
         <c:if test="${empty account.location}">
-            <h4>Chưa có địa chỉ</h4>
+            <h4 class="fw-semibold">Chưa có địa chỉ</h4>
         </c:if>
         <div class="row">
             <div class="col-6">
                 <div class="row address ps-4">
                     <div class="card row">
                         <div class="card-body">
-                            <h5 class="card-title">Địa chỉ mặc định</h5>
+                            <h5 class="fw-semibold card-title">Địa chỉ mặc định</h5>
                             <p class="card-text">${account.getDefaultLocation().location}</p>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                 <div id="address_${address.id}" class="row address ps-4" data-id="${address.id}">
                     <div class="card row">
                         <div class="card-body">
-                            <h5 class="card-title">Địa chỉ</h5>
+                            <h5 class="fw-semibold card-title">Địa chỉ</h5>
                             <p class="card-text">${address.location}</p>
                             <button id="change-address" style="width: 50%" onclick="showSubChange(${address.id})">Sửa</button>
                             <i class="bi bi-trash m-4"></i>

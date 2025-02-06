@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="user_support" class="  content-details col">
-    <div class="h3 pt-3 ps-3">Hỗ trợ</div>
+    <div class="h3 fw-semibold pt-3 ps-3">Hỗ trợ</div>
     <hr>
     <div class="container p-4">
         <div class="row pt-2 question border-bottom">

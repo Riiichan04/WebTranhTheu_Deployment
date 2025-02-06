@@ -7,7 +7,7 @@
 <!--Cancel order-->
 <div id="user-cancel-order" class=" content-details col">
     <div class="row"><i class="backpage pt-4 bi bi-chevron-left">Trở lại</i></div>
-    <div class="h3 p-4">Hủy đơn hàng</div>
+    <div class="h3 fw-semibold p-4">Hủy đơn hàng</div>
     <hr/>
     <div class="card mt-4 container">
         <div class="row info-date">

@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row mt-4 mb-4">
         <div class="col-8 cart">
-            <div class="h3 pt-4 text-center">Giỏ hàng</div>
+            <div class="h3 fw-semibold pt-4 text-center">Giỏ hàng</div>
             <div class="row cart-title px-4">
                 <div class="col-3 form-check">
                     <input class="form-check-input" type="checkbox" id="checkAll">

@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="user-wishlist" class=" content-details col">
-    <div class="h3 p-3">Danh sách yêu thích</div>
+    <div class="h3 fw-semibold p-3">Danh sách yêu thích</div>
     <hr>
     <c:if test="${empty account.wishProducts}">
         <h4>Chưa có sản phẩm</h4>

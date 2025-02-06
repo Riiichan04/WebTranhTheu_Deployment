@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="user-viewed-info" class="content-details col">
-    <div class="h3 fw-bold p-3">Lịch sử sản phẩm đã xem</div>
+    <div class="h3 fw-semibold p-3">Lịch sử sản phẩm đã xem</div>
     <hr>
     <div class="container p-3">
     <c:if test="${empty viewedHistory.viewedProducts}">

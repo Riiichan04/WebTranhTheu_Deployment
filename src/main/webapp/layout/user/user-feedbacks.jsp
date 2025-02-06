@@ -29,7 +29,7 @@
     })
 </script>
 <div id="user-feedback-histories" class="content-details">
-    <div class="h3 p-4">Lịch sử đánh giá</div>
+    <div class="h3 fw-semibold p-4">Lịch sử đánh giá</div>
     <hr>
     <c:if test="${empty reviews}">
         <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">

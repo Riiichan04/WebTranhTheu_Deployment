@@ -15,7 +15,7 @@
 </script>
 <div id="user-feedback-info" class=" content-details col">
     <div class="row"><i class="backpage-feedback pt-4 bi bi-chevron-left">Trở lại</i></div>
-    <div class="h3 px-4 py-2">Chi tiết đánh giá</div>
+    <div class="h3 fw-semibold px-4 py-2">Chi tiết đánh giá</div>
     <hr/>
     <div class="row p-4">
         <img src="${review.product.getThumbnail()}" alt="Artwork" class="col-3 resized-image">

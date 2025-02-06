@@ -17,7 +17,7 @@
 <div id="order-detail-info" class=" content-details col">
     <div class="row"><i class="backpage pt-4 bi bi-chevron-left">Trở lại</i></div>
     <div class="row">
-        <div class="col-8 h3 px-4 pt-2 pb-2 ">Chi tiết đơn hàng</div>
+        <div class="col-8 h3 fw-semibold px-4 pt-2 pb-2 ">Chi tiết đơn hàng</div>
         <div class="col-4 justify-content-center align-items-center text-center">
             <c:choose>
                 <c:when test="${order.status == 1}">Chờ xác nhận</c:when>
@@ -41,12 +41,12 @@
     </c:if>
     <div class="p-4 row">
         <div class="row">
-            <div class="col-6 h5">Địa chỉ nhận hàng</div>
+            <div class="col-6 h5 fw-semibold">Địa chỉ nhận hàng</div>
             <div class="col-6 text-end">Thông tin vận chuyển</div>
 
         </div>
         <div class="col-5 border-end">
-            <div class="row h6">${account.fullName}</div>
+            <div class="row h6 fw-semibold">${account.fullName}</div>
             <div class="row">
                 ${account.phone}
                 <br/>

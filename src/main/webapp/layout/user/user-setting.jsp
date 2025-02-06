@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="user_setting" class=" content-details col">
-    <div class="h3 pt-3 ps-3">Cài đặt</div>
+    <div class="h3 fw-semibold pt-3 ps-3">Cài đặt</div>
     <hr>
     <div class="container py-3">
         <div class="row avatar">
