@@ -144,4 +144,10 @@ public interface UserDAO {
                     "SET avatar_url = :avatarUrl where id=:accountId"
     )
     boolean updateAvatarUser(@Bind("accountId") int accountId, @Bind("avatarUrl") String avatarUrl);
+
+    @SqlUpdate(
+            "UPDATE accounts\n"+
+                    "SET statusAccount=:status where id=:accountId "
+    )
+    boolean updateUserStatus(@Bind("accountId") int accountId, @Bind("status") int status);
 }

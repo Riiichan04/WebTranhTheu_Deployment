@@ -140,4 +140,11 @@ public class UserService {
     public boolean updateAvatarUser(int accountId, String avatarUrl) {
         return userDAO.updateAvatarUser(accountId, avatarUrl);
     }
+    public boolean updateUserStatus(int accountId, int status) {
+        return userDAO.updateUserStatus(accountId, status);
+    }
+
+    public String getPassword(String accountName){
+        return userDAO.getPassword(accountName);
+    }
 }

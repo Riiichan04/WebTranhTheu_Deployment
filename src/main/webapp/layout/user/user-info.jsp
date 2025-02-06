@@ -46,15 +46,15 @@
                     <div id="sub-change-pass" class=" container d-none">
                         <div class="row">
                             <div class="col p-2">Mật khẩu cũ:</div>
-                            <div class="col"><input type="password" placeholder="Nhập..."></div>
+                            <div class="col"><input id="oldPassword" type="password" placeholder="Nhập..."></div>
                         </div>
                         <div class="row">
                             <div class="col p-2">Mật khẩu mới:</div>
-                            <div class="col"><input type="password" placeholder="Nhập..."></div>
+                            <div class="col"><input id="newPassword" type="password" placeholder="Nhập..."></div>
                         </div>
                         <div class="row">
                             <div class="col-10"></div>
-                            <button id="save-password" class="col-2">Lưu mật khẩu</button>
+                            <button id="save-password" class="col-2" onclick="changePassword()">Lưu mật khẩu</button>
                         </div>
                     </div>
                 </div>
@@ -100,6 +100,29 @@
                 }
             })
         }
+    }
+
+    function changePassword(){
+        let oldPassword= $("#oldPassword").val()
+        let newPassword= $("#newPassword").val()
+        console.log(oldPassword)
+        console.log(newPassword)
+        $.ajax({
+            url:"/user/change-password",
+            type: "POST",
+            data:{
+                "oldPassword": oldPassword,
+                "newPassword": newPassword
+            },
+            success: function (){
+                showMessageUpdate("Cập nhật mật khẩu thành công")
+                $("#oldPassword").val("")
+                $("#newPassword").val("")
+            },
+            error: function (){
+                alert("Không thể cập nhật mật khẩu")
+            }
+        })
     }
 </script>
 </body>

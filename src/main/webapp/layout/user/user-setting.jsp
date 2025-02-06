@@ -29,31 +29,11 @@
                 </div>
             </form>
         </div>
-        <div class="row feedback-form">
-            <form class="poll-form">
-                <div class="row ps-3">Thăm dò ý kiến:</div>
-                <div class="container border">
-                    <div class="row p-2">
-                        <div class="col-8">Bạn thấy tranh thêu có đẹp không?</div>
-                        <div class="col-2"><input type="radio" name="question1" value="Có"> Có</div>
-                        <div class="col-2"><input type="radio" name="question1" value="Không"> Không</div>
-                    </div>
-                    <div class="row p-2">
-                        <div class="col-8">Tranh thêu có giúp ngôi nhà bạn trở nên đẹp hơn không?</div>
-                        <div class="col-2"><input type="radio" name="question2" value="Có"> Có</div>
-                        <div class="col-2"><input type="radio" name="question2" value="Không"> Không</div>
-                    </div>
-                    <div class="row p-4">
-                        <div class="col-8"></div>
-                        <button type="submit" class="submit-btn col-4">Gửi đánh giá</button>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div class="row">
             <div class="col-9"></div>
             <div class="col-3 pt-3">
-                <button type="button" class="delete-account">Xóa tài khoản</button>
+                <button type="button" class="delete-account" onclick="deActivateUser(${account.id})">Xóa tài khoản
+                </button>
             </div>
         </div>
     </div>
@@ -77,16 +57,16 @@
         $('.update-hidden').removeClass('d-none');
     })
 
-    $("#info-user-form").on("submit", function (event){
+    $("#info-user-form").on("submit", function (event) {
         event.preventDefault();
         // let formData= new FormData(this)
-        let avatar= $("#avatar-container").attr("src")
+        let avatar = $("#avatar-container").attr("src")
         let formData = new FormData()
         formData.append("avatar", avatar)
         $.ajax({
             url: "/update-avatar",
             type: "POST",
-            data:formData,
+            data: formData,
             contentType: false,
             processData: false,
             success: function () {
@@ -98,6 +78,23 @@
             }
         })
     })
+
+    //
+    function deActivateUser(accountId) {
+        $.ajax({
+            url: "/user/deactivate-user",
+            type: "POST",
+            data: {
+                "accountId": accountId
+            },
+            success: function () {
+                window.location = "/"
+            },
+            error: function () {
+                showMessageUpdate("Không thể xóa tài khoản")
+            }
+        })
+    }
 </script>
 </body>
 </html>
