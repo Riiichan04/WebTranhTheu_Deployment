@@ -2,6 +2,7 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.DiscountDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Discount;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.DiscountDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.ProductDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
@@ -20,8 +21,28 @@ public class DiscountService {
         return discountDAO.getAllDiscountDTO();
     }
 
-    public boolean addDiscount(Discount discount) {
+    public int addDiscount(Discount discount) {
         return discountDAO.insertDiscount(discount);
+    }
+
+    public void addDiscountProduct(String[] selectedDiscountProduct, int discountId) {
+        for(String productId : selectedDiscountProduct) {
+            discountDAO.insertDiscountProduct(discountId, Integer.parseInt(productId));
+        }
+    }
+
+    public void deleteDiscountProduct(String[] selectedDiscountProduct, int discountId) {
+        for(String productId : selectedDiscountProduct) {
+            discountDAO.deleteDiscountProduct(Integer.parseInt(productId), discountId);
+        }
+    }
+
+    public List<Product> listDiscountProduct(int discountId) {
+        return discountDAO.listDiscountProduct(discountId);
+    }
+
+    public List<Product> listNotInDiscount(int discountId) {
+        return discountDAO.getProductNotInDiscount(discountId);
     }
 
     public Discount getDiscount(int id) {

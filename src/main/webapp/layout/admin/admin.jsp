@@ -61,7 +61,7 @@
                     </a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/promotion-management" class="select-nav px-4 ajax-link" id="promotion">
                         <i class="fa-solid fa-tags me-2"></i>
-                        Quản lý giảm giá
+                        Quản lý khuyến mãi
                     </a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/category-management" class="select-nav px-4 ajax-link" id="category">
                         <i class="fa-solid fa-list me-2"></i>

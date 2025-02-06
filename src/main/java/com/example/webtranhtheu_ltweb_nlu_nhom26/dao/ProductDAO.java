@@ -206,15 +206,15 @@ public interface ProductDAO {
     @RegisterBeanMapper(Provider.class)
     List<Provider> getProviders();
 
-    @SqlUpdate("insert into products(codeProduct, title, description, status, typeOfProduct, createdAt, updatedAt)\n" +
-            "values(:code, :title, :description, :status, :type, NOW(), NOW())")
+    @SqlUpdate("insert into products(codeProduct, title, description, status, typeOfProduct, policyId, createdAt, updatedAt)\n" +
+            "values(:code, :title, :description, :status, :type, 1, NOW(), NOW())")
     @GetGeneratedKeys
     int insertProduct(@BindBean Product product);
 
     @SqlUpdate("update products set providerId = :providerId where id = :id")
     void updateProvider(@Bind("providerId") int providerId, @Bind("id") int id);
 
-    @SqlUpdate("INSERT INTO material_products_details (materialId, productId, updatedAt) " +
+    @SqlUpdate("INSERT IGNORE INTO material_products_details (materialId, productId, updatedAt) " +
             "VALUES (:materialId, :productId, NOW())")
     void updateMaterial(@Bind("materialId") int materialId, @Bind("productId") int productId);
 
