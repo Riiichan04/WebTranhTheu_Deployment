@@ -122,42 +122,42 @@
 <%--                             style="color: var(--text-hover-color)">Không có khuyến mãi--%>
 <%--                        </div>--%>
 <%--                    </c:if>--%>
-<%--                    <c:forEach var="discount" items="${cart.discountList}">--%>
-<%--                        <c:if test="${discount.id == cart.discount.id}">--%>
-<%--                            <div class="row ps-3 py-2 discount-item selected-discount" data-id="${discount.id}"--%>
-<%--                                 data-value="${discount.value}">--%>
-<%--                                <div class="row discount-title h6">${discount.title}</div>--%>
-<%--                                <div class="row p-0">--%>
-<%--                                    <div class=" col-8 discount-description">${discount.description}</div>--%>
-<%--                                    <div class="col-4 discount-detail"--%>
-<%--                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">--%>
-<%--                                        Chi tiết--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="row mt-2">--%>
-<%--                                    <button class="apply_discount opacity-50" onclick="selectDiscount(this)" disabled>Đã--%>
-<%--                                        áp dụng--%>
-<%--                                    </button>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </c:if>--%>
-<%--                        <c:if test="${discount.id != cart.discount.id}">--%>
-<%--                            <div class="row ps-3 py-2 discount-item" data-id="${discount.id}"--%>
-<%--                                 data-value="${discount.value}">--%>
-<%--                                <div class="row discount-title h6">${discount.title}</div>--%>
-<%--                                <div class="row p-0">--%>
-<%--                                    <div class=" col-8 discount-description">${discount.description}</div>--%>
-<%--                                    <div class="col-4 discount-detail"--%>
-<%--                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">--%>
-<%--                                        Chi tiết--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="row mt-2">--%>
-<%--                                    <button class="apply_discount" onclick="selectDiscount(this)">Áp dụng</button>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </c:if>--%>
-<%--                    </c:forEach>--%>
+                    <c:forEach var="discount" items="${cart.discountList}">
+                        <c:if test="${discount.id == cart.discount.id}">
+                            <div class="row ps-3 py-2 discount-item selected-discount" data-id="${discount.id}"
+                                 data-value="${discount.value}">
+                                <div class="row discount-title h6">${discount.title}</div>
+                                <div class="row p-0">
+                                    <div class=" col-8 discount-description">${discount.description}</div>
+                                    <div class="col-4 discount-detail"
+                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">
+                                        Chi tiết
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <button class="apply_discount opacity-50" onclick="selectDiscount(this)" disabled>Đã
+                                        áp dụng
+                                    </button>
+                                </div>
+                            </div>
+                        </c:if>
+                        <c:if test="${discount.id != cart.discount.id}">
+                            <div class="row ps-3 py-2 discount-item" data-id="${discount.id}"
+                                 data-value="${discount.value}">
+                                <div class="row discount-title h6">${discount.title}</div>
+                                <div class="row p-0">
+                                    <div class=" col-8 discount-description">${discount.description}</div>
+                                    <div class="col-4 discount-detail"
+                                         onclick="showDetails('${discount.title}','${discount.description}','${discount.endedAt}')">
+                                        Chi tiết
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <button class="apply_discount" onclick="selectDiscount(this)">Áp dụng</button>
+                                </div>
+                            </div>
+                        </c:if>
+                    </c:forEach>
                 </div>
             </div>
             <div class="row py-2"></div>

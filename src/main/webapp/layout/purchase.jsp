@@ -32,30 +32,46 @@
                 </div>
             </div>
             <hr/>
-<%--            <div>--%>
-<%--                <h5 class="main-color mb-4">Phương thức thanh toán</h5>--%>
-<%--                <div class="row">--%>
-<%--                    <div class="my-1">--%>
-<%--                        <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" checked--%>
-<%--                               value="money">--%>
-<%--                        <label class="form-check-label" for="flexRadioDefault2">--%>
-<%--                            Thanh toán bằng tiền mặt--%>
-<%--                        </label>--%>
-<%--                    </div>--%>
-<%--                    <div class="my-1">--%>
-<%--                        <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault1"--%>
-<%--                               value="bank">--%>
-<%--                        <label class="form-check-label" for="flexRadioDefault1">--%>
-<%--                            Thanh toán bằng ngân hàng--%>
-<%--                        </label>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <hr/>--%>
-            <%-- TODO: Xử lý phần discount --%>
+            <%--            <div>--%>
+            <%--                <h5 class="main-color mb-4">Phương thức thanh toán</h5>--%>
+            <%--                <div class="row">--%>
+            <%--                    <div class="my-1">--%>
+            <%--                        <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" checked--%>
+            <%--                               value="money">--%>
+            <%--                        <label class="form-check-label" for="flexRadioDefault2">--%>
+            <%--                            Thanh toán bằng tiền mặt--%>
+            <%--                        </label>--%>
+            <%--                    </div>--%>
+            <%--                    <div class="my-1">--%>
+            <%--                        <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault1"--%>
+            <%--                               value="bank">--%>
+            <%--                        <label class="form-check-label" for="flexRadioDefault1">--%>
+            <%--                            Thanh toán bằng ngân hàng--%>
+            <%--                        </label>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
+            <%--            <hr/>--%>
             <div>
                 <h5 class="main-color mb-4">Chương trình khuyến mãi</h5>
-                <p>Hiện tại không có chương trình khuyến mãi</p>
+                <c:if test="${discount.size() eq 0}">
+                    <p>Hiện tại không có chương trình khuyến mãi</p>
+                </c:if>
+                <c:forEach var="discount" items="${discount}">
+                    <c:if test="${discount.getId() != 0}">
+                        <div class="border-1 border-black row ps-3 py-2" data-id="${discount.id}"
+                             data-value="${discount.value}">
+                            <div class="col-1">
+                                <i class="h2 bi bi-ticket-perforated me-1"></i>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col">
+                                <p class="h5">${discount.title}</p>
+                                <p class="">${discount.description}</p>
+                            </div>
+                        </div>
+                    </c:if>
+                </c:forEach>
             </div>
 
         </div>
@@ -68,7 +84,7 @@
             <hr/>
             <div id="cart-display">
                 <c:forEach var="product" items="${listPurchased}">
-                    <div class="product-item row my-2">
+                    <div class="product-item row my-4_5">
                         <div class="col-4">
                             <img src="${product.getThumbnailUrl()}" class="card-img-top" alt="...">
                         </div>
@@ -81,17 +97,18 @@
                                 Số lượng: <span class="fw-semibold">${product.quantity}</span>
                             </p>
                             <p class="mb-1">
-                                Kích thước: <span class="fw-semibold">${product.price.width}x${product.price.height} cm</span>
+                                Kích thước: <span
+                                    class="fw-semibold">${product.price.width}x${product.price.height} cm</span>
                             </p>
                             <div class="row mt-4">
                                 <h5 class="product-price text-end text-truncate">${product.displayDiscountedPriceToString()}</h5>
+                                <c:if test="${product.getDiscount().getId() != 0}">
+                                    <p class="text-end mt-1">
+                                        <s class="text-secondary">${product.displayTotalPrice()}</s>
+                                        <span class="ms-2 badge-color h6 p-1 rounded">${product.getDiscount().displayDiscountValue()}</span>
+                                    </p>
+                                </c:if>
                             </div>
-                            <c:if test="${product.getDiscount().getId() != 0}">
-                                <p class="text-end mt-1">
-                                    <s class="text-secondary">${product.displayTotalPrice()}</s>
-                                    <span class="ms-2 badge-color h6 p-1 rounded">${product.getDiscount().displayDiscountValue()}</span>
-                                </p>
-                            </c:if>
                         </div>
                     </div>
                 </c:forEach>
@@ -175,7 +192,8 @@
                             Số lượng: <span class="fw-semibold">${product.quantity}</span>
                         </p>
                         <p class="mb-1 h6 fw-normal">
-                            Kích thước: <span class="fw-semibold">${product.price.width}x${product.price.height} cm</span>
+                            Kích thước: <span
+                                class="fw-semibold">${product.price.width}x${product.price.height} cm</span>
                         </p>
                         <div class="row mt-4">
                             <h5 class="product-price text-end text-truncate">${product.displayTotalPrice()}</h5>

@@ -8,6 +8,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cart implements Serializable {
     private Map<String, CartProduct> products; // key là Code của Product, Value là 1 CartProduct
@@ -188,5 +189,13 @@ public class Cart implements Serializable {
 
     public String getDisplayPriceToString(double price) {
         return ProductService.getDisplayPriceToString(price);
+    }
+
+    public List<Discount> getAllDiscountInCart(List<String> listCode) {
+        List<CartProduct> listProduct = new ArrayList<>();
+        for (String code : listCode) {
+            listProduct.add(this.products.get(code));
+        }
+        return listProduct.stream().map(CartProduct::getDiscount).distinct().collect(Collectors.toList());
     }
 }

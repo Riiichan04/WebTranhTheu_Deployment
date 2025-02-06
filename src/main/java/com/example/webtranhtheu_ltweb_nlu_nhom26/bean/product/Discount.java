@@ -15,7 +15,8 @@ public class Discount implements Serializable {
     private Timestamp startedAt;
     private Timestamp endedAt;
 
-    public Discount() {}
+    public Discount() {
+    }
 
     public Discount(int id, String description, String title) {
         this.id = id;
@@ -112,5 +113,19 @@ public class Discount implements Serializable {
 
     public String displayDiscountValue() {
         return (int) (this.value * 100) + " %";
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || this.getClass() != other.getClass()) return false;
+        Discount otherDiscount = (Discount) other;
+        return this.id == otherDiscount.id &&
+                this.title.equals(otherDiscount.title) &&
+                this.description.equals(otherDiscount.description) &&
+                this.value == otherDiscount.value &&
+                this.createdAt.equals(otherDiscount.createdAt) &&
+                this.updatedAt.equals(otherDiscount.updatedAt) &&
+                this.startedAt.equals(otherDiscount.startedAt) &&
+                this.endedAt.equals(otherDiscount.endedAt);
     }
 }

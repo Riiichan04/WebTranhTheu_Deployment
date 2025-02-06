@@ -51,8 +51,9 @@ public class PurchaseController extends HttpServlet {
 
                 User userInfo = new UserService().getUserById(userId);
                 List<String> listCartCode = listSelectedProductCode.keySet().stream().toList();
+                int deliveryPrice = 130000;
                 double totalPrice = sessionCart.getTotalPrice(listCartCode);
-                double finalPrice = sessionCart.getFinalPrice(listCartCode, 130000);
+                double finalPrice = sessionCart.getFinalPrice(listCartCode, deliveryPrice);
 
                 request.setAttribute("userInfo", new UserService().getUserById(userId));
                 request.setAttribute("address", new UserService().getLocationById(userId, addressId));
@@ -60,10 +61,8 @@ public class PurchaseController extends HttpServlet {
                 request.setAttribute("userInfo", userInfo);
                 request.setAttribute("totalPrice", ProductService.getDisplayPriceToString(totalPrice));
                 request.setAttribute("finalPrice", ProductService.getDisplayPriceToString(finalPrice));
-//                request.setAttribute("discount", sessionCart.getDiscount());
-                //Sửa sau
-                request.setAttribute("discount", null);
-                request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice - finalPrice));
+                request.setAttribute("discount",  sessionCart.getAllDiscountInCart(listCartCode));
+                request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice - finalPrice + deliveryPrice));
 
                 request.getRequestDispatcher("layout/purchase.jsp").forward(request, response);
             }
