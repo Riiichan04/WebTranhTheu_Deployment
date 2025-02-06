@@ -20,6 +20,8 @@ public class GetFormReadEditOrderController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         String orderId = request.getParameter("orderId");
+        OrderAdmin order = OrderService.getOrderById(Integer.parseInt(orderId));
+        System.out.println(order.getCancelReason());
         Order order = OrderService.getOrderById(Integer.parseInt(orderId));
         request.setAttribute("order", order);
         Timestamp timestamp = order.getCreatedAt();

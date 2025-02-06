@@ -35,7 +35,7 @@ public class GetProductPrice extends HttpServlet {
             }
             Discount currentDiscount = null;
             if (discountValue == null || discountValue.isEmpty()) {
-                currentDiscount = new DisplayFullProduct(new ConcreteProductDetail()).getDiscount();
+                currentDiscount = new DisplayFullProduct(new ConcreteProductDetail()).getDiscount(id);
                 jsonResult.addProperty("discountValue", currentDiscount.getValue());
             }
 

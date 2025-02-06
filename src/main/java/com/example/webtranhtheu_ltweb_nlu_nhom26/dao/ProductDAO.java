@@ -18,6 +18,7 @@ import java.util.List;
 
 public interface ProductDAO {
 
+    //Lấy thông tin cơ bản của sản phẩm
     @SqlQuery("""
         select products.id, products.title, products.codeProduct, products.description,
                    products.typeOfProduct, products.createdAt, products.updatedAt 
@@ -28,6 +29,7 @@ public interface ProductDAO {
     @RegisterRowMapper(BaseProductMapper.class)
     Product getProductInfo(@Bind("id") int id);
 
+    //Lấy danh mục của sản phẩm theo id
     @SqlQuery("""
         select categories.*
         from categories
@@ -37,9 +39,11 @@ public interface ProductDAO {
     @RegisterBeanMapper(Category.class)
     Category getCategory(@Bind("id") int id);
 
+    //Lấy thumbnail của sản phẩm
     @SqlQuery("select imgUrl from product_images where productId = :id limit 1")
     String getThumbnail(@Bind("id") int id);
 
+    //Lấy nhà cung cấp của sản phẩm
     @SqlQuery("""
         select providers.id, providers.providerName, addresses.location, providers.createdAt, providers.updatedAt
             from providers
@@ -50,6 +54,7 @@ public interface ProductDAO {
     @RegisterBeanMapper(Provider.class)
     Provider getProductProvider(@Bind("id") int id);
 
+    //Lấy chính sách của sản phẩm theo id
     @SqlQuery("""
         select policies.title, policies.description, policies.createdAt, policies.updatedAt
         from policies join products on policies.id = products.policyId
@@ -58,6 +63,7 @@ public interface ProductDAO {
     @RegisterBeanMapper(Policy.class)
     Policy getProductPolicy(@Bind("id") int id);
 
+    //Lấy chủ đề của sản phẩm theo id
     @SqlQuery("""
         select topics.id, topics.title, topics.active, topics.createdAt, topics.updatedAt
         from topics join topic_products_details on topic_products_details.topicId = topics.id
@@ -66,47 +72,86 @@ public interface ProductDAO {
     @RegisterBeanMapper(Topic.class)
     List<Topic> getTopics(@Bind("id") int id);
 
+    //Lấy tất cả hình ảnh của sản phẩm theo id
     @SqlQuery("select imgUrl from product_images where productId = :id")
     List<String> getListImageUrls(@Bind("id") int id);
 
+    //Lấy tất cả thông tin về giá và kích thước của sản phẩm theo id
     @SqlQuery("select productId, width, height, price, available from product_prices where productId = :id")
     @RegisterBeanMapper(Price.class)
     List<Price> getProductPrices(@Bind("id") int id);
 
+    //Lấy nguyên liệu của sản phẩm theo id
     @SqlQuery("select materials.title, materials.createdAt, materials.updatedAt from material_products_details join materials on material_products_details.materialId = materials.id where productId = :id")
     @RegisterBeanMapper(Material.class)
     List<Material> getMaterials(@Bind("id") int id);
 
+    //Lấy các review của sản phẩm theo id
     @SqlQuery("select id, productId, accountId, rating, content, createdAt, updatedAt from product_reviews where productId = :id and content is not null limit :offset, :amount")
     @RegisterBeanMapper(Review.class)
     List<Review> getProductReviews(@Bind("id") int id, @Bind("offset") int offset, @Bind("amount") int amount);
 
-    @SqlQuery("select id, title, description, discounts.value, createdAt, updatedAt, startedAt, endedAt from discounts where discounts.startedAt <= now() and discounts.endedAt >= now()")
+    //Lấy thông tin giảm giá của sản phẩm
+    @SqlQuery("""
+        select id, title, description, value, createdAt, updatedAt, startedAt, endedAt
+        from discounts
+            join discount_products_details on discounts.id = discount_products_details.discountId
+        where discounts.startedAt <= now() and discounts.endedAt >= now() and discount_products_details.productId = :id
+        order by value desc
+    """)
     @RegisterBeanMapper(Discount.class)
-    Discount getProductDiscounts();
+    Discount getProductDiscounts(@Bind("id") int id);
 
-    @SqlQuery("select products.id from products join (select order_products_details.productId from order_products_details join orders on order_products_details.orderId = orders.id where orders.createdAt >= now() - interval 3 month and order_products_details.productId in (select productId from order_products_details group by productId order by count(productId))) as limit_orders on limit_orders.productId = products.id limit 5")
+    //Lấy id của các sản phẩm hot (là các sản phẩm được order nhiều nhất trong 3 tháng gần đây)
+    @SqlQuery("""
+        select distinct products.id
+        from products
+        join (
+            select order_products_details.productId
+            from order_products_details
+            join orders on order_products_details.orderId = orders.id
+            where orders.createdAt >= now() - interval 3 month
+                and order_products_details.productId in (
+                    select productId
+                    from order_products_details
+                    group by productId
+                    order by count(productId)
+                )
+            ) as limit_orders on limit_orders.productId = products.id
+        limit 5
+    """)
     List<Integer> getIdOfHotProduct();
 
     //Lấy danh sách các product có đánh giá cao nhất
     @SqlQuery("select products.id from products join ( select productId, avg(rating) as rating from product_reviews group by productId order by rating desc limit 5) as product_ratings on product_ratings.productId = products.id")
     List<Integer> getMostRatedProductsId();
 
+    @SqlQuery("""
+        select products.id
+        from products
+            join discount_products_details on products.id = discount_products_details.productId
+            join discounts on discounts.id = discount_products_details.discountId
+        where discounts.startedAt <= now() and discounts.endedAt >= now()
+        limit 5
+    """)
+    List<Integer> getDiscountedProduct();
+
+    //Đếm xem đã có bao nhiêu sản phẩm
     @SqlQuery("select count(id) from products")
     int countProducts();
 
+    //Đếm xem sản phẩm đó có bao nhiêu lượt đánh giá
     @SqlQuery("select count(id) from product_reviews where productId = :id")
     int countReviews(@Bind("id") int id);
 
-    @SqlQuery("select id from products join category_products_details on products.id = category_products_details.productId where id != :id and category_products_details.categoryId = :categoryId order by rand() limit 5")
-    List<Integer> getSimilarProductId(@Bind("id") int id, @Bind("categoryId") int categoryId);
-
+    //Thêm đánh giá vào
     @SqlUpdate("""
         insert into product_reviews(productId, accountId, rating, content, createdAt, updatedAt)
         values(:accountId, :productId, :rating, :content, :createdAt, :updatedAt)
     """)
     int insertReview(@Bind("accountId") int accountId, @Bind("productId") int productId, @Bind("rating") int rating, @Bind("content") String content, @Bind("createdAt") Timestamp createdAt, @Bind("updatedAt") Timestamp updatedAt);
 
+    //Kiểm tra xem người dùng có đuược review không
     @SqlQuery("""
         select ifnull(count(orders.accountId) > reviews.count_review, 1) as result
         from orders
@@ -123,6 +168,7 @@ public interface ProductDAO {
     """)
     boolean isUserCanReview(@Bind("accountId") int accountId, @Bind("productId") int productId);
 
+    //Lấy số sao của sản phẩm
     @SqlQuery("""
         select avg(rating)
         from product_reviews
@@ -130,6 +176,7 @@ public interface ProductDAO {
     """)
     double getProductRating(@Bind("productId") int productId);
 
+    //Lấy các sản phẩm tương tự (có chủ đề tương tự)
     @SqlQuery("""
         select products.id
         from products join topic_products_details on products.id = topic_products_details.productId
@@ -142,6 +189,7 @@ public interface ProductDAO {
     @RegisterBeanMapper(Product.class)
     List<Product> getProductsCodeAndTitle();
 
+    //Lọc sản phẩm theo các tiêu chí
     @SqlQuery("""
         select distinct products.id
         from products
@@ -173,7 +221,7 @@ public interface ProductDAO {
                                 @Bind("providerName") String providerName, @Bind("productName") String productName,
                                 @Bind("offset") int offset, @Bind("amount") int amount);
 
-
+    //Lấy danh sách các nhà cung cấp
     @SqlQuery("""
         select providers.id, providers.providerName, addresses.location, providers.createdAt, providers.updatedAt
         from providers

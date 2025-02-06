@@ -27,9 +27,10 @@ public class HomeController extends HttpServlet {
         HomeService service = new HomeService();
         List<Product> listHotProduct = service.getHotProduct();
         List<Product> listMostRatedProduct = service.getMostRatedProduct();
+        List<Product> listDiscountProduct = service.getCurrentProductsDiscount();
         request.setAttribute("hotProduct", listHotProduct);
         request.setAttribute("mostRatedProduct", listMostRatedProduct);
-//        request.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
+        request.setAttribute("discountProduct", listDiscountProduct);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

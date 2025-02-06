@@ -11,7 +11,7 @@ public class Review implements Serializable {
     private String content;
     private Timestamp createdAt;
     private Timestamp updatedAt;
-
+    private Product product;
     public Review() {
     }
 
@@ -23,6 +23,7 @@ public class Review implements Serializable {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -78,5 +79,13 @@ public class Review implements Serializable {
 
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

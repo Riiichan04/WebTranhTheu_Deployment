@@ -1,16 +1,32 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Review;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.WishProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.UserDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.UserDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
+import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class UserService {
-    UserDAO userDAO;
-
+    private static UserDAO userDAO;
+    private static UserService instance;
+    public static UserService getInstance() {
+        if(instance == null) {
+            Jdbi jdbi= JDBIConnector.getInstance();
+            jdbi.installPlugin(new SqlObjectPlugin());
+            userDAO = jdbi.onDemand(UserDAO.class);
+            instance = new UserService(userDAO);
+            return instance;
+        }
+        return instance;
+    }
+    public UserService(UserDAO userDAO) {this.userDAO = userDAO;}
     public UserService() {
         this.userDAO = JDBIConnector.getInstance().onDemand(UserDAO.class);
     }
@@ -75,6 +91,68 @@ public class UserService {
         userDAO.updateInfoAdmin(user);
     }
 
+
+    // Danh sách sản phẩm yêu thích
+    public List<WishProduct> getWishProducts(int userId) {
+        return userDAO.getWishProducts(userId);
+    }
+    public List<Address> getLocation(int userId) {
+        return userDAO.getLocation(userId);
+    }
+
+    public boolean updateInfo(User user) {
+        return userDAO.updateUser(user);
+    }
+    public boolean updateAddress(Address address) {
+        userDAO.updateAddress(address);
+        userDAO.updateUserAddress(address.getId());
+        return true;
+    }
+
+    public boolean insertAddress(String location){
+        return userDAO.insertAddress(location);
+    }
+
+    public Integer getIdByLocation(String newAddress) {
+        return userDAO.getIdByLocation(newAddress);
+    }
+
+    public void insertUserAddress(int id, Integer addressId) {
+        userDAO.insertUserAddress(id, addressId);
+    }
+    public void deleteUserAddress(int accountId, int addressId) {
+        userDAO.deleteUserAddress(accountId, addressId);
+        userDAO.deleteAddress(addressId);
+    }
+    public boolean insertWishProduct(int userId, int productId) {
+        return userDAO.insertWishProduct(userId, productId);
+    }
+    public boolean deleteWishProduct(int userId, int productId) {
+        return userDAO.deleteWishProduct(userId, productId);
+    }
+//    public Timestamp getCreatedWishProductTime(int accountId, int productId) {
+//        return userDAO.getCreatedAt(accountId, productId);
+//    }
+    public WishProduct getWishProductByUser(int accountId, int productId) {
+        return userDAO.getWishProduct(accountId, productId);
+    }
+    public List<Review> getReviewByUser(int accountId){
+        return userDAO.getReviewByUser(accountId);
+    }
+    public Review getReviewById(int reviewId) {
+        return userDAO.getReviewById(reviewId);
+    }
+    public boolean updateAvatarUser(int accountId, String avatarUrl) {
+        return userDAO.updateAvatarUser(accountId, avatarUrl);
+    }
+    public boolean updateUserStatus(int accountId, int status) {
+        return userDAO.updateUserStatus(accountId, status);
+    }
+
+    public String getPassword(String accountName){
+        return userDAO.getPassword(accountName);
+    }
+
     //Lấy thông tin địa chỉ theo id
     public String getLocationById(int accountId, int id) {
         if (id == 0) return "Chưa chọn";
@@ -82,5 +160,6 @@ public class UserService {
             return userDAO.getAddressLocationById(accountId, id);
         }
     }
+
 
 }
