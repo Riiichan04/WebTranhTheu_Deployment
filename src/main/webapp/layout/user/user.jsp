@@ -54,7 +54,7 @@
     <div class="content row">
         <div class="user-props-list col-4 me-4">
             <div class="user-img-frame">
-                <img src="${account.avatarUrl}" style="width: 100px;height: 100px;margin-top: 30px">
+                <img src="${account.avatarUrl}" style="width:100px;height:100px;margin-top: 30px">
                 <p id="nickname" class="p-4 title">${account.username} </p>
             </div>
             <div class="list-group list_props">
