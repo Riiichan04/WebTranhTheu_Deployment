@@ -15,7 +15,7 @@
     <hr>
     <div class="container py-3">
         <div class="row avatar">
-            <div class="col-3 py-5 ps-3">Ảnh đại diện:</div>
+            <div class="col-3 py-5 ps-3 fw-semibold">Ảnh đại diện:</div>
             <div class="col-3"><img id="avatar-container" class="resized-image" src="${account.avatarUrl}"
                                     style="width: 100px;height: 100px;"></div>
             <button type="button" class="mt-5 change-img col-3 justify-content-center align-items-center text-center"
@@ -28,6 +28,21 @@
                     <button id="btn-update" class="col-3" type="submit">Cập nhật</button>
                 </div>
             </form>
+        </div>
+        <div class="row">
+            <div class="col-2 fw-semibold">Chọn theme: </div>
+            <div class="col-1"></div>
+            <div class="col-4">
+                <label>
+                    <input type="radio" value="default" class="form-check-input" name="choose-theme" id="new-theme">
+                    Theme mặc định
+                </label>
+                <label>
+                    <input type="radio" value="old" class="form-check-input" name="choose-theme" id="current-theme">
+                    Theme tươi mát
+                </label>
+            </div>
+            <div class="col"></div>
         </div>
         <div class="row">
             <div class="col-9"></div>
@@ -95,6 +110,13 @@
             }
         })
     }
+</script>
+
+<script>
+    $("input[type=radio][name=choose-theme]").change(function () {
+        console.log($(this).val())
+        changeTheme($(this).val())
+    })
 </script>
 </body>
 </html>

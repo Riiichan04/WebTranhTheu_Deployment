@@ -334,11 +334,18 @@
 </section>
 <div id="popup-overlay"></div>
 <div id="popup" class="p-3">
-    <div class="row  text-center fw-bold h5 border-bottom">
+    <div class="row text-center fw-bold h5 border-bottom">
         <div class="col-11 h4 text-center">Lỗi</div>
         <i class="col-1 p-2 text-center bi bi-x-lg" onclick="closeError()"></i>
     </div>
-    <div class="row mt-2 ms-2 text-center">Số lượng sản phẩm vượt mức quy định.</div>
+    <c:choose>
+        <c:when test="${sessionScope.accountId == null}">
+            <div class="row mt-2 ms-2 text-center">Bạn cần đăng nhập để thêm sản phẩm vào giỏ.</div>
+        </c:when>
+        <c:otherwise>
+            <div class="row mt-2 ms-2 text-center">Số lượng sản phẩm vượt mức quy định.</div>
+        </c:otherwise>
+    </c:choose>
 </div>
 <jsp:include page="public/footer.jsp"/>
 <script src="template/script/header.js"></script>
@@ -377,8 +384,6 @@
             else {
                 $("#popup").css("display", "block")
                 $("#popup-overlay").css("display", "block")
-                // document.getElementById("popup").style.display="block";
-                // document.getElementById("popup-overlay").style.display = "block";
             }
         }
         else alert("Bạn cần đăng nhập")

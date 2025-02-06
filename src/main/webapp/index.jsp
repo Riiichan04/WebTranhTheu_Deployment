@@ -31,7 +31,7 @@
         </div>
     </div>
 </section>
-<section class="container p-4_5 rounded " id="hot-product-section">
+<section class="container p-4_5 rounded background-container mb-4" id="hot-product-section">
     <div class="row">
         <h4 class="main-color mb-3"> Sản phẩm HOT</h4>
         <hr/>
@@ -70,7 +70,7 @@
         </c:forEach>
     </div>
 </section>
-<section class="container p-4_5 rounded " id="discount-product-section">
+<section class="container p-4_5 rounded background-container mb-4" id="discount-product-section">
     <div class="row">
         <h4 class="main-color mb-3">Đang khuyến mãi</h4>
         <hr/>
@@ -116,7 +116,7 @@
         </c:choose>
     </div>
 </section>
-<section class="container p-4_5 rounded " id="most-rated-product-section">
+<section class="container p-4_5 rounded background-container mb-4" id="most-rated-product-section">
     <div class="row">
         <h4 class="main-color mb-3"> Sản phẩm được đánh giá cao nhất</h4>
         <hr/>
@@ -155,7 +155,7 @@
         </c:forEach>
     </div>
 </section>
-<section class="container p-4_5 rounded" id="full-product-section">
+<section class="container p-4_5 rounded background-container mb-4" id="full-product-section">
     <div class="row">
         <h4 class="main-color mb-3">Tất cả sản phẩm </h4>
         <hr/>

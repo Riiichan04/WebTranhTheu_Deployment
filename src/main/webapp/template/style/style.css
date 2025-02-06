@@ -50,6 +50,7 @@ footer i, footer p {
 }
 
 .sub-cta-button {
+    background-color: var(--light-component-background-color);
     color: var(--sub-cta-button);
     border: solid 2px var(--sub-cta-button) !important;
 }
