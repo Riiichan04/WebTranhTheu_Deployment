@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class Product implements Serializable {
     private int id; //Id của sản phẩm
@@ -230,6 +231,13 @@ public class Product implements Serializable {
     public String getStringDisplayMaterials() {
         if (this.getListMaterials() == null || this.getListMaterials().isEmpty()) return "";
         return ProductUtil.getStringDisplayMaterials(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id && type == product.type && code.equals(product.code) && title.equals(product.title) && description.equals(product.description);
     }
 }
 

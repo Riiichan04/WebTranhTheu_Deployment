@@ -1,10 +1,13 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.services;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.OrderDTO;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.Order;
+
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.OrderAdmin;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.order.Order;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.orderAdmin.OrderDetails;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.CartProduct;
+
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.order.OrderProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.dao.OrderDAO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
@@ -21,8 +24,33 @@ public class OrderService {
         return orderDAO.getListOrderDTO();
     }
 
-    public static Order getOrderById(int orderId) {
-        Order order = orderDAO.getOrderById(orderId);
+    public static List<Order> getListOrderByUser(int accountId) {
+        return orderDAO.getListOrderByUser(accountId);
+    }
+
+    public static List<OrderProduct> getListOrderProductByOrderId(int orderId) {
+        return orderDAO.getListOrderProductByOrderId(orderId);
+    }
+
+    public static List<Order> getListOrderByUserAndStatus(int accountId, int status) {
+        return orderDAO.getListOrderByUserAndStatus(accountId, status);
+    }
+
+    public Order getOrderById(int accountId, int orderId) {
+        return orderDAO.getOrderByIdAndUser(accountId, orderId);
+    }
+
+    public boolean updateStatus(int orderId, int status) {
+        return orderDAO.updateUserOrderStatus(orderId, status);
+    }
+
+    public boolean insertCancelOrder(int orderId, int cancelReason) {
+        return orderDAO.insertCancelOrder(orderId, cancelReason);
+    }
+
+
+    public static OrderAdmin getOrderById(int orderId) {
+        OrderAdmin order = orderDAO.getOrderById(orderId);
         User user = orderDAO.getUserByOrderId(orderId);
         order.setUser(user);
         List<OrderDetails> listOrderDetails = orderDAO.getOrderDetailByOrderId(orderId);
@@ -72,5 +100,6 @@ public class OrderService {
 
     private static boolean addProductToOrder(int orderId, int productId, int amount, double price, int width, int height) {
         return orderDAO.addDetailToOrder(orderId, productId, amount, price, width, height) > 0;
+
     }
 }

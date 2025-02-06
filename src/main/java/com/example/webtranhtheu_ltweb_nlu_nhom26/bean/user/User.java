@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.Address;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.order.Order;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -22,6 +23,7 @@ public class User implements Serializable {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private int role;
+    private List<Order> orders;
 
     public User() {}
 
@@ -181,5 +183,17 @@ public class User implements Serializable {
 
     public void setWishProducts(List<WishProduct> wishProducts) {
         this.wishProducts = wishProducts;
+    }
+
+    public Address getDefaultLocation() {
+        return location.get(0);
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

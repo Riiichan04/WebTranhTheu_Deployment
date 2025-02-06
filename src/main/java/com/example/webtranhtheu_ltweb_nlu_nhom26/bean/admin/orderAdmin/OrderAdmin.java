@@ -5,7 +5,7 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class Order {
+public class OrderAdmin {
     //để tạm, sẽ tối ưu sau
     public static final int STATUS_ORDER_CANCELED = 0; // Đã hủy
     public static final int STATUS_ORDER_PENDING_CONFIRMATION = 1; // Chờ xác nhận
@@ -29,7 +29,7 @@ public class Order {
     private int method;
     private int cancelReason;
     private List<OrderDetails> listOrderDetails;
-    public Order() {
+    public OrderAdmin() {
 
     }
 

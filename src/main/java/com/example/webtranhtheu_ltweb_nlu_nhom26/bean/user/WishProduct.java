@@ -31,4 +31,12 @@ public class WishProduct implements Serializable {
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
+
+    @Override
+    public String toString() {
+        return "WishProduct{" +
+                "product=" + product +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 }

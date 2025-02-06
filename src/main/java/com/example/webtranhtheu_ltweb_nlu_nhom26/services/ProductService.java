@@ -182,6 +182,10 @@ public class ProductService {
         }
         return products;
     }
+  
+    public Provider getProviderByProductId(int productId) {
+        return productDAO.getProductProvider(productId);
+    }
 
     //Xử lý hiển thị giá
     public static String getDisplayPriceToString(double price) {
@@ -190,4 +194,5 @@ public class ProductService {
         symbols.setDecimalSeparator(',');
         return new DecimalFormat("#,###", symbols).format(price) + " VNĐ";
     }
+
 }
