@@ -8,13 +8,14 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cart implements Serializable {
     private Map<String, CartProduct> products; // key là Code của Product, Value là 1 CartProduct
     public static final int MAX_CART_PRODUCTS = 10;
     private static Cart instance;
     private List<Discount> discountList;
-    private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart, lưu lại discount đã chọn
+//    private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart, lưu lại discount đã chọn
     private Cart() {
         products = new HashMap<>();
     }
@@ -58,7 +59,8 @@ public class Cart implements Serializable {
         cartProduct.setThumbnailUrl(product.getThumbnail());
         cartProduct.setPrices(product.getListPrices());
         cartProduct.setPrice(price);
-        cartProduct.setTotalPrice(cartProduct.getTotalPrice());
+        cartProduct.setDiscount(product.getDiscount());
+        cartProduct.setTotalPrice(cartProduct.getOriginalPrice());
         return cartProduct;
     }
 
@@ -102,9 +104,9 @@ public class Cart implements Serializable {
         return productId + "_" + width + "_" + height;
     }
 
-    public double getSale() {
-        return this.discount.getValue();
-    }
+//    public double getSale() {
+//        return this.discount.getValue();
+//    }
 
     public double getTotalPrice() {
         double totalPrice = 0;
@@ -141,13 +143,13 @@ public class Cart implements Serializable {
         this.discountList = discountList;
     }
 
-    public Discount getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
-    }
+//    public Discount getDiscount() {
+//        return discount;
+//    }
+//
+//    public void setDiscount(Discount discount) {
+//        this.discount = discount;
+//    }
 
     public Map<String, CartProduct> getProducts() {
         return products;
@@ -172,17 +174,28 @@ public class Cart implements Serializable {
     public double getTotalPrice(List<String> listCode) {
         double result = 0;
         for (String code : listCode) {
-            result += this.products.get(code).getTotalPrice();
+            result += this.products.get(code).getOriginalPrice();
         }
         return result;
     }
 
-    public double getFinalPrice(double basePrice, int deliveryPrice, Discount discount) {
-        if (discount == null ) return basePrice + deliveryPrice;
-        else return basePrice - (basePrice * discount.getValue() + deliveryPrice);
+    public double getFinalPrice(List<String> listCode, int deliveryPrice) {
+        double result = 0;
+        for (String code : listCode) {
+            result += this.products.get(code).getTotalPrice();
+        }
+        return result + deliveryPrice;
     }
 
     public String getDisplayPriceToString(double price) {
         return ProductService.getDisplayPriceToString(price);
+    }
+
+    public List<Discount> getAllDiscountInCart(List<String> listCode) {
+        List<CartProduct> listProduct = new ArrayList<>();
+        for (String code : listCode) {
+            listProduct.add(this.products.get(code));
+        }
+        return listProduct.stream().map(CartProduct::getDiscount).distinct().collect(Collectors.toList());
     }
 }

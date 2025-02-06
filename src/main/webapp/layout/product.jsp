@@ -18,12 +18,7 @@
         <li class="breadcrumb-item active" aria-current="page">${product.title}</li>
     </ol>
 </nav>
-<c:set var="exists" value="false"/>
-<c:forEach var="wishlistItem" items="${sessionScope.wishlist}">
-    <c:if test="${wishlistItem.product.id == product.id}">
-        <c:set var="exists" value="true"/>
-    </c:if>
-</c:forEach>
+
 <section class="container my-4_5" id="product-detail">
     <div class="background-container rounded">
         <div class="row">
@@ -72,33 +67,27 @@
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: var(--big-text-color)"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: var(--big-text-color)"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: var(--big-text-color)"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
                             <div class="col-2 product-info__star-container   px-0">
-                                <i class="fa-solid fa-star product-info__star sample_half"
-                                   style="color: var(--big-text-color)"></i>
+                                <i class="fa-solid fa-star product-info__star sample_half" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: var(--big-text-color)"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
                             <div class="col-2 product-info__star-container   px-0">
                                 <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                                 <div class="product-info__star-mask"></div>
-                                <i class="fa-regular fa-star product-info__star-outline"
-                                   style="color: var(--big-text-color)"></i>
+                                <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                             </div>
 
                         </div>
@@ -113,16 +102,7 @@
                                 clipboard</p>
                         </div>
                         <div id="product-detail__loved-btn" class="col position-relative">
-                            <c:choose>
-                                <c:when test="${exists}">
-                                    <i class="cursor-pointer h4 main-color fa-solid fa-heart"
-                                       onclick="actionWishList()"></i>
-                                </c:when>
-                                <c:otherwise>
-                                    <i class="cursor-pointer h4 main-color fa-regular fa-heart"
-                                       onclick="actionWishList()"></i>
-                                </c:otherwise>
-                            </c:choose>
+                            <i class="cursor-pointer h4 main-color fa-regular fa-heart"></i>
                             <p class="bg-opacity-75 p-1 d-none notification-message bg-dark rounded"></p>
                         </div>
                         <div class="col"></div>
@@ -262,33 +242,27 @@
                         <div class="col-2 product-info__star-container   px-0">
                             <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline"
-                               style="color: var(--big-text-color)"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                         <div class="col-2 product-info__star-container   px-0">
                             <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline"
-                               style="color: var(--big-text-color)"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                         <div class="col-2 product-info__star-container   px-0">
                             <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline"
-                               style="color: var(--big-text-color)"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                         <div class="col-2 product-info__star-container   px-0">
-                            <i class="fa-solid fa-star product-info__star sample_half"
-                               style="color: var(--big-text-color)"></i>
+                            <i class="fa-solid fa-star product-info__star sample_half" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline"
-                               style="color: var(--big-text-color)"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                         <div class="col-2 product-info__star-container   px-0">
                             <i class="fa-solid fa-star product-info__star" style="color: var(--big-text-color)"></i>
                             <div class="product-info__star-mask" style="width: 100%"></div>
-                            <i class="fa-regular fa-star product-info__star-outline"
-                               style="color: var(--big-text-color)"></i>
+                            <i class="fa-regular fa-star product-info__star-outline" style="color: var(--big-text-color)"></i>
                         </div>
                     </div>
                     <div class="text-center">
@@ -358,67 +332,6 @@
 <script>
     displayRating(${avgRating}, $(".product-info__star-container").width())
 
-    //Nút thêm vào danh sách yêu thích
-    function actionWishList() {
-        const msg = $("#product-detail__loved-btn .notification-message")
-        let productId = '${product.id}'
-        let accountId = '${sessionScope.accountId}'
-        console.log(accountId)
-        if (accountId !== '' && accountId !== null) {
-            //Thay đổi trạng thái icon và nội dung message
-            if ($("#product-detail__loved-btn i").hasClass("fa-regular")) {
-                $.ajax({
-                    url: "/add-to-wishlist",
-                    type: "POST",
-                    data: {
-                        "productId": productId
-                    },
-                    success: function () {
-                        console.log("Da them")
-                        $("#product-detail__loved-btn i").removeClass("fa-regular")
-                        $("#product-detail__loved-btn i").addClass("fa-solid")
-                        msg.text("Đã thêm vào mục Yêu thích")
-                    },
-                    error: function () {
-
-                    }
-                })
-                // $(this).removeClass("fa-regular")
-                // $(this).addClass("fa-solid")
-                // msg.text("Đã thêm vào mục Yêu thích")
-            }
-            if ($("#product-detail__loved-btn i").hasClass("fa-solid")) {
-                // $("#product-detail__loved-btn i").removeClass("fa-solid")
-                // $("#product-detail__loved-btn i").addClass("fa-regular")
-                // msg.text("Đã gỡ khỏi mục Yêu thích")
-                $.ajax({
-                    url: "/remove-wishlist",
-                    type: "POST",
-                    data: {
-                        "productId": productId
-                    },
-                    success: function () {
-                        console.log("Da xoa")
-                        $("#product-detail__loved-btn i").removeClass("fa-solid")
-                        $("#product-detail__loved-btn i").addClass("fa-regular")
-                        msg.text("Đã gỡ khỏi mục Yêu thích")
-                    },
-                    error: function () {
-
-                    }
-                })
-            }
-            // Hiển thị message
-            msg.removeClass("d-none")
-            msg.addClass("d-block")
-            setTimeout(() => { // Ẩn message
-                msg.removeClass("d-block")
-                msg.addClass("d-none")
-            }, 1000)
-        } else alert("Bạn cần đăng nhập")
-    }
-
-    // Thêm vào giỏ hàng
     function addToCart() {
         let id = '${product.id}'
         const urlParams = new URLSearchParams(window.location.search);
@@ -426,9 +339,9 @@
         let height = urlParams.get("height")
         let quantity = parseInt($("#product-detail__amount").prop("innerText"))
         let accountId = '${sessionScope.accountId}'
-        if (accountId !== '' && accountId !== null) {
-            const totalQuantity = parseInt($("#cart-badge").text())
-            if (totalQuantity + quantity <= 10) {
+        if (accountId !== '' || accountId !== null) {
+            const totalQuantity= parseInt($("#cart-badge").text())
+            if(totalQuantity + quantity <=10) {
                 $.ajax({
                     url: '/add-product?id=' + id + '&width=' + width + '&height=' + height + '&quantity=' + quantity,
                     type: 'POST',
@@ -447,12 +360,14 @@
                     }
                 })
             }
-            //Viết 1 đoạn html ở đây (popup)
             else {
-                document.getElementById("popup").style.display = "block";
-                document.getElementById("popup-overlay").style.display = "block";
+                $("#popup").css("display", "block")
+                $("#popup-overlay").css("display", "block")
+                // document.getElementById("popup").style.display="block";
+                // document.getElementById("popup-overlay").style.display = "block";
             }
-        } else alert("Bạn cần đăng nhập")
+        }
+        else alert("Bạn cần đăng nhập")
     }
 </script>
 </body>

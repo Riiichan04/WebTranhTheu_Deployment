@@ -24,10 +24,14 @@ function getOneProductsRow(listProducts) {
                         <p class="card-text text-center mt-1">
                             Kích thước: từ <span class="fw-semibold">${product.size}</span>
                         </p>
-                        <p class="card-text text-center fw-semibold h4 mt-2" style="color: var(--main-cta-button)">${product.price}</p>
-                    </div>
-                </div>
-            </div>
+                        <p class="card-text text-center fw-semibold h4 mt-2" style="color: var(--main-cta-button)">${product.discountedPrice}</p>
+        `
+        productHtml += (product.discountValue.replaceAll(" ", "") === "0%") ? `</div></div></div>` : `
+                <p class="text-center mt-3" id="product-details__old-price">
+                    <s class="text-secondary">${product.price}</s>
+                    <span class="ms-2 badge-color h6 p-1 rounded" id="discount-value">${product.discountValue}</span>
+                </p>
+            </div></div></div>
         `
     }
     productHtml += `</div>`
@@ -43,7 +47,7 @@ function sendProductRequest() {
             limit: limitProduct
             // amount: amount
         },
-        success: function(response) {
+        success: function (response) {
             response = $.parseJSON(response)
             if (response.result) {
                 limitProduct = response.limit ? response.limit : limitProduct
@@ -51,8 +55,7 @@ function sendProductRequest() {
                 getOneProductsRow(response.listProducts)
                 //Còn cần sửa thêm
                 offset = response.currentOffset
-            }
-            else {
+            } else {
                 offset = -1
             }
             //Tạm
@@ -62,7 +65,7 @@ function sendProductRequest() {
                 btn.attr("disabled", true)
             }
         },
-        error: function(response) {
+        error: function (response) {
 
         }
     })

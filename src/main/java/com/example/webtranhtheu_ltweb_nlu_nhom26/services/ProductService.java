@@ -15,9 +15,9 @@ import java.util.List;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class ProductService {
-    private static ProductService instance;
     private static ProductDAO productDAO;
 
     public ProductService() {
