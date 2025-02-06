@@ -16,9 +16,20 @@
 
 $("#search-product-btn").on("keyup", function (e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
-        window.location = "../page/search-result.html"
+        performSearchProduct($(this))
     }
 })
+
+$("#search-btn").click(function () {
+    performSearchProduct($("#search-product-btn"))
+})
+
+function performSearchProduct(element) {
+    if (element.val() !== "") {
+        window.location = `/search?keyword=${element.val()}`
+    }
+}
+
 
 // $("#header-category").click(function () {
 //     $(".header-popup").addClass("d-none")

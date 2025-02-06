@@ -1,10 +1,13 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
+
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
 public class Price implements Serializable {
+    private int id;
     private int productId;  //Id sản phẩm
     private int width;  //Chiều dài của sản phẩm
     private int height; //Chiều cao của sản phẩm
@@ -27,6 +30,14 @@ public class Price implements Serializable {
         this.height = height;
         this.price = price;
         this.available = available;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getProductId() {
@@ -78,9 +89,16 @@ public class Price implements Serializable {
 
     public Price getDiscountedPrice(double value) {
         if (value != 0.0) {
-            return new Price(productId, width, height, (1 - value)*price, available);
+            return new Price(productId, width, height, (1 - value) * price, available);
         }
         return this;
+    }
+
+    public String displayDiscountedPriceToString(Discount discount) {
+        if (discount == null) return getDisplayPriceToString();
+        else {
+            return ProductService.getDisplayPriceToString(price * (1 - discount.getValue()));
+        }
     }
 
     @Override

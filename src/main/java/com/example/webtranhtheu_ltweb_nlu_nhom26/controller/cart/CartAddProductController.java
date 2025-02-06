@@ -4,6 +4,8 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.Cart;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.util.ControllerUtil;
 import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
@@ -44,17 +46,18 @@ public class CartAddProductController extends HttpServlet {
             }
             try {
                 int id = Integer.parseInt(productId);
-                Product product = productService.getProduct(id);
-                product.setListPrices(productService.getProductPrices(product.getId()));
-                product.setListImageUrls(productService.getListImageUrls(product.getId()));
+//                Product product = productService.getProduct(id);
+//                product.setListPrices(productService.getProductPrices(product.getId()));
+//                product.setListImageUrls(productService.getListImageUrls(product.getId()));
+                Product product = new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(id);
                 if (product == null) {
-                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+//                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
                 Price selectedPrice = null;
                 if (widthParam == null && heightParam == null) {
                     selectedPrice = product.getMinPrice();
                 } else if (widthParam == null || heightParam == null) {
-                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+//                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 } else {
                     int width = Integer.parseInt(widthParam);
                     int height = Integer.parseInt(heightParam);

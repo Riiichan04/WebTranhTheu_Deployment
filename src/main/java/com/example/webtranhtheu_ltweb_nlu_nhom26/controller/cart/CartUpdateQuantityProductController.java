@@ -20,9 +20,12 @@ public class CartUpdateQuantityProductController extends HttpServlet {
         HttpSession session=request.getSession();
         Cart cart=(Cart) session.getAttribute("cart");
             if(cart!=null){
-                cart.updateProductByQuantity(productCode,quantity);
-                session.setAttribute("cart",cart);
-                return;
+                boolean success=cart.updateProductByQuantity(productCode,quantity);
+                if(success) {
+                    session.setAttribute("cart", cart);
+                    System.out.println(cart);
+                    return;
+                }
             }
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 //            response.sendRedirect("/cart");

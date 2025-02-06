@@ -1,5 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.DiscountService;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -13,7 +15,8 @@ public class Discount implements Serializable {
     private Timestamp startedAt;
     private Timestamp endedAt;
 
-    public Discount() {}
+    public Discount() {
+    }
 
     public Discount(int id, String description, String title) {
         this.id = id;
@@ -47,7 +50,7 @@ public class Discount implements Serializable {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -92,5 +95,37 @@ public class Discount implements Serializable {
 
     public void setEndedAt(Timestamp endedAt) {
         this.endedAt = endedAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Discount{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", value=" + value +
+                '}';
+    }
+
+    public String displayDiscountDetail() {
+        return DiscountService.displayDiscount(this);
+    }
+
+    public String displayDiscountValue() {
+        return (int) (this.value * 100) + " %";
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || this.getClass() != other.getClass()) return false;
+        Discount otherDiscount = (Discount) other;
+        return this.id == otherDiscount.id &&
+                this.title.equals(otherDiscount.title) &&
+                this.description.equals(otherDiscount.description) &&
+                this.value == otherDiscount.value &&
+                this.createdAt.equals(otherDiscount.createdAt) &&
+                this.updatedAt.equals(otherDiscount.updatedAt) &&
+                this.startedAt.equals(otherDiscount.startedAt) &&
+                this.endedAt.equals(otherDiscount.endedAt);
     }
 }

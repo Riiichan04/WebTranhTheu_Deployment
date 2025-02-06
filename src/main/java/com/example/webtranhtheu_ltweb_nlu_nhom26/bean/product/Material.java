@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 public class Material implements Serializable {
     private int id;
     private String title;
+    private int active;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
@@ -46,5 +47,13 @@ public class Material implements Serializable {
 
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public int getActive() {
+        return active;
     }
 }

@@ -7,17 +7,15 @@ import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cart implements Serializable {
-    private double totalPrice; // tổng tiền của các sản phẩm trong cart.
     private Map<String, CartProduct> products; // key là Code của Product, Value là 1 CartProduct
     public static final int MAX_CART_PRODUCTS = 10;
     private static Cart instance;
-    private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart
-
+    private List<Discount> discountList;
+//    private Discount discount; // 1 giỏ hàng chỉ áp dụng 1 cart, lưu lại discount đã chọn
     private Cart() {
         products = new HashMap<>();
     }
@@ -40,28 +38,29 @@ public class Cart implements Serializable {
             CartProduct cartProduct = products.get(productCode);
             return updateProductByQuantity(productCode, cartProduct.getQuantity() + quantity); // kiểm tra
         } else {
-            CartProduct cartProduct = covertToCart(product);
+            CartProduct cartProduct = covertToCart(product, price);
             cartProduct.setQuantity(quantity);
             if (productCode.equals("no price")) {
                 return false;
             }
             cartProduct.updateBySize(price.getWidth(), price.getHeight());
             cartProduct.setPrice(price);
-            // Có xử lý cái total Price ko??
-            cartProduct.getTotalPrice();
+            cartProduct.setTotalPrice(cartProduct.getTotalPrice());
             products.put(productCode, cartProduct);
-            this.getTotalPrice();
             return true;
         }
     }
 
 
-    private CartProduct covertToCart(Product product) {
+    private CartProduct covertToCart(Product product, Price price) {
         CartProduct cartProduct = new CartProduct();
         cartProduct.setId(product.getId());
         cartProduct.setTitle(product.getTitle());
         cartProduct.setThumbnailUrl(product.getThumbnail());
         cartProduct.setPrices(product.getListPrices());
+        cartProduct.setPrice(price);
+        cartProduct.setDiscount(product.getDiscount());
+        cartProduct.setTotalPrice(cartProduct.getOriginalPrice());
         return cartProduct;
     }
 
@@ -69,10 +68,9 @@ public class Cart implements Serializable {
         CartProduct cartProduct = products.get(productCode);
         if (cartProduct != null) {
             if (cartProduct.getPrice().getAvailable() > quantity) {
-                if (quantity>0 && quantity <= CartProduct.MAX_PER_PRODUCT) {
+                if (quantity > 0 && quantity <= CartProduct.MAX_PER_PRODUCT && getCartSize() + (quantity-cartProduct.getQuantity())<=MAX_CART_PRODUCTS) {
                     cartProduct.setQuantity(quantity);
                     cartProduct.getTotalPrice();
-                    this.getTotalPrice();
                     return true;
                 }
             } else return false;
@@ -106,9 +104,9 @@ public class Cart implements Serializable {
         return productId + "_" + width + "_" + height;
     }
 
-    public double getSale() {
-        return this.discount.getValue();
-    }
+//    public double getSale() {
+//        return this.discount.getValue();
+//    }
 
     public double getTotalPrice() {
         double totalPrice = 0;
@@ -116,31 +114,42 @@ public class Cart implements Serializable {
             totalPrice += cartProduct.getTotalPrice();
         }
 //        totalPrice-= getSale()*totalPrice;
-        setTotalPrice(totalPrice);
         return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public boolean removeProduct(String productCode) {
         if (products.containsKey(productCode)) {
             products.remove(productCode);
-            this.totalPrice= getTotalPrice();
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
 
-    public Discount getDiscount() {
-        return discount;
+    public Discount getMaxDiscount() {
+        return this.discountList.stream().max(Comparator.comparingDouble(Discount::getValue)).orElse(null);
     }
 
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
+    public Discount getSelectedDiscount(int discountId) {
+        return this.discountList.get(discountId);
     }
+
+
+
+    public List<Discount> getDiscountList() {
+        return discountList;
+    }
+
+    public void setDiscountList(List<Discount> discountList) {
+        this.discountList = discountList;
+    }
+
+//    public Discount getDiscount() {
+//        return discount;
+//    }
+//
+//    public void setDiscount(Discount discount) {
+//        this.discount = discount;
+//    }
 
     public Map<String, CartProduct> getProducts() {
         return products;
@@ -157,7 +166,36 @@ public class Cart implements Serializable {
     public int getCartSize() {
         return this.products.values().stream().mapToInt(CartProduct::getQuantity).sum();
     }
-    public int getSize(){
+
+    public int getSize() {
         return products.size();
+    }
+
+    public double getTotalPrice(List<String> listCode) {
+        double result = 0;
+        for (String code : listCode) {
+            result += this.products.get(code).getOriginalPrice();
+        }
+        return result;
+    }
+
+    public double getFinalPrice(List<String> listCode, int deliveryPrice) {
+        double result = 0;
+        for (String code : listCode) {
+            result += this.products.get(code).getTotalPrice();
+        }
+        return result + deliveryPrice;
+    }
+
+    public String getDisplayPriceToString(double price) {
+        return ProductService.getDisplayPriceToString(price);
+    }
+
+    public List<Discount> getAllDiscountInCart(List<String> listCode) {
+        List<CartProduct> listProduct = new ArrayList<>();
+        for (String code : listCode) {
+            listProduct.add(this.products.get(code));
+        }
+        return listProduct.stream().map(CartProduct::getDiscount).distinct().collect(Collectors.toList());
     }
 }

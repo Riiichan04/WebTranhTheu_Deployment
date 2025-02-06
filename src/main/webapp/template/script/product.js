@@ -31,28 +31,46 @@ $("#product-detail__share-btn i").click(function () {
     }, 1000)
 })
 
-//Nút thêm vào danh sách yêu thích
-$("#product-detail__loved-btn i").click(function () {
-    const msg = $("#product-detail__loved-btn .notification-message")
-    //Thay đổi trạng thái icon và nội dung message
-    if ($(this).hasClass("fa-regular")) {
-        $(this).removeClass("fa-regular")
-        $(this).addClass("fa-solid")
-        msg.text("Đã thêm vào mục Yêu thích")
-    } else {
-        $(this).removeClass("fa-solid")
-        $(this).addClass("fa-regular")
-        msg.text("Đã gỡ khỏi mục Yêu thích")
-    }
-
-    // Hiển thị message
-    msg.removeClass("d-none")
-    msg.addClass("d-block")
-    setTimeout(() => { // Ẩn message
-        msg.removeClass("d-block")
-        msg.addClass("d-none")
-    }, 1000)
-})
+// //Nút thêm vào danh sách yêu thích
+// $("#product-detail__loved-btn i").click(function () {
+//     const msg = $("#product-detail__loved-btn .notification-message")
+//     let productId= new URL(window.location.href).searchParams.get('id')
+//     console.log(productId)
+//     //Thay đổi trạng thái icon và nội dung message
+//     if ($("#product-detail__loved-btn i").hasClass("fa-regular")) {
+//         $("#product-detail__loved-btn i").removeClass("fa-regular")
+//         $("#product-detail__loved-btn i").addClass("fa-solid")
+//         msg.text("Đã thêm vào mục Yêu thích")
+//         $.ajax({
+//             url: "/add-to-wishlist",
+//             type: "POST",
+//             data: {
+//                 "productId": productId
+//             },
+//             success: function () {
+//                 console.log("Da them")
+//             },
+//             error: function () {
+//
+//             }
+//         })
+//         // $(this).removeClass("fa-regular")
+//         // $(this).addClass("fa-solid")
+//         // msg.text("Đã thêm vào mục Yêu thích")
+//     } else {
+//         $(this).removeClass("fa-solid")
+//         $(this).addClass("fa-regular")
+//         msg.text("Đã gỡ khỏi mục Yêu thích")
+//     }
+//
+//     // Hiển thị message
+//     msg.removeClass("d-none")
+//     msg.addClass("d-block")
+//     setTimeout(() => { // Ẩn message
+//         msg.removeClass("d-block")
+//         msg.addClass("d-none")
+//     }, 1000)
+// })
 
 // Tăng số lươợng sản phẩm mua
 $("#product-detail__add-amount").click(function () {
@@ -84,21 +102,8 @@ $("#product-detail__remove-amount").click(function () {
 
 // Nút mua ngay -> Mở trang thanh toán
 $("#purchase-btn").click(function () {
-    // window.location = "../page/purchase.html"
+    window.location = "/purchase?quick-buy=true"
 })
-
-// Nút thêm vào giỏ
-// function addToCart(productId){
-//     const urlParams = new URLSearchParams(window.location.search);
-//     let currentWidth = urlParams.get("width")
-//     let currentHeight = urlParams.get("height")
-//     let quantity= parseInt($("#product-detail__amount").prop("innerText"))
-//     $.ajax({
-//         url: '/add-product?id=' + productId + '&width=' + currentWidth +'&height=' + currentHeight+ '&quantity=' + quantity,
-//         type:'GET',
-//         success: alert("Success"),
-//     })
-// }
 
 // Click vào số sao ở mục đánh giá để bình luận số sao
 $("#product-review__star .product-info__star-container").click(function () {
@@ -221,7 +226,6 @@ function createReviewElement(review) {
         `
 }
 
-//Xử lý sau
 function createReviewStar(rating) {
     rating = Math.trunc(rating) //Lấy phần nguyên nếu như rating có dạng x.0
     if (rating > 5) return
@@ -277,18 +281,21 @@ function getPrice(width, height) {
         success: function (response) {
             response = $.parseJSON(response)
             if (response.result) {
+                //Nếu như giá đổi thì thay url
                 if (currentWidth !== response.width && currentHeight !== response.height) {
                     const url = new URL(window.location.href)
                     url.searchParams.set("width", response.width)
                     url.searchParams.set("height", response.height)
                     window.history.pushState({}, '', url)
                 }
-                $("#product-detail__available--value").text(response.available)
-                $("#product-details__price").text(response.price)
-                $("#current-size-notice").html(`<p>Kích thước hiện tại bạn đang chọn là: <span class="h5">${response.width}x${response.height} cm</span></p>`)
+                $("#product-detail__available--value").text(response.available) //Số lượng tồn kho
+                $("#product-details__price").text(response.price)   //Giá tiền
+                $("#current-size-notice").html(`<p>Kích thước hiện tại bạn đang chọn là: <span class="h5">${response.width}x${response.height} cm</span></p>`)  //Thông tin kích thước
+                //Cập nhật các thông tin lên js
                 currentPrice = response.price
                 currentWidth = response.width
                 currentHeight = response.height
+                //Hiển thị thông tin giảm giá
                 if (currentDiscountValue == null) currentDiscountValue = response.discountValue
                 if (currentDiscountValue !== 0 && response.discountedPrice !== null) {
                     $("#product-details__old-price").removeClass("d-none")
@@ -313,3 +320,9 @@ $(".switch-size-btn").click(function () {
 getReviewList(reviewAmount)
 getPrice(currentWidth, currentHeight)
 
+function closeError(){
+    $("#popup-overlay").css("display", "none")
+    $("#popup").css("display", "none")
+    // document.getElementById("popup-overlay").style.display="none"
+    // document.getElementById("popup").style.display="none"
+}

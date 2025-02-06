@@ -15,9 +15,6 @@
         <li class="breadcrumb-item" aria-current="page"><a
                 href="/category/${product.category.patternName}">${product.category.title}</a>
         </li>
-        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay">Tranh thêu tay</a></li>--%>
-        <%--        Phần topic xử lý sau        --%>
-        <%--        <li class="breadcrumb-item" aria-current="page"><a href="/category/tranh-theu-tay/tranh-phong-canh">Tranh thêu Phong cảnh</a></li>--%>
         <li class="breadcrumb-item active" aria-current="page">${product.title}</li>
     </ol>
 </nav>
@@ -26,7 +23,6 @@
     <div class="background-container rounded">
         <div class="row">
             <div class="col-3 p-4_5">
-                <%--                <img id="product-image" src="../template/asset/image/product_image.png" alt="">--%>
                 <img id="product-image" src="${product.getThumbnail()}" alt="">
                 <p class="mt-4 mb-1">Kích thước: </p>
                 <div class="w-100">
@@ -151,7 +147,7 @@
                         </button>
                     </div>
                     <div class="col-6 d-flex justify-content-center">
-                        <button id="purchase-btn" class="main-cta-button h4 py-3 px-4_5 rounded border-0">Mua ngay
+                        <button id="purchase-btn" class="main-cta-button h4 py-3 px-4_5 rounded border-0">Thanh toán
                         </button>
                     </div>
                 </div>
@@ -169,13 +165,12 @@
                             <span> Chưa chọn</span>
                         </div>
                         <div class="col-5 text-end position-relative ">
-                            <a class="text-decoration-none main-color" id="show-popup" href="account-page.html">THAY
-                                ĐỔI</a>
+                            <a class="text-decoration-none main-color" id="show-popup" href="/user">
+                                THAY ĐỔI</a>
                         </div>
                     </div>
                     <div class="row my-2">
                         <div class="col-1">
-                            <!--                            <i class="fa-solid fa-truck"></i>-->
                             <i class="bi bi-truck"></i>
                         </div>
                         <div class="col-6">
@@ -187,7 +182,6 @@
                     </div>
                     <div class="row my-2">
                         <div class="col-1">
-                            <!--                            <i class="fa-solid fa-money-bill"></i>-->
                             <i class="bi bi-cash"></i>
                         </div>
                         <div class="col">
@@ -208,7 +202,7 @@
                             <i class="bi bi-tag"></i>
                         </div>
                         <div class="col">
-                            <span>${product.getDiscount().getDescription()}</span>
+                            <span>${product.getDiscount().displayDiscountDetail()}</span>
                         </div>
                     </div>
                 </div>
@@ -338,6 +332,14 @@
         </div>
     </div>
 </section>
+<div id="popup-overlay"></div>
+<div id="popup" class="p-3">
+    <div class="row  text-center fw-bold h5 border-bottom">
+        <div class="col-11 h4 text-center">Lỗi</div>
+        <i class="col-1 p-2 text-center bi bi-x-lg" onclick="closeError()"></i>
+    </div>
+    <div class="row mt-2 ms-2 text-center">Số lượng sản phẩm vượt mức quy định.</div>
+</div>
 <jsp:include page="public/footer.jsp"/>
 <script src="template/script/header.js"></script>
 <script src="template/script/product.js"></script>
@@ -352,26 +354,32 @@
         let quantity = parseInt($("#product-detail__amount").prop("innerText"))
         let accountId = '${sessionScope.accountId}'
         if (accountId !== '' || accountId !== null) {
-            $.ajax({
-                url: '/add-product?id=' + id + '&width=' + width + '&height=' + height + '&quantity=' + quantity,
-                type: 'POST',
-                success: function (data) {
-                    data = $.parseJSON(data)
-                    if (data.result) {
+            const totalQuantity= parseInt($("#cart-badge").text())
+            if(totalQuantity + quantity <=10) {
+                $.ajax({
+                    url: '/add-product?id=' + id + '&width=' + width + '&height=' + height + '&quantity=' + quantity,
+                    type: 'POST',
+                    success: function (data) {
                         console.log(data)
-                        const badge = $("#cart-badge")
-                        const currentCartLength = data.currentCartLength
-                        badge.removeClass("d-none")
-                        badge.text(currentCartLength)
+                        data = $.parseJSON(data)
+                        if (data.result) {
+                            const badge = $("#cart-badge")
+                            const currentCartLength = data.currentCartLength
+                            badge.removeClass("d-none")
+                            badge.text(currentCartLength)
+                        } else alert("Có lỗi khi thêm sản phẩm vào giỏ hàng")
+                    },
+                    error: function () {
+
                     }
-                    else alert("Có lỗi khi thêm sản phẩm vào giỏ hàng")
-                },
-                error: function (error) {
-                    let errText = error.responseText
-                    console.log(errText)
-                    alert(errText)
-                }
-            })
+                })
+            }
+            else {
+                $("#popup").css("display", "block")
+                $("#popup-overlay").css("display", "block")
+                // document.getElementById("popup").style.display="block";
+                // document.getElementById("popup-overlay").style.display = "block";
+            }
         }
         else alert("Bạn cần đăng nhập")
     }

@@ -2,7 +2,6 @@ package com.example.webtranhtheu_ltweb_nlu_nhom26.dao;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.admin.DiscountDTO;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Discount;
-import com.example.webtranhtheu_ltweb_nlu_nhom26.db.JDBIConnector;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
@@ -29,5 +28,12 @@ public interface DiscountDAO {
     @RegisterBeanMapper(Discount.class)
     boolean updateDiscount(@BindBean Discount discount);
 
+    @SqlQuery("select id, title, description, value, createdAt, updatedAt, startedAt, endedAt from discounts where NOW()>=startedAt and NOW()<=endedAt")
+    @RegisterBeanMapper(Discount.class)
+    List<Discount> getDiscountAvailable();
+
+    @SqlQuery("select id, title from discounts where startedAt <= NOW() and NOW() <= endedAt")
+    @RegisterBeanMapper(Discount.class)
+    List<Discount> getDiscountValid();
 
 }

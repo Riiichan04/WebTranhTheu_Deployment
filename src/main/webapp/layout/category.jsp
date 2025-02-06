@@ -61,8 +61,6 @@
                                     <option value="${provider.getProviderName()}">${provider.getProviderName()}</option>
                                 </c:forEach>
                             </select>
-<%--                            <input id="provider-filter" type="text" class="rounded border-0 col"--%>
-<%--                                   placeholder="Nhập tên nhà cung cấp">--%>
                         </div>
                         <p class="mt-3 fw-semibold">Theo giá tiền (VNĐ):</p>
                         <div class="d-flex mt-1 mb-4">

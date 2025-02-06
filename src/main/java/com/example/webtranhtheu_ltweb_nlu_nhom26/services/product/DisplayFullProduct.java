@@ -20,7 +20,7 @@ public class DisplayFullProduct extends DecorationProductDetail {
         product.setPolicy(this.getPolicy(productId));
         product.setProvider(this.getProvider(productId));
         product.setCategory(this.getCategory(productId));
-        product.setDiscount(this.getDiscount());
+        if (this.getDiscount(productId) != null) product.setDiscount(this.getDiscount(productId));
         product.getListTopics().addAll(this.getListTopics(productId));
         product.getListPrices().addAll(this.getListPrices(productId).stream().sorted(Comparator.comparingDouble(Price::getPrice)).toList());
         product.getListMaterials().addAll(this.getListMaterials(productId));
@@ -41,8 +41,8 @@ public class DisplayFullProduct extends DecorationProductDetail {
         return super.productDAO.getCategory(productId);
     }
 
-    public Discount getDiscount() {
-        return generateDiscount(super.productDAO.getProductDiscounts());
+    public Discount getDiscount(int productId) {
+        return generateDiscount(super.productDAO.getProductDiscounts(productId));
     }
 
     public List<Topic> getListTopics(int productId) {
