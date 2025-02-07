@@ -49,7 +49,7 @@ public class ProductsRowGetter extends HttpServlet {
                     //Thêm thông tin hiển thị card product dạng json
                     ControllerUtil.addProductToJson(listProducts, product, product.getMinPrice());
                 }
-                jsonResult.addProperty("currentOffset", productsRow.getLast().getId() + 1);
+                jsonResult.addProperty("currentOffset", productsRow.get(productsRow.size() - 1).getId() + 1);
                 jsonResult.add("listProducts", listProducts);
 
                 ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);

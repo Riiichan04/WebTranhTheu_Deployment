@@ -23,7 +23,7 @@ public interface ProductUtil {
 
     //Mặc định lấy hình đầu tiên làm thumbnail
     static String getThumbnailUrl(Product product) {
-        return product.getListImageUrls().getFirst();
+        return product.getListImageUrls().get(0);
     }
 
     //Tạo ra một chuỗi hiển thị thông tin nguyên liệu

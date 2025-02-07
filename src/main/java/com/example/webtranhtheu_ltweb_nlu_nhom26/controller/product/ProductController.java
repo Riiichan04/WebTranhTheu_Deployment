@@ -57,7 +57,8 @@ public class ProductController extends HttpServlet {
             Object account = session.getAttribute("account");
             String location = "Chưa chọn";
             if (account != null) {
-                location = ((User) account).getDefaultLocation().getLocation();
+                User sessionUser = (User) account;
+                location = sessionUser.getDefaultLocation().getLocation();
             }
 
             request.setAttribute("product", product);
