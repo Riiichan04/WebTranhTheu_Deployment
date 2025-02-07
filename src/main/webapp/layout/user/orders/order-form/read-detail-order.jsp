@@ -41,8 +41,8 @@
     </c:if>
     <div class="p-4 row">
         <div class="row">
-            <div class="col-6 h5 fw-semibold">Địa chỉ nhận hàng</div>
-            <div class="col-6 text-end">Thông tin vận chuyển</div>
+            <div class="ps-0 col-4 h5 fw-semibold">Địa chỉ nhận hàng</div>
+            <div class="col-8 fw-semibold text-end">Thông tin vận chuyển</div>
 
         </div>
         <div class="col-5 border-end">
@@ -83,8 +83,11 @@
                 <div id="product_${orderProduct.id}" class="row py-3 ">
                     <img src="${orderProduct.thumbnail}" class="resized-image col-3">
                     <div class="col container">
-                        <div class="row title">${orderProduct.title}</div>
-                        <div class="row">${orderProduct.quantity}</div>
+                        <div class="row title mb-4">${orderProduct.title}</div>
+                        <div class="row ">
+                            <div class="col-3">Số lượng: </div>
+                            <div class="col-9 fw-semibold">${orderProduct.quantity}</div>
+                        </div>
                     </div>
                     <div class="price col-3 p-4">${orderProduct.price}</div>
                 </div>
@@ -95,31 +98,26 @@
             <div class="col-7 border-end">
                 <div class="row">
                     <div class="col"></div>
-                    <div class="col-5">Tổng tiền hàng:</div>
+                    <div class="col-5">Tổng đơn hàng: </div>
                 </div>
                 <hr/>
                 <div class="row">
                     <div class="col"></div>
-                    <div class="col-5">Phí vận chuyển:</div>
+                    <div class="col-5">Phí vận chuyển: </div>
                 </div>
                 <hr/>
                 <div class="row">
                     <div class="col"></div>
-                    <div class="col-5">Giảm giá:</div>
-                </div>
-                <hr/>
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col-5">Thành tiền:</div>
+                    <div class="col-5 fw-semibold">Thành tiền: </div>
                 </div>
                 <hr/>
             </div>
             <div class="col-5 ps-3">
                 <div id="totalPrice_${order.id}" class="row ps-5">${order.totalPrice}</div>
                 <hr/>
-                <p class="row ps-5">300000.0</p>
+                <div id="shippingPrice" class="price row ps-5">300000.0</div>
                 <hr/>
-                <p class="row ps-5">Chưa làm</p>
+                <div id="finalPrice" class="price row ps-5"></div>
                 <hr/>
             </div>
         </div>
@@ -152,9 +150,12 @@
     function formatTotalPrice(){
         let formatPrice;
         formatPrice= formatter.format($("div#totalPrice_"+${order.id}).prop("innerText"))
-        $("div#totalPrice_"+${order.id}).text(formatPrice+"")
+        $("div#totalPrice_"+${order.id}).text(formatPrice.replaceAll("₫", "VNĐ")+"")
     }
     formatTotalPrice()
+    $("#shippingPrice").text(formatter.format($("#shippingPrice").prop("innerText")).replaceAll("₫", "VNĐ"))
+    let finalPrice= formatter.format(parseFloat($("div#totalPrice_"+${order.id}).prop("innerText").replaceAll("VNĐ", "").replaceAll(" ", "").replaceAll(".", "")) + parseFloat($("#shippingPrice").prop("innerText").replaceAll("VNĐ", "").replaceAll(" ", "").replaceAll(".", "")))
+    $("#finalPrice").text(finalPrice.replaceAll("₫", "VNĐ")+"")
 </script>
 </body>
 </html>
