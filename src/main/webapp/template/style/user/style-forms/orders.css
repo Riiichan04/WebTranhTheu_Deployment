@@ -38,9 +38,10 @@
     color: var(--web-background-color);
 }
 /*User's canceled Orders*/
-.rebuy-area .rebuy_btn{
+.rebuy_btn{
     width: 200px;
     height: 40px;
+    border-radius: 5px;
 }
 .details-btn,.turnback_order{
     border:solid 1px var(--sub-cta-button);
