@@ -152,7 +152,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-4_5 rounded-end border-start border-1" id="product-sub-info">
+            <div class="col-3 p-4_5 rounded-end border border-3" id="product-sub-info">
                 <div class="mb-4_5">
                     <div class="row">
                         <p class="fw-semibold">Tùy chọn giao hàng: </p>
@@ -164,7 +164,7 @@
                         <div class="col-6">
                             <span> Chưa chọn</span>
                         </div>
-                        <div class="col-5 text-end position-relative ">
+                        <div class="col text-end position-relative ">
                             <a class="text-decoration-none main-color" id="show-popup" href="/user">
                                 THAY ĐỔI</a>
                         </div>
@@ -173,11 +173,9 @@
                         <div class="col-1">
                             <i class="bi bi-truck"></i>
                         </div>
-                        <div class="col-6">
+                        <div class="col pe-0">
                             <span>Giao hàng tận nơi</span>
-                        </div>
-                        <div class="col-5 text-end">
-                            <span class="fw-bolder">130.000 VNĐ</span>
+                            <span class="fw-bolder text-end ps-4_5">130.000 VNĐ</span>
                         </div>
                     </div>
                     <div class="row my-2">
@@ -186,9 +184,6 @@
                         </div>
                         <div class="col">
                             <span>Thanh toán bằng tiền mặt</span>
-                            <div class="col">
-                                <span>(Có thể thay đổi khi thanh toán)</span>
-                            </div>
                         </div>
 
                     </div>
@@ -201,8 +196,8 @@
                         <div class="col-1">
                             <i class="bi bi-tag"></i>
                         </div>
-                        <div class="col">
-                            <span>${product.getDiscount().displayDiscountDetail()}</span>
+                        <div class="col ps-3">
+                            <span class="p-0">${product.getDiscount().displayDiscountDetail()}</span>
                         </div>
                     </div>
                 </div>

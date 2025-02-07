@@ -26,7 +26,7 @@
             </div>
             <hr/>
             <c:if test="${empty cart.products}">
-                <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">
+                <div class="h4 main-color opacity-50 d-flex justify-content-center align-items-center fw-normal text-center">
                     Giỏ hàng trống
                 </div>
             </c:if>
@@ -95,7 +95,8 @@
                         </div>
                         <div class="col p-0">
                             <div class="row pb-4 "></div>
-                            <div class="row ps-3" id="product-detail__price">${entry.value.displayElementDiscountPrice()}</div>
+                            <div class="row ps-3"
+                                 id="product-detail__price">${entry.value.displayElementDiscountPrice()}</div>
                             <c:if test="${entry.value.getDiscount().getId() != 0}">
                                 <div class="row ps-3"><s class="p-0">${entry.value.displayElementPrice()}</s></div>
                             </c:if>
@@ -120,16 +121,16 @@
                 </div>
                 <hr>
                 <div class="discounts-list">
-                    <%--                    <c:if test="${empty cart.discountList}">--%>
-                    <%--                        <div class="h6 justify-content-center align-items-center fw-semibold"--%>
-                    <%--                             style="color: var(--text-hover-color)">Không có khuyến mãi--%>
-                    <%--                        </div>--%>
-                    <%--                    </c:if>--%>
+                    <c:if test="${empty discountsAvailable}">
+                        <div class="justify-content-center align-items-center fw-normal"
+                             style="color: var(--text-hover-color)">Không có khuyến mãi
+                        </div>
+                    </c:if>
                     <c:forEach var="discount" items="${discountsAvailable}">
                         <c:if test="${discount.getId() != 0}">
                             <div class="row ps-3 py-2 discount-item selected-discount" data-id="${discount.id}"
                                  data-value="${discount.value}">
-                                <div class="row discount-title h6">${discount.title}</div>
+                                <div class="row discount-title h5">${discount.title}</div>
                                 <div class="row p-0">
                                     <div class="discount-description">${discount.description}</div>
                                 </div>
@@ -423,8 +424,8 @@
     // }
 
     <c:forEach var="entry" items="${cart.products}">
-        update(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})
-        <%--formatProductPrice(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})--%>
+    update(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})
+    <%--formatProductPrice(${entry.value.id}, ${entry.value.price.width}, ${entry.value.price.height})--%>
     </c:forEach>
 </script>
 </body>
