@@ -27,11 +27,11 @@
 <div class="container px-5 mt-0">
     <form id="sign-up-form" method="post">
         <div class="row pt-3">
-            <div class="col"><h2 class="style-big-title">Đăng Ký</h2></div>
+            <div class="col"><h3 class="style-big-title fw-semibold">Đăng Ký</h3></div>
         </div>
         <div class="row">
             <div class="col">
-                <span class="style-caption">Chào mừng bạn đến với website</span>
+                <span class="style-caption">Chào mừng bạn đến với Nét Việt</span>
             </div>
         </div>
         <div style="color: red; font-size: 14px">${error}</div>

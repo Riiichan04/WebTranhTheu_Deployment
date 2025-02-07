@@ -23,7 +23,7 @@
     <% if (request.getAttribute("accountId") == null) { %>
     <form method="post">
         <div class="row pt-3">
-            <div class="col"><h2 class="style-big-title">Quên mật khẩu</h2></div>
+            <div class="col"><h3 class="style-big-title fw-semibold">Quên mật khẩu</h3></div>
         </div>
         <div style="color: red; font-size: 14px">${error}</div>
         <!-- nhập email -->

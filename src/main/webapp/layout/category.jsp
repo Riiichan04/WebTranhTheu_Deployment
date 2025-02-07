@@ -19,8 +19,8 @@
 
 <section class="container mt-2 mb-5">
     <div class="row">
-        <div class="col-2 pe-3 ps-0">
-            <div class="rounded py-4_5 background-container">
+        <div style="width: 20%;" class="pe-3 ps-0">
+            <div class="py-4_5 background-container">
                 <div class="category-list">
                     <h5 class="ms-2 mb-2 main-color p-1 ps-2">Danh mục </h5>
                     <hr/>
@@ -54,8 +54,8 @@
                             </c:forEach>
                         </div>
                         <p class="fw-semibold">Theo nhà cung cấp:</p>
-                        <div class="mt-1 mb-4 mx-1">
-                            <select name="" id="provider-filter" class="py-1 rounded border-0 col text-truncate w-100">
+                        <div class="mt-1 mb-4 mx-1 pe-3">
+                            <select name="" id="provider-filter" class="py-1 rounded col text-truncate w-100">
                                 <option value="" selected disabled>Hãy chọn nhà cung cấp</option>
                                 <c:forEach var="provider" items="${listProvider}">
                                     <option value="${provider.getProviderName()}">${provider.getProviderName()}</option>
@@ -64,9 +64,9 @@
                         </div>
                         <p class="mt-3 fw-semibold">Theo giá tiền (VNĐ):</p>
                         <div class="d-flex mt-1 mb-4">
-                            <input id="filter-price-from" type="text" class="rounded border-0 col-5" placeholder="Từ">
+                            <input id="filter-price-from" type="text" class="rounded col-5" placeholder="Từ">
                             <div class=" mb-1 col-1 text-center">-</div>
-                            <input id="filter-price-to" type="text" class="rounded border-0 col-5" placeholder="Đến">
+                            <input id="filter-price-to" type="text" class="rounded col-5" placeholder="Đến">
                         </div>
                         <p class="mt-3 fw-semibold">Theo đánh giá:</p>
                         <div class="d-flex mb-4">
@@ -122,12 +122,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-10 background-container rounded p-4_5">
+        <div style="width: 80%;" class="background-container p-4_5">
             <h4 id="category-title" class="main-color">${categoryTitle}</h4>
             <hr class="mb-5"/>
             <div id="category-displayed-product"></div>
         </div>
-        <nav>
+        <nav class="mt-3">
             <ul class="pagination d-flex justify-content-center">
                 <li class="page-item cursor-pointer">
                     <p class="page-link text-button" id="prev-page"><span aria-hidden="true">&laquo;</span></p>

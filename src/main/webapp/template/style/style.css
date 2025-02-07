@@ -50,6 +50,7 @@ footer i, footer p {
 }
 
 .sub-cta-button {
+    background-color: var(--light-component-background-color);
     color: var(--sub-cta-button);
     border: solid 2px var(--sub-cta-button) !important;
 }
@@ -101,6 +102,10 @@ footer i, footer p {
 .card {
     background-color: var(--light-component-background-color);
     border: 0;
+}
+
+.card-element:hover {
+    box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.75);
 }
 
 .card-title {

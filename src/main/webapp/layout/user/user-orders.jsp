@@ -11,21 +11,21 @@
 </head>
 <body>
 <div id="user-ordered-list" class="content-details">
-    <div class="h3 fw-semibold p-4">Đơn hàng của tôi</div>
+    <div class="h4 fw-semibold p-4">Đơn hàng của tôi</div>
     <hr>
     <div class="container px-3">
-        <div class="row order-categories">
-            <div class="col order-item p-2" data-url="/waitlist-orders">Chờ xác nhận</div>
-            <div class="col order-item p-2" data-url="/pickup-orders">Chờ lấy hàng</div>
-            <div class="col order-item p-2" data-url="/shipping-orders">Chờ giao hàng</div>
-            <div class="col order-item p-2" data-url="/turnback-orders">Trả hàng</div>
-            <div class="col order-item p-2" data-url="/shipped-orders">Đã giao</div>
-            <div class="col order-item p-2" data-url="/received-orders">Đã nhận hàng</div>
-            <div class="col order-item p-2" data-url="/cancel-orders">Đã hủy</div>
+        <div class="row order-categories mb-2">
+            <div class="cursor-pointer col order-item p-2" data-url="/waitlist-orders">Chờ xác nhận</div>
+            <div class="cursor-pointer col order-item p-2" data-url="/pickup-orders">Chờ lấy hàng</div>
+            <div class="cursor-pointer col order-item p-2" data-url="/shipping-orders">Chờ giao hàng</div>
+            <div class="cursor-pointer col order-item p-2" data-url="/turnback-orders">Trả hàng</div>
+            <div class="cursor-pointer col order-item p-2" data-url="/shipped-orders">Đã giao</div>
+            <div class="cursor-pointer col order-item p-2" data-url="/received-orders">Đã nhận hàng</div>
+            <div class="cursor-pointer col order-item p-2" data-url="/cancel-orders">Đã hủy</div>
         </div>
         <div id="orderContent">
             <c:if test="${empty account.orders}">
-                <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">
+                <div class="h5 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">
                     Bạn chưa có đơn hàng nào
                 </div>
             </c:if>
@@ -44,17 +44,18 @@
                                     <c:when test="${order.status == 6}">Yêu cầu hoàn đơn - đổi trả</c:when>
                                     <c:when test="${order.status == 0}">Đã hủy</c:when>
                                     <c:otherwise> Trạng thái không xác định</c:otherwise>
-                                </c:choose></div>
+                                </c:choose>
+                            </div>
                         </div>
                         <c:forEach var="orderProduct" items="${order.products}">
                             <div id="${orderProduct.id}" class="row py-3">
                                 <img src="${orderProduct.thumbnail}"
                                      class="resized-image col-3">
-                                <div class="col container">
-                                    <div class="row title">${orderProduct.title}</div>
-                                    <div class="row">${orderProduct.quantity}</div>
+                                <div class="col">
+                                    <div class="title h5 main-color">${orderProduct.title}</div>
+                                    <div class="p-0">Số lượng: <span class="fw-semibold">${orderProduct.quantity}</span> </div>
                                 </div>
-                                <div id="productPrice" class="col-3 p-4">${orderProduct.price}</div>
+                                <div id="productPrice" class="col-3 p-4 h5">${orderProduct.price}</div>
                             </div>
                         </c:forEach>
                         <div class=" total row py-3">

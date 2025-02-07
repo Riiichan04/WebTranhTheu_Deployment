@@ -22,12 +22,16 @@ $(".list-group-item").on("click", function (event) {
 
 //Log out
 $(".logout-btn").click(function () {
-    $("#logout_alert").css("display", "block");
-    $("#content").addClass("d-none")
+    $("#logout-alert").removeClass("d-none")
+    $("#logout-container").removeClass("d-none")
 })
 $("#noBtn").click(function () {
-    $("#logout_alert").css("display", "none");
-    window.location= "/user"
+    $("#logout-alert").addClass("d-none")
+    $("#logout-container").addClass("d-none")
+})
+$("#logout-container").click(function () {
+    $("#logout-alert").addClass("d-none")
+    $("#logout-container").addClass("d-none")
 })
 
 

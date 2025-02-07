@@ -31,18 +31,6 @@
                         <div class="row px-3"><a href="/policy">Chính sách đổi - trả - hoàn tiền</a></div>
                         <div class="row px-3"><a href="/policy">Chính sách vận chuyển</a></div>
                     </div>
-                    <div class="col-4">
-                        <h4>Đối tác liên kết</h4>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <img src="../../template/asset/image/VNPay.png" class="img-fluid" alt="Hình 1">
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <img src="../../template/asset/image/momo-logo.png" class="img-fluid" alt="Hình 2"
-                                     style="width:50px;height: 50px ">
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="ms-3 row py-4">
                     <div class="row "><h4>Liên hệ</h4></div>

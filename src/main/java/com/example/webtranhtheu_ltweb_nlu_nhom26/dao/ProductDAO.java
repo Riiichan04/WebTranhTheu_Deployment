@@ -181,7 +181,7 @@ public interface ProductDAO {
         select products.id
         from products join topic_products_details on products.id = topic_products_details.productId
         where topic_products_details.topicId in (<topicIds>) and products.id != :productId
-        limit 4
+        limit 5
     """)
     List<Integer> findAllSimilarProducts(@BindList("topicIds") List<Integer> topicIds, @Bind("productId") int productId);
 

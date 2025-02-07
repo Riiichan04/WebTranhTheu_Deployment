@@ -27,16 +27,27 @@
         }
         else themeElement.attr("href", localStorage.getItem("themeUrl"))
     }
-
+    setDefaultTheme()
     //Cần lưu thêm thông tin vào localStorage
-    function changeTheme() {
+    function changeTheme(name) {
         let changedUrl = ""
-        if (themeElement.attr("href") === "../../template/style/index.css") {
-            changedUrl = "../../template/style/old-index.css"
+        switch (name) {
+            case "default": {
+                changedUrl = "../../template/style/index.css"
+                break
+            }
+            case "old": {
+                changedUrl = "../../template/style/old-index.css"
+                break
+            }
+            default: break
         }
-        else {
-            changedUrl = "../../template/style/index.css"
-        }
+        // if (themeElement.attr("href") === "../../template/style/index.css") {
+        //     changedUrl = "../../template/style/old-index.css"
+        // }
+        // else {
+        //     changedUrl = "../../template/style/index.css"
+        // }
         themeElement.attr("href", changedUrl)
         localStorage.setItem("themeUrl", changedUrl)
     }

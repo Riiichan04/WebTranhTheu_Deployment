@@ -20,7 +20,7 @@
 </nav>
 
 <section class="container my-4_5" id="product-detail">
-    <div class="background-container rounded">
+    <div class="background-container ">
         <div class="row">
             <div class="col-3 p-4_5">
                 <img id="product-image" src="${product.getThumbnail()}" alt="">
@@ -101,10 +101,6 @@
                             <p class="bg-opacity-75 p-1 d-none notification-message bg-dark rounded">Đã copy link vào
                                 clipboard</p>
                         </div>
-                        <div id="product-detail__loved-btn" class="col position-relative">
-                            <i class="cursor-pointer h4 main-color fa-regular fa-heart"></i>
-                            <p class="bg-opacity-75 p-1 d-none notification-message bg-dark rounded"></p>
-                        </div>
                         <div class="col"></div>
                     </div>
                 </div>
@@ -152,7 +148,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-4_5 rounded-end border-start border-1" id="product-sub-info">
+            <div class="col-3 p-4_5 rounded-end border-start border-3" id="product-sub-info">
                 <div class="mb-4_5">
                     <div class="row">
                         <p class="fw-semibold">Tùy chọn giao hàng: </p>
@@ -164,7 +160,7 @@
                         <div class="col-6">
                             <span> Chưa chọn</span>
                         </div>
-                        <div class="col-5 text-end position-relative ">
+                        <div class="col text-end position-relative ">
                             <a class="text-decoration-none main-color" id="show-popup" href="/user">
                                 THAY ĐỔI</a>
                         </div>
@@ -173,11 +169,9 @@
                         <div class="col-1">
                             <i class="bi bi-truck"></i>
                         </div>
-                        <div class="col-6">
+                        <div class="col pe-0">
                             <span>Giao hàng tận nơi</span>
-                        </div>
-                        <div class="col-5 text-end">
-                            <span class="fw-bolder">130.000 VNĐ</span>
+                            <span class="fw-bolder text-end ps-4_5">130.000 VNĐ</span>
                         </div>
                     </div>
                     <div class="row my-2">
@@ -186,9 +180,6 @@
                         </div>
                         <div class="col">
                             <span>Thanh toán bằng tiền mặt</span>
-                            <div class="col">
-                                <span>(Có thể thay đổi khi thanh toán)</span>
-                            </div>
                         </div>
 
                     </div>
@@ -201,8 +192,8 @@
                         <div class="col-1">
                             <i class="bi bi-tag"></i>
                         </div>
-                        <div class="col">
-                            <span>${product.getDiscount().displayDiscountDetail()}</span>
+                        <div class="col ps-3">
+                            <span class="p-0">${product.getDiscount().displayDiscountDetail()}</span>
                         </div>
                     </div>
                 </div>
@@ -220,7 +211,7 @@
 
 </section>
 <section class="container my-4_5" id="product-description">
-    <div class="background-container rounded p-4_5">
+    <div class="background-container  p-4_5">
         <h4 class="main-color">Mô tả sản phẩm</h4>
         <p class="product-description m-3">
             ${product.description}
@@ -229,7 +220,7 @@
 </section>
 
 <section class="container my-4_5" id="product-review">
-    <div class="background-container rounded p-4_5">
+    <div class="background-container  p-4_5">
         <div id="product-review-comment">
             <h4 class="main-color">Đánh giá</h4>
             <div class="row mt-4">
@@ -299,18 +290,32 @@
     </div>
 </section>
 <section class="container my-4_5" id="other-product">
-    <div class="background-container rounded p-4_5">
+    <div class="background-container  p-4_5">
         <h4 class="main-color">Sản phẩm khác</h4>
         <div class="row mt-2">
             <c:forEach var="product" items="${similarProduct}">
-                <div class="col-3 other-product__card">
-                    <div onclick="window.location = '/product?id=${product.id}'" class="card p-2"
-                         style="cursor: pointer">
+                <div class="card-element mb-3" style="width: 20%">
+                    <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                         <img src="${product.getThumbnail()}" class="card-img" alt="...">
                         <div class="card-body px-1">
-                            <h6 class="card-title text-center pb-2">${product.title}</h6>
-                            <p class="card-text text-center fw-semibold h5 mt-2"
-                               style="color: var(--sub-cta-button)">${product.getMinPrice().getDisplayPriceToString()}</p>
+                            <h5 class="card-title text-center pb-2 fw-semibold text-truncate"
+                                title="${product.category} ${product.title}">
+                                    ${product.category} ${product.title}
+                            </h5>
+                            <p class="card-text my-1 text-center text-truncate"
+                               title="Nhà cung cấp: ${product.getProvider().getProviderName()}">
+                                Nhà cung cấp: <span class="fw-semibold">${product.getProvider().getProviderName()}</span>
+                            </p>
+                            <p class="card-text text-center text-truncate my-1"
+                               title="Nguyên liệu: ${product.getStringDisplayMaterials()}">
+                                Nguyên liệu: <span class="fw-semibold">${product.getStringDisplayMaterials()}</span>
+                            </p>
+                            <p class="card-text text-center mt-1">
+                                Kích thước: từ <span class="fw-semibold">${product.getMinPrice().getWidth()}x${product.getMinPrice().getHeight()} cm</span>
+                            </p>
+                            <p class="card-text text-center fw-semibold h4 mt-2"
+                               style="color: var(--main-cta-button)">${product.getMinPrice().getDisplayPriceToString()}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -320,11 +325,18 @@
 </section>
 <div id="popup-overlay"></div>
 <div id="popup" class="p-3">
-    <div class="row  text-center fw-bold h5 border-bottom">
+    <div class="row text-center fw-bold h5 border-bottom">
         <div class="col-11 h4 text-center">Lỗi</div>
         <i class="col-1 p-2 text-center bi bi-x-lg" onclick="closeError()"></i>
     </div>
-    <div class="row mt-2 ms-2 text-center">Số lượng sản phẩm vượt mức quy định.</div>
+    <c:choose>
+        <c:when test="${sessionScope.accountId == null}">
+            <div class="row mt-2 ms-2 text-center">Bạn cần đăng nhập để thêm sản phẩm vào giỏ.</div>
+        </c:when>
+        <c:otherwise>
+            <div class="row mt-2 ms-2 text-center">Số lượng sản phẩm vượt mức quy định.</div>
+        </c:otherwise>
+    </c:choose>
 </div>
 <jsp:include page="public/footer.jsp"/>
 <script src="template/script/header.js"></script>
@@ -363,8 +375,6 @@
             else {
                 $("#popup").css("display", "block")
                 $("#popup-overlay").css("display", "block")
-                // document.getElementById("popup").style.display="block";
-                // document.getElementById("popup-overlay").style.display = "block";
             }
         }
         else alert("Bạn cần đăng nhập")

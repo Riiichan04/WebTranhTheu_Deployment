@@ -1,3 +1,7 @@
+input {
+    border: solid black 1px !important;
+}
+
 .category-list p {
     margin: 0;
 }

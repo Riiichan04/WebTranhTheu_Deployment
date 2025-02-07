@@ -71,7 +71,7 @@ public class DisplayFullProduct extends DecorationProductDetail {
         List<Integer> listId = super.productDAO.findAllSimilarProducts(product.getListTopics().stream().map(Topic::getId).collect(Collectors.toList()), product.getId());
         List<Product> result = new ArrayList<>();
         for (int id : listId) {
-            result.add(getFullProductInfo(id));
+            result.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(id));
         }
         return result;
     }

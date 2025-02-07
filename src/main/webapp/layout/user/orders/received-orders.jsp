@@ -39,9 +39,9 @@
                         <div id="product_${orderProduct.id}" class="row justify-content-center align-items-center text-center py-3">
                             <img src="${orderProduct.thumbnail}"
                                  class="resized-image col-3">
-                            <div class="col-4 container">
-                                <div class="row title">${orderProduct.title}</div>
-                                <div class="row">${orderProduct.quantity}</div>
+                            <div class="col text-start">
+                                <div class="title h5 main-color">${orderProduct.title}</div>
+                                <div class="p-0">Số lượng: <span class="fw-semibold">${orderProduct.quantity}</span> </div>
                             </div>
                             <div id="productPrice" class="col-3 p-4">${orderProduct.price}</div>
                             <button type="button" class="write_review col-2" style="height: 30%" onclick="window.location.href='/product?id=${orderProduct.id}'">Viết đánh giá</button>

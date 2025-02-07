@@ -14,15 +14,17 @@
     })
 </script>
 <div id="user-feedback-info" class=" content-details col">
-    <div class="row"><i class="backpage-feedback pt-4 bi bi-chevron-left">Trở lại</i></div>
+    <div class="row cursor-pointer"><i class="backpage-feedback pt-4 bi bi-chevron-left">Trở lại</i></div>
     <div class="h3 fw-semibold px-4 py-2">Chi tiết đánh giá</div>
     <hr/>
     <div class="row p-4">
         <img src="${review.product.getThumbnail()}" alt="Artwork" class="col-3 resized-image">
-        <div class="col-7 h6 pt-2 ">
-            <div class="row">${review.product.title}</div>
-            <div style="height: 70px"></div>
-            <div class="row">${review.product.provider.providerName}</div>
+        <div class="col-7 pt-2 ">
+            <div class="row h4 main-color">${review.product.title}</div>
+            <div class="my-2">Nhà cung cấp: <span class="fw-semibold">${review.product.provider.providerName}</span> </div>
+            <div class="my-2">
+                Nguyên liệu: <span class="fw-semibold">${review.product.getStringDisplayMaterials()}</span>
+            </div>
         </div>
     </div>
     <div class="feedback-detail p-4">

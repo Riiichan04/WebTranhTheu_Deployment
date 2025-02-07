@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="user-viewed-info" class="content-details col">
-    <div class="h3 fw-semibold p-3">Lịch sử sản phẩm đã xem</div>
+    <div class="h4 fw-semibold p-3">Lịch sử sản phẩm đã xem</div>
     <hr>
     <div class="container p-3">
     <c:if test="${empty viewedHistory.viewedProducts}">
@@ -20,7 +20,7 @@
         </div>
     </c:if>
     <c:if test="${not empty viewedHistory.viewedProducts}">
-            <button class="addAll-btn" onclick="addAllToCart()">Thêm tất cả vào giỏ hàng</button>
+            <button class="addAll-btn mb-4" onclick="addAllToCart()">Thêm tất cả vào giỏ hàng</button>
             <!--Từng sản phẩm-->
             <c:forEach var="product" items="${viewedHistory.viewedProducts}">
                 <div id="${product.id}" class="row product-item p-2"
@@ -30,7 +30,7 @@
                     <img src="<c:url value="${product.getThumbnail()}"/>" alt="Artwork"
                                             class="resized-image col-3">
                     <div class="col-4 container">
-                        <div class="row product_title">${product.title}</div>
+                        <div class="row product_title main-color h5">${product.title}</div>
                         <div class="row pt-4" id="minPrice">${product.getMinPrice().price}</div>
                     </div>
                     <div class="col-2">

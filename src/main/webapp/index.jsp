@@ -11,7 +11,7 @@
 </head>
 <body>
 <jsp:include page="layout/public/header.jsp"/>
-<section id="landing-section" class="container mt-5">
+<section id="landing-section" class="container mt-5 background-container">
     <div class="row p-4">
         <div class="col-6 d-flex justify-content-center flex-column">
             <div class="text-center my-3">
@@ -31,12 +31,12 @@
         </div>
     </div>
 </section>
-<section class="container p-4_5 rounded " id="hot-product-section">
+<section class="container p-4_5  background-container mb-4" id="hot-product-section">
     <div class="row">
         <h4 class="main-color mb-3"> Sản phẩm HOT</h4>
         <hr/>
         <c:forEach var="product" items="${hotProduct}">
-            <div style="width: 20%">
+            <div class="card-element mb-3" style="width: 20%">
                 <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
@@ -70,7 +70,7 @@
         </c:forEach>
     </div>
 </section>
-<section class="container p-4_5 rounded " id="discount-product-section">
+<section class="container p-4_5  background-container mb-4" id="discount-product-section">
     <div class="row">
         <h4 class="main-color mb-3">Đang khuyến mãi</h4>
         <hr/>
@@ -80,7 +80,7 @@
             </c:when>
             <c:otherwise>
                 <c:forEach var="product" items="${discountProduct}">
-                    <div style="width: 20%">
+                    <div class="card-element mb-3" style="width: 20%">
                         <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                             <img src="${product.getThumbnail()}" class="card-img" alt="...">
                             <div class="card-body px-1">
@@ -116,12 +116,12 @@
         </c:choose>
     </div>
 </section>
-<section class="container p-4_5 rounded " id="most-rated-product-section">
+<section class="container p-4_5  background-container mb-4" id="most-rated-product-section">
     <div class="row">
         <h4 class="main-color mb-3"> Sản phẩm được đánh giá cao nhất</h4>
         <hr/>
         <c:forEach var="product" items="${mostRatedProduct}">
-            <div class="" style="width: 20%">
+            <div class="card-element mb-3" style="width: 20%">
                 <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
@@ -155,7 +155,7 @@
         </c:forEach>
     </div>
 </section>
-<section class="container p-4_5 rounded" id="full-product-section">
+<section class="container p-4_5  background-container mb-4" id="full-product-section">
     <div class="row">
         <h4 class="main-color mb-3">Tất cả sản phẩm </h4>
         <hr/>
