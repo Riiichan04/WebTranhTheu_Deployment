@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     // Sự kiện cho nút Cancel
     $('#cancelEditBtn').click(function () {
-        $('#read-edit-category-form')[0].reset(); // Reset form
+        $('#read-edit-provider-form')[0].reset(); // Reset form
         $('#title').text('Xem nhà cung cấp');
         $('.read').removeClass('d-none');
         $('#name-provider').prop('disabled', true);

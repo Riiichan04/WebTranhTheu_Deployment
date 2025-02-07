@@ -42,7 +42,7 @@
             <div class="col p-0">
                 <select class="style-select" name="type" required>
                     <option value="0">Bán nguyên liệu</option>
-                    <option value="1">Bán thành phẩm</option>
+                    <option value="1">Thành phẩm</option>
                 </select>
             </div>
         </div>

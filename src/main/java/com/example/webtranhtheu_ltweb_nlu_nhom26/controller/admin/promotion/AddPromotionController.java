@@ -23,10 +23,10 @@ public class AddPromotionController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
 
         String title = request.getParameter("name");
         String description = request.getParameter("description");
+        String[] selectedDiscountProduct = request.getParameterValues("selectedDiscountProduct") == null ? new String[0] : request.getParameterValues("selectedDiscountProduct");
 
         String startedAt = request.getParameter("startedAt");
         LocalDateTime startTime = LocalDateTime.parse(startedAt);
@@ -38,18 +38,15 @@ public class AddPromotionController extends HttpServlet {
 
         double value = Double.parseDouble(request.getParameter("value") == null ? "0" : request.getParameter("value"));
 
-        if(endedTimestamp.before(startTimestamp)) {
-            response.getWriter().write("{\"success\":false}");
+        if (endedTimestamp.before(startTimestamp)) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
         DiscountService discountService = new DiscountService();
         Discount discount = new Discount(title, description, value, startTimestamp, endedTimestamp);
 
-        if (discountService.addDiscount(discount)) {
-            response.getWriter().write("{\"success\":true}");
-        } else {
-            response.getWriter().write("{\"success\":false}");
-        }
+        int discountId = discountService.addDiscount(discount);
+        discountService.addDiscountProduct(selectedDiscountProduct, discountId);
     }
 }

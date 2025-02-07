@@ -15,7 +15,6 @@ public class OrderManagementController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-
         request.getRequestDispatcher("/layout/admin/manage-order.jsp").forward(request, response);
     }
 

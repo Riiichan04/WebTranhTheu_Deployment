@@ -41,10 +41,16 @@ public class UpdatePromotionController extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
 
+        String[] selectedProductIdsDelete = request.getParameterValues("selectedProductIdsDelete") == null ? new String[0] : request.getParameterValues("selectedProductIdsDelete");
+        String[] selectedProductIdsAdd = request.getParameterValues("selectedProductIdsAdd") == null ? new String[0] : request.getParameterValues("selectedProductIdsAdd");
+
         Discount discount = new Discount(title, description, value, startTimestamp, endedTimestamp);
         discount.setId(promotionId);
 
         DiscountService discountService = new DiscountService();
         discountService.updateDiscount(discount);
+        discountService.addDiscountProduct(selectedProductIdsAdd, discount.getId());
+        discountService.deleteDiscountProduct(selectedProductIdsDelete, discount.getId());
+
     }
 }

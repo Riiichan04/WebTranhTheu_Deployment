@@ -101,6 +101,13 @@ $(document).ready(function () {
 
                 $('#add-promotion-form').on('submit', function (event) {
                     event.preventDefault(); // Ngăn chặn reload trang
+                    // Mảng để lưu các ID sản phẩm được chọn
+                    var selectedDiscountProduct = [];
+
+                    $('.discount-product').each(function () {
+                        // Lấy giá trị data-id của mỗi checkbox đã chọn và thêm vào mảng
+                        selectedDiscountProduct.push($(this).val());
+                    });
 
                     // Gửi dữ liệu qua AJAX
                     $.ajax({
@@ -112,16 +119,14 @@ $(document).ready(function () {
                             value: $('#discount-value').val(),
                             startedAt: $('#start-discount').val(),
                             endedAt: $('#end-discount').val(),
+                            selectedDiscountProduct: selectedDiscountProduct,
                         },
-                        success: function (response) {
-                            if (response.success) {
-                                alert('Thêm giảm giá thành công!');
-                                $('#add-promotion-form')[0].reset(); // Reset form
-                                table.ajax.reload();
-                                hiddenOverlay();
-                            } else {
-                                alert('Lỗi khi thêm giảm giá!');
-                            }
+                        traditional: true,
+                        success: function () {
+                            alert('Thêm giảm giá thành công!');
+                            $('#add-promotion-form')[0].reset(); // Reset form
+                            table.ajax.reload();
+                            hiddenOverlay();
                         },
                         error: function () {
                             alert('Lỗi khi thêm giảm giá!');
@@ -166,16 +171,37 @@ $(document).ready(function () {
                 $('#read-edit-promotion-form').on('submit', function (event) {
                     event.preventDefault();
 
+                    // Mảng để lưu các ID sản phẩm được chọn
+                    var selectedProductIdsDelete = [];
+
+                    // Lặp qua tất cả các checkbox có class .delete-product-of-category
+                    $('.delete-product-of-discount:checked').each(function () {
+                        // Lấy giá trị data-id của mỗi checkbox đã chọn và thêm vào mảng
+                        selectedProductIdsDelete.push($(this).data('id'));
+                    });
+
+                    // Mảng để lưu các ID sản phẩm được chọn
+                    var selectedProductIdsAdd = [];
+
+                    // Lấy tất cả các option được chọn trong select
+                    $('#addProduct option:selected').each(function () {
+                        // Lấy giá trị của mỗi option đã chọn và thêm vào mảng
+                        selectedProductIdsAdd.push($(this).val());
+                    });
+
                     $.ajax({
                         url: "/admin/promotion-management/update-promotion",
                         type: "POST",
+                        traditional: true,
                         data: {
                             promotionId: $('#submitBtn').val(),
                             title: $('#nameDiscount').val(),
                             description: $('#description').val(),
                             value: $('#percentDiscount').val(),
                             startedAt: $('#startDateDiscount').val(),
-                            endedAt: $('#endDateDiscount').val()
+                            endedAt: $('#endDateDiscount').val(),
+                            selectedProductIdsDelete: selectedProductIdsDelete,
+                            selectedProductIdsAdd: selectedProductIdsAdd,
                         },
                         success: function () {
                             alert('Chỉnh sửa giảm giá thành công!');
@@ -195,36 +221,6 @@ $(document).ready(function () {
             }
         });
     });
-
-    // $('.btn-delete').on("click", function(event) {
-    //     event.preventDefault();
-    //     const url = "/admin/promotion-management/delete-promotion";
-    //     $.ajax({
-    //         url: url,
-    //         type: "GET",
-    //         success: function (data) {
-    //             openOverlay();
-    //             $('#formWrapper').html(data);
-    //
-    //             // Ngăn sự kiện click trong form không lan lên formWrapper
-    //             $('form').on('click', function (event) {
-    //                 event.stopPropagation();
-    //             });
-    //
-    //             $('#formContainer').css({
-    //                 'width': '500px',
-    //                 'max-height': '90vh',
-    //                 'z-index': '2',
-    //             })
-    //             $('#cancelBtn').click(function () {
-    //                 hiddenOverlay();
-    //             });
-    //         },
-    //         error: function () {
-    //             alert("Có lỗi xảy ra khi tải nội dung.");
-    //         }
-    //     });
-    // })
 
     function hiddenOverlay() {
         $('#formWrapper').css({
