@@ -227,10 +227,19 @@ input{
 /*}*/
 /* User's Support*/
 /*User's Logout alert*/
-#logout_alert{
-    display: none;
-    width:300px;
-    height:170px;
+#logout-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(0,0,0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+#logout-alert {
+    width: 30%;
     background-color: var(--light-component-background-color);
     position: fixed;
     top: 50%;
@@ -246,6 +255,7 @@ input{
     color: var(--web-background-color);
     border-radius: 5px;
 }
+
 #logout_alert #noBtn{
     border: solid 1px var(--sub-cta-button);
     border-radius: 5px;

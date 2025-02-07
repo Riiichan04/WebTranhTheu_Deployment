@@ -97,8 +97,8 @@
                 </a>
             </div>
             <hr>
-            <div class="list-group user-logout">
-                <a class="list-group-item list-group-item-action logout-btn">
+            <div class="list-group user-logout cursor-pointer" style="padding-left: 0.5rem">
+                <a class="text-button logout-btn text-decoration-none">
                     <i class="bi bi-box-arrow-left"></i>
                     Đăng xuất
                 </a>
@@ -113,12 +113,29 @@
         </div>
     </div>
 </div>
-<div id="logout_alert" class="m-10 container">
-    <div class="row ps-2"><p>Bạn chắc chắn muốn đăng xuất?</p></div>
-    <div class="row pt-5 ps-4 text-center">
-        <button id="yesBtn" class="col-5 text-center" onclick="window.location.href = '/logout-user';">Có</button>
-        <div class="col-2"></div>
-        <button id="noBtn" class="col-5 text-center">Không</button>
+<div id="logout-container" class="d-none">
+    <div id="logout-alert" class="d-none p-4 m-10 rounded-1">
+        <div>
+            <h5 class="">Đăng xuất</h5>
+        </div>
+        <hr/>
+        <div class="my-4">
+            <p>Bạn chắc chắn muốn đăng xuất?</p>
+        </div>
+        <div class="row">
+            <button id="noBtn" class="h6 ms-3 rounded p-2 sub-cta-button col-4 text-center">Không</button>
+            <div class="col"></div>
+            <button id="yesBtn" class="h6 me-3 rounded p-2 main-cta-button col-4 text-center" onclick="window.location.href = '/logout-user'">
+                Có
+            </button>
+        </div>
+
+        <%--    <div class="row ps-2"><p>Bạn chắc chắn muốn đăng xuất?</p></div>--%>
+        <%--    <div class="row pt-5 ps-4 text-center">--%>
+        <%--        <button id="yesBtn" class="col-5 text-center" onclick="window.location.href = '/logout-user';">Có</button>--%>
+        <%--        <div class="col-2"></div>--%>
+        <%--        <button id="noBtn" class="col-5 text-center">Không</button>--%>
+        <%--    </div>--%>
     </div>
 </div>
 <div class="p-4"></div>
