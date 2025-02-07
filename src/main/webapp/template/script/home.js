@@ -6,7 +6,7 @@ function getOneProductsRow(listProducts) {
     let productHtml = `<div class='row'>`
     for (let product of listProducts) {
         productHtml += `
-            <div style="width: 20%">
+            <div class="card-element mb-3" style="width: 20%">
                 <div onclick="window.location='/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.thumbnail}" class="card-img" alt="">
                     <div class="card-body px-1">

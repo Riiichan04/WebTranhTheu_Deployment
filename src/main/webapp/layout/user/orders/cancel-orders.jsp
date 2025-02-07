@@ -39,9 +39,9 @@
                         <div id="product_${orderProduct.id}" class="row py-3">
                             <img src="${orderProduct.thumbnail}"
                                  class="resized-image col-3">
-                            <div class="col container">
-                                <div class="row title">${orderProduct.title}</div>
-                                <div class="row">${orderProduct.quantity}</div>
+                            <div class="col text-st">
+                                <div class="title h5 main-color">${orderProduct.title}</div>
+                                <div class="p-0">Số lượng: <span class="fw-semibold">${orderProduct.quantity}</span> </div>
                             </div>
                             <div id="productPrice" class="col-3 p-4">${orderProduct.price}</div>
                         </div>

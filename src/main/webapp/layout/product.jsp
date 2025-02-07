@@ -294,7 +294,7 @@
         <h4 class="main-color">Sản phẩm khác</h4>
         <div class="row mt-2">
             <c:forEach var="product" items="${similarProduct}">
-                <div style="width: 20%">
+                <div class="card-element mb-3" style="width: 20%">
                     <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                         <img src="${product.getThumbnail()}" class="card-img" alt="...">
                         <div class="card-body px-1">

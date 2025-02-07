@@ -14,7 +14,7 @@
 <div class="container px-5">
     <form method="post">
         <div class="row pt-4">
-            <div class="col"><h2 class="style-big-title">Đăng nhập</h2></div>
+            <div class="col"><h3 class="style-big-title fw-semibold">Đăng nhập</h3></div>
         </div>
         <div class="row">
             <div class="col">
@@ -57,7 +57,7 @@
             <div class="col text-center"><span class="style-label">------Hoặc-----</span></div>
         </div>
         <div class="row text-center pt-2">
-            <div class="col">
+            <div class="col border-1 border-black">
                 <!-- Nút đăng nhập Google -->
                 <div id="g_id_onload"
                      data-client_id="<%= GoogleUtil.getGoogleClientId()%>"

@@ -21,8 +21,8 @@
         <img src="${review.product.getThumbnail()}" alt="Artwork" class="col-3 resized-image">
         <div class="col-7 pt-2 ">
             <div class="row h4 main-color">${review.product.title}</div>
-            <div class="row">Nhà cung cấp: <span class="fw-semibold">${review.product.provider.providerName}</span> </div>
-            <div class="row">
+            <div class="my-2">Nhà cung cấp: <span class="fw-semibold">${review.product.provider.providerName}</span> </div>
+            <div class="my-2">
                 Nguyên liệu: <span class="fw-semibold">${review.product.getStringDisplayMaterials()}</span>
             </div>
         </div>

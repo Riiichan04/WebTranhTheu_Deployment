@@ -37,10 +37,11 @@
                     <c:forEach var="orderProduct" items="${order.products}">
                         <div id="product_${orderProduct.id}" class="row py-3">
                             <img src="${orderProduct.thumbnail}"
-                                                    class="resized-image col-3">
-                            <div class="col container">
-                                <div class="row title">${orderProduct.title}</div>
-                                <div class="row">${orderProduct.quantity}</div>
+                                 class="resized-image col-3">
+                            <div class="col text-start">
+                                <div class="title h5 main-color">${orderProduct.title}</div>
+                                <div class="p-0">Số lượng: <span class="fw-semibold">${orderProduct.quantity}</span>
+                                </div>
                             </div>
                             <div id="productPrice" class="col-3 p-4">${orderProduct.price}</div>
                         </div>
@@ -54,14 +55,15 @@
                         Thành tiền:
                     </div>
                     <div id="totalPrice" class="col-3">
-                        ${order.totalPrice}
+                            ${order.totalPrice}
                     </div>
                 </div>
                 <!--Hủy hàng + Liên hệ chi tiết-->
                 <div class="row py-2">
                     <div class="col"></div>
                     <div class="col-3">
-                        <button type="button" class="received" onclick="updateOrderStatus(${order.id},5)">Đã nhận hàng</button>
+                        <button type="button" class="received" onclick="updateOrderStatus(${order.id},5)">Đã nhận hàng
+                        </button>
                     </div>
                 </div>
             </div>

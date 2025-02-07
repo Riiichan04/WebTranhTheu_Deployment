@@ -36,7 +36,7 @@
         <h4 class="main-color mb-3"> Sản phẩm HOT</h4>
         <hr/>
         <c:forEach var="product" items="${hotProduct}">
-            <div style="width: 20%">
+            <div class="card-element mb-3" style="width: 20%">
                 <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">
@@ -80,7 +80,7 @@
             </c:when>
             <c:otherwise>
                 <c:forEach var="product" items="${discountProduct}">
-                    <div style="width: 20%">
+                    <div class="card-element mb-3" style="width: 20%">
                         <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                             <img src="${product.getThumbnail()}" class="card-img" alt="...">
                             <div class="card-body px-1">
@@ -121,7 +121,7 @@
         <h4 class="main-color mb-3"> Sản phẩm được đánh giá cao nhất</h4>
         <hr/>
         <c:forEach var="product" items="${mostRatedProduct}">
-            <div class="" style="width: 20%">
+            <div class="card-element mb-3" style="width: 20%">
                 <div onclick="window.location = '/product?id=${product.id}'" class="card p-2" style="cursor: pointer">
                     <img src="${product.getThumbnail()}" class="card-img" alt="...">
                     <div class="card-body px-1">

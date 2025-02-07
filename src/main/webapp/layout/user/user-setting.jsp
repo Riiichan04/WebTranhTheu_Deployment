@@ -30,17 +30,21 @@
             </form>
         </div>
         <div class="row">
-            <div class="col-2 fw-semibold">Chọn theme: </div>
+            <div class="col-2 fw-semibold">Chọn theme:</div>
             <div class="col-1"></div>
             <div class="col-4">
-                <label class="my-2">
-                    <input type="radio" value="default" class="form-check-input" name="choose-theme" id="new-theme">
-                    Theme mặc định
-                </label>
-                <label class="my-2">
-                    <input type="radio" value="old" class="form-check-input" name="choose-theme" id="current-theme">
-                    Theme tươi mát
-                </label>
+                <div>
+                    <label class="my-2">
+                        <input type="radio" value="default" class="form-check-input" name="choose-theme" id="new-theme">
+                        Theme mặc định
+                    </label>
+                </div>
+                <div>
+                    <label class="my-2">
+                        <input type="radio" value="old" class="form-check-input" name="choose-theme" id="current-theme">
+                        Theme tươi mát
+                    </label>
+                </div>
             </div>
             <div class="col"></div>
         </div>
