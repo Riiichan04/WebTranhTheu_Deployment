@@ -24,10 +24,14 @@ public class PerformPurchase extends HttpServlet {
         JsonObject jsonResult = new JsonObject();
         HttpSession session = request.getSession();
         try {
+            System.out.println("START START");
             //Cho biết là đặt cọc hay thanh toán toàn bộ
-            String type = request.getParameter("type");
+//            String type = request.getParameter("type");
             //Validate thông tin thanh toán
-            if (session.getAttribute("accountId") == null || session.getAttribute("selectedItems") == null) {
+            System.out.println(session.getAttribute("accountId"));
+            System.out.println(session.getAttribute("selectedProducts"));
+            if (session.getAttribute("accountId") == null || session.getAttribute("selectedProducts") == null) {
+                System.out.println("CAUSED BY NULL");
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
             }
             else {
@@ -46,8 +50,9 @@ public class PerformPurchase extends HttpServlet {
                 }
 
                 int accountId = (int) session.getAttribute("accountId");
-                int addressId = (int) session.getAttribute("selectedAddressId");
-
+                int addressId = Integer.parseInt(request.getParameter("addressId"));
+                System.out.println("PURCHASE");
+                System.out.println(addressId);
                 if (addressId == 0) {
                     ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
                     return;
@@ -55,6 +60,7 @@ public class PerformPurchase extends HttpServlet {
                 String location = new UserService().getLocationById(accountId, addressId);
 
                 //Chỉnh phần method
+                System.out.println(listSelectedProductCode);
                 boolean result = PurchaseOperator.performPurchase(accountId, location, OrderService.PAYMENT_BY_BANK, cart, listSelectedProductCode);
                 if (result) {
                     ControllerUtil.sendAjaxResultSuccess(response, jsonResult, null);
@@ -66,6 +72,8 @@ public class PerformPurchase extends HttpServlet {
 
         }
         catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
             ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
         }
     }

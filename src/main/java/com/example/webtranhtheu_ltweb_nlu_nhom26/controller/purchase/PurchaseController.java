@@ -21,18 +21,22 @@ public class PurchaseController extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession(); //Kiểm tra session
         try {
-            if (session.getAttribute("accountId") == null) {
+            if (session.getAttribute("accountId") == null || session.getAttribute("account") == null) {
                 response.sendRedirect("/login"); //Cần phải đăng nhập
             } else {
                 int userId = (int) session.getAttribute("accountId");
                 if (session.getAttribute("listCategory") == null) {
                     session.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
                 }
-                int addressId = 0;
+//                int addressId = 0;
+                User account = (User) session.getAttribute("account");
+                int addressId = account.getDefaultLocation().getId();
+
                 //Nếu session không có thông tin liên quan đến địa chỉ người dùng
-                if (session.getAttribute("selectedAddressId") == null) {
-                    session.setAttribute("selectedAddressId", 0);
-                } else addressId = (int) session.getAttribute("selectedAddressId");
+//                if (session.getAttribute("selectedAddressId") == null) {
+//                    session.setAttribute("selectedAddressId", 0);
+//                } else addressId = (int) session.getAttribute("selectedAddressId");
+
                 //Xử lý thông tin
                 Cart sessionCart = (Cart) session.getAttribute("cart");
                 Map<String, CartProduct> listSelectedProductCode = new HashMap<>();
@@ -40,6 +44,7 @@ public class PurchaseController extends HttpServlet {
 
                 if (request.getParameter("quick-buy") != null) {
                     listSelectedProductCode = sessionCart.getProducts();
+                    session.setAttribute("selectedProducts", listSelectedProductCode);
                 } else if (session.getAttribute("selectedProducts") != null) {
                     Map<?, ?> tempMap = (Map<?, ?>) session.getAttribute("selectedProducts");
                     if (tempMap.keySet().stream().allMatch(k -> k instanceof String) &&
@@ -57,6 +62,7 @@ public class PurchaseController extends HttpServlet {
 
                 request.setAttribute("userInfo", new UserService().getUserById(userId));
                 request.setAttribute("address", new UserService().getLocationById(userId, addressId));
+                request.setAttribute("addressId", addressId);
                 request.setAttribute("listPurchased", listSelectedProductCode.values());
                 request.setAttribute("userInfo", userInfo);
                 request.setAttribute("totalPrice", ProductService.getDisplayPriceToString(totalPrice));

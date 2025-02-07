@@ -158,7 +158,7 @@
                             <i class="bi bi-geo-alt"></i>
                         </div>
                         <div class="col-6">
-                            <span> Chưa chọn</span>
+                            <span>${location}</span>
                         </div>
                         <div class="col text-end position-relative ">
                             <a class="text-decoration-none main-color" id="show-popup" href="/user">

@@ -47,7 +47,9 @@ function requestPurchase() {
     $.ajax({
         url: '/perform-purchase',
         method: 'POST',
-        data: {},
+        data: {
+            addressId: $("#address-info").attr("data-address")
+        },
         success: function(response) {
             response = $.parseJSON(response)
             if (response.result) {
