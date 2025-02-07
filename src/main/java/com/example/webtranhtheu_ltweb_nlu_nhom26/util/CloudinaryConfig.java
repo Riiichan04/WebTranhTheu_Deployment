@@ -14,21 +14,21 @@ import java.util.Properties;
 
 public class CloudinaryConfig {
 
-    private static Properties properties = new Properties();
-
-    static {
-        try {
-            properties.load(CloudinaryConfig.class.getClassLoader().getResourceAsStream("cloud.properties"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    private static Properties properties = new Properties();
+//
+//    static {
+//        try {
+//            properties.load(CloudinaryConfig.class.getClassLoader().getResourceAsStream("cloud.properties"));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     public static Cloudinary getCloudinary() {
         Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", properties.getProperty("cloud_name"),
-                "api_key", properties.getProperty("api_key"),
-                "api_secret", properties.getProperty("api_secret")));
+                "cloud_name", System.getenv("cloud_name"),
+                "api_key", System.getenv("api_key"),
+                "api_secret", System.getenv("api_secret")));
         return cloudinary;
     }
 

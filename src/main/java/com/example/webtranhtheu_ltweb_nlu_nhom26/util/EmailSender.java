@@ -20,8 +20,8 @@ public class EmailSender {
     public static void sendConfirmationEmail(String toEmail, int token) {
         // Cấu hình server SMTP
         String host = "smtp.gmail.com";
-        final String username = properties.getProperty("NAME_EMAIL");
-        final String password = properties.getProperty("PASS_EMAIL");
+        final String username = System.getenv("NAME_EMAIL");
+        final String password = System.getenv("PASS_EMAIL");
 
         // Cấu hình thuộc tính hệ thống
         Properties properties = new Properties();
