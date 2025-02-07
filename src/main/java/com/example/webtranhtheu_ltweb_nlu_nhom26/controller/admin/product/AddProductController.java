@@ -27,44 +27,40 @@ public class AddProductController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            String code = request.getParameter("codeProduct");
-            String title = request.getParameter("title");
-            String description = request.getParameter("description");
+        String code = request.getParameter("codeProduct");
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
 
-            List<String> imgUrl = new ArrayList<>();
-            for (Part part : request.getParts()) {
-                String contentDisp = part.getHeader("content-disposition");
-                if (contentDisp != null && contentDisp.contains("filename")) {
-                    imgUrl.add(CloudinaryConfig.getUrl(part));
-                }
+        List<String> imgUrl = new ArrayList<>();
+        for (Part part : request.getParts()) {
+            String contentDisp = part.getHeader("content-disposition");
+            if (contentDisp != null && contentDisp.contains("filename")) {
+                imgUrl.add(CloudinaryConfig.getUrl(part));
             }
-
-            String[] prices = request.getParameterValues("price");
-            String[] quantity = request.getParameterValues("quantity");
-            String[] width = request.getParameterValues("width");
-            String[] height = request.getParameterValues("height");
-            List<Price> listPrices = new ArrayList<>();
-            for (int i = 0; i < prices.length; i++) {
-                Price p = new Price(Integer.parseInt(width[i]), Integer.parseInt(height[i]), Double.parseDouble(prices[i]), Integer.parseInt(quantity[i]));
-                listPrices.add(p);
-            }
-
-            String[] material = request.getParameterValues("material");
-
-            String provider = request.getParameter("provider");
-
-            String status = request.getParameter("status");
-
-            String type = request.getParameter("type");
-
-            Product product = new Product(code, title, description, Integer.parseInt(status), Integer.parseInt(type));
-
-            ProductService productService = new ProductService();
-            productService.addProduct(product, Integer.parseInt(provider), material, listPrices, imgUrl);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
+        String[] prices = request.getParameterValues("price");
+        String[] quantity = request.getParameterValues("quantity");
+        String[] width = request.getParameterValues("width");
+        String[] height = request.getParameterValues("height");
+        List<Price> listPrices = new ArrayList<>();
+        for (int i = 0; i < prices.length; i++) {
+            Price p = new Price(Integer.parseInt(width[i]), Integer.parseInt(height[i]), Double.parseDouble(prices[i]), Integer.parseInt(quantity[i]));
+            listPrices.add(p);
+        }
+
+        String[] material = request.getParameterValues("material");
+
+        String provider = request.getParameter("provider");
+
+        String status = request.getParameter("status");
+
+        String type = request.getParameter("type");
+
+        Product product = new Product(code, title, description, Integer.parseInt(status), Integer.parseInt(type));
+
+        ProductService productService = new ProductService();
+        productService.addProduct(product, Integer.parseInt(provider), material, listPrices, imgUrl);
 
     }
 }

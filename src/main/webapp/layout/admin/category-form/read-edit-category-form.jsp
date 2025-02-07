@@ -39,7 +39,6 @@
                         <th class="text-center">STT</th>
                         <th class="text-center">Mã sản phẩm</th>
                         <th class="text-center">Tên sản phẩm</th>
-                        <th class="text-center">Loại</th>
                         <th class="text-center d-none edit-hidden">Xóa</th>
                     </tr>
                     </thead>
@@ -49,7 +48,6 @@
                         <td>${status.index + 1}</td>
                         <td>${p.getCode()}</td>
                         <td>${p.getTitle()}</td>
-                        <td>${p.getType()}</td>
                         <td class="d-none edit-hidden">
                             <input type="checkbox" name="selectedProductIdsDelete" class="delete-product-of-category" style="width: 15px; height: 15px" data-id="${p.getId()}">
                         </td>

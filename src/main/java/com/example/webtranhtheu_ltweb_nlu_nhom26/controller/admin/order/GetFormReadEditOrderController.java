@@ -21,7 +21,6 @@ public class GetFormReadEditOrderController extends HttpServlet {
 
         String orderId = request.getParameter("orderId");
         OrderAdmin order = OrderService.getOrderById(Integer.parseInt(orderId));
-        System.out.println(order.getCancelReason());
         request.setAttribute("order", order);
         Timestamp timestamp = order.getCreatedAt();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

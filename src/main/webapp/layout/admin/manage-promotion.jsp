@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Quản lý giảm giá</title>
+    <title>Quản lý khuyến mãi</title>
     <%@include file="../public/library.jsp"%>
     <!-- css property -->
     <link rel="stylesheet" href="../../template/style/admin/general-content-admin.css">
@@ -12,9 +12,9 @@
 <body>
 <div class="container-fluid">
     <div class="row mt-3 mb-2">
-        <div class="col"><h3 class="style-title">Quản lý giảm giá</h3></div>
+        <div class="col"><h3 class="style-title">Quản lý khuyến mãi</h3></div>
         <div class="col text-end mt-3 me-4">
-            <button class="btn-add" id="addPromotionBtn"><i class="fa-solid fa-plus me-2"></i>Thêm giảm giá</button>
+            <button class="btn-add" id="addPromotionBtn"><i class="fa-solid fa-plus me-2"></i>Thêm khuyến mãi</button>
         </div>
     </div>
     <div class="row">
@@ -22,7 +22,7 @@
             <thead>
             <tr class="head-table">
                 <th>STT</th>
-                <th>Tiêu đề giảm giá</th>
+                <th>Tiêu đề khuyến mãi</th>
                 <th>Phần trăm giảm</th>
                 <th>Ngày bắt đầu</th>
                 <th>Ngày kết thúc</th>

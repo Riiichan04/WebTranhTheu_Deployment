@@ -24,6 +24,8 @@ public class GetFormReadUpdatePromotionController extends HttpServlet {
         DiscountService discountService = new DiscountService();
         Discount discount = discountService.getDiscount(Integer.parseInt(discountId));
         request.setAttribute("discount", discount);
+        request.setAttribute("listProduct", discountService.listDiscountProduct(discount.getId()));
+        request.setAttribute("listProductNotInDiscount", discountService.listNotInDiscount(discount.getId()));
 
         Timestamp timestampStart = discount.getStartedAt();
         Timestamp timestampEnd = discount.getEndedAt();
