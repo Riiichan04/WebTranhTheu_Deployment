@@ -103,6 +103,18 @@
 <!--            <artifactId>cloudinary-http45</artifactId>-->
 <!--            <version>2.2.0</version>-->
 <!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>11.0.24</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlets -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlets</artifactId>
+            <version>11.0.24</version>
+        </dependency>
     </dependencies>
 
     <build>
