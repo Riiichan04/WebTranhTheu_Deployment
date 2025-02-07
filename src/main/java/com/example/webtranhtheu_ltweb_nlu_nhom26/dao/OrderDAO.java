@@ -90,7 +90,7 @@ public interface OrderDAO {
 
     //    Cần add @Bind vào
     @SqlUpdate("""
-            insert into orders(accountId, statusOrder, shippingAddress, statusPay, method) values (:accountId, :statusOrder, :shippingAddress, :statusPay, :method);
+            insert into orders(accountId, statusOrder, shippingAddress, statusPay, method, createdAt) values (:accountId, :statusOrder, :shippingAddress, :statusPay, :method, now());
             """)
     @GetGeneratedKeys
     int createNewOrder(@Bind("accountId") int accountId, @Bind("statusOrder") int statusOrder, @Bind("shippingAddress") String shippingAddress, @Bind("statusPay") int statusPay, @Bind("method") int method);

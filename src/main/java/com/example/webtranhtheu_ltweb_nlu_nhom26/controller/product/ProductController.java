@@ -1,6 +1,7 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.product;
 
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.history.ViewedHistory;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
@@ -53,11 +54,18 @@ public class ProductController extends HttpServlet {
             viewedHistory.addProduct(product);
             session.setAttribute("viewedHistory", viewedHistory);
 
+            Object account = session.getAttribute("account");
+            String location = "Chưa chọn";
+            if (account != null) {
+                location = ((User) account).getDefaultLocation().getLocation();
+            }
+
             request.setAttribute("product", product);
             request.setAttribute("countReview", ProductService.countReviews(product.getId()));
             request.setAttribute("avgRating", ProductService.getProductRating(product.getId()));
             request.setAttribute("similarProduct", service.getSimilarProduct(product));
             request.setAttribute("listCategory", CategoryService.getNameAndPatternCategory());
+            request.setAttribute("location", location);
             request.getRequestDispatcher("/layout/product.jsp").forward(request, response);
 
         } catch (NumberFormatException e) {

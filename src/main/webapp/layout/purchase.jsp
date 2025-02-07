@@ -22,7 +22,7 @@
                     <p class="col-6"></p>
                 </div>
                 <div class="row">
-                    <p class="col-6" id="address-info" data-address="${sessionScope.selectedAddressId}">
+                    <p class="col-6" id="address-info" data-address="${addressId}">
                         Địa chỉ nhận hàng: <span class="fw-semibold">${address}</span>
                     </p>
                     <p class="col-4"></p>

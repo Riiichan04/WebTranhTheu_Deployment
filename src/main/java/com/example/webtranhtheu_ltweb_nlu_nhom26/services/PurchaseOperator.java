@@ -7,6 +7,7 @@ import org.eclipse.tags.shaded.org.apache.xpath.operations.Or;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class PurchaseOperator {
     //Nhận các Cart và nhận mảng productCode
@@ -18,7 +19,11 @@ public class PurchaseOperator {
         if (result) {
             // - Tìm các product tương ứng
             // - Thực hiện cập nhật thông tin trong Cart được truyền vào
-            listProductCode.keySet().forEach(key -> cart.getProducts().remove(key));
+            List<String> keySet = listProductCode.keySet().stream().toList();
+            for (int i = 0; i < keySet.size(); i++) {
+                cart.getProducts().remove(keySet.get(i));
+            }
+//            listProductCode.keySet().forEach(key -> cart.getProducts().remove(key));
             return true;
         }
         else return false;
