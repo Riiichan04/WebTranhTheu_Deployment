@@ -17,67 +17,6 @@
                     </div>
                 </div>
                 <ul class="col-4 m-0 d-flex justify-content-end align-items-center">
-<%--                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">--%>
-<%--                        <div id="header-category">--%>
-<%--                            <i class="fa-solid fa-list my-1"></i>--%>
-<%--                            <p class="header-feature__label">Danh mục</p>--%>
-<%--                        </div>--%>
-<%--                        <div id="category-popup"--%>
-<%--                             class="rounded header-popup position-absolute background-container p-3 d-none">--%>
-<%--                            <div class="d-flex justify-content-end">--%>
-<%--                                <button type="button" class="btn-close header-popup__close-btn"--%>
-<%--                                        aria-label="Close"></button>--%>
-<%--                            </div>--%>
-<%--                            <h6 class="header-popup__title main-color text-start pb-2 mb-1">Danh mục</h6>--%>
-<%--                            <div class="header-popup__content py-1">--%>
-<%--                                <div class="product-item row my-2 cursor-pointer ">--%>
-<%--                                    <p class="main-color text-start">Tranh thêu phong cảnh</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="product-item row my-2 cursor-pointer ">--%>
-<%--                                    <p class="main-color text-start">Tranh thêu chân dung</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="product-item row my-2 cursor-pointer ">--%>
-<%--                                    <p class="main-color text-start">Tranh thêu động vật</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="product-item row my-2 cursor-pointer ">--%>
-<%--                                    <p class="main-color text-start">Tranh thêu tứ quý</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="product-item row my-2 cursor-pointer ">--%>
-<%--                                    <p class="main-color text-start">Tranh thêu hoa</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="product-item row my-2 cursor-pointer ">--%>
-<%--                                    <p class="main-color text-start">Tranh thêu VIP</p>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            &lt;%&ndash;                            Xử lý sau &ndash;%&gt;--%>
-<%--                            <a href="/category/tranh-theu-tay" class="">--%>
-<%--                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">--%>
-<%--                                    Xem tất cả >--%>
-<%--                                </p>--%>
-<%--                            </a>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center position-relative">--%>
-<%--                        <div id="header-favorite">--%>
-<%--                            <i class="fa-solid fa-heart my-1"></i>--%>
-<%--                            <p class="header-feature__label">Yêu thích</p>--%>
-<%--                        </div>--%>
-<%--                        <div id="favorite-popup"--%>
-<%--                             class="rounded header-popup position-absolute background-container p-3 d-none">--%>
-<%--                            <div class="d-flex justify-content-end">--%>
-<%--                                <button type="button" class="btn-close header-popup__close-btn"--%>
-<%--                                        aria-label="Close"></button>--%>
-<%--                            </div>--%>
-<%--                            <h5 class="header-popup__title main-color text-start pb-2 mb-4">Danh sách yêu thích</h5>--%>
-<%--                            <div class="header-popup__content py-1">--%>
-<%--                            </div>--%>
-<%--                            <a href="/user" class="">--%>
-<%--                                <p style="font-size: 14px" class="cursor-pointer text-button text-end mt-2">--%>
-<%--                                    Xem tất cả >--%>
-<%--                                </p>--%>
-<%--                            </a>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
                     <c:choose>
                         <c:when test="${sessionScope.accountId == null}">
                             <li class="cursor-pointer mx-2 header-feature text-white d-flex flex-column text-center align-items-center">
