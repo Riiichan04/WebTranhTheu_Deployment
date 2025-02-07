@@ -20,7 +20,7 @@
 </nav>
 
 <section class="container my-4_5" id="product-detail">
-    <div class="background-container rounded">
+    <div class="background-container ">
         <div class="row">
             <div class="col-3 p-4_5">
                 <img id="product-image" src="${product.getThumbnail()}" alt="">
@@ -101,10 +101,6 @@
                             <p class="bg-opacity-75 p-1 d-none notification-message bg-dark rounded">Đã copy link vào
                                 clipboard</p>
                         </div>
-                        <div id="product-detail__loved-btn" class="col position-relative">
-                            <i class="cursor-pointer h4 main-color fa-regular fa-heart"></i>
-                            <p class="bg-opacity-75 p-1 d-none notification-message bg-dark rounded"></p>
-                        </div>
                         <div class="col"></div>
                     </div>
                 </div>
@@ -152,7 +148,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-4_5 rounded-end border border-3" id="product-sub-info">
+            <div class="col-3 p-4_5 rounded-end border-start border-3" id="product-sub-info">
                 <div class="mb-4_5">
                     <div class="row">
                         <p class="fw-semibold">Tùy chọn giao hàng: </p>
@@ -215,7 +211,7 @@
 
 </section>
 <section class="container my-4_5" id="product-description">
-    <div class="background-container rounded p-4_5">
+    <div class="background-container  p-4_5">
         <h4 class="main-color">Mô tả sản phẩm</h4>
         <p class="product-description m-3">
             ${product.description}
@@ -224,7 +220,7 @@
 </section>
 
 <section class="container my-4_5" id="product-review">
-    <div class="background-container rounded p-4_5">
+    <div class="background-container  p-4_5">
         <div id="product-review-comment">
             <h4 class="main-color">Đánh giá</h4>
             <div class="row mt-4">
@@ -294,7 +290,7 @@
     </div>
 </section>
 <section class="container my-4_5" id="other-product">
-    <div class="background-container rounded p-4_5">
+    <div class="background-container  p-4_5">
         <h4 class="main-color">Sản phẩm khác</h4>
         <div class="row mt-2">
             <c:forEach var="product" items="${similarProduct}">

@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="user_setting" class=" content-details col">
-    <div class="h3 fw-semibold pt-3 ps-3">Cài đặt</div>
+    <div class="h4 fw-semibold pt-3 ps-3">Cài đặt</div>
     <hr>
     <div class="container py-3">
         <div class="row avatar">
@@ -33,11 +33,11 @@
             <div class="col-2 fw-semibold">Chọn theme: </div>
             <div class="col-1"></div>
             <div class="col-4">
-                <label>
+                <label class="my-2">
                     <input type="radio" value="default" class="form-check-input" name="choose-theme" id="new-theme">
                     Theme mặc định
                 </label>
-                <label>
+                <label class="my-2">
                     <input type="radio" value="old" class="form-check-input" name="choose-theme" id="current-theme">
                     Theme tươi mát
                 </label>

@@ -3,7 +3,7 @@
 <jsp:include page="../common.jsp"/>
 <html>
 <head>
-    <title>${account.username}</title>
+    <title>${account.username} - Nét Việt</title>
     <link rel="stylesheet" href="../../template/style/user/account-page.css">
     <jsp:include page="../public/library.jsp"/>
 </head>
@@ -52,7 +52,7 @@
 </div>
 <div class="container p-0 ms-6 mt-4">
     <div class="content row">
-        <div class="user-props-list col-4 me-4">
+        <div class="user-props-list col-3 me-4">
             <div class="user-img-frame">
                 <img src="${account.avatarUrl}" style="width:100px;height:100px;margin-top: 30px">
                 <p id="nickname" class="p-4 title">${account.username} </p>
@@ -72,11 +72,6 @@
                    href="${pageContext.request.contextPath}/user/user-viewed-history">
                     <i class="bi bi-eye"></i>
                     Lịch sử đã xem
-                </a>
-                <a class="list-group-item list-group-item-action"
-                   href="${pageContext.request.contextPath}/user/user-wishlist">
-                    <i class="bi bi-heart"></i>
-                    Danh sách yêu thích
                 </a>
                 <a class="list-group-item list-group-item-action"
                    href="${pageContext.request.contextPath}/user/user-orders">

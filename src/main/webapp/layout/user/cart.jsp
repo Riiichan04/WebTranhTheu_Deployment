@@ -3,7 +3,7 @@
 <jsp:include page="../common.jsp"/>
 <html>
 <head>
-    <title>Cart</title>
+    <title>Giỏ hàng của bạn - Nét Việt</title>
     <link rel="stylesheet" href="../../template/style/user/cart.css">
     <jsp:include page="../public/library.jsp"/>
 </head>

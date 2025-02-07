@@ -3,7 +3,7 @@
 <jsp:include page="common.jsp"/>
 <html>
 <head>
-    <title>${categoryTitle} - Nét Việt</title>
+    <title>Tìm kiếm - Nét Việt</title>
     <link rel="stylesheet" href="../template/style/user/category.css">
     <jsp:include page="public/library.jsp"/>
 </head>

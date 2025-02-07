@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="user-info" class="content-details col">
-    <div class="h3 fw-semibold p-3">Thông tin tài khoản</div>
+    <div class="h4 fw-semibold p-3">Thông tin tài khoản</div>
     <hr>
     <div class="input-info container">
         <div class="user-inputs">

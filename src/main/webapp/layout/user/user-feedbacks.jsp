@@ -32,7 +32,7 @@
     <div class="h3 fw-semibold p-4">Lịch sử đánh giá</div>
     <hr>
     <c:if test="${empty reviews}">
-        <div class="h3 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">
+        <div class="h4 main-color opacity-50 d-flex justify-content-center align-items-center fw-semibold text-center">
             Bạn chưa đánh giá sản phẩm nào
         </div>
     </c:if>
@@ -96,7 +96,7 @@
 
                             </div>
                         </div>
-                        <div class="col-2 text-center justify-content-center align-items-center  p-0 feedback-details"
+                        <div class="col-2 text-center justify-content-center align-items-center cursor-pointer p-0 feedback-details"
                              onclick="getReviewDetails(${review.id})">Chi tiết
                         </div>
                     </div>

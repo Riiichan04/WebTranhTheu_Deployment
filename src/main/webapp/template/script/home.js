@@ -1,5 +1,5 @@
 let offset = 1
-let amount = 5
+let amount = 10
 let limitProduct
 
 function getOneProductsRow(listProducts) {
@@ -44,8 +44,8 @@ function sendProductRequest() {
         method: 'GET',
         data: {
             offset: offset,
-            limit: limitProduct
-            // amount: amount
+            limit: limitProduct,
+            amount: amount
         },
         success: function (response) {
             response = $.parseJSON(response)

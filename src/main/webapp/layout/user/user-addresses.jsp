@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="user-address" class="content-details col" >
-    <div class="h3 fw-semibold p-3">Sổ địa chỉ</div>
+    <div class="h4 fw-semibold p-3">Sổ địa chỉ</div>
     <hr>
     <div class="container">
         <c:if test="${empty account.location}">
