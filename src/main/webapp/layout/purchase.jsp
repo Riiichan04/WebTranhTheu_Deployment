@@ -32,26 +32,11 @@
                 </div>
             </div>
             <hr/>
-            <%--            <div>--%>
-            <%--                <h5 class="main-color mb-4">Phương thức thanh toán</h5>--%>
-            <%--                <div class="row">--%>
-            <%--                    <div class="my-1">--%>
-            <%--                        <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" checked--%>
-            <%--                               value="money">--%>
-            <%--                        <label class="form-check-label" for="flexRadioDefault2">--%>
-            <%--                            Thanh toán bằng tiền mặt--%>
-            <%--                        </label>--%>
-            <%--                    </div>--%>
-            <%--                    <div class="my-1">--%>
-            <%--                        <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault1"--%>
-            <%--                               value="bank">--%>
-            <%--                        <label class="form-check-label" for="flexRadioDefault1">--%>
-            <%--                            Thanh toán bằng ngân hàng--%>
-            <%--                        </label>--%>
-            <%--                    </div>--%>
-            <%--                </div>--%>
-            <%--            </div>--%>
-            <%--            <hr/>--%>
+            <div>
+                <h5 class="main-color mb-4">Phương thức thanh toán</h5>
+                <p>Hiện tại chỉ hỗ trợ thanh toán bằng tiền mặt</p>
+            </div>
+            <hr/>
             <div>
                 <h5 class="main-color mb-4">Khuyến mãi đang áp dụng</h5>
                 <c:if test="${discount.size() eq 0}">
