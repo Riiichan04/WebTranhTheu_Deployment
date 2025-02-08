@@ -76,13 +76,12 @@ public class ConcreteProductDetail implements ProductDetailService {
         """;
 
         String finalQuery = query;
-        System.out.println("Final Query: " + finalQuery);
         try {
             if (listTopicId != null) {
                 return JDBIConnector.getInstance().withHandle(handle ->
                         handle.createQuery(finalQuery)
                                 .bind("patternName", categoryName)
-                                .bindList("providerName", listTopicId)
+                                .bindList("topicId", listTopicId)
                                 .bind("providerName", providerName)
                                 .bind("fromPrice", fromPrice)
                                 .bind("toPrice", toPrice)
