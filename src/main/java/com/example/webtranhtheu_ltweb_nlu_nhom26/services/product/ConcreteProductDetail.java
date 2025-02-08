@@ -62,7 +62,7 @@ public class ConcreteProductDetail implements ProductDetailService {
                 where (:patternName is null or categories.patternName like :patternName)
         """;
 
-        if (listTopicId != null) {
+        if (listTopicId != null || listTopicId.size() > 0) {
             query += "and (topic_products_details.topicId in (<topicId>))";
         }
         query += """
@@ -75,8 +75,9 @@ public class ConcreteProductDetail implements ProductDetailService {
             limit :offset, :amount
         """;
 
+        String finalQuery = query;
+        System.out.println("Final Query: " + finalQuery);
         try {
-            String finalQuery = query;
             return JDBIConnector.getInstance().withHandle(handle ->
                     handle.createQuery(finalQuery)
                             .bind("patternName", categoryName)
