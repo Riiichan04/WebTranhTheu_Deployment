@@ -9,7 +9,7 @@
 <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <%-- Tạm thời --%>
-    <link id="base-theme" rel="stylesheet" href="../../template/style/index.css">
+    <link class="base-theme" rel="stylesheet" href="../../template/style/index.css">
     <link rel="stylesheet" href="../../template/style/user/header.css">
     <link rel="stylesheet" href="../../template/style/user/footer.css">
     <link rel="stylesheet" href="../../template/style/style.css">
@@ -19,13 +19,13 @@
 <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
 <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
 <script>
-    const themeElement = $("#base-theme")
+    window.themeElement = $(".base-theme")
     function setDefaultTheme() {
         if (localStorage.getItem("themeUrl") === null) {
-            themeElement.attr("href", "../../template/style/index.css")
+            window.themeElement.attr("href", "../../template/style/index.css")
             localStorage.setItem("themeUrl", "../../template/style/index.css")
         }
-        else themeElement.attr("href", localStorage.getItem("themeUrl"))
+        else window.themeElement.attr("href", localStorage.getItem("themeUrl"))
     }
     setDefaultTheme()
     //Cần lưu thêm thông tin vào localStorage
@@ -42,13 +42,7 @@
             }
             default: break
         }
-        // if (themeElement.attr("href") === "../../template/style/index.css") {
-        //     changedUrl = "../../template/style/old-index.css"
-        // }
-        // else {
-        //     changedUrl = "../../template/style/index.css"
-        // }
-        themeElement.attr("href", changedUrl)
+        window.themeElement.attr("href", changedUrl)
         localStorage.setItem("themeUrl", changedUrl)
     }
 </script>
