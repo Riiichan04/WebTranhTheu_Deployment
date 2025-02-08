@@ -1,11 +1,15 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.purchase;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.Cart;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.CartProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -43,7 +47,24 @@ public class PurchaseController extends HttpServlet {
                 //Nếu gửi từ trang product -> Chọn tất cả product
 
                 if (request.getParameter("quick-buy") != null) {
-                    listSelectedProductCode = sessionCart.getProducts();
+                    //Rất cần tối ưu
+                    String quickBuyCode = request.getParameter("quick-buy");
+                    String[] codeDetails = quickBuyCode.split("_");
+                    int quickbuyId = Integer.parseInt(codeDetails[0]);
+                    int width = Integer.parseInt(codeDetails[1]);
+                    int height = Integer.parseInt(codeDetails[2]);
+
+                    String tempCode = quickbuyId + "_" + width + "_" + height;
+                    Product product = new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(quickbuyId);
+                    Price selectedPrice = product.getSelectedPrice(width, height);
+
+                    CartProduct cartProduct = sessionCart.covertToCart(product, selectedPrice);
+                    cartProduct.setQuantity(1);
+                    cartProduct.updateBySize(selectedPrice.getWidth(), selectedPrice.getHeight());
+                    cartProduct.setPrice(selectedPrice);
+                    cartProduct.setTotalPrice(cartProduct.getTotalPrice());
+
+                    listSelectedProductCode.put(tempCode, cartProduct);
                     session.setAttribute("selectedProducts", listSelectedProductCode);
                 } else if (session.getAttribute("selectedProducts") != null) {
                     Map<?, ?> tempMap = (Map<?, ?>) session.getAttribute("selectedProducts");

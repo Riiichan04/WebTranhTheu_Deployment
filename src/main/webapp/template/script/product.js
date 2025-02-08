@@ -102,7 +102,11 @@ $("#product-detail__remove-amount").click(function () {
 
 // Nút mua ngay -> Mở trang thanh toán
 $("#purchase-btn").click(function () {
-    window.location = "/purchase?quick-buy=true"
+    let param = new URLSearchParams(window.location.search)
+    let id = param.get("id")
+    let width = param.get("width")
+    let height = param.get("height")
+    window.location = `/purchase?quick-buy=${id}_${width}_${height}`
 })
 
 // Click vào số sao ở mục đánh giá để bình luận số sao
