@@ -45,30 +45,11 @@ public class PurchaseController extends HttpServlet {
                 Cart sessionCart = (Cart) session.getAttribute("cart");
                 Map<String, CartProduct> listSelectedProductCode = new HashMap<>();
                 //Nếu gửi từ trang product -> Chọn tất cả product
-
-                if (request.getParameter("quick-buy") != null) {
-                    //Rất cần tối ưu
-                    String quickBuyCode = request.getParameter("quick-buy");
-                    String[] codeDetails = quickBuyCode.split("_");
-                    int quickbuyId = Integer.parseInt(codeDetails[0]);
-                    int width = Integer.parseInt(codeDetails[1]);
-                    int height = Integer.parseInt(codeDetails[2]);
-
-                    String tempCode = quickbuyId + "_" + width + "_" + height;
-                    System.out.println(tempCode);
-                    Product product = new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(quickbuyId);
-                    Price selectedPrice = product.getSelectedPrice(width, height);
-                    System.out.println("ID: " + product.getId());
-                    CartProduct cartProduct = sessionCart.covertToCart(product, selectedPrice);
-                    cartProduct.setQuantity(1);
-                    cartProduct.updateBySize(selectedPrice.getWidth(), selectedPrice.getHeight());
-                    cartProduct.setPrice(selectedPrice);
-                    cartProduct.setTotalPrice(cartProduct.getTotalPrice());
-                    System.out.println(cartProduct);
-                    listSelectedProductCode.put(tempCode, cartProduct);
-                    System.out.println(listSelectedProductCode);
-                    session.setAttribute("selectedProducts", listSelectedProductCode);
-                } else if (session.getAttribute("selectedProducts") != null) {
+//                if (request.getParameter("quick-buy") != null) {
+//                    listSelectedProductCode = sessionCart.getProducts();
+//                    session.setAttribute("selectedProducts", listSelectedProductCode);
+//                } else
+                if (session.getAttribute("selectedProducts") != null) {
                     Map<?, ?> tempMap = (Map<?, ?>) session.getAttribute("selectedProducts");
                     if (tempMap.keySet().stream().allMatch(k -> k instanceof String) &&
                             tempMap.values().stream().allMatch(v -> v instanceof CartProduct)) {
@@ -90,7 +71,7 @@ public class PurchaseController extends HttpServlet {
                 request.setAttribute("userInfo", userInfo);
                 request.setAttribute("totalPrice", ProductService.getDisplayPriceToString(totalPrice));
                 request.setAttribute("finalPrice", ProductService.getDisplayPriceToString(finalPrice));
-                request.setAttribute("discount",  sessionCart.getAllDiscountInCart(listCartCode));
+                request.setAttribute("discount", sessionCart.getAllDiscountInCart(listCartCode));
                 request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice - finalPrice + deliveryPrice));
 
                 request.getRequestDispatcher("layout/purchase.jsp").forward(request, response);
