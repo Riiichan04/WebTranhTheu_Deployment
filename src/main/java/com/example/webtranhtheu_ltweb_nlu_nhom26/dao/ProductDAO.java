@@ -206,7 +206,7 @@ public interface ProductDAO {
         join providers
             on products.providerId = providers.id
         where (:patternName is null or categories.patternName like :patternName)
-            and (<topicId> like '' or topic_products_details.topicId in (<topicId>))
+            and ((json_array(<topicId>) = '[null]' or json_array(<topicId>) = '[]') or topic_products_details.topicId in (<topicId>))
             and (:providerName is null or providers.providerName like :providerName)
             and ((:fromPrice = 0 and :toPrice = 0) or :fromPrice <= :toPrice and product_prices.price between :fromPrice and :toPrice)
             and (:productName is null or products.title like :productName)
