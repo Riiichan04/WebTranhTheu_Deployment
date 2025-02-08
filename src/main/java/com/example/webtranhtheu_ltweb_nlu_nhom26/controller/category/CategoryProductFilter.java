@@ -43,6 +43,17 @@ public class CategoryProductFilter extends HttpServlet {
             int amount = Integer.parseInt(requestAmount);
             int page = Integer.parseInt(requestPage);
 
+            System.out.println("Category Filter Log:");
+            System.out.println("Name: " + productName);
+            System.out.println("PatternName: " + patternName);
+            System.out.println("ProviderName: " + providerName);
+            System.out.println("ListTopic: " + Arrays.toString(listTopicId.toArray()));
+            System.out.println("Rating: " + rating);
+            System.out.println("From Price: " +fromPrice);
+            System.out.println("To Price: " + toPrice);
+            System.out.println("Amount: " + amount);
+            System.out.println("Page: " + page);
+
             if (page <= 0 || amount <= 0 || fromPrice > toPrice || rating < 0 || rating > 5) {
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
                 return;
