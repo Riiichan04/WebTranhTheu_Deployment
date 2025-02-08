@@ -80,6 +80,7 @@ public class CategoryProductFilter extends HttpServlet {
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
             jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
             ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
         }

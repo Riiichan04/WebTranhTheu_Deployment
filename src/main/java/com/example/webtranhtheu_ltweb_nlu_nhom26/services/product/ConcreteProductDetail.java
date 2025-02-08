@@ -78,19 +78,35 @@ public class ConcreteProductDetail implements ProductDetailService {
         String finalQuery = query;
         System.out.println("Final Query: " + finalQuery);
         try {
-            return JDBIConnector.getInstance().withHandle(handle ->
-                    handle.createQuery(finalQuery)
-                            .bind("patternName", categoryName)
-                            .bindList("providerName", listTopicId)
-                            .bind("providerName", providerName)
-                            .bind("fromPrice", fromPrice)
-                            .bind("toPrice", toPrice)
-                            .bind("rating", rating)
-                            .bind("productName", productName)
-                            .bind("offset", (offset - 1) * amount)
-                            .bind("amount", amount)).mapTo(Integer.class).list();
+            if (listTopicId != null) {
+                return JDBIConnector.getInstance().withHandle(handle ->
+                        handle.createQuery(finalQuery)
+                                .bind("patternName", categoryName)
+                                .bindList("providerName", listTopicId)
+                                .bind("providerName", providerName)
+                                .bind("fromPrice", fromPrice)
+                                .bind("toPrice", toPrice)
+                                .bind("rating", rating)
+                                .bind("productName", productName)
+                                .bind("offset", (offset - 1) * amount)
+                                .bind("amount", amount)).mapTo(Integer.class).list();
+            }
+            else {
+                return JDBIConnector.getInstance().withHandle(handle ->
+                        handle.createQuery(finalQuery)
+                                .bind("patternName", categoryName)
+                                .bind("providerName", providerName)
+                                .bind("fromPrice", fromPrice)
+                                .bind("toPrice", toPrice)
+                                .bind("rating", rating)
+                                .bind("productName", productName)
+                                .bind("offset", (offset - 1) * amount)
+                                .bind("amount", amount)).mapTo(Integer.class).list();
+            }
+
         }
         catch (Exception e) {
+            e.printStackTrace();
             return new ArrayList<>();
         }
 //        return productDAO.filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, productName, (offset - 1) * amount, amount);
