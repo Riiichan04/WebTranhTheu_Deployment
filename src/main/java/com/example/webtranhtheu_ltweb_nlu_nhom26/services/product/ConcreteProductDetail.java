@@ -62,7 +62,7 @@ public class ConcreteProductDetail implements ProductDetailService {
                 where (:patternName is null or categories.patternName like :patternName)
         """;
 
-        if (listTopicId != null || listTopicId.size() > 0) {
+        if (listTopicId != null) {
             query += "and (topic_products_details.topicId in (<topicId>))";
         }
         query += """
