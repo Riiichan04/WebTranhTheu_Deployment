@@ -373,7 +373,7 @@
                             badge.removeClass("d-none")
                             badge.text(currentCartLength)
                             if (flag) {
-                                window.location = '/purchase'
+                                window.location = '/cart'
                             }
                         } else alert("Có lỗi khi thêm sản phẩm vào giỏ hàng")
                     },

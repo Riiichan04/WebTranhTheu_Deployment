@@ -82,10 +82,70 @@ public class CategoryService {
     }
 
     public static int calculateCategoryPage(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, String productName, int amount) {
-        Integer countProduct = categoryDAO.countProductByCategory(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, productName);
-        if (countProduct == null) countProduct = 0;
-        int baseVal = countProduct / amount;
-        return countProduct % amount == 0 ? baseVal : baseVal + 1;
+        String query = """
+                select distinct count( products.id) over ()
+                from products
+                join category_products_details
+                    on products.id = category_products_details.productId
+                join categories
+                    on category_products_details.categoryId = categories.id
+                join topic_products_details
+                    on products.id = topic_products_details.productId
+                join product_prices
+                    on products.id = product_prices.productId
+                left join product_reviews
+                    on products.id = product_reviews.productId
+                join providers
+                    on products.providerId = providers.id
+                where (:patternName is null or categories.patternName like :patternName)
+                    and (json_array(<topicId>) = '[null]' or topic_products_details.topicId in (<topicId>))
+        """;
+
+        if (listTopicId != null) {
+            query += "and (topic_products_details.topicId in (<topicId>))";
+        }
+        query += """
+                and (:providerName is null or providers.providerName like :providerName)
+                    and ((:fromPrice = 0 and :toPrice = 0) or :fromPrice <= :toPrice and product_prices.price between :fromPrice and :toPrice)
+                    and (:productName is null or products.title like :productName)
+                group by products.id
+                having (:rating = 0 or coalesce(avg(product_reviews.rating), 0) >= :rating)
+        """;
+
+        String finalQuery = query;
+        try {
+            int countProduct = 0;
+            if (listTopicId != null) {
+                countProduct = JDBIConnector.getInstance().withHandle(handle ->
+                        handle.createQuery(finalQuery)
+                                .bind("patternName", categoryName)
+                                .bindList("topicId", listTopicId)
+                                .bind("providerName", providerName)
+                                .bind("fromPrice", fromPrice)
+                                .bind("toPrice", toPrice)
+                                .bind("rating", rating)
+                                .bind("productName", productName)
+                                .bind("amount", amount)).mapTo(Integer.class).one();
+            }
+            else {
+                countProduct = JDBIConnector.getInstance().withHandle(handle ->
+                        handle.createQuery(finalQuery)
+                                .bind("patternName", categoryName)
+                                .bind("providerName", providerName)
+                                .bind("fromPrice", fromPrice)
+                                .bind("toPrice", toPrice)
+                                .bind("rating", rating)
+                                .bind("productName", productName)
+                                .bind("amount", amount)).mapTo(Integer.class).one();
+
+            }
+            int baseVal = countProduct / amount;
+            return countProduct % amount == 0 ? baseVal : baseVal + 1;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     public static List<Category> getNameAndPatternCategory() {
