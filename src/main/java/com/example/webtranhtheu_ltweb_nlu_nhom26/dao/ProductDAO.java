@@ -213,8 +213,7 @@ public interface ProductDAO {
         group by products.id
         having (:rating = 0 or coalesce(avg(product_reviews.rating), 0) >= :rating)
         order by products.id
-        offset :offset
-        limit :amount
+        limit :offset, :amount
     """)
     List<Integer> filterProduct(@Bind("patternName") String patternName, @BindList(value = "topicId", onEmpty = BindList.EmptyHandling.NULL_STRING) List<Integer> topicId,
                                 @Bind("rating") int rating,
@@ -236,8 +235,7 @@ public interface ProductDAO {
         select products.id
         from products
         where title like :productName
-        offset :offset
-        limit :amount
+        limit :offset, :amount
     """)
     List<Integer> findProductsIdByName(@Bind("productName") String productName, @Bind("offset") int offset, @Bind("amount") int amount);
 
