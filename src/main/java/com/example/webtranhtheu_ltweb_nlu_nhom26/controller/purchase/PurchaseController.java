@@ -55,16 +55,18 @@ public class PurchaseController extends HttpServlet {
                     int height = Integer.parseInt(codeDetails[2]);
 
                     String tempCode = quickbuyId + "_" + width + "_" + height;
+                    System.out.println(tempCode);
                     Product product = new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(quickbuyId);
                     Price selectedPrice = product.getSelectedPrice(width, height);
-
+                    System.out.println("ID: " + product.getId());
                     CartProduct cartProduct = sessionCart.covertToCart(product, selectedPrice);
                     cartProduct.setQuantity(1);
                     cartProduct.updateBySize(selectedPrice.getWidth(), selectedPrice.getHeight());
                     cartProduct.setPrice(selectedPrice);
                     cartProduct.setTotalPrice(cartProduct.getTotalPrice());
-
+                    System.out.println(cartProduct);
                     listSelectedProductCode.put(tempCode, cartProduct);
+                    System.out.println(listSelectedProductCode);
                     session.setAttribute("selectedProducts", listSelectedProductCode);
                 } else if (session.getAttribute("selectedProducts") != null) {
                     Map<?, ?> tempMap = (Map<?, ?>) session.getAttribute("selectedProducts");
