@@ -68,7 +68,8 @@ public interface CategoryDAO {
                     join categories
                     on category_products_details.categoryId = categories.id
                 where categories.patternName like :categoryName
-                limit :offset, :limit
+                offset :offset,
+                limit :limit
             """)
     List<Integer> getListIdInCategory(@Bind("categoryName") String categoryName, @Bind("offset") int offset, @Bind("limit") int limit);
 

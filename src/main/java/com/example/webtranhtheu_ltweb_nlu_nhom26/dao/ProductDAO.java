@@ -206,14 +206,15 @@ public interface ProductDAO {
         join providers
             on products.providerId = providers.id
         where (:patternName is null or categories.patternName like :patternName)
-            and (json_array(<topicId>) = '[null]' or topic_products_details.topicId in (<topicId>))
+            and (coalesce(<topicId>, -1) = -1 or topic_products_details.topicId in (<topicId>))
             and (:providerName is null or providers.providerName like :providerName)
             and ((:fromPrice = 0 and :toPrice = 0) or :fromPrice <= :toPrice and product_prices.price between :fromPrice and :toPrice)
             and (:productName is null or products.title like :productName)
         group by products.id
         having (:rating = 0 or coalesce(avg(product_reviews.rating), 0) >= :rating)
         order by products.id
-        limit :offset, :amount
+        offset :offset
+        limit :amount
     """)
     List<Integer> filterProduct(@Bind("patternName") String patternName, @BindList(value = "topicId", onEmpty = BindList.EmptyHandling.NULL_STRING) List<Integer> topicId,
                                 @Bind("rating") int rating,
@@ -235,7 +236,8 @@ public interface ProductDAO {
         select products.id
         from products
         where title like :productName
-        limit :offset, :amount
+        offset :offset
+        limit :amount
     """)
     List<Integer> findProductsIdByName(@Bind("productName") String productName, @Bind("offset") int offset, @Bind("amount") int amount);
 
