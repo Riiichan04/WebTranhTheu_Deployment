@@ -63,7 +63,7 @@ public class ConcreteProductDetail implements ProductDetailService {
         """;
 
         if (listTopicId != null) {
-            query += "and (json_array(<topicId>) = '[null]' or topic_products_details.topicId in (<topicId>))";
+            query += "and (topic_products_details.topicId in (<topicId>))";
         }
         query += """
                 and (:providerName is null or providers.providerName like :providerName)
