@@ -1,11 +1,15 @@
 package com.example.webtranhtheu_ltweb_nlu_nhom26.controller.purchase;
 
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Price;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.product.Product;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.user.User;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.Cart;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.bean.cart.CartProduct;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.CategoryService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.ProductService;
 import com.example.webtranhtheu_ltweb_nlu_nhom26.services.UserService;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.ConcreteProductDetail;
+import com.example.webtranhtheu_ltweb_nlu_nhom26.services.product.DisplayCardProduct;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -41,11 +45,11 @@ public class PurchaseController extends HttpServlet {
                 Cart sessionCart = (Cart) session.getAttribute("cart");
                 Map<String, CartProduct> listSelectedProductCode = new HashMap<>();
                 //Nếu gửi từ trang product -> Chọn tất cả product
-
-                if (request.getParameter("quick-buy") != null) {
-                    listSelectedProductCode = sessionCart.getProducts();
-                    session.setAttribute("selectedProducts", listSelectedProductCode);
-                } else if (session.getAttribute("selectedProducts") != null) {
+//                if (request.getParameter("quick-buy") != null) {
+//                    listSelectedProductCode = sessionCart.getProducts();
+//                    session.setAttribute("selectedProducts", listSelectedProductCode);
+//                } else
+                if (session.getAttribute("selectedProducts") != null) {
                     Map<?, ?> tempMap = (Map<?, ?>) session.getAttribute("selectedProducts");
                     if (tempMap.keySet().stream().allMatch(k -> k instanceof String) &&
                             tempMap.values().stream().allMatch(v -> v instanceof CartProduct)) {
@@ -67,7 +71,7 @@ public class PurchaseController extends HttpServlet {
                 request.setAttribute("userInfo", userInfo);
                 request.setAttribute("totalPrice", ProductService.getDisplayPriceToString(totalPrice));
                 request.setAttribute("finalPrice", ProductService.getDisplayPriceToString(finalPrice));
-                request.setAttribute("discount",  sessionCart.getAllDiscountInCart(listCartCode));
+                request.setAttribute("discount", sessionCart.getAllDiscountInCart(listCartCode));
                 request.setAttribute("discountValue", ProductService.getDisplayPriceToString(totalPrice - finalPrice + deliveryPrice));
 
                 request.getRequestDispatcher("layout/purchase.jsp").forward(request, response);

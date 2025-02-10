@@ -52,7 +52,7 @@ public class Cart implements Serializable {
     }
 
 
-    private CartProduct covertToCart(Product product, Price price) {
+    public CartProduct covertToCart(Product product, Price price) {
         CartProduct cartProduct = new CartProduct();
         cartProduct.setId(product.getId());
         cartProduct.setTitle(product.getTitle());

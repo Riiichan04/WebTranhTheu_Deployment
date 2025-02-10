@@ -43,6 +43,21 @@ public class CategoryProductFilter extends HttpServlet {
             int amount = Integer.parseInt(requestAmount);
             int page = Integer.parseInt(requestPage);
 
+            System.out.println("-----");
+            System.out.println("Category Filter Log:");
+            System.out.println(requestListTopicId);
+            System.out.println("Name: " + productName);
+            System.out.println("PatternName: " + patternName);
+            System.out.println("ProviderName: " + providerName);
+            System.out.println("ListTopic: " + listTopicId);
+            System.out.println("Rating: " + rating);
+            System.out.println("From Price: " +fromPrice);
+            System.out.println("To Price: " + toPrice);
+            System.out.println("Amount: " + amount);
+            System.out.println("Page: " + page);
+            System.out.println("-----");
+            System.out.println();
+
             if (page <= 0 || amount <= 0 || fromPrice > toPrice || rating < 0 || rating > 5) {
                 ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
                 return;
@@ -65,6 +80,7 @@ public class CategoryProductFilter extends HttpServlet {
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
             jsonResult.addProperty("notice", "Không tìm thấy sản phẩm nào!");
             ControllerUtil.sendAjaxResultFalse(response, jsonResult, null);
         }

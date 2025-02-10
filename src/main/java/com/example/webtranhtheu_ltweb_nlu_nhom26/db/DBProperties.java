@@ -7,17 +7,17 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBProperties {
-    private static Properties properties = new Properties();
+//    private static Properties properties = new Properties();
     Connection connection = null;
 
     //Load connection
-    static {
-        try {
-            properties.load(DBProperties.class.getClassLoader().getResourceAsStream("db.properties"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    static {
+//        try {
+//            properties.load(DBProperties.class.getClassLoader().getResourceAsStream("db.properties"));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     //Singleton
     public Connection getConnection() {
@@ -42,27 +42,27 @@ public class DBProperties {
     }
 
     public static String getHost() {
-        return properties.getProperty("db.host");
+        return System.getenv("db.host");
     }
 
     public static String getPort() {
-        return properties.getProperty("db.port");
+        return System.getenv("db.port");
     }
 
     public static String getUsername() {
-        return properties.getProperty("db.username");
+        return System.getenv("db.username");
     }
 
     public static String getPassword() {
-        return properties.getProperty("db.password");
+        return System.getenv("db.password");
     }
 
     public static String getDbName() {
-        return properties.getProperty("db.name");
+        return System.getenv("db.name");
     }
 
     public static String getOption() {
-        return properties.getProperty("db.options");
+        return System.getenv("db.options");
     }
 }
 

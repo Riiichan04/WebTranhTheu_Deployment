@@ -167,6 +167,7 @@ public class ProductService {
 
     public static List<Product> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, String productName, int offset, int amount) {
         List<Integer> listId = new ConcreteProductDetail().filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, productName, offset, amount);
+        System.out.println("List filtered id: " + listId);
         List<Product> products = new ArrayList<>();
         for (Integer id : listId) {
             products.add(new DisplayCardProduct(new ConcreteProductDetail()).getDisplayProductInfo(id));

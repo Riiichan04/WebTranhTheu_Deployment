@@ -44,7 +44,71 @@ public class ConcreteProductDetail implements ProductDetailService {
     }
 
     public List<Integer> filterProduct(String categoryName, List<Integer> listTopicId, int rating, double fromPrice, double toPrice, String providerName, String productName, int offset, int amount) {
-        return productDAO.filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, productName, (offset - 1) * amount, amount);
+        String query = """
+                select distinct products.id
+                from products
+                join category_products_details
+                    on products.id = category_products_details.productId
+                join categories
+                    on category_products_details.categoryId = categories.id
+                join topic_products_details
+                    on products.id = topic_products_details.productId
+                join product_prices
+                    on products.id = product_prices.productId
+                left join product_reviews
+                    on products.id = product_reviews.productId
+                join providers
+                    on products.providerId = providers.id
+                where (:patternName is null or categories.patternName like :patternName)
+        """;
+
+        if (listTopicId != null) {
+            query += "and (topic_products_details.topicId in (<topicId>))";
+        }
+        query += """
+                and (:providerName is null or providers.providerName like :providerName)
+                and ((:fromPrice = 0 and :toPrice = 0) or :fromPrice <= :toPrice and product_prices.price between :fromPrice and :toPrice)
+                and (:productName is null or products.title like :productName)
+            group by products.id
+            having (:rating = 0 or coalesce(avg(product_reviews.rating), 0) >= :rating)
+            order by products.id
+            limit :offset, :amount
+        """;
+
+        String finalQuery = query;
+        try {
+            if (listTopicId != null) {
+                return JDBIConnector.getInstance().withHandle(handle ->
+                        handle.createQuery(finalQuery)
+                                .bind("patternName", categoryName)
+                                .bindList("topicId", listTopicId)
+                                .bind("providerName", providerName)
+                                .bind("fromPrice", fromPrice)
+                                .bind("toPrice", toPrice)
+                                .bind("rating", rating)
+                                .bind("productName", productName)
+                                .bind("offset", (offset - 1) * amount)
+                                .bind("amount", amount)).mapTo(Integer.class).list();
+            }
+            else {
+                return JDBIConnector.getInstance().withHandle(handle ->
+                        handle.createQuery(finalQuery)
+                                .bind("patternName", categoryName)
+                                .bind("providerName", providerName)
+                                .bind("fromPrice", fromPrice)
+                                .bind("toPrice", toPrice)
+                                .bind("rating", rating)
+                                .bind("productName", productName)
+                                .bind("offset", (offset - 1) * amount)
+                                .bind("amount", amount)).mapTo(Integer.class).list();
+            }
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+//        return productDAO.filterProduct(categoryName, listTopicId, rating, fromPrice, toPrice, providerName, productName, (offset - 1) * amount, amount);
     }
 
     public List<Integer> findProductsIdByName(String productName, int page, int amount) {

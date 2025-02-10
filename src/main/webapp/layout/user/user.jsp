@@ -3,7 +3,7 @@
 <jsp:include page="../common.jsp"/>
 <html>
 <head>
-    <title>${account.username} - Nét Việt</title>
+    <title>${account.fullName} - Nét Việt</title>
     <link rel="stylesheet" href="../../template/style/user/account-page.css">
     <jsp:include page="../public/library.jsp"/>
 </head>
@@ -55,7 +55,7 @@
         <div class="user-props-list col-3 me-4">
             <div class="user-img-frame">
                 <img src="${account.avatarUrl}" style="width:100px;height:100px;margin-top: 30px">
-                <p id="nickname" class="p-4 title">${account.username} </p>
+                <p id="nickname" class="p-4 title">${account.fullName} </p>
             </div>
             <div class="list-group list_props">
                 <a class="list-group-item list-group-item-action"
@@ -91,7 +91,7 @@
                     <i class="bi bi-gear"></i>
                     Cài đặt
                 </a>
-                <a class="list-group-item list-group-item-action" href="/layout/user/user-help.jsp">
+                <a class="list-group-item list-group-item-action" href="${pageContext.request.contextPath}/user/help">
                     <i class="bi bi-question-circle"></i>
                     Hỗ trợ
                 </a>
@@ -129,13 +129,6 @@
                 Có
             </button>
         </div>
-
-        <%--    <div class="row ps-2"><p>Bạn chắc chắn muốn đăng xuất?</p></div>--%>
-        <%--    <div class="row pt-5 ps-4 text-center">--%>
-        <%--        <button id="yesBtn" class="col-5 text-center" onclick="window.location.href = '/logout-user';">Có</button>--%>
-        <%--        <div class="col-2"></div>--%>
-        <%--        <button id="noBtn" class="col-5 text-center">Không</button>--%>
-        <%--    </div>--%>
     </div>
 </div>
 <div class="p-4"></div>
